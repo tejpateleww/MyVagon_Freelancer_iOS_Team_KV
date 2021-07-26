@@ -1,0 +1,44 @@
+PODS:
+  - CountryPickerView (3.2.0)
+  - GoogleMaps (5.1.0):
+    - GoogleMaps/Maps (= 5.1.0)
+  - GoogleMaps/Base (5.1.0)
+  - GoogleMaps/Maps (5.1.0):
+    - GoogleMaps/Base
+  - IQKeyboardManagerSwift (6.3.0)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SkyFloatingLabelTextField (3.8.0)
+
+DEPENDENCIES:
+  - CountryPickerView
+  - GoogleMaps
+  - IQKeyboardManagerSwift (= 6.3.0)
+  - NVActivityIndicatorView (= 4.8.0)
+  - SDWebImage
+  - SkyFloatingLabelTextField (~> 3.0)
+
+SPEC REPOS:
+  trunk:
+    - CountryPickerView
+    - GoogleMaps
+    - IQKeyboardManagerSwift
+    - NVActivityIndicatorView
+    - SDWebImage
+    - SkyFloatingLabelTextField
+
+SPEC CHECKSUMS:
+  CountryPickerView: 9b093bfffb4b06a69ba6185a798cadbf863720e7
+  GoogleMaps: 086ae1dab659eaa7339bdb30fc88e2f44e7c597c
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+
+PODFILE CHECKSUM: 1f681edda727600de5f3aded9094698574ad90ab
+
+COCOAPODS: 1.10.1

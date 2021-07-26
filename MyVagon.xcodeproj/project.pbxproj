@@ -3,10 +3,51 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
+		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
+		A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A626A1AB430072AF33 /* Poppins-ExtraBold.ttf */; };
+		A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A726A1AB430072AF33 /* Poppins-Medium.ttf */; };
+		A14974BB26A1AB440072AF33 /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A826A1AB430072AF33 /* Poppins-ExtraBoldItalic.ttf */; };
+		A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A926A1AB430072AF33 /* Poppins-LightItalic.ttf */; };
+		A14974BD26A1AB440072AF33 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = A14974AA26A1AB430072AF33 /* OFL.txt */; };
+		A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974AB26A1AB430072AF33 /* Poppins-ExtraLightItalic.ttf */; };
+		A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974AC26A1AB430072AF33 /* Poppins-SemiBoldItalic.ttf */; };
+		A14974C026A1AB440072AF33 /* Poppins-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974AD26A1AB430072AF33 /* Poppins-Italic.ttf */; };
+		A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974AE26A1AB430072AF33 /* Poppins-MediumItalic.ttf */; };
+		A14974C226A1AB440072AF33 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974AF26A1AB430072AF33 /* Poppins-Bold.ttf */; };
+		A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B026A1AB430072AF33 /* Poppins-ExtraLight.ttf */; };
+		A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B126A1AB430072AF33 /* Poppins-ThinItalic.ttf */; };
+		A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B226A1AB430072AF33 /* Poppins-Regular.ttf */; };
+		A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B326A1AB430072AF33 /* Poppins-BoldItalic.ttf */; };
+		A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B426A1AB430072AF33 /* Poppins-BlackItalic.ttf */; };
+		A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B526A1AB440072AF33 /* Poppins-Light.ttf */; };
+		A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B626A1AB440072AF33 /* Poppins-Black.ttf */; };
+		A14974CA26A1AB440072AF33 /* Poppins-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */; };
+		A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974B826A1AB440072AF33 /* Poppins-SemiBold.ttf */; };
+		A14974CC26A1AB800072AF33 /* OFL.txt in Sources */ = {isa = PBXBuildFile; fileRef = A14974AA26A1AB430072AF33 /* OFL.txt */; };
+		A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B626A1AB440072AF33 /* Poppins-Black.ttf */; };
+		A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B426A1AB430072AF33 /* Poppins-BlackItalic.ttf */; };
+		A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AF26A1AB430072AF33 /* Poppins-Bold.ttf */; };
+		A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B326A1AB430072AF33 /* Poppins-BoldItalic.ttf */; };
+		A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974A626A1AB430072AF33 /* Poppins-ExtraBold.ttf */; };
+		A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974A826A1AB430072AF33 /* Poppins-ExtraBoldItalic.ttf */; };
+		A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B026A1AB430072AF33 /* Poppins-ExtraLight.ttf */; };
+		A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AB26A1AB430072AF33 /* Poppins-ExtraLightItalic.ttf */; };
+		A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AD26A1AB430072AF33 /* Poppins-Italic.ttf */; };
+		A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B526A1AB440072AF33 /* Poppins-Light.ttf */; };
+		A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974A926A1AB430072AF33 /* Poppins-LightItalic.ttf */; };
+		A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974A726A1AB430072AF33 /* Poppins-Medium.ttf */; };
+		A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AE26A1AB430072AF33 /* Poppins-MediumItalic.ttf */; };
+		A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B226A1AB430072AF33 /* Poppins-Regular.ttf */; };
+		A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B826A1AB440072AF33 /* Poppins-SemiBold.ttf */; };
+		A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AC26A1AB430072AF33 /* Poppins-SemiBoldItalic.ttf */; };
+		A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */; };
+		A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B126A1AB430072AF33 /* Poppins-ThinItalic.ttf */; };
+		A14974E026A1BB0A0072AF33 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14974DF26A1BB0A0072AF33 /* SignInVC.swift */; };
 		A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519C8B26A00304001738B9 /* AppDelegate.swift */; };
 		A1519C8E26A00304001738B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519C8D26A00304001738B9 /* SceneDelegate.swift */; };
 		A1519C9026A00304001738B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519C8F26A00304001738B9 /* ViewController.swift */; };
@@ -15,6 +56,27 @@
 		A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1519C9626A00305001738B9 /* LaunchScreen.storyboard */; };
 		A1519CA326A00306001738B9 /* MyVagonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CA226A00306001738B9 /* MyVagonTests.swift */; };
 		A1519CAE26A00306001738B9 /* MyVagonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CAD26A00306001738B9 /* MyVagonUITests.swift */; };
+		A1519CC026A003AE001738B9 /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CBD26A003AE001738B9 /* Themes.swift */; };
+		A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CBE26A003AE001738B9 /* AppTheme_FontColor.swift */; };
+		A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CBF26A003AE001738B9 /* ThemeShadow.swift */; };
+		A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC326A00407001738B9 /* userDefaults+Extension.swift */; };
+		A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC426A00407001738B9 /* UITextField+Extensions.swift */; };
+		A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC526A00407001738B9 /* UIViewController+Extension.swift */; };
+		A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC626A00407001738B9 /* UIImage+Extension.swift */; };
+		A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC726A00407001738B9 /* String+Extension.swift */; };
+		A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC826A00407001738B9 /* Date+Extension.swift */; };
+		A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CC926A00407001738B9 /* Extension+CLLocation.swift */; };
+		A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CCA26A00407001738B9 /* UIImageView+Extension.swift */; };
+		A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CD626A00B19001738B9 /* BaseViewController.swift */; };
+		A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CDB26A01CDF001738B9 /* Fonts.swift */; };
+		A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CDC26A01CDF001738B9 /* Storyboards.swift */; };
+		A1519CE226A01CDF001738B9 /* NavigationItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CDD26A01CDF001738B9 /* NavigationItems.swift */; };
+		A1519CE326A01CDF001738B9 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CDE26A01CDF001738B9 /* Colors.swift */; };
+		A1519CE526A02ACE001738B9 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CE426A02ACE001738B9 /* Validation.swift */; };
+		A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CE626A02C99001738B9 /* UIButton+Extension.swift */; };
+		A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CF126A037EF001738B9 /* SplashVC.swift */; };
+		A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519CF326A04488001738B9 /* BoardingVC.swift */; };
+		E3B316F4E0E5BF1B11E67927 /* Pods_MyVagon_MyVagonUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AD1FBCFA74EFBE3ACAB3C78 /* Pods_MyVagon_MyVagonUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +97,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon-MyVagonUITests.release.xcconfig"; path = "Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		696FEDA8B5240A2540F74C54 /* Pods-MyVagon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.release.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.release.xcconfig"; sourceTree = "<group>"; };
+		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
+		9AD1FBCFA74EFBE3ACAB3C78 /* Pods_MyVagon_MyVagonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon_MyVagonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A14974A626A1AB430072AF33 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		A14974A726A1AB430072AF33 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
+		A14974A826A1AB430072AF33 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		A14974A926A1AB430072AF33 /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
+		A14974AA26A1AB430072AF33 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		A14974AB26A1AB430072AF33 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		A14974AC26A1AB430072AF33 /* Poppins-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		A14974AD26A1AB430072AF33 /* Poppins-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Italic.ttf"; sourceTree = "<group>"; };
+		A14974AE26A1AB430072AF33 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
+		A14974AF26A1AB430072AF33 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
+		A14974B026A1AB430072AF33 /* Poppins-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLight.ttf"; sourceTree = "<group>"; };
+		A14974B126A1AB430072AF33 /* Poppins-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ThinItalic.ttf"; sourceTree = "<group>"; };
+		A14974B226A1AB430072AF33 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		A14974B326A1AB430072AF33 /* Poppins-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BoldItalic.ttf"; sourceTree = "<group>"; };
+		A14974B426A1AB430072AF33 /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
+		A14974B526A1AB440072AF33 /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		A14974B626A1AB440072AF33 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
+		A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
+		A14974B826A1AB440072AF33 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		A14974DF26A1BB0A0072AF33 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A1519C8826A00304001738B9 /* MyVagon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVagon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1519C8B26A00304001738B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1519C8D26A00304001738B9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +138,28 @@
 		A1519CA926A00306001738B9 /* MyVagonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyVagonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1519CAD26A00306001738B9 /* MyVagonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVagonUITests.swift; sourceTree = "<group>"; };
 		A1519CAF26A00306001738B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1519CBD26A003AE001738B9 /* Themes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
+		A1519CBE26A003AE001738B9 /* AppTheme_FontColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTheme_FontColor.swift; sourceTree = "<group>"; };
+		A1519CBF26A003AE001738B9 /* ThemeShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThemeShadow.swift; sourceTree = "<group>"; };
+		A1519CC326A00407001738B9 /* userDefaults+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "userDefaults+Extension.swift"; sourceTree = "<group>"; };
+		A1519CC426A00407001738B9 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
+		A1519CC526A00407001738B9 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		A1519CC626A00407001738B9 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		A1519CC726A00407001738B9 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		A1519CC826A00407001738B9 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		A1519CC926A00407001738B9 /* Extension+CLLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension+CLLocation.swift"; sourceTree = "<group>"; };
+		A1519CCA26A00407001738B9 /* UIImageView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		A1519CD626A00B19001738B9 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		A1519CDB26A01CDF001738B9 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		A1519CDC26A01CDF001738B9 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
+		A1519CDD26A01CDF001738B9 /* NavigationItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationItems.swift; sourceTree = "<group>"; };
+		A1519CDE26A01CDF001738B9 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		A1519CE426A02ACE001738B9 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		A1519CE626A02C99001738B9 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		A1519CF126A037EF001738B9 /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
+		A1519CF326A04488001738B9 /* BoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingVC.swift; sourceTree = "<group>"; };
+		D5F902DD5766CE85BFF9C21B /* Pods-MyVagonTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.release.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.release.xcconfig"; sourceTree = "<group>"; };
+		F7EA7E1BF0C9147660099744 /* Pods-MyVagon-MyVagonUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon-MyVagonUITests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +183,62 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3B316F4E0E5BF1B11E67927 /* Pods_MyVagon_MyVagonUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10AF62B78658971993F9FCD6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */,
+				696FEDA8B5240A2540F74C54 /* Pods-MyVagon.release.xcconfig */,
+				F7EA7E1BF0C9147660099744 /* Pods-MyVagon-MyVagonUITests.debug.xcconfig */,
+				34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */,
+				887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */,
+				D5F902DD5766CE85BFF9C21B /* Pods-MyVagonTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3B0D8CFB3BE8E088DC98E052 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */,
+				9AD1FBCFA74EFBE3ACAB3C78 /* Pods_MyVagon_MyVagonUITests.framework */,
+				5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A14974A526A1AAC90072AF33 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A14974AA26A1AB430072AF33 /* OFL.txt */,
+				A14974B626A1AB440072AF33 /* Poppins-Black.ttf */,
+				A14974B426A1AB430072AF33 /* Poppins-BlackItalic.ttf */,
+				A14974AF26A1AB430072AF33 /* Poppins-Bold.ttf */,
+				A14974B326A1AB430072AF33 /* Poppins-BoldItalic.ttf */,
+				A14974A626A1AB430072AF33 /* Poppins-ExtraBold.ttf */,
+				A14974A826A1AB430072AF33 /* Poppins-ExtraBoldItalic.ttf */,
+				A14974B026A1AB430072AF33 /* Poppins-ExtraLight.ttf */,
+				A14974AB26A1AB430072AF33 /* Poppins-ExtraLightItalic.ttf */,
+				A14974AD26A1AB430072AF33 /* Poppins-Italic.ttf */,
+				A14974B526A1AB440072AF33 /* Poppins-Light.ttf */,
+				A14974A926A1AB430072AF33 /* Poppins-LightItalic.ttf */,
+				A14974A726A1AB430072AF33 /* Poppins-Medium.ttf */,
+				A14974AE26A1AB430072AF33 /* Poppins-MediumItalic.ttf */,
+				A14974B226A1AB430072AF33 /* Poppins-Regular.ttf */,
+				A14974B826A1AB440072AF33 /* Poppins-SemiBold.ttf */,
+				A14974AC26A1AB430072AF33 /* Poppins-SemiBoldItalic.ttf */,
+				A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */,
+				A14974B126A1AB430072AF33 /* Poppins-ThinItalic.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		A1519C7F26A00304001738B9 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +246,8 @@
 				A1519CA126A00306001738B9 /* MyVagonTests */,
 				A1519CAC26A00306001738B9 /* MyVagonUITests */,
 				A1519C8926A00304001738B9 /* Products */,
+				10AF62B78658971993F9FCD6 /* Pods */,
+				3B0D8CFB3BE8E088DC98E052 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +264,17 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				A14974A526A1AAC90072AF33 /* Font */,
+				A1519CE926A02DFD001738B9 /* Helper */,
+				A1519CD926A01C9D001738B9 /* Enum */,
+				A1519CD826A01B7F001738B9 /* Utilities */,
 				A1519C8B26A00304001738B9 /* AppDelegate.swift */,
 				A1519C8D26A00304001738B9 /* SceneDelegate.swift */,
-				A1519C8F26A00304001738B9 /* ViewController.swift */,
-				A1519C9126A00304001738B9 /* Main.storyboard */,
-				A1519C9426A00305001738B9 /* Assets.xcassets */,
-				A1519C9626A00305001738B9 /* LaunchScreen.storyboard */,
+				A1519CD426A0041F001738B9 /* UI */,
+				A1519CD326A00413001738B9 /* ViewController */,
+				A1519CBC26A00353001738B9 /* Extension */,
+				A1519CBB26A00343001738B9 /* AppTheme */,
+				A1519CD526A00740001738B9 /* Images */,
 				A1519C9926A00305001738B9 /* Info.plist */,
 			);
 			path = MyVagon;
@@ -128,6 +298,95 @@
 			path = MyVagonUITests;
 			sourceTree = "<group>";
 		};
+		A1519CBB26A00343001738B9 /* AppTheme */ = {
+			isa = PBXGroup;
+			children = (
+				A1519CBE26A003AE001738B9 /* AppTheme_FontColor.swift */,
+				A1519CBD26A003AE001738B9 /* Themes.swift */,
+				A1519CBF26A003AE001738B9 /* ThemeShadow.swift */,
+			);
+			path = AppTheme;
+			sourceTree = "<group>";
+		};
+		A1519CBC26A00353001738B9 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A1519CE626A02C99001738B9 /* UIButton+Extension.swift */,
+				A1519CC826A00407001738B9 /* Date+Extension.swift */,
+				A1519CC926A00407001738B9 /* Extension+CLLocation.swift */,
+				A1519CC726A00407001738B9 /* String+Extension.swift */,
+				A1519CC626A00407001738B9 /* UIImage+Extension.swift */,
+				A1519CCA26A00407001738B9 /* UIImageView+Extension.swift */,
+				A1519CC426A00407001738B9 /* UITextField+Extensions.swift */,
+				A1519CC526A00407001738B9 /* UIViewController+Extension.swift */,
+				A1519CC326A00407001738B9 /* userDefaults+Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		A1519CD326A00413001738B9 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1519CEE26A0351B001738B9 /* BaseViewController */,
+				A1519C8F26A00304001738B9 /* ViewController.swift */,
+				A1519CF126A037EF001738B9 /* SplashVC.swift */,
+				A1519CF326A04488001738B9 /* BoardingVC.swift */,
+				A14974DF26A1BB0A0072AF33 /* SignInVC.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		A1519CD426A0041F001738B9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A1519C9126A00304001738B9 /* Main.storyboard */,
+				A1519C9626A00305001738B9 /* LaunchScreen.storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A1519CD526A00740001738B9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A1519C9426A00305001738B9 /* Assets.xcassets */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		A1519CD826A01B7F001738B9 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A1519CD926A01C9D001738B9 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A1519CDE26A01CDF001738B9 /* Colors.swift */,
+				A1519CDB26A01CDF001738B9 /* Fonts.swift */,
+				A1519CDD26A01CDF001738B9 /* NavigationItems.swift */,
+				A1519CDC26A01CDF001738B9 /* Storyboards.swift */,
+				A1519CE426A02ACE001738B9 /* Validation.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		A1519CE926A02DFD001738B9 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		A1519CEE26A0351B001738B9 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1519CD626A00B19001738B9 /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +394,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1519CB226A00306001738B9 /* Build configuration list for PBXNativeTarget "MyVagon" */;
 			buildPhases = (
+				F393C7EB1973BD8876F913FE /* [CP] Check Pods Manifest.lock */,
 				A1519C8426A00304001738B9 /* Sources */,
 				A1519C8526A00304001738B9 /* Frameworks */,
 				A1519C8626A00304001738B9 /* Resources */,
+				FFCEFE069C1D41158F78704F /* [CP] Embed Pods Frameworks */,
+				352DEA5754989496731A9FA2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +414,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1519CB526A00306001738B9 /* Build configuration list for PBXNativeTarget "MyVagonTests" */;
 			buildPhases = (
+				531B4F51018E07D20B38C0C9 /* [CP] Check Pods Manifest.lock */,
 				A1519C9A26A00306001738B9 /* Sources */,
 				A1519C9B26A00306001738B9 /* Frameworks */,
 				A1519C9C26A00306001738B9 /* Resources */,
@@ -170,9 +433,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A1519CB826A00306001738B9 /* Build configuration list for PBXNativeTarget "MyVagonUITests" */;
 			buildPhases = (
+				55AFBF6FFBA971A0B9B35270 /* [CP] Check Pods Manifest.lock */,
 				A1519CA526A00306001738B9 /* Sources */,
 				A1519CA626A00306001738B9 /* Frameworks */,
 				A1519CA726A00306001738B9 /* Resources */,
+				252D0E12EBFD683050405555 /* [CP] Embed Pods Frameworks */,
+				0AE97B042D94170A2D5FE3F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,9 +497,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14974BB26A1AB440072AF33 /* Poppins-ExtraBoldItalic.ttf in Resources */,
+				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
+				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
+				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
+				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
+				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
+				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
+				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
+				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
+				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
+				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
+				A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */,
+				A14974C226A1AB440072AF33 /* Poppins-Bold.ttf in Resources */,
+				A14974C026A1AB440072AF33 /* Poppins-Italic.ttf in Resources */,
+				A14974CA26A1AB440072AF33 /* Poppins-Thin.ttf in Resources */,
 				A1519C9326A00304001738B9 /* Main.storyboard in Resources */,
+				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
+				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
+				A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */,
+				A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,14 +538,191 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0AE97B042D94170A2D5FE3F1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		252D0E12EBFD683050405555 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		352DEA5754989496731A9FA2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		531B4F51018E07D20B38C0C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyVagonTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55AFBF6FFBA971A0B9B35270 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyVagon-MyVagonUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F393C7EB1973BD8876F913FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyVagon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FFCEFE069C1D41158F78704F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A1519C8426A00304001738B9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
+				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
+				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
+				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
+				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
+				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
+				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
+				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
+				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
+				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
+				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
+				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
+				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
+				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
+				A14974E026A1BB0A0072AF33 /* SignInVC.swift in Sources */,
+				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
+				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
+				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
+				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
+				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
+				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
+				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
+				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
+				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				A1519C9026A00304001738B9 /* ViewController.swift in Sources */,
+				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
+				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
+				A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */,
+				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
+				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
+				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
+				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
+				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
+				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
 				A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */,
+				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,
+				A1519CE226A01CDF001738B9 /* NavigationItems.swift in Sources */,
+				A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */,
+				A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */,
+				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
+				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				A1519C8E26A00304001738B9 /* SceneDelegate.swift in Sources */,
+				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,10 +895,12 @@
 		};
 		A1519CB326A00306001738B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LNR2265795;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,10 +915,12 @@
 		};
 		A1519CB426A00306001738B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 696FEDA8B5240A2540F74C54 /* Pods-MyVagon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LNR2265795;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,6 +935,7 @@
 		};
 		A1519CB626A00306001738B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -490,6 +957,7 @@
 		};
 		A1519CB726A00306001738B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D5F902DD5766CE85BFF9C21B /* Pods-MyVagonTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -511,6 +979,7 @@
 		};
 		A1519CB926A00306001738B9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7EA7E1BF0C9147660099744 /* Pods-MyVagon-MyVagonUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -530,6 +999,7 @@
 		};
 		A1519CBA26A00306001738B9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
