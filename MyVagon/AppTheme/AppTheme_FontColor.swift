@@ -18,7 +18,8 @@ enum ThemeColor: String {
     
     case themeButtonBlue = "1F1F3F"
     
-    
+    case themelightBlue = "9B51E0"
+    case ThemeGrayTitle = "242E42"
     case themeSplashTitle = "838487"
     case themeGold = "FECD00"
     case themeSolidGray = "303030"
@@ -35,6 +36,11 @@ enum ThemeColor: String {
     //case ThemeGradientBlack2 = "303030"
     case themeLightBG = "2E2E2E"
     case themeDarkGray = "2A2A2A"
+    
+    
+    case themeColorForButton = "#9B51E0"
+    case ThemePlaceHolderTextColor = "#B2B2BE"
+    
 }
 
 
@@ -122,6 +128,14 @@ extension UIColor {
             return  UIColor(hexString: ThemeColor.themeDarkGray.rawValue)
         case .themeSplashTitle:
             return  UIColor(hexString: ThemeColor.themeDarkGray.rawValue)
+        case .themelightBlue:
+            return UIColor(hexString: ThemeColor.themelightBlue.rawValue)
+        case .ThemeGrayTitle:
+            return UIColor(hexString: ThemeColor.ThemeGrayTitle.rawValue)
+        case .ThemePlaceHolderTextColor:
+            return  UIColor(hexString: ThemeColor.ThemePlaceHolderTextColor.rawValue)
+        case .themeColorForButton:
+            return  UIColor(hexString: ThemeColor.themeColorForButton.rawValue)
         }
     }
     

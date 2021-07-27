@@ -32,44 +32,72 @@ class themButtonNext: UIButton {
     
 }
 
-
-
 class themeButton: UIButton {
-    
-    @IBInspectable public var Font_Size: CGFloat = FontSize.size19.rawValue
-    @IBInspectable public var isGoldBG_shadow: Bool = false
-    @IBInspectable public var isbordered: Bool = false
-    @IBInspectable public var radius: CGFloat = 0.7
-    @IBInspectable public var background : UIColor = UIColor.appColor(ThemeColor.themeButtonBlue)
-    @IBInspectable public var fontColor: UIColor = .white
-    @IBInspectable public var isBlackBorder: Bool = false
-    @IBInspectable public var isSemibold : Bool = false
-   
+    @IBInspectable public var IsSubmit : Bool = false
+    @IBInspectable public var IsBlack : Bool = false
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        self.tintColor = fontColor
-        self.titleLabel?.font  = isSemibold == true ? FontBook.semibold.of(size: Font_Size) : FontBook.regular.of(size: Font_Size)
-
-        
-        
-     if isbordered {
-            self.setTitleColor(isBlackBorder == true ? .black : .white, for: .normal)
-            self.backgroundColor = .clear
-            self.titleLabel?.font  = isSemibold == true ? FontBook.semibold.of(size: Font_Size) : FontBook.regular.of(size: Font_Size)
-            self.layer.borderColor =  isBlackBorder == true ? UIColor.black.cgColor : UIColor.white.cgColor
-        self.layer.borderWidth = 1.0
+        if IsSubmit {
             self.layer.cornerRadius = 10
-            
-        }else{
-            self.layer.cornerRadius = radius
-            self.backgroundColor = background
+            self.clipsToBounds = true
+            self.backgroundColor = UIColor.appColor(ThemeColor.themeButtonBlue)
+            self.setTitleColor(UIColor.white, for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
+        } else if IsBlack {
+            self.backgroundColor = UIColor.clear
+            self.setTitleColor(UIColor.black, for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
+        } else {
+            self.backgroundColor = UIColor.clear
+            self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
         }
+        
     }
 }
 
+
+
+
+//class themeButton: UIButton {
+//
+//    @IBInspectable public var Font_Size: CGFloat = FontSize.size19.rawValue
+//    @IBInspectable public var isGoldBG_shadow: Bool = false
+//    @IBInspectable public var isbordered: Bool = false
+//    @IBInspectable public var radius: CGFloat = 0.7
+//    @IBInspectable public var background : UIColor = UIColor.appColor(ThemeColor.themeButtonBlue)
+//    @IBInspectable public var fontColor: UIColor = .white
+//    @IBInspectable public var isBlackBorder: Bool = false
+//    @IBInspectable public var isSemibold : Bool = false
+//
+//
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//
+//        self.tintColor = fontColor
+//        self.titleLabel?.font  = isSemibold == true ? FontBook.semibold.of(size: Font_Size) : FontBook.regular.of(size: Font_Size)
+//
+//
+//
+//     if isbordered {
+//            self.setTitleColor(isBlackBorder == true ? .black : .white, for: .normal)
+//            self.backgroundColor = .clear
+//            self.titleLabel?.font  = isSemibold == true ? FontBook.semibold.of(size: Font_Size) : FontBook.regular.of(size: Font_Size)
+//            self.layer.borderColor =  isBlackBorder == true ? UIColor.black.cgColor : UIColor.white.cgColor
+//        self.layer.borderWidth = 1.0
+//            self.layer.cornerRadius = 10
+//
+//        }else{
+//            self.layer.cornerRadius = radius
+//            self.backgroundColor = background
+//        }
+//    }
+//}
+//
 
 class ThemeCompleteButton : UIButton {
     override func awakeFromNib() {
@@ -244,58 +272,58 @@ class ThemeGradientButton: UIButton {
 //MARK: === Label ===
 //==========================
 
-class themeLabel: UILabel{
-    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
-    @IBInspectable public var isBold: Bool = false
-    @IBInspectable public var isSemibold: Bool = false
-    @IBInspectable public var isLight: Bool = false
-    @IBInspectable public var fontColor: UIColor = .white
-    @IBInspectable public var isThemeColour : Bool = false
-    @IBInspectable public var is50Oppacity : Bool = false
-    @IBInspectable public var is8ppacity : Bool = false
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.font = isBold ? FontBook.bold.of(size : Font_Size) :
-            (isSemibold ? FontBook.semibold.of(size : Font_Size)  :
-                (isLight ? FontBook.light.of(size : Font_Size) : FontBook.regular.of(size : Font_Size) ))
-       
-//        print(self.font.familyName)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        if is50Oppacity == true {
-            self.textColor =  UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
-        }
-        else if is8ppacity == true {
-            self.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:0.13)
-        }
-        else {
-             self.textColor = isThemeColour == true ? UIColor.appColor(ThemeColor.themeGold) : fontColor
-        }
-       
-    }
-}
+//class themeLabel: UILabel{
+//    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
+//    @IBInspectable public var isBold: Bool = false
+//    @IBInspectable public var isSemibold: Bool = false
+//    @IBInspectable public var isLight: Bool = false
+//    @IBInspectable public var fontColor: UIColor = .white
+//    @IBInspectable public var isThemeColour : Bool = false
+//    @IBInspectable public var is50Oppacity : Bool = false
+//    @IBInspectable public var is8ppacity : Bool = false
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        self.font = isBold ? FontBook.bold.of(size : Font_Size) :
+//            (isSemibold ? FontBook.semibold.of(size : Font_Size)  :
+//                (isLight ? FontBook.light.of(size : Font_Size) : FontBook.regular.of(size : Font_Size) ))
+//
+////        print(self.font.familyName)
+//    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//
+//        if is50Oppacity == true {
+//            self.textColor =  UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
+//        }
+//        else if is8ppacity == true {
+//            self.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:0.13)
+//        }
+//        else {
+//             self.textColor = isThemeColour == true ? UIColor.appColor(ThemeColor.themeGold) : fontColor
+//        }
+//
+//    }
+//}
 
 //==========================
 //MARK: === Textfield ===
 //==========================
 
-class themeTextfield : UITextField{
-    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
-        self.font = FontBook.regular.of(size : Font_Size)
-        self.textColor = .white
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "themeTextfield Error",
-                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white] )
-    }
-}
+//class themeTextfield : UITextField{
+//    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
+//
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//
+//        self.font = FontBook.regular.of(size : Font_Size)
+//        self.textColor = .white
+//    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "themeTextfield Error",
+//                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.white] )
+//    }
+//}
 
 
 class ThemeUnderLineButton : UIButton {
@@ -820,3 +848,179 @@ class GradientView:  ViewCustomClass{
         updateColors()
     }
 }
+
+class themeTextfield : UITextField{
+    
+    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
+    
+    @IBInspectable var rightImage: UIImage? {
+        didSet {
+            if let image = rightImage {
+                rightViewMode = .always
+                let button = UIButton(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
+                //let imageView = UIImageView(frame: )
+                button.setImage(image, for: .normal)
+
+                button.contentMode = .scaleAspectFit
+                button.tintColor = tintColor
+                button.isUserInteractionEnabled = false
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 30, height: 20))
+                view.isUserInteractionEnabled = false
+                view.addSubview(button)
+                rightView = view
+            }else{
+                rightViewMode = .never
+            }
+        }
+    }
+
+    @IBInspectable var LeftImage: UIImage? {
+        didSet {
+            if let image = LeftImage {
+              //  SetLeftImage(image: image)
+                leftViewMode = .always
+                let button = UIButton(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
+                //let imageView = UIImageView(frame: )
+                button.setImage(image, for: .normal)
+
+                button.contentMode = .scaleAspectFit
+                button.tintColor = tintColor
+                button.isUserInteractionEnabled = false
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 40, height: 20))
+                view.isUserInteractionEnabled = false
+                view.addSubview(button)
+                leftView = view
+            }else{
+                leftViewMode = .never
+            }
+        }
+    }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+       
+        self.font = FontBook.regular.of(size : Font_Size)
+        
+//        self.layer.cornerRadius = 10
+        //self.clipsToBounds = true
+       // self.layer.borderWidth = 1
+        
+        
+        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
+                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)] )
+        
+    }
+    
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+    
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        
+        if LeftImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        } else {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        }
+        
+    }
+
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        if LeftImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        } else {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        }
+        
+    }
+
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        
+        if LeftImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        } else {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        }
+        
+    }
+}
+
+class ThemeViewRounded : UIView {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.40).cgColor
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+    
+    }
+}
+
+class themeLabel: UILabel{
+    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
+    @IBInspectable public var isBold: Bool = false
+    @IBInspectable public var isSemibold: Bool = false
+    @IBInspectable public var isLight: Bool = false
+    @IBInspectable public var fontColor: UIColor = .white
+    @IBInspectable public var isThemeColour : Bool = false
+    @IBInspectable public var is50Oppacity : Bool = false
+    @IBInspectable public var is8ppacity : Bool = false
+    @IBInspectable public var IsMyVagonLogo : Bool = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if IsMyVagonLogo {
+            let myString = "MYVAGON"
+            var myMutableString = NSMutableAttributedString()
+            myMutableString = NSMutableAttributedString(string: myString, attributes: [NSAttributedString.Key.font:CustomFont.PoppinsSemiBold.returnFont(24.0)])
+            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.splashtitleColor.value, range: NSRange(location:0,length:2))
+            self.attributedText = myMutableString
+        } else {
+            self.textColor = UIColor.black
+            self.font = isBold ? FontBook.bold.of(size : Font_Size) :
+                (isSemibold ? FontBook.semibold.of(size : Font_Size)  :
+                    (isLight ? FontBook.light.of(size : Font_Size) : FontBook.regular.of(size : Font_Size) ))
+        }
+        
+       
+//        print(self.font.familyName)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if IsMyVagonLogo {
+            
+        } else {
+            if is50Oppacity == true {
+                self.textColor =  UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.5)
+            }
+            else if is8ppacity == true {
+                self.textColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:0.13)
+            }
+            else {
+                 self.textColor = isThemeColour == true ? UIColor.appColor(ThemeColor.themeGold) : fontColor
+            }
+        }
+        
+       
+    }
+}
+
+class ThemeButtonVerify : UIButton {
+    
+    @IBInspectable var isselectedbtn :  Bool = false
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.setTitleColor(isselectedbtn == true ? UIColor(hexString: "189B25"): UIColor.appColor(.themelightBlue), for: .normal)
+         
+        self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(16.0)
+        }
+      
+    
+    }
+

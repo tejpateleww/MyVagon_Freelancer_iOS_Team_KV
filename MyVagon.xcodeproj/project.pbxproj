@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
 		8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8455BE8026AE96FB00089B1F /* Auth.storyboard */; };
+		84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */; };
+		84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */; };
+		84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */; };
+		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A626A1AB430072AF33 /* Poppins-ExtraBold.ttf */; };
 		A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A14974A726A1AB430072AF33 /* Poppins-Medium.ttf */; };
@@ -102,6 +106,10 @@
 		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		696FEDA8B5240A2540F74C54 /* Pods-MyVagon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.release.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.release.xcconfig"; sourceTree = "<group>"; };
 		8455BE8026AE96FB00089B1F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerVC.swift; sourceTree = "<group>"; };
+		84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerDriverSignupVC3.swift; sourceTree = "<group>"; };
+		84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContainerVC.swift; sourceTree = "<group>"; };
+		84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDriverVC.swift; sourceTree = "<group>"; };
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		9AD1FBCFA74EFBE3ACAB3C78 /* Pods_MyVagon_MyVagonUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon_MyVagonUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,6 +229,24 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		84AF91B226AECACF004BB88D /* MainSignupVC */ = {
+			isa = PBXGroup;
+			children = (
+				84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */,
+				84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */,
+			);
+			path = MainSignupVC;
+			sourceTree = "<group>";
+		};
+		84AF91B726AEEEF2004BB88D /* MainSignInVC */ = {
+			isa = PBXGroup;
+			children = (
+				84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */,
+				84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */,
+			);
+			path = MainSignInVC;
+			sourceTree = "<group>";
+		};
 		A14974A526A1AAC90072AF33 /* Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +361,8 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				84AF91B726AEEEF2004BB88D /* MainSignInVC */,
+				84AF91B226AECACF004BB88D /* MainSignupVC */,
 				A1519CEE26A0351B001738B9 /* BaseViewController */,
 				A1519C8F26A00304001738B9 /* ViewController.swift */,
 				A1519CF126A037EF001738B9 /* SplashVC.swift */,
@@ -708,6 +736,8 @@
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
+				84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */,
+				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
@@ -717,6 +747,7 @@
 				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
 				A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */,
+				84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */,
 				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
@@ -731,6 +762,7 @@
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
+				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
