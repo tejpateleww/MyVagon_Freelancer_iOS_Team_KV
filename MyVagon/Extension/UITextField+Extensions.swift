@@ -27,19 +27,7 @@ extension UITextField {
         return validator.validated(self.text!)
     }
     
-    func AddLeftView(str : String){
-        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 30))
-        let lbl = UILabel(frame: CGRect(x:0, y: 0, width: 20, height: 30))
-        lbl.textColor = UIColor.appColor(ThemeColor.themeGold)
-        lbl.font = FontBook.regular.of(size: 28.0)
-        lbl.text = str
-        
-        lbl.textAlignment = .center
-        leftView.addSubview(lbl)
-        
-        self.leftView = leftView
-        self.leftViewMode = .always
-    }
+  
     func addInputViewDatePicker(target: Any, selector: Selector ,PickerMode : UIDatePicker.Mode, MinDate : Bool? = false , MaxDate : Bool? = false) {
         
         let screenWidth = UIScreen.main.bounds.width

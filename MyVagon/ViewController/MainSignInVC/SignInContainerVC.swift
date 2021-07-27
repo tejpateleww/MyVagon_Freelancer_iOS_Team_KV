@@ -7,19 +7,24 @@
 
 import UIKit
 
-class SignInContainerVC: UIViewController {
+class SignInContainerVC: BaseViewController {
 
     //MARK:- ===== Outlets =======
     @IBOutlet var btnLeadingConstaintOfAnimationView: NSLayoutConstraint!
     @IBOutlet var btnSelection: [UIButton]!
     @IBOutlet var viewTabView: UIView!
     
+    @IBOutlet var BtnFreelancer : UIButton!
+    @IBOutlet var BtnCompany: UIButton!
+    
+    @IBOutlet weak var LblGetStart: themeLabel!
+    
     var tabTypeSelection = TabSelection(rawValue: 0)
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [], isTranslucent: true)
         for i in btnSelection{
             if i.tag == 0 {
                 i.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
@@ -32,6 +37,11 @@ class SignInContainerVC: UIViewController {
         
 
        
+    }
+    func SetLocalization() {
+        LblGetStart.text = "Get started using MyVagon!"
+        BtnFreelancer.setTitle("Freelancer", for: .normal)
+        BtnCompany.setTitle("Company", for: .normal)
     }
     
     @IBAction func btnTabSelection(_ sender: UIButton) {

@@ -30,7 +30,7 @@ class BoardingCell: UICollectionViewCell {
         slideImageView.image = slides.image
         slidetitlelabel.text = slides.title
         slideDescriptionLabel.text = slides.description
-        slideDescriptionLabel.setLineHeight(lineHeight: 1.4)
+     
         slidetitlelabel.font = CustomFont.PoppinsBold.returnFont(16)
         slideDescriptionLabel.font = CustomFont.PoppinsRegular.returnFont(16)
     }
@@ -39,14 +39,13 @@ class BoardingCell: UICollectionViewCell {
 }
 
 
-class BoardingVC: UIViewController,UIScrollViewDelegate {
+class BoardingVC: BaseViewController,UIScrollViewDelegate {
     
     @IBOutlet weak var progressBar: UIProgressView!//9154D8
     @IBOutlet weak var BtnNext: UIButton!
     @IBOutlet weak var BoardingCollectionView: UICollectionView!
     
-    @IBOutlet weak var BtnSkip: UIButton!
-    
+   
     //Get started using MyVagon!
     
     var progess : CGFloat = 1.0
@@ -56,22 +55,24 @@ class BoardingVC: UIViewController,UIScrollViewDelegate {
             if currentPage == slides.count - 1 {
                 BtnNext.setTitle("Get Started", for: .normal)
                 progressBar.progress = 1.0
-                BtnSkip.isHidden = true
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-                navigationController?.pushViewController(vc,animated: true)
+                setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.none.value], isTranslucent: true)
+                
+              
             }else {
                 BtnNext.setTitle("Next", for: .normal)
                 if currentPage == 0 {
                     progressBar.progress = 0.333
-                    BtnSkip.isHidden = false
+                    setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.skip.value], isTranslucent: true)
+                    
                 }
                 else if currentPage == 1 {
                     progressBar.progress = 0.666
-                    BtnSkip.isHidden = false
+                    setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.skip.value], isTranslucent: true)
+                   
                 }else if currentPage == 2 {
                     progressBar.progress = 1.0
-                    BtnSkip.isHidden = true
+                    setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.none.value], isTranslucent: true)
+                    
                 }
                 
             }
@@ -80,8 +81,8 @@ class BoardingVC: UIViewController,UIScrollViewDelegate {
     //MARK:-viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.skip.value], isTranslucent: true)
+       
         initSetup()
         
       
@@ -101,13 +102,13 @@ class BoardingVC: UIViewController,UIScrollViewDelegate {
         progressBar.layer.sublayers![1].cornerRadius = 4
         progressBar.subviews[1].clipsToBounds = true
         
-        BtnSkip.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(15)
+      
         BtnNext.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
     }
     
     
     @IBAction func SkipBtnClicked(_ sender: Any) {
-        print("Skip")
+        appDel.NavigateToLogin()
         
     }
     
@@ -116,16 +117,15 @@ class BoardingVC: UIViewController,UIScrollViewDelegate {
         if currentPage == slides.count - 1 {
             print("Get Started")
             progressBar.progress = 1.0
-            BtnSkip.isHidden = true
+            setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.none.value], isTranslucent: true)
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let vc = storyboard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-            navigationController?.pushViewController(vc,animated: true)
+           
+            appDel.NavigateToLogin()
             
             
             
         }else {
-            
+            setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [NavItemsRight.skip.value], isTranslucent: true)
             currentPage += 1
             if currentPage == 1 {
                 progressBar.progress = 0.666

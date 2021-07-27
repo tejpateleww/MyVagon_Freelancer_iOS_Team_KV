@@ -20,7 +20,7 @@ enum colors{
         case .progesBarTrack:
             return UIColor(hexString: "#9154D8")
         case .white:
-            return UIColor(hexString: "FFFFFF")
+            return UIColor(hexString: "#FFFFFF")
         case .black:
             return UIColor.black
         case .textfieldbordercolor:

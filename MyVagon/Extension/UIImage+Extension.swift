@@ -1,16 +1,48 @@
 //
 //  UIImage+Extension.swift
-//  Qwnched-Customer
+//  HC Pro Patient
 //
-//  Created by Hiral's iMac on 28/11/20.
-//  Copyright © 2020 Hiral's iMac. All rights reserved.
+//  Created by Shraddha Parmar on 24/09/20.
+//  Copyright © 2020 EWW071. All rights reserved.
 //
 
 import Foundation
-import UIKit
+import  UIKit
 
-extension UIImage {
+extension UIImage{
+    public func maskWithColor(color: UIColor) -> UIImage {
 
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        let context = UIGraphicsGetCurrentContext()!
+
+        let rect = CGRect(origin: CGPoint.zero, size: size)
+
+        color.setFill()
+        self.draw(in: rect)
+
+        context.setBlendMode(.sourceIn)
+        context.fill(rect)
+
+        let resultImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return resultImage
+    }
+
+    var grayscaled: UIImage?{
+        let context = CIContext(options: nil)
+        if let filter = CIFilter(name: "CIPhotoEffectNoir") {
+            filter.setValue(CIImage(image: self), forKey: kCIInputImageKey)
+            if let output = filter.outputImage {
+                if let cgImage = context.createCGImage(output, from: output.extent) {
+                    return UIImage(cgImage: cgImage)
+                }
+            }
+        }
+        return nil
+    }
+    func isEqualToImage(_ image: UIImage) -> Bool {
+        return self.pngData() == image.pngData()
+    }
     func fixOrientation() -> UIImage {
         
         // No-op if the orientation is already correct
@@ -68,4 +100,18 @@ extension UIImage {
         // And now we just create a new UIImage from the drawing context and return it
         return UIImage(cgImage: ctx.makeImage()!)
     }
+    func imageWithColor(color: UIColor) -> UIImage? {
+      var image = withRenderingMode(.alwaysTemplate)
+      UIGraphicsBeginImageContextWithOptions(size, false, scale)
+      color.set()
+      image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+      image = UIGraphicsGetImageFromCurrentImageContext()!
+      UIGraphicsEndImageContext()
+      return image
+  }
+  
+  //Note: When taking image from camera, when passing to server
+  // It rotates automatically to landscape, so added function. to noamrmalised it.
+
+ 
 }

@@ -14,7 +14,7 @@ enum TabSelection: Int {
 }
 
 
-class SignupContainerVC: UIViewController {
+class SignupContainerVC: BaseViewController {
 
     //MARK:- ===== Outlets =======
     @IBOutlet var btnLeadingConstaintOfAnimationView: NSLayoutConstraint!
@@ -26,7 +26,7 @@ class SignupContainerVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [], isTranslucent: true)
         for i in btnSelection{
             if i.tag == 0 {
                 i.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)

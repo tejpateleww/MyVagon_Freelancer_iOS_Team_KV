@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802691726AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift */; };
+		1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802691826AFCEEC0088B49F /* EnterTruckDetailsVC.swift */; };
+		1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */; };
+		1802692D26AFD5D70088B49F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802692926AFD5D70088B49F /* Constants.swift */; };
+		1802692E26AFD5D70088B49F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802692A26AFD5D70088B49F /* Utilities.swift */; };
+		1802692F26AFD5D70088B49F /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802692B26AFD5D70088B49F /* Singleton.swift */; };
+		1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802692C26AFD5D70088B49F /* ImagePicker.swift */; };
+		1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802693126AFD5EE0088B49F /* ApiPaths.swift */; };
+		1802693426AFD6740088B49F /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802693326AFD6740088B49F /* AppInfo.swift */; };
+		1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802693526AFD7A60088B49F /* UIColor+Extension.swift */; };
+		1802693826B0180B0088B49F /* CountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1802693726B0180B0088B49F /* CountryCode.json */; };
+		1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802694326B023F20088B49F /* TruckDetailVC.swift */; };
 		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
 		8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8455BE8026AE96FB00089B1F /* Auth.storyboard */; };
 		84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */; };
@@ -52,7 +64,6 @@
 		A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974AC26A1AB430072AF33 /* Poppins-SemiBoldItalic.ttf */; };
 		A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */; };
 		A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */ = {isa = PBXBuildFile; fileRef = A14974B126A1AB430072AF33 /* Poppins-ThinItalic.ttf */; };
-		A14974E026A1BB0A0072AF33 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14974DF26A1BB0A0072AF33 /* SignInVC.swift */; };
 		A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519C8B26A00304001738B9 /* AppDelegate.swift */; };
 		A1519C9026A00304001738B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1519C8F26A00304001738B9 /* ViewController.swift */; };
 		A1519C9326A00304001738B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1519C9126A00304001738B9 /* Main.storyboard */; };
@@ -101,6 +112,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1802691726AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseTruckCategoryViewController.swift; sourceTree = "<group>"; };
+		1802691826AFCEEC0088B49F /* EnterTruckDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterTruckDetailsVC.swift; sourceTree = "<group>"; };
+		1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifyYourselfVC.swift; sourceTree = "<group>"; };
+		1802692926AFD5D70088B49F /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1802692A26AFD5D70088B49F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		1802692B26AFD5D70088B49F /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		1802692C26AFD5D70088B49F /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1802693126AFD5EE0088B49F /* ApiPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiPaths.swift; sourceTree = "<group>"; };
+		1802693326AFD6740088B49F /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		1802693526AFD7A60088B49F /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1802693726B0180B0088B49F /* CountryCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryCode.json; sourceTree = "<group>"; };
+		1802694326B023F20088B49F /* TruckDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckDetailVC.swift; sourceTree = "<group>"; };
 		34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon-MyVagonUITests.release.xcconfig"; path = "Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +155,6 @@
 		A14974B626A1AB440072AF33 /* Poppins-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Black.ttf"; sourceTree = "<group>"; };
 		A14974B726A1AB440072AF33 /* Poppins-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Thin.ttf"; sourceTree = "<group>"; };
 		A14974B826A1AB440072AF33 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
-		A14974DF26A1BB0A0072AF33 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A1519C8826A00304001738B9 /* MyVagon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVagon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1519C8B26A00304001738B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1519C8F26A00304001738B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +233,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		1802691626AFCEEC0088B49F /* sign in */ = {
+			isa = PBXGroup;
+			children = (
+				1802691726AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift */,
+				1802691826AFCEEC0088B49F /* EnterTruckDetailsVC.swift */,
+				1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */,
+			);
+			path = "sign in";
+			sourceTree = "<group>";
+		};
+		1802692826AFD5D70088B49F /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1802692926AFD5D70088B49F /* Constants.swift */,
+				1802692A26AFD5D70088B49F /* Utilities.swift */,
+				1802692B26AFD5D70088B49F /* Singleton.swift */,
+				1802692C26AFD5D70088B49F /* ImagePicker.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		3B0D8CFB3BE8E088DC98E052 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +284,7 @@
 		84AF91B726AEEEF2004BB88D /* MainSignInVC */ = {
 			isa = PBXGroup;
 			children = (
+				1802694326B023F20088B49F /* TruckDetailVC.swift */,
 				84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */,
 				84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */,
 			);
@@ -298,12 +342,14 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				1802693726B0180B0088B49F /* CountryCode.json */,
+				1802692826AFD5D70088B49F /* Utilities */,
 				8455BE7F26AE96C700089B1F /* Storyboards */,
 				A14974A526A1AAC90072AF33 /* Font */,
-				A1519CE926A02DFD001738B9 /* Helper */,
 				A1519CD926A01C9D001738B9 /* Enum */,
-				A1519CD826A01B7F001738B9 /* Utilities */,
 				A1519C8B26A00304001738B9 /* AppDelegate.swift */,
+				1802693126AFD5EE0088B49F /* ApiPaths.swift */,
+				1802693326AFD6740088B49F /* AppInfo.swift */,
 				A1519CD426A0041F001738B9 /* UI */,
 				A1519CD326A00413001738B9 /* ViewController */,
 				A1519CBC26A00353001738B9 /* Extension */,
@@ -345,6 +391,7 @@
 		A1519CBC26A00353001738B9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				1802693526AFD7A60088B49F /* UIColor+Extension.swift */,
 				A1519CE626A02C99001738B9 /* UIButton+Extension.swift */,
 				A1519CC826A00407001738B9 /* Date+Extension.swift */,
 				A1519CC926A00407001738B9 /* Extension+CLLocation.swift */,
@@ -361,13 +408,13 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1802691626AFCEEC0088B49F /* sign in */,
 				84AF91B726AEEEF2004BB88D /* MainSignInVC */,
 				84AF91B226AECACF004BB88D /* MainSignupVC */,
 				A1519CEE26A0351B001738B9 /* BaseViewController */,
 				A1519C8F26A00304001738B9 /* ViewController.swift */,
 				A1519CF126A037EF001738B9 /* SplashVC.swift */,
 				A1519CF326A04488001738B9 /* BoardingVC.swift */,
-				A14974DF26A1BB0A0072AF33 /* SignInVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -389,13 +436,6 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		A1519CD826A01B7F001738B9 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		A1519CD926A01C9D001738B9 /* Enum */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,13 +446,6 @@
 				A1519CE426A02ACE001738B9 /* Validation.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		A1519CE926A02DFD001738B9 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		A1519CEE26A0351B001738B9 /* BaseViewController */ = {
@@ -537,6 +570,7 @@
 				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
 				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
+				1802693826B0180B0088B49F /* CountryCode.json in Resources */,
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
@@ -722,7 +756,11 @@
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
+				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
 				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
+				1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */,
+				1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */,
+				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
 				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
@@ -731,7 +769,6 @@
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
-				A14974E026A1BB0A0072AF33 /* SignInVC.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
@@ -740,12 +777,18 @@
 				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
+				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
+				1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
+				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
+				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
+				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				A1519C9026A00304001738B9 /* ViewController.swift in Sources */,
 				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
+				1802693426AFD6740088B49F /* AppInfo.swift in Sources */,
 				A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */,
 				84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */,
 				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
@@ -762,6 +805,7 @@
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
+				1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */,
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

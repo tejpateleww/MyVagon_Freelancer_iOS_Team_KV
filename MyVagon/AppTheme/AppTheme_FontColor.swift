@@ -15,7 +15,7 @@ var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
  
 
 enum ThemeColor: String {
-    
+    case NavigationTitleColor = "#090D23"
     case themeButtonBlue = "1F1F3F"
     
     case themelightBlue = "9B51E0"
@@ -62,37 +62,37 @@ enum FontSize : CGFloat {
     case size24 = 24.0
 }
 
-enum FontBook: String {
-    
-    case light =  "Gibson-Light"
-    case bold = "Gibson-Bold"
-    case semibold = "Gibson-SemiBold"
-    case regular = "Gibson-Regular"
-  
-    
-    func of(size: CGFloat) -> UIFont {
-//        return UIFont(name:self.rawValue, size: manageFont(font: size))!
-        return UIFont(name:self.rawValue, size: size) ?? UIFont.systemFont(ofSize: 15)
-    }
-    
-//    func manageFont(font : CGFloat) -> CGFloat {
-//        let cal  = SCREEN_HEIGHT * font
-//        return CGFloat(cal / CGFloat(screenHeightDeveloper))
+//enum FontBook: String {
+//
+//    case light =  "Gibson-Light"
+//    case bold = "Gibson-Bold"
+//    case semibold = "Gibson-SemiBold"
+//    case regular = "Gibson-Regular"
+//
+//
+//    func of(size: CGFloat) -> UIFont {
+////        return UIFont(name:self.rawValue, size: manageFont(font: size))!
+//        return UIFont(name:self.rawValue, size: size) ?? UIFont.systemFont(ofSize: 15)
 //    }
-    
-    
-    func staticFont(size : CGFloat) -> UIFont {
-        return UIFont(name: self.rawValue, size: size)!
-    }
-    
-   func setlabelFont(labels:[UILabel] , Size:CGFloat , TextColour:UIColor) {
-        for label in labels{
-            label.font = staticFont(size: Size)
-            label.textColor = TextColour
-        }
-    }
-
-}
+//
+////    func manageFont(font : CGFloat) -> CGFloat {
+////        let cal  = SCREEN_HEIGHT * font
+////        return CGFloat(cal / CGFloat(screenHeightDeveloper))
+////    }
+//
+//
+//    func staticFont(size : CGFloat) -> UIFont {
+//        return UIFont(name: self.rawValue, size: size)!
+//    }
+//
+//   func setlabelFont(labels:[UILabel] , Size:CGFloat , TextColour:UIColor) {
+//        for label in labels{
+//            label.font = staticFont(size: Size)
+//            label.textColor = TextColour
+//        }
+//    }
+//
+//}
 
 
 
@@ -102,6 +102,7 @@ extension UIColor {
         switch name {
         
         case .themeButtonBlue:
+            
             return UIColor(hexString: ThemeColor.themeButtonBlue.rawValue)
         case .themeGold:
             return UIColor(hexString: ThemeColor.themeGold.rawValue)
@@ -136,6 +137,9 @@ extension UIColor {
             return  UIColor(hexString: ThemeColor.ThemePlaceHolderTextColor.rawValue)
         case .themeColorForButton:
             return  UIColor(hexString: ThemeColor.themeColorForButton.rawValue)
+        case .NavigationTitleColor:
+            return  UIColor(hexString: ThemeColor.NavigationTitleColor.rawValue)
+        
         }
     }
     

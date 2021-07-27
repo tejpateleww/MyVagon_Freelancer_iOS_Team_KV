@@ -35,14 +35,13 @@ class themButtonNext: UIButton {
 class themeButton: UIButton {
     @IBInspectable public var IsSubmit : Bool = false
     @IBInspectable public var IsBlack : Bool = false
+    @IBInspectable public var IsUnderline : Bool = false
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
         if IsSubmit {
-            self.layer.cornerRadius = 10
-            self.clipsToBounds = true
             self.backgroundColor = UIColor.appColor(ThemeColor.themeButtonBlue)
             self.setTitleColor(UIColor.white, for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
@@ -54,6 +53,9 @@ class themeButton: UIButton {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
+        }
+        if IsUnderline {
+            self.setunderline(title: self.titleLabel?.text ?? "", color: UIColor.appColor(ThemeColor.themeButtonBlue), font: CustomFont.PoppinsMedium.returnFont(16))
         }
         
     }
@@ -104,7 +106,7 @@ class ThemeCompleteButton : UIButton {
         super.awakeFromNib()
             self.setTitleColor(UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:0.23), for: .normal)
             self.backgroundColor = .clear
-            self.titleLabel?.font  =  FontBook.regular.of(size: 14.0)
+        self.titleLabel?.font  =  CustomFont.PoppinsRegular.returnFont(14.0)
             self.layer.borderColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha:0.23).cgColor
             self.layer.borderWidth = 1.0
             self.layer.cornerRadius = 10
@@ -153,7 +155,7 @@ class themeCustomShadowButton : UIControl {
         label.text = Title
         label.textAlignment = .center
         label.isUserInteractionEnabled = false
-        label.font = FontBook.regular.of(size: Font_Size)
+        label.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
         label.textColor = fontColor
         imageView.addSubview(label)
         
@@ -172,7 +174,7 @@ class ThemeGrayButton : UIButton {
         self.layer.cornerRadius = self.frame.height / 2
         self.clipsToBounds = true
         self.backgroundColor =  UIColor(hexString: "414141")
-        self.titleLabel?.font  = FontBook.regular.of(size: 13.0)
+        self.titleLabel?.font  = CustomFont.PoppinsRegular.returnFont(13.0)
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 1, height: 1.0)
         self.layer.shadowRadius = 8
@@ -230,7 +232,7 @@ class ThemeGradientButton: UIButton {
         let colors: [UIColor]
 
         
-        self.titleLabel?.font = FontBook.regular.of(size:13.0)
+        self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(13.0)
         self.setTitleColor(UIColor.white, for: .normal)
         colors = [UIColor(hexString: "2F2F2F") , UIColor(hexString: "414141")]
         
@@ -337,7 +339,7 @@ class ThemeUnderLineButton : UIButton {
          guard let title = title(for: .normal) else { return }
         
         self.titleLabel?.textColor =  .white
-        self.titleLabel?.font  = FontBook.regular.of(size: FontSize.size16.rawValue)
+        self.titleLabel?.font  = CustomFont.PoppinsRegular.returnFont(16.0)
           
           let titleString = NSMutableAttributedString(string: title)
          titleString.addAttribute(
@@ -356,8 +358,8 @@ class ThemeUnderLineButton : UIButton {
 class ThemeSkyTextfield : SkyFloatingLabelTextField {
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.font =  FontBook.regular.of(size : FontSize.size20.rawValue)
-        self.placeholderFont = FontBook.regular.of(size : FontSize.size20.rawValue)
+        self.font =  CustomFont.PoppinsRegular.returnFont(20.0)
+        self.placeholderFont = CustomFont.PoppinsRegular.returnFont(20.0)
         self.lineColor = UIColor.clear
         self.selectedLineColor = UIColor.clear
         self.selectedTitleColor = UIColor.appColor(.themeGrayText)
@@ -377,7 +379,7 @@ class themeVehicleDetailTextfield : UITextField{
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        self.font = FontBook.regular.of(size : Font_Size)
+        self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
         self.textColor = isThemeClr == true ? UIColor.appColor(.themeGold) : .white
     }
     override func layoutSubviews() {
@@ -435,7 +437,7 @@ class ThemeTripHistorySelectdBtn : UIButton {
             self.setTitleColor(UIColor(red: 48/255, green: 48/255, blue: 48/255, alpha: 0.5), for: .normal)
         }
         
-        self.titleLabel?.font  = FontBook.semibold.of(size:FontSize.size18.rawValue)
+        self.titleLabel?.font  = CustomFont.PoppinsSemiBold.returnFont(18.0)
        
         self.backgroundColor = .clear
        
@@ -504,9 +506,9 @@ class themeRoundedCornerButton: UIButton {
         super.awakeFromNib()
 
         self.tintColor = fontColor
-        self.titleLabel?.font  = FontBook.semibold.of(size: Font_Size)
+        self.titleLabel?.font  = CustomFont.PoppinsSemiBold.returnFont(Font_Size)
      if isbordered {
-        self.titleLabel?.font  = isSemibold == true ? FontBook.semibold.of(size: Font_Size) : FontBook.regular.of(size: Font_Size)
+        self.titleLabel?.font  = isSemibold == true ? CustomFont.PoppinsSemiBold.returnFont(Font_Size) : CustomFont.PoppinsRegular.returnFont(Font_Size)
             self.backgroundColor = .clear
             self.layer.borderColor = UIColor.white.cgColor
             self.layer.borderWidth = 1.0
@@ -537,70 +539,18 @@ class ThemevehicleDetailLbl : UILabel {
          super.awakeFromNib()
         
         self.textColor = UIColor.white
-        self.font = FontBook.regular.of(size : FontSize.size14.rawValue)
+        self.font = CustomFont.PoppinsRegular.returnFont(14)
         
     }
     
 }
 
-class ThemeLightText : UILabel {
-        @IBInspectable public var Font_Size: CGFloat = FontSize.size14.rawValue
-        @IBInspectable public var isBold: Bool = false
-        @IBInspectable public var isSemibold: Bool = false
-        @IBInspectable public var isLight: Bool = false
-        @IBInspectable public var fontColor: UIColor = UIColor.appColor(ThemeColor.themeLightGrayText)
-        
-        override func awakeFromNib() {
-            super.awakeFromNib()
-            self.font = isBold ? FontBook.bold.of(size : Font_Size) :
-                (isSemibold ? FontBook.semibold.of(size : Font_Size)  :
-                    (isLight ? FontBook.light.of(size : Font_Size) : FontBook.regular.of(size : Font_Size)))
-           
-    //        print(self.font.familyName)
-        }
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            self.textColor = fontColor
-           
-        }
-}
 
 
-class themeDetinationlabel : UILabel {
-    
-      @IBInspectable public var isSemibold: Bool = false
-     override func awakeFromNib() {
-        super.awakeFromNib()
-      
-        if isSemibold == true {
-            self.font = FontBook.regular.of(size : 18.0)
-            self.textColor = .white
-           
-        }
-        else {
-            self.font = FontBook.regular.of(size : 16.0)
-             self.textColor =  UIColor(hexString: "#7F7F7F")
-        }
-    }
-}
+
+
 
 //MARK:- Gray theme Textfiled =======
-class GraythemeTextfield : UITextField{
-    @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
-    @IBInspectable public var isWhitePlaceHolder : Bool = false
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-       
-        self.font = FontBook.regular.of(size : Font_Size)
-        self.textColor = .white
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "themeTextfield Error",
-                                                        attributes: [NSAttributedString.Key.foregroundColor: isWhitePlaceHolder == true ? UIColor.white : UIColor.appColor(ThemeColor.themeLightGrayText)] )
-    }
-}
 
 
 class ThemeImageView: UIImageView {
@@ -857,16 +807,15 @@ class themeTextfield : UITextField{
         didSet {
             if let image = rightImage {
                 rightViewMode = .always
-                let button = UIButton(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
-                //let imageView = UIImageView(frame: )
-                button.setImage(image, for: .normal)
-
-                button.contentMode = .scaleAspectFit
-                button.tintColor = tintColor
-                button.isUserInteractionEnabled = false
+                let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+                imageView.image = image
+                imageView.contentMode = .scaleAspectFit
+                
+                imageView.tintColor = tintColor
+                imageView.isUserInteractionEnabled = false
                 let view = UIView(frame : CGRect(x: 0, y: 0, width: 30, height: 20))
                 view.isUserInteractionEnabled = false
-                view.addSubview(button)
+                view.addSubview(imageView)
                 rightView = view
             }else{
                 rightViewMode = .never
@@ -879,16 +828,16 @@ class themeTextfield : UITextField{
             if let image = LeftImage {
               //  SetLeftImage(image: image)
                 leftViewMode = .always
-                let button = UIButton(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
-                //let imageView = UIImageView(frame: )
-                button.setImage(image, for: .normal)
-
-                button.contentMode = .scaleAspectFit
-                button.tintColor = tintColor
-                button.isUserInteractionEnabled = false
-                let view = UIView(frame : CGRect(x: 0, y: 0, width: 40, height: 20))
+               
+                let imageView = UIImageView(frame: CGRect(x: 10, y: 0, width: 20, height: 20))
+                imageView.image = image
+                imageView.contentMode = .scaleAspectFit
+                
+                imageView.tintColor = tintColor
+                imageView.isUserInteractionEnabled = false
+                let view = UIView(frame : CGRect(x: 0, y: 0, width: 30, height: 20))
                 view.isUserInteractionEnabled = false
-                view.addSubview(button)
+                view.addSubview(imageView)
                 leftView = view
             }else{
                 leftViewMode = .never
@@ -898,12 +847,8 @@ class themeTextfield : UITextField{
     override func awakeFromNib() {
         super.awakeFromNib()
        
-        self.font = FontBook.regular.of(size : Font_Size)
-        
-//        self.layer.cornerRadius = 10
-        //self.clipsToBounds = true
-       // self.layer.borderWidth = 1
-        
+        self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
+    
         
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
                                                         attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)] )
@@ -919,6 +864,9 @@ class themeTextfield : UITextField{
         if LeftImage != nil {
             let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
             return bounds.inset(by: padding)
+        } else if rightImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10 + 30)
+            return bounds.inset(by: padding)
         } else {
             let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             return bounds.inset(by: padding)
@@ -929,6 +877,9 @@ class themeTextfield : UITextField{
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         if LeftImage != nil {
             let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
+            return bounds.inset(by: padding)
+        } else if rightImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10 + 30)
             return bounds.inset(by: padding)
         } else {
             let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -942,6 +893,9 @@ class themeTextfield : UITextField{
         if LeftImage != nil {
             let padding = UIEdgeInsets(top: 10, left: 10 + 30, bottom: 10, right: 10)
             return bounds.inset(by: padding)
+        } else if rightImage != nil {
+            let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10 + 30)
+            return bounds.inset(by: padding)
         } else {
             let padding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
             return bounds.inset(by: padding)
@@ -954,9 +908,9 @@ class ThemeViewRounded : UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.layer.borderColor = UIColor.black.withAlphaComponent(0.40).cgColor
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.14).cgColor
         self.layer.borderWidth = 1
-        self.layer.cornerRadius = 10
+        self.layer.cornerRadius = 0
         self.clipsToBounds = true
     
     }
@@ -967,6 +921,7 @@ class themeLabel: UILabel{
     @IBInspectable public var isBold: Bool = false
     @IBInspectable public var isSemibold: Bool = false
     @IBInspectable public var isLight: Bool = false
+    @IBInspectable public var isMedium: Bool = false
     @IBInspectable public var fontColor: UIColor = .white
     @IBInspectable public var isThemeColour : Bool = false
     @IBInspectable public var is50Oppacity : Bool = false
@@ -977,14 +932,22 @@ class themeLabel: UILabel{
         if IsMyVagonLogo {
             let myString = "MYVAGON"
             var myMutableString = NSMutableAttributedString()
-            myMutableString = NSMutableAttributedString(string: myString, attributes: [NSAttributedString.Key.font:CustomFont.PoppinsSemiBold.returnFont(24.0)])
+            myMutableString = NSMutableAttributedString(string: myString, attributes: [NSAttributedString.Key.font:CustomFont.PoppinsSemiBold.returnFont(Font_Size)])
             myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: colors.splashtitleColor.value, range: NSRange(location:0,length:2))
             self.attributedText = myMutableString
         } else {
-            self.textColor = UIColor.black
-            self.font = isBold ? FontBook.bold.of(size : Font_Size) :
-                (isSemibold ? FontBook.semibold.of(size : Font_Size)  :
-                    (isLight ? FontBook.light.of(size : Font_Size) : FontBook.regular.of(size : Font_Size) ))
+            if isBold {
+                self.font = CustomFont.PoppinsBold.returnFont(Font_Size)
+            } else if isSemibold {
+                self.font = CustomFont.PoppinsSemiBold.returnFont(Font_Size)
+            } else if isMedium {
+                self.font = CustomFont.PoppinsMedium.returnFont(Font_Size)
+            } else if isLight {
+                self.font = CustomFont.PoppinsLight.returnFont(Font_Size)
+            } else {
+                self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
+            }
+          
         }
         
        
@@ -1024,3 +987,45 @@ class ThemeButtonVerify : UIButton {
     
     }
 
+class GeneralPickerView: UIPickerView {
+
+    public private(set) var toolbar: UIToolbar?
+    public weak var generalPickerDelegate: GeneralPickerViewDelegate?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.commonInit()
+    }
+
+    private func commonInit() {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        //toolBar.tintColor = .black
+        toolBar.sizeToFit()
+
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneTapped))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+
+
+        toolBar.setItems([spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+
+        self.toolbar = toolBar
+    }
+
+    @objc func doneTapped() {
+        self.generalPickerDelegate?.didTapDone()
+    }
+
+    
+}
+protocol GeneralPickerViewDelegate: AnyObject {
+    func didTapDone()
+    func didTapCancel()
+}
