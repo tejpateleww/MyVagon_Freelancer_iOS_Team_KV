@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  MyVagon
+
+  Created by Apple on 28/07/21.
+  
+*/
+//SignInDriverVC
+"Sign In" = "Sign In";
+"Join For Free!" = "Join For Free!";
+"Forgot?" = "Forgot?";
+"Email or Phone#" = "Email or Phone#";
+"Password" = "Password";

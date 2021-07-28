@@ -19,7 +19,7 @@ var window: UIWindow?
         
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        
+        checkAndSetDefaultLanguage()
         
         
         
@@ -46,6 +46,28 @@ var window: UIWindow?
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav
+    }
+    func checkAndSetDefaultLanguage() {
+        if UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) == nil {
+        
+            setLanguageEnglish()
+        } else {
+            if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "en" {
+                SingletonClass.sharedInstance.SelectedLanguage = "0"
+            } else if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "el" {
+                SingletonClass.sharedInstance.SelectedLanguage = "1"
+            } else {
+                SingletonClass.sharedInstance.SelectedLanguage = "0"
+            }
+        }
+    }
+    func setLanguageEnglish() {
+        UserDefault.setValue("en", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
+        SingletonClass.sharedInstance.SelectedLanguage = "0"
+    }
+    func SetLanguageGreek() {
+        UserDefault.setValue("el", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
+        SingletonClass.sharedInstance.SelectedLanguage = "1"
     }
 }
 

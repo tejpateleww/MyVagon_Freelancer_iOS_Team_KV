@@ -9,7 +9,7 @@
 import Foundation
 class SingletonClass: NSObject
 {
-    
+    var SelectedLanguage : String = ""
     
     static let sharedInstance = SingletonClass()
     

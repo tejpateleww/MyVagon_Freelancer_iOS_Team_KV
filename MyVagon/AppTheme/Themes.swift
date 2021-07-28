@@ -48,7 +48,7 @@ class themeButton: UIButton {
         } else if IsBlack {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.black, for: .normal)
-            self.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
+            self.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(14)
         } else {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)

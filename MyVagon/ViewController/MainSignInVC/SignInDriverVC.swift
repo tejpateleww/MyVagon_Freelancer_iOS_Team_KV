@@ -45,13 +45,19 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     func SetLocalization() {
-       
-        BtnSignIn.setTitle("Sign In", for: .normal)
-        BtnJoinInForFree.setTitle("Join For Free!", for: .normal)
-        BtnForgot.setTitle("Forgot?", for: .normal)
+//        BtnSignIn.setTitle("Sign In", for: .normal)
+//        BtnJoinInForFree.setTitle("Join For Free!", for: .normal)
+//        BtnForgot.setTitle("Forgot?", for: .normal)
+//
+//        TextFieldEmail.placeholder = "Email or Phone#"
+//        TextFieldPassword.placeholder = "Password"
         
-        TextFieldEmail.placeholder = "Email or Phone#"
-        TextFieldPassword.placeholder = "Password"
+        BtnSignIn.setTitle("Sign In".Localized(), for: .normal)
+        BtnJoinInForFree.setTitle("Join For Free!".Localized(), for: .normal)
+        BtnForgot.setTitle("Forgot?".Localized(), for: .normal)
+
+        TextFieldEmail.placeholder = "Email or Phone#".Localized()
+        TextFieldPassword.placeholder = "Password".Localized()
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
