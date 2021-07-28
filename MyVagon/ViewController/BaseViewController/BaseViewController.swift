@@ -17,6 +17,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
@@ -36,7 +37,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         controller.navigationController?.navigationBar.barTintColor = naviColor;
         controller.navigationController?.navigationBar.tintColor = colors.white.value;
        
-        
+        controller.navigationController?.navigationBar.clipsToBounds = true
         controller.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         controller.navigationController?.navigationBar.shadowImage = UIImage()
         if naviTitle == NavTitles.none.value {
@@ -55,9 +56,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
             self.navigationItem.titleView = lblNavTitle
            
         }
-
-       
-
             if leftImage != "" {
                 if leftImage == NavItemsLeft.back.value {
                     

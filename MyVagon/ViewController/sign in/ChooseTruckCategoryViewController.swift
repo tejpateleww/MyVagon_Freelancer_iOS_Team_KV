@@ -31,7 +31,7 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.TruckType.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: NavTitles.TruckType.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         
         TextFieldCategory.delegate = self
         TextFieldSubCategory.delegate = self
@@ -117,6 +117,13 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             let item = CategoryArray[GeneralPicker.selectedRow(inComponent: 0)]
             self.TextFieldCategory.text = item
             self.TextFieldSubCategory.text = ""
+            if item.lowercased() == "other" {
+                TextFieldSubCategory.rightView?.isHidden = true
+                print("Keyboard open here")
+            } else {
+                TextFieldSubCategory.rightView?.isHidden = false
+            }
+            
             
         } else if SelectedTextField == 1 {
             let item = SubCategoryArray[GeneralPicker.selectedRow(inComponent: 0)]
