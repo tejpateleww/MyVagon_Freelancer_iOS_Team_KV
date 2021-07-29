@@ -11,6 +11,7 @@ class SignInContainerVC: BaseViewController {
 
     //MARK:- ===== Outlets =======
     @IBOutlet var btnLeadingConstaintOfAnimationView: NSLayoutConstraint!
+    @IBOutlet var HeightOfSignUpDriverContainer: NSLayoutConstraint!
     @IBOutlet var btnSelection: [UIButton]!
     @IBOutlet var viewTabView: UIView!
     
@@ -35,7 +36,10 @@ class SignInContainerVC: BaseViewController {
             }
         }
         
-
+        if let MainView = self.children.first?.view.subviews.first {
+            HeightOfSignUpDriverContainer.constant = MainView.frame.size.height
+           
+        }
        
     }
     func SetLocalization() {
@@ -67,10 +71,13 @@ class SignInContainerVC: BaseViewController {
         }
     }
     
-
+    override func preferredContentSizeDidChange(forChildContentContainer container: UIContentContainer) {
+        super.preferredContentSizeDidChange(forChildContentContainer: container)
+        print("ATDebug :: \(container.preferredContentSize)")
+    }
     func selectedBtnUIChanges(Selected : Bool , Btn : UIButton) {
         Btn.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
-        Btn.setTitleColor(Selected == true ? UIColor(hexString: "9B51E0") : UIColor.appColor(.themeLightGrayText), for: .normal)
+        Btn.setTitleColor(Selected == true ? UIColor(hexString: "9B51E0") : UIColor.appColor(.themeLightGrayText).withAlphaComponent(0.4), for: .normal)
         
     }
     

@@ -18,6 +18,7 @@ class SignupContainerVC: BaseViewController {
 
     //MARK:- ===== Outlets =======
     @IBOutlet var btnLeadingConstaintOfAnimationView: NSLayoutConstraint!
+    @IBOutlet var HeightOfDriverContainerLogin: NSLayoutConstraint!
     @IBOutlet var btnSelection: [UIButton]!
     @IBOutlet var viewTabView: UIView!
     
@@ -36,8 +37,11 @@ class SignupContainerVC: BaseViewController {
                 selectedBtnUIChanges(Selected: false, Btn:i)
             }
         }
-        
-
+        if let MainView = self.children.first?.view.subviews.first {
+            HeightOfDriverContainerLogin.constant = MainView.frame.size.height
+           
+        }
+       
        
     }
     
@@ -67,9 +71,10 @@ class SignupContainerVC: BaseViewController {
 
     func selectedBtnUIChanges(Selected : Bool , Btn : UIButton) {
         Btn.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
-        Btn.setTitleColor(Selected == true ? UIColor(hexString: "9B51E0") : UIColor.appColor(.themeLightGrayText), for: .normal)
+        Btn.setTitleColor(Selected == true ? UIColor(hexString: "9B51E0") : UIColor.appColor(.themeLightGrayText).withAlphaComponent(0.4), for: .normal)
         
     }
+    
     
 
     

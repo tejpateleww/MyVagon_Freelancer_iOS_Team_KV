@@ -81,7 +81,8 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     @IBAction func BtnSignInAction(_ sender: themeButton) {
-        Utilities.ShowAlert(OfMessage: "Login successful")
+        appDel.NavigateToHome()
+//        Utilities.ShowAlert(OfMessage: "Login successful")
 //        let CheckValidation = Validate()
 //        if CheckValidation.0 {
 //            Utilities.ShowAlert(OfMessage: "Login successful")

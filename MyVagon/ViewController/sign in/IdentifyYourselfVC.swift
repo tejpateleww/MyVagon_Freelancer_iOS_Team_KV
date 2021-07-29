@@ -127,6 +127,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     
     
     @IBAction func saveButtonPressed(_ sender: themeButton) {
+        appDel.NavigateToHome()
     }
     
     

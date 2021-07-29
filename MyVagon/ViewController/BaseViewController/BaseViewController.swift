@@ -26,7 +26,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
   
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool)
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false)
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -40,6 +40,13 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         controller.navigationController?.navigationBar.clipsToBounds = true
         controller.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         controller.navigationController?.navigationBar.shadowImage = UIImage()
+        if ShowShadow ?? false {
+            self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+                self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+                self.navigationController?.navigationBar.layer.shadowRadius = 4.0
+                self.navigationController?.navigationBar.layer.shadowOpacity = 1.0
+                self.navigationController?.navigationBar.layer.masksToBounds = false
+        }
         if naviTitle == NavTitles.none.value {
             controller.navigationItem.titleView = UIView()
         } else {
@@ -103,6 +110,32 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                         let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewSkip)
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
+                    } else if title == NavItemsRight.chat.value {
+                        
+                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        BtnRight.setImage(UIImage.init(named: "ic_chat"), for: .normal)
+                        BtnRight.layer.setValue(controller, forKey: "controller")
+                        BtnRight.addTarget(self, action: #selector(self.BtnChatAction), for: .touchUpInside)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                    
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                       
+                    } else if title == NavItemsRight.notification.value {
+                        
+                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        BtnRight.setImage(UIImage.init(named: "ic_notification"), for: .normal)
+                        BtnRight.layer.setValue(controller, forKey: "controller")
+                        BtnRight.addTarget(self, action: #selector(self.BtnNotificationAction), for: .touchUpInside)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                    
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                       
                     }
                    
                 }
@@ -127,8 +160,14 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         
     }
-  
-    
+    @objc func BtnChatAction(sender:UIButton) {
+       
+        
+    }
+    @objc func BtnNotificationAction(sender:UIButton) {
+       
+        
+    }
  
 
 

@@ -11,9 +11,8 @@ target 'MyVagon' do
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'CountryPickerView'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
+  pod 'FSCalendar'
   pod 'GoogleMaps'
-
-
   target 'MyVagonTests' do
     inherit! :search_paths
     # Pods for testing

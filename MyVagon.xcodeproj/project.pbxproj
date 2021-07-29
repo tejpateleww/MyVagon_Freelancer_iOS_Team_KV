@@ -20,6 +20,8 @@
 		1802693826B0180B0088B49F /* CountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1802693726B0180B0088B49F /* CountryCode.json */; };
 		1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802694326B023F20088B49F /* TruckDetailVC.swift */; };
 		180FCEE826B135C3008D28EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 180FCEEA26B135C3008D28EE /* Localizable.strings */; };
+		184DB31126B26B540059B334 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DB31026B26B540059B334 /* Home.storyboard */; };
+		184DB31326B271E70059B334 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DB31226B271E70059B334 /* HomeViewController.swift */; };
 		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
 		8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8455BE8026AE96FB00089B1F /* Auth.storyboard */; };
 		84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */; };
@@ -129,6 +131,8 @@
 		180FCEE426B13523008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		180FCEE926B135C3008D28EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		180FCEF026B13626008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		184DB31026B26B540059B334 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		184DB31226B271E70059B334 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon-MyVagonUITests.release.xcconfig"; path = "Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +271,14 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
+		184DB31426B273330059B334 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				184DB31226B271E70059B334 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		3B0D8CFB3BE8E088DC98E052 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,13 +287,6 @@
 				5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8455BE7F26AE96C700089B1F /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		84AF91B226AECACF004BB88D /* MainSignupVC */ = {
@@ -357,7 +362,6 @@
 				180FCEE526B1359A008D28EE /* Localizable */,
 				1802693726B0180B0088B49F /* CountryCode.json */,
 				1802692826AFD5D70088B49F /* Utilities */,
-				8455BE7F26AE96C700089B1F /* Storyboards */,
 				A14974A526A1AAC90072AF33 /* Font */,
 				A1519CD926A01C9D001738B9 /* Enum */,
 				A1519C8B26A00304001738B9 /* AppDelegate.swift */,
@@ -421,6 +425,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				184DB31426B273330059B334 /* Home */,
 				1802691626AFCEEC0088B49F /* sign in */,
 				84AF91B726AEEEF2004BB88D /* MainSignInVC */,
 				84AF91B226AECACF004BB88D /* MainSignupVC */,
@@ -438,6 +443,7 @@
 				8455BE8026AE96FB00089B1F /* Auth.storyboard */,
 				A1519C9126A00304001738B9 /* Main.storyboard */,
 				A1519C9626A00305001738B9 /* LaunchScreen.storyboard */,
+				184DB31026B26B540059B334 /* Home.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -482,7 +488,7 @@
 				A1519C8526A00304001738B9 /* Frameworks */,
 				A1519C8626A00304001738B9 /* Resources */,
 				FFCEFE069C1D41158F78704F /* [CP] Embed Pods Frameworks */,
-				352DEA5754989496731A9FA2 /* [CP] Copy Pods Resources */,
+				50DECE7126BC54447E233581 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -521,7 +527,7 @@
 				A1519CA626A00306001738B9 /* Frameworks */,
 				A1519CA726A00306001738B9 /* Resources */,
 				252D0E12EBFD683050405555 /* [CP] Embed Pods Frameworks */,
-				0AE97B042D94170A2D5FE3F1 /* [CP] Copy Pods Resources */,
+				723D7E67EE7A8190E2ED3581 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -596,6 +602,7 @@
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
+				184DB31126B26B540059B334 /* Home.storyboard in Resources */,
 				A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */,
 				A14974C226A1AB440072AF33 /* Poppins-Bold.ttf in Resources */,
 				A14974C026A1AB440072AF33 /* Poppins-Italic.ttf in Resources */,
@@ -626,23 +633,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0AE97B042D94170A2D5FE3F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		252D0E12EBFD683050405555 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -660,7 +650,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		352DEA5754989496731A9FA2 /* [CP] Copy Pods Resources */ = {
+		50DECE7126BC54447E233581 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -721,6 +711,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		723D7E67EE7A8190E2ED3581 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F393C7EB1973BD8876F913FE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -769,6 +776,7 @@
 			files = (
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
+				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
