@@ -254,10 +254,10 @@
             </objects>
             <point key="canvasLocation" x="-374" y="374"/>
         </scene>
-        <!--View Controller-->
+        <!--My Account View Controller-->
         <scene sceneID="kN8-R8-GuN">
             <objects>
-                <viewController id="8Bx-2a-6wJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MyAccountViewController" id="8Bx-2a-6wJ" customClass="MyAccountViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OR4-QX-zbk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

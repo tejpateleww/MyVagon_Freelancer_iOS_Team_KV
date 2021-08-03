@@ -34,6 +34,9 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        TextFieldEmail.text = "ankur@yopmail.com"
+        TextFieldPassword.text = "12345678"
         TextFieldPassword.delegate = self
         SetLocalization()
         // Do any additional setup after loading the view.
@@ -56,7 +59,7 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
         BtnJoinInForFree.setTitle("Join For Free!".Localized(), for: .normal)
         BtnForgot.setTitle("Forgot?".Localized(), for: .normal)
 
-        TextFieldEmail.placeholder = "Email or Phone#".Localized()
+        TextFieldEmail.placeholder = "Email or Phone number".Localized()
         TextFieldPassword.placeholder = "Password".Localized()
     }
     

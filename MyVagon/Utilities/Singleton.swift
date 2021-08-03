@@ -30,14 +30,14 @@ class SingletonClass: NSObject
         Reg_TruckBrand = ""
         Reg_TruckCapacity = ""
         Reg_CargorLoadCapacity = ""
-        Reg_OtherTypes = []
+        Reg_AdditionalTypes = []
         Reg_TruckFualType = ""
         Reg_RegistrationNumber = ""
-        Reg_VehiclePhoto = Data()
+        Reg_VehiclePhoto = []
         Reg_vehicalPhotoName = ""
-        Reg_IdentityProofDocument = Data()
+        Reg_IdentityProofDocument = ""
         Reg_IdentityProofDocumentName = ""
-        LicenceDocument = Data()
+        LicenceDocument = ""
         LicenceDocumentname = ""
         
     }
@@ -55,7 +55,7 @@ class SingletonClass: NSObject
                                        "Reg_TruckBrand":Reg_TruckBrand,
                                        "Reg_TruckCapacity":Reg_TruckCapacity,
                                        "Reg_CargorLoadCapacity":Reg_CargorLoadCapacity,
-                                       "Reg_OtherTypes":Reg_OtherTypes,
+                                       "Reg_AdditionalTypes":Reg_AdditionalTypes,
                                        "Reg_TruckFualType":Reg_TruckFualType,
                                        "Reg_RegistrationNumber":Reg_RegistrationNumber,
                                        "Reg_VehiclePhoto":Reg_VehiclePhoto,
@@ -83,14 +83,14 @@ class SingletonClass: NSObject
             Reg_TruckBrand = SavedData["Reg_TruckBrand"] as? String ?? ""
             Reg_TruckCapacity = SavedData["Reg_TruckCapacity"] as? String ?? ""
             Reg_CargorLoadCapacity = SavedData["Reg_CargorLoadCapacity"] as? String ?? ""
-            Reg_OtherTypes = SavedData["Reg_OtherTypes"] as? [String] ?? []
+            Reg_AdditionalTypes = SavedData["Reg_AdditionalTypes"] as? [String] ?? []
             Reg_TruckFualType = SavedData["Reg_TruckFualType"] as? String ?? ""
             Reg_RegistrationNumber = SavedData["Reg_RegistrationNumber"] as? String ?? ""
-            Reg_VehiclePhoto = SavedData["Reg_VehiclePhoto"] as? Data ?? Data()
+            Reg_VehiclePhoto = SavedData["Reg_VehiclePhoto"] as? [String] ?? []
             Reg_vehicalPhotoName = SavedData["Reg_VehiclePhoto"] as? String ?? ""
-            Reg_IdentityProofDocument = SavedData["Reg_IdentityProofDocument"] as? Data ?? Data()
+            Reg_IdentityProofDocument = SavedData["Reg_IdentityProofDocument"] as? String ?? ""
             Reg_IdentityProofDocumentName = SavedData["Reg_IdentityProofDocumentName"] as? String ?? ""
-            LicenceDocument = SavedData["LicenceDocument"] as? Data ?? Data()
+            LicenceDocument = SavedData["LicenceDocument"] as? String ?? ""
             LicenceDocumentname = SavedData["LicenceDocumentname"] as? String ?? ""
         }
         
@@ -113,16 +113,16 @@ class SingletonClass: NSObject
     var Reg_TruckBrand = ""
     var Reg_TruckCapacity = ""
     var Reg_CargorLoadCapacity = ""
-    var Reg_OtherTypes : [String] = []
+    var Reg_AdditionalTypes : [String] = []
     var Reg_TruckFualType = ""
     var Reg_RegistrationNumber = ""
-    var Reg_VehiclePhoto = Data()
+    var Reg_VehiclePhoto : [String] = []
     var Reg_vehicalPhotoName = ""
     
-    var Reg_IdentityProofDocument = Data()
+    var Reg_IdentityProofDocument = ""
     var Reg_IdentityProofDocumentName = ""
     
-    var LicenceDocument = Data()
+    var LicenceDocument = ""
     var LicenceDocumentname = ""
     
 }

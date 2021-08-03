@@ -58,6 +58,61 @@ class Utilities:NSObject{
     //MARK: -  ================================
     //MARK: ALERT MESSAGE
     //MARK: ==================================
+    class func getMessageFromApiResponse(param: Any) -> String {
+        
+        if let res = param as? String {
+            return res
+            
+        }else if let resDict = param as? NSDictionary {
+            
+            if let msg = resDict.object(forKey: "message") as? String {
+                return msg
+                
+            }else if let msg = resDict.object(forKey: "msg") as? String {
+                return msg
+                
+            }else if let msg = resDict.object(forKey: "message") as? [String] {
+                return msg.first ?? ""
+                
+            }
+            
+        }else if let resAry = param as? NSArray {
+            
+            if let dictIndxZero = resAry.firstObject as? NSDictionary {
+                if let msg = dictIndxZero.object(forKey: "message") as? String {
+                    return msg
+                    
+                }else if let msg = dictIndxZero.object(forKey: "msg") as? String {
+                    return msg
+                    
+                }else if let msg = dictIndxZero.object(forKey: "message") as? [String] {
+                    return msg.first ?? ""
+                }
+                
+            }else if let msg = resAry as? [String] {
+                return msg.first ?? ""
+                
+            }
+        }
+        return ""
+    }
+    static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void{
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        for index in 0..<buttons.count {
+            
+            let action = UIAlertAction(title: buttons[index], style: .default, handler: { (alert: UIAlertAction!) in
+                if(completion != nil) {
+                    completion(index)
+                }
+            })
+            alertController.addAction(action)
+        }
+        DispatchQueue.main.async {
+            vc.present(alertController, animated: true, completion: nil)
+        }
+    }
+    
     static func displayAlert(_ title: String, message: String, completion:((_ index: Int) -> Void)?, otherTitles: String? ...) {
         
         if message.trimmedString == "" {

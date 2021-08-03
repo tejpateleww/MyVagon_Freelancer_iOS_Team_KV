@@ -13,7 +13,7 @@ class EnterOTPViewController: BaseViewController {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     var EnteredText = ""
-    var strOtp = "111111"
+    var OtpString = "111111"
     var ClosourVerify : (() -> ())?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -33,7 +33,8 @@ class EnterOTPViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
-        if strOtp != "" {
+        if OtpString != "" {
+            TextFieldOTP.becomeFirstResponder()
             var secondsRemaining = 30
             self.btnOTP.isEnabled = false
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { (Timer) in
@@ -65,15 +66,22 @@ class EnterOTPViewController: BaseViewController {
             }
         }
     }
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
-    
+    func Validate() -> (Bool,String){
+        if TextFieldOTP.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                return (false,"Please enter OTP")
+        } else {
+            if OtpString != TextFieldOTP.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""{
+                return (false,ErrorMessages.Invelid_Otp.rawValue)
+               
+               
+            }
+        }
+        return (true,"")
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -83,8 +91,13 @@ class EnterOTPViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func BtnVerifyAction(_ sender: Any) {
-        if let click = self.ClosourVerify {
-            click()
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            if let click = self.ClosourVerify {
+                click()
+            }
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
        
     }

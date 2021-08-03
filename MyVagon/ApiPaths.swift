@@ -14,7 +14,11 @@ var UserDefault = UserDefaults.standard
 enum UserDefaultsKey : String {
     case IntroScreenStatus = "IntroScreenStatus"
     case SelectedLanguage = "SelectedLanguage"
-   case UserDefaultKeyForRegister = "UserDefaultKeyForRegister"
+    case UserDefaultKeyForRegister = "UserDefaultKeyForRegister"
     case RegisterData = "RegisterData"
+    case userProfile = "userProfile"
+    case isUserLogin = "isUserLogin"
+    case X_API_KEY = "X_API_KEY"
+    case DeviceToken = "DeviceToken"
     
 }

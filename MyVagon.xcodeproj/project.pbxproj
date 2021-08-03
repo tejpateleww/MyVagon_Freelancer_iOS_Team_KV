@@ -26,6 +26,27 @@
 		184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DB31726B2C9000059B334 /* EnterOTPViewController.swift */; };
 		1854BFBC26B414A6005355DD /* SendOTPForForgotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */; };
 		1854BFBE26B418A8005355DD /* SetNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1854BFBD26B418A8005355DD /* SetNewPasswordViewController.swift */; };
+		189FB63126B90F0600BBD5A0 /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63026B90F0600BBD5A0 /* MyAccountViewController.swift */; };
+		189FB63426B911A400BBD5A0 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */; };
+		189FB63726B922FB00BBD5A0 /* UploadVideoAndImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63526B922FA00BBD5A0 /* UploadVideoAndImagesCell.swift */; };
+		189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189FB63626B922FA00BBD5A0 /* UploadVideoAndImagesCell.xib */; };
+		189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63926B9328300BBD5A0 /* GalaryVC.swift */; };
+		189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63B26B932B100BBD5A0 /* collectionPhotos.swift */; };
+		189FB63E26B932B100BBD5A0 /* collectionPhotos.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189FB63C26B932B100BBD5A0 /* collectionPhotos.xib */; };
+		189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB63F26B933A500BBD5A0 /* AttechmentService.swift */; };
+		189FB65E26B96BF000BBD5A0 /* URLSessionRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65526B96BEF00BBD5A0 /* URLSessionRequestManager.swift */; };
+		189FB65F26B96BF000BBD5A0 /* WebServicesSubclass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65626B96BEF00BBD5A0 /* WebServicesSubclass.swift */; };
+		189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65826B96BEF00BBD5A0 /* UrlServiceConstant.swift */; };
+		189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65926B96BEF00BBD5A0 /* RequestBodyParamService.swift */; };
+		189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65A26B96BEF00BBD5A0 /* apiPaths.swift */; };
+		189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65B26B96BEF00BBD5A0 /* UploadMediaModel.swift */; };
+		189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65C26B96BEF00BBD5A0 /* CodableResponseServiceClass.swift */; };
+		189FB66526B96BF000BBD5A0 /* Webservices+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB65D26B96BEF00BBD5A0 /* Webservices+Extension.swift */; };
+		189FB66726B96E6A00BBD5A0 /* ConstantEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */; };
+		189FB66926B96F8800BBD5A0 /* RegisterReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */; };
+		189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66E26B976F400BBD5A0 /* ImageUploadResModel.swift */; };
+		189FB67126B976F400BBD5A0 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66F26B976F400BBD5A0 /* Datum.swift */; };
+		189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */; };
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
@@ -144,6 +165,27 @@
 		184DB31726B2C9000059B334 /* EnterOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOTPViewController.swift; sourceTree = "<group>"; };
 		1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendOTPForForgotVC.swift; sourceTree = "<group>"; };
 		1854BFBD26B418A8005355DD /* SetNewPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNewPasswordViewController.swift; sourceTree = "<group>"; };
+		189FB63026B90F0600BBD5A0 /* MyAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountViewController.swift; sourceTree = "<group>"; };
+		189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		189FB63526B922FA00BBD5A0 /* UploadVideoAndImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadVideoAndImagesCell.swift; sourceTree = "<group>"; };
+		189FB63626B922FA00BBD5A0 /* UploadVideoAndImagesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UploadVideoAndImagesCell.xib; sourceTree = "<group>"; };
+		189FB63926B9328300BBD5A0 /* GalaryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalaryVC.swift; sourceTree = "<group>"; };
+		189FB63B26B932B100BBD5A0 /* collectionPhotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = collectionPhotos.swift; sourceTree = "<group>"; };
+		189FB63C26B932B100BBD5A0 /* collectionPhotos.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = collectionPhotos.xib; sourceTree = "<group>"; };
+		189FB63F26B933A500BBD5A0 /* AttechmentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttechmentService.swift; sourceTree = "<group>"; };
+		189FB65526B96BEF00BBD5A0 /* URLSessionRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionRequestManager.swift; sourceTree = "<group>"; };
+		189FB65626B96BEF00BBD5A0 /* WebServicesSubclass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebServicesSubclass.swift; sourceTree = "<group>"; };
+		189FB65826B96BEF00BBD5A0 /* UrlServiceConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlServiceConstant.swift; sourceTree = "<group>"; };
+		189FB65926B96BEF00BBD5A0 /* RequestBodyParamService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBodyParamService.swift; sourceTree = "<group>"; };
+		189FB65A26B96BEF00BBD5A0 /* apiPaths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiPaths.swift; sourceTree = "<group>"; };
+		189FB65B26B96BEF00BBD5A0 /* UploadMediaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadMediaModel.swift; sourceTree = "<group>"; };
+		189FB65C26B96BEF00BBD5A0 /* CodableResponseServiceClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodableResponseServiceClass.swift; sourceTree = "<group>"; };
+		189FB65D26B96BEF00BBD5A0 /* Webservices+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Webservices+Extension.swift"; sourceTree = "<group>"; };
+		189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantEnum.swift; sourceTree = "<group>"; };
+		189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterReqModel.swift; sourceTree = "<group>"; };
+		189FB66E26B976F400BBD5A0 /* ImageUploadResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadResModel.swift; sourceTree = "<group>"; };
+		189FB66F26B976F400BBD5A0 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
+		189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadReqModel.swift; sourceTree = "<group>"; };
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +331,7 @@
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				189FB63226B90F0D00BBD5A0 /* My Account */,
 				184DB31226B271E70059B334 /* HomeViewController.swift */,
 				1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */,
 				1854BFBD26B418A8005355DD /* SetNewPasswordViewController.swift */,
@@ -296,9 +339,84 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		189FB63226B90F0D00BBD5A0 /* My Account */ = {
+			isa = PBXGroup;
+			children = (
+				189FB63026B90F0600BBD5A0 /* MyAccountViewController.swift */,
+			);
+			path = "My Account";
+			sourceTree = "<group>";
+		};
+		189FB65326B96BEF00BBD5A0 /* Webservices */ = {
+			isa = PBXGroup;
+			children = (
+				189FB65426B96BEF00BBD5A0 /* Service Request */,
+				189FB65726B96BEF00BBD5A0 /* Helper */,
+			);
+			path = Webservices;
+			sourceTree = "<group>";
+		};
+		189FB65426B96BEF00BBD5A0 /* Service Request */ = {
+			isa = PBXGroup;
+			children = (
+				189FB65526B96BEF00BBD5A0 /* URLSessionRequestManager.swift */,
+				189FB65626B96BEF00BBD5A0 /* WebServicesSubclass.swift */,
+			);
+			path = "Service Request";
+			sourceTree = "<group>";
+		};
+		189FB65726B96BEF00BBD5A0 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				189FB65826B96BEF00BBD5A0 /* UrlServiceConstant.swift */,
+				189FB65926B96BEF00BBD5A0 /* RequestBodyParamService.swift */,
+				189FB65A26B96BEF00BBD5A0 /* apiPaths.swift */,
+				189FB65B26B96BEF00BBD5A0 /* UploadMediaModel.swift */,
+				189FB65C26B96BEF00BBD5A0 /* CodableResponseServiceClass.swift */,
+				189FB65D26B96BEF00BBD5A0 /* Webservices+Extension.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		189FB66A26B96F8C00BBD5A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				189FB66C26B976EC00BBD5A0 /* ResModel */,
+				189FB66B26B96F9100BBD5A0 /* ReqModel */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		189FB66B26B96F9100BBD5A0 /* ReqModel */ = {
+			isa = PBXGroup;
+			children = (
+				189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */,
+				189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */,
+			);
+			path = ReqModel;
+			sourceTree = "<group>";
+		};
+		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
+			isa = PBXGroup;
+			children = (
+				189FB66D26B976F400BBD5A0 /* ImageUploadResModel */,
+			);
+			path = ResModel;
+			sourceTree = "<group>";
+		};
+		189FB66D26B976F400BBD5A0 /* ImageUploadResModel */ = {
+			isa = PBXGroup;
+			children = (
+				189FB66E26B976F400BBD5A0 /* ImageUploadResModel.swift */,
+				189FB66F26B976F400BBD5A0 /* Datum.swift */,
+			);
+			path = ImageUploadResModel;
+			sourceTree = "<group>";
+		};
 		18BA362E26B7BBAF00F83069 /* Common Web View */ = {
 			isa = PBXGroup;
 			children = (
+				18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */,
 			);
 			path = "Common Web View";
 			sourceTree = "<group>";
@@ -306,6 +424,7 @@
 		18BA362F26B7CA4000F83069 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				189FB63926B9328300BBD5A0 /* GalaryVC.swift */,
 				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
 			);
 			path = Register;
@@ -391,6 +510,13 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				189FB66A26B96F8C00BBD5A0 /* Model */,
+				189FB65326B96BEF00BBD5A0 /* Webservices */,
+				189FB63F26B933A500BBD5A0 /* AttechmentService.swift */,
+				189FB63B26B932B100BBD5A0 /* collectionPhotos.swift */,
+				189FB63C26B932B100BBD5A0 /* collectionPhotos.xib */,
+				189FB63526B922FA00BBD5A0 /* UploadVideoAndImagesCell.swift */,
+				189FB63626B922FA00BBD5A0 /* UploadVideoAndImagesCell.xib */,
 				180FCEE526B1359A008D28EE /* Localizable */,
 				1802693726B0180B0088B49F /* CountryCode.json */,
 				1802692826AFD5D70088B49F /* Utilities */,
@@ -405,6 +531,7 @@
 				A1519CBB26A00343001738B9 /* AppTheme */,
 				A1519CD526A00740001738B9 /* Images */,
 				A1519C9926A00305001738B9 /* Info.plist */,
+				189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */,
 			);
 			path = MyVagon;
 			sourceTree = "<group>";
@@ -450,6 +577,7 @@
 				A1519CC426A00407001738B9 /* UITextField+Extensions.swift */,
 				A1519CC526A00407001738B9 /* UIViewController+Extension.swift */,
 				A1519CC326A00407001738B9 /* userDefaults+Extension.swift */,
+				189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -468,7 +596,6 @@
 				A1519CF126A037EF001738B9 /* SplashVC.swift */,
 				A1519CF326A04488001738B9 /* BoardingVC.swift */,
 				184DB31726B2C9000059B334 /* EnterOTPViewController.swift */,
-				18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -630,6 +757,7 @@
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
 				1802693826B0180B0088B49F /* CountryCode.json in Resources */,
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
+				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
@@ -640,6 +768,7 @@
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
 				184DB31126B26B540059B334 /* Home.storyboard in Resources */,
+				189FB63E26B932B100BBD5A0 /* collectionPhotos.xib in Resources */,
 				A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */,
 				A14974C226A1AB440072AF33 /* Poppins-Bold.ttf in Resources */,
 				184DB31626B2C7E10059B334 /* Popup.storyboard in Resources */,
@@ -814,17 +943,23 @@
 			files = (
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
+				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
+				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
+				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
 				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
 				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
 				1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */,
 				1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */,
+				189FB65F26B96BF000BBD5A0 /* WebServicesSubclass.swift in Sources */,
+				189FB63126B90F0600BBD5A0 /* MyAccountViewController.swift in Sources */,
 				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
 				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
+				189FB63726B922FB00BBD5A0 /* UploadVideoAndImagesCell.swift in Sources */,
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
@@ -833,9 +968,11 @@
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
+				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
+				189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */,
 				84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */,
 				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
@@ -844,30 +981,41 @@
 				1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */,
 				18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */,
 				1854BFBE26B418A8005355DD /* SetNewPasswordViewController.swift in Sources */,
+				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
+				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
+				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
 				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				A1519C9026A00304001738B9 /* ViewController.swift in Sources */,
+				189FB66926B96F8800BBD5A0 /* RegisterReqModel.swift in Sources */,
 				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
+				189FB65E26B96BF000BBD5A0 /* URLSessionRequestManager.swift in Sources */,
 				184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
 				1802693426AFD6740088B49F /* AppInfo.swift in Sources */,
 				A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */,
 				84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */,
 				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
+				189FB66526B96BF000BBD5A0 /* Webservices+Extension.swift in Sources */,
+				189FB66726B96E6A00BBD5A0 /* ConstantEnum.swift in Sources */,
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
+				189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */,
+				189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */,
 				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
 				1854BFBC26B414A6005355DD /* SendOTPForForgotVC.swift in Sources */,
 				A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */,
 				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,
 				A1519CE226A01CDF001738B9 /* NavigationItems.swift in Sources */,
 				A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */,
+				189FB63426B911A400BBD5A0 /* UINavigationController+Extension.swift in Sources */,
+				189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */,
 				A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */,
 				18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,

@@ -25,6 +25,8 @@ class SignInContainerVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [], isTranslucent: true)
         for i in btnSelection{
             if i.tag == 0 {

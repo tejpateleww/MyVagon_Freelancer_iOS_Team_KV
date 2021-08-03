@@ -29,6 +29,10 @@ class SendOTPForForgotVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+//        DispatchQueue.main.async {
+//            self.TextFieldEmail.becomeFirstResponder()
+//        }
+        
         // Do any additional setup after loading the view.
     }
     
