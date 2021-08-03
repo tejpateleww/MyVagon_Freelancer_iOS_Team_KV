@@ -22,6 +22,8 @@ var window: UIWindow?
         checkAndSetDefaultLanguage()
         
         
+        SingletonClass.sharedInstance.GetRegisterData()
+        
         
         // Override point for customization after application launch.
         return true
@@ -35,7 +37,7 @@ var window: UIWindow?
     }
     
     func NavigateToRegister(){
-        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SignupContainerVC.storyboardID) as! SignupContainerVC
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: RegisterAllInOneViewController.storyboardID) as! RegisterAllInOneViewController
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav

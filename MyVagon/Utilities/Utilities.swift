@@ -10,7 +10,7 @@ import Foundation
 import UIKit
  
 import NVActivityIndicatorView
-
+import SwiftMessages
 // ----------------------------------------------------
 //MARK:- --------- Get Class Name Method ---------
 // ----------------------------------------------------
@@ -233,6 +233,12 @@ class Utilities:NSObject{
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
        // present(alert, animated: true, completion: nil)
         appDel.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    class func ShowAlertOfValidation(OfMessage : String) {
+        let messageBar = MessageBarController()
+
+        messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .error, TopBottom: true)
     }
     
     

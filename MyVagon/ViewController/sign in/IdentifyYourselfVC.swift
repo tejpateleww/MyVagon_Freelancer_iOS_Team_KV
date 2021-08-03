@@ -37,10 +37,11 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        
         
         identityProofTF.delegate = self
         licenceTF.delegate = self
+        
         // Do any additional setup after loading the view.
     }
     
@@ -109,6 +110,24 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         return data
     }
     
+    func Validate() -> (Bool,String) {
+        
+        
+        let CheckIdentityProof = identityProofTF.validatedText(validationType: ValidatorType.Attach(field: "identity proof"))
+        let CheckLicence = licenceTF.validatedText(validationType: ValidatorType.Attach(field: "licence"))
+        
+        
+        if (!CheckIdentityProof.0){
+            return (CheckIdentityProof.0,CheckIdentityProof.1)
+        }  else if (!CheckLicence.0){
+            return (CheckLicence.0,CheckLicence.1)
+        } else if !checkBoxButton.isSelected {
+            return (false,"Please accept terms & condition")
+        }
+        return (true,"")
+        
+    }
+    
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -120,14 +139,22 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         } else {
             sender.isSelected = true
         }
-        
     }
     @IBAction func termsButtonPressed(_ sender: themeButton) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CommonWebviewVC.storyboardID) as! CommonWebviewVC
+        controller.strNavTitle = "Terms & Conditions"
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     
     @IBAction func saveButtonPressed(_ sender: themeButton) {
-        appDel.NavigateToHome()
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            appDel.NavigateToHome()
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
+        
     }
     
     

@@ -24,8 +24,10 @@ enum ValidatorType {
     case password(field: String)
     case username(field: String)
     case requiredField(field: String)
+    case Attach(field: String)
     case age
     case phoneNo
+    case Select(field: String)
 }
 
 enum VaildatorFactory {
@@ -37,17 +39,46 @@ enum VaildatorFactory {
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
         case .phoneNo: return PhoneNoValidator()
+        case .Select(let fieldName): return ValueSelection(fieldName)
+        case .Attach(let fieldName): return AttachSelection(fieldName)
         }
     }
 }
 class AgeValidator: ValidatorConvertible {
+    
     func validated(_ value: String) -> (Bool, String)
     {
+        
+        
         guard value.count > 0 else{return (false,ValidationError("Age is required").message)}
         guard let age = Int(value) else {return (false,ValidationError("Age must be a number!").message)}
         guard value.count < 3 else {return (false,ValidationError("Invalid age number!").message)}
         guard age >= 18 else {return (false,ValidationError("You have to be over 18 years old to user our app :)").message)}
         return (true, "")
+    }
+}
+class ValueSelection: ValidatorConvertible {
+    private let fieldName: String
+    
+    init(_ field: String) {
+        fieldName = field
+    }
+    func validated(_ value: String) -> (Bool, String)
+    {
+        guard value != "" else {return (false,ValidationError("Please select \(fieldName)").message)}
+        return (true , "")
+    }
+}
+class AttachSelection: ValidatorConvertible {
+    private let fieldName: String
+    
+    init(_ field: String) {
+        fieldName = field
+    }
+    func validated(_ value: String) -> (Bool, String)
+    {
+        guard value != "" else {return (false,ValidationError("Please attach \(fieldName)").message)}
+        return (true , "")
     }
 }
 

@@ -14,6 +14,9 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SkyFloatingLabelTextField (3.8.0)
+  - SwiftMessages (9.0.2):
+    - SwiftMessages/App (= 9.0.2)
+  - SwiftMessages/App (9.0.2)
 
 DEPENDENCIES:
   - CountryPickerView
@@ -23,6 +26,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView (= 4.8.0)
   - SDWebImage
   - SkyFloatingLabelTextField (~> 3.0)
+  - SwiftMessages
 
 SPEC REPOS:
   trunk:
@@ -33,6 +37,7 @@ SPEC REPOS:
     - NVActivityIndicatorView
     - SDWebImage
     - SkyFloatingLabelTextField
+    - SwiftMessages
 
 SPEC CHECKSUMS:
   CountryPickerView: 9b093bfffb4b06a69ba6185a798cadbf863720e7
@@ -42,7 +47,8 @@ SPEC CHECKSUMS:
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 7ec454dd766e758327b3852c34054d5c54a27365
+PODFILE CHECKSUM: 40eded3c26cec263ffd09e84852d64efeb2a3998
 
 COCOAPODS: 1.10.1

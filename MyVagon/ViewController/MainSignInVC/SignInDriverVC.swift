@@ -81,19 +81,24 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     @IBAction func BtnSignInAction(_ sender: themeButton) {
-        appDel.NavigateToHome()
-//        Utilities.ShowAlert(OfMessage: "Login successful")
-//        let CheckValidation = Validate()
-//        if CheckValidation.0 {
-//            Utilities.ShowAlert(OfMessage: "Login successful")
-//        } else {
-//            Utilities.ShowAlert(OfMessage: CheckValidation.1)
-//        }
+        
+        
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            appDel.NavigateToHome()
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
 //
         
     }
     @IBAction func BtnJoinForFreeAction(_ sender: themeButton) {
         appDel.NavigateToRegister()
+    }
+    
+    @IBAction func BtnForgotPasswordClick(_ sender: UIButton) {
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SendOTPForForgotVC.storyboardID) as! SendOTPForForgotVC
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     // ----------------------------------------------------

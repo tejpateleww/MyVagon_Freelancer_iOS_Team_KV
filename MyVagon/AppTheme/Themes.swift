@@ -846,7 +846,7 @@ class themeTextfield : UITextField{
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        self.borderStyle = .none
         self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
     
         
@@ -1028,4 +1028,148 @@ class GeneralPickerView: UIPickerView {
 protocol GeneralPickerViewDelegate: AnyObject {
     func didTapDone()
     func didTapCancel()
+}
+class BlurView : UIView {
+    
+    @IBInspectable var isLight : Bool = false
+    
+    override func awakeFromNib() {
+        self.backgroundColor = .clear
+        setUpBlurView()
+    }
+    func setUpBlurView() {
+        
+        
+        if !UIAccessibility.isReduceTransparencyEnabled {
+            self.backgroundColor = .clear
+
+            let blurEffect = UIBlurEffect(style: .dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            //always fill the view
+            blurEffectView.frame = self.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+            self.addSubview(blurEffectView) //if you have more UIViews, use an insertSubview API to place it where needed
+        } else {
+            self.backgroundColor = .black
+        }
+        
+   /*
+        //        self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
+        
+        //If iOS 13 is available, add blur effect:
+        if #available(iOS 13.0, *) {
+            //check if transparency is reduced in system accessibility settings..
+            if UIAccessibility.isReduceTransparencyEnabled == true {
+                
+            } else {
+                let backView = UIView(frame: self.bounds)
+                backView.backgroundColor =  colors.submitButtonTextColor.value.withAlphaComponent(0.2)//UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+
+                self.addSubview(backView)
+                
+                let blurEffect = UIBlurEffect(style: .dark)
+                let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                bluredEffectView.frame = self.bounds
+                
+                let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                vibrancyEffectView.frame = bluredEffectView.bounds
+                
+                bluredEffectView.layer.masksToBounds = true
+                bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                self.addSubview(bluredEffectView)
+
+                self.bringSubviewToFront(self)
+                //self.bringSubviewToFront(vwMain)
+            }
+        } else {
+            if UIAccessibility.isReduceTransparencyEnabled == true {
+                
+            } else {
+                
+                let backView = UIView(frame: self.bounds)
+                backView.backgroundColor =  colors.submitButtonTextColor.value.withAlphaComponent(0.2) //UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+                self.addSubview(backView)
+                let blurEffect = UIBlurEffect(style: .dark)
+                let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                bluredEffectView.frame = self.bounds
+                
+                let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                vibrancyEffectView.frame = bluredEffectView.bounds
+                
+                bluredEffectView.layer.masksToBounds = true
+                bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                self.addSubview(bluredEffectView)
+                self.bringSubviewToFront(self)
+               // self.view.bringSubviewToFront(vwMain)
+            }
+        }
+        if isLight {
+            if #available(iOS 13.0, *) {
+                //check if transparency is reduced in system accessibility settings..
+                if UIAccessibility.isReduceTransparencyEnabled == true {
+                    
+                } else {
+                    let backView = UIView(frame: self.bounds)
+                    backView.backgroundColor =  colors.submitButtonTextColor.value.withAlphaComponent(0.2)//UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+
+                    self.addSubview(backView)
+                    
+                    let blurEffect = UIBlurEffect(style: .light)
+                    let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                    bluredEffectView.frame = self.bounds
+                    
+                    let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                    let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                    vibrancyEffectView.frame = bluredEffectView.bounds
+                    
+                    bluredEffectView.layer.masksToBounds = true
+                    bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                    self.addSubview(bluredEffectView)
+
+                    self.bringSubviewToFront(self)
+                    //self.bringSubviewToFront(vwMain)
+                }
+            } else {
+                if UIAccessibility.isReduceTransparencyEnabled == true {
+                    
+                } else {
+                    
+                    let backView = UIView(frame: self.bounds)
+                    backView.backgroundColor =  colors.submitButtonTextColor.value.withAlphaComponent(0.2) //UIColor(red: 8/255, green: 93/255, blue: 127/255, alpha: 0.67)
+                    self.addSubview(backView)
+                    let blurEffect = UIBlurEffect(style: .light)
+                    let bluredEffectView = UIVisualEffectView(effect: blurEffect)
+                    bluredEffectView.frame = self.bounds
+                    
+                    let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect)
+                    let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+                    vibrancyEffectView.frame = bluredEffectView.bounds
+                    
+                    bluredEffectView.layer.masksToBounds = true
+                    bluredEffectView.contentView.addSubview(vibrancyEffectView)
+                    self.addSubview(bluredEffectView)
+                    self.bringSubviewToFront(self)
+                   // self.view.bringSubviewToFront(vwMain)
+                }
+            }
+        }
+        
+       
+       */
+    }
+}
+class ThemeView : UIView {
+    @IBInspectable var CornerRadius : CGFloat = 0.0
+    override func awakeFromNib() {
+        self.layer.cornerRadius = CornerRadius
+        self.clipsToBounds = true
+    }
+}
+class SeperatorView : UIView {
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor(hexString: "#D2D2D9")
+    }
 }

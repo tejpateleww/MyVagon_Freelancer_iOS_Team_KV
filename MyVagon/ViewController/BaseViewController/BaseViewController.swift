@@ -11,7 +11,7 @@ import SDWebImage
 //import LGSideMenuController
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
-  
+    var BackClosure : (() -> ())?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
@@ -158,7 +158,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         else {
             self.navigationController?.popViewController(animated: true)
         }
-        
+        if let click = self.BackClosure {
+            click()
+        }
     }
     @objc func BtnChatAction(sender:UIButton) {
        

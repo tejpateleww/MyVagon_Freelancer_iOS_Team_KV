@@ -93,11 +93,31 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
         
     }
     
+    func Validate() -> (Bool,String) {
+        let CheckTruckCategory = TextFieldCategory.validatedText(validationType: ValidatorType.Select(field: "truck category"))
+        let CheckTruckSubCategory = TextFieldSubCategory.validatedText(validationType: ValidatorType.Select(field: "truck sub category"))
+    
+        
+        if (!CheckTruckCategory.0){
+            return (CheckTruckCategory.0,CheckTruckCategory.1)
+        } else if (!CheckTruckSubCategory.0){
+            return (CheckTruckSubCategory.0,CheckTruckSubCategory.1)
+        } 
+        return (true,"")
+    }
+    
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     @IBAction func BtnSaveAction(_ sender: themeButton) {
-        self.navigationController?.popViewController(animated: true)
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            SingletonClass.sharedInstance.Reg_TruckType = "\(TextFieldCategory.text ?? ""), \(TextFieldSubCategory.text ?? "")"
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
+        
       
         
     }

@@ -14,7 +14,7 @@ import UIKit
 
 enum CustomFont
 {
-    case italic,lightitalic,medium,light,mediumitalic,bold,bolditalic,regular,PoppinsThinItalic,PoppinsBold,PoppinsLight,PoppinsMedium,PoppinsRegular,PoppinsSemiBold,PoppinsItalic,PoppinsLightItalic
+    case PoppinsThinItalic,PoppinsBold,PoppinsLight,PoppinsMedium,PoppinsRegular,PoppinsSemiBold,PoppinsItalic,PoppinsLightItalic
   //  PoppinsBlack,PoppinsBlackItalic,,Poppins-BoldItalic,Poppins-ExtraBold,Poppins-ExtraBoldItalic,Poppins-ExtraLight,Poppins-ExtraLightItalic,Poppins-Italic,Poppins-Light,Poppins-LightItalic,Poppins-Medium,Poppins-MediumItalic,Poppins-Regular,Poppins-SemiBold,Poppins-SemiBoldItalic,Poppins-Thin,
     func returnFont(_ font:CGFloat)->UIFont
     {
@@ -47,22 +47,7 @@ enum CustomFont
         
         
         
-        case .italic:
-            return UIFont(name: "Ubuntu-Italic", size: font)!
-        case .lightitalic:
-            return UIFont(name: "Ubuntu-LightItalic", size: font)!
-        case .medium:
-            return UIFont(name: "Ubuntu-Medium", size: font)!
-        case .light:
-            return UIFont(name: "Ubuntu-Light", size: font)!
-        case .mediumitalic:
-            return UIFont(name: "Ubuntu-MediumItalic", size: font)!
-        case .bold:
-            return UIFont(name: "Ubuntu-Bold", size: font)!
-        case .bolditalic:
-            return UIFont(name: "Ubuntu-BoldItalic", size: font)!
-        case .regular:
-            return UIFont(name: "Ubuntu-Regular", size: font)!
+      
         }
         
       /*

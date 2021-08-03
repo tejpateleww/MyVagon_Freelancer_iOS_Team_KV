@@ -14,7 +14,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    var CountryCodeArray: [String] = ["+1","+91","+92","+93","+94","+188"]
+    var CountryCodeArray: [String] = ["+30"]
     let GeneralPicker = GeneralPickerView()
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -33,11 +33,13 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        TextFieldCountryCode.text = CountryCodeArray[0]
+        
         TextFieldPassword.delegate = self
         TextFieldConfirmPassword.delegate = self
         TextFieldCountryCode.delegate = self
         setupDelegateForPickerView()
+        
+        setValue()
         // Do any additional setup after loading the view.
     }
     
@@ -45,6 +47,21 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    
+    func setValue() {
+        TextFieldFullName.text = SingletonClass.sharedInstance.Reg_FullName
+        
+        TextFieldMobileNumber.text = SingletonClass.sharedInstance.Reg_PhoneNumber
+        TextFieldEmail.text = SingletonClass.sharedInstance.Reg_Email
+        TextFieldPassword.text = SingletonClass.sharedInstance.Reg_Password
+        TextFieldConfirmPassword.text = SingletonClass.sharedInstance.Reg_Password
+        
+        if SingletonClass.sharedInstance.Reg_CountryCode == "" {
+            TextFieldCountryCode.text = CountryCodeArray[0]
+        } else {
+            TextFieldCountryCode.text = SingletonClass.sharedInstance.Reg_CountryCode
+        }
+    }
     func setupDelegateForPickerView() {
         GeneralPicker.dataSource = self
         GeneralPicker.delegate = self
@@ -99,14 +116,33 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     
     @IBAction func btnActionEmailVerify(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-       
+        if sender.isSelected == false {
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
+           
+            controller.ClosourVerify = {
+                controller.dismiss(animated: true, completion: nil)
+                sender.isSelected = true
+            }
+            controller.EnteredText = "Enter an otp send to \nabc@yopmail.com"
+            controller.modalPresentationStyle = .overCurrentContext
+            controller.modalTransitionStyle = .crossDissolve
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     
     @IBAction func btnActionMobileVerify(_ sender: UIButton) {
-        
-        sender.isSelected = !sender.isSelected
-      
+        if sender.isSelected == false {
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
+            controller.EnteredText = "Enter an otp send to \n+30 11122233344"
+            controller.ClosourVerify = {
+                controller.dismiss(animated: true, completion: nil)
+                sender.isSelected = true
+            }
+            controller.modalPresentationStyle = .overCurrentContext
+            controller.modalTransitionStyle = .crossDissolve
+            self.present(controller, animated: true, completion: nil)
+        }
+       
     }
     
     @IBAction func BtnSignInAction(_ sender: Any) {
@@ -115,14 +151,29 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func BtnJoinForFreeAction(_ sender: Any) {
-        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: EnterTruckDetailsVC.storyboardID) as! EnterTruckDetailsVC
-        self.navigationController?.pushViewController(controller, animated: true)
-//        let CheckValidation = Validate()
-//        if CheckValidation.0 {
-//           
-//        } else {
-//            Utilities.ShowAlert(OfMessage: CheckValidation.1)
-//        }
+       
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 1
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+           
+            
+            RegisterMainVC.viewDidLayoutSubviews()
+            
+            SingletonClass.sharedInstance.Reg_FullName = TextFieldFullName.text ?? ""
+            SingletonClass.sharedInstance.Reg_CountryCode = TextFieldCountryCode.text ?? ""
+            SingletonClass.sharedInstance.Reg_PhoneNumber = TextFieldMobileNumber.text ?? ""
+            SingletonClass.sharedInstance.Reg_Email = TextFieldEmail.text ?? ""
+            SingletonClass.sharedInstance.Reg_Password = TextFieldPassword.text ?? ""
+            
+            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            
+            UserDefault.setValue(0, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
         
         
     }

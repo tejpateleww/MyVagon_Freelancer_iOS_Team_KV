@@ -14,7 +14,7 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     
-    var UnitArray : [String] = ["Pallet","Skid","Flat Sheets"]
+    var UnitArray : [String] = ["Pallet","Skid"]
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
     
@@ -39,20 +39,40 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        
         
         truckTypeTF.delegate = self
         truckWeightUnitTF.delegate = self
         cargoLoadUnitTF.delegate = self
         
         setupDelegateForPickerView()
+        
+        
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.SetValue()
+        }
+        
+    }
+
     
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    
+    func SetValue() {
+        truckTypeTF.text = SingletonClass.sharedInstance.Reg_TruckType
+        
+        truckWeightTF.text = SingletonClass.sharedInstance.Reg_TruckWeight
+        truckWeightUnitTF.text = SingletonClass.sharedInstance.Reg_TruckWeightUnit
+        cargoLoadCapTF.text = SingletonClass.sharedInstance.Reg_CargorLoadCapacity
+        cargoLoadUnitTF.text = SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit
+    }
     
     func setupDelegateForPickerView() {
         GeneralPicker.dataSource = self
@@ -103,10 +123,55 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     @IBAction func continueButtonPressed(_ sender: themeButton) {
-        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: TruckDetailVC.storyboardID) as! TruckDetailVC
-        self.navigationController?.pushViewController(controller, animated: true)
+//        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: TruckDetailVC.storyboardID) as! TruckDetailVC
+//        self.navigationController?.pushViewController(controller, animated: true)
+        
+       
+        
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            SingletonClass.sharedInstance.Reg_TruckType = truckTypeTF.text ?? ""
+            SingletonClass.sharedInstance.Reg_TruckWeight = truckWeightTF.text ?? ""
+            SingletonClass.sharedInstance.Reg_TruckWeightUnit = truckWeightUnitTF.text ?? ""
+            SingletonClass.sharedInstance.Reg_CargorLoadCapacity = truckTypeTF.text ?? ""
+            SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit = cargoLoadUnitTF.text ?? ""
+            
+            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 2
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            
+            UserDefault.setValue(1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
+            RegisterMainVC.viewDidLayoutSubviews()
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
       
         
+    }
+    
+    func Validate() -> (Bool,String) {
+        let CheckTruckType = truckTypeTF.validatedText(validationType: ValidatorType.Select(field: "truck type"))
+        let CheckTruckWeight = truckWeightTF.validatedText(validationType: ValidatorType.requiredField(field: "truck weight"))
+    
+        let UnitTruckWeight = truckWeightUnitTF.validatedText(validationType: ValidatorType.Select(field: "unit of truck weight"))
+        let CheckLoadCapacity = cargoLoadCapTF.validatedText(validationType: ValidatorType.requiredField(field: "truck load capacity"))
+        
+        let UnitLoadCapacity = cargoLoadUnitTF.validatedText(validationType: ValidatorType.Select(field: "unit of truck load capacity"))
+        if (!CheckTruckType.0){
+            return (CheckTruckType.0,CheckTruckType.1)
+        } else if (!CheckTruckWeight.0){
+            return (CheckTruckWeight.0,CheckTruckWeight.1)
+        } else if (!UnitTruckWeight.0){
+            return (UnitTruckWeight.0,UnitTruckWeight.1)
+        }else if(!CheckLoadCapacity.0){
+            return (CheckLoadCapacity.0,CheckLoadCapacity.1)
+        }else if(!UnitLoadCapacity.0){
+            return (UnitLoadCapacity.0,UnitLoadCapacity.1)
+        }
+        return (true,"")
     }
     
     // ----------------------------------------------------
