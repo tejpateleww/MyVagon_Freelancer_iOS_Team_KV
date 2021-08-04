@@ -116,7 +116,7 @@ class URLSessionRequestManager {
         
     }
     
-    class func makeMultipleImageRequest<C:Codable, P:Encodable>(urlString: String, requestModel: P, responseModel: C.Type, imageKey: String ,arrImageData : [UIImage]?, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: Any?,_ dataDic: Any) -> ()){
+    class func makeMultipleImageRequest<C:Codable, P:Encodable>(urlString: String, requestModel: P, responseModel: C.Type, imageKey: String ,arrImageData : [UIImage]?, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: C?,_ dataDic: Any) -> ()){
         var paramaterDic = [String: Any]()
         
         if !Reachability.isConnectedToNetwork() {
@@ -233,6 +233,7 @@ class URLSessionRequestManager {
         request.httpMethod = GetRequestType.POST.rawValue
         request.allHTTPHeaderFields = BEARER_HEADER()
         
+      
         if let bodyDic = try? requestModel.asDictionary(){
             paramaterDic = bodyDic
             let dicData = bodyDic.percentEncoded()
@@ -240,7 +241,8 @@ class URLSessionRequestManager {
         }
         
         request.setValue(RequestString.multiplePartFormData.rawValue + boundary, forHTTPHeaderField: RequestString.contentType.rawValue)
-        
+        print("ATDebug :: \(mediaArr[0].key)")
+    
         let dataBody = RequestBodyClass.createDataBodyForMediaRequest(withParameters: paramaterDic, media: mediaArr, boundary: boundary)
         
         print("BODY DIC: \(paramaterDic)")

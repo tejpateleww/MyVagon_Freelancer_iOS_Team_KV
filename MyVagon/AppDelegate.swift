@@ -21,6 +21,7 @@ var window: UIWindow?
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkAndSetDefaultLanguage()
         
+        SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
         
         SingletonClass.sharedInstance.GetRegisterData()
         

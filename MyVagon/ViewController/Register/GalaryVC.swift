@@ -121,7 +121,7 @@ extension GalaryVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalaryCell.className, for: indexPath)as! GalaryCell
-        let strUrl = "\(APIEnvironment.Profilebu.rawValue)\(arrImage[indexPath.row])"
+        let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(arrImage[indexPath.row])"
         cell.imgGalary.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imgGalary.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
        

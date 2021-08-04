@@ -3136,7 +3136,6 @@
                                             <constraint firstAttribute="width" secondItem="fDz-iZ-ili" secondAttribute="height" multiplier="1:1" id="KPd-wK-QRL"/>
                                             <constraint firstAttribute="height" constant="45" id="s1v-zp-dM9"/>
                                         </constraints>
-                                        <state key="normal" image="iconTrash"/>
                                         <connections>
                                             <action selector="btnTrashTap:" destination="w55-4T-ugO" eventType="touchUpInside" id="Ow0-MS-1pP"/>
                                         </connections>
@@ -3180,7 +3179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BOU-mu-Cbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6408.8000000000002" y="492.50374812593708"/>
+            <point key="canvasLocation" x="6600" y="491"/>
         </scene>
     </scenes>
     <resources>
@@ -3202,7 +3201,6 @@
         <image name="ic_user" width="19" height="19"/>
         <image name="iconGalaryLeft" width="9" height="15.333333015441895"/>
         <image name="iconGalaryRight" width="9" height="15.333333015441895"/>
-        <image name="iconTrash" width="63" height="63"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

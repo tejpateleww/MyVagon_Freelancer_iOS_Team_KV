@@ -12,7 +12,7 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    
+    var loginViewModel = LoginViewModel()
     
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -35,8 +35,8 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TextFieldEmail.text = "ankur@yopmail.com"
-        TextFieldPassword.text = "12345678"
+        TextFieldEmail.text = "driver111@gmail.com"
+        TextFieldPassword.text = "Admin@123"
         TextFieldPassword.delegate = self
         SetLocalization()
         // Do any additional setup after loading the view.
@@ -48,12 +48,6 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     func SetLocalization() {
-//        BtnSignIn.setTitle("Sign In", for: .normal)
-//        BtnJoinInForFree.setTitle("Join For Free!", for: .normal)
-//        BtnForgot.setTitle("Forgot?", for: .normal)
-//
-//        TextFieldEmail.placeholder = "Email or Phone#"
-//        TextFieldPassword.placeholder = "Password"
         
         BtnSignIn.setTitle("Sign In".Localized(), for: .normal)
         BtnJoinInForFree.setTitle("Join For Free!".Localized(), for: .normal)
@@ -85,15 +79,12 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func BtnSignInAction(_ sender: themeButton) {
         
-        
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            appDel.NavigateToHome()
+            CallLogin()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
-//
-        
     }
     @IBAction func BtnJoinForFreeAction(_ sender: themeButton) {
         appDel.NavigateToRegister()
@@ -128,5 +119,18 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
     
+    func CallLogin() {
+        self.loginViewModel.signInDriverVC = self
+        
+        let ReqModelForLogin = LoginReqModel()
+        ReqModelForLogin.app_version = SingletonClass.sharedInstance.AppVersion
+        ReqModelForLogin.device_name = SingletonClass.sharedInstance.DeviceName
+        ReqModelForLogin.device_type = SingletonClass.sharedInstance.DeviceType
+        ReqModelForLogin.device_token = SingletonClass.sharedInstance.DeviceToken
+        ReqModelForLogin.email = TextFieldEmail.text ?? ""
+        ReqModelForLogin.password = TextFieldPassword.text ?? ""
+        
+        self.loginViewModel.Login(ReqModel: ReqModelForLogin)
+    }
 
 }

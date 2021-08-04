@@ -7,13 +7,20 @@
 //
 
 import Foundation
+import UIKit
 class SingletonClass: NSObject
 {
+    var DeviceName = UIDevice.modelName
+    var DeviceToken : String? = "1111"
+    var DeviceType : String? = "ios"
+    var AppVersion : String?
+    
+    
     var SelectedLanguage : String = ""
     
     static let sharedInstance = SingletonClass()
     
-   
+    var TruckTypeList : [TruckTypeDatum]?
     
     func clearSingletonClass() {
         
@@ -105,6 +112,7 @@ class SingletonClass: NSObject
     var Reg_Password = ""
     
     var Reg_TruckType = ""
+    var Reg_SubTruckType = ""
     var Reg_TruckWeight = ""
     var Reg_TruckWeightUnit = ""
     var Reg_TruckLoadCapacity = ""

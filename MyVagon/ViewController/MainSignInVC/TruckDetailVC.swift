@@ -64,6 +64,8 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     //    ----------------------------------------------------
     // MARK: - --------- Variables ---------
     
+    var truckDetailsViewModel = TruckDetailsViewModel()
+    
     var tabTypeSelection = Tabselect.Diesel.rawValue
     var arrImages : [String] = []
     var arrTypes:[(String,Bool)] = [("Curtainsde",false),("Refrigerated (With Cooling)",false),("Refrigerated (Without Cooling)",false),("Flatbed Trailer",false),("Platform",false),("Canvas",false),("Tilting Trailer",false),("Container",false)]
@@ -329,6 +331,8 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             return (false,"Please select other types")
         } else if (!CheckRegistrationNumber.0){
             return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
+        } else if arrImages.count == 0 {
+            return (false,"Please attach atlease one vehical image")
         }
 //        else if (!CheckVehicalPhoto.0){
 //            return (CheckVehicalPhoto.0,CheckVehicalPhoto.1)
@@ -342,6 +346,14 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
+    
+    func ImageUploadAPI(arrImages:[UIImage]) {
+        
+        self.truckDetailsViewModel.TruckDetail = self
+        
+        self.truckDetailsViewModel.WebServiceImageUpload(images: arrImages)
+    }
+    
 }
 
 //----------------------------------------------------
@@ -420,7 +432,7 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         } else if collectionView == collectionImages {
             let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
             cell.btnCancel.tag = indexPath.row
-            let strUrl = "\(APIEnvironment.Profilebu.rawValue)\(arrImages[indexPath.row])"
+            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(arrImages[indexPath.row])"
             cell.imgPhotos.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
             cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)
@@ -498,7 +510,7 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
                 
                 self.collectionImages.reloadData()
                 print(image)
-                
+                self.ImageUploadAPI(arrImages: [image])
             }
         }
         

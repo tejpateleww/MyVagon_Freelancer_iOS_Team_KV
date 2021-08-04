@@ -48,9 +48,11 @@ enum APIEnvironment : String {
 }
 
 enum ApiKey: String {
-    case Init                                 = "init/ios/"
+    case Init                                   = "init/ios/"
+    case Login                                  = "driver/login"
     
-
+    case TempImageUpload                        = "image/upload"
+    case TruckTypeListing                       = "truck/type/listing"
 }
 
  

@@ -12,11 +12,12 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    
-    var CategoryArray : [String] = ["Semi-trailer Truck","Truck With Trailer","Truck","Van/Transporter","Other"]
-    var SubCategoryArray : [String] = ["AA","BB","CC","DD"]
+   var SelectedIndexOfCategory = -1
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
+    
+    var SelectedCategoryIndex = ""
+    var SelectedSubCategoryIndex = ""
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -56,13 +57,13 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
             TextFieldCategory.inputView = GeneralPicker
             TextFieldCategory.inputAccessoryView = GeneralPicker.toolbar
             
-            if let DummyFirst = CategoryArray.first(where: {$0 == TextFieldCategory.text ?? ""}) {
-                
-                let indexOfA = CategoryArray.firstIndex(of: DummyFirst) ?? 0
-                GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
+//            if let DummyFirst = CategoryArray.first(where: {$0 == TextFieldCategory.text ?? ""}) {
+//
+//                let indexOfA = CategoryArray.firstIndex(of: DummyFirst) ?? 0
+//                GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
                 
                 self.GeneralPicker.reloadAllComponents()
-            }
+//            }
             
         } else if textField == TextFieldSubCategory {
             if TextFieldCategory.text != "" {
@@ -74,15 +75,11 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
                     SelectedTextField = 1
                     TextFieldSubCategory.inputView = GeneralPicker
                     TextFieldSubCategory.inputAccessoryView = GeneralPicker.toolbar
-                    
-                    if let DummyFirst = CategoryArray.first {
-                        
-                        let indexOfA = CategoryArray.firstIndex(of: DummyFirst) ?? 0
-                        GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
+                   
+                   
+                      //  GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
                         
                         self.GeneralPicker.reloadAllComponents()
-                    }
-                    
                     
                 }
             } else {
@@ -112,7 +109,8 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     @IBAction func BtnSaveAction(_ sender: themeButton) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            SingletonClass.sharedInstance.Reg_TruckType = "\(TextFieldCategory.text ?? ""), \(TextFieldSubCategory.text ?? "")"
+            SingletonClass.sharedInstance.Reg_TruckType = SelectedCategoryIndex
+            SingletonClass.sharedInstance.Reg_SubTruckType = SelectedSubCategoryIndex
             self.navigationController?.popViewController(animated: true)
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
@@ -134,10 +132,14 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
     func didTapDone() {
         
         if SelectedTextField == 0 {
-            let item = CategoryArray[GeneralPicker.selectedRow(inComponent: 0)]
-            self.TextFieldCategory.text = item
+            
+            SelectedIndexOfCategory = GeneralPicker.selectedRow(inComponent: 0)
+            let item = SingletonClass.sharedInstance.TruckTypeList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.TextFieldCategory.text = item?.name
             self.TextFieldSubCategory.text = ""
-            if item.lowercased() == "other" {
+            SelectedCategoryIndex = "\(item?.id ?? -1)"
+            SelectedSubCategoryIndex = ""
+            if item?.name?.lowercased() == "other" {
                 TextFieldSubCategory.rightView?.isHidden = true
                 print("Keyboard open here")
             } else {
@@ -146,8 +148,12 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             
             
         } else if SelectedTextField == 1 {
-            let item = SubCategoryArray[GeneralPicker.selectedRow(inComponent: 0)]
-            self.TextFieldSubCategory.text = item
+            if SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?.count != 0 {
+                let item =
+                SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?[GeneralPicker.selectedRow(inComponent: 0)]
+                self.TextFieldSubCategory.text = item?.name
+                SelectedSubCategoryIndex = "\(item?.id ?? -1)"
+            }
         }
         
         
@@ -168,25 +174,23 @@ extension ChooseTruckCategoryViewController : UIPickerViewDelegate, UIPickerView
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if SelectedTextField == 0 {
-            return CategoryArray.count
+            return SingletonClass.sharedInstance.TruckTypeList?.count ?? 0
         } else if SelectedTextField == 1 {
-            return SubCategoryArray.count
+            return SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?.count ?? 0
         }
         return 0
-        
         
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if SelectedTextField == 0 {
-            return CategoryArray[row]
+            return SingletonClass.sharedInstance.TruckTypeList?[row].name
         } else if SelectedTextField == 1 {
-            return SubCategoryArray[row]
+            return SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?[row].name
         }
         return ""
         

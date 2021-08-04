@@ -20,6 +20,15 @@
 		1802693826B0180B0088B49F /* CountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1802693726B0180B0088B49F /* CountryCode.json */; };
 		1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802694326B023F20088B49F /* TruckDetailVC.swift */; };
 		180FCEE826B135C3008D28EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 180FCEEA26B135C3008D28EE /* Localizable.strings */; };
+		18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */; };
+		18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */; };
+		18129ABA26BA9B1700983AFC /* TruckTypeDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AB826BA9B1700983AFC /* TruckTypeDatum.swift */; };
+		18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AB926BA9B1700983AFC /* TruckTypeListingResModel.swift */; };
+		18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */; };
+		18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC026BAD30000983AFC /* LoginViewModel.swift */; };
+		18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC226BAD33D00983AFC /* LoginReqModel.swift */; };
+		18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC526BAD3AB00983AFC /* LoginDatum.swift */; };
+		18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC626BAD3AB00983AFC /* LoginResModel.swift */; };
 		184DB31126B26B540059B334 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DB31026B26B540059B334 /* Home.storyboard */; };
 		184DB31326B271E70059B334 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DB31226B271E70059B334 /* HomeViewController.swift */; };
 		184DB31626B2C7E10059B334 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DB31526B2C7E10059B334 /* Popup.storyboard */; };
@@ -159,6 +168,15 @@
 		180FCEE426B13523008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		180FCEE926B135C3008D28EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		180FCEF026B13626008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckDetailsViewModel.swift; sourceTree = "<group>"; };
+		18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifyYourselfViewModel.swift; sourceTree = "<group>"; };
+		18129AB826BA9B1700983AFC /* TruckTypeDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckTypeDatum.swift; sourceTree = "<group>"; };
+		18129AB926BA9B1700983AFC /* TruckTypeListingResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckTypeListingResModel.swift; sourceTree = "<group>"; };
+		18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		18129AC026BAD30000983AFC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		18129AC226BAD33D00983AFC /* LoginReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReqModel.swift; sourceTree = "<group>"; };
+		18129AC526BAD3AB00983AFC /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
+		18129AC626BAD3AB00983AFC /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
 		184DB31026B26B540059B334 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		184DB31226B271E70059B334 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		184DB31526B2C7E10059B334 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
@@ -328,6 +346,52 @@
 			path = Localizable;
 			sourceTree = "<group>";
 		};
+		18129AA926BA554000983AFC /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */,
+				18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */,
+				18129AC026BAD30000983AFC /* LoginViewModel.swift */,
+			);
+			path = "View Model";
+			sourceTree = "<group>";
+		};
+		18129AAC26BA616800983AFC /* UploadVideoAndImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				189FB63526B922FA00BBD5A0 /* UploadVideoAndImagesCell.swift */,
+				189FB63626B922FA00BBD5A0 /* UploadVideoAndImagesCell.xib */,
+			);
+			path = UploadVideoAndImageCell;
+			sourceTree = "<group>";
+		};
+		18129AAD26BA617700983AFC /* CollectionPhotosView */ = {
+			isa = PBXGroup;
+			children = (
+				189FB63B26B932B100BBD5A0 /* collectionPhotos.swift */,
+				189FB63C26B932B100BBD5A0 /* collectionPhotos.xib */,
+			);
+			path = CollectionPhotosView;
+			sourceTree = "<group>";
+		};
+		18129AB726BA9B1700983AFC /* TruckTypeListingResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18129AB826BA9B1700983AFC /* TruckTypeDatum.swift */,
+				18129AB926BA9B1700983AFC /* TruckTypeListingResModel.swift */,
+			);
+			path = TruckTypeListingResModel;
+			sourceTree = "<group>";
+		};
+		18129AC426BAD3AB00983AFC /* LoginResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18129AC526BAD3AB00983AFC /* LoginDatum.swift */,
+				18129AC626BAD3AB00983AFC /* LoginResModel.swift */,
+			);
+			path = LoginResModel;
+			sourceTree = "<group>";
+		};
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +456,7 @@
 			children = (
 				189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */,
 				189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */,
+				18129AC226BAD33D00983AFC /* LoginReqModel.swift */,
 			);
 			path = ReqModel;
 			sourceTree = "<group>";
@@ -399,6 +464,8 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				18129AC426BAD3AB00983AFC /* LoginResModel */,
+				18129AB726BA9B1700983AFC /* TruckTypeListingResModel */,
 				189FB66D26B976F400BBD5A0 /* ImageUploadResModel */,
 			);
 			path = ResModel;
@@ -510,13 +577,10 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				18129AA926BA554000983AFC /* View Model */,
 				189FB66A26B96F8C00BBD5A0 /* Model */,
 				189FB65326B96BEF00BBD5A0 /* Webservices */,
 				189FB63F26B933A500BBD5A0 /* AttechmentService.swift */,
-				189FB63B26B932B100BBD5A0 /* collectionPhotos.swift */,
-				189FB63C26B932B100BBD5A0 /* collectionPhotos.xib */,
-				189FB63526B922FA00BBD5A0 /* UploadVideoAndImagesCell.swift */,
-				189FB63626B922FA00BBD5A0 /* UploadVideoAndImagesCell.xib */,
 				180FCEE526B1359A008D28EE /* Localizable */,
 				1802693726B0180B0088B49F /* CountryCode.json */,
 				1802692826AFD5D70088B49F /* Utilities */,
@@ -578,6 +642,7 @@
 				A1519CC526A00407001738B9 /* UIViewController+Extension.swift */,
 				A1519CC326A00407001738B9 /* userDefaults+Extension.swift */,
 				189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */,
+				18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -585,6 +650,8 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18129AAD26BA617700983AFC /* CollectionPhotosView */,
+				18129AAC26BA616800983AFC /* UploadVideoAndImageCell */,
 				18BA362F26B7CA4000F83069 /* Register */,
 				18BA362E26B7BBAF00F83069 /* Common Web View */,
 				184DB31426B273330059B334 /* Home */,
@@ -941,9 +1008,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
+				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
+				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
@@ -964,11 +1034,13 @@
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
+				18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */,
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
 				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
+				18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */,
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
@@ -984,10 +1056,12 @@
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
+				18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
 				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
+				18129ABA26BA9B1700983AFC /* TruckTypeDatum.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				A1519C9026A00304001738B9 /* ViewController.swift in Sources */,
@@ -1005,7 +1079,9 @@
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
+				18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
+				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
 				189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */,
 				189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */,
 				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
@@ -1213,6 +1289,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = LNR2265795;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
@@ -1220,6 +1297,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = excellentwebworld.MyVagon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1234,6 +1312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = LNR2265795;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
@@ -1241,6 +1320,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = excellentwebworld.MyVagon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -1,13 +1,13 @@
 //
-//  ImageUploadResModel.swift
+//  LoginResModel.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 3, 2021
+//  Created on August 4, 2021
 
 import Foundation
 
-struct ImageUploadResModel : Codable {
+struct LoginResModel : Codable {
 
-        let data : Datum?
+        let data : LoginDatum?
         let message : String?
         let status : Bool?
 
@@ -19,9 +19,9 @@ struct ImageUploadResModel : Codable {
     
         init(from decoder: Decoder) throws {
                 let values = try? decoder.container(keyedBy: CodingKeys.self)
-                data = try? values?.decodeIfPresent(Datum.self, forKey: .data)
-                message = try? values?.decodeIfPresent(String.self, forKey: .message)
-                status = try? values?.decodeIfPresent(Bool.self, forKey: .status)
+                data = try values?.decodeIfPresent(LoginDatum.self, forKey: .data)
+                message = try values?.decodeIfPresent(String.self, forKey: .message)
+                status = try values?.decodeIfPresent(Bool.self, forKey: .status)
         }
 
 }

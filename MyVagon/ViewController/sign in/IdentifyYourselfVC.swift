@@ -15,7 +15,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
    var SelectedDocumentRow = 0
-    
+    var identifyYourselfViewModel = IdentifyYourselfViewModel()
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -55,7 +55,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         if textField == identityProofTF {
             
             SelectedDocumentRow = 0
-            let options = [kUTTypePDF as String, kUTTypeZipArchive  as String, kUTTypePNG as String, kUTTypeJPEG as String, kUTTypeText  as String, kUTTypePlainText as String]
+            let options = [kUTTypeJPEG as String]
             
             let documentPicker =  UIDocumentPickerViewController(documentTypes: options, in: .import)
             documentPicker.delegate = self
@@ -63,8 +63,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
             self.present(documentPicker, animated: true, completion: nil)
         } else if textField == licenceTF {
             SelectedDocumentRow = 1
-            let options = [kUTTypePDF as String, kUTTypeZipArchive  as String, kUTTypePNG as String, kUTTypeJPEG as String, kUTTypeText  as String, kUTTypePlainText as String]
-           
+            let options = [kUTTypeJPEG as String]
            
             let documentPicker =  UIDocumentPickerViewController(documentTypes: options, in: .import)
             documentPicker.delegate = self
@@ -77,21 +76,20 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
       
-        let cico = url as URL
-        print(cico)
-        print(url)
         
+        print("ATDebug :: \(url.absoluteURL)")
+       
         print(url.lastPathComponent)
         
         print(url.pathExtension)
         
         
         if SelectedDocumentRow == 0 {
-         
+            self.UploadDocument(PathURL: url.absoluteURL, DocType: .IdentityProof)
             identityProofTF.text = url.lastPathComponent
             
         } else {
-           
+            self.UploadDocument(PathURL: url.absoluteURL, DocType: .Licence)
             licenceTF.text = url.lastPathComponent
             
         }
@@ -161,5 +159,13 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
-    
+    func UploadDocument(PathURL:URL,DocType:DocumentType) {
+        var UploadFiles : [UploadMediaModel] = []
+        
+        UploadFiles.append(UploadMediaModel(mediaType: .File, forKey: "images[]", withImage: nil, fileUrl: PathURL)!)
+        
+        self.identifyYourselfViewModel.identifyYourselfVC = self
+        
+        self.identifyYourselfViewModel.WebServiceForUploadDocument(Docs: UploadFiles, DocumentType: DocType)
+    }
 }

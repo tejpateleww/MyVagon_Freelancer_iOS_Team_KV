@@ -6,10 +6,11 @@
 //
 
 import Foundation
-class ImageUploadReqModel : Encodable {
-    var images : [String]?
-    
-    enum CodingKeys: String, CodingKey {
-        case images = "images"
-    }
-}
+import UIKit
+//class ImageUploadReqModel : Encodable {
+//    var images : String?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case images = "images[]"
+//    }
+//}
