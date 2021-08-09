@@ -1,13 +1,13 @@
 //
-//  TruckTypeListingResModel.swift
+//  VerifyResModel.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 4, 2021
+//  Created on August 9, 2021
 
 import Foundation
 
-struct TruckTypeListingResModel : Codable {
+struct VerifyResModel : Codable {
 
-        let data : [TruckTypeDatum]?
+        let data : VerifyDatum?
         let message : String?
         let status : Bool?
 
@@ -19,7 +19,7 @@ struct TruckTypeListingResModel : Codable {
     
         init(from decoder: Decoder) throws {
                 let values = try? decoder.container(keyedBy: CodingKeys.self)
-                data = try values?.decodeIfPresent([TruckTypeDatum].self, forKey: .data)
+                data = try values?.decodeIfPresent(VerifyDatum.self, forKey: .data)
                 message = try values?.decodeIfPresent(String.self, forKey: .message)
                 status = try values?.decodeIfPresent(Bool.self, forKey: .status)
         }

@@ -39,6 +39,9 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
 //        locationManager.requestAlwaysAuthorization()
         
         WebServiceForTruckType()
+        WebServiceForTruckUnit()
+        WebServiceForTruckBrand()
+        WebServiceForTruckFeatures()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
             let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
             if CheckIntro {
@@ -61,6 +64,15 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     // ----------------------------------------------------
     func WebServiceForTruckType(){
         WebServiceSubClass.TruckType {_, _, _, _ in}
+    }
+    func WebServiceForTruckUnit(){
+        WebServiceSubClass.TruckUnit {_, _, _, _ in}
+    }
+    func WebServiceForTruckBrand(){
+        WebServiceSubClass.TruckBrand {_, _, _, _ in}
+    }
+    func WebServiceForTruckFeatures(){
+        WebServiceSubClass.TruckFeatures {_, _, _, _ in}
     }
     
     private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

@@ -63,12 +63,13 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     
     //    ----------------------------------------------------
     // MARK: - --------- Variables ---------
-    
+    let GeneralPicker = GeneralPickerView()
     var truckDetailsViewModel = TruckDetailsViewModel()
     
     var tabTypeSelection = Tabselect.Diesel.rawValue
     var arrImages : [String] = []
-    var arrTypes:[(String,Bool)] = [("Curtainsde",false),("Refrigerated (With Cooling)",false),("Refrigerated (Without Cooling)",false),("Flatbed Trailer",false),("Platform",false),("Canvas",false),("Tilting Trailer",false),("Container",false)]
+    var arrTypes:[(String,Bool)] = []
+    //[("Curtainsde",false),("Refrigerated (With Cooling)",false),("Refrigerated (Without Cooling)",false),("Flatbed Trailer",false),("Platform",false),("Canvas",false),("Tilting Trailer",false),("Container",false)]
     var selectedIndex = NSNotFound
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -91,7 +92,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNIBsAndDelegate()
@@ -111,7 +112,9 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             flowLayout.headerReferenceSize = CGSize(width: collectionImages.frame.width / 3, height: collectionImages.frame.height - 30)
             flowLayout.sectionHeadersPinToVisibleBounds = true
         }
+        setupDelegateForPickerView()
         setValue()
+        TextFieldTruckBrand.delegate = self
     }
     
     
@@ -119,6 +122,15 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    
+    func setupDelegateForPickerView() {
+        GeneralPicker.dataSource = self
+        GeneralPicker.delegate = self
+        
+        GeneralPicker.generalPickerDelegate = self
+    }
+    
+   
     
     func registerNIBsAndDelegate(){
        
@@ -136,9 +148,13 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     
     func setValue() {
         TextFieldTruckBrand.text = SingletonClass.sharedInstance.Reg_TruckBrand
-        TextFieldCapacity.text = SingletonClass.sharedInstance.Reg_TruckCapacity
+        TextFieldCapacity.text = SingletonClass.sharedInstance.Reg_Pallets
        
         TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.Reg_RegistrationNumber
+        
+        SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
+            arrTypes.append((element.name ?? "",false))
+        })
         
         for i in 0...arrTypes.count - 1 {
             if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].0) {
@@ -201,7 +217,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
+       // textField.resignFirstResponder()
         if textField == TextFieldVehicalPhoto {
             
            
@@ -211,7 +227,19 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             documentPicker.delegate = self
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
+        } else if textField == TextFieldTruckBrand {
+            
+            TextFieldTruckBrand.inputView = GeneralPicker
+            TextFieldTruckBrand.inputAccessoryView = GeneralPicker.toolbar
+            
+            if let DummyFirst = SingletonClass.sharedInstance.TruckBrandList?.firstIndex(where: {$0.name == TextFieldTruckBrand.text ?? ""}){
+                
+                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
+            }
+            self.GeneralPicker.reloadAllComponents()
+            
         }
+        
         
         
     }
@@ -262,7 +290,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             RegisterMainVC.viewDidLayoutSubviews()
             
              SingletonClass.sharedInstance.Reg_TruckBrand = TextFieldTruckBrand.text ?? ""
-             SingletonClass.sharedInstance.Reg_TruckCapacity = TextFieldCapacity.text ?? ""
+             SingletonClass.sharedInstance.Reg_Pallets = TextFieldCapacity.text ?? ""
            
              SingletonClass.sharedInstance.Reg_RegistrationNumber = TextFieldRegistrationNumber.text ?? ""
             
@@ -470,12 +498,12 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         self.collectionImages.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
-       
-            return 5
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+//        
+//       
+//            return 5
+//        
+//    }
     
    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -519,4 +547,46 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
     func setImg(cell:collectionPhotos,img : UIImage ){
         cell.imgPhotos.image = img
     }
+}
+extension TruckDetailVC: GeneralPickerViewDelegate {
+    
+    func didTapDone() {
+        
+                let item = SingletonClass.sharedInstance.TruckBrandList?[GeneralPicker.selectedRow(inComponent: 0)]
+                self.TextFieldTruckBrand.text = item?.name
+
+        self.TextFieldTruckBrand.resignFirstResponder()
+       
+        
+    }
+    
+    func didTapCancel() {
+        //self.endEditing(true)
+    }
+}
+extension TruckDetailVC : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+            return SingletonClass.sharedInstance.TruckBrandList?.count ?? 0
+        
+        
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        SingletonClass.sharedInstance.TruckBrandList?[row].name
+        
+        
+        
+        
+    }
+    
 }

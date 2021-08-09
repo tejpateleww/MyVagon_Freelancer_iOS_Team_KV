@@ -7,6 +7,7 @@
 
 import Foundation
 class RegisterReqModel : Encodable {
+    var device_name,device_token,device_type,app_version : String?
     var fullname,country_code,mobile_number,email,password : String?
     
     var truck_type,truck_sub_category,truck_weight,weight_unit,truck_capacity,capacity_unit : String?
@@ -16,6 +17,10 @@ class RegisterReqModel : Encodable {
     var vehicle_images,id_proof,license :[String]?
 
     enum CodingKeys: String, CodingKey {
+        case device_name = "device_name"
+        case device_token = "device_token"
+        case device_type = "device_type"
+        case app_version = "app_version"
         case fullname = "fullname"
         case country_code = "country_code"
         case mobile_number = "mobile_number"
@@ -35,5 +40,21 @@ class RegisterReqModel : Encodable {
         case vehicle_images = "vehicle_images"
         case id_proof = "id_proof"
         case license = "license"
+    }
+}
+class MobileVerifyReqModel : Encodable {
+    var mobile_number : String?
+
+    enum CodingKeys: String, CodingKey {
+        case mobile_number = "mobile_number"
+        
+    }
+}
+class EmailVerifyReqModel : Encodable {
+    var email : String?
+
+    enum CodingKeys: String, CodingKey {
+        case email = "email"
+        
     }
 }

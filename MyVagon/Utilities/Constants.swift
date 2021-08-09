@@ -28,6 +28,9 @@ var NameTotalCount = 30
 let RingtoneSoundName = "Reflection"
 let CallKitIconName = "notification_icon"
 
+
+let MaximumFileUploadSize:Double = 10.0
+
 enum DateFormatterString : String{
     case timeWithDate = "yyyy-MM-dd HH:mm:ss"
     case onlyDate = "dd-MM-yyyy"

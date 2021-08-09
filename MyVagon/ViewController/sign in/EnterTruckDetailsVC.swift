@@ -14,7 +14,7 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     
-    var UnitArray : [String] = ["Pallet","Skid"]
+    //var UnitArray : [String] = SingletonClass.sharedInstance.TruckunitList
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
     
@@ -59,14 +59,21 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
         }
         
     }
-
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
     func SetValue() {
-        truckTypeTF.text = SingletonClass.sharedInstance.Reg_TruckType
+        
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+                truckTypeTF.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
+            }
+        }
         
         truckWeightTF.text = SingletonClass.sharedInstance.Reg_TruckWeight
         truckWeightUnitTF.text = SingletonClass.sharedInstance.Reg_TruckWeightUnit
@@ -84,18 +91,20 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
         
         if textField == truckTypeTF {
             self.truckTypeTF.resignFirstResponder()
-            let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: ChooseTruckCategoryViewController.storyboardID) as! ChooseTruckCategoryViewController
-            self.navigationController?.pushViewController(controller, animated: true)
-            
-            
+        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: ChooseTruckCategoryViewController.storyboardID) as! ChooseTruckCategoryViewController
+                self.navigationController?.pushViewController(controller, animated: true)
+//            })
+          
+         
         } else if textField == truckWeightUnitTF {
             truckWeightUnitTF.inputView = GeneralPicker
             truckWeightUnitTF.inputAccessoryView = GeneralPicker.toolbar
             
-            if let DummyFirst = UnitArray.first(where: {$0 == truckWeightUnitTF.text ?? ""}) {
+            if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == truckWeightUnitTF.text ?? ""}) {
                 
-                let indexOfA = UnitArray.firstIndex(of: DummyFirst) ?? 0
-                GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
+              
+                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
                 
                 self.GeneralPicker.reloadAllComponents()
             }
@@ -104,10 +113,10 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
             cargoLoadUnitTF.inputView = GeneralPicker
             cargoLoadUnitTF.inputAccessoryView = GeneralPicker.toolbar
             
-            if let DummyFirst = UnitArray.first(where: {$0 == cargoLoadUnitTF.text ?? ""}) {
+            if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where:{$0.name == cargoLoadUnitTF.text ?? ""}) {
                 
-                let indexOfA = UnitArray.firstIndex(of: DummyFirst) ?? 0
-                GeneralPicker.selectRow(indexOfA, inComponent: 0, animated: false)
+               
+                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
                 
                 self.GeneralPicker.reloadAllComponents()
             }
@@ -130,10 +139,9 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
         
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            SingletonClass.sharedInstance.Reg_TruckType = truckTypeTF.text ?? ""
             SingletonClass.sharedInstance.Reg_TruckWeight = truckWeightTF.text ?? ""
             SingletonClass.sharedInstance.Reg_TruckWeightUnit = truckWeightUnitTF.text ?? ""
-            SingletonClass.sharedInstance.Reg_CargorLoadCapacity = truckTypeTF.text ?? ""
+            SingletonClass.sharedInstance.Reg_CargorLoadCapacity = cargoLoadCapTF.text ?? ""
             SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit = cargoLoadUnitTF.text ?? ""
             
             SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
@@ -190,12 +198,12 @@ extension EnterTruckDetailsVC: GeneralPickerViewDelegate {
     func didTapDone() {
         
         if SelectedTextField == 0 {
-            let item = UnitArray[GeneralPicker.selectedRow(inComponent: 0)]
-            self.truckWeightUnitTF.text = item
+            let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.truckWeightUnitTF.text = item?.name
             
         } else if SelectedTextField == 1 {
-            let item = UnitArray[GeneralPicker.selectedRow(inComponent: 0)]
-            self.cargoLoadUnitTF.text = item
+            let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.cargoLoadUnitTF.text = item?.name
         }
         
         
@@ -216,9 +224,9 @@ extension EnterTruckDetailsVC : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if SelectedTextField == 0 {
-            return UnitArray.count
+            return SingletonClass.sharedInstance.TruckunitList?.count ?? 0
         } else if SelectedTextField == 1 {
-            return UnitArray.count
+            return SingletonClass.sharedInstance.TruckunitList?.count ?? 0
         }
         return 0
         
@@ -232,9 +240,9 @@ extension EnterTruckDetailsVC : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if SelectedTextField == 0 {
-            return UnitArray[row]
+            return SingletonClass.sharedInstance.TruckunitList?[row].name
         } else if SelectedTextField == 1 {
-            return UnitArray[row]
+            return SingletonClass.sharedInstance.TruckunitList?[row].name
         }
         return ""
     }

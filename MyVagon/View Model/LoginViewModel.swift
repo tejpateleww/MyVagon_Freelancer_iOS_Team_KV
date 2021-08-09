@@ -11,12 +11,13 @@ class LoginViewModel {
     
     func Login(ReqModel:LoginReqModel){
         Utilities.showHud()
+//        appDel.NavigateToHome()
         WebServiceSubClass.Login(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
                 appDel.NavigateToHome()
             } else {
-                
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         })
     }

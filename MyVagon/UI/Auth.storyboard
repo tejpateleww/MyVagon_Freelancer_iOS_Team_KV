@@ -533,6 +533,8 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="BtnVerifyEmail" destination="h77-bn-4dy" id="202-ZK-1SI"/>
+                        <outlet property="BtnVerifyPhoneNumber" destination="E8W-7R-Gp2" id="Ba8-Oz-xbB"/>
                         <outlet property="TextFieldConfirmPassword" destination="PSN-Lk-1mg" id="J5R-jc-OtL"/>
                         <outlet property="TextFieldCountryCode" destination="hHp-tU-j1r" id="fwz-QR-5ou"/>
                         <outlet property="TextFieldEmail" destination="rfy-nt-uX9" id="ZWB-Y9-Y2j"/>
@@ -2476,6 +2478,7 @@
                                                     <constraint firstItem="uga-Ab-3JO" firstAttribute="leading" secondItem="hd3-M6-GUZ" secondAttribute="leading" id="Bde-op-YMd"/>
                                                     <constraint firstItem="B0W-bD-ImS" firstAttribute="trailing" secondItem="m3b-pY-5GW" secondAttribute="trailing" id="GE1-Pi-iSC"/>
                                                     <constraint firstItem="m3b-pY-5GW" firstAttribute="leading" secondItem="BMv-U2-17H" secondAttribute="leading" id="ITk-A8-Wbk"/>
+                                                    <constraint firstItem="m3b-pY-5GW" firstAttribute="trailing" secondItem="BMv-U2-17H" secondAttribute="trailing" id="JWK-o5-Chw"/>
                                                     <constraint firstItem="gxE-4G-iFm" firstAttribute="trailing" secondItem="wBq-dC-n2F" secondAttribute="trailing" id="T05-2d-isl"/>
                                                     <constraint firstItem="BMv-U2-17H" firstAttribute="leading" secondItem="hd3-M6-GUZ" secondAttribute="leading" id="TW3-Aw-HK6"/>
                                                     <constraint firstItem="wBq-dC-n2F" firstAttribute="leading" secondItem="B0W-bD-ImS" secondAttribute="leading" id="Thp-k6-7yg"/>
@@ -2484,10 +2487,9 @@
                                                     <constraint firstItem="uga-Ab-3JO" firstAttribute="top" secondItem="hd3-M6-GUZ" secondAttribute="bottom" constant="15" id="X1S-XX-53W"/>
                                                     <constraint firstItem="B0W-bD-ImS" firstAttribute="leading" secondItem="m3b-pY-5GW" secondAttribute="leading" id="Xrb-jR-0Es"/>
                                                     <constraint firstAttribute="trailing" secondItem="hd3-M6-GUZ" secondAttribute="trailing" constant="20" id="YdO-FK-2T7"/>
-                                                    <constraint firstItem="m3b-pY-5GW" firstAttribute="trailing" secondItem="BMv-U2-17H" secondAttribute="trailing" id="bDC-92-Pfh"/>
+                                                    <constraint firstItem="BMv-U2-17H" firstAttribute="trailing" secondItem="hd3-M6-GUZ" secondAttribute="trailing" id="bFA-cq-MjM"/>
                                                     <constraint firstItem="m3b-pY-5GW" firstAttribute="top" secondItem="BMv-U2-17H" secondAttribute="bottom" constant="10" id="dCQ-1H-isj"/>
                                                     <constraint firstItem="BMv-U2-17H" firstAttribute="top" secondItem="hd3-M6-GUZ" secondAttribute="bottom" constant="10" id="dCp-MF-AFR"/>
-                                                    <constraint firstItem="BMv-U2-17H" firstAttribute="trailing" secondItem="hd3-M6-GUZ" secondAttribute="trailing" id="gWL-xM-vu3"/>
                                                     <constraint firstItem="gxE-4G-iFm" firstAttribute="leading" secondItem="wBq-dC-n2F" secondAttribute="leading" id="hhg-c2-Adf"/>
                                                     <constraint firstItem="uga-Ab-3JO" firstAttribute="trailing" secondItem="hd3-M6-GUZ" secondAttribute="trailing" id="iPR-MV-4hS"/>
                                                     <constraint firstItem="m3b-pY-5GW" firstAttribute="top" secondItem="uga-Ab-3JO" secondAttribute="bottom" constant="8" id="kA4-yx-xa6"/>

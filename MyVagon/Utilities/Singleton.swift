@@ -21,20 +21,25 @@ class SingletonClass: NSObject
     static let sharedInstance = SingletonClass()
     
     var TruckTypeList : [TruckTypeDatum]?
+    var TruckBrandList : [TruckBrandsDatum]?
+    var TruckFeatureList : [TruckFeaturesDatum]?
+    var TruckunitList : [TruckUnitDatum]?
     
-    func clearSingletonClass() {
-        
+    func clearSingletonClassForRegister() {
+        UserDefault.setValue(-1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
         Reg_FullName = ""
         Reg_CountryCode = ""
         Reg_PhoneNumber = ""
         Reg_Email = ""
         Reg_Password = ""
         Reg_TruckType = ""
+        Reg_SubTruckType = ""
         Reg_TruckWeight = ""
         Reg_TruckWeightUnit = ""
         Reg_TruckLoadCapacity = ""
         Reg_TruckLoadCapacityUnit = ""
         Reg_TruckBrand = ""
+        Reg_Pallets = ""
         Reg_TruckCapacity = ""
         Reg_CargorLoadCapacity = ""
         Reg_AdditionalTypes = []
@@ -42,10 +47,13 @@ class SingletonClass: NSObject
         Reg_RegistrationNumber = ""
         Reg_VehiclePhoto = []
         Reg_vehicalPhotoName = ""
-        Reg_IdentityProofDocument = ""
+        Reg_IdentityProofDocument = []
         Reg_IdentityProofDocumentName = ""
-        LicenceDocument = ""
-        LicenceDocumentname = ""
+        Reg_LicenceDocument = []
+        Reg_LicenceDocumentname = ""
+        Reg_EmailVerified = false
+        Reg_PhoneVerified = false
+        SaveRegisterDataToUserDefault()
         
     }
     func SaveRegisterDataToUserDefault() {
@@ -55,11 +63,13 @@ class SingletonClass: NSObject
                                        "Reg_Email":Reg_Email,
                                        "Reg_Password":Reg_Password,
                                        "Reg_TruckType":Reg_TruckType,
+                                       "Reg_SubTruckType":Reg_SubTruckType,
                                        "Reg_TruckWeight":Reg_TruckWeight,
                                        "Reg_TruckWeightUnit":Reg_TruckWeightUnit,
                                        "Reg_TruckLoadCapacity":Reg_TruckLoadCapacity,
                                        "Reg_TruckLoadCapacityUnit":Reg_TruckLoadCapacityUnit,
                                        "Reg_TruckBrand":Reg_TruckBrand,
+                                       "Reg_Pallets":Reg_Pallets,
                                        "Reg_TruckCapacity":Reg_TruckCapacity,
                                        "Reg_CargorLoadCapacity":Reg_CargorLoadCapacity,
                                        "Reg_AdditionalTypes":Reg_AdditionalTypes,
@@ -69,8 +79,10 @@ class SingletonClass: NSObject
                                        "Reg_vehicalPhotoName":Reg_vehicalPhotoName,
                                        "Reg_IdentityProofDocument":Reg_IdentityProofDocument,
                                        "Reg_IdentityProofDocumentName":Reg_IdentityProofDocumentName,
-                                       "LicenceDocument":LicenceDocument,
-                                       "LicenceDocumentname":LicenceDocumentname]
+                                       "Reg_LicenceDocument":Reg_LicenceDocument,
+                                       "Reg_LicenceDocumentname":Reg_LicenceDocumentname,
+                                       "Reg_EmailVerified":Reg_EmailVerified,
+                                       "Reg_PhoneVerified":Reg_PhoneVerified]
         
         UserDefault.setValue(SaveData, forKey: UserDefaultsKey.RegisterData.rawValue)
         UserDefault.synchronize()
@@ -83,11 +95,13 @@ class SingletonClass: NSObject
             Reg_Email = SavedData["Reg_Email"] as? String ?? ""
             Reg_Password = SavedData["Reg_Password"] as? String ?? ""
             Reg_TruckType = SavedData["Reg_TruckType"] as? String ?? ""
+            Reg_SubTruckType = SavedData["Reg_SubTruckType"] as? String ?? ""
             Reg_TruckWeight = SavedData["Reg_TruckWeight"] as? String ?? ""
             Reg_TruckWeightUnit = SavedData["Reg_TruckWeightUnit"] as? String ?? ""
             Reg_TruckLoadCapacity = SavedData["Reg_TruckLoadCapacity"] as? String ?? ""
             Reg_TruckLoadCapacityUnit = SavedData["Reg_TruckLoadCapacityUnit"] as? String ?? ""
             Reg_TruckBrand = SavedData["Reg_TruckBrand"] as? String ?? ""
+            Reg_Pallets = SavedData["Reg_Pallets"] as? String ?? ""
             Reg_TruckCapacity = SavedData["Reg_TruckCapacity"] as? String ?? ""
             Reg_CargorLoadCapacity = SavedData["Reg_CargorLoadCapacity"] as? String ?? ""
             Reg_AdditionalTypes = SavedData["Reg_AdditionalTypes"] as? [String] ?? []
@@ -95,13 +109,14 @@ class SingletonClass: NSObject
             Reg_RegistrationNumber = SavedData["Reg_RegistrationNumber"] as? String ?? ""
             Reg_VehiclePhoto = SavedData["Reg_VehiclePhoto"] as? [String] ?? []
             Reg_vehicalPhotoName = SavedData["Reg_VehiclePhoto"] as? String ?? ""
-            Reg_IdentityProofDocument = SavedData["Reg_IdentityProofDocument"] as? String ?? ""
+            Reg_IdentityProofDocument = SavedData["Reg_IdentityProofDocument"] as? [String] ?? []
             Reg_IdentityProofDocumentName = SavedData["Reg_IdentityProofDocumentName"] as? String ?? ""
-            LicenceDocument = SavedData["LicenceDocument"] as? String ?? ""
-            LicenceDocumentname = SavedData["LicenceDocumentname"] as? String ?? ""
-        }
+            Reg_LicenceDocument = SavedData["Reg_LicenceDocument"] as? [String] ?? []
+            Reg_LicenceDocumentname = SavedData["Reg_LicenceDocumentname"] as? String ?? ""
+            Reg_PhoneVerified = SavedData["Reg_PhoneVerified"] as? Bool ?? false
+            Reg_EmailVerified = SavedData["Reg_EmailVerified"] as? Bool ?? false
         
-       
+        }
         
     }
     
@@ -120,6 +135,8 @@ class SingletonClass: NSObject
     
     var Reg_TruckBrand = ""
     var Reg_TruckCapacity = ""
+    var Reg_Pallets = ""
+  
     var Reg_CargorLoadCapacity = ""
     var Reg_AdditionalTypes : [String] = []
     var Reg_TruckFualType = ""
@@ -127,10 +144,13 @@ class SingletonClass: NSObject
     var Reg_VehiclePhoto : [String] = []
     var Reg_vehicalPhotoName = ""
     
-    var Reg_IdentityProofDocument = ""
+    var Reg_IdentityProofDocument : [String] = []
     var Reg_IdentityProofDocumentName = ""
     
-    var LicenceDocument = ""
-    var LicenceDocumentname = ""
+    var Reg_LicenceDocument : [String] = []
+    var Reg_LicenceDocumentname = ""
+    
+    var Reg_EmailVerified : Bool = false
+    var Reg_PhoneVerified : Bool = false
     
 }

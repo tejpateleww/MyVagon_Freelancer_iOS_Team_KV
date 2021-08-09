@@ -14,6 +14,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    var signUpViewModel = SignUpViewModel()
     var CountryCodeArray: [String] = ["+30"]
     let GeneralPicker = GeneralPickerView()
     // ----------------------------------------------------
@@ -26,6 +27,8 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var TextFieldEmail: themeTextfield!
     @IBOutlet weak var TextFieldPassword: themeTextfield!
     @IBOutlet weak var TextFieldConfirmPassword: themeTextfield!
+    @IBOutlet weak var BtnVerifyEmail: ThemeButtonVerify!
+    @IBOutlet weak var BtnVerifyPhoneNumber: ThemeButtonVerify!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -40,6 +43,9 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
         setupDelegateForPickerView()
         
         setValue()
+        
+        TextFieldEmail.delegate = self
+        TextFieldMobileNumber.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -56,10 +62,26 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
         TextFieldPassword.text = SingletonClass.sharedInstance.Reg_Password
         TextFieldConfirmPassword.text = SingletonClass.sharedInstance.Reg_Password
         
-        if SingletonClass.sharedInstance.Reg_CountryCode == "" {
-            TextFieldCountryCode.text = CountryCodeArray[0]
-        } else {
-            TextFieldCountryCode.text = SingletonClass.sharedInstance.Reg_CountryCode
+        TextFieldCountryCode.text = (SingletonClass.sharedInstance.Reg_CountryCode == "") ? CountryCodeArray[0] : SingletonClass.sharedInstance.Reg_CountryCode
+        
+        BtnVerifyEmail.isSelected = (SingletonClass.sharedInstance.Reg_EmailVerified == true) ? true : false
+        
+        BtnVerifyPhoneNumber.isSelected = (SingletonClass.sharedInstance.Reg_PhoneVerified == true) ? true : false
+        
+    }
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField == TextFieldEmail {
+            if textField.text == SingletonClass.sharedInstance.Reg_Email {
+                BtnVerifyEmail.isSelected = true
+            } else {
+                BtnVerifyEmail.isSelected = false
+            }
+        } else if textField == TextFieldMobileNumber {
+            if textField.text == SingletonClass.sharedInstance.Reg_PhoneNumber {
+                BtnVerifyPhoneNumber.isSelected = true
+            } else {
+                BtnVerifyPhoneNumber.isSelected = false
+            }
         }
     }
     func setupDelegateForPickerView() {
@@ -117,30 +139,31 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnActionEmailVerify(_ sender: UIButton) {
         if sender.isSelected == false {
-            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
            
-            controller.ClosourVerify = {
-                controller.dismiss(animated: true, completion: nil)
-                sender.isSelected = true
+            let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.email)
+            
+            if (!checkEmail.0){
+                Utilities.ShowAlertOfValidation(OfMessage: checkEmail.1)
+               
+            } else {
+                EmailVerify()
             }
-            controller.EnteredText = "Enter an otp send to \nabc@yopmail.com"
-            controller.modalPresentationStyle = .overCurrentContext
-            controller.modalTransitionStyle = .crossDissolve
-            self.present(controller, animated: true, completion: nil)
+            
+           
         }
     }
     
     @IBAction func btnActionMobileVerify(_ sender: UIButton) {
         if sender.isSelected == false {
-            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
-            controller.EnteredText = "Enter an otp send to \n+30 11122233344"
-            controller.ClosourVerify = {
-                controller.dismiss(animated: true, completion: nil)
-                sender.isSelected = true
+            let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo)
+            if (!checkMobileNumber.0){
+                Utilities.ShowAlertOfValidation(OfMessage: checkMobileNumber.1)
+                
+            } else {
+                PhoneVerify()
             }
-            controller.modalPresentationStyle = .overCurrentContext
-            controller.modalTransitionStyle = .crossDissolve
-            self.present(controller, animated: true, completion: nil)
+            
+            
         }
        
     }
@@ -201,6 +224,10 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             return (checkConfirmPassword.0,checkConfirmPassword.1)
         }else if TextFieldPassword.text != TextFieldConfirmPassword.text{
             return (false,"Password and confirm password must be same")
+        } else if !BtnVerifyPhoneNumber.isSelected {
+            return (false,"Please verify phone number")
+        } else if !BtnVerifyEmail.isSelected {
+            return (false,"Please verify email")
         }
         return (true,"")
     }
@@ -210,6 +237,25 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
+    
+    func PhoneVerify() {
+        self.signUpViewModel.freelancerDriverSignupVC3 = self
+        
+        let ReqModelForMobileVerify = MobileVerifyReqModel()
+     
+        ReqModelForMobileVerify.mobile_number = "\(TextFieldCountryCode.text ?? "")\(TextFieldMobileNumber.text ?? "")" 
+        
+        self.signUpViewModel.VerifyPhone(ReqModel: ReqModelForMobileVerify)
+    }
+    func EmailVerify() {
+        self.signUpViewModel.freelancerDriverSignupVC3 = self
+        
+        let ReqModelForEmailVerify = EmailVerifyReqModel()
+     
+        ReqModelForEmailVerify.email = TextFieldEmail.text ?? ""
+        
+        self.signUpViewModel.VerifyEmail(ReqModel: ReqModelForEmailVerify)
+    }
     
 }
 

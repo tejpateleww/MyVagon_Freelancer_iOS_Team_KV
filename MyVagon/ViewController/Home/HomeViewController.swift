@@ -79,9 +79,17 @@ class HomeViewController: BaseViewController {
         calender.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
         calender.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
         calender.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      calender.appearance.titleSelectionColor = colors.white.value
-        calender.scope = .month
+
         calender.appearance.headerDateFormat = "MMM, yyyy"
         calender.appearance.headerMinimumDissolvedAlpha = 0.0
+        calender.delegate = self
+        calender.dataSource = self
+        calender.scope = .week
+        
+        calender.weekdayHeight = 40
+        
+        calender.rowHeight = 40
+        
         view.layoutIfNeeded()
         calender.clipsToBounds = true
         calender.layer.cornerRadius = 0
@@ -115,4 +123,35 @@ class CalenderUI : FSCalendar {
         
     }
     
+}
+extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        print(date)
+    }
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.conHeightOfCalender.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
+    
+    
+//    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+//        let shouldBegin = true//self.CalenderStackView.contentOffset.y <= -self.tableView.contentInset.top
+//        if shouldBegin {
+//            let velocity = self.scopeGesture.velocity(in: self.view)
+//            switch self.Calander.scope {
+//            case .month:
+//                return velocity.y < 0
+//            case .week:
+//                return velocity.y > 0
+//            @unknown default:
+//                print("Error")
+//            }
+//        }
+//        return shouldBegin
+//    }
+    
+    
+   
 }

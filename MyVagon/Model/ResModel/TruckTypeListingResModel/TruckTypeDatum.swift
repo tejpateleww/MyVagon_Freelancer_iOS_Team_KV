@@ -53,11 +53,11 @@ struct TruckTypeCategory : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try decoder.container(keyedBy: CodingKeys.self)
-                detetedAt = try values.decodeIfPresent(String.self, forKey: .detetedAt)
-                id = try values.decodeIfPresent(Int.self, forKey: .id)
-                name = try values.decodeIfPresent(String.self, forKey: .name)
-                status = try values.decodeIfPresent(Int.self, forKey: .status)
-                truckTypeId = try values.decodeIfPresent(Int.self, forKey: .truckTypeId)
+                let values = try? decoder.container(keyedBy: CodingKeys.self)
+                detetedAt = try values?.decodeIfPresent(String.self, forKey: .detetedAt)
+                id = try values?.decodeIfPresent(Int.self, forKey: .id)
+                name = try values?.decodeIfPresent(String.self, forKey: .name)
+                status = try values?.decodeIfPresent(Int.self, forKey: .status)
+                truckTypeId = try values?.decodeIfPresent(Int.self, forKey: .truckTypeId)
         }
 }
