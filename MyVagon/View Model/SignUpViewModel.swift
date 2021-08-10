@@ -15,10 +15,11 @@ class SignUpViewModel {
         WebServiceSubClass.VerifyEmail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                
+                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
                 controller.EnteredText = "Enter an otp send to \n\(ReqModel.email ?? "")"
                 controller.OtpString = "\(response?.data?.oTP ?? 0)"
+                controller.ResendDetails = [KeyOfResend.IsFrom.rawValue:OTPFor.email.rawValue,KeyOfResend.ReqModel.rawValue:ReqModel]
                 controller.ClosourVerify = {
                     SingletonClass.sharedInstance.Reg_Email = self.freelancerDriverSignupVC3?.TextFieldEmail.text ?? ""
 
@@ -42,9 +43,11 @@ class SignUpViewModel {
         WebServiceSubClass.VerifyPhone(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
+                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
                 controller.EnteredText = "Enter an otp send to \n\(ReqModel.mobile_number ?? "")"
                 controller.OtpString = "\(response?.data?.oTP ?? 0)"
+                controller.ResendDetails = [KeyOfResend.IsFrom.rawValue:OTPFor.phoneNumber.rawValue,KeyOfResend.ReqModel.rawValue:ReqModel]
                 controller.ClosourVerify = {
                     SingletonClass.sharedInstance.Reg_PhoneNumber = self.freelancerDriverSignupVC3?.TextFieldMobileNumber.text ?? ""
                     SingletonClass.sharedInstance.Reg_PhoneVerified = true

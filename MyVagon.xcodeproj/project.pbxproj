@@ -59,6 +59,7 @@
 		189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66E26B976F400BBD5A0 /* ImageUploadResModel.swift */; };
 		189FB67126B976F400BBD5A0 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66F26B976F400BBD5A0 /* Datum.swift */; };
 		189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */; };
+		18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */; };
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
@@ -218,6 +219,7 @@
 		189FB66E26B976F400BBD5A0 /* ImageUploadResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadResModel.swift; sourceTree = "<group>"; };
 		189FB66F26B976F400BBD5A0 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadReqModel.swift; sourceTree = "<group>"; };
+		18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOTPViewModel.swift; sourceTree = "<group>"; };
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */,
 				18129AC026BAD30000983AFC /* LoginViewModel.swift */,
 				186E382626C14A9500984D40 /* SignUpViewModel.swift */,
+				18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
 				186E382726C14A9500984D40 /* SignUpViewModel.swift in Sources */,
+				18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */,
 				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
 				189FB63726B922FB00BBD5A0 /* UploadVideoAndImagesCell.swift in Sources */,
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,

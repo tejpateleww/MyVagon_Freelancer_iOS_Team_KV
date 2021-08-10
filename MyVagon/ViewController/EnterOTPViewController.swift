@@ -6,12 +6,25 @@
 //
 
 import UIKit
-
+//MARK:- ========= Enum Tab Type ======
+enum KeyOfResend: String {
+   case IsFrom
+    case ReqModel
+    
+}
+enum OTPFor: String {
+   case email
+    case phoneNumber
+    
+}
 class EnterOTPViewController: BaseViewController {
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    var ResendDetails : [String:Any] = [:]
+    
+    var enterOTPViewModel = EnterOTPViewModel()
     var EnteredText = ""
     var OtpString = "111111"
     var ClosourVerify : (() -> ())?
@@ -33,6 +46,13 @@ class EnterOTPViewController: BaseViewController {
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        StartTimer()
+    }
+    // ----------------------------------------------------
+    // MARK: - --------- Custom Methods ---------
+    // ----------------------------------------------------
+    
+    func StartTimer() {
         if OtpString != "" {
             TextFieldOTP.becomeFirstResponder()
             var secondsRemaining = 30
@@ -66,10 +86,6 @@ class EnterOTPViewController: BaseViewController {
             }
         }
     }
-    // ----------------------------------------------------
-    // MARK: - --------- Custom Methods ---------
-    // ----------------------------------------------------
-    
     func Validate() -> (Bool,String){
         if TextFieldOTP.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
                 return (false,"Please enter OTP")
@@ -90,6 +106,22 @@ class EnterOTPViewController: BaseViewController {
     @IBAction func BtnClosePopupAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    @IBAction func BtnResendOTP(_ sender: Any) {
+        if ResendDetails[KeyOfResend.IsFrom.rawValue] as? String ?? "" == OTPFor.email.rawValue {
+            let ReqModelResendEmail = ResendDetails[KeyOfResend.ReqModel.rawValue] as? EmailVerifyReqModel ?? EmailVerifyReqModel()
+            self.enterOTPViewModel.enterOTPViewController = self
+           
+            self.enterOTPViewModel.ResendOTPForEmail(ReqModel: ReqModelResendEmail)
+        } else if ResendDetails[KeyOfResend.IsFrom.rawValue] as? String ?? "" == OTPFor.phoneNumber.rawValue {
+         
+            let ReqModelResendPhoneNumber = ResendDetails[KeyOfResend.ReqModel.rawValue] as? MobileVerifyReqModel ?? MobileVerifyReqModel()
+            self.enterOTPViewModel.enterOTPViewController = self
+           
+            self.enterOTPViewModel.ResendOTPForPhoneNumber(ReqModel: ReqModelResendPhoneNumber)
+            
+            
+        }
+    }
     @IBAction func BtnVerifyAction(_ sender: Any) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
@@ -109,3 +141,4 @@ class EnterOTPViewController: BaseViewController {
     
 
 }
+

@@ -17,7 +17,7 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     //var UnitArray : [String] = SingletonClass.sharedInstance.TruckunitList
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
-    
+    var IsMoveToChooseTruck = false
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -39,7 +39,8 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "TruckType"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(TruckType), name: NSNotification.Name(rawValue: "TruckType"), object: nil)
         
         truckTypeTF.delegate = self
         truckWeightUnitTF.delegate = self
@@ -47,15 +48,17 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
         
         setupDelegateForPickerView()
         
-        
+        self.SetValue()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        IsMoveToChooseTruck = false
+        
         DispatchQueue.main.async {
-            self.SetValue()
+            
         }
         
     }
@@ -67,10 +70,22 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
+    @objc func TruckType(){
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+            
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+                
+                truckTypeTF.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
+            }
+        }
+    }
+    
     func SetValue() {
         
         if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+            
             if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+                
                 truckTypeTF.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
             }
         }
@@ -91,9 +106,14 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
         
         if textField == truckTypeTF {
             self.truckTypeTF.resignFirstResponder()
-        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+            if !IsMoveToChooseTruck {
+                IsMoveToChooseTruck = true
                 let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: ChooseTruckCategoryViewController.storyboardID) as! ChooseTruckCategoryViewController
                 self.navigationController?.pushViewController(controller, animated: true)
+            }
+          
+        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+              
 //            })
           
          

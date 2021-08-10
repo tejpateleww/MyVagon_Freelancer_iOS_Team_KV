@@ -16,8 +16,8 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
     
-    var SelectedCategoryIndex = ""
-    var SelectedSubCategoryIndex = ""
+    var SelectedCategoryIndex = 0
+    var SelectedSubCategoryIndex = 0
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -37,6 +37,17 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
         TextFieldCategory.delegate = self
         TextFieldSubCategory.delegate = self
         setupDelegateForPickerView()
+        
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+            
+            self.SelectedIndexOfCategory = IndexForTruckType
+            TextFieldCategory.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? "")"
+            
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+                
+                TextFieldSubCategory.text =  "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
+            }
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -111,11 +122,13 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     @IBAction func BtnSaveAction(_ sender: themeButton) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            SingletonClass.sharedInstance.Reg_TruckType = SelectedCategoryIndex
-            SingletonClass.sharedInstance.Reg_SubTruckType = SelectedSubCategoryIndex
+            
+            SingletonClass.sharedInstance.Reg_TruckType = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].id ?? 0)"
+            SingletonClass.sharedInstance.Reg_SubTruckType = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[SelectedSubCategoryIndex].id ?? 0)"
             
             SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
             self.navigationController?.popViewController(animated: true)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TruckType"), object: nil, userInfo: nil)
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
@@ -141,8 +154,8 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             let item = SingletonClass.sharedInstance.TruckTypeList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.TextFieldCategory.text = item?.name
             self.TextFieldSubCategory.text = ""
-            SelectedCategoryIndex = "\(item?.id ?? -1)"
-            SelectedSubCategoryIndex = ""
+            
+            SelectedSubCategoryIndex = 0
             if item?.name?.lowercased() == "other" {
                 TextFieldSubCategory.rightView?.isHidden = true
                 print("Keyboard open here")
@@ -152,11 +165,14 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             
             
         } else if SelectedTextField == 1 {
+         
             if SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?.count != 0 {
+                SelectedSubCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
                 let item =
                 SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?[GeneralPicker.selectedRow(inComponent: 0)]
+                
                 self.TextFieldSubCategory.text = item?.name
-                SelectedSubCategoryIndex = "\(item?.id ?? -1)"
+    
             }
         }
         

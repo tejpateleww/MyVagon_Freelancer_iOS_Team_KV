@@ -22,11 +22,11 @@ protocol ValidatorConvertible {
 enum ValidatorType {
     case email
     case password(field: String)
-    case username(field: String)
+    case username(field: String,MaxChar:Int)
     case requiredField(field: String)
     case Attach(field: String)
     case age
-    case phoneNo
+    case phoneNo(MinDigit: Int,MaxDigit:Int)
     case Select(field: String)
 }
 
@@ -35,10 +35,10 @@ enum VaildatorFactory {
         switch type {
         case .email: return EmailValidator()
         case .password(let fieldName): return PasswordValidator(fieldName)
-        case .username(let fieldName): return UserNameValidator(fieldName)
+        case .username(let fieldName,let maxchar): return UserNameValidator(fieldName,maxchar)
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
-        case .phoneNo: return PhoneNoValidator()
+        case .phoneNo(let MinimumDigit,let MaximumDigit): return PhoneNoValidator(MinimumDigit, MaximumDigit)
         case .Select(let fieldName): return ValueSelection(fieldName)
         case .Attach(let fieldName): return AttachSelection(fieldName)
         }
@@ -98,19 +98,20 @@ struct RequiredFieldValidator: ValidatorConvertible {
 }
 struct UserNameValidator: ValidatorConvertible {
     private let fieldName: String
-    
-    init(_ field: String) {
+    private let MaximumChar: Int
+    init(_ field: String,_ maxChar:Int) {
         fieldName = field
+        MaximumChar = maxChar
     }
     func validated(_ value: String) -> (Bool, String) {
         guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
         
-        guard value.count >= 3 else {
-            return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") must contain more than three characters").message)
+        guard value.count >= 2 else {
+            return (false,ValidationError("Please enter valid \(fieldName)").message)
             // ValidationError("Username must contain more than three characters" )
         }
-        guard value.count < 15 else {
-            return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") shoudn't contain more than 15 characters").message)
+        guard value.count < MaximumChar else {
+            return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") shoudn't contain more than \(MaximumChar) characters").message)
             // throw ValidationError("Username shoudn't conain more than 18 characters" )
         }
         
@@ -176,6 +177,7 @@ struct PasswordValidator: ValidatorConvertible {
     func validated(_ value: String)  -> (Bool,String) {
         guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
         guard value.count >= 8 else { return (false,ValidationError("Password must have at least 8 characters").message) }
+        guard value.count <= 15 else { return (false,ValidationError("Maximum 15 characters are allowed in password").message) }
         return (CheckWhiteSpaceOnBeginToEnd(value: value))
         
     }
@@ -191,14 +193,14 @@ struct PasswordValidator: ValidatorConvertible {
 struct EmailValidator: ValidatorConvertible {
     func validated(_ value: String)  -> (Bool,String) {
         if value.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            return (false, "Please enter email")
+            return (false, "Please enter email address")
         } else {
             do {
                 if try NSRegularExpression(pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$", options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
-                    return (false,ValidationError("Please enter a valid email").message)
+                    return (false,ValidationError("Please enter a valid email address").message)
                 }
             } catch {
-                return (false,ValidationError("Please enter a valid email").message)
+                return (false,ValidationError("Please enter a valid email address").message)
             }
             return (true, "")
         }
@@ -218,9 +220,22 @@ struct EmailValidator: ValidatorConvertible {
 //    }
 //}
 struct PhoneNoValidator: ValidatorConvertible {
+    private let minimumDigit: Int
+    private let maximumDigit: Int
+    init(_ MinDigit: Int,_ MaxDigit:Int) {
+        minimumDigit = MinDigit
+        maximumDigit = MaxDigit
+    }
     func validated(_ value: String) -> (Bool,String) {
         guard value != "" else {return (false,ValidationError("Please enter phone number").message)}
-        guard value.count >= 8 else { return (false,ValidationError("Please enter valid phone number").message)}
+        guard value.count >= minimumDigit else { return (false,ValidationError("Minimum \(minimumDigit) digits are required").message)}
+        guard value.count <= maximumDigit else { return (false,ValidationError("Please enter valid phone number").message)}
+        guard !value.hasAllZero() else { return (false,ValidationError("Please enter valid phone number").message)}
+       
+        
+//        guard (value.isValidPhoneNumber)() else
+//            { return (false,ValidationError("Please enter valid phone number").message)}
+        
         
         // do {
         // if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$", options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
@@ -232,4 +247,17 @@ struct PhoneNoValidator: ValidatorConvertible {
         return (true, "")
     }
 }
+extension String {
+    func hasAllZero() -> Bool {
+        
+        let mobileNumberPattern = "^0*$"
+        let mobileNumberPred = NSPredicate(format: "SELF MATCHES %@", mobileNumberPattern)
 
+        let matched = mobileNumberPred.evaluate(with: self)
+        if matched {
+           return true
+        } else {
+            return false
+        }
+    }
+}

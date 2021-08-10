@@ -155,14 +155,16 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
             arrTypes.append((element.name ?? "",false))
         })
-        
-        for i in 0...arrTypes.count - 1 {
-            if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].0) {
-                arrTypes[i].1 = true
-            } else {
-                arrTypes[i].1  = false
+        if arrTypes.count != 0 {
+            for i in 0...arrTypes.count - 1 {
+                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].0) {
+                    arrTypes[i].1 = true
+                } else {
+                    arrTypes[i].1  = false
+                }
             }
         }
+        
         arrImages = SingletonClass.sharedInstance.Reg_VehiclePhoto
         ColTypes.reloadData()
         
@@ -360,7 +362,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         } else if (!CheckRegistrationNumber.0){
             return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
         } else if arrImages.count == 0 {
-            return (false,"Please attach atlease one vehical image")
+            return (false,"Please upload vehicle photo")
         }
 //        else if (!CheckVehicalPhoto.0){
 //            return (CheckVehicalPhoto.0,CheckVehicalPhoto.1)

@@ -70,6 +70,6 @@ enum GlobalStrings : String{
     case Alert_logout = "Are you sure you want to logout ?"
 }
 enum ErrorMessages : String{
-    case Invelid_Otp = "Invalid OTP"
+    case Invelid_Otp = "Your OTP is incorrect"
 }
 

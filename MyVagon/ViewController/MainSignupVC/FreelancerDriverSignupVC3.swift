@@ -155,7 +155,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnActionMobileVerify(_ sender: UIButton) {
         if sender.isSelected == false {
-            let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo)
+            let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 15))
             if (!checkMobileNumber.0){
                 Utilities.ShowAlertOfValidation(OfMessage: checkMobileNumber.1)
                 
@@ -206,8 +206,8 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     
     func Validate() -> (Bool,String) {
-        let checkFullName = TextFieldFullName.validatedText(validationType: ValidatorType.username(field: "full name"))
-        let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo)
+        let checkFullName = TextFieldFullName.validatedText(validationType: ValidatorType.username(field: "full name",MaxChar: 70))
+        let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 15))
         let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.email)
         let checkPassword = TextFieldPassword.validatedText(validationType: ValidatorType.password(field: "password"))
         let checkConfirmPassword = TextFieldConfirmPassword.validatedText(validationType: ValidatorType.password(field: "confirm password"))
@@ -223,7 +223,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
         }else if(!checkConfirmPassword.0){
             return (checkConfirmPassword.0,checkConfirmPassword.1)
         }else if TextFieldPassword.text != TextFieldConfirmPassword.text{
-            return (false,"Password and confirm password must be same")
+            return (false,"Password and confirm password does not match")
         } else if !BtnVerifyPhoneNumber.isSelected {
             return (false,"Please verify phone number")
         } else if !BtnVerifyEmail.isSelected {

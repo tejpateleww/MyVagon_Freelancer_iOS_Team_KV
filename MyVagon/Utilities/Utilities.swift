@@ -296,6 +296,12 @@ class Utilities:NSObject{
         messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .error, TopBottom: true)
     }
     
+    class func ShowToastMessage(OfMessage : String) {
+        let messageBar = MessageBarController()
+
+        messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .success, TopBottom: true)
+    }
+    
     
     class func showAlert(_ title: String, message: String, vc: UIViewController) -> Void
     {
