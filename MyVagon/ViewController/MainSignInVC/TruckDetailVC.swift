@@ -350,15 +350,18 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     
     func Validate() -> (Bool,String) {
         
-        
         let CheckTruckBrand = TextFieldTruckBrand.validatedText(validationType: ValidatorType.Select(field: "truck brand"))
-        let CheckRegistrationNumber = TextFieldRegistrationNumber.validatedText(validationType: ValidatorType.requiredField(field: "registration number"))
+        let CheckCapacityPallets = TextFieldCapacity
+            .validatedText(validationType: ValidatorType.requiredField(field: "capacity(pallets)"))
+        let CheckRegistrationNumber = TextFieldRegistrationNumber.validatedText(validationType: ValidatorType.username(field: "registration number", MaxChar: 8))
         //let CheckVehicalPhoto = TextFieldVehicalPhoto.validatedText(validationType: ValidatorType.Attach(field: "vehical photo"))
         
         if (!CheckTruckBrand.0){
             return (CheckTruckBrand.0,CheckTruckBrand.1)
+        } else if (!CheckCapacityPallets.0){
+            return (CheckCapacityPallets.0,CheckCapacityPallets.1)
         } else if !CheckSubTypeOfTruck() {
-            return (false,"Please select other types")
+            return (false,"Please select additional features")
         } else if (!CheckRegistrationNumber.0){
             return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
         } else if arrImages.count == 0 {

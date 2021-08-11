@@ -12,7 +12,7 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-   var SelectedIndexOfCategory = -1
+ //  var SelectedIndexOfCategory = -1
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField = 0
     
@@ -40,7 +40,7 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
         
         if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
             
-            self.SelectedIndexOfCategory = IndexForTruckType
+            self.SelectedCategoryIndex = IndexForTruckType
             TextFieldCategory.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? "")"
             
             if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
@@ -150,7 +150,7 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
         
         if SelectedTextField == 0 {
             
-            SelectedIndexOfCategory = GeneralPicker.selectedRow(inComponent: 0)
+            SelectedCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
             let item = SingletonClass.sharedInstance.TruckTypeList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.TextFieldCategory.text = item?.name
             self.TextFieldSubCategory.text = ""
@@ -166,10 +166,10 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             
         } else if SelectedTextField == 1 {
          
-            if SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?.count != 0 {
+            if SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count != 0 {
                 SelectedSubCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
                 let item =
-                SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?[GeneralPicker.selectedRow(inComponent: 0)]
+                SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[GeneralPicker.selectedRow(inComponent: 0)]
                 
                 self.TextFieldSubCategory.text = item?.name
     
@@ -196,7 +196,7 @@ extension ChooseTruckCategoryViewController : UIPickerViewDelegate, UIPickerView
         if SelectedTextField == 0 {
             return SingletonClass.sharedInstance.TruckTypeList?.count ?? 0
         } else if SelectedTextField == 1 {
-            return SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?.count ?? 0
+            return SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count ?? 0
         }
         return 0
         
@@ -210,7 +210,7 @@ extension ChooseTruckCategoryViewController : UIPickerViewDelegate, UIPickerView
         if SelectedTextField == 0 {
             return SingletonClass.sharedInstance.TruckTypeList?[row].name
         } else if SelectedTextField == 1 {
-            return SingletonClass.sharedInstance.TruckTypeList?[SelectedIndexOfCategory].category?[row].name
+            return SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[row].name
         }
         return ""
         

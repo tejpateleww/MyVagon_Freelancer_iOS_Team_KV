@@ -61,6 +61,14 @@
 		189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */; };
 		18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */; };
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
+		18AF2B3426C3B3CF00E4431A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */; };
+		18AF2B3526C3B3CF00E4431A /* PickUpDropOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */; };
+		18AF2B3626C3B3CF00E4431A /* PickUpDropOffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */; };
+		18AF2B3726C3B3CF00E4431A /* HeaderOfLocationsTbl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */; };
+		18AF2B3826C3B3CF00E4431A /* HeaderOfLocationsTbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */; };
+		18AF2B3926C3B3CF00E4431A /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3126C3B3CE00E4431A /* LocationCell.swift */; };
+		18AF2B3A26C3B3CF00E4431A /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B3226C3B3CE00E4431A /* LocationCell.xib */; };
+		18AF2B3B26C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
 		18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702826BD4F8900992892 /* RegisterResModel.swift */; };
@@ -221,6 +229,14 @@
 		189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadReqModel.swift; sourceTree = "<group>"; };
 		18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOTPViewModel.swift; sourceTree = "<group>"; };
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
+		18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpDropOffCell.swift; sourceTree = "<group>"; };
+		18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpDropOffCell.xib; sourceTree = "<group>"; };
+		18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderOfLocationsTbl.xib; sourceTree = "<group>"; };
+		18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderOfLocationsTbl.swift; sourceTree = "<group>"; };
+		18AF2B3126C3B3CE00E4431A /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		18AF2B3226C3B3CE00E4431A /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLoadAllScreenVC1.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
 		18F2702826BD4F8900992892 /* RegisterResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResModel.swift; sourceTree = "<group>"; };
@@ -421,8 +437,8 @@
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				18AF2B2B26C3B3BC00E4431A /* Home */,
 				189FB63226B90F0D00BBD5A0 /* My Account */,
-				184DB31226B271E70059B334 /* HomeViewController.swift */,
 				1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */,
 				1854BFBD26B418A8005355DD /* SetNewPasswordViewController.swift */,
 			);
@@ -518,6 +534,37 @@
 				189FB66F26B976F400BBD5A0 /* Datum.swift */,
 			);
 			path = ImageUploadResModel;
+			sourceTree = "<group>";
+		};
+		18AF2B2726C3A2BC00E4431A /* MyAccount */ = {
+			isa = PBXGroup;
+			children = (
+				18AF2B2826C3A2C300E4431A /* Change Password */,
+			);
+			path = MyAccount;
+			sourceTree = "<group>";
+		};
+		18AF2B2826C3A2C300E4431A /* Change Password */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Change Password";
+			sourceTree = "<group>";
+		};
+		18AF2B2B26C3B3BC00E4431A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				184DB31226B271E70059B334 /* HomeViewController.swift */,
+				18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */,
+				18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */,
+				18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */,
+				18AF2B3126C3B3CE00E4431A /* LocationCell.swift */,
+				18AF2B3226C3B3CE00E4431A /* LocationCell.xib */,
+				18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */,
+				18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */,
+				18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 		18BA362E26B7BBAF00F83069 /* Common Web View */ = {
@@ -726,6 +773,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18AF2B2726C3A2BC00E4431A /* MyAccount */,
 				18129AAD26BA617700983AFC /* CollectionPhotosView */,
 				18129AAC26BA616800983AFC /* UploadVideoAndImageCell */,
 				18BA362F26B7CA4000F83069 /* Register */,
@@ -902,6 +950,7 @@
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
 				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				18AF2B3626C3B3CF00E4431A /* PickUpDropOffCell.xib in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
 				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
@@ -919,9 +968,11 @@
 				A14974CA26A1AB440072AF33 /* Poppins-Thin.ttf in Resources */,
 				A1519C9326A00304001738B9 /* Main.storyboard in Resources */,
 				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
+				18AF2B3A26C3B3CF00E4431A /* LocationCell.xib in Resources */,
 				8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */,
 				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
 				A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */,
+				18AF2B3726C3B3CF00E4431A /* HeaderOfLocationsTbl.xib in Resources */,
 				A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1087,6 +1138,7 @@
 				18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
+				18AF2B3B26C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
@@ -1115,6 +1167,7 @@
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
 				18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */,
+				18AF2B3426C3B3CF00E4431A /* HomeCollectionViewCell.swift in Sources */,
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
@@ -1131,6 +1184,8 @@
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
 				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
+				18AF2B3526C3B3CF00E4431A /* PickUpDropOffCell.swift in Sources */,
+				18AF2B3826C3B3CF00E4431A /* HeaderOfLocationsTbl.swift in Sources */,
 				1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */,
 				18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */,
 				18F2703626BD632300992892 /* TruckFeaturesDatum.swift in Sources */,
@@ -1143,6 +1198,7 @@
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
 				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
+				18AF2B3926C3B3CF00E4431A /* LocationCell.swift in Sources */,
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
 				18129ABA26BA9B1700983AFC /* TruckTypeDatum.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,

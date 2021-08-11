@@ -42,7 +42,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         WebServiceForTruckUnit()
         WebServiceForTruckBrand()
         WebServiceForTruckFeatures()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
             if CheckIntro {
                 appDel.NavigateToLogin()

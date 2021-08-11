@@ -11,3 +11,38 @@
 "Forgot?" = "Forgot?";
 "Email or Phone number" = "Email or Phone number";
 "Password" = "Password";
+
+
+
+//Messages
+"UrlConstant_Required" = "Required";
+"UrlConstant_Success" = "Success";
+"UrlConstant_Failed" = "Failed";
+"UrlConstant_SessionExpired" = "Your session is expired! Please login again.";
+"UrlConstant_SomethingWentWrong" = "There is some server side error, Please try again after some time!";
+"UrlConstant_NoInternetConnection" = "The Internet connection appears to be offline, Please connect to the internet.";
+"UrlConstant_RequestTimeOut" = "Poor internet connection, Check your internet connection or try again.";
+"UrlConstant_Ok" = "Ok";
+"UrlConstant_Yes" = "Yes";
+"UrlConstant_Cancel" = "Cancel";
+"UrlConstant_Settings" = "Settings";
+"UrlConstant_Logout" = "Logout";
+"UrlConstant_No" = "No";
+"UrlConstant_Retry" = "Retry";
+"UrlConstant_SelectCard" = "Select Card";
+"UrlConstant_Continue" = "Continue";
+"UrlConstant_Help" = "Help";
+"UrlConstant_Invalid" = "Invalid";
+"UrlConstant_Expiry" = "Expires";
+"UrlConstant_ValidPhoneNo" = "Please enter valid mobile number.";
+"UrlConstant_InvalidEmailMessage" = "Invalid e-mail Address.";
+"UrlConstant_AgeIsRequired" = "Age is required";
+"UrlConstant_AgeMustNumber" = "Age must be a number!";
+"UrlConstant_InvalidAgeNumber" = "Invalid age number!";
+"UrlConstant_Age18YearsOld" = "You have to be over 18 years old to user our app :)";
+"UrlConstant_RequiredVerificationCode" = "Please enter verification code";
+"UrlConstant_InvalidVerificationCode" = "Please enter valid verification code";
+"UrlConstant_LocationRequiredMessage" = "Location service is disabled. To re-enable, please go to Settings and turn on Location Service for this application.";
+"UrlConstant_LogoutMessage" = "Are you sure you want to logout?";
+"UrlConstant_EnterEmailMessage" = "Please enter email";
+"UrlConstant_InvalidCardNumber" = "Your card number is invalid";

@@ -16,6 +16,9 @@ class URLSessionRequestManager {
     static func BEARER_HEADER() -> [String:String]{
         return  APIEnvironment.headers
     }
+    static func NEW_BEARER_HEADER() -> String {
+        return "Bearer \(APIEnvironment.headers)"
+    }
     
     class func makeGetRequest<C:Codable>(urlString: String, responseModel: C.Type, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: C?,_ dataDic: Any) -> ()) {
         

@@ -68,13 +68,13 @@ class CommonWebviewVC: BaseViewController,WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        Utilities.showHud()
+        //Utilities.showHud()
     }
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        Utilities.hideHud()
+       // Utilities.hideHud()
     }
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        Utilities.hideHud()
+       // Utilities.hideHud()
     }
 
     

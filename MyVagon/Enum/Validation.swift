@@ -24,7 +24,7 @@ enum ValidatorType {
     case password(field: String)
     case username(field: String,MaxChar:Int)
     case requiredField(field: String)
-    case Attach(field: String)
+    case Upload(field: String)
     case age
     case phoneNo(MinDigit: Int,MaxDigit:Int)
     case Select(field: String)
@@ -40,7 +40,7 @@ enum VaildatorFactory {
         case .age: return AgeValidator()
         case .phoneNo(let MinimumDigit,let MaximumDigit): return PhoneNoValidator(MinimumDigit, MaximumDigit)
         case .Select(let fieldName): return ValueSelection(fieldName)
-        case .Attach(let fieldName): return AttachSelection(fieldName)
+        case .Upload(let fieldName): return UploadDocument(fieldName)
         }
     }
 }
@@ -69,7 +69,7 @@ class ValueSelection: ValidatorConvertible {
         return (true , "")
     }
 }
-class AttachSelection: ValidatorConvertible {
+class UploadDocument: ValidatorConvertible {
     private let fieldName: String
     
     init(_ field: String) {
@@ -77,7 +77,7 @@ class AttachSelection: ValidatorConvertible {
     }
     func validated(_ value: String) -> (Bool, String)
     {
-        guard value != "" else {return (false,ValidationError("Please attach \(fieldName)").message)}
+        guard value != "" else {return (false,ValidationError("Please upload \(fieldName)").message)}
         return (true , "")
     }
 }

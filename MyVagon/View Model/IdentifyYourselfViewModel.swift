@@ -39,6 +39,7 @@ class IdentifyYourselfViewModel {
         WebServiceSubClass.Register(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 SingletonClass.sharedInstance.clearSingletonClassForRegister()
                 appDel.NavigateToHome()
             } else {

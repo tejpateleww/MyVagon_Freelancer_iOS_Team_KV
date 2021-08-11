@@ -3010,6 +3010,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="BtnSetPassword" destination="bMr-bn-ot2" id="UlT-sN-bRt"/>
                         <outlet property="TextFieldConfirmPassword" destination="b5I-Ad-zli" id="pF8-Nd-UOD"/>
                         <outlet property="TextFieldCurrentPassword" destination="8td-fc-0Kt" id="4lC-w3-uDR"/>
                         <outlet property="TextFieldNewPassword" destination="8gp-kF-IRN" id="Elb-8L-pOI"/>

@@ -36,8 +36,9 @@ class themeButton: UIButton {
     @IBInspectable public var IsSubmit : Bool = false
     @IBInspectable public var IsBlack : Bool = false
     @IBInspectable public var IsUnderline : Bool = false
-    
-    
+    @IBInspectable public var IsRegualar : Bool = false
+    @IBInspectable public var CornerRadius : CGFloat = 0.0
+    @IBInspectable public var TextColor : UIColor = UIColor.white
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -49,14 +50,19 @@ class themeButton: UIButton {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.black, for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(14)
-        } else {
-            self.backgroundColor = UIColor.clear
+        } else if IsRegualar {
+            
+            self.setTitleColor(TextColor, for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(16)
+        }  else {
+            
             self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
         }
         if IsUnderline {
             self.setunderline(title: self.titleLabel?.text ?? "", color: UIColor.appColor(ThemeColor.themeButtonBlue), font: CustomFont.PoppinsMedium.returnFont(16))
         }
+        self.layer.cornerRadius = CornerRadius
         
     }
 }
@@ -800,7 +806,7 @@ class GradientView:  ViewCustomClass{
 }
 
 class themeTextfield : UITextField{
-    
+    @IBInspectable public var CornerRadius: CGFloat = 0.0
     @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
     
     @IBInspectable var rightImage: UIImage? {
@@ -846,6 +852,7 @@ class themeTextfield : UITextField{
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.layer.cornerRadius = CornerRadius
         self.borderStyle = .none
         self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
     
@@ -1171,5 +1178,58 @@ class ThemeView : UIView {
 class SeperatorView : UIView {
     override func awakeFromNib() {
         self.backgroundColor = UIColor(hexString: "#D2D2D9")
+    }
+}
+class dashedLineView : UIView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.strokeColor = UIColor.lightGray.cgColor
+            shapeLayer.lineWidth = 1
+            shapeLayer.lineDashPattern = [7, 3] // 7 is the length of dash, 3 is length of the gap.
+
+            let path = CGMutablePath()
+            path.addLines(between: [CGPoint(x: self.bounds.minX, y: self.bounds.minY), CGPoint(x: self.bounds.maxX, y: self.bounds.minY)])
+            shapeLayer.path = path
+            self.layer.addSublayer(shapeLayer)
+        }
+    
+}
+
+@IBDesignable class DottedVertical: UIView {
+
+    @IBInspectable var dotColor: UIColor = UIColor(hexString: "#9A9AA9")
+    @IBInspectable var lowerHalfOnly: Bool = false
+
+    override func draw(_ rect: CGRect) {
+
+        // say you want 8 dots, with perfect fenceposting:
+        let totalCount = 8 + 8 - 1
+        let fullHeight = bounds.size.height
+        let width = bounds.size.width
+        let itemLength = fullHeight / CGFloat(totalCount)
+
+        let path = UIBezierPath()
+
+        let beginFromTop = CGFloat(0.0)
+        let top = CGPoint(x: width/2, y: beginFromTop)
+        let bottom = CGPoint(x: width/2, y: fullHeight)
+
+        path.move(to: top)
+        path.addLine(to: bottom)
+
+        path.lineWidth = width
+        //DASHED SIMPLE LINE
+        //let dashes: [CGFloat] = [itemLength, itemLength]
+        //path.setLineDash(dashes, count: dashes.count, phase: 0)
+
+        // for ROUNDED dots, simply change to....
+        let dashes: [CGFloat] = [0.0, itemLength * 1.1]
+        path.lineCapStyle = CGLineCap.round
+        path.setLineDash(dashes, count: dashes.count, phase: 0)
+
+        dotColor.setStroke()
+        path.stroke()
     }
 }

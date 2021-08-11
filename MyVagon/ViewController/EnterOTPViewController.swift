@@ -17,7 +17,7 @@ enum OTPFor: String {
     case phoneNumber
     
 }
-class EnterOTPViewController: BaseViewController {
+class EnterOTPViewController: BaseViewController,UITextFieldDelegate {
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
@@ -43,6 +43,7 @@ class EnterOTPViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         LblEnterText.text = EnteredText
+        TextFieldOTP.delegate = self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +53,10 @@ class EnterOTPViewController: BaseViewController {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        textField.StopWrittingAtCharactorLimit(CharLimit: OtpString.count, range: range, string: string)
+    }
     func StartTimer() {
         if OtpString != "" {
             TextFieldOTP.becomeFirstResponder()
@@ -142,3 +147,15 @@ class EnterOTPViewController: BaseViewController {
 
 }
 
+extension UITextField {
+    func StopWrittingAtCharactorLimit(CharLimit:Int,range:NSRange,string:String) -> Bool {
+      
+
+           let startingLength = self.text?.count ?? 0
+           let lengthToAdd = string.count
+           let lengthToReplace =  range.length
+           let newLength = startingLength + lengthToAdd - lengthToReplace
+
+           return newLength <= CharLimit
+    }
+}

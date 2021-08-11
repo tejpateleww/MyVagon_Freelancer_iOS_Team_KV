@@ -57,8 +57,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         
         
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        //textField.resignFirstResponder()
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == identityProofTF {
             
             SelectedDocumentRow = 0
@@ -77,6 +76,11 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
         }
+        return false
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        //textField.resignFirstResponder()
+       
         
         
     }
@@ -128,8 +132,8 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     func Validate() -> (Bool,String) {
         
         
-        let CheckIdentityProof = identityProofTF.validatedText(validationType: ValidatorType.Attach(field: "identity proof"))
-        let CheckLicence = licenceTF.validatedText(validationType: ValidatorType.Attach(field: "licence"))
+        let CheckIdentityProof = identityProofTF.validatedText(validationType: ValidatorType.Upload(field: "identity proof"))
+        let CheckLicence = licenceTF.validatedText(validationType: ValidatorType.Upload(field: "licence"))
         
         
         if (!CheckIdentityProof.0){

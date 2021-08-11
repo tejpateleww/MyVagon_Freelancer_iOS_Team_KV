@@ -8,6 +8,8 @@
 import Foundation
 
 class UrlConstant{
+    
+    
     //MARK:- WebService Header Key
     static let HeaderKey = "key"
     static let XApiKey = "x-api-key"

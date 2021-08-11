@@ -11,7 +11,6 @@ class SignUpViewModel {
     
     func VerifyEmail(ReqModel:EmailVerifyReqModel){
         Utilities.showHud()
-//        appDel.NavigateToHome()
         WebServiceSubClass.VerifyEmail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
