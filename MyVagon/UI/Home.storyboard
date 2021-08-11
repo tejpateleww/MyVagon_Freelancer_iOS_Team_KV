@@ -368,13 +368,13 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6rn-bS-S3J">
-                                                <rect key="frame" x="0.0" y="73" width="414" height="180"/>
+                                                <rect key="frame" x="0.0" y="73" width="414" height="300"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-wH-1ng">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="180"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-wH-1ng">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="300"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-m9-mIC">
-                                                                <rect key="frame" x="5" y="70" width="40" height="40"/>
+                                                                <rect key="frame" x="5" y="130" width="40" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="dIa-Zp-LTM"/>
                                                                     <constraint firstAttribute="width" constant="40" id="m9h-dg-E1b"/>
@@ -393,62 +393,77 @@
                                                             <constraint firstItem="7KP-m9-mIC" firstAttribute="centerY" secondItem="DeP-wH-1ng" secondAttribute="centerY" id="xuW-Ah-jxR"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9L2-In-uWU" customClass="FSCalendar">
-                                                        <rect key="frame" x="60" y="0.0" width="294" height="180"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUg-oi-jL6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnE-vl-xfd" customClass="FSCalendar">
+                                                                <rect key="frame" x="20" y="0.0" width="374" height="300"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="300" id="Ke9-JU-mJR"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
+                                                                        <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
+                                                                        <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
+                                                                        <real key="value" value="12"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
+                                                                        <real key="value" value="30"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
+                                                                        <real key="value" value="30"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                                                        <integer key="value" value="0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
+                                                                        <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
+                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
+                                                                        <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                                                        <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
+                                                                        <real key="value" value="50"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
+                                                                        <real key="value" value="0.0"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                                        <real key="value" value="1"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="180" id="VCI-5W-Xeu"/>
+                                                            <constraint firstItem="lnE-vl-xfd" firstAttribute="top" secondItem="dUg-oi-jL6" secondAttribute="top" id="5lF-ct-hpk"/>
+                                                            <constraint firstAttribute="bottom" secondItem="lnE-vl-xfd" secondAttribute="bottom" id="EAk-eL-sO8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="lnE-vl-xfd" secondAttribute="trailing" constant="20" id="aoR-kq-nv5"/>
+                                                            <constraint firstItem="lnE-vl-xfd" firstAttribute="leading" secondItem="dUg-oi-jL6" secondAttribute="leading" constant="20" id="haf-DH-7V0"/>
                                                         </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="headerTitleColor">
-                                                                <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="weekdayTextColor">
-                                                                <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="titleTextSize">
-                                                                <real key="value" value="12"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="weekdayTextSize">
-                                                                <real key="value" value="12"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="headerHeight">
-                                                                <real key="value" value="30"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="weekdayHeight">
-                                                                <real key="value" value="30"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                                                <integer key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="titleDefaultColor">
-                                                                <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="titleTodayColor">
-                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="todaySelectionColor">
-                                                                <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                                                <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="rowHeight">
-                                                                <real key="value" value="50"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="headerTitleTextSize">
-                                                                <real key="value" value="0.0"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTz-GK-WmY">
-                                                        <rect key="frame" x="364" y="0.0" width="50" height="180"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTz-GK-WmY">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="300"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6sF-NS-eKD">
-                                                                <rect key="frame" x="5" y="70" width="40" height="40"/>
+                                                                <rect key="frame" x="5" y="130" width="40" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="40" id="BHa-o7-fNn"/>
                                                                     <constraint firstAttribute="height" constant="40" id="X4g-1S-u6i"/>
@@ -470,7 +485,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BtR-OX-leh">
-                                                <rect key="frame" x="0.0" y="268" width="414" height="52"/>
+                                                <rect key="frame" x="0.0" y="388" width="414" height="52"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Dmh-11-Ta7">
                                                         <rect key="frame" x="0.0" y="1" width="414" height="50"/>
@@ -543,7 +558,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAQ-Vy-hSt">
-                                                <rect key="frame" x="0.0" y="335" width="414" height="434"/>
+                                                <rect key="frame" x="0.0" y="455" width="414" height="314"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="STv-Pd-7wT" id="8Nt-vX-mPu"/>
@@ -573,9 +588,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="yiN-SO-wg5"/>
                     <connections>
-                        <outlet property="calender" destination="9L2-In-uWU" id="DzH-Ar-Iea"/>
+                        <outlet property="calender" destination="lnE-vl-xfd" id="JNf-Fw-MEB"/>
                         <outlet property="collectionOfHistory" destination="Dmh-11-Ta7" id="Nyk-ka-8eH"/>
-                        <outlet property="conHeightOfCalender" destination="VCI-5W-Xeu" id="n63-UN-0cW"/>
+                        <outlet property="conHeightOfCalender" destination="Ke9-JU-mJR" id="rfc-Tx-Xdp"/>
                         <outlet property="tblLocations" destination="vAQ-Vy-hSt" id="t5r-z3-IET"/>
                     </connections>
                 </viewController>

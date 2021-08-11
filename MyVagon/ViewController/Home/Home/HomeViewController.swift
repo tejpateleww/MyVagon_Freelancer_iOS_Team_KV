@@ -116,20 +116,24 @@ class HomeViewController: BaseViewController {
         calender.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
         calender.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      calender.appearance.titleSelectionColor = colors.white.value
 
-        calender.appearance.headerDateFormat = "MMM, yyyy"
+        calender.appearance.headerDateFormat = "MMMM, yyyy"
         calender.appearance.headerMinimumDissolvedAlpha = 0.0
         calender.delegate = self
         calender.dataSource = self
         calender.scope = .week
         
+       // calender.weekdayHeight = 40
         calender.weekdayHeight = 40
-        
+        calender.headerHeight = 30
         calender.rowHeight = 40
+        
+        //calender.rowHeight = 40
+        
         
         view.layoutIfNeeded()
         calender.clipsToBounds = true
-        calender.layer.cornerRadius = 0
-        calender.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        calender.layer.cornerRadius = 5
+      //  calender.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
       //  calender.createShadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 0), radius: 5, scale: true, shadowSize: 1)
         view.layoutIfNeeded()
     }

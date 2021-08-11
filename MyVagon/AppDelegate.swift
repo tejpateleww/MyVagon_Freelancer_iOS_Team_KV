@@ -178,7 +178,7 @@ class CustomTabBarVC: UITabBarController {
     func hideTabBarBorder()  {
         let tabBar = self.tabBar
         tabBar.backgroundImage = UIImage.from(color: .clear)
-        tabBar.layer.shadowColor = UIColor.black.cgColor
+//        tabBar.layer.shadowColor = UIColor.black.cgColor
        
       
     }
