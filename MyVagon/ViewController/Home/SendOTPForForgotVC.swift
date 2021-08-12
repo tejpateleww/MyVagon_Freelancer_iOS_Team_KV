@@ -13,14 +13,16 @@ class SendOTPForForgotVC: BaseViewController {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     
-    @IBOutlet weak var TextFieldEmail: themeTextfield!
+    var forgotPasswordViewModel = ForgotPasswordViewModel()
     
-    @IBOutlet weak var BtnSendOTP: themeButton!
+   
     
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
+    @IBOutlet weak var TextFieldPhone: themeTextfield!
     
+    @IBOutlet weak var BtnSendOTP: themeButton!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -47,17 +49,14 @@ class SendOTPForForgotVC: BaseViewController {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     @IBAction func BtnSendOTPAction(_ sender: themeButton) {
-        let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
-        controller.EnteredText = "Enter an otp send to \n+30 11122233344"
-        controller.ClosourVerify = {
-            controller.dismiss(animated: true, completion: nil)
-            let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SetNewPasswordViewController.storyboardID) as! SetNewPasswordViewController
-            controller.isFromForgot = true
-            self.navigationController?.pushViewController(controller, animated: true)
+        
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            CallWebservice()
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
-        controller.modalPresentationStyle = .overCurrentContext
-        controller.modalTransitionStyle = .crossDissolve
-        self.present(controller, animated: true, completion: nil)
+        
     }
     
     
@@ -65,5 +64,28 @@ class SendOTPForForgotVC: BaseViewController {
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
     
+    func CallWebservice() {
+        self.forgotPasswordViewModel.sendOTPForForgotVC = self
+        
+        let ReqModelForForgotPassword = ForgotPasswordReqModel()
+        ReqModelForForgotPassword.phone = TextFieldPhone.text ?? ""
+        
+        self.forgotPasswordViewModel.SendOTPForForgotPassword(ReqModel: ReqModelForForgotPassword)
+    }
+    
+    // ----------------------------------------------------
+    // MARK: - --------- Validations ---------
+    // ----------------------------------------------------
+    
+    func Validate() -> (Bool,String) {
+        
+        let checkMobileNumber = TextFieldPhone.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 15))
+      
+        
+        if (!checkMobileNumber.0){
+            return (checkMobileNumber.0,checkMobileNumber.1)
+        } 
+        return (true,"")
+    }
 
 }

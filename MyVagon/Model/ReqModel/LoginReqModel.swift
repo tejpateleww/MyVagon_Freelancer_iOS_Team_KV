@@ -18,3 +18,18 @@ class LoginReqModel : Encodable {
         case password = "password"
     }
 }
+class ForgotPasswordReqModel : Encodable {
+    var phone : String?
+
+    enum CodingKeys: String, CodingKey {
+        case phone = "phone"
+    }
+}
+class ResetNewPasswordReqModel : Encodable {
+    var phone,password : String?
+
+    enum CodingKeys: String, CodingKey {
+        case phone = "phone"
+        case password = "password"
+    }
+}

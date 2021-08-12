@@ -29,6 +29,9 @@
 		18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC226BAD33D00983AFC /* LoginReqModel.swift */; };
 		18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC526BAD3AB00983AFC /* LoginDatum.swift */; };
 		18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC626BAD3AB00983AFC /* LoginResModel.swift */; };
+		18289F2326C54A2F002240C3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */; };
+		18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */; };
+		18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */; };
 		184DB31126B26B540059B334 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DB31026B26B540059B334 /* Home.storyboard */; };
 		184DB31326B271E70059B334 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184DB31226B271E70059B334 /* HomeViewController.swift */; };
 		184DB31626B2C7E10059B334 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 184DB31526B2C7E10059B334 /* Popup.storyboard */; };
@@ -197,6 +200,9 @@
 		18129AC226BAD33D00983AFC /* LoginReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReqModel.swift; sourceTree = "<group>"; };
 		18129AC526BAD3AB00983AFC /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
 		18129AC626BAD3AB00983AFC /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
+		18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
+		18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralMessageResModel.swift; sourceTree = "<group>"; };
 		184DB31026B26B540059B334 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		184DB31226B271E70059B334 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		184DB31526B2C7E10059B334 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
@@ -394,6 +400,8 @@
 				18129AC026BAD30000983AFC /* LoginViewModel.swift */,
 				186E382626C14A9500984D40 /* SignUpViewModel.swift */,
 				18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */,
+				18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */,
+				18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -515,6 +523,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
 				186E382826C14B9400984D40 /* VerifyResModel */,
 				18F2703226BD632300992892 /* TruckUnitResModel */,
 				18F2702C26BD632200992892 /* TruckFeaturesResModel */,
@@ -1140,8 +1149,10 @@
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				18AF2B3B26C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
+				18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */,
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
+				18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */,
 				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
@@ -1196,6 +1207,7 @@
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
 				18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
+				18289F2326C54A2F002240C3 /* ForgotPasswordViewModel.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
 				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
 				18AF2B3926C3B3CF00E4431A /* LocationCell.swift in Sources */,

@@ -2687,13 +2687,13 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U6o-7u-5gp" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                                                         <subviews>
-                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="343-Qk-3AD" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="343-Qk-3AD" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="52" id="knA-Wm-NaA"/>
                                                                                 </constraints>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                 <connections>
                                                                                     <outlet property="delegate" destination="qpC-MV-BJk" id="mZw-HN-Cgj"/>
                                                                                 </connections>
@@ -2771,7 +2771,7 @@
                     </view>
                     <connections>
                         <outlet property="BtnSendOTP" destination="yvC-ie-sDR" id="CmI-Vl-hoz"/>
-                        <outlet property="TextFieldEmail" destination="343-Qk-3AD" id="eXs-q9-oMi"/>
+                        <outlet property="TextFieldPhone" destination="343-Qk-3AD" id="tNt-fF-tAA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Wm-bn-IOF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
