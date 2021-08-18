@@ -35,4 +35,24 @@ class RequestBodyClass{
 
         return body
     }
+    
+    class func createDataBodyForWithoutMediaRequest(withParameters params: [String: Any]?, boundary: String) -> Data {
+       
+        let lineBreak = "\r\n"
+        var body = Data()
+
+        if let parameters = params {
+            for (key, value) in parameters {
+                body.append("--\(boundary + lineBreak)")
+                body.append("Content-Disposition: form-data; name=\"\(key)\"\(lineBreak + lineBreak)")
+                let valueStr = value as? String ?? ""
+                body.append("\(valueStr + lineBreak)")
+            }
+        }
+        
+        
+        body.append("--\(boundary)--\(lineBreak)")
+        print(String(data: body, encoding: .utf8))
+        return body
+    }
 }

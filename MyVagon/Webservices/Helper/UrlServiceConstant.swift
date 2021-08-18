@@ -12,9 +12,10 @@ class UrlConstant{
     
     //MARK:- WebService Header Key
     static let HeaderKey = "key"
-    static let XApiKey = "x-api-key"
-    static let AppHostKey = "PickARide951*#*"
-    
+    static let XApiKey = "Authorization"
+    static let AppHostKey = "MyVagon"
+    static let AppAuthentication = "Content-Type"
+    static let AppAuthenticationValue = "application/json"
     static let ResponseMessage = "message"
     
     //MARK:- Message Title

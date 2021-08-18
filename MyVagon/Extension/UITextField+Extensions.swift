@@ -38,9 +38,10 @@ extension UITextField {
             if #available(iOS 14.0, *) {
                 datePicker.preferredDatePickerStyle = UIDatePickerStyle.wheels
             } else {
+                
                 // Fallback on earlier versions
             }
-        datePicker.minuteInterval = 30
+        
       
         datePicker.datePickerMode = PickerMode
         if PickerMode == .date{

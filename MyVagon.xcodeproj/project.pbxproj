@@ -19,6 +19,8 @@
 		1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802693526AFD7A60088B49F /* UIColor+Extension.swift */; };
 		1802693826B0180B0088B49F /* CountryCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 1802693726B0180B0088B49F /* CountryCode.json */; };
 		1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1802694326B023F20088B49F /* TruckDetailVC.swift */; };
+		1803810026C69F0A00DBF6F0 /* PostTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180380FF26C69F0A00DBF6F0 /* PostTruckViewController.swift */; };
+		1803810226C6A2EA00DBF6F0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1803810126C6A2EA00DBF6F0 /* NotificationViewController.swift */; };
 		180FCEE826B135C3008D28EE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 180FCEEA26B135C3008D28EE /* Localizable.strings */; };
 		18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */; };
 		18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */; };
@@ -27,8 +29,6 @@
 		18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */; };
 		18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC026BAD30000983AFC /* LoginViewModel.swift */; };
 		18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC226BAD33D00983AFC /* LoginReqModel.swift */; };
-		18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC526BAD3AB00983AFC /* LoginDatum.swift */; };
-		18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18129AC626BAD3AB00983AFC /* LoginResModel.swift */; };
 		18289F2326C54A2F002240C3 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */; };
 		18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */; };
 		18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */; };
@@ -63,17 +63,27 @@
 		189FB67126B976F400BBD5A0 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66F26B976F400BBD5A0 /* Datum.swift */; };
 		189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */; };
 		18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */; };
+		18A34EF526CCCD1E00F252B6 /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */; };
+		18A34EF626CCCD1E00F252B6 /* LoginDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */; };
+		18A34EF726CCCD1E00F252B6 /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */; };
+		18A34EF826CCCD1E00F252B6 /* LoginVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */; };
+		18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */; };
+		18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */; };
+		18A34F1D26CD1EE100F252B6 /* NoBookingTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */; };
+		18A34F1E26CD1EE100F252B6 /* BidRequestTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F1926CD1EE000F252B6 /* BidRequestTblCell.swift */; };
+		18A34F1F26CD1EE100F252B6 /* BidRequestTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F1A26CD1EE100F252B6 /* BidRequestTblCell.xib */; };
+		18A34F2726CD1F2D00F252B6 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2026CD1F2C00F252B6 /* LocationCell.swift */; };
+		18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */; };
+		18A34F2926CD1F2D00F252B6 /* HeaderOfLocationsTbl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */; };
+		18A34F2A26CD1F2D00F252B6 /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F2326CD1F2C00F252B6 /* LocationCell.xib */; };
+		18A34F2B26CD1F2D00F252B6 /* PickUpDropOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2426CD1F2C00F252B6 /* PickUpDropOffCell.swift */; };
+		18A34F2C26CD1F2D00F252B6 /* PickUpDropOffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F2526CD1F2C00F252B6 /* PickUpDropOffCell.xib */; };
+		18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2626CD1F2D00F252B6 /* HomeCollectionViewCell.swift */; };
+		18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAB0FA26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift */; };
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
-		18AF2B3426C3B3CF00E4431A /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */; };
-		18AF2B3526C3B3CF00E4431A /* PickUpDropOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */; };
-		18AF2B3626C3B3CF00E4431A /* PickUpDropOffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */; };
-		18AF2B3726C3B3CF00E4431A /* HeaderOfLocationsTbl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */; };
-		18AF2B3826C3B3CF00E4431A /* HeaderOfLocationsTbl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */; };
-		18AF2B3926C3B3CF00E4431A /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3126C3B3CE00E4431A /* LocationCell.swift */; };
-		18AF2B3A26C3B3CF00E4431A /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AF2B3226C3B3CE00E4431A /* LocationCell.xib */; };
-		18AF2B3B26C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
+		18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD7F8726CA304D007F4754 /* UIView+Extension.swift */; };
 		18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702826BD4F8900992892 /* RegisterResModel.swift */; };
 		18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702926BD4F8900992892 /* RegisterDatum.swift */; };
 		18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702D26BD632200992892 /* TruckFeaturesResModel.swift */; };
@@ -82,6 +92,7 @@
 		18F2703826BD632300992892 /* TruckBrandsDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2703126BD632200992892 /* TruckBrandsDatum.swift */; };
 		18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2703326BD632300992892 /* TruckUnitResModel.swift */; };
 		18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2703426BD632300992892 /* TruckUnitDatum.swift */; };
+		18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4013026CBEAE4002C1ABB /* MyProfileViewController.swift */; };
 		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
 		8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8455BE8026AE96FB00089B1F /* Auth.storyboard */; };
 		84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */; };
@@ -187,6 +198,8 @@
 		1802693526AFD7A60088B49F /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1802693726B0180B0088B49F /* CountryCode.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryCode.json; sourceTree = "<group>"; };
 		1802694326B023F20088B49F /* TruckDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckDetailVC.swift; sourceTree = "<group>"; };
+		180380FF26C69F0A00DBF6F0 /* PostTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckViewController.swift; sourceTree = "<group>"; };
+		1803810126C6A2EA00DBF6F0 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		180FCEE326B13523008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Main.strings; sourceTree = "<group>"; };
 		180FCEE426B13523008D28EE /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		180FCEE926B135C3008D28EE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -198,8 +211,6 @@
 		18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
 		18129AC026BAD30000983AFC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		18129AC226BAD33D00983AFC /* LoginReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReqModel.swift; sourceTree = "<group>"; };
-		18129AC526BAD3AB00983AFC /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
-		18129AC626BAD3AB00983AFC /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
 		18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewModel.swift; sourceTree = "<group>"; };
 		18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralMessageResModel.swift; sourceTree = "<group>"; };
@@ -234,17 +245,27 @@
 		189FB66F26B976F400BBD5A0 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadReqModel.swift; sourceTree = "<group>"; };
 		18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOTPViewModel.swift; sourceTree = "<group>"; };
+		18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
+		18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDevice.swift; sourceTree = "<group>"; };
+		18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
+		18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVehicle.swift; sourceTree = "<group>"; };
+		18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoBookingTblCell.xib; sourceTree = "<group>"; };
+		18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBookingTblCell.swift; sourceTree = "<group>"; };
+		18A34F1926CD1EE000F252B6 /* BidRequestTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidRequestTblCell.swift; sourceTree = "<group>"; };
+		18A34F1A26CD1EE100F252B6 /* BidRequestTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidRequestTblCell.xib; sourceTree = "<group>"; };
+		18A34F2026CD1F2C00F252B6 /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderOfLocationsTbl.swift; sourceTree = "<group>"; };
+		18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderOfLocationsTbl.xib; sourceTree = "<group>"; };
+		18A34F2326CD1F2C00F252B6 /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		18A34F2426CD1F2C00F252B6 /* PickUpDropOffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpDropOffCell.swift; sourceTree = "<group>"; };
+		18A34F2526CD1F2C00F252B6 /* PickUpDropOffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpDropOffCell.xib; sourceTree = "<group>"; };
+		18A34F2626CD1F2D00F252B6 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		18AAB0FA26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAcceptRejectPopupVC.swift; sourceTree = "<group>"; };
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
-		18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpDropOffCell.swift; sourceTree = "<group>"; };
-		18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpDropOffCell.xib; sourceTree = "<group>"; };
-		18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderOfLocationsTbl.xib; sourceTree = "<group>"; };
-		18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderOfLocationsTbl.swift; sourceTree = "<group>"; };
-		18AF2B3126C3B3CE00E4431A /* LocationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
-		18AF2B3226C3B3CE00E4431A /* LocationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
-		18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLoadAllScreenVC1.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
+		18DD7F8726CA304D007F4754 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		18F2702826BD4F8900992892 /* RegisterResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResModel.swift; sourceTree = "<group>"; };
 		18F2702926BD4F8900992892 /* RegisterDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterDatum.swift; sourceTree = "<group>"; };
 		18F2702D26BD632200992892 /* TruckFeaturesResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckFeaturesResModel.swift; sourceTree = "<group>"; };
@@ -253,6 +274,7 @@
 		18F2703126BD632200992892 /* TruckBrandsDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckBrandsDatum.swift; sourceTree = "<group>"; };
 		18F2703326BD632300992892 /* TruckUnitResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckUnitResModel.swift; sourceTree = "<group>"; };
 		18F2703426BD632300992892 /* TruckUnitDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckUnitDatum.swift; sourceTree = "<group>"; };
+		18F4013026CBEAE4002C1ABB /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		34AAF423D0FB49E1CE8AA5B9 /* Pods-MyVagon-MyVagonUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon-MyVagonUITests.release.xcconfig"; path = "Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagonTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -384,6 +406,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		180380FE26C69EF700DBF6F0 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				180380FF26C69F0A00DBF6F0 /* PostTruckViewController.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		180FCEE526B1359A008D28EE /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,18 +463,10 @@
 			path = TruckTypeListingResModel;
 			sourceTree = "<group>";
 		};
-		18129AC426BAD3AB00983AFC /* LoginResModel */ = {
-			isa = PBXGroup;
-			children = (
-				18129AC526BAD3AB00983AFC /* LoginDatum.swift */,
-				18129AC626BAD3AB00983AFC /* LoginResModel.swift */,
-			);
-			path = LoginResModel;
-			sourceTree = "<group>";
-		};
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				180380FE26C69EF700DBF6F0 /* Schedule */,
 				18AF2B2B26C3B3BC00E4431A /* Home */,
 				189FB63226B90F0D00BBD5A0 /* My Account */,
 				1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */,
@@ -466,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				189FB63026B90F0600BBD5A0 /* MyAccountViewController.swift */,
+				1803810126C6A2EA00DBF6F0 /* NotificationViewController.swift */,
 			);
 			path = "My Account";
 			sourceTree = "<group>";
@@ -523,13 +546,13 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				18A34EF026CCCD1E00F252B6 /* LoginResModel */,
 				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
 				186E382826C14B9400984D40 /* VerifyResModel */,
 				18F2703226BD632300992892 /* TruckUnitResModel */,
 				18F2702C26BD632200992892 /* TruckFeaturesResModel */,
 				18F2702F26BD632200992892 /* TruckBrandsResModel */,
 				18F2702726BD4F8900992892 /* RegisterResModel */,
-				18129AC426BAD3AB00983AFC /* LoginResModel */,
 				18129AB726BA9B1700983AFC /* TruckTypeListingResModel */,
 				189FB66D26B976F400BBD5A0 /* ImageUploadResModel */,
 			);
@@ -545,10 +568,34 @@
 			path = ImageUploadResModel;
 			sourceTree = "<group>";
 		};
+		18A34EF026CCCD1E00F252B6 /* LoginResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */,
+				18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */,
+				18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */,
+				18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */,
+			);
+			path = LoginResModel;
+			sourceTree = "<group>";
+		};
+		18A34EFB26CD1D2A00F252B6 /* ViewAllLoads */ = {
+			isa = PBXGroup;
+			children = (
+				18A34F1926CD1EE000F252B6 /* BidRequestTblCell.swift */,
+				18A34F1A26CD1EE100F252B6 /* BidRequestTblCell.xib */,
+				18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */,
+				18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */,
+				18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */,
+			);
+			path = ViewAllLoads;
+			sourceTree = "<group>";
+		};
 		18AF2B2726C3A2BC00E4431A /* MyAccount */ = {
 			isa = PBXGroup;
 			children = (
 				18AF2B2826C3A2C300E4431A /* Change Password */,
+				18F4013026CBEAE4002C1ABB /* MyProfileViewController.swift */,
 			);
 			path = MyAccount;
 			sourceTree = "<group>";
@@ -564,14 +611,13 @@
 			isa = PBXGroup;
 			children = (
 				184DB31226B271E70059B334 /* HomeViewController.swift */,
-				18AF2B3026C3B3CE00E4431A /* HeaderOfLocationsTbl.swift */,
-				18AF2B2F26C3B3CE00E4431A /* HeaderOfLocationsTbl.xib */,
-				18AF2B2C26C3B3CE00E4431A /* HomeCollectionViewCell.swift */,
-				18AF2B3126C3B3CE00E4431A /* LocationCell.swift */,
-				18AF2B3226C3B3CE00E4431A /* LocationCell.xib */,
-				18AF2B2D26C3B3CE00E4431A /* PickUpDropOffCell.swift */,
-				18AF2B2E26C3B3CE00E4431A /* PickUpDropOffCell.xib */,
-				18AF2B3326C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift */,
+				18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */,
+				18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */,
+				18A34F2626CD1F2D00F252B6 /* HomeCollectionViewCell.swift */,
+				18A34F2026CD1F2C00F252B6 /* LocationCell.swift */,
+				18A34F2326CD1F2C00F252B6 /* LocationCell.xib */,
+				18A34F2426CD1F2C00F252B6 /* PickUpDropOffCell.swift */,
+				18A34F2526CD1F2C00F252B6 /* PickUpDropOffCell.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -580,6 +626,7 @@
 			isa = PBXGroup;
 			children = (
 				18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */,
+				18AAB0FA26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift */,
 			);
 			path = "Common Web View";
 			sourceTree = "<group>";
@@ -775,6 +822,7 @@
 				A1519CC326A00407001738B9 /* userDefaults+Extension.swift */,
 				189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */,
 				18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */,
+				18DD7F8726CA304D007F4754 /* UIView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -782,6 +830,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18A34EFB26CD1D2A00F252B6 /* ViewAllLoads */,
 				18AF2B2726C3A2BC00E4431A /* MyAccount */,
 				18129AAD26BA617700983AFC /* CollectionPhotosView */,
 				18129AAC26BA616800983AFC /* UploadVideoAndImageCell */,
@@ -955,14 +1004,16 @@
 				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
 				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
+				18A34F2C26CD1F2D00F252B6 /* PickUpDropOffCell.xib in Resources */,
 				1802693826B0180B0088B49F /* CountryCode.json in Resources */,
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
 				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
-				18AF2B3626C3B3CF00E4431A /* PickUpDropOffCell.xib in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
 				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
+				18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */,
+				18A34F2A26CD1F2D00F252B6 /* LocationCell.xib in Resources */,
 				180FCEE826B135C3008D28EE /* Localizable.strings in Resources */,
 				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
@@ -972,16 +1023,16 @@
 				189FB63E26B932B100BBD5A0 /* collectionPhotos.xib in Resources */,
 				A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */,
 				A14974C226A1AB440072AF33 /* Poppins-Bold.ttf in Resources */,
+				18A34F2926CD1F2D00F252B6 /* HeaderOfLocationsTbl.xib in Resources */,
 				184DB31626B2C7E10059B334 /* Popup.storyboard in Resources */,
 				A14974C026A1AB440072AF33 /* Poppins-Italic.ttf in Resources */,
+				18A34F1F26CD1EE100F252B6 /* BidRequestTblCell.xib in Resources */,
 				A14974CA26A1AB440072AF33 /* Poppins-Thin.ttf in Resources */,
 				A1519C9326A00304001738B9 /* Main.storyboard in Resources */,
 				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
-				18AF2B3A26C3B3CF00E4431A /* LocationCell.xib in Resources */,
 				8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */,
 				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
 				A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */,
-				18AF2B3726C3B3CF00E4431A /* HeaderOfLocationsTbl.xib in Resources */,
 				A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1144,10 +1195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18129AC826BAD3AB00983AFC /* LoginResModel.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
-				18AF2B3B26C3B3CF00E4431A /* ViewLoadAllScreenVC1.swift in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */,
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
@@ -1156,12 +1205,15 @@
 				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
+				18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
 				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
+				18A34EF826CCCD1E00F252B6 /* LoginVehicle.swift in Sources */,
 				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
 				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
+				18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */,
 				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
 				1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */,
 				1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */,
@@ -1174,19 +1226,21 @@
 				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
 				189FB63726B922FB00BBD5A0 /* UploadVideoAndImagesCell.swift in Sources */,
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
+				18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
 				18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */,
-				18AF2B3426C3B3CF00E4431A /* HomeCollectionViewCell.swift in Sources */,
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
+				1803810026C69F0A00DBF6F0 /* PostTruckViewController.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
 				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
 				18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */,
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
+				18A34F1E26CD1EE100F252B6 /* BidRequestTblCell.swift in Sources */,
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
 				189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */,
 				84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */,
@@ -1195,9 +1249,8 @@
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
 				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
-				18AF2B3526C3B3CF00E4431A /* PickUpDropOffCell.swift in Sources */,
-				18AF2B3826C3B3CF00E4431A /* HeaderOfLocationsTbl.swift in Sources */,
 				1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */,
+				18A34F1D26CD1EE100F252B6 /* NoBookingTblCell.swift in Sources */,
 				18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */,
 				18F2703626BD632300992892 /* TruckFeaturesDatum.swift in Sources */,
 				1854BFBE26B418A8005355DD /* SetNewPasswordViewController.swift in Sources */,
@@ -1205,12 +1258,11 @@
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
-				18129AC726BAD3AB00983AFC /* LoginDatum.swift in Sources */,
+				18A34EF726CCCD1E00F252B6 /* LoginResModel.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				18289F2326C54A2F002240C3 /* ForgotPasswordViewModel.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
 				1802693226AFD5EE0088B49F /* ApiPaths.swift in Sources */,
-				18AF2B3926C3B3CF00E4431A /* LocationCell.swift in Sources */,
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
 				18129ABA26BA9B1700983AFC /* TruckTypeDatum.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
@@ -1225,36 +1277,44 @@
 				A1519CD126A00407001738B9 /* Extension+CLLocation.swift in Sources */,
 				84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */,
 				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
+				1803810226C6A2EA00DBF6F0 /* NotificationViewController.swift in Sources */,
+				18A34EF626CCCD1E00F252B6 /* LoginDevice.swift in Sources */,
 				189FB66526B96BF000BBD5A0 /* Webservices+Extension.swift in Sources */,
 				189FB66726B96E6A00BBD5A0 /* ConstantEnum.swift in Sources */,
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
+				18A34EF526CCCD1E00F252B6 /* LoginDatum.swift in Sources */,
 				18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
 				18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */,
 				186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */,
 				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
+				18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */,
 				189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */,
 				189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */,
+				18A34F2726CD1F2D00F252B6 /* LocationCell.swift in Sources */,
 				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
 				1854BFBC26B414A6005355DD /* SendOTPForForgotVC.swift in Sources */,
 				A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */,
 				18F2703726BD632300992892 /* TruckBrandsResModel.swift in Sources */,
 				18F2703826BD632300992892 /* TruckBrandsDatum.swift in Sources */,
 				18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */,
+				18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */,
 				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,
 				A1519CE226A01CDF001738B9 /* NavigationItems.swift in Sources */,
 				A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */,
 				189FB63426B911A400BBD5A0 /* UINavigationController+Extension.swift in Sources */,
 				189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */,
 				A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */,
+				18A34F2B26CD1F2D00F252B6 /* PickUpDropOffCell.swift in Sources */,
 				18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
 				1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */,
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
+				18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

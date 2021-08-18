@@ -94,6 +94,9 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
         case MyAccountSectionTitle.Language.StringName:
             break
         case MyAccountSectionTitle.Myprofile.StringName:
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: MyProfileViewController.storyboardID) as! MyProfileViewController
+            controller.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
             break
         case MyAccountSectionTitle.settings.StringName:
             break

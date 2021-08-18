@@ -34,6 +34,7 @@ let MaximumFileUploadSize:Double = 10.0
 enum DateFormatterString : String{
     case timeWithDate = "yyyy-MM-dd HH:mm:ss"
     case onlyDate = "dd-MM-yyyy"
+    case onlyTime = "h:mm a"
 }
 
 

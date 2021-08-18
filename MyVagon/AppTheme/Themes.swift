@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CountryPickerView
 import SkyFloatingLabelTextField
-
+import FSCalendar
 //==========================
 //MARK: ====== Button ======
 //==========================
@@ -39,6 +39,7 @@ class themeButton: UIButton {
     @IBInspectable public var IsRegualar : Bool = false
     @IBInspectable public var CornerRadius : CGFloat = 0.0
     @IBInspectable public var TextColor : UIColor = UIColor.white
+    @IBInspectable public var FontSize : CGFloat = 16.0
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -53,7 +54,7 @@ class themeButton: UIButton {
         } else if IsRegualar {
             
             self.setTitleColor(TextColor, for: .normal)
-            self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(16)
+            self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(FontSize)
         }  else {
             
             self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
@@ -808,6 +809,8 @@ class GradientView:  ViewCustomClass{
 class themeTextfield : UITextField{
     @IBInspectable public var CornerRadius: CGFloat = 0.0
     @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
+    @IBInspectable public var PlaceholderColor: UIColor = UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)
+    @IBInspectable public var FontColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     
     @IBInspectable var rightImage: UIImage? {
         didSet {
@@ -858,8 +861,8 @@ class themeTextfield : UITextField{
     
         
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
-                                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)] )
-        
+                                                        attributes: [NSAttributedString.Key.foregroundColor: PlaceholderColor] )
+        self.textColor = FontColor
     }
     
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
@@ -912,14 +915,25 @@ class themeTextfield : UITextField{
 }
 
 class ThemeViewRounded : UIView {
+    @IBInspectable public var IsCustomBorder: Bool = false
+    @IBInspectable public var borderWidth: CGFloat = 0.0
+    @IBInspectable public var CornerRadius: CGFloat = 0.0
+    @IBInspectable public var BorderColor: UIColor = .white
     override func awakeFromNib() {
         super.awakeFromNib()
+        if IsCustomBorder {
+            self.layer.borderColor = BorderColor.cgColor
+            self.layer.borderWidth = borderWidth
+            self.layer.cornerRadius = CornerRadius
+            self.clipsToBounds = true
+        } else {
+            self.layer.borderColor = UIColor.black.withAlphaComponent(0.14).cgColor
+            self.layer.borderWidth = 1
+            self.layer.cornerRadius = 0
+            self.clipsToBounds = true
         
-        self.layer.borderColor = UIColor.black.withAlphaComponent(0.14).cgColor
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 0
-        self.clipsToBounds = true
-    
+        }
+        
     }
 }
 
@@ -929,11 +943,13 @@ class themeLabel: UILabel{
     @IBInspectable public var isSemibold: Bool = false
     @IBInspectable public var isLight: Bool = false
     @IBInspectable public var isMedium: Bool = false
-    @IBInspectable public var fontColor: UIColor = .white
     @IBInspectable public var isThemeColour : Bool = false
     @IBInspectable public var is50Oppacity : Bool = false
     @IBInspectable public var is8ppacity : Bool = false
     @IBInspectable public var IsMyVagonLogo : Bool = false
+    @IBInspectable public var IsRoudned : Bool = false
+    @IBInspectable public var fontColor: UIColor = .white
+
     override func awakeFromNib() {
         super.awakeFromNib()
         if IsMyVagonLogo {
@@ -955,6 +971,9 @@ class themeLabel: UILabel{
                 self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
             }
           
+        }
+        if IsRoudned {
+            self.layer.cornerRadius = self.frame.size.height / 2
         }
         
        
@@ -1231,5 +1250,74 @@ class dashedLineView : UIView {
 
         dotColor.setStroke()
         path.stroke()
+    }
+}
+class ThemeCalender : FSCalendar {
+    override func awakeFromNib() {
+        self.backgroundColor = UIColor(hexString: "#F7F1FD")
+        //UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+//        self.frame = CGRect(x: 100, y: 0, width: self.frame.width, height: self.frame.height)
+        self.calendarHeaderView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+        self.calendarWeekdayView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+        self.appearance.todaySelectionColor = UIColor.appColor(.themeColorForButton)
+        
+        self.appearance.headerTitleColor = UIColor(hexString: "#1F1F41")
+        self.appearance.headerTitleFont = CustomFont.PoppinsRegular.returnFont(14.0)
+        self.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
+        self.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
+        self.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      self.appearance.titleSelectionColor = colors.white.value
+
+        self.appearance.headerDateFormat = "MMMM, yyyy"
+        self.appearance.headerMinimumDissolvedAlpha = 0.0
+     
+        self.scope = .week
+        self.firstWeekday = 1
+       // self.weekdayHeight = 40
+        self.weekdayHeight = 40
+        self.headerHeight = 30
+        self.rowHeight = 40
+        
+        self.clipsToBounds = true
+        self.layer.cornerRadius = 5
+    }
+}
+class MyProfileTextField : SkyFloatingLabelTextField {
+    override func awakeFromNib() {
+        self.lineColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+        self.titleColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+                self.lineHeight = 1.0
+                self.selectedTitleColor = colors.black.value
+                self.selectedLineColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+        //        self.placeHolderColor = colors.textfieldColor.value
+                self.textColor = #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1)
+                self.titleFormatter = { $0 }
+        self.titleFont = CustomFont.PoppinsRegular.returnFont(10)
+        self.font = CustomFont.PoppinsRegular.returnFont(12)
+    }
+}
+class ThemeBidRequestButton : UIButton {
+    
+    @IBInspectable var isBorderTheme : Bool = false
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        if isBorderTheme == true {
+            self.setTitleColor(hexStringToUIColor(hex: "#9B51E0"), for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(FontSize.size12.rawValue)
+            self.layer.borderWidth = 1
+            self.layer.borderColor = hexStringToUIColor(hex: "#9B51E0").cgColor
+            self.layer.cornerRadius = 10
+            self.clipsToBounds = true
+        }
+        else {
+            self.setTitleColor(hexStringToUIColor(hex: "#D56969"), for: .normal)
+            self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(FontSize.size14.rawValue)
+            self.layer.borderWidth = 1
+            self.layer.borderColor = hexStringToUIColor(hex: "#D56969").cgColor
+            self.layer.cornerRadius = 10
+            self.clipsToBounds = true
+        }
+        
     }
 }

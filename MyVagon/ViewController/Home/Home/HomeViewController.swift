@@ -19,14 +19,14 @@ class HomeViewController: BaseViewController {
     var arrSection = ["Today" , "20th March'21" , "22Th March'21"]
     var selectedIndex = 1
     
-    
+    var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
     
     @IBOutlet weak var tblLocations: UITableView!
     @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
-    @IBOutlet weak var calender: FSCalendar!
+    @IBOutlet weak var calender: ThemeCalender!
     @IBOutlet weak var collectionOfHistory: UICollectionView!
     
     
@@ -36,7 +36,9 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if self.tabBarController != nil {
+            self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
+        }
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getTblHeight(_:)), name: NSNotification.Name(NotificationKeys.KGetTblHeight), object: nil)
         tblLocations.register(UINib(nibName: "PickUpDropOffCell", bundle: nil), forCellReuseIdentifier: "PickUpDropOffCell")
@@ -54,14 +56,11 @@ class HomeViewController: BaseViewController {
         }
         // Do any additional setup after loading the view.
     }
-    
-    
     override func viewWillAppear(_ animated: Bool) {
-           
-//        tblLocations.layoutIfNeeded()
-//        tblLocations.heightAnchor.constraint(equalToConstant: tblLocations.contentSize.height).isActive = true
-       }
-
+        self.customTabBarController?.showTabBar()
+    }
+    
+ 
        override func viewWillDisappear(_ animated: Bool) {
            
            super.viewWillDisappear(true)
@@ -104,37 +103,9 @@ class HomeViewController: BaseViewController {
       //MARK:- ======== Calender Setup =======
     func configureCalendar() {
         
-        calender.backgroundColor = UIColor(hexString: "#F7F1FD")
-        //UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
-//        calender.frame = CGRect(x: 100, y: 0, width: calender.frame.width, height: calender.frame.height)
-        calender.calendarHeaderView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
-        calender.calendarWeekdayView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
-        calender.appearance.todaySelectionColor = UIColor.appColor(.themeColorForButton)
-        calender.appearance.headerTitleColor = UIColor(hexString: "#1F1F41")
-        calender.appearance.headerTitleFont = CustomFont.PoppinsRegular.returnFont(14.0)
-        calender.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
-        calender.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
-        calender.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      calender.appearance.titleSelectionColor = colors.white.value
-
-        calender.appearance.headerDateFormat = "MMMM, yyyy"
-        calender.appearance.headerMinimumDissolvedAlpha = 0.0
         calender.delegate = self
         calender.dataSource = self
-        calender.scope = .week
         
-       // calender.weekdayHeight = 40
-        calender.weekdayHeight = 40
-        calender.headerHeight = 30
-        calender.rowHeight = 40
-        
-        //calender.rowHeight = 40
-        
-        
-        view.layoutIfNeeded()
-        calender.clipsToBounds = true
-        calender.layer.cornerRadius = 5
-      //  calender.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-      //  calender.createShadow(color: .black, opacity: 0.1, offset: CGSize(width: 0, height: 0), radius: 5, scale: true, shadowSize: 1)
         view.layoutIfNeeded()
     }
     
@@ -237,14 +208,14 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width:self.collectionOfHistory.frame.width/4, height:50)
+        return CGSize(width: ((arrStatus[indexPath.row].capitalized).sizeOfString(usingFont: CustomFont.PoppinsRegular.returnFont(14)).width) + 30
+                      , height: collectionOfHistory.frame.size.height - 10)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         collectionOfHistory.reloadData()
     }
-
 }
 enum NotificationKeys : CaseIterable{
     

@@ -25,26 +25,54 @@ enum APIEnvironment : String {
         return .Development
     }
     
-   
-    
-    static var headers : [String:String]{
+    static var BearerHeader : String {
         if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
             
             if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
                 
                 if UserDefault.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
                     do {
-//                        if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
-//                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey, UrlConstant.XApiKey : Singleton.sharedInstance.UserProfilData?.xAPIKey ?? ""]
-//                        }else{
-                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
-//                        }
+                        let _ = UserDefault.getUserData()
+                        return "Bearer \(SingletonClass.sharedInstance.UserProfileData?.token ?? "")"
                     }
                 }
             }
         }
-        return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
+        return ""
     }
+    static var headers : [String:String]{
+        if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
+            if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
+                if UserDefault.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
+                    do {
+                      
+                            let _ = UserDefault.getUserData()
+                            return [UrlConstant.AppAuthentication : UrlConstant.AppAuthenticationValue, UrlConstant.XApiKey : "Bearer \(SingletonClass.sharedInstance.UserProfileData?.token ?? "")"]
+                        
+                    }
+                }
+            }                
+        }
+        return [UrlConstant.AppAuthentication : UrlConstant.AppAuthenticationValue,UrlConstant.HeaderKey : UrlConstant.AppHostKey]
+    }
+//    static var headers : [String:String]{
+//        if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
+//
+//            if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
+//
+//                if UserDefault.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
+//                    do {
+////                        if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
+////                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey, UrlConstant.XApiKey : Singleton.sharedInstance.UserProfilData?.xAPIKey ?? ""]
+////                        }else{
+//                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
+////                        }
+//                    }
+//                }
+//            }
+//        }
+//        return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
+//    }
 }
 
 enum ApiKey: String {
@@ -52,6 +80,7 @@ enum ApiKey: String {
     case Login                                  = "driver/login"
     case forgotpassword                         = "forgot/password"
     case ResetPassword                          = "password/reset"
+    case ChangePassword                         = "driver/change/password"
     
     case Register                               = "driver/register"
     case EmailVerify                            = "email/verify"

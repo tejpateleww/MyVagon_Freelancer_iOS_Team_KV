@@ -21,6 +21,20 @@ class ResetPasswordViewModel {
             }
         })
     }
+    
+    func Changepassword(ReqModel:ChangePasswordReqModel){
+       
+        
+        Utilities.showHud()
+        WebServiceSubClass.ChangePassword(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status {
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
 }
 
 

@@ -38,6 +38,9 @@ class SetNewPasswordViewController: BaseViewController {
         if isFromForgot {
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Set new password", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         } else {
+            self.TextFieldCurrentPassword.text = "asdfghjk"
+            self.TextFieldNewPassword.text = "12345678"
+            self.TextFieldConfirmPassword.text = "12345678"
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Change Password", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         }
         
@@ -84,13 +87,27 @@ class SetNewPasswordViewController: BaseViewController {
     // ----------------------------------------------------
     
     func CallWebservice() {
-        self.resetPasswordViewModel.setNewPasswordViewController =  self
+        if isFromForgot {
+            self.resetPasswordViewModel.setNewPasswordViewController =  self
+            
+            let ReqModelForResetPassword = ResetNewPasswordReqModel()
+            ReqModelForResetPassword.phone = PhoneNumber
+            ReqModelForResetPassword.password = TextFieldNewPassword.text ?? ""
+            
+            self.resetPasswordViewModel.ResetNewPassword(ReqModel: ReqModelForResetPassword)
+        } else {
+           
+            
+            self.resetPasswordViewModel.setNewPasswordViewController =  self
+
+            let ReqModelForChangePassword = ChangePasswordReqModel()
+            ReqModelForChangePassword.user_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+            ReqModelForChangePassword.old_password = TextFieldCurrentPassword.text ?? ""
+            ReqModelForChangePassword.new_password = TextFieldNewPassword.text ?? ""
+
+            self.resetPasswordViewModel.Changepassword(ReqModel: ReqModelForChangePassword)
+        }
         
-        let ReqModelForResetPassword = ResetNewPasswordReqModel()
-        ReqModelForResetPassword.phone = PhoneNumber
-        ReqModelForResetPassword.password = TextFieldNewPassword.text ?? ""
-        
-        self.resetPasswordViewModel.ResetNewPassword(ReqModel: ReqModelForResetPassword)
     }
     
     // ----------------------------------------------------
@@ -98,7 +115,12 @@ class SetNewPasswordViewController: BaseViewController {
     // ----------------------------------------------------
     
     func Validate() -> (Bool,String) {
-        
+        if !isFromForgot {
+            let CheckOldPassword = TextFieldNewPassword.validatedText(validationType: ValidatorType.password(field: "old password"))
+            if(!CheckOldPassword.0){
+                return (CheckOldPassword.0,CheckOldPassword.1)
+            }
+        }
         let checkPassword = TextFieldNewPassword.validatedText(validationType: ValidatorType.password(field: "new password"))
         let checkConfirmPassword = TextFieldConfirmPassword.validatedText(validationType: ValidatorType.password(field: "confirm new password"))
         

@@ -2630,17 +2630,17 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="575"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="R3Y-gb-9UY">
-                                                                <rect key="frame" x="20" y="239.33333333333334" width="374" height="96.333333333333343"/>
+                                                                <rect key="frame" x="20" y="200.33333333333331" width="374" height="174.33333333333331"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_forgotPassword" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-Dg-p82">
-                                                                        <rect key="frame" x="155.66666666666666" y="0.0" width="63" height="42"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_changepassword" translatesAutoresizingMaskIntoConstraints="NO" id="WEL-Dg-p82">
+                                                                        <rect key="frame" x="127" y="0.0" width="120" height="120"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" secondItem="WEL-Dg-p82" secondAttribute="height" multiplier="9:6" id="Leb-kB-pbh"/>
-                                                                            <constraint firstAttribute="height" constant="42" id="hYB-Fh-1Sv"/>
+                                                                            <constraint firstAttribute="width" secondItem="WEL-Dg-p82" secondAttribute="height" multiplier="1:1" id="Leb-kB-pbh"/>
+                                                                            <constraint firstAttribute="height" constant="120" id="hYB-Fh-1Sv"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTk-5z-zur" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="102.33333333333333" y="46.999999999999972" width="169.66666666666669" height="26.333333333333329"/>
+                                                                        <rect key="frame" x="102.33333333333333" y="124.99999999999996" width="169.66666666666669" height="26.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -2655,7 +2655,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Will send OTP on registered email or phone number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdg-5t-28Z" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="11" y="78.333333333333343" width="352.33333333333331" height="18"/>
+                                                                        <rect key="frame" x="11" y="156.33333333333334" width="352.33333333333331" height="18"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <color key="textColor" systemColor="systemGray3Color"/>
                                                                         <nil key="highlightedColor"/>
@@ -3197,7 +3197,6 @@
         <image name="ic_close" width="16" height="16"/>
         <image name="ic_dropdown" width="13.333333015441895" height="7.6666665077209473"/>
         <image name="ic_email" width="21.666666030883789" height="14.666666984558105"/>
-        <image name="ic_forgotPassword" width="236" height="148.66667175292969"/>
         <image name="ic_key" width="20" height="20"/>
         <image name="ic_phone" width="14.333333015441895" height="22.666666030883789"/>
         <image name="ic_truck_details" width="22.333333969116211" height="13.666666984558105"/>

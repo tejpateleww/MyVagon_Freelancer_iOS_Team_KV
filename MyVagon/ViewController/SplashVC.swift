@@ -33,6 +33,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let _ = UserDefault.getUserData()
         print("ATDebug :: \(UIDevice.modelName)")
         
 //        locationManager.delegate = self
@@ -43,15 +44,22 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         WebServiceForTruckBrand()
         WebServiceForTruckFeatures()
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
-            if CheckIntro {
-                appDel.NavigateToLogin()
+            let UserLogin = UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
+            if UserLogin {
                 
+                appDel.NavigateToHome()
             } else {
-                UserDefault.setValue(true, forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
-                appDel.NavigateToIntroScreen()
-                
+                let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
+                if CheckIntro {
+                    appDel.NavigateToLogin()
+                    
+                } else {
+                    UserDefault.setValue(true, forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
+                    appDel.NavigateToIntroScreen()
+                    
+                }
             }
+            
              //SignInVC
         })
         

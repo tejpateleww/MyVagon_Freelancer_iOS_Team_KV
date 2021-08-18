@@ -33,3 +33,12 @@ class ResetNewPasswordReqModel : Encodable {
         case password = "password"
     }
 }
+class ChangePasswordReqModel : Encodable {
+    var user_id,old_password,new_password : String?
+
+    enum CodingKeys: String, CodingKey {
+        case user_id = "user_id"
+        case old_password = "old_password"
+        case new_password = "new_password"
+    }
+}

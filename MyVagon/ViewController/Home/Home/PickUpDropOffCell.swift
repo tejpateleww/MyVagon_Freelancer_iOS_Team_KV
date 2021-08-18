@@ -12,11 +12,10 @@ class PickUpDropOffCell: UITableViewCell {
     //MARK:- ====== Outlets ========
     @IBOutlet weak var tblMultipleLocation: UITableView!
     @IBOutlet weak var conHeightOfTbl: NSLayoutConstraint!
-    
     @IBOutlet weak var viewContents: UIView!
     
     var tblHeight:((CGFloat)->())?
-    
+    var isFromBidRequest = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +29,10 @@ class PickUpDropOffCell: UITableViewCell {
         tblMultipleLocation.rowHeight = UITableView.automaticDimension
         tblMultipleLocation.estimatedRowHeight = 100
         tblMultipleLocation.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
+        tblMultipleLocation.register(UINib(nibName: "BidRequestTblCell", bundle: nil), forCellReuseIdentifier: "BidRequestTblCell")
+        
+        
+        
           
 //        tblMultipleLocation.register(UINib(nibName: "HeaderTblViewCell", bundle: nil), forCellReuseIdentifier: "HeaderTblViewCell")
         
@@ -105,37 +108,55 @@ class PickUpDropOffCell: UITableViewCell {
 extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
+        
         conHeightOfTbl.constant = tblMultipleLocation.contentSize.height
         print(conHeightOfTbl.constant)
+       // let TblDataDict:[String: Any] = ["TblHeight": conHeightOfTbl.constant , "indexPath" : indexPath]
+        
+        if isFromBidRequest == false {
+            
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
+           
+            cell.viewLine.isHidden = indexPath.row == 2 ? true : false
+            cell.imgLocation.image = indexPath.row == 2 ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil, userInfo: TblDataDict)
+           
+            return cell
+        }
+        else {
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "BidRequestTblCell", for: indexPath) as! BidRequestTblCell
+           
+            cell.btnBidRequest.isHidden = indexPath.row == 2 ? false : true
+            cell.conHeightOfButton.constant = cell.btnBidRequest.isHidden == false ? 40 : 0
+            cell.viewLine.isHidden = indexPath.row == 2 ? true : false
+            cell.bottomHeightBtn.constant = cell.btnBidRequest.isHidden == false ? 15 : 0
+            cell.imgLocation.image = indexPath.row == 2 ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            return cell
+        }
 
-        let TblDataDict:[String: Any] = ["TblHeight": conHeightOfTbl.constant , "indexPath" : indexPath]
-        cell.viewLine.isHidden = indexPath.row == 1 ? true : false
-        cell.imgLocation.image = indexPath.row == 1 ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-        cell
-        //NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil, userInfo: TblDataDict)
-       
-        return cell
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
+       
+            header.lblBidStatus.isHidden = !isFromBidRequest
+            header.viewStatusBid.isHidden = !isFromBidRequest
+        //header.conHeightOfViewBidStatus.constant = isFromBidRequest ? 30 : 0
+       
         return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 90
+        return isFromBidRequest == true ? 130 : 110
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    
-   
+
 }
 
 extension UITableView {

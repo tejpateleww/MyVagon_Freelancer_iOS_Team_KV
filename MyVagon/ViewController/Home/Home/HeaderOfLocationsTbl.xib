@@ -11,14 +11,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderOfLocationsTbl" customModule="MyVagon" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="502" height="144"/>
+            <rect key="frame" x="0.0" y="0.0" width="579" height="237"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ikL-gx-6UI">
-                    <rect key="frame" x="0.0" y="0.0" width="502" height="144"/>
+                    <rect key="frame" x="0.0" y="0.0" width="579" height="237"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="PMYK Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slt-ds-kj4" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="15" y="20" width="421" height="20.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="PMYK Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slt-ds-kj4" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                            <rect key="frame" x="15" y="10" width="73.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -31,14 +31,32 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-cA-vCX">
-                            <rect key="frame" x="15" y="45.5" width="372" height="93.5"/>
+                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jn8-uL-jbO">
+                            <rect key="frame" x="104" y="5" width="50" height="30.5"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FTj-nx-f8p">
-                                    <rect key="frame" x="0.0" y="0.0" width="372" height="47"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Bid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeI-FE-agM" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                    <rect key="frame" x="15" y="2" width="20" height="26.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="BeI-FE-agM" secondAttribute="bottom" constant="2" id="SHh-TY-R2F"/>
+                                <constraint firstAttribute="trailing" secondItem="BeI-FE-agM" secondAttribute="trailing" constant="15" id="axM-uN-9Qk"/>
+                                <constraint firstItem="BeI-FE-agM" firstAttribute="top" secondItem="Jn8-uL-jbO" secondAttribute="top" constant="2" id="iLI-yD-fyT"/>
+                                <constraint firstItem="BeI-FE-agM" firstAttribute="leading" secondItem="Jn8-uL-jbO" secondAttribute="leading" constant="15" id="pbx-tK-AfB"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-cA-vCX">
+                            <rect key="frame" x="15" y="40.5" width="449" height="20.5"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FTj-nx-f8p">
+                                    <rect key="frame" x="0.0" y="0.0" width="449" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#567898" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2b-wp-EAr" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="71" height="47"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="71" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -52,7 +70,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="5 Ton . 500 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4K-Zv-X1V" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                            <rect key="frame" x="81" y="0.0" width="291" height="47"/>
+                                            <rect key="frame" x="76" y="0.0" width="373" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -67,24 +85,27 @@
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="1.2 mile Deadhead : Truck With Trailer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-qf-Aj9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="47" width="372" height="46.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                            <real key="value" value="12"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                            <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </label>
                             </subviews>
                         </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 mile Deadhead : Truck With Trailer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-qf-Aj9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                            <rect key="frame" x="15" y="66" width="449" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                    <real key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                    <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KJ-IT-5UF" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="446" y="20" width="41" height="20.5"/>
+                            <rect key="frame" x="523" y="5.5" width="41" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="fcl-ha-1bB"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -99,7 +120,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
-                            <rect key="frame" x="402" y="72.5" width="100" height="40"/>
+                            <rect key="frame" x="479" y="45.5" width="100" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Bidding" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                     <rect key="frame" x="20" y="10" width="60" height="20"/>
@@ -118,20 +139,44 @@
                                 <constraint firstItem="87w-LG-xED" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="top" constant="10" id="zJi-j2-I3w"/>
                             </constraints>
                         </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Confirmtion pending" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                            <rect key="frame" x="472" y="90.5" width="99" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="yRS-aX-0rY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                    <color key="value" red="0.83529411764705885" green="0.41176470588235292" blue="0.41176470588235292" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                    <real key="value" value="12"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="leading" secondItem="slt-ds-kj4" secondAttribute="leading" id="61f-he-xfL"/>
+                        <constraint firstItem="Jn8-uL-jbO" firstAttribute="centerY" secondItem="slt-ds-kj4" secondAttribute="centerY" id="6XX-1Y-GUc"/>
                         <constraint firstItem="1KJ-IT-5UF" firstAttribute="centerY" secondItem="slt-ds-kj4" secondAttribute="centerY" id="6pQ-X9-ojR"/>
-                        <constraint firstItem="slt-ds-kj4" firstAttribute="top" secondItem="ikL-gx-6UI" secondAttribute="top" constant="20" symbolic="YES" id="RId-QL-ydV"/>
+                        <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" secondItem="ibF-qf-Aj9" secondAttribute="trailing" constant="15" id="7pd-z8-wRa"/>
+                        <constraint firstItem="Mra-rJ-9Br" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="bottom" constant="5" id="AnF-Bl-J6d"/>
+                        <constraint firstItem="Jn8-uL-jbO" firstAttribute="leading" secondItem="slt-ds-kj4" secondAttribute="trailing" constant="15.5" id="Bh2-Y5-bZ1"/>
+                        <constraint firstItem="ibF-qf-Aj9" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="leading" id="CUF-2u-Wyj"/>
+                        <constraint firstItem="ibF-qf-Aj9" firstAttribute="top" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="KsD-9T-SfX"/>
+                        <constraint firstItem="slt-ds-kj4" firstAttribute="top" secondItem="ikL-gx-6UI" secondAttribute="top" constant="10" id="VWB-DP-Gya"/>
+                        <constraint firstItem="jrR-LB-X1C" firstAttribute="top" secondItem="1KJ-IT-5UF" secondAttribute="bottom" constant="10" id="Vs0-dI-Ran"/>
                         <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="15" id="XD2-6M-MEv"/>
                         <constraint firstAttribute="trailing" secondItem="1KJ-IT-5UF" secondAttribute="trailing" constant="15" id="dDp-Sb-GhJ"/>
-                        <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="slt-ds-kj4" secondAttribute="bottom" constant="5" id="dcf-S7-luB"/>
-                        <constraint firstItem="1KJ-IT-5UF" firstAttribute="leading" secondItem="slt-ds-kj4" secondAttribute="trailing" constant="10" id="hJ0-QF-9Nz"/>
-                        <constraint firstItem="jrR-LB-X1C" firstAttribute="centerY" secondItem="ubq-cA-vCX" secondAttribute="centerY" id="iXq-Bm-296"/>
+                        <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="Jn8-uL-jbO" secondAttribute="bottom" constant="5" id="eGa-Qi-5Dt"/>
+                        <constraint firstAttribute="trailing" secondItem="Mra-rJ-9Br" secondAttribute="trailing" constant="8" id="fGf-dN-fAI"/>
+                        <constraint firstItem="Mra-rJ-9Br" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="8" id="kVh-kZ-NvE"/>
                         <constraint firstAttribute="trailing" secondItem="jrR-LB-X1C" secondAttribute="trailing" id="lwf-6N-14q"/>
+                        <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="slt-ds-kj4" secondAttribute="bottom" constant="10" id="oNA-E3-ReG"/>
                         <constraint firstItem="slt-ds-kj4" firstAttribute="leading" secondItem="ikL-gx-6UI" secondAttribute="leading" constant="15" id="oqs-ZM-jde"/>
-                        <constraint firstAttribute="bottom" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="vAc-fr-W4X"/>
                     </constraints>
                 </view>
             </subviews>
@@ -146,9 +191,11 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="headerView" destination="ikL-gx-6UI" id="Hfv-k8-6rO"/>
-                <outlet property="viewStatus" destination="jrR-LB-X1C" id="VYf-od-vKZ"/>
+                <outlet property="lblBidStatus" destination="Mra-rJ-9Br" id="wj8-7V-SxM"/>
+                <outlet property="viewStatus" destination="jrR-LB-X1C" id="8a3-pq-Z7v"/>
+                <outlet property="viewStatusBid" destination="Jn8-uL-jbO" id="gfC-mb-vCo"/>
             </connections>
-            <point key="canvasLocation" x="204.34782608695653" y="-50.892857142857139"/>
+            <point key="canvasLocation" x="258.69565217391306" y="-19.754464285714285"/>
         </view>
     </objects>
 </document>

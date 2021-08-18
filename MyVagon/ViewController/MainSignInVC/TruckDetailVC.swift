@@ -79,14 +79,14 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     @IBOutlet var btnSelection: [UIButton]!
     @IBOutlet var viewTabView: UIView!
     @IBOutlet weak var tblTypes: UITableView!
-    @IBOutlet weak var ColTypes: UICollectionView!
+   
     @IBOutlet weak var conHeightOfTbl: NSLayoutConstraint!
     
     @IBOutlet weak var TextFieldTruckBrand: themeTextfield!
     @IBOutlet weak var TextFieldVehicalPhoto: themeTextfield!
     @IBOutlet weak var TextFieldRegistrationNumber: themeTextfield!
     @IBOutlet weak var TextFieldCapacity: themeTextfield!
-    
+    @IBOutlet weak var ColTypes: UICollectionView!
     @IBOutlet weak var collectionImages: UICollectionView!
     
     // ----------------------------------------------------

@@ -11,7 +11,6 @@ class LocationCell: UITableViewCell {
 
     //MARK:-  Outlets ===
     @IBOutlet weak var viewLine: UIView!
-    
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var imgLocation: UIImageView!
     

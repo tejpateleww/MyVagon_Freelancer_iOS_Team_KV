@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 class SingletonClass: NSObject
 {
+    
+    var UserProfileData : LoginDatum?
+    var Token = ""
+    
+    
     var DeviceName = UIDevice.modelName
     var DeviceToken : String? = "1111"
     var DeviceType : String? = "ios"
@@ -141,7 +146,7 @@ class SingletonClass: NSObject
     var Reg_AdditionalTypes : [String] = []
     var Reg_TruckFualType = ""
     var Reg_RegistrationNumber = ""
-    var Reg_VehiclePhoto : [String] = []
+    var Reg_VehiclePhoto : [String] = ["1628669792.Screenshot_20210804-122500_MyVagonDriver.jpg"]
     var Reg_vehicalPhotoName = ""
     
     var Reg_IdentityProofDocument : [String] = []

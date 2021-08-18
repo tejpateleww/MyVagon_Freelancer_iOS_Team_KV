@@ -1,27 +1,25 @@
 //
 //  LoginDatum.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 4, 2021
+//  Created on August 18, 2021
 
 import Foundation
 
 struct LoginDatum : Codable {
 
         let blockStatus : String?
-        let city : Int?
+        let city : String?
         let companyName : String?
         let companyPhone : String?
-        let country : Int?
+        let country : String?
         let createdAt : String?
+        let device : LoginDevice?
         let email : String?
         let emailVerifiedAt : String?
         let emailVerify : String?
-        let facebookLink : String?
         let firstName : String?
         let id : Int?
-        let instagram : String?
         let lastName : String?
-        let linkedin : String?
         let name : String?
         let phone : String?
         let phoneVerify : String?
@@ -30,12 +28,12 @@ struct LoginDatum : Codable {
         let selfDes : String?
         let ssn : String?
         let stage : String?
-        let state : Int?
+        let state : String?
         let status : Int?
         let token : String?
-        let twitterLink : String?
         let type : String?
         let updatedAt : String?
+        let vehicle : LoginVehicle?
 
         enum CodingKeys: String, CodingKey {
                 case blockStatus = "block_status"
@@ -44,15 +42,13 @@ struct LoginDatum : Codable {
                 case companyPhone = "company_phone"
                 case country = "country"
                 case createdAt = "created_at"
+                case device = "device"
                 case email = "email"
                 case emailVerifiedAt = "email_verified_at"
                 case emailVerify = "email_verify"
-                case facebookLink = "facebook_link"
                 case firstName = "first_name"
                 case id = "id"
-                case instagram = "instagram"
                 case lastName = "last_name"
-                case linkedin = "linkedin"
                 case name = "name"
                 case phone = "phone"
                 case phoneVerify = "phone_verify"
@@ -64,28 +60,26 @@ struct LoginDatum : Codable {
                 case state = "state"
                 case status = "status"
                 case token = "token"
-                case twitterLink = "twitter_link"
                 case type = "type"
                 case updatedAt = "updated_at"
+                case vehicle = "vehicle"
         }
     
         init(from decoder: Decoder) throws {
                 let values = try? decoder.container(keyedBy: CodingKeys.self)
                 blockStatus = try values?.decodeIfPresent(String.self, forKey: .blockStatus)
-                city = try values?.decodeIfPresent(Int.self, forKey: .city)
+                city = try values?.decodeIfPresent(String.self, forKey: .city)
                 companyName = try values?.decodeIfPresent(String.self, forKey: .companyName)
                 companyPhone = try values?.decodeIfPresent(String.self, forKey: .companyPhone)
-                country = try values?.decodeIfPresent(Int.self, forKey: .country)
+                country = try values?.decodeIfPresent(String.self, forKey: .country)
                 createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
+                device = try values?.decodeIfPresent(LoginDevice.self, forKey: .device)
                 email = try values?.decodeIfPresent(String.self, forKey: .email)
                 emailVerifiedAt = try values?.decodeIfPresent(String.self, forKey: .emailVerifiedAt)
                 emailVerify = try values?.decodeIfPresent(String.self, forKey: .emailVerify)
-                facebookLink = try values?.decodeIfPresent(String.self, forKey: .facebookLink)
                 firstName = try values?.decodeIfPresent(String.self, forKey: .firstName)
                 id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                instagram = try values?.decodeIfPresent(String.self, forKey: .instagram)
                 lastName = try values?.decodeIfPresent(String.self, forKey: .lastName)
-                linkedin = try values?.decodeIfPresent(String.self, forKey: .linkedin)
                 name = try values?.decodeIfPresent(String.self, forKey: .name)
                 phone = try values?.decodeIfPresent(String.self, forKey: .phone)
                 phoneVerify = try values?.decodeIfPresent(String.self, forKey: .phoneVerify)
@@ -94,12 +88,12 @@ struct LoginDatum : Codable {
                 selfDes = try values?.decodeIfPresent(String.self, forKey: .selfDes)
                 ssn = try values?.decodeIfPresent(String.self, forKey: .ssn)
                 stage = try values?.decodeIfPresent(String.self, forKey: .stage)
-                state = try values?.decodeIfPresent(Int.self, forKey: .state)
+                state = try values?.decodeIfPresent(String.self, forKey: .state)
                 status = try values?.decodeIfPresent(Int.self, forKey: .status)
                 token = try values?.decodeIfPresent(String.self, forKey: .token)
-                twitterLink = try values?.decodeIfPresent(String.self, forKey: .twitterLink)
                 type = try values?.decodeIfPresent(String.self, forKey: .type)
                 updatedAt = try values?.decodeIfPresent(String.self, forKey: .updatedAt)
+                vehicle = try values?.decodeIfPresent(LoginVehicle.self, forKey: .vehicle)
         }
 
 }
