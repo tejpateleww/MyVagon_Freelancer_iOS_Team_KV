@@ -52,7 +52,15 @@ THE SOFTWARE.
 
 ## GoogleMaps
 
-Copyright 2021 Google
+Copyright 2019 Google
+
+## GooglePlacePicker
+
+Copyright 2019 Google
+
+## GooglePlaces
+
+Copyright 2019 Google
 
 ## IQKeyboardManagerSwift
 

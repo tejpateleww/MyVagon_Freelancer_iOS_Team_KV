@@ -1,11 +1,16 @@
 PODS:
   - CountryPickerView (3.2.0)
   - FSCalendar (2.8.2)
-  - GoogleMaps (5.0.0):
-    - GoogleMaps/Maps (= 5.0.0)
-  - GoogleMaps/Base (5.0.0)
-  - GoogleMaps/Maps (5.0.0):
+  - GoogleMaps (3.1.0):
+    - GoogleMaps/Maps (= 3.1.0)
+  - GoogleMaps/Base (3.1.0)
+  - GoogleMaps/Maps (3.1.0):
     - GoogleMaps/Base
+  - GooglePlacePicker (3.1.0):
+    - GoogleMaps (= 3.1.0)
+    - GooglePlaces (= 3.1.0)
+  - GooglePlaces (3.1.0):
+    - GoogleMaps/Base (= 3.1.0)
   - IQKeyboardManagerSwift (6.3.0)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
@@ -21,7 +26,7 @@ PODS:
 DEPENDENCIES:
   - CountryPickerView
   - FSCalendar
-  - GoogleMaps
+  - GooglePlacePicker
   - IQKeyboardManagerSwift (= 6.3.0)
   - NVActivityIndicatorView (= 4.8.0)
   - SDWebImage
@@ -33,6 +38,8 @@ SPEC REPOS:
     - CountryPickerView
     - FSCalendar
     - GoogleMaps
+    - GooglePlacePicker
+    - GooglePlaces
     - IQKeyboardManagerSwift
     - NVActivityIndicatorView
     - SDWebImage
@@ -42,13 +49,15 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   CountryPickerView: 9b093bfffb4b06a69ba6185a798cadbf863720e7
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
-  GoogleMaps: 600e5e69bdf7f4ed7cac4d6aa96c7ec08a5aa254
+  GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  GooglePlacePicker: fa975116ac202ac29822c0a79758ea1c4db5a95f
+  GooglePlaces: e874db179f2675c4f3eeda0b686b540273a578b0
   IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
 
-PODFILE CHECKSUM: 40eded3c26cec263ffd09e84852d64efeb2a3998
+PODFILE CHECKSUM: 633f361abd38d6039470b4fbd6babcac1e699bab
 
 COCOAPODS: 1.10.1

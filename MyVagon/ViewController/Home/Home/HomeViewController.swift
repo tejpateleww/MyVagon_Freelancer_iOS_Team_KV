@@ -16,7 +16,7 @@ class HomeViewController: BaseViewController {
     // ----------------------------------------------------
     var tblCellHeight = CGFloat()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
-    var arrSection = ["Today" , "20th March'21" , "22Th March'21"]
+    var arrSection = ["Today" , "20th March'21" , "22th March'21"]
     var selectedIndex = 1
     
     var customTabBarController: CustomTabBarVC?
@@ -176,17 +176,19 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
-               let label = UILabel()
-               label.frame = CGRect.init(x: 18, y: 5, width: headerView.frame.width-10, height: headerView.frame.height-10)
-               label.text = arrSection[section]
-               label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
-               label.textColor = UIColor(hexString: "#292929")
-               
-               headerView.addSubview(label)
-             
-             return headerView
-               
-        }
+        let label = UILabel()
+        label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
+        label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
+        label.text = arrSection[section]
+        label.textAlignment = .center
+        label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
+        label.textColor = UIColor(hexString: "#292929")
+        label.drawLineOnBothSides(labelWidth: label.frame.size.width, color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1))
+        headerView.addSubview(label)
+        
+        return headerView
+        
+    }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
          return 40

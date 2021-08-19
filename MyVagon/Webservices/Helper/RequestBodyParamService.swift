@@ -52,7 +52,7 @@ class RequestBodyClass{
         
         
         body.append("--\(boundary)--\(lineBreak)")
-        print(String(data: body, encoding: .utf8))
+       
         return body
     }
 }

@@ -46,9 +46,14 @@ struct AppInfo {
     
     
     //
-    static var Google_Client_Id: String {
-        return ""
+    static var Google_API_Key: String {
+        //Added api key on 4-3-21, from newly create google project for Beat, com.eww.HCProDoctor1 bundle id
+        return "AIzaSyAsK4EKl6GkGqELS8YySwoIWVjNjAwR7dg"//"AIzaSyCEprsNUdaa55kxsn8z8m-4ECirG0dL_qM"
+        
     }
+    
+    
+
 }
 
 

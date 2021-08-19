@@ -79,11 +79,23 @@
 		18A34F2B26CD1F2D00F252B6 /* PickUpDropOffCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2426CD1F2C00F252B6 /* PickUpDropOffCell.swift */; };
 		18A34F2C26CD1F2D00F252B6 /* PickUpDropOffCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F2526CD1F2C00F252B6 /* PickUpDropOffCell.xib */; };
 		18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2626CD1F2D00F252B6 /* HomeCollectionViewCell.swift */; };
+		18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F2E26CD36D300F252B6 /* UILabel+Extension.swift */; };
+		18A34F3126CD3E3200F252B6 /* FilterPickup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F3026CD3E3200F252B6 /* FilterPickup.storyboard */; };
+		18A34F3426CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F3326CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift */; };
 		18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AAB0FA26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift */; };
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
 		18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD7F8726CA304D007F4754 /* UIView+Extension.swift */; };
+		18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */; };
+		18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */; };
+		18F1B7B326CE399A0071FC21 /* PostAvailabilityResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7B126CE399A0071FC21 /* PostAvailabilityResModel.swift */; };
+		18F1B7B426CE399A0071FC21 /* PostAvailabilityDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7B226CE399A0071FC21 /* PostAvailabilityDatum.swift */; };
+		18F1B7B726CE4B740071FC21 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7B626CE4B740071FC21 /* SettingVC.swift */; };
+		18F1B7B926CE69350071FC21 /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7B826CE69350071FC21 /* SettingViewModel.swift */; };
+		18F1B7BB26CE695C0071FC21 /* SettingReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7BA26CE695C0071FC21 /* SettingReqModel.swift */; };
+		18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7BD26CE6C730071FC21 /* SettingsResModel.swift */; };
+		18F1B7C026CE6C730071FC21 /* SettingsDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7BE26CE6C730071FC21 /* SettingsDatum.swift */; };
 		18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702826BD4F8900992892 /* RegisterResModel.swift */; };
 		18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702926BD4F8900992892 /* RegisterDatum.swift */; };
 		18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F2702D26BD632200992892 /* TruckFeaturesResModel.swift */; };
@@ -261,11 +273,23 @@
 		18A34F2426CD1F2C00F252B6 /* PickUpDropOffCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickUpDropOffCell.swift; sourceTree = "<group>"; };
 		18A34F2526CD1F2C00F252B6 /* PickUpDropOffCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PickUpDropOffCell.xib; sourceTree = "<group>"; };
 		18A34F2626CD1F2D00F252B6 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		18A34F2E26CD36D300F252B6 /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		18A34F3026CD3E3200F252B6 /* FilterPickup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterPickup.storyboard; sourceTree = "<group>"; };
+		18A34F3326CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickupDatePopupViewController.swift; sourceTree = "<group>"; };
 		18AAB0FA26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAcceptRejectPopupVC.swift; sourceTree = "<group>"; };
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
 		18DD7F8726CA304D007F4754 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckViewModel.swift; sourceTree = "<group>"; };
+		18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckReqModel.swift; sourceTree = "<group>"; };
+		18F1B7B126CE399A0071FC21 /* PostAvailabilityResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAvailabilityResModel.swift; sourceTree = "<group>"; };
+		18F1B7B226CE399A0071FC21 /* PostAvailabilityDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAvailabilityDatum.swift; sourceTree = "<group>"; };
+		18F1B7B626CE4B740071FC21 /* SettingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		18F1B7B826CE69350071FC21 /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		18F1B7BA26CE695C0071FC21 /* SettingReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingReqModel.swift; sourceTree = "<group>"; };
+		18F1B7BD26CE6C730071FC21 /* SettingsResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsResModel.swift; sourceTree = "<group>"; };
+		18F1B7BE26CE6C730071FC21 /* SettingsDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDatum.swift; sourceTree = "<group>"; };
 		18F2702826BD4F8900992892 /* RegisterResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterResModel.swift; sourceTree = "<group>"; };
 		18F2702926BD4F8900992892 /* RegisterDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterDatum.swift; sourceTree = "<group>"; };
 		18F2702D26BD632200992892 /* TruckFeaturesResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TruckFeaturesResModel.swift; sourceTree = "<group>"; };
@@ -432,6 +456,8 @@
 				18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */,
 				18289F2226C54A2F002240C3 /* ForgotPasswordViewModel.swift */,
 				18289F2426C55603002240C3 /* ResetPasswordViewModel.swift */,
+				18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */,
+				18F1B7B826CE69350071FC21 /* SettingViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -466,6 +492,7 @@
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				18A34F3226CD3F0900F252B6 /* FilterPickup */,
 				180380FE26C69EF700DBF6F0 /* Schedule */,
 				18AF2B2B26C3B3BC00E4431A /* Home */,
 				189FB63226B90F0D00BBD5A0 /* My Account */,
@@ -539,6 +566,8 @@
 				189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */,
 				189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */,
 				18129AC226BAD33D00983AFC /* LoginReqModel.swift */,
+				18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */,
+				18F1B7BA26CE695C0071FC21 /* SettingReqModel.swift */,
 			);
 			path = ReqModel;
 			sourceTree = "<group>";
@@ -546,6 +575,8 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				18F1B7BC26CE6C730071FC21 /* SettingsResModel */,
+				18F1B7B026CE399A0071FC21 /* PostAvailabilityResModel */,
 				18A34EF026CCCD1E00F252B6 /* LoginResModel */,
 				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
 				186E382826C14B9400984D40 /* VerifyResModel */,
@@ -589,6 +620,14 @@
 				18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */,
 			);
 			path = ViewAllLoads;
+			sourceTree = "<group>";
+		};
+		18A34F3226CD3F0900F252B6 /* FilterPickup */ = {
+			isa = PBXGroup;
+			children = (
+				18A34F3326CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift */,
+			);
+			path = FilterPickup;
 			sourceTree = "<group>";
 		};
 		18AF2B2726C3A2BC00E4431A /* MyAccount */ = {
@@ -638,6 +677,32 @@
 				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		18F1B7B026CE399A0071FC21 /* PostAvailabilityResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18F1B7B126CE399A0071FC21 /* PostAvailabilityResModel.swift */,
+				18F1B7B226CE399A0071FC21 /* PostAvailabilityDatum.swift */,
+			);
+			path = PostAvailabilityResModel;
+			sourceTree = "<group>";
+		};
+		18F1B7B526CE4B740071FC21 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				18F1B7B626CE4B740071FC21 /* SettingVC.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		18F1B7BC26CE6C730071FC21 /* SettingsResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18F1B7BD26CE6C730071FC21 /* SettingsResModel.swift */,
+				18F1B7BE26CE6C730071FC21 /* SettingsDatum.swift */,
+			);
+			path = SettingsResModel;
 			sourceTree = "<group>";
 		};
 		18F2702726BD4F8900992892 /* RegisterResModel */ = {
@@ -823,6 +888,7 @@
 				189FB63326B911A400BBD5A0 /* UINavigationController+Extension.swift */,
 				18129ABE26BACC5F00983AFC /* UIDevice+Extension.swift */,
 				18DD7F8726CA304D007F4754 /* UIView+Extension.swift */,
+				18A34F2E26CD36D300F252B6 /* UILabel+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -830,6 +896,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18F1B7B526CE4B740071FC21 /* Setting */,
 				18A34EFB26CD1D2A00F252B6 /* ViewAllLoads */,
 				18AF2B2726C3A2BC00E4431A /* MyAccount */,
 				18129AAD26BA617700983AFC /* CollectionPhotosView */,
@@ -857,6 +924,7 @@
 				A1519C9626A00305001738B9 /* LaunchScreen.storyboard */,
 				184DB31026B26B540059B334 /* Home.storyboard */,
 				184DB31526B2C7E10059B334 /* Popup.storyboard */,
+				18A34F3026CD3E3200F252B6 /* FilterPickup.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1032,6 +1100,7 @@
 				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
 				8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */,
 				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
+				18A34F3126CD3E3200F252B6 /* FilterPickup.storyboard in Resources */,
 				A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */,
 				A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */,
 			);
@@ -1195,6 +1264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
@@ -1207,8 +1277,10 @@
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
+				18A34F3426CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
 				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
+				18F1B7B326CE399A0071FC21 /* PostAvailabilityResModel.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
 				18A34EF826CCCD1E00F252B6 /* LoginVehicle.swift in Sources */,
 				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
@@ -1257,6 +1329,7 @@
 				18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */,
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
+				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
 				18A34EF726CCCD1E00F252B6 /* LoginResModel.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
@@ -1269,6 +1342,7 @@
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				A1519C9026A00304001738B9 /* ViewController.swift in Sources */,
 				189FB66926B96F8800BBD5A0 /* RegisterReqModel.swift in Sources */,
+				18F1B7B726CE4B740071FC21 /* SettingVC.swift in Sources */,
 				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
 				189FB65E26B96BF000BBD5A0 /* URLSessionRequestManager.swift in Sources */,
 				184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */,
@@ -1282,6 +1356,8 @@
 				189FB66526B96BF000BBD5A0 /* Webservices+Extension.swift in Sources */,
 				189FB66726B96E6A00BBD5A0 /* ConstantEnum.swift in Sources */,
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
+				18F1B7B926CE69350071FC21 /* SettingViewModel.swift in Sources */,
+				18F1B7BB26CE695C0071FC21 /* SettingReqModel.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
 				18A34EF526CCCD1E00F252B6 /* LoginDatum.swift in Sources */,
@@ -1291,12 +1367,15 @@
 				186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */,
 				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
 				18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */,
+				18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */,
 				189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */,
 				189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */,
+				18F1B7C026CE6C730071FC21 /* SettingsDatum.swift in Sources */,
 				18A34F2726CD1F2D00F252B6 /* LocationCell.swift in Sources */,
 				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
 				1854BFBC26B414A6005355DD /* SendOTPForForgotVC.swift in Sources */,
 				A1519C8C26A00304001738B9 /* AppDelegate.swift in Sources */,
+				18F1B7B426CE399A0071FC21 /* PostAvailabilityDatum.swift in Sources */,
 				18F2703726BD632300992892 /* TruckBrandsResModel.swift in Sources */,
 				18F2703826BD632300992892 /* TruckBrandsDatum.swift in Sources */,
 				18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */,
@@ -1312,6 +1391,7 @@
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
+				18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */,
 				1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */,
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 				18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */,

@@ -1252,9 +1252,11 @@ class dashedLineView : UIView {
         path.stroke()
     }
 }
-class ThemeCalender : FSCalendar {
+class ThemeCalender : FSCalendar, FSCalendarDelegate {
+    @IBInspectable var isMinimumDate : Bool = false
+    @IBInspectable var MinimumDate : Date = Date()
     override func awakeFromNib() {
-        self.backgroundColor = UIColor(hexString: "#F7F1FD")
+        self.backgroundColor = .white
         //UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
 //        self.frame = CGRect(x: 100, y: 0, width: self.frame.width, height: self.frame.height)
         self.calendarHeaderView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
@@ -1269,7 +1271,7 @@ class ThemeCalender : FSCalendar {
 
         self.appearance.headerDateFormat = "MMMM, yyyy"
         self.appearance.headerMinimumDissolvedAlpha = 0.0
-     
+        self.today = nil
         self.scope = .week
         self.firstWeekday = 1
        // self.weekdayHeight = 40
@@ -1278,8 +1280,15 @@ class ThemeCalender : FSCalendar {
         self.rowHeight = 40
         
         self.clipsToBounds = true
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 0
+        
+        
+        
     }
+    
+        
+   
+    
 }
 class MyProfileTextField : SkyFloatingLabelTextField {
     override func awakeFromNib() {
@@ -1318,6 +1327,23 @@ class ThemeBidRequestButton : UIButton {
             self.layer.cornerRadius = 10
             self.clipsToBounds = true
         }
+        
+    }
+}
+class ThemeSwitch : UISwitch {
+    
+   
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.layer.borderWidth = 1
+        self.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        self.clipsToBounds = true
+        self.onTintColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+            self.thumbTintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        self.layer.cornerRadius = 16.0;
+
         
     }
 }

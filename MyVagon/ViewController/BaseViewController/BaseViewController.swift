@@ -43,18 +43,15 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         controller.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         controller.navigationController?.navigationBar.shadowImage = UIImage()
         if ShowShadow ?? false {
-//            self.navigationController?.addCustomBottomLine()
-//            self.navigationController?.navigationBar.layer.masksToBounds = true
-//            self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
-//                self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-//                self.navigationController?.navigationBar.layer.shadowRadius = 4.0
+    let viewforshadow = UIView()
             controller.navigationController?.navigationBar.clipsToBounds = false
-            controller.navigationController?.navigationBar.shadowImage =  UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0).image(CGSize(width: self.view.frame.width, height: 1))
-//                self.navigationController?.navigationBar.layer.shadowOpacity = 1.0
-           
-          
-              
+            viewforshadow.backgroundColor = .white
+            viewforshadow.frame = CGRect(x: 0, y: (controller.navigationController?.navigationBar.frame.size.height ?? 0.0) - 3, width: (controller.navigationController?.navigationBar.frame.size.width ?? 0.0), height: 1)
+            viewforshadow.dropShadow(color: UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0), opacity: 0.7, offSet: CGSize(width: 0.0, height: 1.0), radius: 0, scale: true)
             
+            //controller.navigationController?.navigationBar.shadowImage =  UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1.0).image(CGSize(width: self.view.frame.width, height: 1))
+            
+            controller.navigationController?.navigationBar.addSubview(viewforshadow)
             
         }
         if naviTitle == NavTitles.none.value {
@@ -68,10 +65,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
             lblNavTitle.center = CGPoint(x: 0, y: 0)
             lblNavTitle.textAlignment = .left
             lblNavTitle.text = naviTitle
-
-         
             self.navigationItem.titleView = lblNavTitle
-           
         }
             if leftImage != "" {
                 if leftImage == NavItemsLeft.back.value {
@@ -189,19 +183,24 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @objc func BtnChatAction(sender:UIButton) {
-        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostTruckViewController.storyboardID) as! PostTruckViewController
-        controller.hidesBottomBarWhenPushed = true
-//        controller.IsHideImage = true
+//        let controller = AppStoryboard.FilterPickup
+//            .instance.instantiateViewController(withIdentifier: FilterPickupDatePopupViewController.storyboardID) as! FilterPickupDatePopupViewController
+//      //  controller.hidesBottomBarWhenPushed = true
 //
-//        controller.TitleAttributedText = NSAttributedString(string: "You have successfully posted your availability")
-//            controller.DescriptionAttributedText = NSAttributedString(string: "3 matches have been found, would you like to view them?")
 //
-//        controller.LeftbtnTitle = "Cancel"
-//        controller.RightBtnTitle = "Yes"
+//
+//
+////        controller.IsHideImage = true
+////
+////        controller.TitleAttributedText = NSAttributedString(string: "You have successfully posted your availability")
+////            controller.DescriptionAttributedText = NSAttributedString(string: "3 matches have been found, would you like to view them?")
+////
+////        controller.LeftbtnTitle = "Cancel"
+////        controller.RightBtnTitle = "Yes"
 //        controller.modalPresentationStyle = .overCurrentContext
 //        controller.modalTransitionStyle = .crossDissolve
 //        self.present(controller, animated: true, completion: nil)
-        self.navigationController?.pushViewController(controller, animated: true)
+//        self.navigationController?.pushViewController(controller, animated: true)
         
     }
     @objc func BtnNotificationAction(sender:UIButton) {

@@ -7,12 +7,14 @@ target 'MyVagon' do
 
   # Pods for MyVagon
   pod 'SDWebImage'
+
+  pod 'GooglePlacePicker'
   pod 'NVActivityIndicatorView', '4.8.0'
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'CountryPickerView'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'FSCalendar'
-  pod 'GoogleMaps'
+
 pod 'SwiftMessages'
 
   target 'MyVagonTests' do

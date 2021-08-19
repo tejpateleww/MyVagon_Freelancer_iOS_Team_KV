@@ -275,4 +275,15 @@ extension String {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
+    func ConvertDateFormat(FromFormat:String,ToFormat:String) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = FromFormat
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = ToFormat
+        return  dateFormatter.string(from: date!)
+        
+    }
+    
+  
 }

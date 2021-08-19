@@ -7,6 +7,8 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import GoogleMaps
+import GooglePlaces
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +21,8 @@ var window: UIWindow?
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkAndSetDefaultLanguage()
-        
+        GMSServices.provideAPIKey(AppInfo.Google_API_Key)
+        GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
         
         SingletonClass.sharedInstance.GetRegisterData()

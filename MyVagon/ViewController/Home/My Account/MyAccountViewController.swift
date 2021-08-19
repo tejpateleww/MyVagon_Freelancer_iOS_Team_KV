@@ -99,7 +99,10 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case MyAccountSectionTitle.settings.StringName:
-            break
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SettingVC.storyboardID) as! SettingVC
+            controller.hidesBottomBarWhenPushed = true
+            controller.strNavTitle = "Settings"
+            self.navigationController?.pushViewController(controller, animated: true)
         case MyAccountSectionTitle.Changepassword.StringName:
             let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SetNewPasswordViewController.storyboardID) as! SetNewPasswordViewController
             controller.hidesBottomBarWhenPushed = true
