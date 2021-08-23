@@ -811,7 +811,7 @@ class themeTextfield : UITextField{
     @IBInspectable public var Font_Size: CGFloat = FontSize.size15.rawValue
     @IBInspectable public var PlaceholderColor: UIColor = UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)
     @IBInspectable public var FontColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-    
+  
     @IBInspectable var rightImage: UIImage? {
         didSet {
             if let image = rightImage {
@@ -856,7 +856,9 @@ class themeTextfield : UITextField{
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = CornerRadius
-        self.borderStyle = .none
+        
+            self.borderStyle = .none
+        
         self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
     
         
@@ -1255,6 +1257,7 @@ class dashedLineView : UIView {
 class ThemeCalender : FSCalendar, FSCalendarDelegate {
     @IBInspectable var isMinimumDate : Bool = false
     @IBInspectable var MinimumDate : Date = Date()
+    @IBInspectable var CalenderScopeMonth : Bool = false
     override func awakeFromNib() {
         self.backgroundColor = .white
         //UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
@@ -1268,11 +1271,17 @@ class ThemeCalender : FSCalendar, FSCalendarDelegate {
         self.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
         self.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
         self.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      self.appearance.titleSelectionColor = colors.white.value
-
+        self.appearance.weekdayTextColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
         self.appearance.headerDateFormat = "MMMM, yyyy"
         self.appearance.headerMinimumDissolvedAlpha = 0.0
         self.today = nil
-        self.scope = .week
+        
+        if CalenderScopeMonth {
+            self.scope = .month
+        } else {
+            self.scope = .week
+        }
+        
         self.firstWeekday = 1
        // self.weekdayHeight = 40
         self.weekdayHeight = 40

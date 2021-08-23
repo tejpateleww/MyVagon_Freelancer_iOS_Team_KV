@@ -2128,6 +2128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="yiN-SO-wg5"/>
                     <connections>
+                        <outlet property="TextFieldSearch" destination="Xcp-PI-2c6" id="fLY-iT-nPG"/>
                         <outlet property="calender" destination="lnE-vl-xfd" id="JNf-Fw-MEB"/>
                         <outlet property="collectionOfHistory" destination="Dmh-11-Ta7" id="Nyk-ka-8eH"/>
                         <outlet property="conHeightOfCalender" destination="Ke9-JU-mJR" id="rfc-Tx-Xdp"/>
@@ -2375,7 +2376,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZQQ-jV-rM1">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-Qm-Wtq">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hzk-Qm-Wtq">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cj2-aO-ecg">
@@ -2439,7 +2440,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tjJ-8a-7uu">
-                                                <rect key="frame" x="0.0" y="116" width="414" height="702"/>
+                                                <rect key="frame" x="0.0" y="136" width="414" height="592"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
@@ -2523,15 +2524,38 @@
                                                     <outlet property="delegate" destination="b6K-wx-bzb" id="cM0-PY-RR5"/>
                                                 </connections>
                                             </tableView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="evd-lb-J0D">
+                                                <rect key="frame" x="0.0" y="748" width="414" height="70"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9J-G4-z8s" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="10" width="374" height="50"/>
+                                                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="VN0-Sl-A8K"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <state key="normal" title="Save"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="BtnSaveClick:" destination="b6K-wx-bzb" eventType="touchUpInside" id="nv8-ae-juG"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="l9J-G4-z8s" firstAttribute="top" secondItem="evd-lb-J0D" secondAttribute="top" constant="10" id="IbJ-EQ-HB3"/>
+                                                    <constraint firstAttribute="trailing" secondItem="l9J-G4-z8s" secondAttribute="trailing" constant="20" id="L2n-or-fsV"/>
+                                                    <constraint firstItem="l9J-G4-z8s" firstAttribute="leading" secondItem="evd-lb-J0D" secondAttribute="leading" constant="20" id="NHT-Du-tVa"/>
+                                                    <constraint firstAttribute="bottom" secondItem="l9J-G4-z8s" secondAttribute="bottom" constant="10" id="wde-kc-W1b"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cj2-aO-ecg" secondAttribute="trailing" id="5Tk-11-cXy"/>
                                             <constraint firstItem="cj2-aO-ecg" firstAttribute="leading" secondItem="hzk-Qm-Wtq" secondAttribute="leading" id="CiQ-BH-QAR"/>
                                             <constraint firstItem="cj2-aO-ecg" firstAttribute="top" secondItem="hzk-Qm-Wtq" secondAttribute="top" id="GaZ-nh-TcC"/>
-                                            <constraint firstItem="tjJ-8a-7uu" firstAttribute="top" secondItem="cj2-aO-ecg" secondAttribute="bottom" id="HRD-94-dSq"/>
-                                            <constraint firstAttribute="bottom" secondItem="tjJ-8a-7uu" secondAttribute="bottom" id="SWp-4U-MZ0"/>
-                                            <constraint firstAttribute="trailing" secondItem="tjJ-8a-7uu" secondAttribute="trailing" id="Yeq-T4-RCQ"/>
-                                            <constraint firstItem="tjJ-8a-7uu" firstAttribute="leading" secondItem="hzk-Qm-Wtq" secondAttribute="leading" id="mK7-7W-OXS"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>

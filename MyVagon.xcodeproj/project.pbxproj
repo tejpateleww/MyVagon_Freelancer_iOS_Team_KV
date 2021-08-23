@@ -86,6 +86,8 @@
 		18AC078A26B826C00048E0A3 /* MessageBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC078926B826C00048E0A3 /* MessageBarController.swift */; };
 		18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */; };
 		18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */; };
+		18C438D526D3660B009A06AC /* SearchOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C438D426D3660B009A06AC /* SearchOptionViewController.swift */; };
+		18C438D726D3AE2C009A06AC /* FilterDropOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C438D626D3AE2C009A06AC /* FilterDropOffViewController.swift */; };
 		18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD7F8726CA304D007F4754 /* UIView+Extension.swift */; };
 		18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */; };
 		18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */; };
@@ -280,6 +282,8 @@
 		18AC078926B826C00048E0A3 /* MessageBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBarController.swift; sourceTree = "<group>"; };
 		18BA362C26B7B8F400F83069 /* CommonWebviewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWebviewVC.swift; sourceTree = "<group>"; };
 		18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAllInOneViewController.swift; sourceTree = "<group>"; };
+		18C438D426D3660B009A06AC /* SearchOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOptionViewController.swift; sourceTree = "<group>"; };
+		18C438D626D3AE2C009A06AC /* FilterDropOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDropOffViewController.swift; sourceTree = "<group>"; };
 		18DD7F8726CA304D007F4754 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckViewModel.swift; sourceTree = "<group>"; };
 		18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckReqModel.swift; sourceTree = "<group>"; };
@@ -626,6 +630,8 @@
 			isa = PBXGroup;
 			children = (
 				18A34F3326CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift */,
+				18C438D426D3660B009A06AC /* SearchOptionViewController.swift */,
+				18C438D626D3AE2C009A06AC /* FilterDropOffViewController.swift */,
 			);
 			path = FilterPickup;
 			sourceTree = "<group>";
@@ -633,17 +639,9 @@
 		18AF2B2726C3A2BC00E4431A /* MyAccount */ = {
 			isa = PBXGroup;
 			children = (
-				18AF2B2826C3A2C300E4431A /* Change Password */,
 				18F4013026CBEAE4002C1ABB /* MyProfileViewController.swift */,
 			);
 			path = MyAccount;
-			sourceTree = "<group>";
-		};
-		18AF2B2826C3A2C300E4431A /* Change Password */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Change Password";
 			sourceTree = "<group>";
 		};
 		18AF2B2B26C3B3BC00E4431A /* Home */ = {
@@ -1270,6 +1268,7 @@
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */,
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
+				18C438D726D3AE2C009A06AC /* FilterDropOffViewController.swift in Sources */,
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
 				18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */,
 				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
@@ -1378,6 +1377,7 @@
 				18F1B7B426CE399A0071FC21 /* PostAvailabilityDatum.swift in Sources */,
 				18F2703726BD632300992892 /* TruckBrandsResModel.swift in Sources */,
 				18F2703826BD632300992892 /* TruckBrandsDatum.swift in Sources */,
+				18C438D526D3660B009A06AC /* SearchOptionViewController.swift in Sources */,
 				18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */,
 				18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */,
 				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,

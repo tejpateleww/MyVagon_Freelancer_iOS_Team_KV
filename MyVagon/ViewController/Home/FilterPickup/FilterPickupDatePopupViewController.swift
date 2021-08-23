@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterPickupDatePopupViewController: BaseViewController {
+class FilterPickupDatePopupViewController: UIViewController {
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
@@ -28,17 +28,20 @@ class FilterPickupDatePopupViewController: BaseViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Account", leftImage: NavItemsLeft.none.value, rightImages: [], isTranslucent: true, ShowShadow: true)
+      
         
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.hideTabBar()
     }
-    
+  
     override func viewWillLayoutSubviews() {
-        MainView.roundCorners(corners: [.topLeft,.topRight], radius: 30)
-    }
+            super.viewWillLayoutSubviews()
+        MainView.layer.cornerRadius = 30
+            // Call the roundCorners() func right there.
+//        MainView.roundCorners(corners: [ .topRight], radius: 30)
+        }
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
@@ -49,6 +52,15 @@ class FilterPickupDatePopupViewController: BaseViewController {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     
+    @IBAction func BtnCancelAction(_ sender: themeButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func BtnSubmitAction(_ sender: themeButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     // ----------------------------------------------------

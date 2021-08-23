@@ -123,7 +123,9 @@ class SettingVC: BaseViewController {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     
-    
+    @IBAction func BtnSaveClick(_ sender: themeButton) {
+        CallWebService()
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
@@ -182,11 +184,6 @@ class SettingVC: BaseViewController {
         }
         
         
-        
-        
-        
-        
-        
         self.settingViewModel.UpdateSetting(ReqModel: ReqModelForSettings)
     }
     
@@ -208,6 +205,7 @@ extension SettingVC : UITableViewDataSource , UITableViewDelegate {
         cell.lblTitle.text = arrNotification[indexPath.section].data[indexPath.row].title
         cell.getSelectedStatus = {
             cell.btnSwitch.isSelected = !cell.btnSwitch.isSelected
+            self.arrNotification[indexPath.section].data[indexPath.row].isSelect = !cell.btnSwitch.isSelected
         }
         return cell
     }

@@ -8,12 +8,13 @@
 import UIKit
 import FSCalendar
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, UITextFieldDelegate {
 
     
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    
     var tblCellHeight = CGFloat()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
     var arrSection = ["Today" , "20th March'21" , "22th March'21"]
@@ -28,6 +29,8 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
     @IBOutlet weak var calender: ThemeCalender!
     @IBOutlet weak var collectionOfHistory: UICollectionView!
+    
+    @IBOutlet weak var TextFieldSearch: themeTextfield!
     
     
     // ----------------------------------------------------
@@ -49,7 +52,7 @@ class HomeViewController: BaseViewController {
     
         calender.accessibilityIdentifier = "calender"
         configureCalendar()
-       
+        TextFieldSearch.delegate = self
         DispatchQueue.main.async {
             self.tblLocations.layoutIfNeeded()
             self.tblLocations.reloadData()
@@ -87,6 +90,19 @@ class HomeViewController: BaseViewController {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+       
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool   {
+        if textField == TextFieldSearch {
+            let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: SearchOptionViewController.storyboardID) as! SearchOptionViewController
+            controller.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
+            return false
+        }
+        return true
+        
+    }
     
     
     // ----------------------------------------------------
