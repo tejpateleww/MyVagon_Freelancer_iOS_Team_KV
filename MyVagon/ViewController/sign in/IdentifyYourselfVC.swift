@@ -208,12 +208,14 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
 //            registerReqModel.brand  = SingletonClass.sharedInstance.Reg_TruckBrand
             registerReqModel.pallets = SingletonClass.sharedInstance.Reg_Pallets
             registerReqModel.fuel_type  = SingletonClass.sharedInstance.Reg_TruckFualType
+            registerReqModel.load_capacity  = SingletonClass.sharedInstance.Reg_CargorLoadCapacity
             registerReqModel.registration_no  = SingletonClass.sharedInstance.Reg_RegistrationNumber
-            registerReqModel.vehicle_images  = SingletonClass.sharedInstance.Reg_VehiclePhoto
+            registerReqModel.vehicle_images  = SingletonClass.sharedInstance.Reg_VehiclePhoto.map({$0}).joined(separator: ",")
 
-            registerReqModel.id_proof  = SingletonClass.sharedInstance.Reg_IdentityProofDocument
-           
-            registerReqModel.license  = SingletonClass.sharedInstance.Reg_LicenceDocument
+            registerReqModel.id_proof  = SingletonClass.sharedInstance.Reg_IdentityProofDocument.map({$0}).joined(separator: ",")
+            
+            registerReqModel.truck_features = SingletonClass.sharedInstance.Reg_AdditionalTypes.map({$0}).joined(separator: ",")
+            registerReqModel.license  = SingletonClass.sharedInstance.Reg_LicenceDocument.map({$0}).joined(separator: ",")
            
             
             self.identifyYourselfViewModel.identifyYourselfVC = self

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>491335823320-p38daapb5us2pscmtq1742af8qvutscm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.491335823320-p38daapb5us2pscmtq1742af8qvutscm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBZmtlGI5gekjygMbW7cS8D4jS_SraBG5w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>491335823320</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.myvagon.driver</string>
+	<key>PROJECT_ID</key>
+	<string>myvagon-5a5f1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>myvagon-5a5f1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:491335823320:ios:d8ee69489bb338e2b2ccad</string>
+</dict>
+</plist>

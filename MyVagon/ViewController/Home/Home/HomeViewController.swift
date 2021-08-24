@@ -115,8 +115,9 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
     
-
+    // ----------------------------------------------------
       //MARK:- ======== Calender Setup =======
+    // ----------------------------------------------------
     func configureCalendar() {
         
         calender.delegate = self
@@ -175,7 +176,10 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
-       
+        
+        
+        
+//        cell.tblMultipleLocation.reloadData()
         print(tblLocations.rowHeight)
 //        cell.tblMultipleLocation.reloadData()
         return cell
@@ -233,6 +237,7 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         collectionOfHistory.reloadData()
+        tblLocations.reloadData()
     }
 }
 enum NotificationKeys : CaseIterable{

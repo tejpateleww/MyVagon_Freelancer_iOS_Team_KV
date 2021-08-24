@@ -1258,12 +1258,18 @@ class ThemeCalender : FSCalendar, FSCalendarDelegate {
     @IBInspectable var isMinimumDate : Bool = false
     @IBInspectable var MinimumDate : Date = Date()
     @IBInspectable var CalenderScopeMonth : Bool = false
+    @IBInspectable var CalenderHeaderBackground : Bool = false
     override func awakeFromNib() {
         self.backgroundColor = .white
         //UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
 //        self.frame = CGRect(x: 100, y: 0, width: self.frame.width, height: self.frame.height)
-        self.calendarHeaderView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
-        self.calendarWeekdayView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+        if !CalenderHeaderBackground {
+            
+        } else {
+            self.calendarHeaderView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+            self.calendarWeekdayView.backgroundColor = UIColor(red: 247/255, green: 241/255, blue: 253/255, alpha: 1.0)
+        }
+        
         self.appearance.todaySelectionColor = UIColor.appColor(.themeColorForButton)
         
         self.appearance.headerTitleColor = UIColor(hexString: "#1F1F41")
@@ -1280,14 +1286,14 @@ class ThemeCalender : FSCalendar, FSCalendarDelegate {
             self.scope = .month
         } else {
             self.scope = .week
+            
         }
-        
         self.firstWeekday = 1
        // self.weekdayHeight = 40
         self.weekdayHeight = 40
         self.headerHeight = 30
         self.rowHeight = 40
-        
+       
         self.clipsToBounds = true
         self.layer.cornerRadius = 0
         

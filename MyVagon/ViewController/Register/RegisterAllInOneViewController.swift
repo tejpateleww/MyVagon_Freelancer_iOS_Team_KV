@@ -29,7 +29,7 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [], isTranslucent: true)
+        setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         
         MainScrollView.delegate = self
         self.navigationController?.navigationBar.isHidden = false
@@ -38,6 +38,7 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
             let ScreenNumber = self.MainScrollView.contentOffset.x/UIScreen.main.bounds.width
             switch ScreenNumber {
             case 0:
+                appDel.NavigateToLogin()
                 break
             case 1:
                 let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
@@ -99,7 +100,7 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
         let ScreenNumber = scrollView.contentOffset.x/UIScreen.main.bounds.width
         switch ScreenNumber {
         case 0:
-            setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: "", rightImages: [], isTranslucent: true)
+            setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         case 1:
             setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         case 2:

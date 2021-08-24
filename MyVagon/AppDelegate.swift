@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
+import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -17,7 +18,7 @@ var window: UIWindow?
         return UIApplication.shared.delegate as! AppDelegate
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkAndSetDefaultLanguage()
@@ -58,6 +59,26 @@ var window: UIWindow?
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav
     }
+    func Logout() {
+      
+         
+        UserDefault.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
+        SingletonClass.sharedInstance.ClearSigletonClassForLogin()
+            
+            for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+                //            print("\(key) = \(value) \n")
+                print(key)
+                if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue {
+                    
+                }
+                else {
+                    UserDefaults.standard.removeObject(forKey: key)
+                }
+            }
+           
+                self.NavigateToLogin()
+         
+    }
     func checkAndSetDefaultLanguage() {
         if UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) == nil {
         
@@ -88,7 +109,7 @@ class CustomTabBar: UITabBar {
         super.awakeFromNib()
 //        self.clipsToBounds = false
 //        layer.masksToBounds = true
-        layer.cornerRadius = 0
+        layer.cornerRadius = 10
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
 //        layer.shadowOffset = CGSize(width: -3, height: 0)
 //        layer.shadowColor = UIColor.black.cgColor
@@ -140,7 +161,6 @@ extension CustomTabBarVC: UITabBarControllerDelegate {
 class CustomTabBarVC: UITabBarController {
     var lastSelectedIndex = 0
  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -198,13 +218,13 @@ class CustomTabBarVC: UITabBarController {
 
 extension UIImage {
     static func from(color: UIColor) -> UIImage {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        let rect = CGRect(x: 0, y: 0, width: 0, height: 0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(color.cgColor)
-        context!.fill(rect)
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return img!
+        return img ?? UIImage()
     }
 }

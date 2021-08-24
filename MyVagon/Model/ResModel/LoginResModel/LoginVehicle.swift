@@ -1,7 +1,7 @@
 //
 //  LoginVehicle.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 18, 2021
+//  Created on August 24, 2021
 
 import Foundation
 
@@ -15,17 +15,18 @@ struct LoginVehicle : Codable {
         let hydraulicDoor : Int?
         let id : Int?
         let idProof : String?
-        let images : String?
+        let images : [String]?
         let license : String?
         let loadCapacity : String?
-        let loadCapacityUnit : String?
+        let loadCapacityUnit : LoginLoadCapacityUnit?
         let pallets : Int?
         let registrationNo : String?
-        let truckSubCategory : String?
-        let truckType : Int?
+        let truckFeatures : [LoginTruckFeature]?
+        let truckSubCategory : LoginTruckSubCategory?
+        let truckType : LoginTruckType?
         let userId : Int?
         let weight : String?
-        let weightUnit : String?
+        let weightUnit : LoginWeightUnit?
 
         enum CodingKeys: String, CodingKey {
                 case brand = "brand"
@@ -42,6 +43,7 @@ struct LoginVehicle : Codable {
                 case loadCapacityUnit = "load_capacity_unit"
                 case pallets = "pallets"
                 case registrationNo = "registration_no"
+                case truckFeatures = "truck_features"
                 case truckSubCategory = "truck_sub_category"
                 case truckType = "truck_type"
                 case userId = "user_id"
@@ -59,17 +61,18 @@ struct LoginVehicle : Codable {
                 hydraulicDoor = try values?.decodeIfPresent(Int.self, forKey: .hydraulicDoor)
                 id = try values?.decodeIfPresent(Int.self, forKey: .id)
                 idProof = try values?.decodeIfPresent(String.self, forKey: .idProof)
-                images = try values?.decodeIfPresent(String.self, forKey: .images)
+                images = try values?.decodeIfPresent([String].self, forKey: .images)
                 license = try values?.decodeIfPresent(String.self, forKey: .license)
                 loadCapacity = try values?.decodeIfPresent(String.self, forKey: .loadCapacity)
-                loadCapacityUnit = try values?.decodeIfPresent(String.self, forKey: .loadCapacityUnit)
+                loadCapacityUnit = try values?.decodeIfPresent(LoginLoadCapacityUnit.self, forKey: .loadCapacityUnit)
                 pallets = try values?.decodeIfPresent(Int.self, forKey: .pallets)
                 registrationNo = try values?.decodeIfPresent(String.self, forKey: .registrationNo)
-                truckSubCategory = try values?.decodeIfPresent(String.self, forKey: .truckSubCategory)
-                truckType = try values?.decodeIfPresent(Int.self, forKey: .truckType)
+                truckFeatures = try values?.decodeIfPresent([LoginTruckFeature].self, forKey: .truckFeatures)
+                truckSubCategory = try values?.decodeIfPresent(LoginTruckSubCategory.self, forKey: .truckSubCategory)
+                truckType = try values?.decodeIfPresent(LoginTruckType.self, forKey: .truckType)
                 userId = try values?.decodeIfPresent(Int.self, forKey: .userId)
                 weight = try values?.decodeIfPresent(String.self, forKey: .weight)
-                weightUnit = try values?.decodeIfPresent(String.self, forKey: .weightUnit)
+                weightUnit = try values?.decodeIfPresent(LoginWeightUnit.self, forKey: .weightUnit)
         }
 
 }

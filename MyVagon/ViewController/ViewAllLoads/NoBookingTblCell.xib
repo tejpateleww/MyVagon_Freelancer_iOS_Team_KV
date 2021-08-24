@@ -32,7 +32,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-T8-fda" customClass="ThemeBidRequestButton" customModule="MyVagon" customModuleProvider="target">
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YP2-T8-fda" customClass="ThemeBidRequestButton" customModule="MyVagon" customModuleProvider="target">
                                 <rect key="frame" x="247" y="27.5" width="150" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="kzC-9X-Zjf"/>

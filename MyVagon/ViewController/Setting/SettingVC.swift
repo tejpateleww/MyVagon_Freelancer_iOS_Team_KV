@@ -79,17 +79,7 @@ class SettingVC: BaseViewController {
     var settingViewModel = SettingViewModel()
     var customTabBarController: CustomTabBarVC?
     var strNavTitle = ""
-    var arrNotification = [NotificationList(Title: "General Settings", Details: [NotificationData(Title: NotificationTitle.AllNotification.Name,IsSelect: true),
-        NotificationData(Title: NotificationTitle.Messages.Name, IsSelect: true)]),
-        NotificationList(Title: "Load Settings", Details: [NotificationData(Title: "Bid received", IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Bidaccepted.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Loadsassignedbydispacter.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Starttripreminder.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Completetripreminder.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.PODreminder.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Matcheswithshipmentnearyou.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.Matcheswithshipmentnearlastdeliverypoint.Name, IsSelect: true),
-                                                  NotificationData(Title: NotificationTitle.RateShipper.Name, IsSelect: true)])]
+    var arrNotification:[NotificationList] = []
     
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -106,8 +96,7 @@ class SettingVC: BaseViewController {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: strNavTitle, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
-        tblSettings.reloadData()
-        
+        CallWebServiceForGetData()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -130,11 +119,20 @@ class SettingVC: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
-    
+    func CallWebServiceForGetData() {
+        self.settingViewModel.settingVC = self
+        
+        let ReqModelForGetSettings = GetSettingsListReqModel()
+        ReqModelForGetSettings.user_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        
+        
+        self.settingViewModel.GetSettingList(ReqModel: ReqModelForGetSettings)
+    }
     func CallWebService() {
         self.settingViewModel.settingVC = self
         
         let ReqModelForSettings = SettingsReqModel()
+        ReqModelForSettings.user_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         arrNotification.forEach { element in
             
             element.data.forEach({ subelement in
@@ -203,9 +201,14 @@ extension SettingVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"settingTblCell", for: indexPath) as! settingTblCell
         cell.lblTitle.text = arrNotification[indexPath.section].data[indexPath.row].title
+        
+        cell.btnSwitch.isOn = (arrNotification[indexPath.section].data[indexPath.row].isSelect == true) ? true : false
+        
         cell.getSelectedStatus = {
-            cell.btnSwitch.isSelected = !cell.btnSwitch.isSelected
-            self.arrNotification[indexPath.section].data[indexPath.row].isSelect = !cell.btnSwitch.isSelected
+           // let previousState = cell.btnSwitch.isOn
+            //cell.btnSwitch.isSelected = !previousState
+            
+            self.arrNotification[indexPath.section].data[indexPath.row].isSelect = !self.arrNotification[indexPath.section].data[indexPath.row].isSelect
         }
         return cell
     }

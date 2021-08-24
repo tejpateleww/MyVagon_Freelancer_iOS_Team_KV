@@ -83,6 +83,7 @@ enum ApiKey: String {
     case ChangePassword                         = "driver/change/password"
     case PostAvailability                       = "post/truck/availability"
     case Settings                               = "driver/settings"
+    case GetSettings                            = "driver/get/settings"
     
     case Register                               = "driver/register"
     case EmailVerify                            = "email/verify"

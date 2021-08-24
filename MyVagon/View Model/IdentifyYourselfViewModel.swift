@@ -41,7 +41,7 @@ class IdentifyYourselfViewModel {
             if status{
                 Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 SingletonClass.sharedInstance.clearSingletonClassForRegister()
-                appDel.NavigateToHome()
+                appDel.NavigateToLogin()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }

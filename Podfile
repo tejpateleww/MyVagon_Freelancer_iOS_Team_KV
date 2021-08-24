@@ -7,7 +7,7 @@ target 'MyVagon' do
 
   # Pods for MyVagon
   pod 'SDWebImage'
-
+pod 'Firebase/Analytics'
   pod 'GooglePlacePicker'
   pod 'NVActivityIndicatorView', '4.8.0'
   pod 'IQKeyboardManagerSwift', '6.3.0'

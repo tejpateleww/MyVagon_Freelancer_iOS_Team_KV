@@ -10,26 +10,37 @@ import Foundation
 import UIKit
 class SingletonClass: NSObject
 {
+    static let sharedInstance = SingletonClass()
     
+    //Login Data
     var UserProfileData : LoginDatum?
     var Token = ""
     
-    
+    //Default device data
     var DeviceName = UIDevice.modelName
     var DeviceToken : String? = "1111"
     var DeviceType : String? = "ios"
     var AppVersion : String?
     
-    
+    //Language
     var SelectedLanguage : String = ""
     
-    static let sharedInstance = SingletonClass()
-    
+   
+    //Truck Data
     var TruckTypeList : [TruckTypeDatum]?
     var TruckBrandList : [TruckBrandsDatum]?
     var TruckFeatureList : [TruckFeaturesDatum]?
     var TruckunitList : [TruckUnitDatum]?
     
+    
+    func ClearSigletonClassForLogin() {
+        UserProfileData = nil
+        Token = ""
+    }
+    
+    
+    
+    //RegisterData and methods
     func clearSingletonClassForRegister() {
         UserDefault.setValue(-1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
         Reg_FullName = ""
@@ -146,7 +157,7 @@ class SingletonClass: NSObject
     var Reg_AdditionalTypes : [String] = []
     var Reg_TruckFualType = ""
     var Reg_RegistrationNumber = ""
-    var Reg_VehiclePhoto : [String] = ["1628669792.Screenshot_20210804-122500_MyVagonDriver.jpg"]
+    var Reg_VehiclePhoto : [String] = []
     var Reg_vehicalPhotoName = ""
     
     var Reg_IdentityProofDocument : [String] = []

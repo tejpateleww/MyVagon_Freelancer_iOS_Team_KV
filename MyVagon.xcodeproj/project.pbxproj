@@ -63,10 +63,6 @@
 		189FB67126B976F400BBD5A0 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB66F26B976F400BBD5A0 /* Datum.swift */; };
 		189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */; };
 		18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */; };
-		18A34EF526CCCD1E00F252B6 /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */; };
-		18A34EF626CCCD1E00F252B6 /* LoginDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */; };
-		18A34EF726CCCD1E00F252B6 /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */; };
-		18A34EF826CCCD1E00F252B6 /* LoginVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */; };
 		18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */; };
 		18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */; };
 		18A34F1D26CD1EE100F252B6 /* NoBookingTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */; };
@@ -89,6 +85,19 @@
 		18C438D526D3660B009A06AC /* SearchOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C438D426D3660B009A06AC /* SearchOptionViewController.swift */; };
 		18C438D726D3AE2C009A06AC /* FilterDropOffViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C438D626D3AE2C009A06AC /* FilterDropOffViewController.swift */; };
 		18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD7F8726CA304D007F4754 /* UIView+Extension.swift */; };
+		18E1A61126D4BFFE00FD9A93 /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A60B26D4BFFE00FD9A93 /* LoginDatum.swift */; };
+		18E1A61226D4BFFE00FD9A93 /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A60C26D4BFFE00FD9A93 /* LoginResModel.swift */; };
+		18E1A61326D4BFFE00FD9A93 /* LoginTruckType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A60D26D4BFFE00FD9A93 /* LoginTruckType.swift */; };
+		18E1A61426D4BFFE00FD9A93 /* LoginVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A60E26D4BFFE00FD9A93 /* LoginVehicle.swift */; };
+		18E1A61526D4BFFE00FD9A93 /* LoginTruckFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A60F26D4BFFE00FD9A93 /* LoginTruckFeature.swift */; };
+		18E1A61626D4BFFE00FD9A93 /* LoginTruckSubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61026D4BFFE00FD9A93 /* LoginTruckSubCategory.swift */; };
+		18E1A61826D4C72300FD9A93 /* LoginLoadCapacityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61726D4C72300FD9A93 /* LoginLoadCapacityUnit.swift */; };
+		18E1A61A26D4C72700FD9A93 /* LoginWeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61926D4C72700FD9A93 /* LoginWeightUnit.swift */; };
+		18E1A61E26D4CB5C00FD9A93 /* SettingsGetResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61C26D4CB5C00FD9A93 /* SettingsGetResModel.swift */; };
+		18E1A61F26D4CB5C00FD9A93 /* SettingDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61D26D4CB5C00FD9A93 /* SettingDatum.swift */; };
+		18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E1A62026D4E7ED00FD9A93 /* Chat.storyboard */; };
+		18E1A62326D504C400FD9A93 /* UITableView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A62226D504C400FD9A93 /* UITableView+Extenstion.swift */; };
+		18E1A62526D5171B00FD9A93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */; };
 		18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */; };
 		18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */; };
 		18F1B7B326CE399A0071FC21 /* PostAvailabilityResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7B126CE399A0071FC21 /* PostAvailabilityResModel.swift */; };
@@ -259,10 +268,6 @@
 		189FB66F26B976F400BBD5A0 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
 		189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadReqModel.swift; sourceTree = "<group>"; };
 		18A0BCC126C2824600F605E5 /* EnterOTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterOTPViewModel.swift; sourceTree = "<group>"; };
-		18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
-		18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDevice.swift; sourceTree = "<group>"; };
-		18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
-		18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVehicle.swift; sourceTree = "<group>"; };
 		18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoBookingTblCell.xib; sourceTree = "<group>"; };
 		18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoBookingTblCell.swift; sourceTree = "<group>"; };
@@ -285,6 +290,19 @@
 		18C438D426D3660B009A06AC /* SearchOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchOptionViewController.swift; sourceTree = "<group>"; };
 		18C438D626D3AE2C009A06AC /* FilterDropOffViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterDropOffViewController.swift; sourceTree = "<group>"; };
 		18DD7F8726CA304D007F4754 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		18E1A60B26D4BFFE00FD9A93 /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
+		18E1A60C26D4BFFE00FD9A93 /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
+		18E1A60D26D4BFFE00FD9A93 /* LoginTruckType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckType.swift; sourceTree = "<group>"; };
+		18E1A60E26D4BFFE00FD9A93 /* LoginVehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVehicle.swift; sourceTree = "<group>"; };
+		18E1A60F26D4BFFE00FD9A93 /* LoginTruckFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckFeature.swift; sourceTree = "<group>"; };
+		18E1A61026D4BFFE00FD9A93 /* LoginTruckSubCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckSubCategory.swift; sourceTree = "<group>"; };
+		18E1A61726D4C72300FD9A93 /* LoginLoadCapacityUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLoadCapacityUnit.swift; sourceTree = "<group>"; };
+		18E1A61926D4C72700FD9A93 /* LoginWeightUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWeightUnit.swift; sourceTree = "<group>"; };
+		18E1A61C26D4CB5C00FD9A93 /* SettingsGetResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsGetResModel.swift; sourceTree = "<group>"; };
+		18E1A61D26D4CB5C00FD9A93 /* SettingDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDatum.swift; sourceTree = "<group>"; };
+		18E1A62026D4E7ED00FD9A93 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		18E1A62226D504C400FD9A93 /* UITableView+Extenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extenstion.swift"; sourceTree = "<group>"; };
+		18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckViewModel.swift; sourceTree = "<group>"; };
 		18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckReqModel.swift; sourceTree = "<group>"; };
 		18F1B7B126CE399A0071FC21 /* PostAvailabilityResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostAvailabilityResModel.swift; sourceTree = "<group>"; };
@@ -579,9 +597,10 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				18E1A61B26D4CB5C00FD9A93 /* SettingsGetResModel */,
+				18E1A60A26D4BFFE00FD9A93 /* LoginResModel */,
 				18F1B7BC26CE6C730071FC21 /* SettingsResModel */,
 				18F1B7B026CE399A0071FC21 /* PostAvailabilityResModel */,
-				18A34EF026CCCD1E00F252B6 /* LoginResModel */,
 				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
 				186E382826C14B9400984D40 /* VerifyResModel */,
 				18F2703226BD632300992892 /* TruckUnitResModel */,
@@ -601,17 +620,6 @@
 				189FB66F26B976F400BBD5A0 /* Datum.swift */,
 			);
 			path = ImageUploadResModel;
-			sourceTree = "<group>";
-		};
-		18A34EF026CCCD1E00F252B6 /* LoginResModel */ = {
-			isa = PBXGroup;
-			children = (
-				18A34EF126CCCD1E00F252B6 /* LoginDatum.swift */,
-				18A34EF226CCCD1E00F252B6 /* LoginDevice.swift */,
-				18A34EF326CCCD1E00F252B6 /* LoginResModel.swift */,
-				18A34EF426CCCD1E00F252B6 /* LoginVehicle.swift */,
-			);
-			path = LoginResModel;
 			sourceTree = "<group>";
 		};
 		18A34EFB26CD1D2A00F252B6 /* ViewAllLoads */ = {
@@ -675,6 +683,30 @@
 				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
 			);
 			path = Register;
+			sourceTree = "<group>";
+		};
+		18E1A60A26D4BFFE00FD9A93 /* LoginResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18E1A61926D4C72700FD9A93 /* LoginWeightUnit.swift */,
+				18E1A61726D4C72300FD9A93 /* LoginLoadCapacityUnit.swift */,
+				18E1A60B26D4BFFE00FD9A93 /* LoginDatum.swift */,
+				18E1A60C26D4BFFE00FD9A93 /* LoginResModel.swift */,
+				18E1A60D26D4BFFE00FD9A93 /* LoginTruckType.swift */,
+				18E1A60E26D4BFFE00FD9A93 /* LoginVehicle.swift */,
+				18E1A60F26D4BFFE00FD9A93 /* LoginTruckFeature.swift */,
+				18E1A61026D4BFFE00FD9A93 /* LoginTruckSubCategory.swift */,
+			);
+			path = LoginResModel;
+			sourceTree = "<group>";
+		};
+		18E1A61B26D4CB5C00FD9A93 /* SettingsGetResModel */ = {
+			isa = PBXGroup;
+			children = (
+				18E1A61C26D4CB5C00FD9A93 /* SettingsGetResModel.swift */,
+				18E1A61D26D4CB5C00FD9A93 /* SettingDatum.swift */,
+			);
+			path = SettingsGetResModel;
 			sourceTree = "<group>";
 		};
 		18F1B7B026CE399A0071FC21 /* PostAvailabilityResModel */ = {
@@ -819,6 +851,7 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */,
 				18129AA926BA554000983AFC /* View Model */,
 				189FB66A26B96F8C00BBD5A0 /* Model */,
 				189FB65326B96BEF00BBD5A0 /* Webservices */,
@@ -873,6 +906,7 @@
 		A1519CBC26A00353001738B9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				18E1A62226D504C400FD9A93 /* UITableView+Extenstion.swift */,
 				1802693526AFD7A60088B49F /* UIColor+Extension.swift */,
 				A1519CE626A02C99001738B9 /* UIButton+Extension.swift */,
 				A1519CC826A00407001738B9 /* Date+Extension.swift */,
@@ -923,6 +957,7 @@
 				184DB31026B26B540059B334 /* Home.storyboard */,
 				184DB31526B2C7E10059B334 /* Popup.storyboard */,
 				18A34F3026CD3E3200F252B6 /* FilterPickup.storyboard */,
+				18E1A62026D4E7ED00FD9A93 /* Chat.storyboard */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1075,6 +1110,7 @@
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
 				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				18E1A62526D5171B00FD9A93 /* GoogleService-Info.plist in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
 				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
@@ -1084,6 +1120,7 @@
 				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
+				18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
 				184DB31126B26B540059B334 /* Home.storyboard in Resources */,
 				189FB63E26B932B100BBD5A0 /* collectionPhotos.xib in Resources */,
@@ -1270,6 +1307,7 @@
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
 				18C438D726D3AE2C009A06AC /* FilterDropOffViewController.swift in Sources */,
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
+				18E1A62326D504C400FD9A93 /* UITableView+Extenstion.swift in Sources */,
 				18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */,
 				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
@@ -1278,10 +1316,11 @@
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
 				18A34F3426CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift in Sources */,
 				A14974D026A1AB800072AF33 /* Poppins-BoldItalic.ttf in Sources */,
+				18E1A61E26D4CB5C00FD9A93 /* SettingsGetResModel.swift in Sources */,
 				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
+				18E1A61126D4BFFE00FD9A93 /* LoginDatum.swift in Sources */,
 				18F1B7B326CE399A0071FC21 /* PostAvailabilityResModel.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
-				18A34EF826CCCD1E00F252B6 /* LoginVehicle.swift in Sources */,
 				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
 				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
 				18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */,
@@ -1297,9 +1336,11 @@
 				A14974D326A1AB800072AF33 /* Poppins-ExtraLight.ttf in Sources */,
 				189FB63726B922FB00BBD5A0 /* UploadVideoAndImagesCell.swift in Sources */,
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
+				18E1A61326D4BFFE00FD9A93 /* LoginTruckType.swift in Sources */,
 				18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
+				18E1A61626D4BFFE00FD9A93 /* LoginTruckSubCategory.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
 				18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */,
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
@@ -1315,7 +1356,10 @@
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
 				189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */,
 				84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */,
+				18E1A61226D4BFFE00FD9A93 /* LoginResModel.swift in Sources */,
 				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
+				18E1A61526D4BFFE00FD9A93 /* LoginTruckFeature.swift in Sources */,
+				18E1A61426D4BFFE00FD9A93 /* LoginVehicle.swift in Sources */,
 				186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
@@ -1326,11 +1370,11 @@
 				18F2703626BD632300992892 /* TruckFeaturesDatum.swift in Sources */,
 				1854BFBE26B418A8005355DD /* SetNewPasswordViewController.swift in Sources */,
 				18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */,
+				18E1A61A26D4C72700FD9A93 /* LoginWeightUnit.swift in Sources */,
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
 				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
-				18A34EF726CCCD1E00F252B6 /* LoginResModel.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				18289F2326C54A2F002240C3 /* ForgotPasswordViewModel.swift in Sources */,
 				1802692E26AFD5D70088B49F /* Utilities.swift in Sources */,
@@ -1343,6 +1387,7 @@
 				189FB66926B96F8800BBD5A0 /* RegisterReqModel.swift in Sources */,
 				18F1B7B726CE4B740071FC21 /* SettingVC.swift in Sources */,
 				A1519CF426A04488001738B9 /* BoardingVC.swift in Sources */,
+				18E1A61826D4C72300FD9A93 /* LoginLoadCapacityUnit.swift in Sources */,
 				189FB65E26B96BF000BBD5A0 /* URLSessionRequestManager.swift in Sources */,
 				184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
@@ -1351,15 +1396,14 @@
 				84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */,
 				A1519CE126A01CDF001738B9 /* Storyboards.swift in Sources */,
 				1803810226C6A2EA00DBF6F0 /* NotificationViewController.swift in Sources */,
-				18A34EF626CCCD1E00F252B6 /* LoginDevice.swift in Sources */,
 				189FB66526B96BF000BBD5A0 /* Webservices+Extension.swift in Sources */,
 				189FB66726B96E6A00BBD5A0 /* ConstantEnum.swift in Sources */,
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				18F1B7B926CE69350071FC21 /* SettingViewModel.swift in Sources */,
+				18E1A61F26D4CB5C00FD9A93 /* SettingDatum.swift in Sources */,
 				18F1B7BB26CE695C0071FC21 /* SettingReqModel.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
-				18A34EF526CCCD1E00F252B6 /* LoginDatum.swift in Sources */,
 				18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
 				18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */,
@@ -1597,7 +1641,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = excellentwebworld.MyVagon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1620,7 +1664,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = excellentwebworld.MyVagon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

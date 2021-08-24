@@ -307,6 +307,7 @@
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
                                                                                         <real key="value" value="1"/>
                                                                                     </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="CalenderHeaderBackground" value="YES"/>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
                                                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chY-4P-PvK">
@@ -874,7 +875,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qJA-Dw-IDA">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1284"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="1391.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="hwM-6K-SMg">
                                                         <rect key="frame" x="20" y="10" width="374" height="424.5"/>
@@ -1115,7 +1116,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="geh-JI-4eO">
-                                                        <rect key="frame" x="20" y="945.5" width="374" height="328.5"/>
+                                                        <rect key="frame" x="20" y="945.5" width="374" height="436"/>
                                                         <subviews>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3jK-Aa-wh4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
@@ -1186,44 +1187,56 @@
                                                                 </connections>
                                                             </collectionView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="cJ8-Uz-UWh">
-                                                                <rect key="frame" x="0.0" y="60" width="374" height="268.5"/>
+                                                                <rect key="frame" x="0.0" y="60" width="374" height="376"/>
                                                                 <subviews>
-                                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="uMg-jz-QDW">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8AK-9D-iXj">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle runs on:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDv-4u-6XE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="247.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                        <real key="value" value="14"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                        <color key="value" name="ThemeSeperatorColor"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diesel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7d-NQ-rSU" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="262.5" y="0.0" width="111.5" height="20.5"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                        <real key="value" value="14"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
-                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                        <color key="value" name="ThemeBlackColor"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </label>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="uMg-jz-QDW">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="128"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle runs on:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TDv-4u-6XE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="121" height="128"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                <real key="value" value="14"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                <color key="value" name="ThemeSeperatorColor"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Diesel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y7d-NQ-rSU" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="128" y="0.0" width="47" height="128"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                <real key="value" value="14"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                <color key="value" name="ThemeBlackColor"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                            </stackView>
                                                                         </subviews>
-                                                                    </stackView>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uMg-jz-QDW" secondAttribute="trailing" id="9IE-uW-jrR"/>
+                                                                            <constraint firstItem="uMg-jz-QDW" firstAttribute="top" secondItem="8AK-9D-iXj" secondAttribute="top" id="FFf-u1-Erz"/>
+                                                                            <constraint firstItem="uMg-jz-QDW" firstAttribute="leading" secondItem="8AK-9D-iXj" secondAttribute="leading" id="KJi-Kb-PaX"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="uMg-jz-QDW" secondAttribute="bottom" id="sv9-MF-Byn"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="MwW-1v-IFS">
-                                                                        <rect key="frame" x="0.0" y="40.5" width="374" height="80"/>
+                                                                        <rect key="frame" x="0.0" y="148" width="374" height="80"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vehicle Photo " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAV-5k-YTs" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="109" height="80"/>
@@ -1273,7 +1286,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="7H7-Se-Tcj">
-                                                                        <rect key="frame" x="0.0" y="140.5" width="374" height="54"/>
+                                                                        <rect key="frame" x="0.0" y="248" width="374" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identity Proof Document" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lft-L0-zN9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
@@ -1312,7 +1325,7 @@
                                                                         </subviews>
                                                                     </stackView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oP7-dd-tUa">
-                                                                        <rect key="frame" x="0.0" y="214.5" width="374" height="54"/>
+                                                                        <rect key="frame" x="0.0" y="322" width="374" height="54"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="SjR-tO-lMa">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
@@ -1983,6 +1996,7 @@
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
                                                                         <real key="value" value="1"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="CalenderHeaderBackground" value="YES"/>
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                         </subviews>
@@ -2225,6 +2239,7 @@
                                                     <userDefinedRuntimeAttribute type="color" keyPath="subtitleTodayColor">
                                                         <color key="value" red="0.95686274509803915" green="0.95692259069999996" blue="0.95674854519999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="CalenderHeaderBackground" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t9j-QA-Rj4">

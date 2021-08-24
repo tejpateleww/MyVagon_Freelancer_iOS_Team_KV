@@ -88,16 +88,18 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
             arrTypes.append(TruckTypeModel(TruckData: element, IsSelected: false))
         })
+        
         if arrTypes.count != 0 {
             for i in 0...arrTypes.count - 1 {
-                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].truckData.name ?? "") {
+                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(where: {$0 == "\(arrTypes[i].truckData.id ?? 0)"}) {
                     arrTypes[i].isSelected = true
                 } else {
                     arrTypes[i].isSelected  = false
                 }
+                
             }
         }
-     
+        
         calender.delegate = self
         calender.dataSource = self
         
@@ -115,43 +117,43 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         
         present(autocompleteController, animated: true, completion: nil)
     }
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == TextFieldStartLocation {
             PlacerPickerFor = PlacerPickerOpenFor.StartLoction.rawValue
             OpenPlacePicker()
+            return false
         } else if textField == TextFieldEndLocation {
             PlacerPickerFor = PlacerPickerOpenFor.EndLocation.rawValue
             OpenPlacePicker()
+            return false
         }
+        return true
     }
+  
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     @IBAction func BtnPostTruck(_ sender: themeButton) {
-        
         let CheckValidation = Validate()
         if CheckValidation.0 {
             CallWebSerive()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
-        
     }
-   
     @objc func btnDoneDatePickerClicked() {
         if let datePicker = self.TextFieldSelectTime.inputView as? UIDatePicker {
             
-                let formatter = DateFormatter()
-                formatter.dateFormat = DateFormatterString.onlyTime.rawValue
+            let formatter = DateFormatter()
+            formatter.dateFormat = DateFormatterString.onlyTime.rawValue
             formatter.amSymbol = "AM"
             formatter.pmSymbol = "PM"
             TextFieldSelectTime.text = formatter.string(from: datePicker.date)
-          
+
         }
         self.TextFieldSelectTime.resignFirstResponder() // 2-5
-        
-
     }
+    
     @IBAction func SwitchAllowBiddingAction(_ sender: UISwitch) {
         
         if sender.isOn {
@@ -167,9 +169,8 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
     func CallWebSerive() {
-        
+    
         self.postTruckViewModel.postTruckViewController =  self
-        
         
         let ReqModelForPostTruck = PostTruckReqModel()
         ReqModelForPostTruck.truck_type_id = SelectedTruckType

@@ -16,10 +16,13 @@ class PickUpDropOffCell: UITableViewCell {
     
     var tblHeight:((CGFloat)->())?
     var isFromBidRequest = false
-    
+    var SelectedFilterOfBid = BidStatus.all.rawValue
     override func awakeFromNib() {
         super.awakeFromNib()
       
+       
+       // tblMultipleLocation.backgroundColor = .clear
+        
         if tblMultipleLocation.observationInfo != nil {
             self.tblMultipleLocation.removeObserver(self, forKeyPath: "contentSize")
         }
@@ -31,15 +34,24 @@ class PickUpDropOffCell: UITableViewCell {
         tblMultipleLocation.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
         tblMultipleLocation.register(UINib(nibName: "BidRequestTblCell", bundle: nil), forCellReuseIdentifier: "BidRequestTblCell")
         
-        
+       // tblMultipleLocation.reloadData()
         
           
 //        tblMultipleLocation.register(UINib(nibName: "HeaderTblViewCell", bundle: nil), forCellReuseIdentifier: "HeaderTblViewCell")
         
         tblMultipleLocation.register(UINib(nibName: "HeaderOfLocationsTbl", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderOfLocationsTbl")
-        
-
+        ReloadAllData()
+        //self.tblMultipleLocation.reloadDataWithAutoSizingCellWorkAround()
     }
+    func ReloadAllData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
+            self.tblMultipleLocation.layoutIfNeeded()
+            self.tblMultipleLocation.reloadData()//reloadDataWithAutoSizingCellWorkAround()
+        })
+     
+       
+    }
+   
     override func layoutSubviews() {
         super.layoutSubviews()
         //viewContainer is the parent of viewContents
@@ -89,11 +101,12 @@ class PickUpDropOffCell: UITableViewCell {
 
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
+      
         if(keyPath == "contentSize"){
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
-                
+                print("ATDebug :: \(newsize.height)")
             }
         }
     }
@@ -145,6 +158,27 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
        
             header.lblBidStatus.isHidden = !isFromBidRequest
             header.viewStatusBid.isHidden = !isFromBidRequest
+        
+        switch SelectedFilterOfBid {
+        case BidStatus.all.rawValue:
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            header.ViewStatusBidText.text = "All"
+        case BidStatus.pending.rawValue:
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            header.ViewStatusBidText.text = "Pending"
+        case BidStatus.scheduled.rawValue:
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+            header.ViewStatusBidText.text = "Scheduled"
+        case BidStatus.inProgress.rawValue:
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.3038921356, green: 0.5736817122, blue: 0.8892048597, alpha: 1)
+            header.ViewStatusBidText.text = "In-Progress"
+        case BidStatus.past.rawValue:
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+            header.ViewStatusBidText.text = "Past"
+        default:
+            break
+        }
+        
         //header.conHeightOfViewBidStatus.constant = isFromBidRequest ? 30 : 0
        
         return header
@@ -155,6 +189,9 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 
 }

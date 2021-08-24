@@ -39,6 +39,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="boolean" keyPath="CalenderScopeMonth" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="CalenderHeaderBackground" value="NO"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iie-f9-kKo">
@@ -104,6 +105,8 @@
                     </view>
                     <connections>
                         <outlet property="MainView" destination="fCE-D0-SVp" id="JFy-nO-4IJ"/>
+                        <outlet property="calender" destination="PcS-VL-QGm" id="f9i-Hd-PJ6"/>
+                        <outlet property="conHeightOfCalender" destination="9dR-Ru-gQh" id="zd5-4f-Em5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

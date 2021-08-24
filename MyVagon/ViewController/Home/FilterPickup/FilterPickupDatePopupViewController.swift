@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import FSCalendar
 class FilterPickupDatePopupViewController: UIViewController {
 
     // ----------------------------------------------------
@@ -17,8 +17,9 @@ class FilterPickupDatePopupViewController: UIViewController {
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
+    @IBOutlet weak var calender: ThemeCalender!
     @IBOutlet weak var MainView: UIView!
-    
+    @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -28,7 +29,7 @@ class FilterPickupDatePopupViewController: UIViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-      
+        configureCalendar()
         
         // Do any additional setup after loading the view.
     }
@@ -47,6 +48,17 @@ class FilterPickupDatePopupViewController: UIViewController {
     // ----------------------------------------------------
     
     
+    
+    // ----------------------------------------------------
+      //MARK:- ======== Calender Setup =======
+    // ----------------------------------------------------
+    func configureCalendar() {
+        
+        calender.delegate = self
+        calender.dataSource = self
+        
+        view.layoutIfNeeded()
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -68,4 +80,15 @@ class FilterPickupDatePopupViewController: UIViewController {
     // ----------------------------------------------------
 
 
+}
+extension FilterPickupDatePopupViewController: FSCalendarDelegate, FSCalendarDataSource{
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        
+        print(date)
+    }
+    func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
+        self.conHeightOfCalender.constant = bounds.height
+        self.view.layoutIfNeeded()
+    }
+    
 }

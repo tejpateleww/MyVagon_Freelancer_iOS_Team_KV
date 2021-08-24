@@ -12,9 +12,9 @@ class RegisterReqModel : Encodable {
     
     var truck_type,truck_sub_category,truck_weight,weight_unit,truck_capacity,capacity_unit : String?
     
-    var brand,pallets,load_capacity,fuel_type,registration_no	: String?
+    var brand,pallets,load_capacity,fuel_type,registration_no,truck_features	: String?
     
-    var vehicle_images,id_proof,license :[String]?
+    var vehicle_images,id_proof,license :String?
 
     enum CodingKeys: String, CodingKey {
         case device_name = "device_name"
@@ -34,6 +34,7 @@ class RegisterReqModel : Encodable {
         case capacity_unit = "capacity_unit"
         case brand = "brand"
         case pallets = "pallets"
+        case truck_features = "truck_features"
         case load_capacity = "load_capacity"
         case fuel_type = "fuel_type"
         case registration_no = "registration_no"

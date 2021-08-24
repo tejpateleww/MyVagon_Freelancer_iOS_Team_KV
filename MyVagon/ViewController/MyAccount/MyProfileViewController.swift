@@ -15,7 +15,7 @@ class MyProfileViewController: BaseViewController {
     // ----------------------------------------------------
     
     var arrImages : [String] = []
-    var arrTypes:[(String,Bool)] = []
+    var arrTypes:[(TruckFeaturesDatum,Bool)] = []
     var customTabBarController: CustomTabBarVC?
     var Iseditable = false
     // ----------------------------------------------------
@@ -111,30 +111,15 @@ class MyProfileViewController: BaseViewController {
     }
     func SetValue() {
         TextFieldFullName.text = SingletonClass.sharedInstance.UserProfileData?.name
-        TextFeildPhoneNumber.text = SingletonClass.sharedInstance.UserProfileData?.phone
+        TextFeildPhoneNumber.text = SingletonClass.sharedInstance.UserProfileData?.mobileNumber
         TextFeildEmail.text = SingletonClass.sharedInstance.UserProfileData?.email
         
+        TextFeildTruckType.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.name ?? ""),\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory?.name ?? "")"
         
-        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType}) {
-            
-            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory ?? "") ?? 0}) {
-                
-                TextFeildTruckType.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
-            }
-        }
+        TextFeildTruckWeight.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weight ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weightUnit?.name ?? "")"
         
-        
-        if let IndexForWeightUnit = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weightUnit ?? "") ?? 0}) {
-            TextFeildTruckWeight.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weight ?? "") \(SingletonClass.sharedInstance.TruckunitList?[IndexForWeightUnit].name?.lowercased() ?? "")"
-        }
-        
-        if let IndexForCargoUnit = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacityUnit ?? "") ?? 0}) {
-            TextFeildCargoLoadCapacity.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacity ?? "") \(SingletonClass.sharedInstance.TruckunitList?[IndexForCargoUnit].name?.lowercased() ?? "")"
-        }
-        
-        if let IndexForBrand = SingletonClass.sharedInstance.TruckBrandList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brand ?? "") ?? 0}) {
-            TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.TruckBrandList?[IndexForBrand].name?.lowercased() ?? "")"
-        }
+        TextFeildCargoLoadCapacity.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacity ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacityUnit?.name ?? "")"
+        TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brand ?? "")"
         
         TextFeildCapacity_pallets.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.pallets ?? 0)"
         
@@ -160,19 +145,22 @@ class MyProfileViewController: BaseViewController {
         
         
         SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
-            arrTypes.append((element.name ?? "",false))
+            arrTypes.append((element,false))
         })
         if arrTypes.count != 0 {
-                for i in 0...arrTypes.count - 1 {
-                    if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].0) {
-                    arrTypes[i].1 = true
-                } else {
-                    arrTypes[i].1  = false
+            for i in 0...arrTypes.count - 1 {
+                if let truckFeature = SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckFeatures {
+                    if truckFeature.contains(where: {$0.id == arrTypes[i].0.id}) {
+                        arrTypes[i].1 = true
+                    } else {
+                        arrTypes[i].1  = false
+                    }
                 }
+               
             }
         }
         
-        arrImages = SingletonClass.sharedInstance.Reg_VehiclePhoto
+        arrImages = SingletonClass.sharedInstance.UserProfileData?.vehicle?.images ?? []
         ColTypes.reloadData()
         collectionImages.reloadData()
     }
@@ -201,7 +189,7 @@ extension MyProfileViewController : UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == ColTypes{
-            return CGSize(width: ((arrTypes[indexPath.row].0.capitalized).sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
+            return CGSize(width: ((arrTypes[indexPath.row].0.name?.capitalized ?? "").sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
                           , height: ColTypes.frame.size.height - 10)
         } else if collectionView == collectionImages {
             return CGSize(width: collectionView.bounds.size.height, height: collectionView.bounds.size.height)
@@ -211,7 +199,7 @@ extension MyProfileViewController : UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ColTypes{
             let cell = ColTypes.dequeueReusableCell(withReuseIdentifier: "TypesColCell", for: indexPath) as! TypesColCell
-            cell.lblTypes.text = arrTypes[indexPath.row].0
+            cell.lblTypes.text = arrTypes[indexPath.row].0.name
             cell.BGView.layer.cornerRadius = 17
             if arrTypes[indexPath.row].1 {
                 print("Here come with index :: \(indexPath.row)")

@@ -48,10 +48,10 @@ struct AppInfo {
     //
     static var Google_API_Key: String {
         //Added api key on 4-3-21, from newly create google project for Beat, com.eww.HCProDoctor1 bundle id
-        return "AIzaSyAsK4EKl6GkGqELS8YySwoIWVjNjAwR7dg"//"AIzaSyCEprsNUdaa55kxsn8z8m-4ECirG0dL_qM"
-        
+//        return "AIzaSyAsK4EKl6GkGqELS8YySwoIWVjNjAwR7dg"//"AIzaSyCEprsNUdaa55kxsn8z8m-4ECirG0dL_qM"
+        return "AIzaSyCy2xxOMIkeI3tmxGwYzu08Uk5SFfopyOk"
     }
-    
+    //AIzaSyDqBqjXeHoTf6TC7bjs0OogaxWb0Ev_vxM
     
 
 }

@@ -1,7 +1,7 @@
 //
 //  LoginResModel.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 18, 2021
+//  Created on August 24, 2021
 
 import Foundation
 

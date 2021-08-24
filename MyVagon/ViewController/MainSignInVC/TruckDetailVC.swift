@@ -68,7 +68,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     
     var tabTypeSelection = Tabselect.Diesel.rawValue
     var arrImages : [String] = []
-    var arrTypes:[(String,Bool)] = []
+    var arrTypes:[(TruckFeaturesDatum,Bool)] = []
     //[("Curtainsde",false),("Refrigerated (With Cooling)",false),("Refrigerated (Without Cooling)",false),("Flatbed Trailer",false),("Platform",false),("Canvas",false),("Tilting Trailer",false),("Container",false)]
     var selectedIndex = NSNotFound
     // ----------------------------------------------------
@@ -153,15 +153,16 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.Reg_RegistrationNumber
         
         SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
-            arrTypes.append((element.name ?? "",false))
+            arrTypes.append((element,false))
         })
         if arrTypes.count != 0 {
             for i in 0...arrTypes.count - 1 {
-                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(arrTypes[i].0) {
+                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(where: {$0 == "\(arrTypes[i].0.id ?? 0)"}) {
                     arrTypes[i].1 = true
                 } else {
                     arrTypes[i].1  = false
                 }
+                
             }
         }
         
@@ -283,13 +284,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         let CheckValidation = Validate()
         if CheckValidation.0 {
             
-            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
-            let x = self.view.frame.size.width * 3
-            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             
-            UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-            UserDefault.synchronize()
-            RegisterMainVC.viewDidLayoutSubviews()
             
              SingletonClass.sharedInstance.Reg_TruckBrand = TextFieldTruckBrand.text ?? ""
              SingletonClass.sharedInstance.Reg_Pallets = TextFieldCapacity.text ?? ""
@@ -299,14 +294,24 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             var TempAdditionType : [String] = []
             arrTypes.forEach { element in
                 if element.1 {
-                    TempAdditionType.append(element.0)
+                    TempAdditionType.append("\(element.0.id ?? 0)")
                 }
             }
             SingletonClass.sharedInstance.Reg_TruckFualType = tabTypeSelection
             SingletonClass.sharedInstance.Reg_AdditionalTypes = TempAdditionType
             SingletonClass.sharedInstance.Reg_VehiclePhoto = arrImages
+            DispatchQueue.main.async {
+                SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            }
             
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 3
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            
+            UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
+            RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
@@ -401,7 +406,7 @@ extension TruckDetailVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TypesTblCell") as! TypesTblCell
         cell.btnSelectType.isUserInteractionEnabled = false
-        cell.lblTypes.text = arrTypes[indexPath.row].0
+        cell.lblTypes.text = arrTypes[indexPath.row].0.name
         cell.btnSelectType.isSelected = selectedIndex == indexPath.row ? true : false
         return cell
     }
@@ -433,7 +438,7 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == ColTypes{
-            return CGSize(width: ((arrTypes[indexPath.row].0.capitalized).sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
+            return CGSize(width: ((arrTypes[indexPath.row].0.name?.capitalized ?? "").sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
                           , height: ColTypes.frame.size.height - 10)
         } else if collectionView == collectionImages {
             return CGSize(width: collectionView.bounds.width/3 - 5, height: 71.0)
@@ -443,7 +448,7 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ColTypes{
             let cell = ColTypes.dequeueReusableCell(withReuseIdentifier: "TypesColCell", for: indexPath) as! TypesColCell
-            cell.lblTypes.text = arrTypes[indexPath.row].0
+            cell.lblTypes.text = arrTypes[indexPath.row].0.name
             cell.BGView.layer.cornerRadius = 17
             if arrTypes[indexPath.row].1 {
                 print("Here come with index :: \(indexPath.row)")

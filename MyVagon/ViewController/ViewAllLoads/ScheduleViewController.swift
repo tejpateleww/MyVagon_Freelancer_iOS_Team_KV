@@ -119,9 +119,29 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         else {
             
             let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
+            switch arrStatus[selectedIndex] {
+            case arrStatus[0]:
+                cell.SelectedFilterOfBid = BidStatus.all.rawValue
+                break
+            case arrStatus[1]:
+                cell.SelectedFilterOfBid = BidStatus.pending.rawValue
+                break
+            case arrStatus[2]:
+                cell.SelectedFilterOfBid = BidStatus.scheduled.rawValue
+                break
+            case arrStatus[3]:
+                cell.SelectedFilterOfBid = BidStatus.inProgress.rawValue
+                break
+            case arrStatus[4]:
+                cell.SelectedFilterOfBid = BidStatus.past.rawValue
+                break
+            default:
+                break
+            }
             cell.isFromBidRequest = true
             print(tblLocations.rowHeight)
-    //        cell.tblMultipleLocation.reloadData()
+            cell.ReloadAllData()
+     
             return cell
             
         }
@@ -195,6 +215,11 @@ extension ScheduleViewController : UICollectionViewDataSource , UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         collectionOfHistory.reloadData()
+        tblLocations.reloadData()
+        
+        
+
+        
     }
 
 }

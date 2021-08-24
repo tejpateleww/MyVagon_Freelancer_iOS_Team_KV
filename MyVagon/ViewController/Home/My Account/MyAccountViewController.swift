@@ -128,6 +128,7 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case MyAccountSectionTitle.Logout.StringName:
+            appDel.Logout()
             break
         default:
             break

@@ -50,10 +50,10 @@
                             </constraints>
                         </view>
                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-cA-vCX">
-                            <rect key="frame" x="15" y="40.5" width="449" height="20.5"/>
+                            <rect key="frame" x="15" y="40.5" width="410.5" height="20.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FTj-nx-f8p">
-                                    <rect key="frame" x="0.0" y="0.0" width="449" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="410.5" height="20.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#567898" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2b-wp-EAr" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="71" height="20.5"/>
@@ -70,7 +70,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="5 Ton . 500 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4K-Zv-X1V" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                            <rect key="frame" x="76" y="0.0" width="373" height="20.5"/>
+                                            <rect key="frame" x="76" y="0.0" width="334.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 mile Deadhead : Truck With Trailer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-qf-Aj9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="15" y="66" width="449" height="20.5"/>
+                            <rect key="frame" x="15" y="66" width="286" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -120,10 +120,10 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
-                            <rect key="frame" x="479" y="45.5" width="100" height="40"/>
+                            <rect key="frame" x="471" y="45.5" width="108" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Bidding" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                    <rect key="frame" x="20" y="10" width="60" height="20"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SCHEDULED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                    <rect key="frame" x="20" y="10" width="78" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -131,16 +131,15 @@
                             </subviews>
                             <color key="backgroundColor" red="0.31764705879999999" green="0.58039215690000001" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="87w-LG-xED" secondAttribute="trailing" constant="20" id="1yV-vJ-Eyw"/>
+                                <constraint firstAttribute="trailing" secondItem="87w-LG-xED" secondAttribute="trailing" constant="10" id="1yV-vJ-Eyw"/>
                                 <constraint firstAttribute="bottom" secondItem="87w-LG-xED" secondAttribute="bottom" constant="10" id="RLk-D0-m9o"/>
                                 <constraint firstAttribute="height" constant="40" id="SgR-aY-hNq"/>
-                                <constraint firstItem="87w-LG-xED" firstAttribute="leading" secondItem="jrR-LB-X1C" secondAttribute="leading" constant="20" id="Tpl-g6-g6L"/>
-                                <constraint firstAttribute="width" constant="100" id="dsX-CE-gsr"/>
+                                <constraint firstItem="87w-LG-xED" firstAttribute="leading" secondItem="jrR-LB-X1C" secondAttribute="leading" constant="20" id="wEC-dM-obl"/>
                                 <constraint firstItem="87w-LG-xED" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="top" constant="10" id="zJi-j2-I3w"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Confirmtion pending" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="472" y="90.5" width="99" height="35"/>
+                            <rect key="frame" x="433.5" y="90.5" width="137.5" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="yRS-aX-0rY"/>
                             </constraints>
@@ -159,22 +158,22 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="10" id="0mf-BX-CA6"/>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="leading" secondItem="slt-ds-kj4" secondAttribute="leading" id="61f-he-xfL"/>
                         <constraint firstItem="Jn8-uL-jbO" firstAttribute="centerY" secondItem="slt-ds-kj4" secondAttribute="centerY" id="6XX-1Y-GUc"/>
                         <constraint firstItem="1KJ-IT-5UF" firstAttribute="centerY" secondItem="slt-ds-kj4" secondAttribute="centerY" id="6pQ-X9-ojR"/>
-                        <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" secondItem="ibF-qf-Aj9" secondAttribute="trailing" constant="15" id="7pd-z8-wRa"/>
                         <constraint firstItem="Mra-rJ-9Br" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="bottom" constant="5" id="AnF-Bl-J6d"/>
                         <constraint firstItem="Jn8-uL-jbO" firstAttribute="leading" secondItem="slt-ds-kj4" secondAttribute="trailing" constant="15.5" id="Bh2-Y5-bZ1"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="leading" id="CUF-2u-Wyj"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="top" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="KsD-9T-SfX"/>
                         <constraint firstItem="slt-ds-kj4" firstAttribute="top" secondItem="ikL-gx-6UI" secondAttribute="top" constant="10" id="VWB-DP-Gya"/>
                         <constraint firstItem="jrR-LB-X1C" firstAttribute="top" secondItem="1KJ-IT-5UF" secondAttribute="bottom" constant="10" id="Vs0-dI-Ran"/>
-                        <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="15" id="XD2-6M-MEv"/>
                         <constraint firstAttribute="trailing" secondItem="1KJ-IT-5UF" secondAttribute="trailing" constant="15" id="dDp-Sb-GhJ"/>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="Jn8-uL-jbO" secondAttribute="bottom" constant="5" id="eGa-Qi-5Dt"/>
                         <constraint firstAttribute="trailing" secondItem="Mra-rJ-9Br" secondAttribute="trailing" constant="8" id="fGf-dN-fAI"/>
                         <constraint firstItem="Mra-rJ-9Br" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="8" id="kVh-kZ-NvE"/>
                         <constraint firstAttribute="trailing" secondItem="jrR-LB-X1C" secondAttribute="trailing" id="lwf-6N-14q"/>
+                        <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ibF-qf-Aj9" secondAttribute="trailing" constant="10" id="m8e-MO-pew"/>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="slt-ds-kj4" secondAttribute="bottom" constant="10" id="oNA-E3-ReG"/>
                         <constraint firstItem="slt-ds-kj4" firstAttribute="leading" secondItem="ikL-gx-6UI" secondAttribute="leading" constant="15" id="oqs-ZM-jde"/>
                     </constraints>
@@ -190,6 +189,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="ViewStatusBidText" destination="87w-LG-xED" id="r1H-n8-6Ra"/>
                 <outlet property="headerView" destination="ikL-gx-6UI" id="Hfv-k8-6rO"/>
                 <outlet property="lblBidStatus" destination="Mra-rJ-9Br" id="wj8-7V-SxM"/>
                 <outlet property="viewStatus" destination="jrR-LB-X1C" id="8a3-pq-Z7v"/>

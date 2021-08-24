@@ -7,9 +7,10 @@
 
 import Foundation
 class SettingsReqModel : Encodable {
-    var notification,message,bid_received,bid_accepted,load_assign_by_dispatcher,start_trip_reminder,complete_trip_reminder,pdo_remider,match_shippment_near_you,match_shippment_near_delivery,rate_shipper : String?
+    var notification,message,bid_received,bid_accepted,load_assign_by_dispatcher,start_trip_reminder,complete_trip_reminder,pdo_remider,match_shippment_near_you,match_shippment_near_delivery,rate_shipper,user_id : String?
 
     enum CodingKeys: String, CodingKey {
+        case user_id = "user_id"
         case notification = "notification"
         case message = "message"
         case bid_received = "bid_received"
@@ -27,6 +28,16 @@ class SettingsReqModel : Encodable {
     
     
 }
+
+
+class GetSettingsListReqModel : Encodable {
+    var user_id : String?
+
+    enum CodingKeys: String, CodingKey {
+        case user_id = "user_id"
+    }
+}
+
 
 
 

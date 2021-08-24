@@ -58,6 +58,13 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: -GetSettings
+    class func GetSettings(reqModel: GetSettingsListReqModel, completion: @escaping (Bool,String,SettingsGetResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.GetSettings.rawValue, requestModel: reqModel, responseModel: SettingsGetResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     //MARK: -VerifyEmail
     class func VerifyEmail(reqModel: EmailVerifyReqModel, completion: @escaping (Bool,String,VerifyResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.EmailVerify.rawValue, requestModel: reqModel, responseModel: VerifyResModel.self) { (status, message, response, error) in

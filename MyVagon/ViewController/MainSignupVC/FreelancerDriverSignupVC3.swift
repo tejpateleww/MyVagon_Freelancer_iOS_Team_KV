@@ -177,12 +177,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
        
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
-            let x = self.view.frame.size.width * 1
-            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-           
             
-            RegisterMainVC.viewDidLayoutSubviews()
             
             SingletonClass.sharedInstance.Reg_FullName = TextFieldFullName.text ?? ""
             SingletonClass.sharedInstance.Reg_CountryCode = TextFieldCountryCode.text ?? ""
@@ -194,6 +189,13 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             
             UserDefault.setValue(0, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
             UserDefault.synchronize()
+            
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 1
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+           
+            
+            RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
