@@ -960,7 +960,7 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dl-rW-dNC" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="100" y="0.0" width="80" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-bR-Fuv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-bR-Fuv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
                                                                                                                 <rect key="frame" x="5" y="0.0" width="70" height="50"/>
                                                                                                                 <constraints>
                                                                                                                     <constraint firstAttribute="width" constant="70" id="eUt-Az-FTX"/>
@@ -977,6 +977,7 @@
                                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="FontColor">
                                                                                                                         <color key="value" name="ThemeBlackColor"/>
                                                                                                                     </userDefinedRuntimeAttribute>
+                                                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_dropdown"/>
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </textField>
                                                                                                         </subviews>
@@ -1060,7 +1061,7 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjV-nI-nnR" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="100" y="0.0" width="80" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-bB-Lc2" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-bB-Lc2" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
                                                                                                                 <rect key="frame" x="5" y="0.0" width="70" height="50"/>
                                                                                                                 <constraints>
                                                                                                                     <constraint firstAttribute="width" constant="70" id="hpg-He-Fzj"/>
@@ -1077,6 +1078,7 @@
                                                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="FontColor">
                                                                                                                         <color key="value" name="ThemeBlackColor"/>
                                                                                                                     </userDefinedRuntimeAttribute>
+                                                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_dropdown"/>
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </textField>
                                                                                                         </subviews>
@@ -1221,6 +1223,7 @@
     <resources>
         <image name="ic_Search" width="16.5" height="16.5"/>
         <image name="ic_calender" width="24" height="26"/>
+        <image name="ic_dropdown" width="13.5" height="8"/>
         <image name="ic_myLocation" width="22.5" height="22.5"/>
         <image name="ic_next" width="20.5" height="20.5"/>
         <image name="ic_selectedCheckbox" width="20" height="20"/>

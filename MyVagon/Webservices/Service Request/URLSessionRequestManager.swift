@@ -19,6 +19,7 @@ class URLSessionRequestManager {
     static func NEW_BEARER_HEADER() -> String {
         return "\(APIEnvironment.BearerHeader)"
     }
+    
 
     class func makeGetRequest<C:Codable>(urlString: String, responseModel: C.Type, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: C?,_ dataDic: Any) -> ()) {
 
@@ -47,6 +48,7 @@ class URLSessionRequestManager {
 
         }
     }
+    
 //    class func makePostRequest<C:Codable, P:Encodable>(urlString: String, requestModel: P, responseModel: C.Type, completion: @escaping (_ status: Bool,_ apiMessage: String,_ modelObj: C?,_ dataDic: Any) -> ()){
 //
 //        if !Reachability.isConnectedToNetwork() {

@@ -6,6 +6,8 @@ target 'MyVagon' do
   use_frameworks!
 
   # Pods for MyVagon
+pod 'Firebase/Crashlytics'
+
   pod 'SDWebImage'
 pod 'Firebase/Analytics'
   pod 'GooglePlacePicker'
