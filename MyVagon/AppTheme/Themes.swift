@@ -10,6 +10,8 @@ import UIKit
 import CountryPickerView
 import SkyFloatingLabelTextField
 import FSCalendar
+import GrowingTextView
+
 //==========================
 //MARK: ====== Button ======
 //==========================
@@ -33,17 +35,21 @@ class themButtonNext: UIButton {
 }
 
 class themeButton: UIButton {
+    private var originalButtonText: String?
+    var activityIndicator: UIActivityIndicatorView!
+    
     @IBInspectable public var IsSubmit : Bool = false
     @IBInspectable public var IsBlack : Bool = false
     @IBInspectable public var IsUnderline : Bool = false
     @IBInspectable public var IsRegualar : Bool = false
-    @IBInspectable public var CornerRadius : CGFloat = 0.0
+    @IBInspectable public var CornerRadiusForButton : CGFloat = 0.0
     @IBInspectable public var TextColor : UIColor = UIColor.white
     @IBInspectable public var FontSize : CGFloat = 16.0
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+      
         if IsSubmit {
+           
             self.backgroundColor = UIColor.appColor(ThemeColor.themeButtonBlue)
             self.setTitleColor(UIColor.white, for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
@@ -63,8 +69,47 @@ class themeButton: UIButton {
         if IsUnderline {
             self.setunderline(title: self.titleLabel?.text ?? "", color: UIColor.appColor(ThemeColor.themeButtonBlue), font: CustomFont.PoppinsMedium.returnFont(16))
         }
-        self.layer.cornerRadius = CornerRadius
+        self.layer.cornerRadius = CornerRadiusForButton
         
+    }
+    
+
+    func showLoading() {
+        originalButtonText = self.titleLabel?.text
+        self.setTitle("", for: .normal)
+        
+        if (activityIndicator == nil) {
+            activityIndicator = createActivityIndicator()
+        }
+        
+        showSpinning()
+    }
+
+    func hideLoading() {
+        self.setTitle(originalButtonText, for: .normal)
+        activityIndicator.stopAnimating()
+    }
+
+    private func createActivityIndicator() -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.color = .white
+        return activityIndicator
+    }
+
+    private func showSpinning() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(activityIndicator)
+        centerActivityIndicatorInButton()
+        activityIndicator.startAnimating()
+    }
+
+    private func centerActivityIndicatorInButton() {
+        let xCenterConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: activityIndicator, attribute: .centerX, multiplier: 1, constant: 0)
+        self.addConstraint(xCenterConstraint)
+        
+        let yCenterConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: activityIndicator, attribute: .centerY, multiplier: 1, constant: 0)
+        self.addConstraint(yCenterConstraint)
     }
 }
 
@@ -1271,7 +1316,7 @@ class ThemeCalender : FSCalendar, FSCalendarDelegate {
         }
         
         self.appearance.todaySelectionColor = UIColor.appColor(.themeColorForButton)
-        
+        self.allowsMultipleSelection = false
         self.appearance.headerTitleColor = UIColor(hexString: "#1F1F41")
         self.appearance.headerTitleFont = CustomFont.PoppinsRegular.returnFont(14.0)
         self.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
@@ -1360,5 +1405,79 @@ class ThemeSwitch : UISwitch {
         self.layer.cornerRadius = 16.0;
 
         
+    }
+}
+class ChatthemeTextView: GrowingTextView {
+    
+    @IBInspectable public var isChat: Bool = false
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if isChat {
+            self.textContainerInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+            self.placeholderColor = UIColor.init(hexString: "#BABABA")
+            self.textColor = UIColor.black
+            self.layer.borderColor = UIColor.init(hexString: "#979797").withAlphaComponent(0.6).cgColor
+            self.layer.borderWidth = 0.75
+            self.layer.cornerRadius = 20
+            
+        } else {
+            self.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+            self.layer.cornerRadius = 5
+        }
+    }
+}
+class DottedLineView : UIView {
+    @IBInspectable public var IsHorizontal: Bool = false
+    override func awakeFromNib() {
+        if IsHorizontal {
+            self.addDashedBorderHorizontal()
+        } else {
+            self.addDashedBorderVertical()
+        }
+        
+    }
+}
+extension UIView {
+  
+    func addDashedBorderVertical() {
+        //Create a CAShapeLayer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        shapeLayer.lineWidth = 1
+        // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+        shapeLayer.lineDashPattern = [2,3]
+
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: 0, y: self.frame.height)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
+    }
+    
+    func addDashedBorderHorizontal() {
+        //Create a CAShapeLayer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        shapeLayer.lineWidth = 1
+        // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+        shapeLayer.lineDashPattern = [2,3]
+
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: self.frame.width, y: 0)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
+    }
+}
+class CornerView : UIView {
+    override func awakeFromNib() {
+
+        self.roundCorners(corners: [.topLeft,.bottomLeft], radius: self.frame.size.height / 2)
     }
 }

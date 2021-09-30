@@ -7,7 +7,7 @@
 
 import UIKit
 import MobileCoreServices
-
+import SDWebImage
 class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDelegate {
 
     
@@ -21,15 +21,20 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // ----------------------------------------------------
     
     @IBOutlet weak var personIV: UIImageView!
-    @IBOutlet weak var identifyLabel: themeLabel!
     @IBOutlet weak var loremLabel: themeLabel!
-    @IBOutlet weak var identityProofTF: themeTextfield!
-    @IBOutlet weak var licenceTF: themeTextfield!
-    @IBOutlet weak var uploadVehicleLabel: UILabel!
-    @IBOutlet weak var iAcceptLabel: themeLabel!
-    @IBOutlet weak var termsButton: themeButton!
-    @IBOutlet weak var checkBoxButton: UIButton!
-    @IBOutlet weak var saveButton: themeButton!
+  
+  
+    @IBOutlet weak var NextButton: themeButton!
+    
+    @IBOutlet weak var ImageViewIdentity: UIImageView!
+    @IBOutlet weak var ImageViewLicence: UIImageView!
+    
+    @IBOutlet weak var TextFieldLicenseNumber: themeTextfield!
+    @IBOutlet weak var TextFieldLicenseExpiryDate: themeTextfield!
+    
+   
+    
+
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -38,9 +43,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        identityProofTF.delegate = self
-        licenceTF.delegate = self
+        TextFieldLicenseExpiryDate.addInputViewDatePicker(target: self, selector: #selector(btnDoneDatePickerClicked), PickerMode: .date, MinDate: true, MaxDate: false)
         setValue()
         // Do any additional setup after loading the view.
     }
@@ -50,103 +53,38 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     func setValue() {
-        identityProofTF.text = SingletonClass.sharedInstance.Reg_IdentityProofDocumentName
-        licenceTF.text = SingletonClass.sharedInstance.Reg_LicenceDocumentname
-       
-      
-        
-        
+        if SingletonClass.sharedInstance.RegisterData.Reg_license.count != 0 {
+            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.RegisterData.Reg_license[0])"
+            print(strUrl)
+            ImageViewLicence.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            ImageViewLicence.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
+        }
+        if SingletonClass.sharedInstance.RegisterData.Reg_id_proof.count != 0 {
+            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.RegisterData.Reg_id_proof[0])"
+            ImageViewIdentity.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            ImageViewIdentity.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
+        }
+         TextFieldLicenseNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_license_number
+        TextFieldLicenseExpiryDate.text = SingletonClass.sharedInstance.RegisterData.Reg_license_expiry_date
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField == identityProofTF {
-            
-            SelectedDocumentRow = 0
-            let options = [kUTTypeJPEG as String]
-            
-            let documentPicker =  UIDocumentPickerViewController(documentTypes: options, in: .import)
-            documentPicker.delegate = self
-            documentPicker.delegate = self
-            self.present(documentPicker, animated: true, completion: nil)
-        } else if textField == licenceTF {
-            SelectedDocumentRow = 1
-            let options = [kUTTypeJPEG as String]
-           
-            let documentPicker =  UIDocumentPickerViewController(documentTypes: options, in: .import)
-            documentPicker.delegate = self
-            documentPicker.delegate = self
-            self.present(documentPicker, animated: true, completion: nil)
-        }
-        return false
+       return false
     }
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        //textField.resignFirstResponder()
        
         
-        
     }
-    
-    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-      
-        print("ATDebug :: \(url.absoluteURL)")
-       
-        print(url.lastPathComponent)
-        
-        print(url.pathExtension)
-        do {
-            let resources = try url.resourceValues(forKeys:[.fileSizeKey])
-            let fileSize = resources.fileSize
-            if Double((fileSize ?? 0) / 1000000) > MaximumFileUploadSize {
-                Utilities.ShowAlert(OfMessage: "Please upload file lower then \(MaximumFileUploadSize) MB")
-            } else {
-                if SelectedDocumentRow == 0 {
-                    self.UploadDocument(PathURL: url.absoluteURL, DocType: .IdentityProof)
-                    identityProofTF.text = url.lastPathComponent
-                    
-                } else {
-                    self.UploadDocument(PathURL: url.absoluteURL, DocType: .Licence)
-                    licenceTF.text = url.lastPathComponent
-                    
-                }
-            }
-            print ("\(fileSize ?? 0)")
-        } catch {
-            print("Error: \(error)")
+    @objc func btnDoneDatePickerClicked() {
+        if let datePicker = self.TextFieldLicenseExpiryDate.inputView as? UIDatePicker {
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = DateFormatterString.onlyDate.rawValue
+            TextFieldLicenseExpiryDate.text = formatter.string(from: datePicker.date)
+
         }
-        
-        
-        
+        self.TextFieldLicenseExpiryDate.resignFirstResponder() // 2-5
     }
-    
-    private func handleFileSelection(inUrl:URL) -> Data {
-        var data = Data()
-        do {
-            // inUrl is the document's URL
-            data = try Data(contentsOf: inUrl)
-            // Getting file data here
-        } catch {
-           
-        }
-        return data
-    }
-    
-    func Validate() -> (Bool,String) {
-        
-        
-        let CheckIdentityProof = identityProofTF.validatedText(validationType: ValidatorType.Upload(field: "identity proof"))
-        let CheckLicence = licenceTF.validatedText(validationType: ValidatorType.Upload(field: "licence"))
-        
-        
-        if (!CheckIdentityProof.0){
-            return (CheckIdentityProof.0,CheckIdentityProof.1)
-        }  else if (!CheckLicence.0){
-            return (CheckLicence.0,CheckLicence.1)
-        } else if !checkBoxButton.isSelected {
-            return (false,"Please accept terms & condition")
-        }
-        return (true,"")
-        
-    }
-    
+   
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -160,68 +98,82 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         }
     }
     @IBAction func termsButtonPressed(_ sender: themeButton) {
-        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CommonWebviewVC.storyboardID) as! CommonWebviewVC
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: TermsConditionVC.storyboardID) as! TermsConditionVC
+        controller.isTerms = true
         controller.strNavTitle = "Terms & Conditions"
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
+    @IBAction func btnIdentityClick(_ sender: themeButton) {
+        AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
+        AttachmentHandler.shared.imagePickedBlock = { (image) in
+            self.ImageViewIdentity.image = image
+            print(image)
+            self.ImageUploadAPI(arrImages: [image], documentType: .IdentityProof)
+        }
+        
+    }
     
-    @IBAction func saveButtonPressed(_ sender: themeButton) {
+    @IBAction func btnLicenceClick(_ sender: themeButton) {
+        AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
+        AttachmentHandler.shared.imagePickedBlock = { (image) in
+            self.ImageViewLicence.image = image
+         
+            print(image)
+            self.ImageUploadAPI(arrImages: [image], documentType: .Licence)
+        }
+    }
+    
+    
+    // ----------------------------------------------------
+    // MARK: - --------- Validation ---------
+    // ----------------------------------------------------
+    
+    
+    func Validate() -> (Bool,String) {
+        
+        let checkLicenseNumber = TextFieldLicenseNumber.validatedText(validationType: ValidatorType.requiredField(field: "license number"))
+        
+        let checkLicenseExpiryDate = TextFieldLicenseExpiryDate.validatedText(validationType: ValidatorType.requiredField(field: "license expiry date"))
+        
+    
+        if SingletonClass.sharedInstance.RegisterData.Reg_id_proof.count == 0 {
+            return (false,"Please attach id proof document")
+        } else if SingletonClass.sharedInstance.RegisterData.Reg_license.count == 0 {
+            return (false,"Please attach license")
+        } else if (!checkLicenseNumber.0){
+            return (checkLicenseNumber.0,checkLicenseNumber.1)
+        }
+        else if (!checkLicenseExpiryDate.0){
+            return (checkLicenseExpiryDate.0,checkLicenseExpiryDate.1)
+        }
+
+        return (true,"")
+        
+    }
+    
+    
+    @IBAction func NextButtonPress(_ sender: themeButton) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
+            SingletonClass.sharedInstance.RegisterData.Reg_license_number = TextFieldLicenseNumber.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_license_expiry_date = TextFieldLicenseExpiryDate.text ?? ""
             
-            SingletonClass.sharedInstance.Reg_IdentityProofDocumentName = identityProofTF.text ?? ""
-            SingletonClass.sharedInstance.Reg_LicenceDocumentname = licenceTF.text ?? ""
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            UserDefault.SetRegiterData()
             
-            let registerReqModel = RegisterReqModel()
-            registerReqModel.app_version = SingletonClass.sharedInstance.AppVersion
-            registerReqModel.device_name = SingletonClass.sharedInstance.DeviceName
-            registerReqModel.device_type = SingletonClass.sharedInstance.DeviceType
-            registerReqModel.device_token = SingletonClass.sharedInstance.DeviceToken
-            registerReqModel.fullname  = SingletonClass.sharedInstance.Reg_FullName
-            registerReqModel.country_code  = SingletonClass.sharedInstance.Reg_CountryCode
-            registerReqModel.mobile_number  = SingletonClass.sharedInstance.Reg_PhoneNumber
-            registerReqModel.email  = SingletonClass.sharedInstance.Reg_Email
-            registerReqModel.password  = SingletonClass.sharedInstance.Reg_Password
+            UserDefault.setValue(3, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
             
-            registerReqModel.truck_type  = SingletonClass.sharedInstance.Reg_TruckType
-            registerReqModel.truck_sub_category = SingletonClass.sharedInstance.Reg_TruckType
-            registerReqModel.truck_weight  = SingletonClass.sharedInstance.Reg_TruckWeight
             
-            if let TruckUnitIndex = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == SingletonClass.sharedInstance.Reg_TruckWeightUnit}) {
-                registerReqModel.weight_unit  = "\(SingletonClass.sharedInstance.TruckunitList?[TruckUnitIndex].id ?? 0)"
-            }
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 4
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             
-           
-            registerReqModel.truck_capacity  = SingletonClass.sharedInstance.Reg_CargorLoadCapacity
-            
-            if let CapacityUnitIndex = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit}) {
-                registerReqModel.capacity_unit  = "\(SingletonClass.sharedInstance.TruckunitList?[CapacityUnitIndex].id ?? 0)"
-            }
-//            registerReqModel.capacity_unit  = SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit
-            
-            if let TruckBrandIndex = SingletonClass.sharedInstance.TruckBrandList?.firstIndex(where: {$0.name == SingletonClass.sharedInstance.Reg_TruckBrand}) {
-                registerReqModel.brand  = "\(SingletonClass.sharedInstance.TruckBrandList?[TruckBrandIndex].id ?? 0)"
-            }
-            
-//            registerReqModel.brand  = SingletonClass.sharedInstance.Reg_TruckBrand
-            registerReqModel.pallets = SingletonClass.sharedInstance.Reg_Pallets
-            registerReqModel.fuel_type  = SingletonClass.sharedInstance.Reg_TruckFualType
-            registerReqModel.load_capacity  = SingletonClass.sharedInstance.Reg_CargorLoadCapacity
-            registerReqModel.registration_no  = SingletonClass.sharedInstance.Reg_RegistrationNumber
-            registerReqModel.vehicle_images  = SingletonClass.sharedInstance.Reg_VehiclePhoto.map({$0}).joined(separator: ",")
-
-            registerReqModel.id_proof  = SingletonClass.sharedInstance.Reg_IdentityProofDocument.map({$0}).joined(separator: ",")
-            
-            registerReqModel.truck_features = SingletonClass.sharedInstance.Reg_AdditionalTypes.map({$0}).joined(separator: ",")
-            registerReqModel.license  = SingletonClass.sharedInstance.Reg_LicenceDocument.map({$0}).joined(separator: ",")
+           // UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+           // UserDefault.synchronize()
+            RegisterMainVC.viewDidLayoutSubviews()
            
             
-            self.identifyYourselfViewModel.identifyYourselfVC = self
-            
-            self.identifyYourselfViewModel.WebServiceForRegister(ReqModel: registerReqModel)
-         
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
@@ -239,6 +191,13 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         
         self.identifyYourselfViewModel.identifyYourselfVC = self
         
-        self.identifyYourselfViewModel.WebServiceForUploadDocument(Docs: UploadFiles, DocumentType: DocType)
+        
+    }
+    
+    func ImageUploadAPI(arrImages:[UIImage],documentType:DocumentType) {
+        
+        self.identifyYourselfViewModel.identifyYourselfVC = self
+        
+        self.identifyYourselfViewModel.WebServiceImageUpload(images: arrImages, uploadFor: documentType)
     }
 }

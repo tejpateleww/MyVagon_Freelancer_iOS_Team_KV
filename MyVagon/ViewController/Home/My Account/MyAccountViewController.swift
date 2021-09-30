@@ -109,6 +109,11 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
             controller.isFromForgot = false
             self.navigationController?.pushViewController(controller, animated: true)
             break
+        case MyAccountSectionTitle.Statistics.StringName:
+            let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: StatisticsOneVC.storyboardID) as! StatisticsOneVC
+            controller.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
+            break
         case MyAccountSectionTitle.PrivacyPolicy.StringName:
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CommonWebviewVC.storyboardID) as! CommonWebviewVC
             controller.strNavTitle = "Privacy Policy"

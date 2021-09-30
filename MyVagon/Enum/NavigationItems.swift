@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 enum NavItemsLeft {
-    case none, back
+    case none, back, chat , chatList
     
     var value:String {
         switch self {
@@ -18,14 +18,17 @@ enum NavItemsLeft {
             return ""
         case .back:
             return "back"
-        
+        case .chat:
+            return "chat"
+        case .chatList:
+            return "chatList"
         }
     }
 }
 
 
 enum NavItemsRight {
-    case none,skip,chat,notification,RequestEdit
+    case none,skip,chat,notification,RequestEdit ,contactus
     
     var value:String {
         switch self {
@@ -39,13 +42,15 @@ enum NavItemsRight {
             return "notification"
         case .RequestEdit:
             return "RequestEdit"
+        case .contactus:
+            return "contactus"
         }
        
     }
 }
 enum NavTitles
 {
-    case none,TruckType
+    case none,TruckType,TermsCondition
     
     var value:String
     {
@@ -55,6 +60,8 @@ enum NavTitles
             return ""
         case .TruckType:
             return "Truck Type"
+        case .TermsCondition:
+        return "Terms & Conditions"
         
         }
     }

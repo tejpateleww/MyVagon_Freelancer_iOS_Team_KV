@@ -25,10 +25,11 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
  
     let NavBackButton = UIButton()
-    
+   
+       
   
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false)
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false,IsChatScreenLabel:Bool? = false,IsChatScreen:Bool? = false,NumberOfChatCount:String? = "")
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -43,7 +44,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         controller.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         controller.navigationController?.navigationBar.shadowImage = UIImage()
         if ShowShadow ?? false {
-    let viewforshadow = UIView()
+            let viewforshadow = UIView()
             controller.navigationController?.navigationBar.clipsToBounds = false
             viewforshadow.backgroundColor = .white
             viewforshadow.frame = CGRect(x: 0, y: (controller.navigationController?.navigationBar.frame.size.height ?? 0.0) - 3, width: (controller.navigationController?.navigationBar.frame.size.width ?? 0.0), height: 1)
@@ -57,15 +58,41 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         if naviTitle == NavTitles.none.value {
             controller.navigationItem.titleView = UIView()
         } else {
-            let lblNavTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-            lblNavTitle.font = CustomFont.PoppinsMedium.returnFont(18)
-            lblNavTitle.backgroundColor = UIColor.clear
-            lblNavTitle.textColor = UIColor.appColor(ThemeColor.NavigationTitleColor)
-            lblNavTitle.numberOfLines = 0
-            lblNavTitle.center = CGPoint(x: 0, y: 0)
-            lblNavTitle.textAlignment = .left
-            lblNavTitle.text = naviTitle
-            self.navigationItem.titleView = lblNavTitle
+            if IsChatScreenLabel ?? false {
+                if IsChatScreen ?? false {
+                    let ViewNavTitle = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+                    
+                    let myCustomView: NavigationTitleView = UIView.fromNib()
+                    myCustomView.lblChat.text = naviTitle
+                    myCustomView.lblCount.isHidden = true
+                    myCustomView.ImageViewMainView.isHidden = false
+                    ViewNavTitle.addSubview(myCustomView)
+                    self.navigationItem.titleView = ViewNavTitle
+                }else {
+                    let ViewNavTitle = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+                    
+                    let myCustomView: NavigationTitleView = UIView.fromNib()
+                    myCustomView.lblChat.text = naviTitle
+                    myCustomView.lblCount.text = NumberOfChatCount
+                    myCustomView.ImageViewMainView.isHidden = true
+                    ViewNavTitle.addSubview(myCustomView)
+                    self.navigationItem.titleView = ViewNavTitle
+                }
+                
+                
+              
+            } else {
+                let lblNavTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+                lblNavTitle.font = CustomFont.PoppinsMedium.returnFont(18)
+                lblNavTitle.backgroundColor = UIColor.clear
+                lblNavTitle.textColor = UIColor.appColor(ThemeColor.NavigationTitleColor)
+                lblNavTitle.numberOfLines = 0
+                lblNavTitle.center = CGPoint(x: 0, y: 0)
+                lblNavTitle.textAlignment = .left
+                lblNavTitle.text = naviTitle
+                self.navigationItem.titleView = lblNavTitle
+            }
+            
         }
             if leftImage != "" {
                 if leftImage == NavItemsLeft.back.value {
@@ -77,6 +104,31 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                     NavBackButton.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
                     let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
                     LeftView.addSubview(NavBackButton)
+                    NavBackButton.isExclusiveTouch = true
+                    NavBackButton.isMultipleTouchEnabled = false
+                    let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
+                    btnLeftBar.style = .plain
+                    controller.navigationItem.leftBarButtonItem = btnLeftBar
+                }else if leftImage == NavItemsLeft.chat.value{
+                    let button = UIButton(frame:CGRect(x: 0, y: 0, width: 40, height: 40))
+                    button.setImage(UIImage.init(named: "ic_navigation_back"), for: .normal)
+                    button.layer.setValue(controller, forKey: "controller")
+                    button.addTarget(self, action: #selector(self.btnBackAction), for: .touchUpInside)
+                    
+                    let LeftView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
+                    LeftView.addSubview(button)
+                    
+                    let ImgX = button.frame.origin.x +  50
+                    let image = UIImageView(frame: CGRect(x: ImgX , y: 5, width: 32, height: 32))
+                    image.image = UIImage(named: "ic_ChatProfile")
+                    LeftView.addSubview(image)
+                    
+                    let labelX = image.frame.origin.x + 50
+                    let label = UILabel(frame: CGRect(x: labelX , y: 0, width: 200, height: 40))
+                    label.text = "Mike Ross"
+                    LeftView.addSubview(label)
+                    
+
                     NavBackButton.isExclusiveTouch = true
                     NavBackButton.isMultipleTouchEnabled = false
                     let btnLeftBar : UIBarButtonItem = UIBarButtonItem.init(customView: LeftView)
@@ -156,6 +208,23 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                         let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
+                    }else if title == NavItemsRight.contactus.value{
+                        let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
+                        BtnRight.FontSize = 14
+                        BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                        BtnRight.semanticContentAttribute = .forceLeftToRight
+                        BtnRight.setImage(UIImage.init(named: "ic_call"), for: .normal)
+                        BtnRight.setTitle("Contact Us", for: .normal)
+                        BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
+                        BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+                        BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                        
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                        
                     }
                    
                 }
@@ -183,24 +252,10 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         }
     }
     @objc func BtnChatAction(sender:UIButton) {
-//        let controller = AppStoryboard.FilterPickup
-//            .instance.instantiateViewController(withIdentifier: FilterPickupDatePopupViewController.storyboardID) as! FilterPickupDatePopupViewController
-//      //  controller.hidesBottomBarWhenPushed = true
-//
-//
-//
-//
-////        controller.IsHideImage = true
-////
-////        controller.TitleAttributedText = NSAttributedString(string: "You have successfully posted your availability")
-////            controller.DescriptionAttributedText = NSAttributedString(string: "3 matches have been found, would you like to view them?")
-////
-////        controller.LeftbtnTitle = "Cancel"
-////        controller.RightBtnTitle = "Yes"
-//        controller.modalPresentationStyle = .overCurrentContext
-//        controller.modalTransitionStyle = .crossDissolve
-//        self.present(controller, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(controller, animated: true)
+        let controller = AppStoryboard.Chat
+            .instance.instantiateViewController(withIdentifier: ChatListVC.storyboardID) as! ChatListVC
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
     @objc func BtnNotificationAction(sender:UIButton) {
@@ -210,7 +265,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-
+    @objc func BtnContactAction(sender:UIButton) {
+        
+    }
 
 
 }

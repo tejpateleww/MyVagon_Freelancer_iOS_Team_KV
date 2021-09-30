@@ -71,9 +71,9 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     @objc func TruckType(){
-        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_type) ?? 0}) {
             
-            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category) ?? 0}) {
                 
                 truckTypeTF.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
             }
@@ -81,19 +81,18 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     }
     
     func SetValue() {
-        
-        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_type) ?? 0}) {
             
-            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category) ?? 0}) {
                 
                 truckTypeTF.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? ""), \(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
             }
         }
-        
-        truckWeightTF.text = SingletonClass.sharedInstance.Reg_TruckWeight
-        truckWeightUnitTF.text = SingletonClass.sharedInstance.Reg_TruckWeightUnit
-        cargoLoadCapTF.text = SingletonClass.sharedInstance.Reg_CargorLoadCapacity
-        cargoLoadUnitTF.text = SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit
+        truckWeightTF.text = SingletonClass.sharedInstance.RegisterData.Reg_truck_weight
+        cargoLoadCapTF.text = SingletonClass.sharedInstance.RegisterData.Reg_truck_capacity
+        truckWeightUnitTF.text = SingletonClass.sharedInstance.RegisterData.Reg_weight_unit
+        cargoLoadUnitTF.text = SingletonClass.sharedInstance.RegisterData.Reg_capacity_unit
+       
     }
     
     func setupDelegateForPickerView() {
@@ -111,11 +110,6 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
                 let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: ChooseTruckCategoryViewController.storyboardID) as! ChooseTruckCategoryViewController
                 self.navigationController?.pushViewController(controller, animated: true)
             }
-          
-        //    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-              
-//            })
-          
          
         } else if textField == truckWeightUnitTF {
             truckWeightUnitTF.inputView = GeneralPicker
@@ -152,26 +146,29 @@ class EnterTruckDetailsVC: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     @IBAction func continueButtonPressed(_ sender: themeButton) {
-//        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: TruckDetailVC.storyboardID) as! TruckDetailVC
-//        self.navigationController?.pushViewController(controller, animated: true)
-        
-       
         
         let CheckValidation = Validate()
         if CheckValidation.0 {
-            SingletonClass.sharedInstance.Reg_TruckWeight = truckWeightTF.text ?? ""
-            SingletonClass.sharedInstance.Reg_TruckWeightUnit = truckWeightUnitTF.text ?? ""
-            SingletonClass.sharedInstance.Reg_CargorLoadCapacity = cargoLoadCapTF.text ?? ""
-            SingletonClass.sharedInstance.Reg_TruckLoadCapacityUnit = cargoLoadUnitTF.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_weight = truckWeightTF.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_weight_unit = truckWeightUnitTF.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_capacity = cargoLoadCapTF.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_capacity_unit = cargoLoadUnitTF.text ?? ""
             
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            
+            UserDefault.SetRegiterData()
+            
+            
+           
+            
+            UserDefault.setValue(1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
             
             let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
             let x = self.view.frame.size.width * 2
             RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             
-            UserDefault.setValue(1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-            UserDefault.synchronize()
+         //   UserDefault.setValue(1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+          //  UserDefault.synchronize()
             RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)

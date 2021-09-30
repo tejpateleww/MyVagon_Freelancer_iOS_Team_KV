@@ -8,19 +8,23 @@
 import UIKit
 import FSCalendar
 
+
 class HomeViewController: BaseViewController, UITextFieldDelegate {
 
-    
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     
-    var tblCellHeight = CGFloat()
+    var arrHomeData : [HomeDatum]?
+    
+    
+    var homeViewModel = HomeViewModel()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
-    var arrSection = ["Today" , "20th March'21" , "22th March'21"]
+  
     var selectedIndex = 1
     
     var customTabBarController: CustomTabBarVC?
+    var refreshControl = UIRefreshControl()
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -40,17 +44,21 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let latStr = String(21.298100)
+            let   longStr = String(70.251404)
+
+               let staticMapUrl = "http://maps.google.com/maps/api/staticmap?markers=color:blue|\(latStr),\(longStr)&\("zoom=10&size=400x300")&sensor=true&key=AIzaSyBXAdCe4nJuapECudMeh4q-gGlU-yAMQX0"
+
+               print(staticMapUrl)
+        
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(getTblHeight(_:)), name: NSNotification.Name(NotificationKeys.KGetTblHeight), object: nil)
+       
         tblLocations.register(UINib(nibName: "PickUpDropOffCell", bundle: nil), forCellReuseIdentifier: "PickUpDropOffCell")
-       // tblLocations.estimatedRowHeight = 500
-       // tblLocations.rowHeight = UITableView.automaticDimension
+      
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Search and Book Loads", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.notification.value,NavItemsRight.chat.value], isTranslucent: true, ShowShadow: false)
      
-    
         calender.accessibilityIdentifier = "calender"
         configureCalendar()
         TextFieldSearch.delegate = self
@@ -58,35 +66,28 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
             self.tblLocations.layoutIfNeeded()
             self.tblLocations.reloadData()
         }
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = .gray
+        self.tblLocations.refreshControl = refreshControl
+        
+        CallWebSerive()
         // Do any additional setup after loading the view.
+    }
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        CallWebSerive()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.showTabBar()
     }
     
- 
        override func viewWillDisappear(_ animated: Bool) {
            
            super.viewWillDisappear(true)
        }
 
-       
-//
-    // handle notification
-    @objc func getTblHeight(_ notification: NSNotification) {
-            print(notification.userInfo ?? "")
-            if let dict = notification.userInfo as NSDictionary? {
-                if let height = dict["TblHeight"] as? CGFloat{
-                     print(height)
-                   let ind = dict["indexPath"] as? IndexPath
-                    print(ind)
-                    
-                    tblCellHeight = height
-                    tblLocations.reloadData()
-                   // tblLocations.reloadRows(at: [ind?.row], with: .automatic)
-                }
-            }
-     }
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
@@ -105,16 +106,31 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-    
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     
     
     
+    
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
+    
+    func CallWebSerive() {
+    
+        self.homeViewModel.homeViewController =  self
+        
+        let ReqModelForGetShipment = ShipmentListReqModel()
+        
+        ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+//        ReqModelForGetShipment.driver_id = "271"
+        
+     
+
+        self.homeViewModel.GetShipmentList(ReqModel: ReqModelForGetShipment)
+        
+    }
     
     // ----------------------------------------------------
       //MARK:- ======== Calender Setup =======
@@ -147,12 +163,13 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         
-        print(date)
+       
     }
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
         self.conHeightOfCalender.constant = bounds.height
         self.view.layoutIfNeeded()
     }
+   
     
 }
 class CalenderUI : FSCalendar {
@@ -168,31 +185,63 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     
  
     func numberOfSections(in tableView: UITableView) -> Int {
-        return arrSection.count
+        
+        var numOfSections: Int = 0
+        if arrHomeData?.count != 0
+           {
+               //tableView.separatorStyle = .singleLine
+            numOfSections            = arrHomeData?.count ?? 0
+               tableView.backgroundView = nil
+           }
+           else
+           {
+               let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+               noDataLabel.text          = "No Records Found"
+            noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
+               noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+               noDataLabel.textAlignment = .center
+               tableView.backgroundView  = noDataLabel
+               tableView.separatorStyle  = .none
+           }
+           return numOfSections
+        
+       // return arrHomeData?.count ?? 0// arrSection.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return arrHomeData?[section].bidsData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
+        cell.PickUpDropOffData = arrHomeData?[indexPath.section].bidsData?[indexPath.row].trucks?.locations
+        
+        cell.BookingDetails = arrHomeData?[indexPath.section].bidsData?[indexPath.row]
+        
+        cell.tblHeight = { (heightTBl) in
+            self.tblLocations.layoutIfNeeded()
+            self.tblLocations.layoutSubviews()
+        }
         
         
-        
-//        cell.tblMultipleLocation.reloadData()
-        print(tblLocations.rowHeight)
-//        cell.tblMultipleLocation.reloadData()
+//
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print(tblLocations.frame.height)
+    
         return UITableView.automaticDimension
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
+        controller.hidesBottomBarWhenPushed = true
+        controller.LoadDetails = arrHomeData?[indexPath.section].bidsData?[indexPath.row]
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrSection[section]
+        return arrHomeData?[section].date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        
+        
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
@@ -200,7 +249,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
         label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-        label.text = arrSection[section]
+        label.text = arrHomeData?[section].date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")
@@ -244,6 +293,7 @@ extension HomeViewController : UICollectionViewDataSource , UICollectionViewDele
 enum NotificationKeys : CaseIterable{
     
     static let KGetTblHeight = "TblHeight"
+    static let KUpdateHomeScreenArray = "UpdateHomeScreenArray"
     
 }
 

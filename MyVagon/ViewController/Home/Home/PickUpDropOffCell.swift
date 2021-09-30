@@ -13,10 +13,15 @@ class PickUpDropOffCell: UITableViewCell {
     @IBOutlet weak var tblMultipleLocation: UITableView!
     @IBOutlet weak var conHeightOfTbl: NSLayoutConstraint!
     @IBOutlet weak var viewContents: UIView!
+  //  var PickUpDropOffData : [TotalLoadsInDates]?
+    
+    var BookingDetails : HomeBidsDatum?
+    
+    var PickUpDropOffData : [HomeLocation]?
     
     var tblHeight:((CGFloat)->())?
     var isFromBidRequest = false
-    var SelectedFilterOfBid = BidStatus.all.rawValue
+  
     override func awakeFromNib() {
         super.awakeFromNib()
       
@@ -107,6 +112,15 @@ class PickUpDropOffCell: UITableViewCell {
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
                 print("ATDebug :: \(newsize.height)")
+                
+                if let getHeight  = tblHeight {
+                    self.tblMultipleLocation.layoutIfNeeded()
+                    getHeight(self.tblMultipleLocation.contentSize.height)
+                }
+                
+               
+                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil, userInfo: TblDataDict)
+                
             }
         }
     }
@@ -121,22 +135,41 @@ class PickUpDropOffCell: UITableViewCell {
 extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if isFromBidRequest {
+            return PickUpDropOffData?.count ?? 0
+        } else {
+            return 2
+        }
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         conHeightOfTbl.constant = tblMultipleLocation.contentSize.height
-        print(conHeightOfTbl.constant)
-       // let TblDataDict:[String: Any] = ["TblHeight": conHeightOfTbl.constant , "indexPath" : indexPath]
-        
+       
         if isFromBidRequest == false {
             
             let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
+            
+            cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            
+            cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
+            
+            cell.BtnShowMore.superview?.isHidden = true
+            cell.lblCompanyName.text = PickUpDropOffData?[indexPath.row].companyName
+            
+            if (PickUpDropOffData?.count ?? 0) == 1 {
+                cell.viewLine.isHidden = true
+            } else {
+                
+                cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
+            }
+            
+            cell.lblDateTime.text = "\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd hh:mm:ss", ToFormat: "dd MMMM, yyyy") ?? "") \((PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? ""))"
            
-            cell.viewLine.isHidden = indexPath.row == 2 ? true : false
-            cell.imgLocation.image = indexPath.row == 2 ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-            //NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil, userInfo: TblDataDict)
+          
+            //
            
             return cell
         }
@@ -152,32 +185,23 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
         }
 
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       
+        
+        
+    }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
-       
+        header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
             header.lblBidStatus.isHidden = !isFromBidRequest
             header.viewStatusBid.isHidden = !isFromBidRequest
+        header.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
+        header.lblDeadheadWithTruckType.text = "1.2 mile Deadhead : \(BookingDetails?.trucks?.truckType?.name ?? "")"
+        header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
+        header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+        header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
         
-        switch SelectedFilterOfBid {
-        case BidStatus.all.rawValue:
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
-            header.ViewStatusBidText.text = "All"
-        case BidStatus.pending.rawValue:
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
-            header.ViewStatusBidText.text = "Pending"
-        case BidStatus.scheduled.rawValue:
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
-            header.ViewStatusBidText.text = "Scheduled"
-        case BidStatus.inProgress.rawValue:
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.3038921356, green: 0.5736817122, blue: 0.8892048597, alpha: 1)
-            header.ViewStatusBidText.text = "In-Progress"
-        case BidStatus.past.rawValue:
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-            header.ViewStatusBidText.text = "Past"
-        default:
-            break
-        }
         
         //header.conHeightOfViewBidStatus.constant = isFromBidRequest ? 30 : 0
        
@@ -217,3 +241,28 @@ extension UITableView {
     }
 }
 
+extension UIApplication{
+    class func getPresentedViewController() -> UIViewController? {
+        var presentViewController = UIApplication.shared.keyWindow?.rootViewController
+        while let pVC = presentViewController?.presentedViewController
+        {
+            presentViewController = pVC
+        }
+        
+        return presentViewController
+    }
+    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+}

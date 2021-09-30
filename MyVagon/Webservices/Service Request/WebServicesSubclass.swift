@@ -96,6 +96,16 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: -PackageListing
+    class func PackageListing(completion: @escaping (Bool,String,PackageListingResModel?,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.PackageListing.rawValue, responseModel: PackageListingResModel.self) { (status, message, response, error) in
+            if status{
+                SingletonClass.sharedInstance.PackageList = response?.data
+            }
+            completion(status, message, response, error)
+        }
+    }
+    
     //MARK: -TruckUnit
     class func TruckUnit(completion: @escaping (Bool,String,TruckUnitResModel?,Any) -> ()){
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckUnitListing.rawValue, responseModel: TruckUnitResModel.self) { (status, message, response, error) in
@@ -146,6 +156,11 @@ class WebServiceSubClass{
      
         
     }
-    
+    //MARK: -GetShipmentList
+    class func GetShipmentList(reqModel: ShipmentListReqModel, completion: @escaping (Bool,String,HomeShipmentSearchResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ShipmentList.rawValue, requestModel: reqModel, responseModel: HomeShipmentSearchResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
     
 }

@@ -13,7 +13,7 @@ class CommonWebviewVC: BaseViewController,WKNavigationDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    
+ 
     var customTabBarController: CustomTabBarVC?
     var strUrl = "http://13.36.112.48/"
     private let webView = WKWebView(frame: .zero)
@@ -22,8 +22,9 @@ class CommonWebviewVC: BaseViewController,WKNavigationDelegate {
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
-    @IBOutlet weak var vwWebMain: UIView!
     
+    @IBOutlet weak var vwWebMain: UIView!
+
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -62,7 +63,9 @@ class CommonWebviewVC: BaseViewController,WKNavigationDelegate {
         self.view.setNeedsLayout()
         let request = URLRequest(url: URL.init(string: "\(strUrl)")!)
         self.webView.navigationDelegate = self
-        
+     //   webView.scrollView.isScrollEnabled = false
+//        webView.scrollView.bounces = false
+       // webView.isUserInteractionEnabled = false
         self.webView.load(request)
        
     }
@@ -70,9 +73,15 @@ class CommonWebviewVC: BaseViewController,WKNavigationDelegate {
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         //Utilities.showHud()
     }
+    
+    
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-       // Utilities.hideHud()
+        print(#function)
+
     }
+    
+    
     func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
        // Utilities.hideHud()
     }

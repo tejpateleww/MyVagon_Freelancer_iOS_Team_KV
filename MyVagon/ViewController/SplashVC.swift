@@ -38,7 +38,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         
 //        locationManager.delegate = self
 //        locationManager.requestAlwaysAuthorization()
-        
+        WebServiceForpackageListing()
         WebServiceForTruckType()
         WebServiceForTruckUnit()
         WebServiceForTruckBrand()
@@ -70,6 +70,9 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    func WebServiceForpackageListing(){
+        WebServiceSubClass.PackageListing{_, _, _, _ in}
+    }
     func WebServiceForTruckType(){
         WebServiceSubClass.TruckType {_, _, _, _ in}
     }

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 class TruckDetailsViewModel {
+    
     weak var TruckDetail : TruckDetailVC? = nil
     
     func WebServiceImageUpload(images:[UIImage]){

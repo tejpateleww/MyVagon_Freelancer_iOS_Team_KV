@@ -27,7 +27,6 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     
     
     
-    
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -35,8 +34,8 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TextFieldEmail.text = "utsav1@yopmail.com"
-        TextFieldPassword.text = "12345678"
+     //   TextFieldEmail.text = "mvdriver2@yopmail.com"
+       // TextFieldPassword.text = "12345678"
         TextFieldPassword.delegate = self
         SetLocalization()
         // Do any additional setup after loading the view.

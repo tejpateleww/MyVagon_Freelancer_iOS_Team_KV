@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import UIKit
 class ForgotPasswordViewModel {
     weak var sendOTPForForgotVC : SendOTPForForgotVC? = nil
     
     func SendOTPForForgotPassword(ReqModel:ForgotPasswordReqModel){
        
-        Utilities.showHud()
+        Utilities.ShowLoaderButtonInButton(Button: sendOTPForForgotVC?.BtnSendOTP ?? themeButton(), vc: sendOTPForForgotVC ?? UIViewController())
         WebServiceSubClass.ForgotPasswordOTP(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.hideHud()
+            Utilities.HideLoaderButtonInButton(Button: self.sendOTPForForgotVC?.BtnSendOTP ?? themeButton(), vc: self.sendOTPForForgotVC ?? UIViewController())
             if status {
-                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
+                Utilities.ShowToastMessage(OfMessage: apiMessage)
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
                 controller.EnteredText = "Enter an otp send to \n\(ReqModel.phone ?? "")"
                 controller.OtpString = "\(response?.data?.oTP ?? 0)"

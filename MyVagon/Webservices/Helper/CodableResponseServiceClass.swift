@@ -70,6 +70,7 @@ class CodableService {
     }
     
     class func getCodableObjectFromData<C:Codable>(jsonData: Data, codableObj: C.Type) -> C?{
+        #warning("Please make try block optional")
         let obj = try? JSONDecoder().decode(codableObj, from: jsonData)
         return obj
     }

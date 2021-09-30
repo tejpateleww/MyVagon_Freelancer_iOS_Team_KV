@@ -26,7 +26,7 @@ var window: UIWindow?
         GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
         
-        SingletonClass.sharedInstance.GetRegisterData()
+       
         
         
         // Override point for customization after application launch.
@@ -114,6 +114,8 @@ class CustomTabBar: UITabBar {
 //        layer.shadowOffset = CGSize(width: -3, height: 0)
 //        layer.shadowColor = UIColor.black.cgColor
 //        layer.shadowOpacity = 0.3
+        
+//        self.backgroundImage = UIImage.from(color: .white)
     }
 
     
@@ -171,7 +173,7 @@ class CustomTabBarVC: UITabBarController {
         self.tabBar.items?.forEach({ element in
             element.imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         })
-        
+        self.tabBar.barTintColor = .white
         
         let topEdge = self.tabBar.items![0].imageInsets.top - 10
         let leftEdge = self.tabBar.items![0].imageInsets.left
@@ -194,7 +196,17 @@ class CustomTabBarVC: UITabBarController {
     }
 
     private func addcoustmeTabBarView() {
-
+        if #available(iOS 13.0, *) {
+           
+            let appearance = tabBar.standardAppearance
+            appearance.shadowImage = nil
+            appearance.shadowColor = nil
+            tabBar.standardAppearance = appearance
+            
+        } else {
+            // Fallback on earlier versions
+        };
+       
     }
     
     func hideTabBarBorder()  {

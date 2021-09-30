@@ -119,7 +119,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
+                        <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
                             <rect key="frame" x="471" y="45.5" width="108" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SCHEDULED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
@@ -189,9 +189,13 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="LblShipperName" destination="slt-ds-kj4" id="Oga-Ms-j5G"/>
                 <outlet property="ViewStatusBidText" destination="87w-LG-xED" id="r1H-n8-6Ra"/>
                 <outlet property="headerView" destination="ikL-gx-6UI" id="Hfv-k8-6rO"/>
                 <outlet property="lblBidStatus" destination="Mra-rJ-9Br" id="wj8-7V-SxM"/>
+                <outlet property="lblDeadheadWithTruckType" destination="ibF-qf-Aj9" id="qCg-cB-6xN"/>
+                <outlet property="lblPrice" destination="1KJ-IT-5UF" id="Inu-LH-ibc"/>
+                <outlet property="lblbookingID" destination="f2b-wp-EAr" id="54M-IU-lwH"/>
                 <outlet property="viewStatus" destination="jrR-LB-X1C" id="8a3-pq-Z7v"/>
                 <outlet property="viewStatusBid" destination="Jn8-uL-jbO" id="gfC-mb-vCo"/>
             </connections>

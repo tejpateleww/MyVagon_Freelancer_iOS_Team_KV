@@ -370,7 +370,14 @@ class Utilities:NSObject{
         
         
     }
-    
+    class func ShowLoaderButtonInButton(Button:themeButton,vc:UIViewController) {
+        vc.view.isUserInteractionEnabled = false
+        Button.showLoading()
+    }
+    class func HideLoaderButtonInButton(Button:themeButton,vc:UIViewController) {
+        vc.view.isUserInteractionEnabled = true
+        Button.hideLoading()
+    }
     class func hideHud()
     {
         NVActivityIndicatorPresenter.sharedInstance.stopAnimating()

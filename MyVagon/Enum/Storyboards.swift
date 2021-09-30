@@ -10,7 +10,7 @@ enum AppStoryboard : String {
     // Please use same storyboard name as the name of cases in enum, Case-sensitive.
     // You can skip raw values as for string type enums, case name is the implicit raw value.
     
-    case Main, Auth, Home, Popup,FilterPickup
+    case Main, Auth, Home, Popup, FilterPickup, Chat, Settings
     
     var instance : UIStoryboard {
       return UIStoryboard(name: self.rawValue, bundle: Bundle.main)

@@ -16,15 +16,32 @@ class TypesColCell : UICollectionViewCell {
     //MARK:- ===== Outlets ======
     @IBOutlet weak var lblTypes: themeLabel!
     @IBOutlet weak var BGView: UIView!
-    
-   // @IBOutlet weak var btnSelectType: UIButton!
-    
-//    @IBAction func btnActionSelectType(_ sender: UIButton) {
-//    }
+   
     
     override func awakeFromNib() {
         super.awakeFromNib()
         lblTypes.textColor = UIColor.appColor(.themeButtonBlue)
+    }
+}
+
+class TruckCapacityCell : UICollectionViewCell {
+    
+    //MARK:- ===== Outlets ======
+    @IBOutlet weak var lblCapacity: themeLabel!
+    @IBOutlet weak var btnRemove: themeButton!
+    @IBOutlet weak var BGView: UIView!
+    var RemoveClick : (() -> ())?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
+    @IBAction func btnRemoveClick(_ sender: themeButton) {
+        if let click = RemoveClick {
+            click()
+        }
+        
     }
 }
 
@@ -49,7 +66,37 @@ class TypesTblCell : UITableViewCell {
     }
 }
 
-
+class TruckCapacityType : Codable   {
+    var capacity:String?
+    var type:Int?
+    
+    init(Capacity:String,Type:Int) {
+        self.capacity = Capacity
+        self.type = Type
+    }
+    func toDictionary() -> [String:Any]
+    {
+        var dictionary = [String:Any]()
+        if capacity != nil{
+            dictionary["value"] = capacity
+        }
+        if type != nil{
+            dictionary["id"] = type
+        }
+        
+        return dictionary
+    }
+    class func ConvetToDictonary(arrayDataCart : [TruckCapacityType]) -> [[String:Any]] {
+        var arrayDataDictionaries : [[String:Any]] = []
+        for objDataCart in arrayDataCart {
+            print(objDataCart)
+            
+            arrayDataDictionaries.append(objDataCart.toDictionary());
+        }
+        return arrayDataDictionaries
+    }
+    
+}
 //MARK:- ========= Enum Tab Type ======
 enum Tabselect: String {
     case Diesel
@@ -69,8 +116,21 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     var tabTypeSelection = Tabselect.Diesel.rawValue
     var arrImages : [String] = []
     var arrTypes:[(TruckFeaturesDatum,Bool)] = []
-    //[("Curtainsde",false),("Refrigerated (With Cooling)",false),("Refrigerated (Without Cooling)",false),("Flatbed Trailer",false),("Platform",false),("Canvas",false),("Tilting Trailer",false),("Container",false)]
+    var ButtonTypeForAddingCapacity : AddCapacityTypeButtonName?
     var selectedIndex = NSNotFound
+    var SelectedIndexOfType = NSNotFound
+    var TruckCapacityAdded : [TruckCapacityType] = [] {
+        didSet {
+            if TruckCapacityAdded.count == 0 {
+                collectionTruckCapacity.isHidden = true
+            } else {
+                collectionTruckCapacity.isHidden = false
+            }
+        }
+    }
+    
+    
+    var SelectedTextField :SelectedTextFieldForGeneralPicker?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -89,12 +149,18 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     @IBOutlet weak var ColTypes: UICollectionView!
     @IBOutlet weak var collectionImages: UICollectionView!
     
+    @IBOutlet weak var TextFieldCapacityType: themeTextfield!
+    @IBOutlet weak var collectionTruckCapacity: UICollectionView!
+    
+    @IBOutlet weak var BtnAdd: themeButton!
+    
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        ButtonTypeForAddingCapacity = .Add
         registerNIBsAndDelegate()
         tblTypes.reloadData()
         conHeightOfTbl.constant = tblTypes.contentSize.height
@@ -115,6 +181,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         setupDelegateForPickerView()
         setValue()
         TextFieldTruckBrand.delegate = self
+        TextFieldCapacityType.delegate = self
     }
     
     
@@ -147,57 +214,77 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     }
     
     func setValue() {
-        TextFieldTruckBrand.text = SingletonClass.sharedInstance.Reg_TruckBrand
-        TextFieldCapacity.text = SingletonClass.sharedInstance.Reg_Pallets
-       
-        TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.Reg_RegistrationNumber
         
+        TextFieldTruckBrand.text = SingletonClass.sharedInstance.RegisterData.Reg_brand
+        
+       
+        
+        TruckCapacityAdded = SingletonClass.sharedInstance.RegisterData.Reg_pallets
+      
+        TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_registration_no
+       
+       var TempAdditionType : [String] = []
+       arrTypes.forEach { element in
+           if element.1 {
+               TempAdditionType.append("\(element.0.id ?? 0)")
+           }
+       }
+       
+       
+        
+        arrImages = SingletonClass.sharedInstance.RegisterData.Reg_vehicle_images
+        
+
         SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
             arrTypes.append((element,false))
         })
         if arrTypes.count != 0 {
             for i in 0...arrTypes.count - 1 {
-                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(where: {$0 == "\(arrTypes[i].0.id ?? 0)"}) {
+                if SingletonClass.sharedInstance.RegisterData.Reg_truck_features.contains(where: {$0 == "\(arrTypes[i].0.id ?? 0)"}) {
                     arrTypes[i].1 = true
                 } else {
                     arrTypes[i].1  = false
                 }
-                
+
             }
         }
-        
-        arrImages = SingletonClass.sharedInstance.Reg_VehiclePhoto
+        collectionTruckCapacity.reloadData()
+        collectionImages.reloadData()
         ColTypes.reloadData()
+        let _ = btnSelection.map{$0.isSelected = false}
+        selectedBtnUIChanges(Selected: false, Btn:btnSelection[0])
+        selectedBtnUIChanges(Selected: false, Btn:btnSelection[1])
+        selectedBtnUIChanges(Selected: false, Btn:btnSelection[2])
+        switch SingletonClass.sharedInstance.RegisterData.Reg_fuel_type  {
         
-        switch SingletonClass.sharedInstance.Reg_TruckFualType  {
         case Tabselect.Diesel.rawValue:
             selectedBtnUIChanges(Selected: true, Btn:btnSelection[0])
             self.tabTypeSelection = Tabselect.Diesel.rawValue
-            
+
             self.btnLeadingConstaintOfAnimationView.constant = btnSelection[0].superview?.frame.origin.x ?? 0.0
             UIView.animate(withDuration: 0.3) {
                 self.viewTabView.layoutIfNeeded()
             }
         case Tabselect.Electrical.rawValue:
             selectedBtnUIChanges(Selected: true, Btn:btnSelection[1])
-            self.tabTypeSelection = Tabselect.Diesel.rawValue
-            
-            self.btnLeadingConstaintOfAnimationView.constant = btnSelection[0].superview?.frame.origin.x ?? 0.0
+            self.tabTypeSelection = Tabselect.Electrical.rawValue
+
+            self.btnLeadingConstaintOfAnimationView.constant = btnSelection[1].superview?.frame.origin.x ?? 0.0
             UIView.animate(withDuration: 0.3) {
                 self.viewTabView.layoutIfNeeded()
             }
         case Tabselect.Hydrogen.rawValue:
             selectedBtnUIChanges(Selected: true, Btn:btnSelection[2])
-            self.tabTypeSelection = Tabselect.Diesel.rawValue
-            
-            self.btnLeadingConstaintOfAnimationView.constant = btnSelection[0].superview?.frame.origin.x ?? 0.0
+            self.tabTypeSelection = Tabselect.Hydrogen.rawValue
+
+            self.btnLeadingConstaintOfAnimationView.constant = btnSelection[2].superview?.frame.origin.x ?? 0.0
             UIView.animate(withDuration: 0.3) {
                 self.viewTabView.layoutIfNeeded()
             }
         default:
             break
         }
-        
+
         
     }
     
@@ -231,7 +318,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
         } else if textField == TextFieldTruckBrand {
-            
+            SelectedTextField = .TruckBrandList
             TextFieldTruckBrand.inputView = GeneralPicker
             TextFieldTruckBrand.inputAccessoryView = GeneralPicker.toolbar
             
@@ -241,6 +328,14 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             }
             self.GeneralPicker.reloadAllComponents()
             
+        } else if textField == TextFieldCapacityType {
+            SelectedTextField = .CapacityType
+            TextFieldCapacityType.inputView = GeneralPicker
+            TextFieldCapacityType.inputAccessoryView = GeneralPicker.toolbar
+            if let DummyFirst = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.name == TextFieldCapacityType.text}){
+                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
+            }
+            self.GeneralPicker.reloadAllComponents()
         }
         
         
@@ -278,18 +373,103 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     
+    @IBAction func btnAddClick(_ sender: themeButton) {
+        if TextFieldCapacity.text ?? "" == "" {
+            Utilities.ShowAlertOfValidation(OfMessage: "Please enter capacity")
+        } else  if TextFieldCapacityType.text ?? "" == "" {
+            Utilities.ShowAlertOfValidation(OfMessage: "Please select capacity type")
+        } else {
+            if ButtonTypeForAddingCapacity == .Update {
+                
+                guard let IndexOfType = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.name == TextFieldCapacityType.text ?? ""}) else {
+                    return
+                }
+                let updatedIdType = SingletonClass.sharedInstance.PackageList?[IndexOfType].id ?? 0
+                let previousIDType = TruckCapacityAdded[SelectedIndexOfType].type
+                
+                if updatedIdType == previousIDType {
+                    TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
+                        
+                        BtnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                        ButtonTypeForAddingCapacity = .Add
+                        
+                        TextFieldCapacity.text = ""
+                        TextFieldCapacityType.text = ""
+                        
+                        collectionTruckCapacity.reloadData()
+                        TextFieldCapacity.resignFirstResponder()
+                        TextFieldCapacityType.resignFirstResponder()
+                } else {
+                    if TruckCapacityAdded.contains(where: {$0.type == updatedIdType}) {
+                        let IndexOfValue = TruckCapacityAdded.firstIndex(where: {$0.type == updatedIdType})
+                        if IndexOfValue == SelectedIndexOfType {
+                            TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
+                                
+                                BtnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                                ButtonTypeForAddingCapacity = .Add
+                                
+                                TextFieldCapacity.text = ""
+                                TextFieldCapacityType.text = ""
+                                
+                                collectionTruckCapacity.reloadData()
+                                TextFieldCapacity.resignFirstResponder()
+                                TextFieldCapacityType.resignFirstResponder()
+                        } else {
+                            Utilities.ShowAlertOfValidation(OfMessage: "You can add only one time \(SingletonClass.sharedInstance.PackageList?[IndexOfType].name ?? "")")
+                        }
+                    } else {
+                        TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
+                            
+                            BtnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                            ButtonTypeForAddingCapacity = .Add
+                            
+                            TextFieldCapacity.text = ""
+                            TextFieldCapacityType.text = ""
+                            
+                            collectionTruckCapacity.reloadData()
+                            TextFieldCapacity.resignFirstResponder()
+                            TextFieldCapacityType.resignFirstResponder()
+                    }
+                }
+                
+            } else {
+                
+                    if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.name == TextFieldCapacityType.text ?? ""})
+                    {
+                        if TruckCapacityAdded.contains(where: {$0.type == SingletonClass.sharedInstance.PackageList?[index].id ?? 0}) {
+                            Utilities.ShowAlertOfValidation(OfMessage: "You can add only one time \(SingletonClass.sharedInstance.PackageList?[index].name ?? "")")
+                        } else {
+                            TruckCapacityAdded.append(TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: SingletonClass.sharedInstance.PackageList?[index].id ?? 0))
+                            TextFieldCapacity.text = ""
+                            TextFieldCapacityType.text = ""
+                            
+                            collectionTruckCapacity.reloadData()
+                            TextFieldCapacity.resignFirstResponder()
+                            TextFieldCapacityType.resignFirstResponder()
+                        }
+                       
+                    }
+                    
+                }
+               
+        }
+        
+        
+        
+    }
+    
     @IBAction func BtnContinueClick(_ sender: themeButton) {
 //        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: IdentifyYourselfVC.storyboardID) as! IdentifyYourselfVC
 //        self.navigationController?.pushViewController(controller, animated: true)
         let CheckValidation = Validate()
         if CheckValidation.0 {
+          
+        
             
-            
-            
-             SingletonClass.sharedInstance.Reg_TruckBrand = TextFieldTruckBrand.text ?? ""
-             SingletonClass.sharedInstance.Reg_Pallets = TextFieldCapacity.text ?? ""
+             SingletonClass.sharedInstance.RegisterData.Reg_brand = TextFieldTruckBrand.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_pallets = TruckCapacityAdded
            
-             SingletonClass.sharedInstance.Reg_RegistrationNumber = TextFieldRegistrationNumber.text ?? ""
+             SingletonClass.sharedInstance.RegisterData.Reg_registration_no = TextFieldRegistrationNumber.text ?? ""
             
             var TempAdditionType : [String] = []
             arrTypes.forEach { element in
@@ -297,20 +477,21 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
                     TempAdditionType.append("\(element.0.id ?? 0)")
                 }
             }
-            SingletonClass.sharedInstance.Reg_TruckFualType = tabTypeSelection
-            SingletonClass.sharedInstance.Reg_AdditionalTypes = TempAdditionType
-            SingletonClass.sharedInstance.Reg_VehiclePhoto = arrImages
-            DispatchQueue.main.async {
-                SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
-            }
+            SingletonClass.sharedInstance.RegisterData.Reg_fuel_type = tabTypeSelection
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_features = TempAdditionType
+            SingletonClass.sharedInstance.RegisterData.Reg_vehicle_images = arrImages
+           
+            UserDefault.SetRegiterData()
             
+            UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
             
             let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
             let x = self.view.frame.size.width * 3
             RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             
-            UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-            UserDefault.synchronize()
+           // UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+           // UserDefault.synchronize()
             RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
@@ -356,25 +537,20 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     func Validate() -> (Bool,String) {
         
         let CheckTruckBrand = TextFieldTruckBrand.validatedText(validationType: ValidatorType.Select(field: "truck brand"))
-        let CheckCapacityPallets = TextFieldCapacity
-            .validatedText(validationType: ValidatorType.requiredField(field: "capacity(pallets)"))
+        
+    
         let CheckRegistrationNumber = TextFieldRegistrationNumber.validatedText(validationType: ValidatorType.username(field: "registration number", MaxChar: 8))
         //let CheckVehicalPhoto = TextFieldVehicalPhoto.validatedText(validationType: ValidatorType.Attach(field: "vehical photo"))
         
         if (!CheckTruckBrand.0){
             return (CheckTruckBrand.0,CheckTruckBrand.1)
-        } else if (!CheckCapacityPallets.0){
-            return (CheckCapacityPallets.0,CheckCapacityPallets.1)
-        } else if !CheckSubTypeOfTruck() {
-            return (false,"Please select additional features")
-        } else if (!CheckRegistrationNumber.0){
-            return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
-        } else if arrImages.count == 0 {
-            return (false,"Please upload vehicle photo")
+        } else if TruckCapacityAdded.count == 0 {
+            return (false,"Please add atleast one capacity")
         }
-//        else if (!CheckVehicalPhoto.0){
-//            return (CheckVehicalPhoto.0,CheckVehicalPhoto.1)
-//        }
+        else if (!CheckRegistrationNumber.0){
+            return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
+        }
+
         return (true,"")
         
     }
@@ -430,6 +606,8 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == ColTypes{
             return arrTypes.count
+        } else if collectionView == collectionTruckCapacity {
+            return TruckCapacityAdded.count
         } else if collectionView == collectionImages {
             return arrImages.count
         }
@@ -440,6 +618,14 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         if collectionView == ColTypes{
             return CGSize(width: ((arrTypes[indexPath.row].0.name?.capitalized ?? "").sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
                           , height: ColTypes.frame.size.height - 10)
+        } else  if collectionView == collectionTruckCapacity{
+            if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {
+                let StringForSize = "\(TruckCapacityAdded[indexPath.row].capacity ?? "") \(SingletonClass.sharedInstance.PackageList?[index].name ?? "" )"
+                return CGSize(width: (StringForSize.sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 50
+                              , height: collectionTruckCapacity.frame.size.height - 10)
+            }
+            return CGSize(width: 0.0, height: 0.0)
+           
         } else if collectionView == collectionImages {
             return CGSize(width: collectionView.bounds.width/3 - 5, height: 71.0)
         }
@@ -467,6 +653,36 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
             
             
             return cell
+        } else if collectionView == collectionTruckCapacity {
+            let cell = collectionTruckCapacity.dequeueReusableCell(withReuseIdentifier: "TruckCapacityCell", for: indexPath) as! TruckCapacityCell
+            
+            if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {
+                let StringForSize = "\(TruckCapacityAdded[indexPath.row].capacity ?? "") \(SingletonClass.sharedInstance.PackageList?[index].name ?? "" )"
+                cell.lblCapacity.text = StringForSize
+             
+            }
+            
+            cell.BGView.layer.cornerRadius = 17
+            cell.BGView.layer.borderWidth = 1
+            
+            cell.BGView.backgroundColor = .clear
+            cell.BGView.layer.borderColor = UIColor.appColor(.themeButtonBlue).cgColor
+            
+            cell.RemoveClick = {
+                self.BtnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                self.ButtonTypeForAddingCapacity = .Add
+                
+                self.TextFieldCapacity.text = ""
+                self.TextFieldCapacityType.text = ""
+                
+               
+                self.TextFieldCapacity.resignFirstResponder()
+                self.TextFieldCapacityType.resignFirstResponder()
+                
+                self.TruckCapacityAdded.remove(at: indexPath.row)
+                self.collectionTruckCapacity.reloadData()
+            }
+            return cell
         } else if collectionView == collectionImages {
             let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
             cell.btnCancel.tag = indexPath.row
@@ -475,11 +691,12 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
             cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
             cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)
           
-            
             return cell
         }
         return UICollectionViewCell()
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == ColTypes{
             if arrTypes[indexPath.row].1 {
@@ -489,17 +706,26 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
             }
             
             ColTypes.reloadData()
+        } else if collectionView == collectionTruckCapacity {
+            ButtonTypeForAddingCapacity = .Update
+            SelectedIndexOfType = indexPath.row
+            BtnAdd.setImage(#imageLiteral(resourceName: "ic_edit"), for: .normal)
+            
+            
+            TextFieldCapacity.text = TruckCapacityAdded[indexPath.row].capacity
+            
+            if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {
+                TextFieldCapacityType.text = SingletonClass.sharedInstance.PackageList?[index].name ?? ""
+             
+            }
+                 
         } else if collectionView == collectionImages {
-         
+            
             let vc : GalaryVC = GalaryVC.instantiate(fromAppStoryboard: .Auth)
             vc.firstTimeSelectedIndex = indexPath.row
             vc.arrImage = self.arrImages
             self.navigationController?.present(vc, animated: true)
         }
-        
-        
-        
-        
     }
     
     @objc func deleteImagesClicked(sender : UIButton){
@@ -508,14 +734,8 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         self.collectionImages.reloadData()
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        
-//       
-//            return 5
-//        
-//    }
     
-   
+    
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UploadVideoAndImagesCell.className, for: indexPath) as? UploadVideoAndImagesCell {
@@ -530,7 +750,6 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
 
           }
         }
-      
         return UICollectionReusableView()
     }
     
@@ -562,12 +781,17 @@ extension TruckDetailVC: GeneralPickerViewDelegate {
     
     func didTapDone() {
         
-                let item = SingletonClass.sharedInstance.TruckBrandList?[GeneralPicker.selectedRow(inComponent: 0)]
-                self.TextFieldTruckBrand.text = item?.name
-
-        self.TextFieldTruckBrand.resignFirstResponder()
-       
-        
+        if SelectedTextField == .CapacityType {
+            let item = SingletonClass.sharedInstance.PackageList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.TextFieldCapacityType.text = item?.name
+            
+            self.TextFieldCapacityType.resignFirstResponder()
+        } else if SelectedTextField == .TruckBrandList {
+            let item = SingletonClass.sharedInstance.TruckBrandList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.TextFieldTruckBrand.text = item?.name
+            
+            self.TextFieldTruckBrand.resignFirstResponder()
+        }
     }
     
     func didTapCancel() {
@@ -581,10 +805,13 @@ extension TruckDetailVC : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
+        if SelectedTextField == .CapacityType {
+            return SingletonClass.sharedInstance.PackageList?.count ?? 0
+        } else if SelectedTextField == .TruckBrandList {
             return SingletonClass.sharedInstance.TruckBrandList?.count ?? 0
-        
-        
+        }
+        return 0
+            
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -592,11 +819,37 @@ extension TruckDetailVC : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        SingletonClass.sharedInstance.TruckBrandList?[row].name
+        if SelectedTextField == .CapacityType {
+            return SingletonClass.sharedInstance.PackageList?[row].name
+        } else if SelectedTextField == .TruckBrandList {
+            return SingletonClass.sharedInstance.TruckBrandList?[row].name
+        }
         
         
+        return ""
         
         
     }
     
+}
+enum SelectedTextFieldForGeneralPicker {
+    case CapacityType
+    case TruckBrandList
+}
+public extension UIView
+{
+    static func loadFromXib<T>(withOwner: Any? = nil, options: [UINib.OptionsKey : Any]? = nil) -> T where T: UIView
+    {
+        let bundle = Bundle(for: self)
+        let nib = UINib(nibName: "\(self)", bundle: bundle)
+
+        guard let view = nib.instantiate(withOwner: withOwner, options: options).first as? T else {
+            fatalError("Could not load view from nib file.")
+        }
+        return view
+    }
+}
+enum AddCapacityTypeButtonName {
+    case Add
+    case Update
 }

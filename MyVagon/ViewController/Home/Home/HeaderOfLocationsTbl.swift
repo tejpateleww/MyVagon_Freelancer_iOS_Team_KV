@@ -22,8 +22,12 @@ class HeaderOfLocationsTbl: UITableViewHeaderFooterView {
     @IBOutlet weak var viewStatus: UIView!
     
     @IBOutlet weak var conHeightOfViewBidStatus: NSLayoutConstraint!
+    @IBOutlet weak var LblShipperName: themeLabel!
     @IBOutlet weak var lblBidStatus: themeLabel!
     @IBOutlet weak var ViewStatusBidText: themeLabel!
+    @IBOutlet weak var lblPrice: themeLabel!
+    @IBOutlet weak var lblbookingID: themeLabel!
+    @IBOutlet weak var lblDeadheadWithTruckType: themeLabel!
     @IBOutlet weak var viewStatusBid: UIView!
     var bidStatus = BidStatus.all.rawValue
     

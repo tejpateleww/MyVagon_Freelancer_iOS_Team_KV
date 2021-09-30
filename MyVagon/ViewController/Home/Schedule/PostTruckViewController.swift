@@ -9,11 +9,12 @@ import UIKit
 import FSCalendar
 import GoogleMaps
 import GooglePlaces
+
 class TruckTypeModel : NSObject {
-    var truckData : TruckFeaturesDatum!
+    var truckData : LoginTruckSubCategory?
     var isSelected : Bool!
     
-     init(TruckData:TruckFeaturesDatum,IsSelected:Bool) {
+     init(TruckData:LoginTruckSubCategory,IsSelected:Bool) {
         self.truckData = TruckData
         self.isSelected = IsSelected
     }
@@ -39,7 +40,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
-    
+    @IBOutlet weak var lblTruckType: themeLabel!
     @IBOutlet weak var TextFieldSelectTime: themeTextfield!
     
     @IBOutlet weak var TextFieldStartLocation: themeTextfield!
@@ -47,14 +48,13 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     @IBOutlet weak var TextFieldEnterBidPrice: themeTextfield!
     @IBOutlet weak var TextFieldQuote: themeTextfield!
     
-    
-    
     @IBOutlet weak var ViewForAllowBiddingPrice: UIView!
     @IBOutlet weak var ViewForEnterQuote: UIView!
     
     @IBOutlet weak var SwitchAllowBidding: ThemeSwitch!
-    
     @IBOutlet weak var LblSelectedDate: themeLabel!
+    
+    @IBOutlet weak var BtnPostATruck: themeButton!
     
     @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
     @IBOutlet weak var calender: ThemeCalender!
@@ -84,21 +84,15 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     func SetValue() {
-        SwitchAllowBidding.isSelected = true
-        SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
-            arrTypes.append(TruckTypeModel(TruckData: element, IsSelected: false))
-        })
         
-        if arrTypes.count != 0 {
-            for i in 0...arrTypes.count - 1 {
-                if SingletonClass.sharedInstance.Reg_AdditionalTypes.contains(where: {$0 == "\(arrTypes[i].truckData.id ?? 0)"}) {
-                    arrTypes[i].isSelected = true
-                } else {
-                    arrTypes[i].isSelected  = false
-                }
-                
-            }
-        }
+        lblTruckType.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.name ?? ""
+        
+        SwitchAllowBidding.isSelected = true
+        
+        arrTypes.append(TruckTypeModel(TruckData: (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory!)!, IsSelected: false))
+           
+        
+        
         
         calender.delegate = self
         calender.dataSource = self
@@ -134,9 +128,13 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     @IBAction func BtnPostTruck(_ sender: themeButton) {
+       
+        
         let CheckValidation = Validate()
         if CheckValidation.0 {
+            
             CallWebSerive()
+            
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
@@ -191,7 +189,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
             ReqModelForPostTruck.is_bid = "0"
         }
         
-        ReqModelForPostTruck.bid_amount = "200"
+        ReqModelForPostTruck.bid_amount = (SwitchAllowBidding.isOn == true) ? TextFieldEnterBidPrice.text ?? "" : TextFieldQuote.text ?? ""
 
         self.postTruckViewModel.PostAvailability(ReqModel: ReqModelForPostTruck)
     }
@@ -315,7 +313,7 @@ extension PostTruckViewController : UICollectionViewDelegate,UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == ColTypes{
-            return CGSize(width: ((arrTypes[indexPath.row].truckData.name?.capitalized ?? "").sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
+            return CGSize(width: ((arrTypes[indexPath.row].truckData?.name?.capitalized ?? "").sizeOfString(usingFont: CustomFont.PoppinsMedium.returnFont(14)).width) + 30
                           , height: ColTypes.frame.size.height - 10)
         }
         return CGSize(width: 0.0, height: 0.0)
@@ -323,7 +321,7 @@ extension PostTruckViewController : UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == ColTypes{
             let cell = ColTypes.dequeueReusableCell(withReuseIdentifier: "TypesColCell", for: indexPath) as! TypesColCell
-            cell.lblTypes.text = arrTypes[indexPath.row].truckData.name ?? ""
+            cell.lblTypes.text = arrTypes[indexPath.row].truckData?.name ?? ""
             cell.BGView.layer.cornerRadius = 17
             if arrTypes[indexPath.row].isSelected {
                 print("Here come with index :: \(indexPath.row)")
@@ -346,11 +344,8 @@ extension PostTruckViewController : UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         arrTypes.forEach({$0.isSelected = false})
         arrTypes[indexPath.row].isSelected = true
-        SelectedTruckType = "\(arrTypes[indexPath.row].truckData.id ?? 0)"
+        SelectedTruckType = "\(arrTypes[indexPath.row].truckData?.id ?? 0)"
             ColTypes.reloadData()
-        
-        
-        
         
     }
   

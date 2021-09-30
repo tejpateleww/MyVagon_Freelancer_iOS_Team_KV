@@ -38,17 +38,18 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
         TextFieldSubCategory.delegate = self
         setupDelegateForPickerView()
         
-        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
-            
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_type) ?? 0}) {
+
             self.SelectedCategoryIndex = IndexForTruckType
             TextFieldCategory.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? "")"
-            
-            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
-                
+
+            if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category) ?? 0}) {
+
                 TextFieldSubCategory.text =  "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
             }
         }
-        // Do any additional setup after loading the view.
+      
+        
     }
     
     
@@ -86,8 +87,8 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
                     SelectedTextField = 1
                     TextFieldSubCategory.inputView = GeneralPicker
                     TextFieldSubCategory.inputAccessoryView = GeneralPicker.toolbar
-                    if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_TruckType) ?? 0}) {
-                        if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.Reg_SubTruckType) ?? 0}) {
+                    if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_type) ?? 0}) {
+                        if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category) ?? 0}) {
                             
                             GeneralPicker.selectRow(IndexForSubTruckType, inComponent: 0, animated: false)
                         }
@@ -123,10 +124,10 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
         let CheckValidation = Validate()
         if CheckValidation.0 {
             
-            SingletonClass.sharedInstance.Reg_TruckType = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].id ?? 0)"
-            SingletonClass.sharedInstance.Reg_SubTruckType = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[SelectedSubCategoryIndex].id ?? 0)"
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_type = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].id ?? 0)"
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[SelectedSubCategoryIndex].id ?? 0)"
             
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+           
             self.navigationController?.popViewController(animated: true)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TruckType"), object: nil, userInfo: nil)
         } else {

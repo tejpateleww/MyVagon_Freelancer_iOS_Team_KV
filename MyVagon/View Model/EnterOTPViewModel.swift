@@ -15,7 +15,7 @@ class EnterOTPViewModel {
         WebServiceSubClass.VerifyEmail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
+                Utilities.ShowToastMessage(OfMessage: apiMessage)
                 self.enterOTPViewController?.OtpString = "\(response?.data?.oTP ?? 0)"
                 self.enterOTPViewController?.TextFieldOTP.text = ""
                 self.enterOTPViewController?.StartTimer()
@@ -30,7 +30,7 @@ class EnterOTPViewModel {
         WebServiceSubClass.VerifyPhone(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
+                Utilities.ShowToastMessage(OfMessage: apiMessage)
                 self.enterOTPViewController?.OtpString = "\(response?.data?.oTP ?? 0)"
                 self.enterOTPViewController?.TextFieldOTP.text = ""
                 self.enterOTPViewController?.StartTimer()

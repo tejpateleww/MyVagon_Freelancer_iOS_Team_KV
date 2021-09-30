@@ -1,7 +1,7 @@
 //
 //  LoginTruckSubCategory.swift
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on August 24, 2021
+//  Created on September 29, 2021
 
 import Foundation
 

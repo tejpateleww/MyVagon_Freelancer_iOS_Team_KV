@@ -30,7 +30,7 @@ class NotificationViewController: BaseViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Notifications", leftImage: NavItemsLeft.none.value, rightImages: [], isTranslucent: true, ShowShadow: true)
+        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Notifications", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
         
         // Do any additional setup after loading the view.
     }

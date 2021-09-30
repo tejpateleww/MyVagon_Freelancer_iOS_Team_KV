@@ -15,7 +15,7 @@ class MyProfileViewController: BaseViewController {
     // ----------------------------------------------------
     
     var arrImages : [String] = []
-    var arrTypes:[(TruckFeaturesDatum,Bool)] = []
+    var arrTypes:[(LoginTruckFeature,Bool)] = []
     var customTabBarController: CustomTabBarVC?
     var Iseditable = false
     // ----------------------------------------------------
@@ -39,6 +39,8 @@ class MyProfileViewController: BaseViewController {
     
     @IBOutlet weak var collectionImages: UICollectionView!
     
+    @IBOutlet weak var textFieldLicenseNumber: MyProfileTextField!
+    @IBOutlet weak var textFieldLicenseExpiryDate: MyProfileTextField!
     @IBOutlet weak var ImageViewIdentityProofDocument: UIImageView!
     @IBOutlet weak var ImageViewLicense: UIImageView!
     
@@ -119,15 +121,23 @@ class MyProfileViewController: BaseViewController {
         TextFeildTruckWeight.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weight ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weightUnit?.name ?? "")"
         
         TextFeildCargoLoadCapacity.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacity ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacityUnit?.name ?? "")"
-        TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brand ?? "")"
+        TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? "")"
         
-        TextFeildCapacity_pallets.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.pallets ?? 0)"
+        var palletText : [String] = []
+        SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?.forEach({ element in
+            palletText.append("\(element.value ?? "") \(element.packageTypeId?.name ?? "")")
+        })
+        
+        TextFeildCapacity_pallets.text = (palletText.count == 1) ?  palletText[0] :  (palletText.map{String($0)}).joined(separator: ", ")
         
         LabelVehicalRunsOn.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.fuelType ?? ""
         
         let StringURlForIdentityProof = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof ?? "")"
         ImageViewIdentityProofDocument.sd_imageIndicator = SDWebImageActivityIndicator.gray
         ImageViewIdentityProofDocument.sd_setImage(with: URL(string: StringURlForIdentityProof), placeholderImage: UIImage())
+        
+        textFieldLicenseNumber.text = SingletonClass.sharedInstance.UserProfileData?.licenceNumber ?? ""
+        textFieldLicenseExpiryDate.text = SingletonClass.sharedInstance.UserProfileData?.licenceExpiryDate?.ConvertDateFormat(FromFormat: "yyyy-mm-dd", ToFormat: "dd-mm-yyyy")
         
         let StringURlForLicense = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.license ?? "")"
         ImageViewLicense.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -144,21 +154,10 @@ class MyProfileViewController: BaseViewController {
         
         
         
-        SingletonClass.sharedInstance.TruckFeatureList?.forEach({ element in
-            arrTypes.append((element,false))
+        SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckFeatures?.forEach({ element in
+            arrTypes.append((element,true))
         })
-        if arrTypes.count != 0 {
-            for i in 0...arrTypes.count - 1 {
-                if let truckFeature = SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckFeatures {
-                    if truckFeature.contains(where: {$0.id == arrTypes[i].0.id}) {
-                        arrTypes[i].1 = true
-                    } else {
-                        arrTypes[i].1  = false
-                    }
-                }
-               
-            }
-        }
+        
         
         arrImages = SingletonClass.sharedInstance.UserProfileData?.vehicle?.images ?? []
         ColTypes.reloadData()

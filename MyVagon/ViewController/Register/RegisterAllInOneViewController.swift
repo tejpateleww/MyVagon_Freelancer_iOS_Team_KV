@@ -28,7 +28,8 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+       
+//        self.navigationController?.navigationBar.isHidden = true
         setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: "", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         
         MainScrollView.delegate = self
@@ -38,6 +39,7 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
             let ScreenNumber = self.MainScrollView.contentOffset.x/UIScreen.main.bounds.width
             switch ScreenNumber {
             case 0:
+                SingletonClass.sharedInstance.clearSingletonClassForRegister()
                 appDel.NavigateToLogin()
                 break
             case 1:
@@ -55,6 +57,13 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
             case 3:
                 let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
                 let x = self.view.frame.size.width * 2
+                RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+                
+                
+                RegisterMainVC.viewDidLayoutSubviews()
+            case 4:
+                let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+                let x = self.view.frame.size.width * 3
                 RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
                 
                 
@@ -80,7 +89,9 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
                 let x = self.view.frame.size.width * 3
                 self.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
                 
-                
+            case 3:
+                let x = self.view.frame.size.width * 4
+                self.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             default:
                 break
             }
@@ -107,6 +118,8 @@ class RegisterAllInOneViewController: BaseViewController,UIScrollViewDelegate {
             setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         case 3:
             setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.none.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        case 4:
+            setNavigationBarInViewController(controller: self, naviColor: UIColor.white, naviTitle: NavTitles.TermsCondition.value, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         default:
             break
         }

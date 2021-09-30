@@ -7,16 +7,20 @@ target 'MyVagon' do
 
   # Pods for MyVagon
 pod 'Firebase/Crashlytics'
+pod 'MHLoadingButton'
 
-  pod 'SDWebImage'
+  
 pod 'Firebase/Analytics'
   pod 'GooglePlacePicker'
+  pod 'SDWebImage'
   pod 'NVActivityIndicatorView', '4.8.0'
   pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'CountryPickerView'
   pod 'SkyFloatingLabelTextField', '~> 3.0'
   pod 'FSCalendar'
-
+ pod 'GrowingTextView', '0.7.2'
+  pod 'Cosmos', '~> 23.0'
+  pod 'Charts'
 pod 'SwiftMessages'
 
   target 'MyVagonTests' do

@@ -6,48 +6,36 @@
 //
 
 import Foundation
+import UIKit
 class IdentifyYourselfViewModel {
     weak var identifyYourselfVC : IdentifyYourselfVC? = nil
     
-    func WebServiceForUploadDocument(Docs:[UploadMediaModel],DocumentType:DocumentType){
+    func WebServiceImageUpload(images:[UIImage],uploadFor:DocumentType){
         Utilities.showHud()
-        WebServiceSubClass.DocumentUpload(Documents: Docs, completion: { (status, apiMessage, response, error) in
+        WebServiceSubClass.ImageUpload(imgArr: images, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                if DocumentType == .IdentityProof {
+                print("ATDebug :: \(response?.data?.images?.count ?? 0)")
+                response?.data?.images?.forEach({ element in
+                    if uploadFor == .IdentityProof {
+                        
+                        SingletonClass.sharedInstance.RegisterData.Reg_id_proof = response?.data?.images ?? []
+                    } else if uploadFor == .Licence {
+                        SingletonClass.sharedInstance.RegisterData.Reg_license = response?.data?.images ?? []
+                    }
                     
-                    SingletonClass.sharedInstance.Reg_IdentityProofDocument = response?.data?.images ?? []
-                } else if DocumentType == .Licence {
-                    SingletonClass.sharedInstance.Reg_LicenceDocument = response?.data?.images ?? []
-                }
-                
+                })
+               
+              
             } else {
-                if DocumentType == .IdentityProof {
-                    
-                    self.identifyYourselfVC?.identityProofTF.text = ""
-                } else if DocumentType == .Licence {
-                    self.identifyYourselfVC?.licenceTF.text = ""
+                if uploadFor == .IdentityProof {
+                    self.identifyYourselfVC?.ImageViewIdentity = nil
+                } else if uploadFor == .Licence {
+                    self.identifyYourselfVC?.ImageViewLicence = nil
                 }
-            }
-            
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
-        })
-    }
-    
-    func WebServiceForRegister(ReqModel:RegisterReqModel){
-        Utilities.showHud()
-        WebServiceSubClass.Register(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.hideHud()
-            if status{
-                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
-                SingletonClass.sharedInstance.clearSingletonClassForRegister()
-                appDel.NavigateToLogin()
-            } else {
-                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         })
     }
-    
     
 }
 enum DocumentType {

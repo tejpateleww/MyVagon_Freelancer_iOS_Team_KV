@@ -121,19 +121,19 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
             switch arrStatus[selectedIndex] {
             case arrStatus[0]:
-                cell.SelectedFilterOfBid = BidStatus.all.rawValue
+              
                 break
             case arrStatus[1]:
-                cell.SelectedFilterOfBid = BidStatus.pending.rawValue
+                
                 break
             case arrStatus[2]:
-                cell.SelectedFilterOfBid = BidStatus.scheduled.rawValue
+             
                 break
             case arrStatus[3]:
-                cell.SelectedFilterOfBid = BidStatus.inProgress.rawValue
+             
                 break
             case arrStatus[4]:
-                cell.SelectedFilterOfBid = BidStatus.past.rawValue
+               
                 break
             default:
                 break

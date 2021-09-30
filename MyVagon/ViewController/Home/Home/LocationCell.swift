@@ -14,8 +14,14 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var imgLocation: UIImageView!
     
+    @IBOutlet weak var lblCompanyName: themeLabel!
+    @IBOutlet weak var lblAddress: themeLabel!
+    @IBOutlet weak var lblDateTime: themeLabel!
+   
     
     
+    @IBOutlet weak var BtnShowMore: UIView!
+    var ShowMoreClosour : (() -> ())?
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -27,4 +33,9 @@ class LocationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func BtnShowMoreClick(_ sender: UIButton) {
+        if let click = self.ShowMoreClosour {
+            click()
+        }
+    }
 }

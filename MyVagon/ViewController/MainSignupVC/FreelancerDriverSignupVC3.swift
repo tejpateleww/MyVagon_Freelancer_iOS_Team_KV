@@ -17,6 +17,12 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     var signUpViewModel = SignUpViewModel()
     var CountryCodeArray: [String] = ["+30"]
     let GeneralPicker = GeneralPickerView()
+    
+    var IsPhoneVerify : Bool = false
+    var IsEmailVerify : Bool = false
+    
+    var VerifiedEmail = ""
+    var verifiedPhone = ""
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -55,34 +61,53 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     
     func setValue() {
-        TextFieldFullName.text = SingletonClass.sharedInstance.Reg_FullName
         
-        TextFieldMobileNumber.text = SingletonClass.sharedInstance.Reg_PhoneNumber
-        TextFieldEmail.text = SingletonClass.sharedInstance.Reg_Email
-        TextFieldPassword.text = SingletonClass.sharedInstance.Reg_Password
-        TextFieldConfirmPassword.text = SingletonClass.sharedInstance.Reg_Password
+        TextFieldFullName.text = SingletonClass.sharedInstance.RegisterData.Reg_fullname
         
-        TextFieldCountryCode.text = (SingletonClass.sharedInstance.Reg_CountryCode == "") ? CountryCodeArray[0] : SingletonClass.sharedInstance.Reg_CountryCode
+        TextFieldMobileNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_mobile_number
+        TextFieldEmail.text = SingletonClass.sharedInstance.RegisterData.Reg_email
+        TextFieldPassword.text = SingletonClass.sharedInstance.RegisterData.Reg_password
+        TextFieldConfirmPassword.text = SingletonClass.sharedInstance.RegisterData.Reg_password
         
-        BtnVerifyEmail.isSelected = (SingletonClass.sharedInstance.Reg_EmailVerified == true) ? true : false
+        if SingletonClass.sharedInstance.RegisterData.Reg_mobile_number != "" {
+            BtnVerifyPhoneNumber.isSelected = true
+            verifiedPhone = SingletonClass.sharedInstance.RegisterData.Reg_mobile_number
+            
+        }
+        if SingletonClass.sharedInstance.RegisterData.Reg_email != "" {
+            BtnVerifyEmail.isSelected = true
+            VerifiedEmail = SingletonClass.sharedInstance.RegisterData.Reg_email
+            
+        }
         
-        BtnVerifyPhoneNumber.isSelected = (SingletonClass.sharedInstance.Reg_PhoneVerified == true) ? true : false
+        if SingletonClass.sharedInstance.RegisterData.Reg_country_code != "" {
+            TextFieldCountryCode.text = SingletonClass.sharedInstance.RegisterData.Reg_country_code
+            
+        } else {
+            TextFieldCountryCode.text = CountryCodeArray.first
+        }
+        
+        
         
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField == TextFieldEmail {
-            if textField.text == SingletonClass.sharedInstance.Reg_Email {
-                BtnVerifyEmail.isSelected = true
-            } else {
-                BtnVerifyEmail.isSelected = false
-            }
-        } else if textField == TextFieldMobileNumber {
-            if textField.text == SingletonClass.sharedInstance.Reg_PhoneNumber {
-                BtnVerifyPhoneNumber.isSelected = true
-            } else {
-                BtnVerifyPhoneNumber.isSelected = false
+        if textField.text != "" {
+            if textField == TextFieldEmail {
+                
+                if textField.text == VerifiedEmail {
+                    BtnVerifyEmail.isSelected = true
+                } else {
+                    BtnVerifyEmail.isSelected = false
+                }
+            } else if textField == TextFieldMobileNumber {
+                if textField.text == verifiedPhone {
+                    BtnVerifyPhoneNumber.isSelected = true
+                } else {
+                    BtnVerifyPhoneNumber.isSelected = false
+                }
             }
         }
+       
     }
     func setupDelegateForPickerView() {
         GeneralPicker.dataSource = self
@@ -127,6 +152,21 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             } else {
                 return true
             }
+        } else if textField == TextFieldMobileNumber {
+            let CheckWritting =  textField.StopWrittingAtCharactorLimit(CharLimit: 10, range: range, string: string)
+            return CheckWritting
+            
+           
+        }  else if textField == TextFieldPassword {
+            let CheckWritting =  textField.StopWrittingAtCharactorLimit(CharLimit: 20, range: range, string: string)
+            return CheckWritting
+            
+           
+        } else if textField == TextFieldConfirmPassword {
+            let CheckWritting =  textField.StopWrittingAtCharactorLimit(CharLimit: 20, range: range, string: string)
+            return CheckWritting
+            
+           
         }
         return true
        
@@ -155,7 +195,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     @IBAction func btnActionMobileVerify(_ sender: UIButton) {
         if sender.isSelected == false {
-            let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 15))
+            let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 10))
             if (!checkMobileNumber.0){
                 Utilities.ShowAlertOfValidation(OfMessage: checkMobileNumber.1)
                 
@@ -170,7 +210,6 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     @IBAction func BtnSignInAction(_ sender: Any) {
         appDel.NavigateToLogin()
-        
     }
     
     @IBAction func BtnJoinForFreeAction(_ sender: Any) {
@@ -178,14 +217,13 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
         let CheckValidation = Validate()
         if CheckValidation.0 {
             
+            SingletonClass.sharedInstance.RegisterData.Reg_fullname = TextFieldFullName.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_country_code = TextFieldCountryCode.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_mobile_number = TextFieldMobileNumber.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_email = TextFieldEmail.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_password = TextFieldPassword.text ?? ""
             
-            SingletonClass.sharedInstance.Reg_FullName = TextFieldFullName.text ?? ""
-            SingletonClass.sharedInstance.Reg_CountryCode = TextFieldCountryCode.text ?? ""
-            SingletonClass.sharedInstance.Reg_PhoneNumber = TextFieldMobileNumber.text ?? ""
-            SingletonClass.sharedInstance.Reg_Email = TextFieldEmail.text ?? ""
-            SingletonClass.sharedInstance.Reg_Password = TextFieldPassword.text ?? ""
-            
-            SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+            UserDefault.SetRegiterData()
             
             UserDefault.setValue(0, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
             UserDefault.synchronize()

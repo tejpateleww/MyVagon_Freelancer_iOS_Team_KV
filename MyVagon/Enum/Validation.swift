@@ -107,10 +107,10 @@ struct UserNameValidator: ValidatorConvertible {
         guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
         
         guard value.count >= 2 else {
-            return (false,ValidationError("Please enter valid \(fieldName)").message)
+            return (false,ValidationError("Please enter a valid \(fieldName)").message)
             // ValidationError("Username must contain more than three characters" )
         }
-        guard value.count < MaximumChar else {
+        guard value.count <= MaximumChar else {
             return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") shoudn't contain more than \(MaximumChar) characters").message)
             // throw ValidationError("Username shoudn't conain more than 18 characters" )
         }
@@ -175,9 +175,10 @@ struct PasswordValidator: ValidatorConvertible {
         fieldName = field
     }
     func validated(_ value: String)  -> (Bool,String) {
+        
         guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
         guard value.count >= 8 else { return (false,ValidationError("Password must have at least 8 characters").message) }
-        guard value.count <= 15 else { return (false,ValidationError("Maximum 15 characters are allowed in password").message) }
+        guard value.count <= 20 else { return (false,ValidationError("Maximum 20 characters are allowed in password").message) }
         return (CheckWhiteSpaceOnBeginToEnd(value: value))
         
     }
@@ -187,7 +188,23 @@ struct PasswordValidator: ValidatorConvertible {
         {
             return (false,"Your password can’t end with a blank space")
         }
+//        else if !isValidPassword(str: value) {
+//            return (false,"Password should consist of at least a number, a capital letter and a special character")
+//        }
         return (true,"")
+    }
+    func isValidPassword(str:String) -> Bool {
+        // least one uppercase,
+        // least one digit
+        // least one lowercase
+        // least one symbol
+        //  min 8 characters total
+        let password = str.trimmingCharacters(in: CharacterSet.whitespaces)
+        let passwordRegx = "(?:(?:(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_])|(?:(?=.*?[0-9])|(?=.*?[A-Z])|(?=.*?[-!@#$%&*ˆ+=_])))|(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-!@#$%&*ˆ+=_]))[A-Za-z0-9-!@#$%&*ˆ+=_]{8,20}"
+
+        let passwordCheck = NSPredicate(format: "SELF MATCHES %@",passwordRegx)
+        return passwordCheck.evaluate(with: password)
+
     }
 }
 struct EmailValidator: ValidatorConvertible {

@@ -18,7 +18,7 @@ let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as!
 let AppName = AppInfo.appName
 let AppURL = AppInfo.appUrl // "itms-apps://itunes.apple.com/app/id1547969270"
 let ReqDeviceType = "1"
-let Headerkey = "TempleBliss123*#*"
+let Headerkey = ""
 
 
 let NotificationBadges = NSNotification.Name(rawValue:"NotificationBadges")

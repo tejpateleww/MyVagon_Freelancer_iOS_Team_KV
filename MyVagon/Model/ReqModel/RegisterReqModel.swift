@@ -14,7 +14,7 @@ class RegisterReqModel : Encodable {
     
     var brand,pallets,load_capacity,fuel_type,registration_no,truck_features	: String?
     
-    var vehicle_images,id_proof,license :String?
+    var vehicle_images,id_proof,license,license_number,license_expiry_date :String?
 
     enum CodingKeys: String, CodingKey {
         case device_name = "device_name"
@@ -41,6 +41,8 @@ class RegisterReqModel : Encodable {
         case vehicle_images = "vehicle_images"
         case id_proof = "id_proof"
         case license = "license"
+        case license_number = "license_number"
+        case license_expiry_date = "license_expiry_date"
     }
 }
 class MobileVerifyReqModel : Encodable {

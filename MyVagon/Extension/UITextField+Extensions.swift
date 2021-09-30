@@ -133,3 +133,15 @@ extension UITextField {
 //      }
 //  }
 
+extension UITextField {
+    func StopWrittingAtCharactorLimit(CharLimit:Int,range:NSRange,string:String) -> Bool {
+      
+
+           let startingLength = self.text?.count ?? 0
+           let lengthToAdd = string.count
+           let lengthToReplace =  range.length
+           let newLength = startingLength + lengthToAdd - lengthToReplace
+
+           return newLength <= CharLimit
+    }
+}

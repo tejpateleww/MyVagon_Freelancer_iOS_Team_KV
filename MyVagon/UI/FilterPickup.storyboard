@@ -905,7 +905,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF5-g4-rZ9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="194" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -920,10 +920,10 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-ND-63N">
-                                                                                        <rect key="frame" x="194" y="0.0" width="180" height="50"/>
+                                                                                        <rect key="frame" x="164" y="0.0" width="210" height="50"/>
                                                                                         <subviews>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-FJ-c4I">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ8-jm-xj8" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
@@ -958,12 +958,12 @@
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dl-rW-dNC" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="100" y="0.0" width="80" height="50"/>
+                                                                                                        <rect key="frame" x="100" y="0.0" width="110" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-bR-Fuv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="70" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="100" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="70" id="eUt-Az-FTX"/>
+                                                                                                                    <constraint firstAttribute="width" constant="100" id="eUt-Az-FTX"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>
@@ -1006,7 +1006,7 @@
                                                                                 <rect key="frame" x="0.0" y="70" width="374" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9Q-jv-naE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="194" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1021,10 +1021,10 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ya0-dD-LAd">
-                                                                                        <rect key="frame" x="194" y="0.0" width="180" height="50"/>
+                                                                                        <rect key="frame" x="164" y="0.0" width="210" height="50"/>
                                                                                         <subviews>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-aV-ivS">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="50"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qN-SC-NkO" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
@@ -1059,12 +1059,12 @@
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjV-nI-nnR" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="100" y="0.0" width="80" height="50"/>
+                                                                                                        <rect key="frame" x="100" y="0.0" width="110" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-bB-Lc2" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="70" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="100" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="70" id="hpg-He-Fzj"/>
+                                                                                                                    <constraint firstAttribute="width" constant="100" id="hpg-He-Fzj"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>

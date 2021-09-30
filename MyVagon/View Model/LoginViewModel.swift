@@ -6,13 +6,16 @@
 //
 
 import Foundation
+import UIKit
 class LoginViewModel {
     weak var signInDriverVC : SignInDriverVC? = nil
     
     func Login(ReqModel:LoginReqModel){
-        Utilities.showHud()
+        Utilities.ShowLoaderButtonInButton(Button: signInDriverVC?.BtnSignIn ?? themeButton(), vc: signInDriverVC ?? UIViewController())
+       // Utilities.showHud()
         WebServiceSubClass.Login(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.hideHud()
+            Utilities.HideLoaderButtonInButton(Button: self.signInDriverVC?.BtnSignIn ?? themeButton(), vc: self.signInDriverVC ?? UIViewController())
+           // Utilities.hideHud()
             if status{
                 UserDefault.setValue(true, forKey: UserDefaultsKey.isUserLogin.rawValue)
                 

@@ -12,10 +12,12 @@ class SetNewPasswordViewController: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    
     var customTabBarController: CustomTabBarVC?
     var isFromForgot : Bool = false
     var resetPasswordViewModel = ResetPasswordViewModel()
     var PhoneNumber = ""
+    
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -38,9 +40,7 @@ class SetNewPasswordViewController: BaseViewController {
         if isFromForgot {
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Set new password", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         } else {
-            self.TextFieldCurrentPassword.text = "asdfghjk"
-            self.TextFieldNewPassword.text = "12345678"
-            self.TextFieldConfirmPassword.text = "12345678"
+           
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Change Password", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         }
         
@@ -52,8 +52,7 @@ class SetNewPasswordViewController: BaseViewController {
             ViewCurrentPassword.isHidden = false
             BtnSetPassword.setTitle("Reset New Password", for: .normal)
         }
-        
-        // Do any additional setup after loading the view.
+       
     }
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.hideTabBar()

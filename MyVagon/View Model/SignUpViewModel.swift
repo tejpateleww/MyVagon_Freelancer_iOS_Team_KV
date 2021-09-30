@@ -14,16 +14,15 @@ class SignUpViewModel {
         WebServiceSubClass.VerifyEmail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
+                Utilities.ShowToastMessage(OfMessage: apiMessage)
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
                 controller.EnteredText = "Enter an otp send to \n\(ReqModel.email ?? "")"
                 controller.OtpString = "\(response?.data?.oTP ?? 0)"
                 controller.ResendDetails = [KeyOfResend.IsFrom.rawValue:OTPFor.email.rawValue,KeyOfResend.ReqModel.rawValue:ReqModel]
                 controller.ClosourVerify = {
-                    SingletonClass.sharedInstance.Reg_Email = self.freelancerDriverSignupVC3?.TextFieldEmail.text ?? ""
+                    self.freelancerDriverSignupVC3?.IsEmailVerify = true
+                    self.freelancerDriverSignupVC3?.VerifiedEmail = self.freelancerDriverSignupVC3?.TextFieldEmail.text ?? ""
 
-                    SingletonClass.sharedInstance.Reg_EmailVerified = true
-                    SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
                     controller.dismiss(animated: true, completion: nil)
                     self.freelancerDriverSignupVC3?.BtnVerifyEmail.isSelected = true
                 }
@@ -42,15 +41,15 @@ class SignUpViewModel {
         WebServiceSubClass.VerifyPhone(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                Utilities.ShowToastMessage(OfMessage: "OTP has been sent successfully\nYour OTP is : \(response?.data?.oTP ?? 0)")
+                Utilities.ShowToastMessage(OfMessage: apiMessage)
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: EnterOTPViewController.storyboardID) as! EnterOTPViewController
                 controller.EnteredText = "Enter an otp send to \n\(ReqModel.mobile_number ?? "")"
                 controller.OtpString = "\(response?.data?.oTP ?? 0)"
                 controller.ResendDetails = [KeyOfResend.IsFrom.rawValue:OTPFor.phoneNumber.rawValue,KeyOfResend.ReqModel.rawValue:ReqModel]
                 controller.ClosourVerify = {
-                    SingletonClass.sharedInstance.Reg_PhoneNumber = self.freelancerDriverSignupVC3?.TextFieldMobileNumber.text ?? ""
-                    SingletonClass.sharedInstance.Reg_PhoneVerified = true
-                    SingletonClass.sharedInstance.SaveRegisterDataToUserDefault()
+                    self.freelancerDriverSignupVC3?.IsPhoneVerify = true
+                    self.freelancerDriverSignupVC3?.verifiedPhone = self.freelancerDriverSignupVC3?.TextFieldMobileNumber.text ?? ""
+
                     controller.dismiss(animated: true, completion: nil)
                     self.freelancerDriverSignupVC3?.BtnVerifyPhoneNumber.isSelected = true
                 }
