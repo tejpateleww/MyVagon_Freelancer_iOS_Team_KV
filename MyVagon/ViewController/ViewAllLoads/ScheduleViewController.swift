@@ -23,13 +23,17 @@ class ScheduleViewController: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    
+    var toolBar = UIToolbar()
+    var picker  = UIPickerView()
+    
     var customTabBarController: CustomTabBarVC?
     var tblCellHeight = CGFloat()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
     var arrSection = ["Today" , "20th March'21" , "22Th March'21"]
     var selectedIndex = 1
     
-    
+    var optionArray : [String] = ["All","Bid","Book","Posted truck"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +46,28 @@ class ScheduleViewController: BaseViewController {
         
         tblLocations.register(UINib(nibName: "NoBookingTblCell", bundle: nil), forCellReuseIdentifier: "NoBookingTblCell")
         
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.notification.value,NavItemsRight.chat.value], isTranslucent: true, ShowShadow: false)
+        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.search.value,NavItemsRight.option.value], isTranslucent: true, ShowShadow: false)
         
        
         calender.accessibilityIdentifier = "calender"
         calender.delegate = self
         calender.dataSource = self
         
-        
+        btnOptionClosour = { [self] in
+            picker = UIPickerView.init()
+            picker.delegate = self
+            picker.dataSource = self
+            picker.backgroundColor = UIColor.white
+            picker.setValue(UIColor.black, forKey: "textColor")
+            picker.autoresizingMask = .flexibleWidth
+            picker.contentMode = .center
+            picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
+            self.view.addSubview(picker)
+                    
+            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
+            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+            self.view.addSubview(toolBar)
+        }
         
         DispatchQueue.main.async {
             self.tblLocations.layoutIfNeeded()
@@ -74,7 +92,10 @@ class ScheduleViewController: BaseViewController {
                 }
             }
      }
-    
+    @objc func onDoneButtonTapped() {
+        toolBar.removeFromSuperview()
+        picker.removeFromSuperview()
+    }
 }
 extension ScheduleViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
@@ -217,9 +238,26 @@ extension ScheduleViewController : UICollectionViewDataSource , UICollectionView
         collectionOfHistory.reloadData()
         tblLocations.reloadData()
         
-        
-
-        
     }
 
+}
+extension ScheduleViewController:UIPickerViewDelegate,UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return optionArray.count
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return optionArray[row]
+    }
+        
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(optionArray[row])
+    }
+    
+    
+  
 }

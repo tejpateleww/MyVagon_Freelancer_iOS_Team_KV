@@ -171,7 +171,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         self.postTruckViewModel.postTruckViewController =  self
         
         let ReqModelForPostTruck = PostTruckReqModel()
-        ReqModelForPostTruck.truck_type_id = SelectedTruckType
+        ReqModelForPostTruck.truck_type_id = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)"
         ReqModelForPostTruck.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         
         ReqModelForPostTruck.date = LblSelectedDate.text?.ConvertDateFormat(FromFormat: "dd MMMM, yyyy", ToFormat: "yyyy-MM-dd")
@@ -200,17 +200,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     func Validate() -> (Bool,String) {
         
-        if arrTypes.count != 0 {
-            for i in 0...arrTypes.count {
-                if i == arrTypes.count {
-                    return (false,"Please select truck type")
-                } else {
-                    if arrTypes[i].isSelected == true {
-                        break
-                    }
-                }
-            }
-        }
+        
         
         if LblSelectedDate.text?.lowercased() == "selected date" {
             return (false,"Please select date")
@@ -342,10 +332,10 @@ extension PostTruckViewController : UICollectionViewDelegate,UICollectionViewDat
         return UICollectionViewCell()
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        arrTypes.forEach({$0.isSelected = false})
-        arrTypes[indexPath.row].isSelected = true
-        SelectedTruckType = "\(arrTypes[indexPath.row].truckData?.id ?? 0)"
-            ColTypes.reloadData()
+//        arrTypes.forEach({$0.isSelected = false})
+//        arrTypes[indexPath.row].isSelected = true
+//        SelectedTruckType = "\(arrTypes[indexPath.row].truckData?.id ?? 0)"
+//            ColTypes.reloadData()
         
     }
   

@@ -21,15 +21,7 @@ class MyAccountViewController: BaseViewController {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     var customTabBarController: CustomTabBarVC?
-    var MyAccountDetails : [MyAccountSection] = [MyAccountSection(Name: MyAccountSectionTitle.Language.StringName, isLanguageButton: true),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.Myprofile.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.settings.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.Statistics.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.Changepassword.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.PrivacyPolicy.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.TermsandConditions.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.AboutUs.StringName, isLanguageButton: false),
-                                                 MyAccountSection(Name: MyAccountSectionTitle.Logout.StringName, isLanguageButton: false)]
+    var MyAccountDetails : [MyAccountSection] = []
     
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -49,6 +41,24 @@ class MyAccountViewController: BaseViewController {
         
         AccountTableView.delegate = self
         AccountTableView.dataSource = self
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Language.StringName, isLanguageButton: true))
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Myprofile.StringName, isLanguageButton: false))
+        MyAccountDetails.append( MyAccountSection(Name: MyAccountSectionTitle.settings.StringName, isLanguageButton: false))
+       
+      
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.statistics ?? 0 == 1{
+            MyAccountDetails.append( MyAccountSection(Name: MyAccountSectionTitle.Statistics.StringName, isLanguageButton: false))
+        }
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.changePassword ?? 0 == 1 {
+            MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Changepassword.StringName, isLanguageButton: false))
+        }
+        
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.PrivacyPolicy.StringName, isLanguageButton: false))
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.TermsandConditions.StringName, isLanguageButton: false))
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.AboutUs.StringName, isLanguageButton: false))
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Logout.StringName, isLanguageButton: false))
+        
+        AccountTableView.reloadData()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {

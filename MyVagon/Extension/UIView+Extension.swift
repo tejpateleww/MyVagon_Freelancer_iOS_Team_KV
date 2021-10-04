@@ -19,6 +19,10 @@ extension UIView {
 //      }
 //    }
     
+    func isCircle() {
+        self.layer.cornerRadius = self.frame.size.height / 2
+    }
+    
  var hairlineImageView: UIImageView? {
     return hairlineImageView(in: self)
 }

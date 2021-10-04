@@ -195,6 +195,7 @@
                 <outlet property="lblBidStatus" destination="Mra-rJ-9Br" id="wj8-7V-SxM"/>
                 <outlet property="lblDeadheadWithTruckType" destination="ibF-qf-Aj9" id="qCg-cB-6xN"/>
                 <outlet property="lblPrice" destination="1KJ-IT-5UF" id="Inu-LH-ibc"/>
+                <outlet property="lblWeightAndDistance" destination="U4K-Zv-X1V" id="8Up-S1-uez"/>
                 <outlet property="lblbookingID" destination="f2b-wp-EAr" id="54M-IU-lwH"/>
                 <outlet property="viewStatus" destination="jrR-LB-X1C" id="8a3-pq-Z7v"/>
                 <outlet property="viewStatusBid" destination="Jn8-uL-jbO" id="gfC-mb-vCo"/>

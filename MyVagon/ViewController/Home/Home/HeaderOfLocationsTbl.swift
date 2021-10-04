@@ -28,9 +28,11 @@ class HeaderOfLocationsTbl: UITableViewHeaderFooterView {
     @IBOutlet weak var lblPrice: themeLabel!
     @IBOutlet weak var lblbookingID: themeLabel!
     @IBOutlet weak var lblDeadheadWithTruckType: themeLabel!
+    @IBOutlet weak var lblWeightAndDistance: themeLabel!
+    
     @IBOutlet weak var viewStatusBid: UIView!
     var bidStatus = BidStatus.all.rawValue
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         

@@ -26,10 +26,10 @@
                                 <rect key="frame" x="20" y="10" width="280" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="9xp-Du-EPW">
-                                        <rect key="frame" x="10" y="16" width="197" height="48"/>
+                                        <rect key="frame" x="10" y="8" width="199" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coils Morps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eh-jx-h09" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="197" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="199" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -43,17 +43,17 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="9pN-36-qcW">
-                                                <rect key="frame" x="0.0" y="27.5" width="197" height="20.5"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TNx-2C-oSL">
+                                                <rect key="frame" x="0.0" y="27.5" width="199" height="36.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Ton" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXA-Qq-gED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42.5" height="20.5"/>
+                                                        <rect key="frame" x="5" y="5" width="42.5" height="26.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                <real key="value" value="8"/>
+                                                                <real key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                 <color key="value" name="ThemeGrayColor"/>
@@ -61,13 +61,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 x Pallets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHB-vv-8dm" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="51.5" y="0.0" width="85" height="20.5"/>
+                                                        <rect key="frame" x="52.5" y="8" width="85" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                <real key="value" value="8"/>
+                                                                <real key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                 <color key="value" name="ThemeGrayColor"/>
@@ -75,13 +75,13 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fragile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMl-di-GGm" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="145.5" y="0.0" width="51.5" height="20.5"/>
+                                                        <rect key="frame" x="142.5" y="8" width="51.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                <real key="value" value="8"/>
+                                                                <real key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
                                                                 <color key="value" name="ThemeTamotoColor"/>
@@ -89,7 +89,18 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                 </subviews>
-                                            </stackView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="rMl-di-GGm" secondAttribute="trailing" constant="5" id="WeR-zM-4Bp"/>
+                                                    <constraint firstItem="rMl-di-GGm" firstAttribute="leading" secondItem="mHB-vv-8dm" secondAttribute="trailing" constant="5" id="Xzu-bH-CiF"/>
+                                                    <constraint firstItem="rMl-di-GGm" firstAttribute="centerY" secondItem="mHB-vv-8dm" secondAttribute="centerY" id="eJi-6d-aCf"/>
+                                                    <constraint firstItem="GXA-Qq-gED" firstAttribute="leading" secondItem="TNx-2C-oSL" secondAttribute="leading" constant="5" id="rLm-xh-EJm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GXA-Qq-gED" secondAttribute="bottom" constant="5" id="vhn-bR-vqE"/>
+                                                    <constraint firstItem="mHB-vv-8dm" firstAttribute="centerY" secondItem="GXA-Qq-gED" secondAttribute="centerY" id="vmj-cW-Gam"/>
+                                                    <constraint firstItem="mHB-vv-8dm" firstAttribute="leading" secondItem="GXA-Qq-gED" secondAttribute="trailing" constant="5" id="wfJ-Vo-VUr"/>
+                                                    <constraint firstItem="GXA-Qq-gED" firstAttribute="top" secondItem="TNx-2C-oSL" secondAttribute="top" constant="5" id="zbr-vk-cQx"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2I-XH-yEm" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
@@ -110,11 +121,11 @@
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647124529999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="9xp-Du-EPW" firstAttribute="centerY" secondItem="ASu-di-qxe" secondAttribute="centerY" id="Bbh-EX-81H"/>
-                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9xp-Du-EPW" secondAttribute="bottom" constant="5" id="UPe-Vz-Smf"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9xp-Du-EPW" secondAttribute="bottom" constant="8" id="UPe-Vz-Smf"/>
                                     <constraint firstItem="9xp-Du-EPW" firstAttribute="leading" secondItem="ASu-di-qxe" secondAttribute="leading" constant="10" id="VJ8-1q-ubo"/>
                                     <constraint firstItem="r2I-XH-yEm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9xp-Du-EPW" secondAttribute="trailing" constant="5" id="ctf-sm-rKn"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="56" id="gOe-Ja-g88"/>
-                                    <constraint firstItem="9xp-Du-EPW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ASu-di-qxe" secondAttribute="top" constant="5" id="jnK-Uf-CWB"/>
+                                    <constraint firstItem="9xp-Du-EPW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ASu-di-qxe" secondAttribute="top" constant="8" id="jnK-Uf-CWB"/>
                                     <constraint firstItem="r2I-XH-yEm" firstAttribute="centerY" secondItem="ASu-di-qxe" secondAttribute="centerY" id="pIE-ak-mrk"/>
                                     <constraint firstAttribute="trailing" secondItem="r2I-XH-yEm" secondAttribute="trailing" constant="10" id="xhN-td-SUn"/>
                                 </constraints>

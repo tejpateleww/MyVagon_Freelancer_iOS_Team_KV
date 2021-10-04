@@ -71,6 +71,9 @@
 		1858EA9226E61A75008E04A7 /* NavigationTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1858EA9026E61A75008E04A7 /* NavigationTitleView.xib */; };
 		1858EA9826E64821008E04A7 /* ReviewShipperVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1858EA9726E64821008E04A7 /* ReviewShipperVC.swift */; };
 		1863AEA626FCB92100587DDC /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863AEA526FCB92000587DDC /* RegisterViewModel.swift */; };
+		186537212705AD4D007EC6DB /* LoginPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537202705AD4D007EC6DB /* LoginPermission.swift */; };
+		186537232705E857007EC6DB /* BidNowPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537222705E856007EC6DB /* BidNowPopupViewController.swift */; };
+		186537252705EF73007EC6DB /* BidNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537242705EF72007EC6DB /* BidNowViewModel.swift */; };
 		186E382726C14A9500984D40 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382626C14A9500984D40 /* SignUpViewModel.swift */; };
 		186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382926C14B9400984D40 /* VerifyResModel.swift */; };
 		186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382A26C14B9400984D40 /* VerifyDatum.swift */; };
@@ -317,6 +320,9 @@
 		1858EA9026E61A75008E04A7 /* NavigationTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavigationTitleView.xib; sourceTree = "<group>"; };
 		1858EA9726E64821008E04A7 /* ReviewShipperVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewShipperVC.swift; sourceTree = "<group>"; };
 		1863AEA526FCB92000587DDC /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		186537202705AD4D007EC6DB /* LoginPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPermission.swift; sourceTree = "<group>"; };
+		186537222705E856007EC6DB /* BidNowPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidNowPopupViewController.swift; sourceTree = "<group>"; };
+		186537242705EF72007EC6DB /* BidNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidNowViewModel.swift; sourceTree = "<group>"; };
 		186E382626C14A9500984D40 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		186E382926C14B9400984D40 /* VerifyResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyResModel.swift; sourceTree = "<group>"; };
 		186E382A26C14B9400984D40 /* VerifyDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyDatum.swift; sourceTree = "<group>"; };
@@ -593,6 +599,7 @@
 				18F1B7B826CE69350071FC21 /* SettingViewModel.swift */,
 				18ADA34D26F31D2E00F12258 /* HomeViewModel.swift */,
 				1863AEA526FCB92000587DDC /* RegisterViewModel.swift */,
+				186537242705EF72007EC6DB /* BidNowViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -862,6 +869,7 @@
 		18E1A60A26D4BFFE00FD9A93 /* LoginResModel */ = {
 			isa = PBXGroup;
 			children = (
+				186537202705AD4D007EC6DB /* LoginPermission.swift */,
 				18F15E3227042017003A1D16 /* LoginBrand.swift */,
 				18F15E372704201C003A1D16 /* LoginDatum.swift */,
 				18F15E382704201D003A1D16 /* LoginLoadCapacityUnit.swift */,
@@ -1138,6 +1146,7 @@
 				A1519CF326A04488001738B9 /* BoardingVC.swift */,
 				184DB31726B2C9000059B334 /* EnterOTPViewController.swift */,
 				187A241326E8C189009C19B6 /* LicenseViewController.swift */,
+				186537222705E856007EC6DB /* BidNowPopupViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1544,6 +1553,7 @@
 				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
 				18F1B7B326CE399A0071FC21 /* PostAvailabilityResModel.swift in Sources */,
 				181A9E9F26FAFBDD006FC020 /* HomeLocation.swift in Sources */,
+				186537212705AD4D007EC6DB /* LoginPermission.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
 				181A9EA426FAFBDD006FC020 /* HomeDatum.swift in Sources */,
 				18F15E442704201F003A1D16 /* LoginVehicleCapacity.swift in Sources */,
@@ -1671,6 +1681,7 @@
 				18F2703726BD632300992892 /* TruckBrandsResModel.swift in Sources */,
 				18F2703826BD632300992892 /* TruckBrandsDatum.swift in Sources */,
 				18C438D526D3660B009A06AC /* SearchOptionViewController.swift in Sources */,
+				186537232705E857007EC6DB /* BidNowPopupViewController.swift in Sources */,
 				18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */,
 				18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */,
 				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,
@@ -1683,6 +1694,7 @@
 				189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */,
 				18F15E432704201F003A1D16 /* LoginLoadCapacityUnit.swift in Sources */,
 				A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */,
+				186537252705EF73007EC6DB /* BidNowViewModel.swift in Sources */,
 				18A34F2B26CD1F2D00F252B6 /* PickUpDropOffCell.swift in Sources */,
 				18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,

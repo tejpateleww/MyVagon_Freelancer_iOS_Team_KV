@@ -13,6 +13,7 @@ class HomeViewModel {
     
     func GetShipmentList(ReqModel:ShipmentListReqModel){
         WebServiceSubClass.GetShipmentList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            self.homeViewController?.isLoading = false
             self.homeViewController?.refreshControl.endRefreshing()
             if status {
                 self.homeViewController?.arrHomeData = response?.data

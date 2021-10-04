@@ -27,8 +27,6 @@ var window: UIWindow?
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
         
        
-        
-        
         // Override point for customization after application launch.
         return true
     }
@@ -55,6 +53,40 @@ var window: UIWindow?
     }
     func NavigateToHome(){
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 && SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
+            let indexToRemove = 0
+            if indexToRemove < controller.viewControllers?.count ?? 3 {
+                var viewControllers = controller.viewControllers
+                viewControllers?.remove(at: indexToRemove)
+                controller.viewControllers = viewControllers
+            }
+            
+            let FirstIndex = 1
+            if FirstIndex < controller.viewControllers?.count ?? 3 {
+                var viewControllers = controller.viewControllers
+                viewControllers?.remove(at: FirstIndex - 1)
+                controller.viewControllers = viewControllers
+            }
+        } else {
+            if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 {
+                let indexToRemove = 0
+                if indexToRemove < controller.viewControllers?.count ?? 3 {
+                    var viewControllers = controller.viewControllers
+                    viewControllers?.remove(at: indexToRemove)
+                    controller.viewControllers = viewControllers
+                }
+            } else if SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
+                let indexToRemove = 1
+                if indexToRemove < controller.viewControllers?.count ?? 3 {
+                    var viewControllers = controller.viewControllers
+                    viewControllers?.remove(at: indexToRemove)
+                    controller.viewControllers = viewControllers
+                }
+            }
+        }
+        
+       
+        
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav

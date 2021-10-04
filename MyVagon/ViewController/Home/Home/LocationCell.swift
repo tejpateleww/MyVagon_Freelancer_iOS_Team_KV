@@ -18,7 +18,7 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var lblAddress: themeLabel!
     @IBOutlet weak var lblDateTime: themeLabel!
    
-    
+  
     
     @IBOutlet weak var BtnShowMore: UIView!
     var ShowMoreClosour : (() -> ())?

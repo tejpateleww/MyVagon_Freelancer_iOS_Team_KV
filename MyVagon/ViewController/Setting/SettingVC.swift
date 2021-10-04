@@ -53,7 +53,8 @@ class settingTblCell : UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        btnSwitch.isUserInteractionEnabled = (SingletonClass.sharedInstance.UserProfileData?.permissions?.settings ?? 0 == 1) ? true : false
+       
     }
     
     

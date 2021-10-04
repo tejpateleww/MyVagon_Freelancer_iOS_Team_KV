@@ -14,6 +14,12 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    var isLoading = true {
+        didSet {
+            tblLocations.isUserInteractionEnabled = !isLoading
+            tblLocations.reloadData()
+        }
+    }
     
     var arrHomeData : [HomeDatum]?
     
@@ -44,6 +50,9 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+        
+        isLoading = true
         let latStr = String(21.298100)
             let   longStr = String(70.251404)
 
@@ -214,6 +223,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
+        print("ATDebug :: \(indexPath.section) :: \(indexPath.row)")
         cell.PickUpDropOffData = arrHomeData?[indexPath.section].bidsData?[indexPath.row].trucks?.locations
         
         cell.BookingDetails = arrHomeData?[indexPath.section].bidsData?[indexPath.row]
@@ -222,7 +232,9 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
             self.tblLocations.layoutIfNeeded()
             self.tblLocations.layoutSubviews()
         }
-        
+        cell.tblMultipleLocation.reloadData()
+        cell.tblMultipleLocation.layoutIfNeeded()
+        cell.tblMultipleLocation.layoutSubviews()
         
 //
         return cell
@@ -297,3 +309,12 @@ enum NotificationKeys : CaseIterable{
     
 }
 
+extension Date {
+    func localDate() -> Date {
+        let nowUTC = Date()
+        let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowUTC))
+        guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: nowUTC) else {return Date()}
+
+        return localDate
+    }
+}

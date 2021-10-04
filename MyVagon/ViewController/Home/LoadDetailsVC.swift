@@ -8,6 +8,9 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import SDWebImage
+
+
 class LoadDetailsVC: BaseViewController {
     
     // ----------------------------------------------------
@@ -31,12 +34,18 @@ class LoadDetailsVC: BaseViewController {
     @IBOutlet weak var lblBookingStatus: themeLabel!
     
     @IBOutlet weak var lblTruckType: themeLabel!
+    @IBOutlet weak var lblJourneyType: themeLabel!
     
     
     @IBOutlet weak var tblMainData: UITableView!
     @IBOutlet weak var tblMainDataHeight: NSLayoutConstraint!
     @IBOutlet weak var ColTypes: UICollectionView!
     @IBOutlet weak var viewStatus: UIView!
+    
+    @IBOutlet weak var btnBidNow: themeButton!
+    @IBOutlet weak var lblShipperName: themeLabel!
+    @IBOutlet weak var lblShipperRatting: themeLabel!
+    @IBOutlet weak var imgShipperProfile: UIImageView!
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -55,18 +64,13 @@ class LoadDetailsVC: BaseViewController {
         LoadDetails?.trucks?.truckTypeCategory?.forEach({ element in
             arrTypes.append((element,false))
         })
-        
-        
-        viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-        lblBookingStatus.text = (LoadDetails?.isBid == 0) ? "Book Now" : "Bidding"
+        ColTypes.reloadData()
         
        
-        ColTypes.reloadData()
-        let radius = viewStatus.frame.height / 2
-        //headerView.roundCorners(corners: [.topLeft,.topRight], radius: 15.0)
-        viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
         
         MapViewForLocation.isUserInteractionEnabled = false
+        
+        
     }
     
     
@@ -74,51 +78,93 @@ class LoadDetailsVC: BaseViewController {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     func SetValue() {
+        
+        viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+        lblBookingStatus.text = (LoadDetails?.isBid == 0) ? "Book Now" : "Bidding"
+        
+        let radius = viewStatus.frame.height / 2
+        viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
+        
         lblBookingID.text = "#\(LoadDetails?.id ?? 0)"
-        lblPrice.text = Currency + (LoadDetails?.amount ?? "")
-        lblTotalMiles.text = "500"
-        lbljourney.text = "48h"
+        
+        lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (LoadDetails?.amount ?? "") : ""
+        
         lblBookingStatus.text = LoadDetails?.status
         
         lblTruckType.text = LoadDetails?.trucks?.truckType?.name ?? ""
+       
+        lbljourney.text = "\(LoadDetails?.journey ?? "")"
+        lblJourneyType.text = "\(LoadDetails?.journeyType ?? "")"
         
-        let sessionManager = SessionManager()
-        print()
+        lblTotalMiles.text = "\(LoadDetails?.distance ?? "")"
+            lblDeadHead.text = (LoadDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? LoadDetails?.trucks?.truckType?.name ?? "" : "\(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") : \(LoadDetails?.trucks?.truckType?.name ?? "")"
         
-           let start = CLLocationCoordinate2D(latitude: Double(LoadDetails?.trucks?.locations?.first?.dropLat ?? "") ?? 0.0, longitude: Double(LoadDetails?.trucks?.locations?.first?.dropLng ?? "") ?? 0.0)
-           let end = CLLocationCoordinate2D(latitude: Double(LoadDetails?.trucks?.locations?.last?.dropLat ?? "") ?? 0.0, longitude: Double(LoadDetails?.trucks?.locations?.last?.dropLng ?? "") ?? 0.0)
-
-           sessionManager.requestDirections(from: start, to: end, completionHandler: { (path, error) in
-
-               if let error = error {
-                   print("Something went wrong, abort drawing!\nError: \(error)")
-               } else {
-                   // Create a GMSPolyline object from the GMSPath
-                
-                   let polyline = GMSPolyline(path: path)
-                polyline.strokeColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
-                polyline.strokeWidth = 3
-                   // Add the GMSPolyline object to the mapView
-                   polyline.map = self.MapViewForLocation
-
-                   // Move the camera to the polyline
-                let bounds = GMSCoordinateBounds(path: path ?? GMSPath())
-                   let cameraUpdate = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 40, left: 15, bottom: 10, right: 15))
-                   self.MapViewForLocation.animate(with: cameraUpdate)
-                
-                let StartMaker = GMSMarker();
-                StartMaker.position = CLLocationCoordinate2D(latitude: Double(self.LoadDetails?.trucks?.locations?.first?.dropLat ?? "") ?? 0.0, longitude: Double(self.LoadDetails?.trucks?.locations?.first?.dropLng ?? "") ?? 0.0)
-                StartMaker.icon = #imageLiteral(resourceName: "ic_PickUp")
-                StartMaker.map = self.MapViewForLocation;
-
-                let DestinationMarker = GMSMarker();
-                DestinationMarker.position = CLLocationCoordinate2D(latitude: Double(self.LoadDetails?.trucks?.locations?.last?.dropLat ?? "") ?? 0.0, longitude: Double(self.LoadDetails?.trucks?.locations?.last?.dropLng ?? "") ?? 0.0)
-                DestinationMarker.icon = #imageLiteral(resourceName: "ic_ChatProfile")
-                DestinationMarker.map = self.MapViewForLocation;
-                
-               }
-
-           })
+        lblShipperName.text = LoadDetails?.shipperDetails?.name ?? ""
+        
+        let strUrl = "\(APIEnvironment.ShipperImageURL.rawValue)\(LoadDetails?.shipperDetails?.profile ?? "")"
+        imgShipperProfile.isCircle()
+        imgShipperProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
+        lblShipperRatting.text = ""
+        
+      
+        
+        if LoadDetails?.isBid == 0 {
+            btnBidNow.setTitle(  bidStatus.BookNow.Name , for: .normal)
+            
+           
+        } else {
+            if LoadDetails?.driverBid == 1 {
+                btnBidNow.setTitle(  bidStatus.Bidded.Name , for: .normal)
+              
+            } else {
+                btnBidNow.setTitle(  bidStatus.BidNow.Name , for: .normal)
+            }
+            
+        }
+        
+       
+        
+        
+//        let sessionManager = SessionManager()
+//        print()
+//
+//           let start = CLLocationCoordinate2D(latitude: Double(LoadDetails?.trucks?.locations?.first?.dropLat ?? "") ?? 0.0, longitude: Double(LoadDetails?.trucks?.locations?.first?.dropLng ?? "") ?? 0.0)
+//           let end = CLLocationCoordinate2D(latitude: Double(LoadDetails?.trucks?.locations?.last?.dropLat ?? "") ?? 0.0, longitude: Double(LoadDetails?.trucks?.locations?.last?.dropLng ?? "") ?? 0.0)
+//
+//           sessionManager.requestDirections(from: start, to: end, completionHandler: { (path, error) in
+//
+//               if let error = error {
+//                   print("Something went wrong, abort drawing!\nError: \(error)")
+//               } else {
+//                   // Create a GMSPolyline object from the GMSPath
+//
+//                   let polyline = GMSPolyline(path: path)
+//                polyline.strokeColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
+//                polyline.strokeWidth = 3
+//                   // Add the GMSPolyline object to the mapView
+//                   polyline.map = self.MapViewForLocation
+//
+//                   // Move the camera to the polyline
+//                let bounds = GMSCoordinateBounds(path: path ?? GMSPath())
+//                   let cameraUpdate = GMSCameraUpdate.fit(bounds, with: UIEdgeInsets(top: 40, left: 15, bottom: 10, right: 15))
+//                   self.MapViewForLocation.animate(with: cameraUpdate)
+//
+//                let StartMaker = GMSMarker();
+//                StartMaker.position = CLLocationCoordinate2D(latitude: Double(self.LoadDetails?.trucks?.locations?.first?.dropLat ?? "") ?? 0.0, longitude: Double(self.LoadDetails?.trucks?.locations?.first?.dropLng ?? "") ?? 0.0)
+//                StartMaker.icon = #imageLiteral(resourceName: "ic_PickUp")
+//                StartMaker.map = self.MapViewForLocation;
+//
+//                let DestinationMarker = GMSMarker();
+//                DestinationMarker.position = CLLocationCoordinate2D(latitude: Double(self.LoadDetails?.trucks?.locations?.last?.dropLat ?? "") ?? 0.0, longitude: Double(self.LoadDetails?.trucks?.locations?.last?.dropLng ?? "") ?? 0.0)
+//                DestinationMarker.icon = #imageLiteral(resourceName: "ic_ChatProfile")
+//                DestinationMarker.map = self.MapViewForLocation;
+//
+//               }
+//
+//           })
+        
+        
     
     }
     
@@ -134,7 +180,70 @@ class LoadDetailsVC: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
-    
+    @IBAction func btnBidNowClick(_ sender: themeButton) {
+        switch sender.titleLabel?.text {
+        case bidStatus.BookNow.Name:
+            
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: CommonAcceptRejectPopupVC.storyboardID) as! CommonAcceptRejectPopupVC
+            let TitleAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(22)] as [NSAttributedString.Key : Any]
+            
+            let DescriptionAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(16)] as [NSAttributedString.Key : Any]
+            
+            
+            
+            controller.TitleAttributedText = NSAttributedString(string: "Booking Confirmation", attributes: TitleAttribute)
+            controller.DescriptionAttributedText = NSAttributedString(string: "Do you want to confirm the booking?", attributes: DescriptionAttribute)
+            controller.IsHideImage = true
+            controller.LeftbtnTitle = "Cancel"
+            controller.RightBtnTitle = "Book"
+          
+            controller.modalPresentationStyle = .overCurrentContext
+            controller.modalTransitionStyle = .coverVertical
+            controller.LeftbtnClosour = {
+                controller.view.backgroundColor = .clear
+                controller.dismiss(animated: true, completion: nil)
+            }
+            controller.RightbtnClosour = {
+                controller.view.backgroundColor = .clear
+                controller.dismiss(animated: true, completion: nil)
+            }
+            self.present(controller, animated: false, completion:  {
+
+                
+                controller.view.backgroundColor = .black.withAlphaComponent(0.3)
+
+            })
+            
+            break
+        case bidStatus.BidNow.Name:
+            
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: BidNowPopupViewController.storyboardID) as! BidNowPopupViewController
+            controller.MinimumBidAmount = LoadDetails?.amount ?? ""
+            controller.BookingId = "\(LoadDetails?.id ?? 0)"
+
+          
+            controller.modalPresentationStyle = .overCurrentContext
+            controller.modalTransitionStyle = .coverVertical
+           
+            self.present(controller, animated: false, completion:  {
+
+                
+                controller.view.backgroundColor = .black.withAlphaComponent(0.3)
+
+            })
+            
+        case bidStatus.Bidded.Name:
+            break
+       
+        case .none:
+            break
+        case .some(_):
+            break
+        }
+       
+       
+        
+    }
     
     
     // ----------------------------------------------------
@@ -263,4 +372,20 @@ extension LoadDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
     
    
    
+}
+enum bidStatus {
+    case BookNow
+    case BidNow
+    case Bidded
+    
+    var Name:String {
+        switch self {
+        case .BookNow:
+            return "Book Now"
+        case .BidNow:
+            return "Bid Now"
+        case .Bidded:
+            return "Bidded"
+        }
+    }
 }

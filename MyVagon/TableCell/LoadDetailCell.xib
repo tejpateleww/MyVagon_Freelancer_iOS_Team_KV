@@ -129,11 +129,11 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
-                                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nI-4nj">
-                                                                        <rect key="frame" x="276" y="20" width="134" height="32"/>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nI-4nj">
+                                                                        <rect key="frame" x="350" y="5" width="60" height="32"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="15" y="5" width="104" height="22"/>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="10" y="5" width="40" height="22"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -150,10 +150,11 @@
                                                                         <color key="backgroundColor" name="ThemeDarkYelloColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="bottom" secondItem="gl6-Lu-dG0" secondAttribute="bottom" constant="5" id="2A4-RA-XKn"/>
+                                                                            <constraint firstAttribute="width" constant="60" id="AXC-9H-P4M"/>
                                                                             <constraint firstAttribute="height" constant="32" id="VsI-Qu-GIc"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="gl6-Lu-dG0" secondAttribute="trailing" constant="15" id="W0a-Em-v5d"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="gl6-Lu-dG0" secondAttribute="trailing" constant="10" id="W0a-Em-v5d"/>
                                                                             <constraint firstItem="gl6-Lu-dG0" firstAttribute="top" secondItem="Mxp-nI-4nj" secondAttribute="top" constant="5" id="rfv-qu-PSa"/>
-                                                                            <constraint firstItem="gl6-Lu-dG0" firstAttribute="leading" secondItem="Mxp-nI-4nj" secondAttribute="leading" constant="15" id="w7q-kM-bHE"/>
+                                                                            <constraint firstItem="gl6-Lu-dG0" firstAttribute="leading" secondItem="Mxp-nI-4nj" secondAttribute="leading" constant="10" id="w7q-kM-bHE"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -162,7 +163,8 @@
                                                                     <constraint firstItem="FoK-pc-KYf" firstAttribute="leading" secondItem="kId-1f-tpq" secondAttribute="leading" id="0xK-20-ZBE"/>
                                                                     <constraint firstItem="FoK-pc-KYf" firstAttribute="trailing" secondItem="kId-1f-tpq" secondAttribute="trailing" id="1Vy-t9-oO6"/>
                                                                     <constraint firstItem="kId-1f-tpq" firstAttribute="top" secondItem="dAu-1V-uGE" secondAttribute="bottom" constant="5" id="1kz-sd-bQu"/>
-                                                                    <constraint firstItem="Mxp-nI-4nj" firstAttribute="leading" secondItem="kId-1f-tpq" secondAttribute="trailing" constant="10" id="Ca0-qL-3VB"/>
+                                                                    <constraint firstItem="Mxp-nI-4nj" firstAttribute="top" secondItem="IhO-AM-ig8" secondAttribute="top" constant="5" id="7xI-hl-swB"/>
+                                                                    <constraint firstItem="Mxp-nI-4nj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kId-1f-tpq" secondAttribute="trailing" constant="10" id="Ca0-qL-3VB"/>
                                                                     <constraint firstItem="kId-1f-tpq" firstAttribute="leading" secondItem="dAu-1V-uGE" secondAttribute="leading" id="UmP-Nb-Ce9"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Mxp-nI-4nj" secondAttribute="trailing" id="ccK-uX-E1H"/>
                                                                     <constraint firstItem="dAu-1V-uGE" firstAttribute="top" secondItem="IhO-AM-ig8" secondAttribute="top" constant="5" id="cuw-co-icx"/>

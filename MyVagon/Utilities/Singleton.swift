@@ -12,7 +12,7 @@ class SingletonClass: NSObject
 {
  
     var RegisterData = RegisterSaveDataModel()
-    
+ 
    
     func clearSingletonClassForRegister() {
         

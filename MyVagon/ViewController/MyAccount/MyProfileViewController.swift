@@ -53,10 +53,27 @@ class MyProfileViewController: BaseViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Profile", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.RequestEdit.value], isTranslucent: true, ShowShadow: true)
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.myProfile ?? 0 == 1 {
+            setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Profile", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.RequestEdit.value], isTranslucent: true, ShowShadow: true)
+        } else {
+            
+            setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Profile", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, ShowShadow: true)
+            
+            
+        }
+        
         SetValue()
         registerNIBsAndDelegate()
-        isProfileEdit(allow: Iseditable)
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.myProfile ?? 0 == 1 {
+            if Iseditable {
+                isProfileEdit(allow: true)
+            } else {
+                isProfileEdit(allow: false)
+            }
+        } else {
+            isProfileEdit(allow: false)
+        }
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -67,33 +84,46 @@ class MyProfileViewController: BaseViewController {
     // ----------------------------------------------------
     
     func isProfileEdit(allow:Bool) {
-        if allow {
-            TextFieldFullName.isUserInteractionEnabled = true
-            TextFeildPhoneNumber.isUserInteractionEnabled = true
-            TextFeildEmail.isUserInteractionEnabled = true
-            
-            TextFeildTruckType.isUserInteractionEnabled = true
-            TextFeildTruckWeight.isUserInteractionEnabled = true
-            TextFeildCargoLoadCapacity.isUserInteractionEnabled = true
-            
-            TextFeildTruckBrand.isUserInteractionEnabled = true
-            TextFeildCapacity_pallets.isUserInteractionEnabled = true
-            
-        } else {
-            TextFieldFullName.isUserInteractionEnabled = false
-            TextFeildPhoneNumber.isUserInteractionEnabled = false
-            TextFeildEmail.isUserInteractionEnabled = false
-            
-            TextFeildTruckType.isUserInteractionEnabled = false
-            TextFeildTruckWeight.isUserInteractionEnabled = false
-            TextFeildCargoLoadCapacity.isUserInteractionEnabled = false
-            
-            TextFeildTruckBrand.isUserInteractionEnabled = false
-            TextFeildCapacity_pallets.isUserInteractionEnabled = false
-            
-            
-            
-        }
+        let arrayOfDisableElement = (TextFieldFullName,TextFeildPhoneNumber,TextFeildEmail,TextFeildTruckType,TextFeildTruckWeight,TextFeildCargoLoadCapacity,TextFeildTruckBrand,TextFeildCapacity_pallets,textFieldLicenseNumber,textFieldLicenseExpiryDate)
+        arrayOfDisableElement.0?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.1?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.2?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.3?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.4?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.5?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.6?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.7?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.8?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.9?.isUserInteractionEnabled = allow
+//        if allow {
+//
+//
+//            TextFieldFullName.isUserInteractionEnabled = true
+//            TextFeildPhoneNumber.isUserInteractionEnabled = true
+//            TextFeildEmail.isUserInteractionEnabled = true
+//
+//            TextFeildTruckType.isUserInteractionEnabled = true
+//            TextFeildTruckWeight.isUserInteractionEnabled = true
+//            TextFeildCargoLoadCapacity.isUserInteractionEnabled = true
+//
+//            TextFeildTruckBrand.isUserInteractionEnabled = true
+//            TextFeildCapacity_pallets.isUserInteractionEnabled = true
+//
+//        } else {
+//            TextFieldFullName.isUserInteractionEnabled = false
+//            TextFeildPhoneNumber.isUserInteractionEnabled = false
+//            TextFeildEmail.isUserInteractionEnabled = false
+//
+//            TextFeildTruckType.isUserInteractionEnabled = false
+//            TextFeildTruckWeight.isUserInteractionEnabled = false
+//            TextFeildCargoLoadCapacity.isUserInteractionEnabled = false
+//
+//            TextFeildTruckBrand.isUserInteractionEnabled = false
+//            TextFeildCapacity_pallets.isUserInteractionEnabled = false
+//
+//
+//
+//        }
     }
     
     

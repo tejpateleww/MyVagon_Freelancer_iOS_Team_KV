@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class PickUpDropOffCell: UITableViewCell {
     
     //MARK:- ====== Outlets ========
@@ -51,7 +52,7 @@ class PickUpDropOffCell: UITableViewCell {
     func ReloadAllData() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3, execute: {
             self.tblMultipleLocation.layoutIfNeeded()
-            self.tblMultipleLocation.reloadData()//reloadDataWithAutoSizingCellWorkAround()
+            self.tblMultipleLocation.reloadDataWithAutoSizingCellWorkAround()//reloadDataWithAutoSizingCellWorkAround()
         })
      
        
@@ -196,12 +197,30 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
         header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
             header.lblBidStatus.isHidden = !isFromBidRequest
             header.viewStatusBid.isHidden = !isFromBidRequest
-        header.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
-        header.lblDeadheadWithTruckType.text = "1.2 mile Deadhead : \(BookingDetails?.trucks?.truckType?.name ?? "")"
+        
+        header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (BookingDetails?.amount ?? "") : ""
+        
         header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
         header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-        header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
+      //  header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
+        header.lblWeightAndDistance.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
+        header.lblDeadheadWithTruckType.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
         
+        
+        if BookingDetails?.isBid == 0 {
+            header.ViewStatusBidText.text =  bidStatus.BookNow.Name
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+           
+        } else {
+            if BookingDetails?.driverBid == 1 {
+                header.ViewStatusBidText.text = bidStatus.Bidded.Name
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            } else {
+                header.ViewStatusBidText.text = bidStatus.BidNow.Name
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+            }
+            
+        }
         
         //header.conHeightOfViewBidStatus.constant = isFromBidRequest ? 30 : 0
        

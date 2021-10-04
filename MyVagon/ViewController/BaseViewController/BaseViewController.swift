@@ -12,7 +12,9 @@ import SDWebImage
 
 class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     var BackClosure : (() -> ())?
+    var btnOptionClosour : (() -> ())?
     
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -225,6 +227,30 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
                         
+                    }else if title == NavItemsRight.search.value{
+                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        BtnRight.setImage(UIImage.init(named: "ic_searchNavigation"), for: .normal)
+                        BtnRight.layer.setValue(controller, forKey: "controller")
+                        BtnRight.addTarget(self, action: #selector(self.btnSearchAction(sender:)), for: .touchUpInside)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                    
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                        
+                    }else if title == NavItemsRight.option.value{
+                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        BtnRight.setImage(UIImage.init(named: "ic_option"), for: .normal)
+                        BtnRight.layer.setValue(controller, forKey: "controller")
+                        BtnRight.addTarget(self, action: #selector(self.btnOptionAction(sender:)), for: .touchUpInside)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                    
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                        
                     }
                    
                 }
@@ -268,7 +294,19 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func BtnContactAction(sender:UIButton) {
         
     }
+    
+    @objc func btnSearchAction(sender:UIButton) {
+        
+    }
+    
+    @objc func btnOptionAction(sender:UIButton) {
+        if let click = btnOptionClosour {
+            click()
+        }
+    }
 
+   
 
 }
+
 

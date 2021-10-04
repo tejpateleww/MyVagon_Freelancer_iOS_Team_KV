@@ -118,6 +118,7 @@ PODS:
   - SwiftMessages (9.0.2):
     - SwiftMessages/App (= 9.0.2)
   - SwiftMessages/App (9.0.2)
+  - UIView-Shimmer (1.0.4)
 
 DEPENDENCIES:
   - Charts
@@ -134,6 +135,7 @@ DEPENDENCIES:
   - SDWebImage
   - SkyFloatingLabelTextField (~> 3.0)
   - SwiftMessages
+  - UIView-Shimmer (~> 1.0)
 
 SPEC REPOS:
   trunk:
@@ -162,6 +164,7 @@ SPEC REPOS:
     - SDWebImage
     - SkyFloatingLabelTextField
     - SwiftMessages
+    - UIView-Shimmer
 
 SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
@@ -189,7 +192,8 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
   SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
+  UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 5538a1d227d951fc133d6aa866dd7dc0c4127e97
+PODFILE CHECKSUM: 41fcf15ee4f7132311036a92a0a83a8ec5414c28
 
 COCOAPODS: 1.10.1

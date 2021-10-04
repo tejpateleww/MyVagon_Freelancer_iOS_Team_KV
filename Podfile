@@ -9,7 +9,8 @@ target 'MyVagon' do
 pod 'Firebase/Crashlytics'
 pod 'MHLoadingButton'
 
-  
+  pod 'UIView-Shimmer', '~> 1.0'
+
 pod 'Firebase/Analytics'
   pod 'GooglePlacePicker'
   pod 'SDWebImage'
@@ -22,6 +23,7 @@ pod 'Firebase/Analytics'
   pod 'Cosmos', '~> 23.0'
   pod 'Charts'
 pod 'SwiftMessages'
+
 
   target 'MyVagonTests' do
     inherit! :search_paths

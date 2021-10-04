@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let Currency = "$"
+let Currency = "€ "
 
 let keywindow = UIApplication.shared.keyWindow
 
