@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -119,23 +120,35 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </label>
-                        <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
+                        <view clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrR-LB-X1C">
                             <rect key="frame" x="471" y="45.5" width="108" height="40"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SCHEDULED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                    <rect key="frame" x="20" y="10" width="78" height="20"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C9h-75-B5s">
+                                    <rect key="frame" x="0.0" y="0.0" width="108" height="40"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="SCHEDULED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-LG-xED" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="5" width="78" height="30"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="87w-LG-xED" secondAttribute="trailing" constant="15" id="1Ny-ZZ-kkn"/>
+                                        <constraint firstItem="87w-LG-xED" firstAttribute="leading" secondItem="C9h-75-B5s" secondAttribute="leading" constant="15" id="4p2-xP-hym"/>
+                                        <constraint firstAttribute="bottom" secondItem="87w-LG-xED" secondAttribute="bottom" constant="5" id="bbl-GU-reX"/>
+                                        <constraint firstItem="87w-LG-xED" firstAttribute="top" secondItem="C9h-75-B5s" secondAttribute="top" constant="5" id="k8o-Un-seX"/>
+                                    </constraints>
+                                </view>
                             </subviews>
-                            <color key="backgroundColor" red="0.31764705879999999" green="0.58039215690000001" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="87w-LG-xED" secondAttribute="trailing" constant="10" id="1yV-vJ-Eyw"/>
-                                <constraint firstAttribute="bottom" secondItem="87w-LG-xED" secondAttribute="bottom" constant="10" id="RLk-D0-m9o"/>
+                                <constraint firstItem="C9h-75-B5s" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="top" id="62J-Ta-wGH"/>
+                                <constraint firstAttribute="trailing" secondItem="C9h-75-B5s" secondAttribute="trailing" id="8oM-GX-hew"/>
+                                <constraint firstItem="C9h-75-B5s" firstAttribute="leading" secondItem="jrR-LB-X1C" secondAttribute="leading" id="Rm2-g1-zr8"/>
                                 <constraint firstAttribute="height" constant="40" id="SgR-aY-hNq"/>
-                                <constraint firstItem="87w-LG-xED" firstAttribute="leading" secondItem="jrR-LB-X1C" secondAttribute="leading" constant="20" id="wEC-dM-obl"/>
-                                <constraint firstItem="87w-LG-xED" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="top" constant="10" id="zJi-j2-I3w"/>
+                                <constraint firstAttribute="bottom" secondItem="C9h-75-B5s" secondAttribute="bottom" id="ySj-Dw-j07"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Confirmtion pending" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
@@ -197,10 +210,16 @@
                 <outlet property="lblPrice" destination="1KJ-IT-5UF" id="Inu-LH-ibc"/>
                 <outlet property="lblWeightAndDistance" destination="U4K-Zv-X1V" id="8Up-S1-uez"/>
                 <outlet property="lblbookingID" destination="f2b-wp-EAr" id="54M-IU-lwH"/>
-                <outlet property="viewStatus" destination="jrR-LB-X1C" id="8a3-pq-Z7v"/>
+                <outlet property="viewStatus" destination="C9h-75-B5s" id="kah-Ha-z6l"/>
                 <outlet property="viewStatusBid" destination="Jn8-uL-jbO" id="gfC-mb-vCo"/>
+                <outlet property="vwStatusShimmer" destination="jrR-LB-X1C" id="pXv-LU-XQ7"/>
             </connections>
             <point key="canvasLocation" x="258.69565217391306" y="-19.754464285714285"/>
         </view>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -6,21 +6,30 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class LocationCell: UITableViewCell {
+class LocationCell: UITableViewCell,ShimmeringViewProtocol {
 
     //MARK:-  Outlets ===
     @IBOutlet weak var viewLine: UIView!
     @IBOutlet weak var viewHeader: UIView!
-    @IBOutlet weak var imgLocation: UIImageView!
-    
     @IBOutlet weak var lblCompanyName: themeLabel!
     @IBOutlet weak var lblAddress: themeLabel!
     @IBOutlet weak var lblDateTime: themeLabel!
-   
-  
-    
     @IBOutlet weak var BtnShowMore: UIView!
+    @IBOutlet weak var imgLocation: UIImageView!
+    
+    var shimmeringAnimatedItems: [UIView]{
+        [
+            viewLine,
+            lblAddress,
+            imgLocation,
+            lblCompanyName,
+            lblDateTime,
+            BtnShowMore
+        ]
+    }
+    
     var ShowMoreClosour : (() -> ())?
     override func awakeFromNib() {
         super.awakeFromNib()

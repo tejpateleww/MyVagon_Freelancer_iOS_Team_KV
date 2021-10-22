@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class PickUpDropOffCell: UITableViewCell {
     
     //MARK:- ====== Outlets ========
@@ -21,7 +20,7 @@ class PickUpDropOffCell: UITableViewCell {
     var PickUpDropOffData : [HomeLocation]?
     
     var tblHeight:((CGFloat)->())?
-  
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -38,7 +37,7 @@ class PickUpDropOffCell: UITableViewCell {
         tblMultipleLocation.estimatedRowHeight = 100
         tblMultipleLocation.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
         tblMultipleLocation.register(UINib(nibName: "BidRequestTblCell", bundle: nil), forCellReuseIdentifier: "BidRequestTblCell")
-        
+        tblMultipleLocation.register(UINib(nibName: "ShimmerCell", bundle: nil), forCellReuseIdentifier: "ShimmerCell")
        // tblMultipleLocation.reloadData()
         
           
@@ -178,38 +177,41 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-       
-            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
-            header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
-                header.lblBidStatus.isHidden = true
-                header.viewStatusBid.isHidden = true
+        
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
+        header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
+        header.lblBidStatus.isHidden = true
+        header.viewStatusBid.isHidden = true
+        
+        header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (BookingDetails?.amount ?? "") : ""
+        
+        header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
+        header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+        //  header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
+        header.lblWeightAndDistance.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
+        header.lblDeadheadWithTruckType.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
+        
+        let radius = header.viewStatus.frame.height / 2
+        //headerView.roundCorners(corners: [.topLeft,.topRight], radius: 15.0)
+        header.viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
+        
+        if BookingDetails?.isBid == 0 {
+            header.ViewStatusBidText.text =  bidStatus.BookNow.Name
+            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             
-            header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (BookingDetails?.amount ?? "") : ""
-            
-            header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
-            header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-          //  header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
-            header.lblWeightAndDistance.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
-            header.lblDeadheadWithTruckType.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
-            
-            
-            if BookingDetails?.isBid == 0 {
-                header.ViewStatusBidText.text =  bidStatus.BookNow.Name
-                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
-               
+        } else {
+            if BookingDetails?.driverBid == 1 {
+                header.ViewStatusBidText.text = bidStatus.Bidded.Name
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             } else {
-                if BookingDetails?.driverBid == 1 {
-                    header.ViewStatusBidText.text = bidStatus.Bidded.Name
-                    header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
-                } else {
-                    header.ViewStatusBidText.text = bidStatus.BidNow.Name
-                    header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-                }
-                
+                header.ViewStatusBidText.text = bidStatus.BidNow.Name
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             }
             
-            return header
-     
+        }
+        
+        return header
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

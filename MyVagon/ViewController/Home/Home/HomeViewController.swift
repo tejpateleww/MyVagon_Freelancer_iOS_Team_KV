@@ -119,9 +119,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     
-    
-    
-    
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
@@ -270,7 +267,9 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         return headerView
         
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
+    }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
          return 40
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -63,7 +63,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Mithimnis 30, Loannina 112 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGH-3T-hpC" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Mithimnis 30, Loannina 112 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rGH-3T-hpC" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                                 <rect key="frame" x="38" y="52.5" width="504" height="213.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -141,24 +141,24 @@
                                             <constraint firstAttribute="bottom" secondItem="eIe-iN-FzW" secondAttribute="bottom" constant="24" id="3V7-y0-HER"/>
                                             <constraint firstItem="eIe-iN-FzW" firstAttribute="leading" secondItem="lC8-rc-jjP" secondAttribute="leading" id="49B-a0-CLk"/>
                                             <constraint firstItem="JRS-Bp-yaK" firstAttribute="centerX" secondItem="lC8-rc-jjP" secondAttribute="centerX" id="64x-1F-Oae"/>
+                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="top" secondItem="EgU-94-NVq" secondAttribute="bottom" constant="5" id="9Wa-xG-AfL"/>
                                             <constraint firstAttribute="trailing" secondItem="Y6j-VE-37e" secondAttribute="trailing" constant="10" id="BHh-gJ-ea5"/>
                                             <constraint firstAttribute="trailing" secondItem="RfP-Ea-Ii1" secondAttribute="trailing" constant="20" id="CSs-Ft-hZB"/>
+                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="leading" secondItem="EgU-94-NVq" secondAttribute="leading" id="CiA-kz-7LE"/>
                                             <constraint firstAttribute="bottom" secondItem="JRS-Bp-yaK" secondAttribute="bottom" id="FvP-6e-FaA"/>
                                             <constraint firstItem="Y6j-VE-37e" firstAttribute="top" secondItem="Iw7-gM-yVV" secondAttribute="bottom" constant="2" id="I9l-Vk-5WZ"/>
-                                            <constraint firstAttribute="bottom" secondItem="rGH-3T-hpC" secondAttribute="bottom" constant="10" id="IhL-sx-tXn"/>
                                             <constraint firstItem="EgU-94-NVq" firstAttribute="leading" secondItem="RfP-Ea-Ii1" secondAttribute="leading" id="KCs-4b-eER"/>
                                             <constraint firstItem="RfP-Ea-Ii1" firstAttribute="leading" secondItem="lC8-rc-jjP" secondAttribute="trailing" constant="10" id="M1q-8A-8Zt"/>
                                             <constraint firstItem="lC8-rc-jjP" firstAttribute="top" secondItem="NVP-Se-L3V" secondAttribute="top" constant="5" id="Rpg-CZ-VmK"/>
                                             <constraint firstAttribute="trailing" secondItem="5L3-jD-qXp" secondAttribute="trailing" constant="10" id="TVv-vb-euv"/>
-                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="top" secondItem="EgU-94-NVq" secondAttribute="bottom" constant="5" id="WCT-Rd-XDQ"/>
                                             <constraint firstItem="JRS-Bp-yaK" firstAttribute="top" secondItem="lC8-rc-jjP" secondAttribute="bottom" constant="8" id="ar9-7F-Ime"/>
                                             <constraint firstItem="EgU-94-NVq" firstAttribute="trailing" secondItem="RfP-Ea-Ii1" secondAttribute="trailing" id="dLc-d4-PVi"/>
                                             <constraint firstItem="5L3-jD-qXp" firstAttribute="leading" secondItem="Iw7-gM-yVV" secondAttribute="trailing" constant="8" id="g3K-m6-KRg"/>
-                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="leading" secondItem="EgU-94-NVq" secondAttribute="leading" id="jts-W4-vTr"/>
+                                            <constraint firstAttribute="bottom" secondItem="rGH-3T-hpC" secondAttribute="bottom" constant="10" id="hoU-I2-wsc"/>
                                             <constraint firstItem="Iw7-gM-yVV" firstAttribute="leading" secondItem="eIe-iN-FzW" secondAttribute="trailing" constant="10" id="k39-YR-LIq"/>
                                             <constraint firstItem="5L3-jD-qXp" firstAttribute="bottom" secondItem="Iw7-gM-yVV" secondAttribute="bottom" id="kBr-gQ-BM7"/>
+                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="trailing" secondItem="EgU-94-NVq" secondAttribute="trailing" id="oOh-bx-mI6"/>
                                             <constraint firstItem="lC8-rc-jjP" firstAttribute="leading" secondItem="NVP-Se-L3V" secondAttribute="leading" constant="8" id="pI3-q7-nY6"/>
-                                            <constraint firstItem="rGH-3T-hpC" firstAttribute="trailing" secondItem="EgU-94-NVq" secondAttribute="trailing" id="pJY-5g-72q"/>
                                             <constraint firstItem="RfP-Ea-Ii1" firstAttribute="top" secondItem="NVP-Se-L3V" secondAttribute="top" constant="5" id="py7-9X-MeY"/>
                                             <constraint firstItem="Y6j-VE-37e" firstAttribute="leading" secondItem="Iw7-gM-yVV" secondAttribute="leading" id="q0q-ep-EOP"/>
                                             <constraint firstItem="5L3-jD-qXp" firstAttribute="top" secondItem="Iw7-gM-yVV" secondAttribute="top" id="scg-lu-JSf"/>
@@ -220,7 +220,7 @@
             <connections>
                 <outlet property="BtnShowMore" destination="eIP-bM-UkA" id="f2U-fv-7FE"/>
                 <outlet property="editingAccessoryView" destination="eIP-bM-UkA" id="lh7-QI-aae"/>
-                <outlet property="imgLocation" destination="lC8-rc-jjP" id="E4S-lJ-X6d"/>
+                <outlet property="imgLocation" destination="lC8-rc-jjP" id="53y-7s-ujI"/>
                 <outlet property="lblAddress" destination="rGH-3T-hpC" id="w55-Ye-tTt"/>
                 <outlet property="lblCompanyName" destination="RfP-Ea-Ii1" id="dUz-1n-4R8"/>
                 <outlet property="lblDateTime" destination="EgU-94-NVq" id="hVK-Ge-duf"/>

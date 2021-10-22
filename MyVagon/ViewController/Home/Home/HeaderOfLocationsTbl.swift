@@ -5,6 +5,7 @@
 
 
 import UIKit
+import UIView_Shimmer
 
 enum BidStatus:String {
     case all
@@ -15,12 +16,14 @@ enum BidStatus:String {
    
 }
 
-class HeaderOfLocationsTbl: UITableViewHeaderFooterView {
+class HeaderOfLocationsTbl: UITableViewHeaderFooterView,ShimmeringViewProtocol {
 
     //MARK:-  ======= Outlets =======
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var viewStatus: UIView!
     
+    @IBOutlet weak var viewStatus: UIView!
+
+    @IBOutlet weak var vwStatusShimmer: UIView!
     @IBOutlet weak var conHeightOfViewBidStatus: NSLayoutConstraint!
     @IBOutlet weak var LblShipperName: themeLabel!
     @IBOutlet weak var lblBidStatus: themeLabel!
@@ -33,6 +36,19 @@ class HeaderOfLocationsTbl: UITableViewHeaderFooterView {
     @IBOutlet weak var viewStatusBid: UIView!
     var bidStatus = BidStatus.all.rawValue
    
+    var shimmeringAnimatedItems: [UIView]{
+        [
+            LblShipperName,
+            viewStatusBid,
+            lblbookingID,
+            lblWeightAndDistance,
+            lblDeadheadWithTruckType,
+            lblPrice,
+            vwStatusShimmer,
+            lblBidStatus
+        ]
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
