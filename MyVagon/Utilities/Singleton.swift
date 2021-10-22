@@ -12,7 +12,7 @@ class SingletonClass: NSObject
 {
  
     var RegisterData = RegisterSaveDataModel()
- 
+    var ProfileData = ProfileEditSaveModel()
    
     func clearSingletonClassForRegister() {
         
@@ -65,6 +65,33 @@ class RegisterSaveDataModel : Codable {
     var Reg_password = ""
     var Reg_truck_type = ""
     var Reg_truck_sub_category = ""
+    var Reg_truck_plat_number = ""
+    var Reg_trailer_plat_number = ""
+    var Reg_truck_weight = ""
+    var Reg_weight_unit = ""
+    var Reg_truck_capacity = ""
+    var Reg_capacity_unit = ""
+    var Reg_brand = ""
+    var Reg_pallets : [TruckCapacityType] = []
+    var Reg_truck_features : [String] = []
+    var Reg_fuel_type = ""
+    var Reg_vehicle_images : [String] = []
+    var Reg_id_proof : [String] = []
+    var Reg_license : [String] = []
+    var Reg_license_number = ""
+    var Reg_license_expiry_date = ""
+    
+    
+}
+class ProfileEditSaveModel : Codable {
+    var Reg_profilePic : [String] = []
+    var Reg_fullname = ""
+    var Reg_country_code = ""
+    var Reg_mobile_number = ""
+    var Reg_truck_type = ""
+    var Reg_truck_sub_category = ""
+    var Reg_truck_plat_number = ""
+    var Reg_trailer_plat_number = ""
     var Reg_truck_weight = ""
     var Reg_weight_unit = ""
     var Reg_truck_capacity = ""

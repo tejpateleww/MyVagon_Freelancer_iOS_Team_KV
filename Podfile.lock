@@ -4,6 +4,7 @@ PODS:
   - Charts/Core (3.6.0)
   - Cosmos (23.0.0)
   - CountryPickerView (3.2.0)
+  - DropDown (2.3.2)
   - Firebase/Analytics (8.2.0):
     - Firebase/Core
   - Firebase/Core (8.2.0):
@@ -115,15 +116,16 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SkyFloatingLabelTextField (3.8.0)
-  - SwiftMessages (9.0.2):
-    - SwiftMessages/App (= 9.0.2)
-  - SwiftMessages/App (9.0.2)
+  - SwiftMessages (9.0.4):
+    - SwiftMessages/App (= 9.0.4)
+  - SwiftMessages/App (9.0.4)
   - UIView-Shimmer (1.0.4)
 
 DEPENDENCIES:
   - Charts
   - Cosmos (~> 23.0)
   - CountryPickerView
+  - DropDown
   - Firebase/Analytics
   - Firebase/Crashlytics
   - FSCalendar
@@ -142,6 +144,7 @@ SPEC REPOS:
     - Charts
     - Cosmos
     - CountryPickerView
+    - DropDown
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -170,6 +173,7 @@ SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   CountryPickerView: 9b093bfffb4b06a69ba6185a798cadbf863720e7
+  DropDown: 7f87abecc28f9b4edad810fe1211c5c018c257e5
   Firebase: 12c568897b807321964e89d2b263ef4c6cff3db6
   FirebaseAnalytics: 7a744b1e7dc50125cb37714c6bdaea167e412082
   FirebaseCore: 3a83f24c3de69ec9f9a426e2598125ea51f3a2ce
@@ -191,9 +195,9 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
-  SwiftMessages: 77b847d1405f99046ffbd0d856bc7d73e6892686
+  SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 41fcf15ee4f7132311036a92a0a83a8ec5414c28
+PODFILE CHECKSUM: 6a79e40b6b0bc2438144829ef4e53ee6af42688c
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2

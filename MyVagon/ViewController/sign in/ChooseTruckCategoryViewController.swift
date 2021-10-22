@@ -24,6 +24,8 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     
     @IBOutlet weak var TextFieldCategory: themeTextfield!
     @IBOutlet weak var TextFieldSubCategory: themeTextfield!
+    @IBOutlet weak var TextFieldTruckPlatNumber: themeTextfield!
+    @IBOutlet weak var TextFieldTrailerPlatNumber: themeTextfield!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -42,13 +44,19 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
 
             self.SelectedCategoryIndex = IndexForTruckType
             TextFieldCategory.text = "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].name ?? "")"
-
+            if (SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].isTrailer == 1) {
+                self.TextFieldTrailerPlatNumber.superview?.isHidden = false
+            } else {
+                self.TextFieldTrailerPlatNumber.superview?.isHidden = true
+            }
             if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == Int(SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category) ?? 0}) {
 
                 TextFieldSubCategory.text =  "\(SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?[IndexForSubTruckType].name ?? "")"
+                
             }
         }
-      
+        TextFieldTruckPlatNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_truck_plat_number
+        TextFieldTrailerPlatNumber.text =    SingletonClass.sharedInstance.RegisterData.Reg_trailer_plat_number
         
     }
     
@@ -107,13 +115,21 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
     func Validate() -> (Bool,String) {
         let CheckTruckCategory = TextFieldCategory.validatedText(validationType: ValidatorType.Select(field: "truck category"))
         let CheckTruckSubCategory = TextFieldSubCategory.validatedText(validationType: ValidatorType.Select(field: "truck sub category"))
-    
+        let checkTruckPlateNumber = TextFieldTruckPlatNumber.validatedText(validationType: ValidatorType.requiredField(field: "truck plat number"))
+        let checkTrailerNumber = TextFieldTrailerPlatNumber.validatedText(validationType: ValidatorType.requiredField(field: "trailer plat number"))
         
         if (!CheckTruckCategory.0){
             return (CheckTruckCategory.0,CheckTruckCategory.1)
         } else if (!CheckTruckSubCategory.0){
             return (CheckTruckSubCategory.0,CheckTruckSubCategory.1)
-        } 
+        } else if (!checkTruckPlateNumber.0){
+            return (checkTruckPlateNumber.0,checkTruckPlateNumber.1)
+        } else if (SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].isTrailer == 1){
+            if (!checkTrailerNumber.0){
+                return (checkTrailerNumber.0,checkTrailerNumber.1)
+                
+            }
+        }
         return (true,"")
     }
     
@@ -126,7 +142,8 @@ class ChooseTruckCategoryViewController: BaseViewController,UITextFieldDelegate 
             
             SingletonClass.sharedInstance.RegisterData.Reg_truck_type = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].id ?? 0)"
             SingletonClass.sharedInstance.RegisterData.Reg_truck_sub_category = "\(SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[SelectedSubCategoryIndex].id ?? 0)"
-            
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_plat_number = TextFieldTruckPlatNumber.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_trailer_plat_number = TextFieldTrailerPlatNumber.text ?? ""
            
             self.navigationController?.popViewController(animated: true)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "TruckType"), object: nil, userInfo: nil)
@@ -155,6 +172,15 @@ extension ChooseTruckCategoryViewController: GeneralPickerViewDelegate {
             let item = SingletonClass.sharedInstance.TruckTypeList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.TextFieldCategory.text = item?.name
             self.TextFieldSubCategory.text = ""
+            self.TextFieldTruckPlatNumber.text = ""
+            self.TextFieldTrailerPlatNumber.text = ""
+            
+            if item?.isTrailer == 1 {
+                self.TextFieldTrailerPlatNumber.superview?.isHidden = false
+            } else {
+                self.TextFieldTrailerPlatNumber.superview?.isHidden = true
+            }
+            
             
             SelectedSubCategoryIndex = 0
             if item?.name?.lowercased() == "other" {

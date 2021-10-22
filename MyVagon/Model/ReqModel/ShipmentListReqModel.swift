@@ -23,3 +23,12 @@ class BidReqModel : Encodable {
         case amount = "amount"
     }
 }
+class MyLoadsReqModel : Encodable {
+    var driver_id,date,status : String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+        case date = "date"
+        case status = "status"
+    }
+}

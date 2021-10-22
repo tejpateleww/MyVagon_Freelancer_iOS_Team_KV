@@ -12,7 +12,8 @@ class FilterPickupDatePopupViewController: UIViewController {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    
+    var SelectedDate : Date?
+    var selectDateClosour : ((Date)->())?
     var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -70,7 +71,9 @@ class FilterPickupDatePopupViewController: UIViewController {
     }
     
     @IBAction func BtnSubmitAction(_ sender: themeButton) {
-        
+        if let click = self.selectDateClosour {
+            click(SelectedDate ?? Date())
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -83,7 +86,7 @@ class FilterPickupDatePopupViewController: UIViewController {
 }
 extension FilterPickupDatePopupViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        
+        SelectedDate = date
         print(date)
     }
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {

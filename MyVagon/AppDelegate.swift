@@ -45,6 +45,12 @@ var window: UIWindow?
         self.window?.rootViewController = nav
     }
     
+    func NavigateToDispatcher(){
+        let controller = AppStoryboard.Dispatcher.instance.instantiateViewController(withIdentifier: DriversViewController.storyboardID) as! DriversViewController
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = false
+        self.window?.rootViewController = nav
+    }
     func NavigateToIntroScreen(){
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: BoardingVC.storyboardID) as! BoardingVC
         let nav = UINavigationController(rootViewController: controller)

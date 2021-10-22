@@ -91,17 +91,24 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         
         arrTypes.append(TruckTypeModel(TruckData: (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory!)!, IsSelected: false))
            
-        
-        
-        
+        calender.today = Date()
         calender.delegate = self
         calender.dataSource = self
+        
+      
+        let formatter1 = DateFormatter()
+         formatter1.dateStyle = .medium
+         formatter1.dateFormat = "dd MMMM, yyyy"
+         
+         let selectedDate = formatter1.string(from: Date())
+        
+        LblSelectedDate.text = selectedDate
         
         ColTypes.delegate = self
         ColTypes.dataSource = self
         ColTypes.reloadData()
         view.layoutIfNeeded()
-        
+        TextFieldSelectTime.text = GetCurrentTime()
         TextFieldSelectTime.addInputViewDatePicker(target: self, selector: #selector(btnDoneDatePickerClicked), PickerMode: .time, MinDate: true, MaxDate: true)
     }
     
@@ -124,6 +131,15 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         return true
     }
   
+    func GetCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatterString.onlyTime.rawValue
+        formatter.amSymbol = "AM"
+        formatter.pmSymbol = "PM"
+
+        let dateString = formatter.string(from: Date())
+       return dateString
+    }
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------

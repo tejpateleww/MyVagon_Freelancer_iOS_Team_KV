@@ -621,6 +621,18 @@ class ThemeImageView: UIImageView {
         }
     }
 }
+class RoundedImageView: UIImageView {
+  
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.layoutIfNeeded()
+        self.layer.cornerRadius = self.frame.height / 2
+        self.clipsToBounds = true
+        
+       
+    }
+}
 
 class CustomDarkRoundView: ViewCustomClass {
        
@@ -958,6 +970,73 @@ class themeTextfield : UITextField{
             return bounds.inset(by: padding)
         }
         
+    }
+}
+class CurrencyTextField: themeTextfield, UITextFieldDelegate {
+   
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        //If using in SBs
+        setup()
+    }
+    
+    //6
+    private func setup() {
+        self.textAlignment = .center
+        self.keyboardType = .numberPad
+        self.contentScaleFactor = 0.5
+        delegate = self
+
+        self.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
+        //self.text = "\(Currency)0.00"
+    }
+    
+    //AFTER entered string is registered in the textField
+    @objc private func textFieldDidChange(textField:UITextField) {
+        let cur = textField.text?.currencyInputFormatting()
+           textField.text = cur
+        
+    }
+    
+    
+    
+   
+}
+
+extension String {
+
+    // formatting text for currency textField
+    func currencyInputFormatting() -> String {
+
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = Currency
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        var amountWithPrefix = self
+
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+
+        let double = (amountWithPrefix as NSString).doubleValue
+        number = NSNumber(value: (double / 100))
+
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+
+        return formatter.string(from: number)!
     }
 }
 

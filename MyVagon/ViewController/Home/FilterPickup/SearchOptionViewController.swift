@@ -7,19 +7,25 @@
 
 import UIKit
 
-class SearchOptionViewController: BaseViewController {
+class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate, UITextFieldDelegate {
+    
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    
+    var selectedTextField : UITextField?
+    let GeneralPicker = GeneralPickerView()
     var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
-    
+    @IBOutlet weak var lblSelectedDate: themeLabel!
     @IBOutlet weak var LblPickupLocation: UILabel!
     @IBOutlet weak var LblDropOffLocation: UILabel!
+    
+    @IBOutlet weak var textFieldMinUnit: themeTextfield!
+    @IBOutlet weak var textFieldMaxUnit: themeTextfield!
+    
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -33,7 +39,7 @@ class SearchOptionViewController: BaseViewController {
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Search Options", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
         
         SetValue()
-        
+        setupDelegateForPickerView()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -44,8 +50,12 @@ class SearchOptionViewController: BaseViewController {
     // ----------------------------------------------------
     
     func SetValue() {
-        LblPickupLocation.attributedText = GetAttributedString(Location: "23, Alt crown Plaza", selectedType: "Short Haul")
-        LblDropOffLocation.attributedText = GetAttributedString(Location: "23, Alt crown Plaza", selectedType: "Short Haul")
+        lblSelectedDate.text = "Select Date"
+        LblPickupLocation.attributedText = GetAttributedString(Location: "Select pickup location", selectedType: "Select Haul")
+        LblDropOffLocation.attributedText = GetAttributedString(Location: "Select dropoff location", selectedType: "Select Haul")
+        
+        textFieldMinUnit.delegate = self
+        textFieldMaxUnit.delegate = self
     }
     
     func GetAttributedString(Location:String,selectedType:String) -> NSMutableAttributedString {
@@ -71,7 +81,28 @@ class SearchOptionViewController: BaseViewController {
         
         return attributedString
     }
-    
+    func setupDelegateForPickerView() {
+        GeneralPicker.dataSource = self
+        GeneralPicker.delegate = self
+        
+        GeneralPicker.generalPickerDelegate = self
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == textFieldMinUnit {
+            selectedTextField = textFieldMinUnit
+            textFieldMinUnit.inputView = GeneralPicker
+            textFieldMinUnit.inputAccessoryView = GeneralPicker.toolbar
+        } else if textField == textFieldMaxUnit {
+            selectedTextField = textFieldMaxUnit
+            textFieldMaxUnit.inputView = GeneralPicker
+            textFieldMaxUnit.inputAccessoryView = GeneralPicker.toolbar
+        }
+           
+          
+            
+           
+        
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -90,6 +121,16 @@ class SearchOptionViewController: BaseViewController {
     @IBAction func BtnSelectDateAction(_ sender: themeButton) {
         
         let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: FilterPickupDatePopupViewController.storyboardID) as! FilterPickupDatePopupViewController
+        controller.selectDateClosour = { (selectedDate) in
+            let formatter1 = DateFormatter()
+             formatter1.dateStyle = .medium
+             formatter1.dateFormat = "dd MMMM, yyyy"
+             
+             let DateinString = formatter1.string(from: selectedDate)
+            
+            
+            self.lblSelectedDate.text = DateinString
+        }
                controller.modalPresentationStyle = .overCurrentContext
                controller.modalTransitionStyle = .crossDissolve
                self.present(controller, animated: true, completion: nil)
@@ -118,4 +159,46 @@ class SearchOptionViewController: BaseViewController {
     // ----------------------------------------------------
 
 
+}
+extension SearchOptionViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    func didTapDone() {
+        if selectedTextField == textFieldMinUnit {
+            let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.textFieldMinUnit.text = item?.name
+            textFieldMinUnit.resignFirstResponder()
+        } else if selectedTextField == textFieldMaxUnit {
+           
+            let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
+            self.textFieldMaxUnit.text = item?.name
+            textFieldMaxUnit.resignFirstResponder()
+            
+        }
+    }
+    
+    func didTapCancel() {
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return SingletonClass.sharedInstance.TruckunitList?.count ?? 0
+        
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+      
+            return SingletonClass.sharedInstance.TruckunitList?[row].name
+        
+        
+        
+        
+    }
+    
 }

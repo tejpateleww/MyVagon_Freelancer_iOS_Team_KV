@@ -62,7 +62,7 @@ class LoadDetailsVC: BaseViewController {
         tblMainData.register(UINib(nibName: "LoadDetailCell", bundle: nil), forCellReuseIdentifier: "LoadDetailCell")
         
         LoadDetails?.trucks?.truckTypeCategory?.forEach({ element in
-            arrTypes.append((element,false))
+            arrTypes.append((element,true))
         })
         ColTypes.reloadData()
         
@@ -80,7 +80,7 @@ class LoadDetailsVC: BaseViewController {
     func SetValue() {
         
         viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-        lblBookingStatus.text = (LoadDetails?.isBid == 0) ? "Book Now" : "Bidding"
+      
         
         let radius = viewStatus.frame.height / 2
         viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
@@ -107,18 +107,25 @@ class LoadDetailsVC: BaseViewController {
         imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
         lblShipperRatting.text = ""
         
-      
+        
         
         if LoadDetails?.isBid == 0 {
             btnBidNow.setTitle(  bidStatus.BookNow.Name , for: .normal)
             
-           
+            lblBookingStatus.text = bidStatus.BookNow.Name
         } else {
             if LoadDetails?.driverBid == 1 {
                 btnBidNow.setTitle(  bidStatus.Bidded.Name , for: .normal)
-              
+                lblBookingStatus.text = bidStatus.Bidded.Name
             } else {
                 btnBidNow.setTitle(  bidStatus.BidNow.Name , for: .normal)
+                lblBookingStatus.text = bidStatus.BidNow.Name
+                
+                if SingletonClass.sharedInstance.UserProfileData?.permissions?.allowBid ?? 0 == 1 {
+                    self.btnBidNow.superview?.isHidden = false
+                } else {
+                    self.btnBidNow.superview?.isHidden = true
+                }
             }
             
         }
@@ -210,7 +217,7 @@ class LoadDetailsVC: BaseViewController {
             self.present(controller, animated: false, completion:  {
 
                 
-                controller.view.backgroundColor = .black.withAlphaComponent(0.3)
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
 
             })
             
@@ -228,7 +235,7 @@ class LoadDetailsVC: BaseViewController {
             self.present(controller, animated: false, completion:  {
 
                 
-                controller.view.backgroundColor = .black.withAlphaComponent(0.3)
+                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
 
             })
             
@@ -244,7 +251,20 @@ class LoadDetailsVC: BaseViewController {
        
         
     }
-    
+    @IBAction func btnNotesClick(_ sender: themeButton) {
+        let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewNotesPopupVC.storyboardID) as! ViewNotesPopupVC
+       
+        controller.noteString = LoadDetails?.trucks?.note ?? ""
+        
+        self.present(controller, animated: false, completion:  {
+
+            
+            controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+
+        })
+       
+        
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
@@ -274,9 +294,9 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         cell.lblDate.text = LoadDetails?.trucks?.locations?[indexPath.row].companyName ?? ""
         
         if (LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? "") == (LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "") {
-            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd hh:mm:ss", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
         } else {
-            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd hh:mm:ss", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
+            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
         }
         
         cell.lblPickupDropOff.text = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? "Drop" : "Pick"
@@ -347,20 +367,10 @@ extension LoadDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
             let cell = ColTypes.dequeueReusableCell(withReuseIdentifier: "TypesColCell", for: indexPath) as! TypesColCell
             cell.lblTypes.text = arrTypes[indexPath.row].0.name
             cell.BGView.layer.cornerRadius = 17
-            if arrTypes[indexPath.row].1 {
-                print("Here come with index :: \(indexPath.row)")
-                cell.BGView.layer.borderWidth = 0
-                cell.BGView.backgroundColor = UIColor.appColor(.themeColorForButton).withAlphaComponent(0.5)
-                cell.BGView.layer.borderColor = UIColor.appColor(.themeColorForButton).cgColor
-               
-            } else {
-               
-                cell.BGView.layer.borderWidth = 1
-                cell.BGView.backgroundColor = .clear
-                
-                cell.BGView.layer.borderColor = UIColor.appColor(.themeLightBG).cgColor
-                cell.lblTypes.textColor = UIColor.appColor(.themeButtonBlue)
-            }
+            
+            cell.BGView.layer.borderWidth = 0
+            cell.BGView.backgroundColor = UIColor(hexString: "#1F1F41").withAlphaComponent(0.05)
+            cell.BGView.layer.borderColor = UIColor.clear.cgColor
             
             
             return cell

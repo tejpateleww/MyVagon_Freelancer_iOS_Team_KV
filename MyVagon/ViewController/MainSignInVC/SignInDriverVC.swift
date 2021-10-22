@@ -34,7 +34,7 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-     //   TextFieldEmail.text = "mvdriver2@yopmail.com"
+       // TextFieldEmail.text = "ankur@yopmail.com"
        // TextFieldPassword.text = "12345678"
         TextFieldPassword.delegate = self
         SetLocalization()

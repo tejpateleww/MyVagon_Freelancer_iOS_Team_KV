@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -201,7 +201,7 @@
                                                                 </constraints>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropOffLocationCell" id="7Tb-CT-LoK" customClass="DropOffLocationCell" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="24.5" width="374" height="66"/>
+                                                                        <rect key="frame" x="0.0" y="28" width="374" height="66"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Tb-CT-LoK" id="vlE-Bu-Kmo">
                                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
@@ -785,7 +785,7 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-6Q-qWJ" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hK-iL-tvD" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hK-iL-tvD" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
                                                                                                                 <rect key="frame" x="5" y="0.0" width="70" height="50"/>
                                                                                                                 <constraints>
                                                                                                                     <constraint firstAttribute="width" constant="70" id="j1c-kD-h9z"/>
@@ -836,7 +836,7 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4B-LT-mPc" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                                                         <rect key="frame" x="127" y="0.0" width="80" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omy-ON-e6X" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omy-ON-e6X" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
                                                                                                                 <rect key="frame" x="5" y="0.0" width="70" height="50"/>
                                                                                                                 <constraints>
                                                                                                                     <constraint firstAttribute="width" constant="70" id="mrX-qH-Qoh"/>
@@ -934,7 +934,7 @@
                                                                                                                     <constraint firstAttribute="width" constant="80" id="4xX-q8-3wn"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
                                                                                                                         <real key="value" value="12"/>
@@ -1035,7 +1035,7 @@
                                                                                                                     <constraint firstAttribute="width" constant="80" id="eiB-uY-bOY"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                                                <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
                                                                                                                 <userDefinedRuntimeAttributes>
                                                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
                                                                                                                         <real key="value" value="12"/>
@@ -1211,8 +1211,11 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="LblDropOffLocation" destination="zXl-QD-j1f" id="9y2-GZ-UYG"/>
-                        <outlet property="LblPickupLocation" destination="Zfk-91-ewZ" id="OT3-gp-Bty"/>
+                        <outlet property="LblDropOffLocation" destination="Zfk-91-ewZ" id="yDd-Gg-p35"/>
+                        <outlet property="LblPickupLocation" destination="zXl-QD-j1f" id="jCE-hN-GVZ"/>
+                        <outlet property="lblSelectedDate" destination="6Qy-26-Jkj" id="mCq-OC-URw"/>
+                        <outlet property="textFieldMaxUnit" destination="BVe-bB-Lc2" id="moj-lt-Yg9"/>
+                        <outlet property="textFieldMinUnit" destination="6bf-bR-Fuv" id="MSq-lL-LnD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ig-t2-PTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

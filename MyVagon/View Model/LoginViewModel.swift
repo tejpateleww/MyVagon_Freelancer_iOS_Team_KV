@@ -26,9 +26,18 @@ class LoginViewModel {
                   
                     UserDefault.setValue(response?.data?.token, forKey: UserDefaultsKey.X_API_KEY.rawValue)
                 }
-                
+                if response?.data?.type == LoginType.freelancer.rawValue {
+                    UserDefault.setValue(LoginType.freelancer.rawValue, forKey: UserDefaultsKey.LoginUserType.rawValue)
+                    appDel.NavigateToHome()
+                } else if response?.data?.type == LoginType.company.rawValue {
+                    UserDefault.setValue(LoginType.company.rawValue, forKey: UserDefaultsKey.LoginUserType.rawValue)
+                    appDel.NavigateToDispatcher()
+                } else if response?.data?.type == LoginType.driver.rawValue {
+                    UserDefault.setValue(LoginType.driver.rawValue, forKey: UserDefaultsKey.LoginUserType.rawValue)
+                    appDel.NavigateToHome()
+                }
                 Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
-                appDel.NavigateToHome()
+               
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
@@ -36,3 +45,8 @@ class LoginViewModel {
     }
 }
 
+enum LoginType:String {
+    case freelancer
+    case company
+    case driver
+}

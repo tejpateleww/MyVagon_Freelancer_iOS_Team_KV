@@ -6,9 +6,10 @@ target 'MyVagon' do
   use_frameworks!
 
   # Pods for MyVagon
+pod 'DropDown'
 pod 'Firebase/Crashlytics'
 pod 'MHLoadingButton'
-
+pod 'DropDown'
   pod 'UIView-Shimmer', '~> 1.0'
 
 pod 'Firebase/Analytics'

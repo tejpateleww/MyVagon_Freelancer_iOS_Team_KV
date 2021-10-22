@@ -53,7 +53,7 @@ class settingTblCell : UITableViewCell {
         
     override func awakeFromNib() {
         super.awakeFromNib()
-        btnSwitch.isUserInteractionEnabled = (SingletonClass.sharedInstance.UserProfileData?.permissions?.settings ?? 0 == 1) ? true : false
+       
        
     }
     
@@ -204,7 +204,7 @@ extension SettingVC : UITableViewDataSource , UITableViewDelegate {
         cell.lblTitle.text = arrNotification[indexPath.section].data[indexPath.row].title
         
         cell.btnSwitch.isOn = (arrNotification[indexPath.section].data[indexPath.row].isSelect == true) ? true : false
-        
+        cell.btnSwitch.isUserInteractionEnabled = (SingletonClass.sharedInstance.UserProfileData?.permissions?.settings ?? 0 == 1) ? true : false
         cell.getSelectedStatus = {
            // let previousState = cell.btnSwitch.isOn
             //cell.btnSwitch.isSelected = !previousState

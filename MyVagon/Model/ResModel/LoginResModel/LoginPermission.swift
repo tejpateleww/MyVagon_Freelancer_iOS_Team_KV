@@ -36,19 +36,19 @@ struct LoginPermission : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try decoder.container(keyedBy: CodingKeys.self)
-                allowBid = try values.decodeIfPresent(Int.self, forKey: .allowBid)
-                changePassword = try values.decodeIfPresent(Int.self, forKey: .changePassword)
-                createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
-                id = try values.decodeIfPresent(Int.self, forKey: .id)
-                myLoads = try values.decodeIfPresent(Int.self, forKey: .myLoads)
-                myProfile = try values.decodeIfPresent(Int.self, forKey: .myProfile)
-                postAvailibility = try values.decodeIfPresent(Int.self, forKey: .postAvailibility)
-                searchLoads = try values.decodeIfPresent(Int.self, forKey: .searchLoads)
-                settings = try values.decodeIfPresent(Int.self, forKey: .settings)
-                statistics = try values.decodeIfPresent(Int.self, forKey: .statistics)
-                userId = try values.decodeIfPresent(Int.self, forKey: .userId)
-                viewPrice = try values.decodeIfPresent(Int.self, forKey: .viewPrice)
+                let values = try? decoder.container(keyedBy: CodingKeys.self)
+                allowBid = try values?.decodeIfPresent(Int.self, forKey: .allowBid)
+                changePassword = try values?.decodeIfPresent(Int.self, forKey: .changePassword)
+                createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
+                id = try values?.decodeIfPresent(Int.self, forKey: .id)
+                myLoads = try values?.decodeIfPresent(Int.self, forKey: .myLoads)
+                myProfile = try values?.decodeIfPresent(Int.self, forKey: .myProfile)
+                postAvailibility = try values?.decodeIfPresent(Int.self, forKey: .postAvailibility)
+                searchLoads = try values?.decodeIfPresent(Int.self, forKey: .searchLoads)
+                settings = try values?.decodeIfPresent(Int.self, forKey: .settings)
+                statistics = try values?.decodeIfPresent(Int.self, forKey: .statistics)
+                userId = try values?.decodeIfPresent(Int.self, forKey: .userId)
+                viewPrice = try values?.decodeIfPresent(Int.self, forKey: .viewPrice)
         }
 
 }

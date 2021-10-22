@@ -46,8 +46,16 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
             let UserLogin = UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
             if UserLogin {
+                let CheckLoginType = UserDefault.value(forKey: UserDefaultsKey.LoginUserType.rawValue) as? String ?? ""
+                if CheckLoginType == LoginType.company.rawValue {
+                    appDel.NavigateToDispatcher()
+                } else if CheckLoginType == LoginType.freelancer.rawValue {
+                    appDel.NavigateToHome()
+                }else if CheckLoginType == LoginType.driver.rawValue {
+                    appDel.NavigateToHome()
+                }
                 
-                appDel.NavigateToHome()
+               
             } else {
                 let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
                 if CheckIntro {

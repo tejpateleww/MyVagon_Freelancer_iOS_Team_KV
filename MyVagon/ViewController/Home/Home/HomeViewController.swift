@@ -77,7 +77,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         }
         
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
-        refreshControl.tintColor = .gray
+        refreshControl.tintColor = RefreshControlColor
         self.tblLocations.refreshControl = refreshControl
         
         CallWebSerive()
@@ -206,7 +206,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
            {
                let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
                noDataLabel.text          = "No Records Found"
-            noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
+               noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
                noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                noDataLabel.textAlignment = .center
                tableView.backgroundView  = noDataLabel
@@ -235,8 +235,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         cell.tblMultipleLocation.reloadData()
         cell.tblMultipleLocation.layoutIfNeeded()
         cell.tblMultipleLocation.layoutSubviews()
-        
-//
+
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

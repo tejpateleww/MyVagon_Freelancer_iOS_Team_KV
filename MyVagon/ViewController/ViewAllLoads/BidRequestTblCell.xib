@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,8 +30,8 @@
                                             <constraint firstAttribute="width" constant="25" id="DxR-2I-vfG"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Abc Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec0-WH-aiA" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                        <rect key="frame" x="43" y="5" width="57.5" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Abc Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec0-WH-aiA" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                        <rect key="frame" x="43" y="5" width="418" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -45,22 +45,8 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="March 17, 2021   8:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-ab-KF5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                        <rect key="frame" x="108.5" y="5" width="352.5" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                <real key="value" value="12"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mithimnis 30, Loannina 112 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-m3-OCD" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                        <rect key="frame" x="43" y="28" width="418" height="148"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mithimnis 30, Loannina 112 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xZ-m3-OCD" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                        <rect key="frame" x="43" y="161.5" width="418" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -137,37 +123,50 @@
                                             <constraint firstAttribute="width" constant="1" id="rKz-2X-aNL"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="March 17, 2021   8:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YaF-ab-KF5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                        <rect key="frame" x="43" y="31" width="418" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                <real key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="top" secondItem="nqD-DW-rJa" secondAttribute="top" id="5gc-xs-eBC"/>
+                                    <constraint firstItem="frB-fp-C1u" firstAttribute="trailing" secondItem="Ec0-WH-aiA" secondAttribute="trailing" id="952-XF-1ni"/>
                                     <constraint firstItem="Ec0-WH-aiA" firstAttribute="top" secondItem="nqD-DW-rJa" secondAttribute="top" id="FWf-06-U7j"/>
                                     <constraint firstItem="Ldz-bU-qxt" firstAttribute="leading" secondItem="nqD-DW-rJa" secondAttribute="leading" id="KJc-pu-Ge0"/>
                                     <constraint firstItem="iEF-Sk-HZb" firstAttribute="top" secondItem="62M-3r-KoQ" secondAttribute="bottom" constant="2" id="KSZ-y0-ock"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ec0-WH-aiA" secondAttribute="trailing" constant="10" id="Pbl-h0-4ul"/>
+                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="leading" secondItem="Ec0-WH-aiA" secondAttribute="leading" id="Q2F-uv-S79"/>
                                     <constraint firstItem="qrN-nL-VMU" firstAttribute="centerX" secondItem="nqD-DW-rJa" secondAttribute="centerX" id="TIv-Cc-WYc"/>
                                     <constraint firstAttribute="trailing" secondItem="KST-oU-qiG" secondAttribute="trailing" constant="10" id="UtK-pA-eUn"/>
                                     <constraint firstAttribute="bottom" secondItem="iEF-Sk-HZb" secondAttribute="bottom" constant="8" id="VEP-Zp-hIm"/>
                                     <constraint firstItem="KST-oU-qiG" firstAttribute="leading" secondItem="62M-3r-KoQ" secondAttribute="trailing" constant="8" id="W3p-ON-gYd"/>
-                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="leading" secondItem="Ec0-WH-aiA" secondAttribute="trailing" constant="8" id="Yaa-bg-nW4"/>
                                     <constraint firstItem="nqD-DW-rJa" firstAttribute="top" secondItem="A0K-VI-ZS8" secondAttribute="top" constant="5" id="alp-in-zp6"/>
                                     <constraint firstItem="nqD-DW-rJa" firstAttribute="leading" secondItem="A0K-VI-ZS8" secondAttribute="leading" constant="8" id="cRd-V5-KIS"/>
                                     <constraint firstAttribute="bottom" secondItem="frB-fp-C1u" secondAttribute="bottom" constant="10" id="dPt-ma-nNs"/>
                                     <constraint firstItem="frB-fp-C1u" firstAttribute="top" secondItem="qrN-nL-VMU" secondAttribute="bottom" id="dyZ-LU-by5"/>
-                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="bottom" secondItem="Ec0-WH-aiA" secondAttribute="bottom" id="gD7-Yg-XFI"/>
-                                    <constraint firstAttribute="trailing" secondItem="YaF-ab-KF5" secondAttribute="trailing" constant="10" id="hhb-KZ-HeO"/>
+                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="top" secondItem="Ec0-WH-aiA" secondAttribute="bottom" constant="5" id="hP5-19-JSG"/>
                                     <constraint firstItem="62M-3r-KoQ" firstAttribute="leading" secondItem="Ldz-bU-qxt" secondAttribute="trailing" constant="10" id="hqy-J0-lyB"/>
                                     <constraint firstAttribute="trailing" secondItem="8xZ-m3-OCD" secondAttribute="trailing" constant="10" id="k6c-8X-LzK"/>
                                     <constraint firstItem="8xZ-m3-OCD" firstAttribute="leading" secondItem="Ec0-WH-aiA" secondAttribute="leading" id="kSt-vu-26u"/>
                                     <constraint firstAttribute="bottom" secondItem="Ldz-bU-qxt" secondAttribute="bottom" constant="24" id="mef-YL-FhO"/>
-                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="top" secondItem="Ec0-WH-aiA" secondAttribute="top" id="nP1-kv-TU2"/>
                                     <constraint firstAttribute="trailing" secondItem="iEF-Sk-HZb" secondAttribute="trailing" constant="10" id="nk1-Cb-plc"/>
                                     <constraint firstItem="Ec0-WH-aiA" firstAttribute="leading" secondItem="nqD-DW-rJa" secondAttribute="trailing" constant="10" id="oEd-Pn-oBW"/>
                                     <constraint firstItem="8xZ-m3-OCD" firstAttribute="bottom" secondItem="qrN-nL-VMU" secondAttribute="bottom" constant="-20" id="ppu-b0-mnp"/>
-                                    <constraint firstItem="8xZ-m3-OCD" firstAttribute="top" secondItem="Ec0-WH-aiA" secondAttribute="bottom" constant="2" id="tTW-gx-GKC"/>
+                                    <constraint firstItem="8xZ-m3-OCD" firstAttribute="top" secondItem="YaF-ab-KF5" secondAttribute="bottom" constant="5" id="tfE-Oe-TXb"/>
                                     <constraint firstItem="62M-3r-KoQ" firstAttribute="top" secondItem="Ldz-bU-qxt" secondAttribute="top" id="u0D-ds-8G2"/>
-                                    <constraint firstItem="frB-fp-C1u" firstAttribute="trailing" secondItem="YaF-ab-KF5" secondAttribute="trailing" id="uMJ-dB-WgG"/>
                                     <constraint firstItem="frB-fp-C1u" firstAttribute="leading" secondItem="A0K-VI-ZS8" secondAttribute="leading" constant="8" id="uic-wl-0Ow"/>
                                     <constraint firstItem="KST-oU-qiG" firstAttribute="bottom" secondItem="62M-3r-KoQ" secondAttribute="bottom" id="vH8-7c-IAg"/>
+                                    <constraint firstItem="YaF-ab-KF5" firstAttribute="trailing" secondItem="Ec0-WH-aiA" secondAttribute="trailing" id="wpG-hJ-1Tv"/>
                                     <constraint firstItem="iEF-Sk-HZb" firstAttribute="leading" secondItem="62M-3r-KoQ" secondAttribute="leading" id="ykN-km-Uwt"/>
                                     <constraint firstItem="qrN-nL-VMU" firstAttribute="top" secondItem="nqD-DW-rJa" secondAttribute="bottom" constant="8" id="zdc-4l-3cd"/>
                                     <constraint firstItem="KST-oU-qiG" firstAttribute="top" secondItem="62M-3r-KoQ" secondAttribute="top" id="zq9-Eg-AC6"/>

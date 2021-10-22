@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sld-Jb-vrw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sld-Jb-vrw">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -1640,10 +1640,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d5C-yH-hJA">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="508"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OR8-7A-eV2">
-                                                                <rect key="frame" x="20" y="197" width="374" height="114.33333333333331"/>
+                                                                <rect key="frame" x="20" y="130" width="374" height="114.33333333333331"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_truck_details" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-rl-zJw">
                                                                         <rect key="frame" x="155.66666666666666" y="0.0" width="63" height="42"/>
@@ -1668,7 +1668,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bx8-o2-Y8S" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="12" y="78.333333333333314" width="350.33333333333331" height="36"/>
+                                                                        <rect key="frame" x="12" y="78.333333333333343" width="350.33333333333331" height="36"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                         <color key="textColor" systemColor="systemGray3Color"/>
                                                                         <nil key="highlightedColor"/>
@@ -1692,10 +1692,10 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="6eH-xv-ahx">
-                                                        <rect key="frame" x="20" y="508" width="374" height="208"/>
+                                                        <rect key="frame" x="20" y="374" width="374" height="342"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6w5-po-mDp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="119"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="253"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iTT-3G-zod" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
@@ -1749,10 +1749,56 @@
                                                                             <constraint firstAttribute="trailing" secondItem="MOG-zB-w5F" secondAttribute="trailing" id="oEF-Wp-Uj8"/>
                                                                         </constraints>
                                                                     </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QXI-IP-1yE" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="134" width="374" height="52"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Truck plate number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-zg-nG6" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="52" id="THL-Tb-7MQ"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="TGJ-he-NZh" id="dRF-LL-rgU"/>
+                                                                                </connections>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="h3w-zg-nG6" secondAttribute="trailing" id="RYy-qy-g3G"/>
+                                                                            <constraint firstItem="h3w-zg-nG6" firstAttribute="leading" secondItem="QXI-IP-1yE" secondAttribute="leading" id="eT7-B7-zIs"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="h3w-zg-nG6" secondAttribute="bottom" id="ktQ-wa-yYp"/>
+                                                                            <constraint firstItem="h3w-zg-nG6" firstAttribute="top" secondItem="QXI-IP-1yE" secondAttribute="top" id="vBr-5Q-raf"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vtz-R6-xjd" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="201" width="374" height="52"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Trailer plate number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="571-mR-DtO" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="52" id="icS-8L-AaP"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                                <connections>
+                                                                                    <outlet property="delegate" destination="TGJ-he-NZh" id="RlV-xv-yDa"/>
+                                                                                </connections>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="571-mR-DtO" firstAttribute="leading" secondItem="vtz-R6-xjd" secondAttribute="leading" id="Gei-aR-R6G"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="571-mR-DtO" secondAttribute="bottom" id="SqH-pU-zi1"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="571-mR-DtO" secondAttribute="trailing" id="YRK-Sn-jNx"/>
+                                                                            <constraint firstItem="571-mR-DtO" firstAttribute="top" secondItem="vtz-R6-xjd" secondAttribute="top" id="pPn-xd-zlD"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                             </stackView>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raV-fT-GqX" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="154" width="374" height="54"/>
+                                                                <rect key="frame" x="0.0" y="288" width="374" height="54"/>
                                                                 <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="54" id="o7l-dt-wk7"/>
@@ -1814,6 +1860,8 @@
                     <connections>
                         <outlet property="TextFieldCategory" destination="z3t-MU-Fsc" id="gxP-ce-r5c"/>
                         <outlet property="TextFieldSubCategory" destination="MOG-zB-w5F" id="qfr-rP-sbb"/>
+                        <outlet property="TextFieldTrailerPlatNumber" destination="571-mR-DtO" id="qCU-Ci-sxd"/>
+                        <outlet property="TextFieldTruckPlatNumber" destination="h3w-zg-nG6" id="aGP-DC-9xI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qyj-U3-uyS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2115,7 +2163,7 @@
                                         <rect key="frame" x="0.0" y="176" width="375" height="624"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozj-ho-EiN">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="585"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hd3-M6-GUZ">
                                                         <rect key="frame" x="20" y="20" width="335" height="150.33333333333334"/>
@@ -2641,10 +2689,10 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="wBq-dC-n2F">
-                                                        <rect key="frame" x="20" y="310.66666666666669" width="335" height="180.33333333333331"/>
+                                                        <rect key="frame" x="20" y="310.66666666666669" width="335" height="115.33333333333331"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-vq-5Ws" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcW-vq-5Ws" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="-50" width="335" height="50"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Registration Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7VD-jq-g6x" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
@@ -2664,7 +2712,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="scf-rl-FLH" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="57.666666666666686" width="335" height="0.0"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Vehicle Photo " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03E-01-yV3" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="0.0"/>
@@ -2684,7 +2732,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload truck images" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktg-NP-jqE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="64.999999999999943" width="335" height="20.333333333333329"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="20.333333333333332"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -2698,7 +2746,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="veU-7T-Ynv">
-                                                                <rect key="frame" x="0.0" y="100.33333333333331" width="335" height="80"/>
+                                                                <rect key="frame" x="0.0" y="35.333333333333314" width="335" height="80"/>
                                                                 <subviews>
                                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zdr-mo-WRg">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
@@ -2726,7 +2774,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxE-4G-iFm" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="511" width="335" height="54"/>
+                                                        <rect key="frame" x="20" y="446" width="335" height="54"/>
                                                         <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="54" id="q8s-eq-NLx"/>

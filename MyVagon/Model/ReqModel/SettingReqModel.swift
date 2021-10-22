@@ -40,4 +40,42 @@ class GetSettingsListReqModel : Encodable {
 
 
 
+class GetDriverListReqModel : Encodable {
+    var user_id : String?
 
+    enum CodingKeys: String, CodingKey {
+        case user_id = "user_id"
+    }
+}
+
+
+class ChangePermissionReqModel : Encodable {
+    var user_id : String?
+    var search_loads : String?
+    var my_loads : String?
+    var my_profile : String?
+    var settings : String?
+    var statistics : String?
+    var change_password : String?
+    var allow_bid : String?
+    var view_price : String?
+    var post_availibility : String?
+  
+
+    enum CodingKeys: String, CodingKey {
+        case user_id = "user_id"
+        case search_loads = "search_loads"
+        case my_loads = "my_loads"
+        case my_profile = "my_profile"
+        case settings = "settings"
+        case statistics = "statistics"
+        case change_password = "change_password"
+        case allow_bid = "allow_bid"
+        case view_price = "view_price"
+        case post_availibility = "post_availibility"
+        
+        
+        
+        
+    }
+}

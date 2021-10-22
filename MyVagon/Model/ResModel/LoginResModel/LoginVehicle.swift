@@ -20,6 +20,7 @@ struct LoginVehicle : Codable {
         let loadCapacityUnit : LoginLoadCapacityUnit?
         let pallets : Int?
         let registrationNo : String?
+    let trailerRegistrationNo : String?
         let truckCapacity : String?
         let truckCapacityUnit : String?
         let truckFeatures : [LoginTruckFeature]?
@@ -44,6 +45,7 @@ struct LoginVehicle : Codable {
                 case loadCapacityUnit = "load_capacity_unit"
                 case pallets = "pallets"
                 case registrationNo = "registration_no"
+            case trailerRegistrationNo = "trailer_registration_no"
                 case truckCapacity = "truck_capacity"
                 case truckCapacityUnit = "truck_capacity_unit"
                 case truckFeatures = "truck_features"
@@ -70,6 +72,7 @@ struct LoginVehicle : Codable {
                 loadCapacityUnit = try values?.decodeIfPresent(LoginLoadCapacityUnit.self, forKey: .loadCapacityUnit)
                 pallets = try values?.decodeIfPresent(Int.self, forKey: .pallets)
                 registrationNo = try values?.decodeIfPresent(String.self, forKey: .registrationNo)
+            trailerRegistrationNo = try values?.decodeIfPresent(String.self, forKey: .trailerRegistrationNo)
                 truckCapacity = try values?.decodeIfPresent(String.self, forKey: .truckCapacity)
                 truckCapacityUnit = try values?.decodeIfPresent(String.self, forKey: .truckCapacityUnit)
                 truckFeatures = try values?.decodeIfPresent([LoginTruckFeature].self, forKey: .truckFeatures)

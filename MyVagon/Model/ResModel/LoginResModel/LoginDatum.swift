@@ -5,6 +5,7 @@
 
 import Foundation
 
+
 struct LoginDatum : Codable {
     
     let countryCode : String?
@@ -14,11 +15,11 @@ struct LoginDatum : Codable {
     let licenceNumber : String?
     let mobileNumber : String?
     let name : String?
+    let permissions : LoginPermission?
     let profile : String?
-    let token : String?
+    var token : String?
     let type : String?
     let vehicle : LoginVehicle?
-    let permissions : LoginPermission?
     
     enum CodingKeys: String, CodingKey {
         case countryCode = "country_code"
@@ -36,7 +37,6 @@ struct LoginDatum : Codable {
     }
     
     init(from decoder: Decoder) throws {
-        
         let values = try? decoder.container(keyedBy: CodingKeys.self)
         countryCode = try values?.decodeIfPresent(String.self, forKey: .countryCode)
         email = try values?.decodeIfPresent(String.self, forKey: .email)
@@ -45,6 +45,7 @@ struct LoginDatum : Codable {
         licenceNumber = try values?.decodeIfPresent(String.self, forKey: .licenceNumber)
         mobileNumber = try values?.decodeIfPresent(String.self, forKey: .mobileNumber)
         name = try values?.decodeIfPresent(String.self, forKey: .name)
+        
         profile = try values?.decodeIfPresent(String.self, forKey: .profile)
         token = try values?.decodeIfPresent(String.self, forKey: .token)
         type = try values?.decodeIfPresent(String.self, forKey: .type)

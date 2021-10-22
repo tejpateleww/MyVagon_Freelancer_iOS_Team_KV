@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 class SettingViewModel {
     weak var settingVC : SettingVC? = nil
     

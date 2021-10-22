@@ -45,8 +45,8 @@ class WebServiceSubClass{
     }
     
     //MARK: -PostTruck
-    class func PostTruck(reqModel: PostTruckReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.PostAvailability.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+    class func PostTruck(reqModel: PostTruckReqModel, completion: @escaping (Bool,String,PostTruckResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.PostAvailability.rawValue, requestModel: reqModel, responseModel: PostTruckResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -166,6 +166,33 @@ class WebServiceSubClass{
     //MARK: -BidPost
     class func BidPost(reqModel: BidReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.BidPost.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -GetMyLoadesList
+    class func GetMyLoadesList(reqModel: MyLoadsReqModel, completion: @escaping (Bool,String,MyLoadsResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.MyLoades.rawValue, requestModel: reqModel, responseModel: MyLoadsResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    //MARK:- ProfileEdit
+    class func ProfileEdit(reqModel: ProfileEditReqModel, completion: @escaping (Bool,String,LoginResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ProfileUpdate.rawValue, requestModel: reqModel, responseModel: LoginResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- GetDriverList
+    class func GetDriverList(reqModel: GetDriverListReqModel, completion: @escaping (Bool,String,DriverListResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ManageDriver.rawValue, requestModel: reqModel, responseModel: DriverListResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -Settings
+    class func PermissionSettings(reqModel: ChangePermissionReqModel, completion: @escaping (Bool,String,DriverPermissionChangeResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ChangePermission.rawValue, requestModel: reqModel, responseModel: DriverPermissionChangeResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

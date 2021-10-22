@@ -221,7 +221,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         
         TruckCapacityAdded = SingletonClass.sharedInstance.RegisterData.Reg_pallets
       
-        TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_registration_no
+      
        
        var TempAdditionType : [String] = []
        arrTypes.forEach { element in
@@ -469,7 +469,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
              SingletonClass.sharedInstance.RegisterData.Reg_brand = TextFieldTruckBrand.text ?? ""
             SingletonClass.sharedInstance.RegisterData.Reg_pallets = TruckCapacityAdded
            
-             SingletonClass.sharedInstance.RegisterData.Reg_registration_no = TextFieldRegistrationNumber.text ?? ""
+             
             
             var TempAdditionType : [String] = []
             arrTypes.forEach { element in
@@ -539,7 +539,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         let CheckTruckBrand = TextFieldTruckBrand.validatedText(validationType: ValidatorType.Select(field: "truck brand"))
         
     
-        let CheckRegistrationNumber = TextFieldRegistrationNumber.validatedText(validationType: ValidatorType.username(field: "registration number", MaxChar: 8))
+       // let CheckRegistrationNumber = TextFieldRegistrationNumber.validatedText(validationType: ValidatorType.username(field: "registration number", MaxChar: 8))
         //let CheckVehicalPhoto = TextFieldVehicalPhoto.validatedText(validationType: ValidatorType.Attach(field: "vehical photo"))
         
         if (!CheckTruckBrand.0){
@@ -547,9 +547,9 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
         } else if TruckCapacityAdded.count == 0 {
             return (false,"Please add atleast one capacity")
         }
-        else if (!CheckRegistrationNumber.0){
-            return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
-        }
+//        else if (!CheckRegistrationNumber.0){
+//            return (CheckRegistrationNumber.0,CheckRegistrationNumber.1)
+//        }
 
         return (true,"")
         

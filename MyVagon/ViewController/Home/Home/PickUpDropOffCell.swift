@@ -21,11 +21,10 @@ class PickUpDropOffCell: UITableViewCell {
     var PickUpDropOffData : [HomeLocation]?
     
     var tblHeight:((CGFloat)->())?
-    var isFromBidRequest = false
   
     override func awakeFromNib() {
         super.awakeFromNib()
-      
+
        
        // tblMultipleLocation.backgroundColor = .clear
         
@@ -81,6 +80,8 @@ class PickUpDropOffCell: UITableViewCell {
         //You can set your color directly if you want by using below two lines. In my case I'm copying the color.
         self.viewContents.backgroundColor = nil
         self.viewContents.layer.backgroundColor =  UIColor.white.cgColor
+        tblMultipleLocation.tableFooterView?.isHidden = true
+       // self.tblMultipleLocation.contentInset = UIEdgeInsets(top: -11, left: 0, bottom: 0, right: 0)
       }
 
 
@@ -112,15 +113,16 @@ class PickUpDropOffCell: UITableViewCell {
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
-                print("ATDebug :: \(newsize.height)")
+                print("ATDebug :: height \(newsize.height)")
                 
-                if let getHeight  = tblHeight {
+                if let getHeight  = tblHeight.self {
+                    self.tblMultipleLocation.layoutSubviews()
                     self.tblMultipleLocation.layoutIfNeeded()
                     getHeight(self.tblMultipleLocation.contentSize.height)
+                    
+                    print("ATDebug :: getHeight \(self.tblMultipleLocation.contentSize.height)")
+
                 }
-                
-               
-                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil, userInfo: TblDataDict)
                 
             }
         }
@@ -136,11 +138,9 @@ class PickUpDropOffCell: UITableViewCell {
 extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFromBidRequest {
+      
             return PickUpDropOffData?.count ?? 0
-        } else {
-            return 2
-        }
+        
         
         
     }
@@ -149,7 +149,6 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
         
         conHeightOfTbl.constant = tblMultipleLocation.contentSize.height
        
-        if isFromBidRequest == false {
             
             let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
             
@@ -167,68 +166,55 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
                 cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
             }
             
-            cell.lblDateTime.text = "\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd hh:mm:ss", ToFormat: "dd MMMM, yyyy") ?? "") \((PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? ""))"
-           
+            cell.lblDateTime.text = "\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? ""))"
           
-            //
-           
             return cell
-        }
-        else {
-            let cell =  tableView.dequeueReusableCell(withIdentifier: "BidRequestTblCell", for: indexPath) as! BidRequestTblCell
-           
-            cell.btnBidRequest.isHidden = indexPath.row == 2 ? false : true
-            cell.conHeightOfButton.constant = cell.btnBidRequest.isHidden == false ? 40 : 0
-            cell.viewLine.isHidden = indexPath.row == 2 ? true : false
-            cell.bottomHeightBtn.constant = cell.btnBidRequest.isHidden == false ? 15 : 0
-            cell.imgLocation.image = indexPath.row == 2 ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-            return cell
-        }
+        
 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
         
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
-        header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
-            header.lblBidStatus.isHidden = !isFromBidRequest
-            header.viewStatusBid.isHidden = !isFromBidRequest
-        
-        header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (BookingDetails?.amount ?? "") : ""
-        
-        header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
-        header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-      //  header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
-        header.lblWeightAndDistance.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
-        header.lblDeadheadWithTruckType.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
-        
-        
-        if BookingDetails?.isBid == 0 {
-            header.ViewStatusBidText.text =  bidStatus.BookNow.Name
-            header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
-           
-        } else {
-            if BookingDetails?.driverBid == 1 {
-                header.ViewStatusBidText.text = bidStatus.Bidded.Name
-                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+       
+            let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
+            header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
+                header.lblBidStatus.isHidden = true
+                header.viewStatusBid.isHidden = true
+            
+            header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (BookingDetails?.amount ?? "") : ""
+            
+            header.lblbookingID.text = "#\(BookingDetails?.id ?? 0)"
+            header.viewStatus.backgroundColor = (BookingDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+          //  header.ViewStatusBidText.text = (BookingDetails?.isBid == 0) ? "Book Now" : "Bidding"
+            header.lblWeightAndDistance.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
+            header.lblDeadheadWithTruckType.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
+            
+            
+            if BookingDetails?.isBid == 0 {
+                header.ViewStatusBidText.text =  bidStatus.BookNow.Name
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+               
             } else {
-                header.ViewStatusBidText.text = bidStatus.BidNow.Name
-                header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                if BookingDetails?.driverBid == 1 {
+                    header.ViewStatusBidText.text = bidStatus.Bidded.Name
+                    header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+                } else {
+                    header.ViewStatusBidText.text = bidStatus.BidNow.Name
+                    header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                }
+                
             }
             
-        }
-        
-        //header.conHeightOfViewBidStatus.constant = isFromBidRequest ? 30 : 0
-       
-        return header
+            return header
+     
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return isFromBidRequest == true ? 130 : 110
+        return 110
+//        return 100
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -236,7 +222,7 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
-
+    
 }
 
 extension UITableView {

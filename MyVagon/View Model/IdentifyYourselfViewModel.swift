@@ -32,7 +32,7 @@ class IdentifyYourselfViewModel {
                     self.identifyYourselfVC?.ImageViewIdentity = nil
                 } else if uploadFor == .Licence {
                     self.identifyYourselfVC?.ImageViewLicence = nil
-                }
+                } 
             }
         })
     }
@@ -41,4 +41,6 @@ class IdentifyYourselfViewModel {
 enum DocumentType {
     case IdentityProof
     case Licence
+    case Vehicle
+    case Profile
 }

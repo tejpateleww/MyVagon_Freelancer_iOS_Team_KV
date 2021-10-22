@@ -142,6 +142,7 @@ class TermsConditionVC: BaseViewController,WKNavigationDelegate {
         registerReqModel.device_name = SingletonClass.sharedInstance.DeviceName
         registerReqModel.device_type = SingletonClass.sharedInstance.DeviceType
         registerReqModel.device_token = SingletonClass.sharedInstance.DeviceToken
+        
         registerReqModel.fullname  = SingletonClass.sharedInstance.RegisterData.Reg_fullname
         registerReqModel.country_code  = SingletonClass.sharedInstance.RegisterData.Reg_country_code
         registerReqModel.mobile_number  = SingletonClass.sharedInstance.RegisterData.Reg_mobile_number
@@ -162,6 +163,8 @@ class TermsConditionVC: BaseViewController,WKNavigationDelegate {
         if let CapacityUnitIndex = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == SingletonClass.sharedInstance.RegisterData.Reg_capacity_unit}) {
             registerReqModel.capacity_unit  = "\(SingletonClass.sharedInstance.TruckunitList?[CapacityUnitIndex].id ?? 0)"
         }
+        registerReqModel.plate_number_truck = SingletonClass.sharedInstance.RegisterData.Reg_truck_plat_number
+        registerReqModel.plate_number_trailer = SingletonClass.sharedInstance.RegisterData.Reg_trailer_plat_number
 //            registerReqModel.capacity_unit  = SingletonClass.sharedInstance.RegisterData.Reg_TruckLoadCapacityUnit
         
         if let TruckBrandIndex = SingletonClass.sharedInstance.TruckBrandList?.firstIndex(where: {$0.name == SingletonClass.sharedInstance.RegisterData.Reg_brand}) {
@@ -171,8 +174,7 @@ class TermsConditionVC: BaseViewController,WKNavigationDelegate {
 //            registerReqModel.brand  = SingletonClass.sharedInstance.RegisterData.Reg_TruckBrand
         registerReqModel.pallets = jsonString
         registerReqModel.fuel_type  = SingletonClass.sharedInstance.RegisterData.Reg_fuel_type
-        registerReqModel.load_capacity  = ""
-        registerReqModel.registration_no  = SingletonClass.sharedInstance.RegisterData.Reg_registration_no
+       
         registerReqModel.vehicle_images  = SingletonClass.sharedInstance.RegisterData.Reg_vehicle_images.map({$0}).joined(separator: ",")
 
         registerReqModel.id_proof  = SingletonClass.sharedInstance.RegisterData.Reg_id_proof.map({$0}).joined(separator: ",")

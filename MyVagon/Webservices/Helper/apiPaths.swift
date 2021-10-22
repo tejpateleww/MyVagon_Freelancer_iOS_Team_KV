@@ -52,24 +52,7 @@ enum APIEnvironment : String {
         }
         return [UrlConstant.AppAuthentication : UrlConstant.AppAuthenticationValue,UrlConstant.HeaderKey : UrlConstant.AppHostKey]
     }
-//    static var headers : [String:String]{
-//        if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) != nil {
-//
-//            if UserDefault.object(forKey: UserDefaultsKey.isUserLogin.rawValue) as? Bool == true {
-//
-//                if UserDefault.object(forKey:  UserDefaultsKey.userProfile.rawValue) != nil {
-//                    do {
-////                        if UserDefaults.standard.value(forKey: UserDefaultsKey.X_API_KEY.rawValue) != nil, UserDefaults.standard.value(forKey:  UserDefaultsKey.isUserLogin.rawValue) as? Bool ?? Bool(){
-////                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey, UrlConstant.XApiKey : Singleton.sharedInstance.UserProfilData?.xAPIKey ?? ""]
-////                        }else{
-//                            return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
-////                        }
-//                    }
-//                }
-//            }
-//        }
-//        return [UrlConstant.HeaderKey : UrlConstant.AppHostKey]
-//    }
+
 }
 
 enum ApiKey: String {
@@ -83,6 +66,7 @@ enum ApiKey: String {
     case GetSettings                            = "driver/get/settings"
     
     case Register                               = "driver/register"
+    case ProfileUpdate                          = "driver/profile/update"
     case EmailVerify                            = "email/verify"
     case PhoneNumberVerify                      = "phone/verify"
     
@@ -95,8 +79,12 @@ enum ApiKey: String {
     
     case PackageListing                         = "package/listing"
     case ShipmentList                          = "shipment/search"
+    case MyLoades                               = "booking/my_loads"
     
     case BidPost                               = "driver/post/bid"
+    
+    case ManageDriver                           = "dispature/manage-drivers"
+    case ChangePermission                       = "dispature/edit-permission"
 }
 
  

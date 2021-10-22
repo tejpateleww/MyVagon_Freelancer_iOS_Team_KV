@@ -29,9 +29,12 @@ class MyProfileViewController: BaseViewController {
     @IBOutlet weak var TextFeildTruckType: MyProfileTextField!
     @IBOutlet weak var TextFeildTruckWeight: MyProfileTextField!
     @IBOutlet weak var TextFeildCargoLoadCapacity: MyProfileTextField!
+    @IBOutlet weak var TextfieldTruckPlatNumber: MyProfileTextField!
+    @IBOutlet weak var TextfieldTrailerPlatNumber: MyProfileTextField!
     
     @IBOutlet weak var TextFeildTruckBrand: MyProfileTextField!
     @IBOutlet weak var TextFeildCapacity_pallets: MyProfileTextField!
+    
     
     @IBOutlet weak var ColTypes: UICollectionView!
     
@@ -43,6 +46,8 @@ class MyProfileViewController: BaseViewController {
     @IBOutlet weak var textFieldLicenseExpiryDate: MyProfileTextField!
     @IBOutlet weak var ImageViewIdentityProofDocument: UIImageView!
     @IBOutlet weak var ImageViewLicense: UIImageView!
+    
+    @IBOutlet weak var ImageViewProfile: UIImageView!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -59,9 +64,9 @@ class MyProfileViewController: BaseViewController {
             
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Profile", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true, ShowShadow: true)
             
-            
         }
-        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProfileEdit"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileEdit), name: NSNotification.Name(rawValue: "ProfileEdit"), object: nil)
         SetValue()
         registerNIBsAndDelegate()
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.myProfile ?? 0 == 1 {
@@ -79,12 +84,16 @@ class MyProfileViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.hideTabBar()
     }
+    @objc func ProfileEdit(){
+        SetValue()
+       }
+    
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
     func isProfileEdit(allow:Bool) {
-        let arrayOfDisableElement = (TextFieldFullName,TextFeildPhoneNumber,TextFeildEmail,TextFeildTruckType,TextFeildTruckWeight,TextFeildCargoLoadCapacity,TextFeildTruckBrand,TextFeildCapacity_pallets,textFieldLicenseNumber,textFieldLicenseExpiryDate)
+        let arrayOfDisableElement = (TextFieldFullName,TextFeildPhoneNumber,TextFeildEmail,TextFeildTruckType,TextFeildTruckWeight,TextFeildCargoLoadCapacity,TextFeildTruckBrand,TextFeildCapacity_pallets,textFieldLicenseNumber,textFieldLicenseExpiryDate,TextfieldTruckPlatNumber,TextfieldTrailerPlatNumber)
         arrayOfDisableElement.0?.isUserInteractionEnabled = allow
         arrayOfDisableElement.1?.isUserInteractionEnabled = allow
         arrayOfDisableElement.2?.isUserInteractionEnabled = allow
@@ -95,35 +104,9 @@ class MyProfileViewController: BaseViewController {
         arrayOfDisableElement.7?.isUserInteractionEnabled = allow
         arrayOfDisableElement.8?.isUserInteractionEnabled = allow
         arrayOfDisableElement.9?.isUserInteractionEnabled = allow
-//        if allow {
-//
-//
-//            TextFieldFullName.isUserInteractionEnabled = true
-//            TextFeildPhoneNumber.isUserInteractionEnabled = true
-//            TextFeildEmail.isUserInteractionEnabled = true
-//
-//            TextFeildTruckType.isUserInteractionEnabled = true
-//            TextFeildTruckWeight.isUserInteractionEnabled = true
-//            TextFeildCargoLoadCapacity.isUserInteractionEnabled = true
-//
-//            TextFeildTruckBrand.isUserInteractionEnabled = true
-//            TextFeildCapacity_pallets.isUserInteractionEnabled = true
-//
-//        } else {
-//            TextFieldFullName.isUserInteractionEnabled = false
-//            TextFeildPhoneNumber.isUserInteractionEnabled = false
-//            TextFeildEmail.isUserInteractionEnabled = false
-//
-//            TextFeildTruckType.isUserInteractionEnabled = false
-//            TextFeildTruckWeight.isUserInteractionEnabled = false
-//            TextFeildCargoLoadCapacity.isUserInteractionEnabled = false
-//
-//            TextFeildTruckBrand.isUserInteractionEnabled = false
-//            TextFeildCapacity_pallets.isUserInteractionEnabled = false
-//
-//
-//
-//        }
+        arrayOfDisableElement.10?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.11?.isUserInteractionEnabled = allow
+
     }
     
     
@@ -142,6 +125,12 @@ class MyProfileViewController: BaseViewController {
        
     }
     func SetValue() {
+        
+        let StringURLForProfile = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
+        ImageViewProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        ImageViewProfile.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
+        
+        
         TextFieldFullName.text = SingletonClass.sharedInstance.UserProfileData?.name
         TextFeildPhoneNumber.text = SingletonClass.sharedInstance.UserProfileData?.mobileNumber
         TextFeildEmail.text = SingletonClass.sharedInstance.UserProfileData?.email
@@ -151,6 +140,11 @@ class MyProfileViewController: BaseViewController {
         TextFeildTruckWeight.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weight ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.weightUnit?.name ?? "")"
         
         TextFeildCargoLoadCapacity.text = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacity ?? "") \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.loadCapacityUnit?.name ?? "")"
+        
+        TextfieldTruckPlatNumber.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.registrationNo ?? ""
+        TextfieldTrailerPlatNumber.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.trailerRegistrationNo ?? ""
+        TextfieldTrailerPlatNumber.isHidden = ((SingletonClass.sharedInstance.UserProfileData?.vehicle?.trailerRegistrationNo ?? "") == "") ? true : false
+        
         TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? "")"
         
         var palletText : [String] = []
@@ -190,6 +184,12 @@ class MyProfileViewController: BaseViewController {
         
         
         arrImages = SingletonClass.sharedInstance.UserProfileData?.vehicle?.images ?? []
+        if arrImages.count == 0 {
+            collectionImages.superview?.superview?.isHidden = true
+        }
+        if arrTypes.count == 0 {
+            ColTypes.superview?.isHidden = true
+        }
         ColTypes.reloadData()
         collectionImages.reloadData()
     }

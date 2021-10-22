@@ -28,6 +28,7 @@ var NameTotalCount = 30
 let RingtoneSoundName = "Reflection"
 let CallKitIconName = "notification_icon"
 
+let RefreshControlColor : UIColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
 
 let MaximumFileUploadSize:Double = 10.0
 

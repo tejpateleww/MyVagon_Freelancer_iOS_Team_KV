@@ -13,6 +13,7 @@ struct TruckTypeDatum : Codable {
         let id : Int?
         let name : String?
         let status : Int?
+    let isTrailer : Int?
 
         enum CodingKeys: String, CodingKey {
                 case category = "category"
@@ -21,6 +22,7 @@ struct TruckTypeDatum : Codable {
                 case id = "id"
                 case name = "name"
                 case status = "status"
+            case isTrailer = "is_trailer"
         }
     
         init(from decoder: Decoder) throws {
@@ -31,6 +33,7 @@ struct TruckTypeDatum : Codable {
                 id = try values?.decodeIfPresent(Int.self, forKey: .id)
                 name = try values?.decodeIfPresent(String.self, forKey: .name)
                 status = try values?.decodeIfPresent(Int.self, forKey: .status)
+            isTrailer = try values?.decodeIfPresent(Int.self, forKey: .isTrailer)
         }
 
 }

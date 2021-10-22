@@ -30,7 +30,7 @@ class PostTruckViewModel {
               
                 controller.TitleAttributedText = AttributedStringFinal
       
-                controller.DescriptionAttributedText = NSAttributedString(string: "3 matches have been found, would you like to view them?", attributes: DescriptionAttribute)
+                controller.DescriptionAttributedText = NSAttributedString(string: response?.data?.matches ?? "", attributes: DescriptionAttribute)
                 controller.IsHideImage = true
                 controller.LeftbtnTitle = "Dismiss"
                 controller.RightBtnTitle = "Yes"
@@ -38,17 +38,15 @@ class PostTruckViewModel {
                 controller.modalPresentationStyle = .overCurrentContext
                 controller.modalTransitionStyle = .coverVertical
                 controller.LeftbtnClosour = {
-                    controller.view.backgroundColor = .clear
-                    controller.dismiss(animated: true, completion: nil)
+                    appDel.NavigateToHome()
                 }
                 controller.RightbtnClosour = {
-                    controller.view.backgroundColor = .clear
-                    controller.dismiss(animated: true, completion: nil)
+                    appDel.NavigateToHome()
                 }
                 self.postTruckViewController?.present(controller, animated: false, completion:  {
 
                     
-                    controller.view.backgroundColor = .black.withAlphaComponent(0.3)
+                    controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
 
                 })
                 

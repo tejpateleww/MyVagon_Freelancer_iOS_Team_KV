@@ -10,11 +10,23 @@ import UIKit
 import SDWebImage
 //import LGSideMenuController
 
-class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
+class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIContextMenuInteractionDelegate {
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (_: [UIMenuElement]) -> UIMenu? in
+           
+            let all = UIAction(title: "All", image: nil) { _ in }
+            let bid = UIAction(title: "Bid", image: nil) { _ in }
+            let book = UIAction(title: "Book", image: nil)  { _ in }
+            let postedtruck = UIAction(title: "Posted truck", image: nil)  { _ in }
+                   
+                   return UIMenu(title: "Select Option", children: [all,bid,book,postedtruck])
+               }
+    }
+    
     var BackClosure : (() -> ())?
     var btnOptionClosour : (() -> ())?
     
-  
+    let btnOption = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +42,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
    
        
   
+    
     
     func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false,IsChatScreenLabel:Bool? = false,IsChatScreen:Bool? = false,NumberOfChatCount:String? = "")
     {
@@ -201,6 +214,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                         BtnRight.semanticContentAttribute = .forceLeftToRight
                         BtnRight.setImage(UIImage.init(named: "ic_edit"), for: .normal)
                         BtnRight.setTitle("Request Edit", for: .normal)
+                        BtnRight.addTarget(self, action: #selector(self.btnRequestEdit(sender:)), for: .touchUpInside)
                         BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
                         BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
                         BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
@@ -240,12 +254,22 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
                         arrButtons.append(btnRightBar)
                         
                     }else if title == NavItemsRight.option.value{
-                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-                        BtnRight.setImage(UIImage.init(named: "ic_option"), for: .normal)
-                        BtnRight.layer.setValue(controller, forKey: "controller")
-                        BtnRight.addTarget(self, action: #selector(self.btnOptionAction(sender:)), for: .touchUpInside)
+                        
+                        
+                        btnOption.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+                        btnOption.setImage(UIImage.init(named: "ic_option"), for: .normal)
+                        btnOption.layer.setValue(controller, forKey: "controller")
+                        btnOption.addTarget(self, action: #selector(self.btnOptionAction(sender:)), for: .touchUpInside)
+                        
+//                        let btnInteraction = UIContextMenuInteraction(delegate: self)
+//                        btnOption.addInteraction(btnInteraction)
+//                        if #available(iOS 14.0, *) {
+//                            btnOption.showsMenuAsPrimaryAction = true
+//                        } else {
+//                           
+//                        }
                         let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-                        ViewRight.addSubview(BtnRight)
+                        ViewRight.addSubview(btnOption)
                     
                         let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
                         btnRightBar.style = .plain
@@ -298,11 +322,26 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate {
     @objc func btnSearchAction(sender:UIButton) {
         
     }
-    
+    @objc func btnRequestEdit(sender:UIButton) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ProfileEditViewController.storyboardID) as! ProfileEditViewController
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
     @objc func btnOptionAction(sender:UIButton) {
+        
+
         if let click = btnOptionClosour {
-            click()
-        }
+                        click()
+                    }
+
+//        if #available(iOS 14.0, *) {
+//          
+//        } else {
+//
+//        }
+//        
+        
     }
 
    
