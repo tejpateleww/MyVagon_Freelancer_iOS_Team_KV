@@ -18,6 +18,7 @@ extension UITextView: ShimmeringViewProtocol { }
 extension UIStepper: ShimmeringViewProtocol { }
 extension UISlider: ShimmeringViewProtocol { }
 extension UIImageView: ShimmeringViewProtocol { }
+extension UIButton : ShimmeringViewProtocol { }
 
 class LoadDetailsVC: BaseViewController {
     
@@ -37,6 +38,7 @@ class LoadDetailsVC: BaseViewController {
     // ----------------------------------------------------
     @IBOutlet weak var MapViewForLocation: GMSMapView!
     @IBOutlet weak var vwShimmer: UIView!
+    @IBOutlet weak var scrollViewHide: UIScrollView!
     
     
     @IBOutlet weak var imgMapDistance: UIImageView!
@@ -91,6 +93,7 @@ class LoadDetailsVC: BaseViewController {
         super.viewDidLayoutSubviews()
         view.setTemplateWithSubviews(true, viewBackgroundColor: .systemBackground)
         self.viewStatus.isHidden = true
+        self.scrollViewHide.isUserInteractionEnabled = false
     }
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
@@ -99,6 +102,7 @@ class LoadDetailsVC: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.view.setTemplateWithSubviews(false)
             self.viewStatus.isHidden = false
+            self.scrollViewHide.isUserInteractionEnabled = true
         }
         
         viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)

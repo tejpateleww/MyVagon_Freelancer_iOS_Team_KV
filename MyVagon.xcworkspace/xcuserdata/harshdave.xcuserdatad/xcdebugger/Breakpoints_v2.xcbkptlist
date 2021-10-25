@@ -110,8 +110,8 @@
             filePath = "MyVagon/ViewController/Home/LoadDetailsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "SetValue()"
             landmarkType = "7">
             <Locations>
