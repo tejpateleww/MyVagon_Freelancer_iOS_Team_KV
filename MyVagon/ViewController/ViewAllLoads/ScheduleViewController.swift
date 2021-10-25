@@ -63,7 +63,12 @@ class ScheduleViewController: BaseViewController {
     var selectedIndex = 0
     var arrMyLoadesData : [MyLoadsDatum]?
     var optionArray : [String] = ["All","Bid","Book","Posted truck"]
-    
+    var isLoading = true {
+        didSet {
+            tblLocations.isUserInteractionEnabled = !isLoading
+            tblLocations.reloadData()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChooseDropDown()
@@ -302,7 +307,15 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-         return 40
+        if isLoading{
+            return 0
+        }else{
+            return 40
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

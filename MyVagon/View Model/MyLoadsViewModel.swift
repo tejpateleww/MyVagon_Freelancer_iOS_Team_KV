@@ -17,6 +17,7 @@ class MyLoadsViewModel {
             if status{
                
                 self.scheduleViewController?.arrMyLoadesData = response?.data
+                self.scheduleViewController?.isLoading = false
                 self.scheduleViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
                
             } else {
