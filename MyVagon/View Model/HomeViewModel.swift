@@ -17,7 +17,9 @@ class HomeViewModel {
             self.homeViewController?.refreshControl.endRefreshing()
             if status {
                 self.homeViewController?.arrHomeData = response?.data
-                self.homeViewController?.isLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    self.homeViewController?.isLoading = false
+                }
                 self.homeViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
                 
                // self.homeViewController?.tblLocations.reloadData()

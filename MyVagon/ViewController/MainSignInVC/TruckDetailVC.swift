@@ -8,15 +8,20 @@
 import UIKit
 import MobileCoreServices
 import SDWebImage
+import UIView_Shimmer
 // ----------------------------------------------------
 // MARK: - --------- Types Collectionview Cell ---------
 // ----------------------------------------------------
-class TypesColCell : UICollectionViewCell {
+class TypesColCell : UICollectionViewCell,ShimmeringViewProtocol {
     
     //MARK:- ===== Outlets ======
     @IBOutlet weak var lblTypes: themeLabel!
     @IBOutlet weak var BGView: UIView!
-   
+    var shimmeringAnimatedItems: [UIView]{
+        [
+            BGView
+        ]
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

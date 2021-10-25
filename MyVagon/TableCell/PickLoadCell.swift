@@ -6,13 +6,23 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class PickLoadCell: UITableViewCell {
+class PickLoadCell: UITableViewCell,ShimmeringViewProtocol {
     @IBOutlet weak var lblProductName: themeLabel!
     @IBOutlet weak var lblWeight: themeLabel!
     @IBOutlet weak var lblCapacity: themeLabel!
     @IBOutlet weak var lblType: themeLabel!
     @IBOutlet weak var btnNotes: themeButton!
+    var shimmeringAnimatedItems: [UIView]{
+        [
+            lblProductName,
+            lblWeight,
+            lblCapacity,
+            lblType,
+            btnNotes
+        ]
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

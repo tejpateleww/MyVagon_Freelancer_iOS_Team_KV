@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
-class LoadDetailCell: UITableViewCell {
+class LoadDetailCell: UITableViewCell,ShimmeringViewProtocol {
     var sizeForTableview : ((CGFloat) -> ())?
     @IBOutlet weak var ViewForSavingTree: UIView!
     @IBOutlet weak var ViewDottedTop: UIView!
     @IBOutlet weak var viewStatus: UIView!
     @IBOutlet weak var ViewDottedbottom: UIView!
     @IBOutlet weak var ViewForHeader: UIView!
+    @IBOutlet weak var vwShimmer: UIView!
     
     @IBOutlet weak var PickUpDropOffImageView: UIImageView!
     
@@ -30,6 +32,15 @@ class LoadDetailCell: UITableViewCell {
     
     var LoadDetails : [HomeProduct]?
   
+    var shimmeringAnimatedItems: [UIView]{
+        [
+            PickUpDropOffImageView,
+            vwShimmer,
+            lblName,
+            lblAddress,
+            lblDate
+        ]
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

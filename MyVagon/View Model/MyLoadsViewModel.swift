@@ -17,7 +17,9 @@ class MyLoadsViewModel {
             if status{
                
                 self.scheduleViewController?.arrMyLoadesData = response?.data
-                self.scheduleViewController?.isLoading = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.scheduleViewController?.isLoading = false
+                }
                 self.scheduleViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
                
             } else {

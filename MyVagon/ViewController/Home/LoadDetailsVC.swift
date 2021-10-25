@@ -9,7 +9,15 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import SDWebImage
+import UIView_Shimmer
 
+extension UILabel: ShimmeringViewProtocol { }
+extension UISwitch: ShimmeringViewProtocol { }
+extension UIProgressView: ShimmeringViewProtocol { }
+extension UITextView: ShimmeringViewProtocol { }
+extension UIStepper: ShimmeringViewProtocol { }
+extension UISlider: ShimmeringViewProtocol { }
+extension UIImageView: ShimmeringViewProtocol { }
 
 class LoadDetailsVC: BaseViewController {
     
@@ -18,12 +26,18 @@ class LoadDetailsVC: BaseViewController {
     // ----------------------------------------------------
     var LoadDetails : HomeBidsDatum?
     var arrTypes:[(HomeTruckTypeCategory,Bool)] = []
-  
+    var isLoading = true {
+        didSet {
+            tblMainData.isUserInteractionEnabled = !isLoading
+            tblMainData.reloadData()
+        }
+    }
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
     @IBOutlet weak var MapViewForLocation: GMSMapView!
-
+    @IBOutlet weak var vwShimmer: UIView!
+    
     
     @IBOutlet weak var imgMapDistance: UIImageView!
     @IBOutlet weak var lblBookingID: themeLabel!
@@ -73,11 +87,19 @@ class LoadDetailsVC: BaseViewController {
         
     }
     
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        view.setTemplateWithSubviews(true, viewBackgroundColor: .systemBackground)
+        self.viewStatus.isHidden = true
+    }
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     func SetValue() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.view.setTemplateWithSubviews(false)
+            self.viewStatus.isHidden = false
+        }
         
         viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
       
@@ -339,6 +361,15 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         cell.selectionStyle = .none
         return cell
     }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
+    }
+    
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.isLoading = false
+        }
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -377,11 +408,11 @@ extension LoadDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         }
         return UICollectionViewCell()
     }
-   
-    
-    
-   
-   
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+            self.isLoading = false
+        }
+    }
 }
 enum bidStatus {
     case BookNow

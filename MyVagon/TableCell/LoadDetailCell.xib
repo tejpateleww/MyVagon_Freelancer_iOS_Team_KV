@@ -132,29 +132,41 @@
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nI-4nj">
                                                                         <rect key="frame" x="350" y="5" width="60" height="32"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="10" y="5" width="40" height="22"/>
-                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                                <userDefinedRuntimeAttributes>
-                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                        <real key="value" value="12"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                    </userDefinedRuntimeAttribute>
-                                                                                </userDefinedRuntimeAttributes>
-                                                                            </label>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-wf-exQ">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="10" y="5" width="40" height="22"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                <real key="value" value="12"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="bottom" secondItem="gl6-Lu-dG0" secondAttribute="bottom" constant="5" id="Igm-iD-AOs"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="gl6-Lu-dG0" secondAttribute="trailing" constant="10" id="Pab-ZT-7IG"/>
+                                                                                    <constraint firstItem="gl6-Lu-dG0" firstAttribute="leading" secondItem="M5c-wf-exQ" secondAttribute="leading" constant="10" id="dyq-qc-49N"/>
+                                                                                    <constraint firstItem="gl6-Lu-dG0" firstAttribute="top" secondItem="M5c-wf-exQ" secondAttribute="top" constant="5" id="pNI-PR-ZgT"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="ThemeDarkYelloColor"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="bottom" secondItem="gl6-Lu-dG0" secondAttribute="bottom" constant="5" id="2A4-RA-XKn"/>
                                                                             <constraint firstAttribute="width" constant="60" id="AXC-9H-P4M"/>
                                                                             <constraint firstAttribute="height" constant="32" id="VsI-Qu-GIc"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="gl6-Lu-dG0" secondAttribute="trailing" constant="10" id="W0a-Em-v5d"/>
-                                                                            <constraint firstItem="gl6-Lu-dG0" firstAttribute="top" secondItem="Mxp-nI-4nj" secondAttribute="top" constant="5" id="rfv-qu-PSa"/>
-                                                                            <constraint firstItem="gl6-Lu-dG0" firstAttribute="leading" secondItem="Mxp-nI-4nj" secondAttribute="leading" constant="10" id="w7q-kM-bHE"/>
+                                                                            <constraint firstItem="M5c-wf-exQ" firstAttribute="leading" secondItem="Mxp-nI-4nj" secondAttribute="leading" id="dUk-an-QVm"/>
+                                                                            <constraint firstItem="M5c-wf-exQ" firstAttribute="top" secondItem="Mxp-nI-4nj" secondAttribute="top" id="gQ0-oO-Iml"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="M5c-wf-exQ" secondAttribute="trailing" id="oYU-5I-Dm9"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="M5c-wf-exQ" secondAttribute="bottom" id="sYr-OT-RHE"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -317,7 +329,8 @@
                 <outlet property="lblName" destination="dAu-1V-uGE" id="AM5-Zp-csE"/>
                 <outlet property="lblPickupDropOff" destination="gl6-Lu-dG0" id="fA7-Ia-YAd"/>
                 <outlet property="viewContents" destination="WPy-DH-QK3" id="Gyz-hN-3Xx"/>
-                <outlet property="viewStatus" destination="Mxp-nI-4nj" id="UzK-Az-3t9"/>
+                <outlet property="viewStatus" destination="M5c-wf-exQ" id="dJs-vA-GHU"/>
+                <outlet property="vwShimmer" destination="Mxp-nI-4nj" id="slg-Le-l1e"/>
             </connections>
             <point key="canvasLocation" x="5.7971014492753632" y="63.616071428571423"/>
         </tableViewCell>
@@ -327,9 +340,6 @@
         <image name="ic_tree" width="18.5" height="21.5"/>
         <namedColor name="ThemeBlackColor">
             <color red="0.062745098039215685" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="ThemeDarkYelloColor">
-            <color red="0.85882352941176465" green="0.6470588235294118" blue="0.22352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ThemeGrayColor">
             <color red="0.60392156862745094" green="0.60392156862745094" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
