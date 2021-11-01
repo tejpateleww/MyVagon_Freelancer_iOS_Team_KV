@@ -1038,6 +1038,14 @@ extension String {
 
         return formatter.string(from: number)!
     }
+    public func removeFormatAmount() -> Double {
+               let formatter = NumberFormatter()
+               formatter.locale = Locale.current
+               formatter.numberStyle = .currency
+               formatter.currencySymbol = Currency
+               formatter.decimalSeparator = Locale.current.groupingSeparator
+               return formatter.number(from: self)?.doubleValue ?? 0.00
+           }
 }
 
 class ThemeViewRounded : UIView {

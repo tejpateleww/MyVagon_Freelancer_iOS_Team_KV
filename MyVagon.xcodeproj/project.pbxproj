@@ -79,9 +79,11 @@
 		186E382726C14A9500984D40 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382626C14A9500984D40 /* SignUpViewModel.swift */; };
 		186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382926C14B9400984D40 /* VerifyResModel.swift */; };
 		186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186E382A26C14B9400984D40 /* VerifyDatum.swift */; };
+		1871010627281A1800878AB8 /* SortPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871010527281A1800878AB8 /* SortPopupViewController.swift */; };
 		18793B0A2702E6B700022D32 /* TermsConditionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18793B092702E6B700022D32 /* TermsConditionVC.swift */; };
 		187A241426E8C189009C19B6 /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187A241326E8C189009C19B6 /* LicenseViewController.swift */; };
 		1885DB44270EC1B50020846E /* ProfileUpdateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1885DB43270EC1B50020846E /* ProfileUpdateViewModel.swift */; };
+		18865D502727D1680061C444 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18865D4F2727D1680061C444 /* SearchViewModel.swift */; };
 		189B2314271D488000431D94 /* Dispatcher.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 189B2313271D488000431D94 /* Dispatcher.storyboard */; };
 		189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B2318271D48AE00431D94 /* DriversViewController.swift */; };
 		189B2321271D4FE600431D94 /* ChangePermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189B2320271D4FE600431D94 /* ChangePermissionViewController.swift */; };
@@ -368,9 +370,11 @@
 		186E382626C14A9500984D40 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		186E382926C14B9400984D40 /* VerifyResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyResModel.swift; sourceTree = "<group>"; };
 		186E382A26C14B9400984D40 /* VerifyDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyDatum.swift; sourceTree = "<group>"; };
+		1871010527281A1800878AB8 /* SortPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortPopupViewController.swift; sourceTree = "<group>"; };
 		18793B092702E6B700022D32 /* TermsConditionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsConditionVC.swift; sourceTree = "<group>"; };
 		187A241326E8C189009C19B6 /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		1885DB43270EC1B50020846E /* ProfileUpdateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUpdateViewModel.swift; sourceTree = "<group>"; };
+		18865D4F2727D1680061C444 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		189B2313271D488000431D94 /* Dispatcher.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Dispatcher.storyboard; sourceTree = "<group>"; };
 		189B2318271D48AE00431D94 /* DriversViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriversViewController.swift; sourceTree = "<group>"; };
 		189B2320271D4FE600431D94 /* ChangePermissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePermissionViewController.swift; sourceTree = "<group>"; };
@@ -696,6 +700,7 @@
 				18CC3477270D691D0063E33B /* MyLoadsViewModel.swift */,
 				1885DB43270EC1B50020846E /* ProfileUpdateViewModel.swift */,
 				189B2344271D558100431D94 /* DriverListViewModel.swift */,
+				18865D4F2727D1680061C444 /* SearchViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1281,6 +1286,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1871010527281A1800878AB8 /* SortPopupViewController.swift */,
 				189B2318271D48AE00431D94 /* DriversViewController.swift */,
 				189B2320271D4FE600431D94 /* ChangePermissionViewController.swift */,
 				1858EA9726E64821008E04A7 /* ReviewShipperVC.swift */,
@@ -1820,6 +1826,7 @@
 				1806E53A26FCBDE4001F7888 /* PackageListingResModel.swift in Sources */,
 				189FB65E26B96BF000BBD5A0 /* URLSessionRequestManager.swift in Sources */,
 				18CC3476270D67E00063E33B /* MyLoadsProductId.swift in Sources */,
+				1871010627281A1800878AB8 /* SortPopupViewController.swift in Sources */,
 				184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */,
 				18F15E3A2704201F003A1D16 /* LoginWeightUnit.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
@@ -1904,6 +1911,7 @@
 				18CC3478270D691D0063E33B /* MyLoadsViewModel.swift in Sources */,
 				18ADA34E26F31D2E00F12258 /* HomeViewModel.swift in Sources */,
 				18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */,
+				18865D502727D1680061C444 /* SearchViewModel.swift in Sources */,
 				1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */,
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 				18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */,

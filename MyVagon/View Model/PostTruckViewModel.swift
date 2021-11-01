@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FittedSheets
 class PostTruckViewModel {
     weak var postTruckViewController : PostTruckViewController? = nil
     
@@ -18,9 +19,7 @@ class PostTruckViewModel {
             Utilities.HideLoaderButtonInButton(Button: self.postTruckViewController?.BtnPostATruck ?? themeButton(), vc: self.postTruckViewController ?? UIViewController())
             
             if status {
-               
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: CommonAcceptRejectPopupVC.storyboardID) as! CommonAcceptRejectPopupVC
-              
                 let DescriptionAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(16)] as [NSAttributedString.Key : Any]
                 
                 let AttributedStringFinal = "You have ".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 18)
@@ -43,12 +42,13 @@ class PostTruckViewModel {
                 controller.RightbtnClosour = {
                     appDel.NavigateToHome()
                 }
-                self.postTruckViewController?.present(controller, animated: false, completion:  {
-
-                    
-                    controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-
-                })
+               
+                let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(250))])
+                self.postTruckViewController?.present(sheetController, animated: true, completion: nil)
+                
+               
+              
+               
                 
                 // Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                // appDel.NavigateToHome()

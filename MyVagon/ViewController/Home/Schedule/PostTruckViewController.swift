@@ -115,7 +115,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     func OpenPlacePicker() {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
-        
+        autocompleteController.autocompleteFilter?.type = .city
         present(autocompleteController, animated: true, completion: nil)
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

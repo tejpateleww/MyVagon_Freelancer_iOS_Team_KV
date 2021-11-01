@@ -53,6 +53,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (~> 1.2)
+  - FittedSheets (2.0.13)
   - FSCalendar (2.8.2)
   - GoogleAppMeasurement (8.2.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.2.0)
@@ -128,6 +129,7 @@ DEPENDENCIES:
   - DropDown
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - FittedSheets (~> 2.0.0)
   - FSCalendar
   - GooglePlacePicker
   - GrowingTextView (= 0.7.2)
@@ -151,6 +153,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FittedSheets
     - FSCalendar
     - GoogleAppMeasurement
     - GoogleDataTransport
@@ -180,6 +183,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 61384f54989065b15c36b5922b65112e86811d3c
   FirebaseCrashlytics: 935dbdb043a286ca92a22d15e5780802403ea0ea
   FirebaseInstallations: 9394ea09e242bf0816e95ac30e56a9214cc86ced
+  FittedSheets: f2d9b33bb894124367d1cb39c452702c4bb6e334
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleAppMeasurement: b52eafc9dff542d580700e708216568bd2fbf168
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
@@ -198,6 +202,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 082ed63613a49fa8e749cd6000bb0a8b9bbc736f
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 6a79e40b6b0bc2438144829ef4e53ee6af42688c
+PODFILE CHECKSUM: 97295518efcdfb2be3696f18de2acffb022e725d
 
 COCOAPODS: 1.11.2

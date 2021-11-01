@@ -163,6 +163,13 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: -SearchShipemnet
+    class func SearchShipment(reqModel: SearchLoadReqModel, completion: @escaping (Bool,String,HomeShipmentSearchResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.SearchLoads.rawValue, requestModel: reqModel, responseModel: HomeShipmentSearchResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     //MARK: -BidPost
     class func BidPost(reqModel: BidReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.BidPost.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in

@@ -7,7 +7,7 @@
 
 import UIKit
 import FSCalendar
-
+import FittedSheets
 
 class HomeViewController: BaseViewController, UITextFieldDelegate {
 
@@ -49,8 +49,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
         
         isLoading = true
         let latStr = String(21.298100)
@@ -106,18 +104,37 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool   {
         if textField == TextFieldSearch {
+            
             let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: SearchOptionViewController.storyboardID) as! SearchOptionViewController
-            controller.hidesBottomBarWhenPushed = true
+                        controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
+            
+//
+//
             return false
         }
         return true
         
     }
     
+//    {
+//
+//
+//    }
+    
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
+    
+    @IBAction func btnSortClick(_ sender: themeButton) {
+        let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
+                    controller.hidesBottomBarWhenPushed = true
+        
+        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((controller.arrayForSort.count * 50) + 110))])
+                self.present(sheetController, animated: true, completion: nil)
+        
+        
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------

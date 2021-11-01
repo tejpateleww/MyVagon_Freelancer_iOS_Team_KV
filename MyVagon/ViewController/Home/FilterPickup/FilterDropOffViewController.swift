@@ -6,7 +6,8 @@
 //
 
 import UIKit
-
+import GooglePlaces
+import CoreLocation
 class SubModelForDropOffLocation : NSObject {
     var title:String!
     var uptoKM:String!
@@ -42,7 +43,7 @@ class DropOffLocationCell : UITableViewCell {
 }
 
 
-class FilterDropOffViewController: UIViewController {
+class FilterDropOffViewController: UIViewController,UITextFieldDelegate {
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
@@ -53,12 +54,16 @@ class FilterDropOffViewController: UIViewController {
     var ArrayForDropOffLocation : [ModelForDropOffLocation] = []
   
     var customTabBarController: CustomTabBarVC?
+    var SelectedLocationClosour : ((CLLocationCoordinate2D,String)->())?
+    var selectedLocation : (CLLocationCoordinate2D,String)?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
     @IBOutlet weak var MainView: UIView!
     @IBOutlet weak var TblLocationHeight: NSLayoutConstraint!
     @IBOutlet weak var TblLocation: UITableView!
+    
+    @IBOutlet weak var textFieldSearchLocation: themeTextfield!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -102,6 +107,13 @@ class FilterDropOffViewController: UIViewController {
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == textFieldSearchLocation {
+            OpenPlacePicker()
+            return false
+        } 
+        return true
+    }
     
     func SetValue() {
         if isForPickUp {
@@ -111,7 +123,15 @@ class FilterDropOffViewController: UIViewController {
         }
         TblLocation.reloadData()
     }
-    
+    func OpenPlacePicker() {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        
+        let filter = GMSAutocompleteFilter()
+        filter.type = .city
+        autocompleteController.autocompleteFilter = filter
+        present(autocompleteController, animated: true, completion: nil)
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -124,7 +144,33 @@ class FilterDropOffViewController: UIViewController {
     
     @IBAction func BtnSubmitAction(_ sender: themeButton) {
         
-        self.dismiss(animated: true, completion: nil)
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+            
+            if let click = self.SelectedLocationClosour {
+                click(selectedLocation!.0, selectedLocation!.1)
+            }
+            self.dismiss(animated: true, completion: nil)
+            
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
+        
+      
+       
+    }
+    
+    // ----------------------------------------------------
+    // MARK: - --------- Validation ---------
+    // ----------------------------------------------------
+    func Validate() -> (Bool,String) {
+        
+          if textFieldSearchLocation.text == "" {
+              return (false,(isForPickUp == true) ? "Please select pickup location" : "Please select dropoff location")
+        }
+        
+       
+        return (true,"")
     }
     
     // ----------------------------------------------------
@@ -202,4 +248,29 @@ extension FilterDropOffViewController : UITableViewDelegate,UITableViewDataSourc
         }
     }
     
+}
+extension FilterDropOffViewController: GMSAutocompleteViewControllerDelegate{
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        if let vc = UIApplication.topViewController() {
+            vc.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        selectedLocation = (place.coordinate,place.formattedAddress ?? "")
+        let tempAddres:String = "\(place.formattedAddress ?? "")"
+         self.textFieldSearchLocation.text = tempAddres
+        
+        if let vc = UIApplication.topViewController() {
+            vc.dismiss(animated: true, completion: nil)
+        }
+//      dismiss(animated: true, completion: nil)
+    }
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: \(error)")
+        if let vc = UIApplication.topViewController() {
+            vc.dismiss(animated: true, completion: nil)
+        }
+    }
 }

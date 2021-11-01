@@ -6,6 +6,8 @@ target 'MyVagon' do
   use_frameworks!
 
   # Pods for MyVagon
+pod 'FittedSheets', '~>2.0.0'
+
 pod 'DropDown'
 pod 'Firebase/Crashlytics'
 pod 'MHLoadingButton'
@@ -24,6 +26,8 @@ pod 'Firebase/Analytics'
   pod 'Cosmos', '~> 23.0'
   pod 'Charts'
 pod 'SwiftMessages'
+
+
 
 
   target 'MyVagonTests' do

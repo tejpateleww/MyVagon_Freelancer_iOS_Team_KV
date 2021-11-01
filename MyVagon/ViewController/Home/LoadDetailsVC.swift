@@ -27,7 +27,7 @@ class LoadDetailsVC: BaseViewController {
     // ----------------------------------------------------
     var LoadDetails : HomeBidsDatum?
     var arrTypes:[(HomeTruckTypeCategory,Bool)] = []
-    var isLoading = true {
+    var isLoading = false {
         didSet {
             tblMainData.isUserInteractionEnabled = !isLoading
             tblMainData.reloadData()

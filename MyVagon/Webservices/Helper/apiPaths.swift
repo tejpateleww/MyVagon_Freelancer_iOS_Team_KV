@@ -78,10 +78,12 @@ enum ApiKey: String {
     
     
     case PackageListing                         = "package/listing"
-    case ShipmentList                          = "shipment/search"
+    case ShipmentList                           = "shipment/search"
+    case SearchLoads                            = "search-loads"
+    
     case MyLoades                               = "booking/my_loads"
     
-    case BidPost                               = "driver/post/bid"
+    case BidPost                                = "driver/post/bid"
     
     case ManageDriver                           = "dispature/manage-drivers"
     case ChangePermission                       = "dispature/edit-permission"

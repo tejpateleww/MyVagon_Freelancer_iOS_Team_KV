@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -172,6 +172,9 @@
                                                                         <color key="value" name="ThemeBlackColor"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <outlet property="delegate" destination="UaN-2f-6ll" id="KDD-b1-W8y"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="0.56999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
@@ -201,7 +204,7 @@
                                                                 </constraints>
                                                                 <prototypes>
                                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropOffLocationCell" id="7Tb-CT-LoK" customClass="DropOffLocationCell" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="24.5" width="374" height="66"/>
+                                                                        <rect key="frame" x="0.0" y="44.5" width="374" height="66"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Tb-CT-LoK" id="vlE-Bu-Kmo">
                                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
@@ -406,6 +409,7 @@
                         <outlet property="MainView" destination="i0Q-0t-ppw" id="niy-Gn-tBl"/>
                         <outlet property="TblLocation" destination="KqG-p8-j5W" id="qKt-wx-Ik0"/>
                         <outlet property="TblLocationHeight" destination="3by-ZA-5iA" id="sh5-Ky-l3f"/>
+                        <outlet property="textFieldSearchLocation" destination="fuc-sn-qOj" id="Omu-Zq-gR9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J1e-fc-JcV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1213,9 +1217,14 @@
                     <connections>
                         <outlet property="LblDropOffLocation" destination="Zfk-91-ewZ" id="yDd-Gg-p35"/>
                         <outlet property="LblPickupLocation" destination="zXl-QD-j1f" id="jCE-hN-GVZ"/>
+                        <outlet property="btnSearchLoad" destination="8Dw-WB-AMy" id="Yko-1Q-Bb7"/>
                         <outlet property="lblSelectedDate" destination="6Qy-26-Jkj" id="mCq-OC-URw"/>
+                        <outlet property="textFieldMaxPrice" destination="omy-ON-e6X" id="ocG-Li-maY"/>
                         <outlet property="textFieldMaxUnit" destination="BVe-bB-Lc2" id="moj-lt-Yg9"/>
+                        <outlet property="textFieldMaxWeight" destination="69E-Vm-Cnv" id="IlZ-mS-1sx"/>
+                        <outlet property="textFieldMinPrice" destination="6hK-iL-tvD" id="nfZ-zZ-jqo"/>
                         <outlet property="textFieldMinUnit" destination="6bf-bR-Fuv" id="MSq-lL-LnD"/>
+                        <outlet property="textFieldMinWeight" destination="Xa3-WK-LR4" id="sWZ-4b-EeJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Ig-t2-PTd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

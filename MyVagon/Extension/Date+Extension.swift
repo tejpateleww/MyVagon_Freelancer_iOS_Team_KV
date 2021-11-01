@@ -61,3 +61,14 @@ extension UIDatePicker {
         return Date(timeIntervalSinceReferenceDate: timeRoundedToInterval)
     }
 }
+extension Date {
+    func convertToString(format:String) -> String {
+        let formatter1 = DateFormatter()
+         formatter1.dateStyle = .medium
+         formatter1.dateFormat = format
+         
+         let DateinString = formatter1.string(from: self)
+        return DateinString
+    }
+    
+}
