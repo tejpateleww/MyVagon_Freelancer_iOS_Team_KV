@@ -231,7 +231,7 @@ extension MyProfileViewController : UICollectionViewDelegate,UICollectionViewDat
             cell.lblTypes.text = arrTypes[indexPath.row].0.name
             cell.BGView.layer.cornerRadius = 17
             if arrTypes[indexPath.row].1 {
-                print("Here come with index :: \(indexPath.row)")
+             
                 cell.BGView.layer.borderWidth = 0
                 cell.BGView.backgroundColor = UIColor.appColor(.themeColorForButton).withAlphaComponent(0.5)
                 cell.BGView.layer.borderColor = UIColor.appColor(.themeColorForButton).cgColor

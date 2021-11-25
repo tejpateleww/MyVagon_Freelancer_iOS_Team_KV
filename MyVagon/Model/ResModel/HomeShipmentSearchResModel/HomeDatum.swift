@@ -16,9 +16,15 @@ struct HomeDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bidsData = try values?.decodeIfPresent([HomeBidsDatum].self, forKey: .bidsData)
-                date = try values?.decodeIfPresent(String.self, forKey: .date)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bidsData = try? values.decodeIfPresent([HomeBidsDatum].self, forKey: .bidsData)
+                date = try? values.decodeIfPresent(String.self, forKey: .date)
         }
+    
+    
+    init(Date:String,BidsData:[HomeBidsDatum]) {
+        self.date = Date
+        self.bidsData = BidsData
+    }
 
 }

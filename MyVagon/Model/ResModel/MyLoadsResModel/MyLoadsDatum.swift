@@ -16,9 +16,9 @@ struct MyLoadsDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-            loadsData = try values?.decodeIfPresent([MyLoadsLoadsDatum].self, forKey: .loadsData)
-                date = try values?.decodeIfPresent(String.self, forKey: .date)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+            loadsData = try? values.decodeIfPresent([MyLoadsLoadsDatum].self, forKey: .loadsData)
+                date = try? values.decodeIfPresent(String.self, forKey: .date)
         }
 
 }

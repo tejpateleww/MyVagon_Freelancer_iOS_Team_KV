@@ -79,7 +79,7 @@ enum ApiKey: String {
     
     case PackageListing                         = "package/listing"
     case ShipmentList                           = "shipment/search"
-    case SearchLoads                            = "search-loads"
+    case SearchLoads                            = "search-loads-new"
     
     case MyLoades                               = "booking/my_loads"
     

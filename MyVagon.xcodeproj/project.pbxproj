@@ -202,6 +202,10 @@
 		18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F4013026CBEAE4002C1ABB /* MyProfileViewController.swift */; };
 		75E4458503A10F4E5C9F3360 /* Pods_MyVagon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */; };
 		8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8455BE8026AE96FB00089B1F /* Auth.storyboard */; };
+		84652F7E274F58330091B40B /* BidRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84652F7C274F58330091B40B /* BidRequestCell.swift */; };
+		84652F7F274F58330091B40B /* BidRequestCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84652F7D274F58330091B40B /* BidRequestCell.xib */; };
+		84652F91274F98EF0091B40B /* HomeNewResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84652F87274F98EF0091B40B /* HomeNewResModel.swift */; };
+		847F98A3274E46F100929825 /* ViewPostTruckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F98A2274E46F100929825 /* ViewPostTruckViewController.swift */; };
 		84AF91B426AECAFE004BB88D /* SignupContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */; };
 		84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */; };
 		84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */; };
@@ -496,6 +500,10 @@
 		60D500884A5D50D54092EC18 /* Pods_MyVagon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVagon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		696FEDA8B5240A2540F74C54 /* Pods-MyVagon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.release.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.release.xcconfig"; sourceTree = "<group>"; };
 		8455BE8026AE96FB00089B1F /* Auth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
+		84652F7C274F58330091B40B /* BidRequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidRequestCell.swift; sourceTree = "<group>"; };
+		84652F7D274F58330091B40B /* BidRequestCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BidRequestCell.xib; sourceTree = "<group>"; };
+		84652F87274F98EF0091B40B /* HomeNewResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeNewResModel.swift; sourceTree = "<group>"; };
+		847F98A2274E46F100929825 /* ViewPostTruckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewPostTruckViewController.swift; sourceTree = "<group>"; };
 		84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupContainerVC.swift; sourceTree = "<group>"; };
 		84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerDriverSignupVC3.swift; sourceTree = "<group>"; };
 		84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContainerVC.swift; sourceTree = "<group>"; };
@@ -904,6 +912,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				84652F80274F98EF0091B40B /* HomeNewResModel */,
 				189B2349271D6AD400431D94 /* DriverPermissionChangeResModel */,
 				189B2325271D544D00431D94 /* DriverListResModel */,
 				18CC3460270D67E00063E33B /* MyLoadsResModel */,
@@ -943,6 +952,8 @@
 				18A34F1826CD1EE000F252B6 /* NoBookingTblCell.swift */,
 				18A34F1626CD1EE000F252B6 /* NoBookingTblCell.xib */,
 				18A34F1726CD1EE000F252B6 /* ScheduleViewController.swift */,
+				84652F7C274F58330091B40B /* BidRequestCell.swift */,
+				84652F7D274F58330091B40B /* BidRequestCell.xib */,
 			);
 			path = ViewAllLoads;
 			sourceTree = "<group>";
@@ -1127,6 +1138,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		84652F80274F98EF0091B40B /* HomeNewResModel */ = {
+			isa = PBXGroup;
+			children = (
+				84652F87274F98EF0091B40B /* HomeNewResModel.swift */,
+			);
+			path = HomeNewResModel;
+			sourceTree = "<group>";
+		};
 		84AF91B226AECACF004BB88D /* MainSignupVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -1229,6 +1248,7 @@
 				A1519CD526A00740001738B9 /* Images */,
 				A1519C9926A00305001738B9 /* Info.plist */,
 				189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */,
+				847F98A2274E46F100929825 /* ViewPostTruckViewController.swift */,
 			);
 			path = MyVagon;
 			sourceTree = "<group>";
@@ -1372,8 +1392,8 @@
 				A1519C8526A00304001738B9 /* Frameworks */,
 				A1519C8626A00304001738B9 /* Resources */,
 				FFCEFE069C1D41158F78704F /* [CP] Embed Pods Frameworks */,
-				50DECE7126BC54447E233581 /* [CP] Copy Pods Resources */,
 				18E36CF726D626C700859898 /* ShellScript */,
+				E6228596033AC7832D74443E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1412,7 +1432,7 @@
 				A1519CA626A00306001738B9 /* Frameworks */,
 				A1519CA726A00306001738B9 /* Resources */,
 				252D0E12EBFD683050405555 /* [CP] Embed Pods Frameworks */,
-				723D7E67EE7A8190E2ED3581 /* [CP] Copy Pods Resources */,
+				68B06FA24F63F65D18D26356 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1484,6 +1504,7 @@
 				189B2314271D488000431D94 /* Dispatcher.storyboard in Resources */,
 				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				84652F7F274F58330091B40B /* BidRequestCell.xib in Resources */,
 				18E1A62526D5171B00FD9A93 /* GoogleService-Info.plist in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
@@ -1572,23 +1593,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		50DECE7126BC54447E233581 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		531B4F51018E07D20B38C0C9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1633,7 +1637,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		723D7E67EE7A8190E2ED3581 /* [CP] Copy Pods Resources */ = {
+		68B06FA24F63F65D18D26356 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1648,6 +1652,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon-MyVagonUITests/Pods-MyVagon-MyVagonUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6228596033AC7832D74443E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVagon/Pods-MyVagon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F393C7EB1973BD8876F913FE /* [CP] Check Pods Manifest.lock */ = {
@@ -1699,6 +1720,7 @@
 				18F15E3C2704201F003A1D16 /* LoginTruckFeature.swift in Sources */,
 				18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
+				847F98A3274E46F100929825 /* ViewPostTruckViewController.swift in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */,
 				1808176326E7802500D1C717 /* LoadDetailsVC.swift in Sources */,
@@ -1789,6 +1811,7 @@
 				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
 				186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */,
 				189B233D271D544D00431D94 /* DriverListLoadCapacityUnit.swift in Sources */,
+				84652F91274F98EF0091B40B /* HomeNewResModel.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
 				1806E53926FCBDE4001F7888 /* PackageDatum.swift in Sources */,
@@ -1805,6 +1828,7 @@
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
 				1808175826E742EA00D1C717 /* ShipperDetailsCell.swift in Sources */,
+				84652F7E274F58330091B40B /* BidRequestCell.swift in Sources */,
 				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,
 				18CC346F270D67E00063E33B /* MyLoadsTruckTypeCategory.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,

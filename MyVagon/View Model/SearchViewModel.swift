@@ -18,7 +18,7 @@ class SearchViewModel {
             
             if status {
                 self.searchOptionViewController?.navigationController?.popViewController(animated: true)
-                self.homeViewController?.arrHomeData = response?.data
+               // self.homeViewController?.arrHomeData = response?.data
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                     self.homeViewController?.isLoading = false
                 }

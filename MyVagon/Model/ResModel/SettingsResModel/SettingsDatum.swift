@@ -34,18 +34,18 @@ struct SettingsDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bidAccepted = try values?.decodeIfPresent(String.self, forKey: .bidAccepted)
-                bidReceived = try values?.decodeIfPresent(String.self, forKey: .bidReceived)
-                completeTripReminder = try values?.decodeIfPresent(String.self, forKey: .completeTripReminder)
-                loadAssignByDispatcher = try values?.decodeIfPresent(String.self, forKey: .loadAssignByDispatcher)
-                matchShippmentNearDelivery = try values?.decodeIfPresent(String.self, forKey: .matchShippmentNearDelivery)
-                matchShippmentNearYou = try values?.decodeIfPresent(String.self, forKey: .matchShippmentNearYou)
-                message = try values?.decodeIfPresent(String.self, forKey: .message)
-                notification = try values?.decodeIfPresent(String.self, forKey: .notification)
-                pdoRemider = try values?.decodeIfPresent(String.self, forKey: .pdoRemider)
-                rateShipper = try values?.decodeIfPresent(String.self, forKey: .rateShipper)
-                startTripReminder = try values?.decodeIfPresent(String.self, forKey: .startTripReminder)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bidAccepted = try? values.decodeIfPresent(String.self, forKey: .bidAccepted)
+                bidReceived = try? values.decodeIfPresent(String.self, forKey: .bidReceived)
+                completeTripReminder = try? values.decodeIfPresent(String.self, forKey: .completeTripReminder)
+                loadAssignByDispatcher = try? values.decodeIfPresent(String.self, forKey: .loadAssignByDispatcher)
+                matchShippmentNearDelivery = try? values.decodeIfPresent(String.self, forKey: .matchShippmentNearDelivery)
+                matchShippmentNearYou = try? values.decodeIfPresent(String.self, forKey: .matchShippmentNearYou)
+                message = try? values.decodeIfPresent(String.self, forKey: .message)
+                notification = try? values.decodeIfPresent(String.self, forKey: .notification)
+                pdoRemider = try? values.decodeIfPresent(String.self, forKey: .pdoRemider)
+                rateShipper = try? values.decodeIfPresent(String.self, forKey: .rateShipper)
+                startTripReminder = try? values.decodeIfPresent(String.self, forKey: .startTripReminder)
         }
 
 }

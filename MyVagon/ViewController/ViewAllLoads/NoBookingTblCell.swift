@@ -8,6 +8,8 @@
 import UIKit
 
 class NoBookingTblCell: UITableViewCell {
+    
+    var isPostTruct : (() -> ())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,5 +21,10 @@ class NoBookingTblCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    @IBAction func btnPostClick(_ sender: themeButton) {
+        if let click = self.isPostTruct{
+            click()
+        }
+        
+    }
 }

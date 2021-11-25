@@ -40,7 +40,7 @@ class ScheduleViewController: BaseViewController {
     
     @IBOutlet weak var tblLocations: UITableView!
     @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
-    @IBOutlet weak var calender: FSCalendar!
+        @IBOutlet weak var calender: FSCalendar!
     @IBOutlet weak var collectionOfHistory: UICollectionView!
     
     // ----------------------------------------------------
@@ -84,9 +84,17 @@ class ScheduleViewController: BaseViewController {
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages:  [NavItemsRight.option.value], isTranslucent: true, ShowShadow: false)
         
        
-        calender.accessibilityIdentifier = "calender"
-        calender.delegate = self
-        calender.dataSource = self
+//        calender.accessibilityIdentifier = "calender"
+//        calender.delegate = self
+//        calender.dataSource = self
+        
+//        let cell =  tblLocations.dequeueReusableCell(withIdentifier: "NoBookingTblCell") as! NoBookingTblCell
+//        cell.isPostTruct = {
+//            let controller = PostTruckViewController.instantiate(fromAppStoryboard: .Home)
+//            controller.hidesBottomBarWhenPushed = true
+//            self.navigationController?.pushViewController(controller, animated: true)
+//        }
+//        tblLocations.tableHeaderView = cell
         
 //        btnOptionClosour = { [self] in
 //
@@ -125,7 +133,7 @@ class ScheduleViewController: BaseViewController {
     }
     
     @objc func getTblHeight(_ notification: NSNotification) {
-            print(notification.userInfo ?? "")
+         
             if let dict = notification.userInfo as NSDictionary? {
                 if let height = dict["TblHeight"] as? CGFloat{
                     
@@ -272,7 +280,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        print(tblLocations.frame.height)
+       
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.postAvailibility ?? 0 == 1 {
             if indexPath.section == 1 {
                 return 100
@@ -321,9 +329,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                let controller = PostTruckViewController.instantiate(fromAppStoryboard: .Home)
-                controller.hidesBottomBarWhenPushed = true
-                self.navigationController?.pushViewController(controller, animated: true)
+                
             }
         }
         

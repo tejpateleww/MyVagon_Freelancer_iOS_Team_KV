@@ -42,22 +42,22 @@ struct PostTruckDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bidAmount = try values?.decodeIfPresent(String.self, forKey: .bidAmount)
-                count = try values?.decodeIfPresent(Int.self, forKey: .count)
-                createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
-                date = try values?.decodeIfPresent(String.self, forKey: .date)
-                driverId = try values?.decodeIfPresent(String.self, forKey: .driverId)
-                endLat = try values?.decodeIfPresent(String.self, forKey: .endLat)
-                endLng = try values?.decodeIfPresent(String.self, forKey: .endLng)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                isBid = try values?.decodeIfPresent(String.self, forKey: .isBid)
-                matches = try values?.decodeIfPresent(String.self, forKey: .matches)
-                startLat = try values?.decodeIfPresent(String.self, forKey: .startLat)
-                startLng = try values?.decodeIfPresent(String.self, forKey: .startLng)
-                time = try values?.decodeIfPresent(String.self, forKey: .time)
-                truckTypeId = try values?.decodeIfPresent(String.self, forKey: .truckTypeId)
-                updatedAt = try values?.decodeIfPresent(String.self, forKey: .updatedAt)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bidAmount = try? values.decodeIfPresent(String.self, forKey: .bidAmount)
+                count = try? values.decodeIfPresent(Int.self, forKey: .count)
+                createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
+                date = try? values.decodeIfPresent(String.self, forKey: .date)
+                driverId = try? values.decodeIfPresent(String.self, forKey: .driverId)
+                endLat = try? values.decodeIfPresent(String.self, forKey: .endLat)
+                endLng = try? values.decodeIfPresent(String.self, forKey: .endLng)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                isBid = try? values.decodeIfPresent(String.self, forKey: .isBid)
+                matches = try? values.decodeIfPresent(String.self, forKey: .matches)
+                startLat = try? values.decodeIfPresent(String.self, forKey: .startLat)
+                startLng = try? values.decodeIfPresent(String.self, forKey: .startLng)
+                time = try? values.decodeIfPresent(String.self, forKey: .time)
+                truckTypeId = try? values.decodeIfPresent(String.self, forKey: .truckTypeId)
+                updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
         }
 
 }

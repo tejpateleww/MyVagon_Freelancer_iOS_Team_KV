@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let Currency = "€ "
-
+var PageLimit = 2
 let keywindow = UIApplication.shared.keyWindow
 
 let appDel = UIApplication.shared.delegate as! AppDelegate

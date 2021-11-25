@@ -7,7 +7,7 @@
 
 import Foundation
 class PostTruckReqModel : Encodable {
-    var truck_type_id,driver_id,date,time,start_lat,start_lng,end_lat,end_lng,is_bid,bid_amount : String?
+    var truck_type_id,driver_id,date,time,start_lat,start_lng,end_lat,end_lng,is_bid,bid_amount,start_location,end_location : String?
 
     enum CodingKeys: String, CodingKey {
         case truck_type_id = "truck_type_id"
@@ -20,6 +20,8 @@ class PostTruckReqModel : Encodable {
         case end_lng = "end_lng"
         case is_bid = "is_bid"
         case bid_amount = "bid_amount"
+        case start_location = "start_address"
+        case end_location = "end_address"
        
     }
     

@@ -34,18 +34,18 @@ struct DriverListPermission : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                allowBid = try values?.decodeIfPresent(Int.self, forKey: .allowBid)
-                changePassword = try values?.decodeIfPresent(Int.self, forKey: .changePassword)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                myLoads = try values?.decodeIfPresent(Int.self, forKey: .myLoads)
-                myProfile = try values?.decodeIfPresent(Int.self, forKey: .myProfile)
-                postAvailibility = try values?.decodeIfPresent(Int.self, forKey: .postAvailibility)
-                searchLoads = try values?.decodeIfPresent(Int.self, forKey: .searchLoads)
-                setting = try values?.decodeIfPresent(Int.self, forKey: .setting)
-                statistics = try values?.decodeIfPresent(Int.self, forKey: .statistics)
-                userId = try values?.decodeIfPresent(Int.self, forKey: .userId)
-                viewPrice = try values?.decodeIfPresent(Int.self, forKey: .viewPrice)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                allowBid = try? values.decodeIfPresent(Int.self, forKey: .allowBid)
+                changePassword = try? values.decodeIfPresent(Int.self, forKey: .changePassword)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                myLoads = try? values.decodeIfPresent(Int.self, forKey: .myLoads)
+                myProfile = try? values.decodeIfPresent(Int.self, forKey: .myProfile)
+                postAvailibility = try? values.decodeIfPresent(Int.self, forKey: .postAvailibility)
+                searchLoads = try? values.decodeIfPresent(Int.self, forKey: .searchLoads)
+                setting = try? values.decodeIfPresent(Int.self, forKey: .setting)
+                statistics = try? values.decodeIfPresent(Int.self, forKey: .statistics)
+                userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
+                viewPrice = try? values.decodeIfPresent(Int.self, forKey: .viewPrice)
         }
 
 }

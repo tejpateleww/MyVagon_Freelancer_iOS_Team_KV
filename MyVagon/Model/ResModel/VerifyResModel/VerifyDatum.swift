@@ -14,8 +14,8 @@ struct VerifyDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                oTP = try values?.decodeIfPresent(Int.self, forKey: .oTP)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                oTP = try? values.decodeIfPresent(Int.self, forKey: .oTP)
         }
 
 }

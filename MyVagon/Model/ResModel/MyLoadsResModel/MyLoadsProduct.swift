@@ -38,20 +38,20 @@ struct MyLoadsProduct : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bookingId = try values?.decodeIfPresent(Int.self, forKey: .bookingId)
-                createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                isFragile = try values?.decodeIfPresent(Int.self, forKey: .isFragile)
-                isSensetive = try values?.decodeIfPresent(Int.self, forKey: .isSensetive)
-                locationId = try values?.decodeIfPresent(Int.self, forKey: .locationId)
-                note = try values?.decodeIfPresent(String.self, forKey: .note)
-                productId = try values?.decodeIfPresent(MyLoadsProductId.self, forKey: .productId)  
-                productType = try values?.decodeIfPresent(MyLoadsProductType.self, forKey: .productType)
-                qty = try values?.decodeIfPresent(Int.self, forKey: .qty)
-                unit = try values?.decodeIfPresent(MyLoadsUnit.self, forKey: .unit)
-                updatedAt = try values?.decodeIfPresent(String.self, forKey: .updatedAt)
-                weight = try values?.decodeIfPresent(String.self, forKey: .weight)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bookingId = try? values.decodeIfPresent(Int.self, forKey: .bookingId)
+                createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                isFragile = try? values.decodeIfPresent(Int.self, forKey: .isFragile)
+                isSensetive = try? values.decodeIfPresent(Int.self, forKey: .isSensetive)
+                locationId = try? values.decodeIfPresent(Int.self, forKey: .locationId)
+                note = try? values.decodeIfPresent(String.self, forKey: .note)
+                productId = try? values.decodeIfPresent(MyLoadsProductId.self, forKey: .productId)  
+                productType = try? values.decodeIfPresent(MyLoadsProductType.self, forKey: .productType)
+                qty = try? values.decodeIfPresent(Int.self, forKey: .qty)
+                unit = try? values.decodeIfPresent(MyLoadsUnit.self, forKey: .unit)
+                updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
+                weight = try? values.decodeIfPresent(String.self, forKey: .weight)
         }
 
 }

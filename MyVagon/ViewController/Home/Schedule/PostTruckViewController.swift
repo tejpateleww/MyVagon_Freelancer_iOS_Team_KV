@@ -199,6 +199,9 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         ReqModelForPostTruck.end_lat = "\(SelectedEndLocationCoordinate.latitude)"
         ReqModelForPostTruck.end_lng = "\(SelectedEndLocationCoordinate.longitude)"
         
+        ReqModelForPostTruck.start_location = TextFieldStartLocation.text ?? ""
+        ReqModelForPostTruck.end_location = TextFieldEndLocation.text ?? ""
+        
         if SwitchAllowBidding.isOn {
             ReqModelForPostTruck.is_bid = "1"
         } else {

@@ -15,7 +15,7 @@ class IdentifyYourselfViewModel {
         WebServiceSubClass.ImageUpload(imgArr: images, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-                print("ATDebug :: \(response?.data?.images?.count ?? 0)")
+            
                 response?.data?.images?.forEach({ element in
                     if uploadFor == .IdentityProof {
                         

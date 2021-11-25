@@ -34,7 +34,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         let _ = UserDefault.getUserData()
-        print("ATDebug :: \(UIDevice.modelName)")
+     
         
 //        locationManager.delegate = self
 //        locationManager.requestAlwaysAuthorization()

@@ -113,14 +113,14 @@ class MyLoadesCell: UITableViewCell {
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
-                print("ATDebug :: height \(newsize.height)")
+               
                 
                 if let getHeight  = tblHeight.self {
                     self.tblMultipleLocation.layoutSubviews()
                     self.tblMultipleLocation.layoutIfNeeded()
                     getHeight(self.tblMultipleLocation.contentSize.height)
                     
-                    print("ATDebug :: getHeight \(self.tblMultipleLocation.contentSize.height)")
+                  
 
                 }
                 

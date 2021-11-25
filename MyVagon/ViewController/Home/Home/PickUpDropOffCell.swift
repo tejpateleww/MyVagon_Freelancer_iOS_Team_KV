@@ -15,9 +15,9 @@ class PickUpDropOffCell: UITableViewCell {
     @IBOutlet weak var viewContents: UIView!
   //  var PickUpDropOffData : [TotalLoadsInDates]?
     
-    var BookingDetails : HomeBidsDatum?
+    var BookingDetails : MyLoadsLoadsDatum?
     
-    var PickUpDropOffData : [HomeLocation]?
+    var PickUpDropOffData : [MyLoadsLocation]?
     
     var tblHeight:((CGFloat)->())?
 
@@ -112,14 +112,14 @@ class PickUpDropOffCell: UITableViewCell {
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
-                print("ATDebug :: height \(newsize.height)")
+               
                 
                 if let getHeight  = tblHeight.self {
                     self.tblMultipleLocation.layoutSubviews()
                     self.tblMultipleLocation.layoutIfNeeded()
                     getHeight(self.tblMultipleLocation.contentSize.height)
                     
-                    print("ATDebug :: getHeight \(self.tblMultipleLocation.contentSize.height)")
+                    
 
                 }
                 
@@ -200,7 +200,7 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
             header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             
         } else {
-            if BookingDetails?.driverBid == 1 {
+            if BookingDetails?.isBid == 1 {
                 header.ViewStatusBidText.text = bidStatus.Bidded.Name
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             } else {

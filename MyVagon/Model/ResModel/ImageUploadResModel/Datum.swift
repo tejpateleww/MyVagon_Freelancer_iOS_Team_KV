@@ -14,8 +14,8 @@ struct Datum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                images = try? values?.decodeIfPresent([String].self, forKey: .images)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                images = try? values.decodeIfPresent([String].self, forKey: .images)
         }
 
 }

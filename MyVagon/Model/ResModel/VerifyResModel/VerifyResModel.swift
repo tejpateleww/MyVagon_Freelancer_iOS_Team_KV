@@ -18,10 +18,10 @@ struct VerifyResModel : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                data = try values?.decodeIfPresent(VerifyDatum.self, forKey: .data)
-                message = try values?.decodeIfPresent(String.self, forKey: .message)
-                status = try values?.decodeIfPresent(Bool.self, forKey: .status)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                data = try? values.decodeIfPresent(VerifyDatum.self, forKey: .data)
+                message = try? values.decodeIfPresent(String.self, forKey: .message)
+                status = try? values.decodeIfPresent(Bool.self, forKey: .status)
         }
 
 }

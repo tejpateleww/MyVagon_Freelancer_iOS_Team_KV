@@ -282,7 +282,7 @@ class URLSessionRequestManager {
         }
 
         request.setValue(RequestString.multiplePartFormData.rawValue + boundary, forHTTPHeaderField: RequestString.contentType.rawValue)
-        print("ATDebug :: \(mediaArr[0].key)")
+      
 
         let dataBody = RequestBodyClass.createDataBodyForMediaRequest(withParameters: paramaterDic, media: mediaArr, boundary: boundary)
 

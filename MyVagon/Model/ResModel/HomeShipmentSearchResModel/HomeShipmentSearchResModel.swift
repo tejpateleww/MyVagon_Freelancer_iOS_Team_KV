@@ -18,10 +18,10 @@ class HomeShipmentSearchResModel : Codable {
         }
     
     required init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                data = try values?.decodeIfPresent([HomeDatum].self, forKey: .data)
-                message = try values?.decodeIfPresent(String.self, forKey: .message)
-                status = try values?.decodeIfPresent(Bool.self, forKey: .status)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                data = try? values.decodeIfPresent([HomeDatum].self, forKey: .data)
+                message = try? values.decodeIfPresent(String.self, forKey: .message)
+                status = try? values.decodeIfPresent(Bool.self, forKey: .status)
         }
 
 }

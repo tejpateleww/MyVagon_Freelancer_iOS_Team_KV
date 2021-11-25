@@ -8,9 +8,11 @@
 import Foundation
 class ShipmentListReqModel : Encodable {
     var driver_id : String?
+    var page : String?
 
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
+        case page = "page_num"
     }
 }
 

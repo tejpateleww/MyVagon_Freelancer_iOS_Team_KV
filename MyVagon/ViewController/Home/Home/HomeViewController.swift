@@ -20,10 +20,10 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
             tblLocations.reloadData()
         }
     }
+    var PageNumber = 0
+    var arrHomeData : [[MyLoadsLoadsDatum]]?
     
-    var arrHomeData : [HomeDatum]?
-    
-    
+    var isNeedToReload = false
     var homeViewModel = HomeViewModel()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
   
@@ -141,11 +141,11 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     
     func CallWebSerive() {
-    
+        PageNumber = PageNumber + 1
         self.homeViewModel.homeViewController =  self
         
         let ReqModelForGetShipment = ShipmentListReqModel()
-        
+        ReqModelForGetShipment.page = "\(PageNumber)"
         ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
 //        ReqModelForGetShipment.driver_id = "271"
         
@@ -232,15 +232,15 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrHomeData?[section].bidsData?.count ?? 0
+        return arrHomeData?[section].count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(withIdentifier: "PickUpDropOffCell", for: indexPath) as! PickUpDropOffCell
-        print("ATDebug :: \(indexPath.section) :: \(indexPath.row)")
-        cell.PickUpDropOffData = arrHomeData?[indexPath.section].bidsData?[indexPath.row].trucks?.locations
+       
+        cell.PickUpDropOffData = arrHomeData?[indexPath.section][indexPath.row].trucks?.locations
         
-        cell.BookingDetails = arrHomeData?[indexPath.section].bidsData?[indexPath.row]
+        cell.BookingDetails = arrHomeData?[indexPath.section][indexPath.row]
         
         cell.tblHeight = { (heightTBl) in
             self.tblLocations.layoutIfNeeded()
@@ -260,11 +260,12 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
         controller.hidesBottomBarWhenPushed = true
-        controller.LoadDetails = arrHomeData?[indexPath.section].bidsData?[indexPath.row]
+//        controller.LoadDetails = arrHomeData?[indexPath.section][indexPath.row]
         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrHomeData?[section].date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        
         
         
     }
@@ -274,7 +275,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
         label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-        label.text = arrHomeData?[section].date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")
@@ -284,8 +285,31 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         return headerView
         
     }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    {
+        
+        
+       
+    }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
+        
+        if tableView == tblLocations {
+            
+            
+            if indexPath.row == ((arrHomeData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
+                {
+                    let spinner = UIActivityIndicatorView(style: .medium)
+                    spinner.tintColor = RefreshControlColor
+                    spinner.startAnimating()
+                    spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
+                    
+                    self.tblLocations.tableFooterView = spinner
+                    self.tblLocations.tableFooterView?.isHidden = false   
+                    CallWebSerive()
+                }
+            
+        }
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
          return 40

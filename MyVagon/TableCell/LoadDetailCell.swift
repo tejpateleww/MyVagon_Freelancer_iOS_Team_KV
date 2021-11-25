@@ -101,7 +101,7 @@ class LoadDetailCell: UITableViewCell,ShimmeringViewProtocol {
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.ConHeightTblLoadDetails.constant = newsize.height
-                print("ATDebug :: \(newsize.height)")
+                
                 if let getHeight  = sizeForTableview {
                     self.TblLoadDetails.layoutIfNeeded()
                     getHeight(self.TblLoadDetails.contentSize.height)

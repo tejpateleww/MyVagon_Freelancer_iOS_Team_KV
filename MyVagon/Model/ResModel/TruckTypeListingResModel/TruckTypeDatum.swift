@@ -26,14 +26,14 @@ struct TruckTypeDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-            category = try values?.decodeIfPresent([TruckTypeCategory].self, forKey: .category)
-                detetedAt = try values?.decodeIfPresent(String.self, forKey: .detetedAt)
-                icon = try values?.decodeIfPresent(String.self, forKey: .icon)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                name = try values?.decodeIfPresent(String.self, forKey: .name)
-                status = try values?.decodeIfPresent(Int.self, forKey: .status)
-            isTrailer = try values?.decodeIfPresent(Int.self, forKey: .isTrailer)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+            category = try? values.decodeIfPresent([TruckTypeCategory].self, forKey: .category)
+                detetedAt = try? values.decodeIfPresent(String.self, forKey: .detetedAt)
+                icon = try? values.decodeIfPresent(String.self, forKey: .icon)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                name = try? values.decodeIfPresent(String.self, forKey: .name)
+                status = try? values.decodeIfPresent(Int.self, forKey: .status)
+            isTrailer = try? values.decodeIfPresent(Int.self, forKey: .isTrailer)
         }
 
 }
@@ -56,11 +56,11 @@ struct TruckTypeCategory : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                detetedAt = try values?.decodeIfPresent(String.self, forKey: .detetedAt)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                name = try values?.decodeIfPresent(String.self, forKey: .name)
-                status = try values?.decodeIfPresent(Int.self, forKey: .status)
-                truckTypeId = try values?.decodeIfPresent(Int.self, forKey: .truckTypeId)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                detetedAt = try? values.decodeIfPresent(String.self, forKey: .detetedAt)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                name = try? values.decodeIfPresent(String.self, forKey: .name)
+                status = try? values.decodeIfPresent(Int.self, forKey: .status)
+                truckTypeId = try? values.decodeIfPresent(Int.self, forKey: .truckTypeId)
         }
 }

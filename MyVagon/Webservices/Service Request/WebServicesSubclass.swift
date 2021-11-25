@@ -157,8 +157,8 @@ class WebServiceSubClass{
         
     }
     //MARK: -GetShipmentList
-    class func GetShipmentList(reqModel: ShipmentListReqModel, completion: @escaping (Bool,String,HomeShipmentSearchResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ShipmentList.rawValue, requestModel: reqModel, responseModel: HomeShipmentSearchResModel.self) { (status, message, response, error) in
+    class func GetShipmentList(reqModel: ShipmentListReqModel, completion: @escaping (Bool,String,HomeNewResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.SearchLoads.rawValue, requestModel: reqModel, responseModel: HomeNewResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

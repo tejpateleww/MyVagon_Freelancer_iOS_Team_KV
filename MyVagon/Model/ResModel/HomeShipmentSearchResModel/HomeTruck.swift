@@ -38,20 +38,20 @@ struct HomeTruck : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bookingId = try values?.decodeIfPresent(Int.self, forKey: .bookingId)
-                createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
-                driverId = try values?.decodeIfPresent(Int.self, forKey: .driverId)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                isCooling = try values?.decodeIfPresent(Int.self, forKey: .isCooling)
-                isHydraulic = try values?.decodeIfPresent(Int.self, forKey: .isHydraulic)
-                locations = try values?.decodeIfPresent([HomeLocation].self, forKey: .locations)
-                note = try values?.decodeIfPresent(String.self, forKey: .note)
-                payout = try values?.decodeIfPresent(String.self, forKey: .payout)
-                truckId = try values?.decodeIfPresent(Int.self, forKey: .truckId)
-                truckType = try values?.decodeIfPresent(HomeTruckType.self, forKey: .truckType)
-                truckTypeCategory = try values?.decodeIfPresent([HomeTruckTypeCategory].self, forKey: .truckTypeCategory)
-                updatedAt = try values?.decodeIfPresent(String.self, forKey: .updatedAt)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bookingId = try? values.decodeIfPresent(Int.self, forKey: .bookingId)
+                createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
+                driverId = try? values.decodeIfPresent(Int.self, forKey: .driverId)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                isCooling = try? values.decodeIfPresent(Int.self, forKey: .isCooling)
+                isHydraulic = try? values.decodeIfPresent(Int.self, forKey: .isHydraulic)
+                locations = try? values.decodeIfPresent([HomeLocation].self, forKey: .locations)
+                note = try? values.decodeIfPresent(String.self, forKey: .note)
+                payout = try? values.decodeIfPresent(String.self, forKey: .payout)
+                truckId = try? values.decodeIfPresent(Int.self, forKey: .truckId)
+                truckType = try? values.decodeIfPresent(HomeTruckType.self, forKey: .truckType)
+                truckTypeCategory = try? values.decodeIfPresent([HomeTruckTypeCategory].self, forKey: .truckTypeCategory)
+                updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
         }
 
 }

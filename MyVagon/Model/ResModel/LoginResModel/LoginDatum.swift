@@ -37,20 +37,20 @@ struct LoginDatum : Codable {
     }
     
     init(from decoder: Decoder) throws {
-        let values = try? decoder.container(keyedBy: CodingKeys.self)
-        countryCode = try values?.decodeIfPresent(String.self, forKey: .countryCode)
-        email = try values?.decodeIfPresent(String.self, forKey: .email)
-        id = try values?.decodeIfPresent(Int.self, forKey: .id)
-        licenceExpiryDate = try values?.decodeIfPresent(String.self, forKey: .licenceExpiryDate)
-        licenceNumber = try values?.decodeIfPresent(String.self, forKey: .licenceNumber)
-        mobileNumber = try values?.decodeIfPresent(String.self, forKey: .mobileNumber)
-        name = try values?.decodeIfPresent(String.self, forKey: .name)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        countryCode = try? values.decodeIfPresent(String.self, forKey: .countryCode)
+        email = try? values.decodeIfPresent(String.self, forKey: .email)
+        id = try? values.decodeIfPresent(Int.self, forKey: .id)
+        licenceExpiryDate = try? values.decodeIfPresent(String.self, forKey: .licenceExpiryDate)
+        licenceNumber = try? values.decodeIfPresent(String.self, forKey: .licenceNumber)
+        mobileNumber = try? values.decodeIfPresent(String.self, forKey: .mobileNumber)
+        name = try? values.decodeIfPresent(String.self, forKey: .name)
         
-        profile = try values?.decodeIfPresent(String.self, forKey: .profile)
-        token = try values?.decodeIfPresent(String.self, forKey: .token)
-        type = try values?.decodeIfPresent(String.self, forKey: .type)
-        vehicle = try values?.decodeIfPresent(LoginVehicle.self, forKey: .vehicle)
-        permissions = try values?.decodeIfPresent(LoginPermission.self, forKey: .permissions)
+        profile = try? values.decodeIfPresent(String.self, forKey: .profile)
+        token = try? values.decodeIfPresent(String.self, forKey: .token)
+        type = try? values.decodeIfPresent(String.self, forKey: .type)
+        vehicle = try? values.decodeIfPresent(LoginVehicle.self, forKey: .vehicle)
+        permissions = try? values.decodeIfPresent(LoginPermission.self, forKey: .permissions)
     }
     
 }

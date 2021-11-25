@@ -38,20 +38,20 @@ struct SettingDatum : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                bidAccepted = try values?.decodeIfPresent(Int.self, forKey: .bidAccepted)
-                bidReceived = try values?.decodeIfPresent(Int.self, forKey: .bidReceived)
-                completeTripReminder = try values?.decodeIfPresent(Int.self, forKey: .completeTripReminder)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                loadAssignByDispatcher = try values?.decodeIfPresent(Int.self, forKey: .loadAssignByDispatcher)
-                matchShippmentNearDelivery = try values?.decodeIfPresent(Int.self, forKey: .matchShippmentNearDelivery)
-                matchShippmentNearYou = try values?.decodeIfPresent(Int.self, forKey: .matchShippmentNearYou)
-                message = try values?.decodeIfPresent(Int.self, forKey: .message)
-                notification = try values?.decodeIfPresent(Int.self, forKey: .notification)
-                pdoRemider = try values?.decodeIfPresent(Int.self, forKey: .pdoRemider)
-                rateShipper = try values?.decodeIfPresent(Int.self, forKey: .rateShipper)
-                startTripReminder = try values?.decodeIfPresent(Int.self, forKey: .startTripReminder)
-                userId = try values?.decodeIfPresent(Int.self, forKey: .userId)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                bidAccepted = try? values.decodeIfPresent(Int.self, forKey: .bidAccepted)
+                bidReceived = try? values.decodeIfPresent(Int.self, forKey: .bidReceived)
+                completeTripReminder = try? values.decodeIfPresent(Int.self, forKey: .completeTripReminder)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                loadAssignByDispatcher = try? values.decodeIfPresent(Int.self, forKey: .loadAssignByDispatcher)
+                matchShippmentNearDelivery = try? values.decodeIfPresent(Int.self, forKey: .matchShippmentNearDelivery)
+                matchShippmentNearYou = try? values.decodeIfPresent(Int.self, forKey: .matchShippmentNearYou)
+                message = try? values.decodeIfPresent(Int.self, forKey: .message)
+                notification = try? values.decodeIfPresent(Int.self, forKey: .notification)
+                pdoRemider = try? values.decodeIfPresent(Int.self, forKey: .pdoRemider)
+                rateShipper = try? values.decodeIfPresent(Int.self, forKey: .rateShipper)
+                startTripReminder = try? values.decodeIfPresent(Int.self, forKey: .startTripReminder)
+                userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
         }
 
 }

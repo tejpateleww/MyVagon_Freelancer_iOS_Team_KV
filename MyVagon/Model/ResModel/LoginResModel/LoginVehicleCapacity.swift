@@ -24,13 +24,13 @@ struct LoginVehicleCapacity : Codable {
         }
     
         init(from decoder: Decoder) throws {
-                let values = try? decoder.container(keyedBy: CodingKeys.self)
-                createdAt = try values?.decodeIfPresent(String.self, forKey: .createdAt)
-                driverVehicleId = try values?.decodeIfPresent(Int.self, forKey: .driverVehicleId)
-                id = try values?.decodeIfPresent(Int.self, forKey: .id)
-                packageTypeId = try values?.decodeIfPresent(LoginPackageTypeId.self, forKey: .packageTypeId)
-                updatedAt = try values?.decodeIfPresent(String.self, forKey: .updatedAt)
-                value = try values?.decodeIfPresent(String.self, forKey: .value)
+                let values = try decoder.container(keyedBy: CodingKeys.self)
+                createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
+                driverVehicleId = try? values.decodeIfPresent(Int.self, forKey: .driverVehicleId)
+                id = try? values.decodeIfPresent(Int.self, forKey: .id)
+                packageTypeId = try? values.decodeIfPresent(LoginPackageTypeId.self, forKey: .packageTypeId)
+                updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
+                value = try? values.decodeIfPresent(String.self, forKey: .value)
         }
 
 }
