@@ -157,8 +157,8 @@ class WebServiceSubClass{
         
     }
     //MARK: -GetShipmentList
-    class func GetShipmentList(reqModel: ShipmentListReqModel, completion: @escaping (Bool,String,HomeNewResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.SearchLoads.rawValue, requestModel: reqModel, responseModel: HomeNewResModel.self) { (status, message, response, error) in
+    class func GetShipmentList(reqModel: ShipmentListReqModel, completion: @escaping (Bool,String,SearchResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.SearchLoads.rawValue, requestModel: reqModel, responseModel: SearchResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -166,6 +166,27 @@ class WebServiceSubClass{
     //MARK: -SearchShipemnet
     class func SearchShipment(reqModel: SearchLoadReqModel, completion: @escaping (Bool,String,HomeShipmentSearchResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.SearchLoads.rawValue, requestModel: reqModel, responseModel: HomeShipmentSearchResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -BookNow
+    class func BookNow(reqModel: BookNowReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.BookNow.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -PostedTruckBid
+    class func PostedTruckBid(reqModel: PostTruckBidReqModel, completion: @escaping (Bool,String,SearchResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.PostAvailabilityResult.rawValue, requestModel: reqModel, responseModel: SearchResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -AcceptReject
+    class func AcceptReject(reqModel: BidAcceptRejectReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.PostAvailabilityResult.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -178,8 +199,8 @@ class WebServiceSubClass{
     }
     
     //MARK: -GetMyLoadesList
-    class func GetMyLoadesList(reqModel: MyLoadsReqModel, completion: @escaping (Bool,String,MyLoadsResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.MyLoades.rawValue, requestModel: reqModel, responseModel: MyLoadsResModel.self) { (status, message, response, error) in
+    class func GetMyLoadesList(reqModel: MyLoadsReqModel, completion: @escaping (Bool,String,MyLoadsNewResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.MyLoades.rawValue, requestModel: reqModel, responseModel: MyLoadsNewResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

@@ -29,11 +29,7 @@ class SortPopupViewController: BaseViewController {
    
     
     
-    var arrayForSort : [SortModel] = [  SortModel(Title: "Deadheading", IsSelect: true),
-                                        SortModel(Title: "Price (Lowest First)", IsSelect: false),
-                                        SortModel(Title: "Price (Highest First)", IsSelect: false),
-                                        SortModel(Title: "Total Distance", IsSelect: false),
-                                        SortModel(Title: "Rating", IsSelect: false)]
+    var arrayForSort : [SortModel] = []
     
     var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------

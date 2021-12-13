@@ -44,3 +44,50 @@ extension UIView {
     }
 }
 
+extension UIView {
+  
+    func addDashedBorderVertical() {
+        //Create a CAShapeLayer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        shapeLayer.lineWidth = 1
+        // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+        shapeLayer.lineDashPattern = [2,3]
+
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: 0, y: self.frame.height)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
+    }
+    
+    func addDashedBorderHorizontal() {
+        //Create a CAShapeLayer
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.strokeColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        shapeLayer.lineWidth = 1
+        // passing an array with the values [2,3] sets a dash pattern that alternates between a 2-user-space-unit-long painted segment and a 3-user-space-unit-long unpainted segment
+        shapeLayer.lineDashPattern = [2,3]
+
+        let path = CGMutablePath()
+        path.addLines(between: [CGPoint(x: 0, y: 0),
+                                CGPoint(x: self.frame.width, y: 0)])
+        shapeLayer.path = path
+        layer.addSublayer(shapeLayer)
+    }
+}
+extension UIView {
+    class func fromNib(named: String? = nil) -> Self {
+        let name = named ?? "\(Self.self)"
+        guard
+            let nib = Bundle.main.loadNibNamed(name, owner: nil, options: nil)
+            else { fatalError("missing expected nib named: \(name)") }
+        guard
+            /// we're using `first` here because compact map chokes compiler on
+            /// optimized release, so you can't use two views in one nib if you wanted to
+            /// and are now looking at this
+            let view = nib.first as? Self
+            else { fatalError("view of type \(Self.self) not found in \(nib)") }
+        return view
+    }
+}

@@ -9,6 +9,10 @@ import UIKit
 
 class CommonAcceptRejectPopupVC: UIViewController {
 
+    var loadDetailsModel : LoadDetailViewModel?
+    var loadDetailsVc : LoadDetailsVC?
+    var bookingID = ""
+    var availabilityId = ""
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
@@ -62,6 +66,9 @@ class CommonAcceptRejectPopupVC: UIViewController {
         LblTitle.attributedText = TitleAttributedText
         LblDescripiton.attributedText = DescriptionAttributedText
         
+        BtnLeft.isHidden = (LeftbtnTitle == "") ? true : false
+        BtnRight.isHidden = (RightBtnTitle == "") ? true : false
+        
         UIView.performWithoutAnimation {
             BtnLeft.setTitle(LeftbtnTitle, for: .normal)
             BtnRight.setTitle(RightBtnTitle, for: .normal)
@@ -83,15 +90,29 @@ class CommonAcceptRejectPopupVC: UIViewController {
     }
     
     @IBAction func btnBookNow(_ sender: themeButton) {
-        if let click = self.RightbtnClosour{
-            click()
+        if sender.titleLabel?.text?.lowercased() == "book" {
+            self.CallBookNow()
+        } else {
+            if let click = self.RightbtnClosour{
+                click()
+            }
         }
-       
+        
+        
     }
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
-    // ----------------------------------------------------
+    // ------s----------------------------------------------
     
-
+    func CallBookNow() {
+        self.loadDetailsModel?.loadDetailsVC = loadDetailsVc
+        self.loadDetailsModel?.commonAcceptRejectPopupVC = self
+        let reqModel = BookNowReqModel()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.booking_id = bookingID
+        reqModel.availability_id = availabilityId
+        self.loadDetailsModel?.BookNow(ReqModel: reqModel)
+    }
+    
 }

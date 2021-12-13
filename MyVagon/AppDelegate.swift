@@ -97,6 +97,15 @@ var window: UIWindow?
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav
     }
+    func NavigateToSchedual(){
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
+        controller.selectedIndex = 1
+       
+        
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        self.window?.rootViewController = nav
+    }
     func Logout() {
       
          
@@ -194,9 +203,10 @@ extension CustomTabBarVC: UITabBarControllerDelegate {
             self.tabBar.items![tabBarController.selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
             print(self.tabBar.items![tabBarController.selectedIndex].imageInsets)
         }
-        
+      
       
     }
+    
 }
 class CustomTabBarVC: UITabBarController {
     var lastSelectedIndex = 0

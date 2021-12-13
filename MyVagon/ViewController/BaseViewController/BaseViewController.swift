@@ -44,7 +44,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
   
     
     
-    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false,IsChatScreenLabel:Bool? = false,IsChatScreen:Bool? = false,NumberOfChatCount:String? = "")
+    func setNavigationBarInViewController (controller : UIViewController,naviColor : UIColor, naviTitle : String, leftImage : String , rightImages : [String], isTranslucent : Bool, ShowShadow:Bool? = false,IsChatScreenLabel:Bool? = false,IsChatScreen:Bool? = false,NumberOfChatCount:String? = "",subTitleString:String? = "")
     {
         UIApplication.shared.statusBarStyle = .lightContent
         controller.navigationController?.isNavigationBarHidden = false
@@ -97,15 +97,32 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                 
               
             } else {
-                let lblNavTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-                lblNavTitle.font = CustomFont.PoppinsMedium.returnFont(18)
-                lblNavTitle.backgroundColor = UIColor.clear
-                lblNavTitle.textColor = UIColor.appColor(ThemeColor.NavigationTitleColor)
-                lblNavTitle.numberOfLines = 0
-                lblNavTitle.center = CGPoint(x: 0, y: 0)
-                lblNavTitle.textAlignment = .left
-                lblNavTitle.text = naviTitle
-                self.navigationItem.titleView = lblNavTitle
+                if subTitleString != "" {
+                    let subTitalFinal = " \(subTitleString ?? "")"
+                    let lblNavTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+                    lblNavTitle.backgroundColor = UIColor.clear
+                    lblNavTitle.numberOfLines = 0
+                    lblNavTitle.center = CGPoint(x: 0, y: 0)
+                    lblNavTitle.textAlignment = .left
+                    let AttributedStringFinal = naviTitle.Medium(color: UIColor.appColor(ThemeColor.NavigationTitleColor), FontSize: 18)
+                  
+                    AttributedStringFinal.append(subTitalFinal.Regular(color: UIColor.appColor(ThemeColor.NavigationTitleColor), FontSize: 14))
+                 
+                  
+                    lblNavTitle.attributedText = AttributedStringFinal
+                    self.navigationItem.titleView = lblNavTitle
+                } else {
+                    let lblNavTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
+                    lblNavTitle.font = CustomFont.PoppinsMedium.returnFont(18)
+                    lblNavTitle.backgroundColor = UIColor.clear
+                    lblNavTitle.textColor = UIColor.appColor(ThemeColor.NavigationTitleColor)
+                    lblNavTitle.numberOfLines = 0
+                    lblNavTitle.center = CGPoint(x: 0, y: 0)
+                    lblNavTitle.textAlignment = .left
+                    lblNavTitle.text = naviTitle
+                    self.navigationItem.titleView = lblNavTitle
+                }
+                
             }
             
         }

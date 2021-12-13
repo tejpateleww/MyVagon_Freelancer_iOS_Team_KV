@@ -264,17 +264,3 @@ struct PhoneNoValidator: ValidatorConvertible {
         return (true, "")
     }
 }
-extension String {
-    func hasAllZero() -> Bool {
-        
-        let mobileNumberPattern = "^0*$"
-        let mobileNumberPred = NSPredicate(format: "SELF MATCHES %@", mobileNumberPattern)
-
-        let matched = mobileNumberPred.evaluate(with: self)
-        if matched {
-           return true
-        } else {
-            return false
-        }
-    }
-}

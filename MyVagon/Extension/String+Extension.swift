@@ -287,3 +287,80 @@ extension String {
     
   
 }
+extension String {
+
+    // formatting text for currency textField
+    func currencyInputFormatting() -> String {
+
+        var number: NSNumber!
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyAccounting
+        formatter.currencySymbol = Currency
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        var amountWithPrefix = self
+
+        // remove from String: "$", ".", ","
+        let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
+        amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
+
+        let double = (amountWithPrefix as NSString).doubleValue
+        number = NSNumber(value: (double / 100))
+
+        // if first number is 0 or all numbers were deleted
+        guard number != 0 as NSNumber else {
+            return ""
+        }
+
+        return formatter.string(from: number)!
+    }
+    public func removeFormatAmount() -> Double {
+               let formatter = NumberFormatter()
+               formatter.locale = Locale.current
+               formatter.numberStyle = .currency
+               formatter.currencySymbol = Currency
+               formatter.decimalSeparator = Locale.current.groupingSeparator
+               return formatter.number(from: self)?.doubleValue ?? 0.00
+           }
+}
+extension String {
+    func Bold(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : CustomFont.PoppinsBold.returnFont(FontSize),
+            .foregroundColor : color
+        ]
+        return NSMutableAttributedString(string: self, attributes:attributes)
+    }
+    
+    func Medium(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : CustomFont.PoppinsMedium.returnFont(FontSize),
+            .foregroundColor : color
+        ]
+        return NSMutableAttributedString(string: self, attributes:attributes)
+    }
+    
+    func Regular(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
+        let attributes:[NSAttributedString.Key : Any] = [
+            .font : CustomFont.PoppinsRegular.returnFont(FontSize),
+            .foregroundColor : color
+        ]
+        return NSMutableAttributedString(string: self, attributes:attributes)
+    }
+
+}
+extension String {
+    func hasAllZero() -> Bool {
+        
+        let mobileNumberPattern = "^0*$"
+        let mobileNumberPred = NSPredicate(format: "SELF MATCHES %@", mobileNumberPattern)
+
+        let matched = mobileNumberPred.evaluate(with: self)
+        if matched {
+           return true
+        } else {
+            return false
+        }
+    }
+}

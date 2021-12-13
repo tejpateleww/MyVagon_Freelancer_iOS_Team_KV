@@ -12,6 +12,7 @@ class HomeViewModel {
     weak var homeViewController : HomeViewController? = nil
     
     func GetShipmentList(ReqModel:ShipmentListReqModel){
+        self.homeViewController?.isNeedToReload = false
         WebServiceSubClass.GetShipmentList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             
             self.homeViewController?.refreshControl.endRefreshing()
@@ -30,7 +31,7 @@ class HomeViewModel {
                   
                     datesArray = datesArray.uniqued()
                     // let datesArray = self.MainSessionListArray.compactMap { $0.bookingDate} // return array of date
-                    var dic = [[MyLoadsLoadsDatum]]() // Your required result
+                    var dic = [[SearchLoadsDatum]]() // Your required result
                     
                     datesArray.forEach { (element) in
                         
@@ -42,7 +43,7 @@ class HomeViewModel {
                     self.homeViewController?.arrHomeData = dic
                     
                 } else {
-                    var tempArrHomeData = [MyLoadsLoadsDatum]()
+                    var tempArrHomeData = [SearchLoadsDatum]()
                     self.homeViewController?.arrHomeData?.forEach({ element in
                         tempArrHomeData.append(contentsOf: element)
                     })
@@ -53,7 +54,7 @@ class HomeViewModel {
                   
                     datesArray = datesArray.uniqued()
                     // let datesArray = self.MainSessionListArray.compactMap { $0.bookingDate} // return array of date
-                    var dic = [[MyLoadsLoadsDatum]]() // Your required result
+                    var dic = [[SearchLoadsDatum]]() // Your required result
                     
                     datesArray.forEach { (element) in
                         
@@ -68,9 +69,7 @@ class HomeViewModel {
                     
                    
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.homeViewController?.isLoading = false
-                }
+                self.homeViewController?.isLoading = false
                 self.homeViewController?.tblLocations.tableFooterView?.isHidden = true
                 
                 

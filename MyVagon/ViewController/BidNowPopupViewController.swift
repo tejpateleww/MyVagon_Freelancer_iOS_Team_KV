@@ -18,6 +18,8 @@ class BidNowPopupViewController: UIViewController {
     var bidNowViewModel = BidNowViewModel()
     var MinimumBidAmount = ""
     var BookingId = ""
+    var AvailabilityId = ""
+
     
     var LeftbtnTitle : String?
     var RightBtnTitle : String?
@@ -58,8 +60,13 @@ class BidNowPopupViewController: UIViewController {
         
         LblTitle.text = Currency + MinimumBidAmount
         
-        BtnLeft.setTitle("Cancel", for: .normal)
-        BtnRight.setTitle("Bid", for: .normal)
+        UIView.performWithoutAnimation {
+            BtnLeft.setTitle("Cancel", for: .normal)
+            BtnRight.setTitle("Bid", for: .normal)
+            self.BtnLeft.layoutIfNeeded()
+            self.BtnRight.layoutIfNeeded()
+        }
+        
     }
    
     // ----------------------------------------------------
@@ -85,12 +92,12 @@ class BidNowPopupViewController: UIViewController {
         
         self.bidNowViewModel.bidNowPopupViewController = self
         
-        let registerReqModel = BidReqModel()
-        registerReqModel.booking_id = BookingId
-        registerReqModel.amount = bidTextField.text ?? ""
-        registerReqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        
-        self.bidNowViewModel.WebServiceBidPost(ReqModel: registerReqModel)
+        let reqModel = BidReqModel()
+        reqModel.booking_id = BookingId
+        reqModel.amount = bidTextField.text ?? ""
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.availability_id = AvailabilityId
+        self.bidNowViewModel.WebServiceBidPost(ReqModel: reqModel)
     }
     
 }

@@ -11,11 +11,10 @@ typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 
 enum APIEnvironment : String {
  
-    
-    case Development = "http://13.36.112.48/api/"
-    case Profilebu = "http://65.1.154.172/"
+    case Development = "http://3.66.160.72/api/"
+    case Profilebu = "http://3.66.160.72/"
     case Live = "not provided"
-    case TempProfileURL = "http://13.36.112.48/public/temp/"
+    case TempProfileURL = "http://3.66.160.72/public/temp/"
     case ShipperImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/shipper/"
     case DriverImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/driver/"
     
@@ -61,7 +60,7 @@ enum ApiKey: String {
     case forgotpassword                         = "forgot/password"
     case ResetPassword                          = "password/reset"
     case ChangePassword                         = "driver/change/password"
-    case PostAvailability                       = "post/truck/availability"
+    case PostAvailability                       = "post-availability"
     case Settings                               = "driver/settings"
     case GetSettings                            = "driver/get/settings"
     
@@ -79,9 +78,11 @@ enum ApiKey: String {
     
     case PackageListing                         = "package/listing"
     case ShipmentList                           = "shipment/search"
-    case SearchLoads                            = "search-loads-new"
+    case SearchLoads                            = "search-loads"
+    case BookNow                                = "driver/post/book"
+    case PostAvailabilityResult                 = "post-availability-result"
     
-    case MyLoades                               = "booking/my_loads"
+    case MyLoades                               = "my-loads"
     
     case BidPost                                = "driver/post/bid"
     

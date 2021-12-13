@@ -19,7 +19,9 @@ class PostTruckViewModel {
             Utilities.HideLoaderButtonInButton(Button: self.postTruckViewController?.BtnPostATruck ?? themeButton(), vc: self.postTruckViewController ?? UIViewController())
             
             if status {
+                
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: CommonAcceptRejectPopupVC.storyboardID) as! CommonAcceptRejectPopupVC
+                
                 let DescriptionAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(16)] as [NSAttributedString.Key : Any]
                 
                 let AttributedStringFinal = "You have ".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 18)
@@ -28,30 +30,55 @@ class PostTruckViewModel {
                 AttributedStringFinal.append(" posted your availability".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 18))
               
                 controller.TitleAttributedText = AttributedStringFinal
+                
+                
+                
+                if (response?.data?.count ?? 0) == 0 {
+                    controller.DescriptionAttributedText = NSAttributedString(string: "No Matches Found", attributes: DescriptionAttribute)
+                    controller.IsHideImage = true
+                    controller.LeftbtnTitle = ""
+                    controller.RightBtnTitle = "Okay"
+                } else {
+                    controller.DescriptionAttributedText = NSAttributedString(string: "\(response?.data?.count ?? 0) Matches Found", attributes: DescriptionAttribute)
+                    controller.IsHideImage = true
+                    controller.LeftbtnTitle = "Dismiss"
+                    controller.RightBtnTitle = "Yes"
+                }
       
-                controller.DescriptionAttributedText = NSAttributedString(string: response?.data?.matches ?? "", attributes: DescriptionAttribute)
-                controller.IsHideImage = true
-                controller.LeftbtnTitle = "Dismiss"
-                controller.RightBtnTitle = "Yes"
-              
                 controller.modalPresentationStyle = .overCurrentContext
                 controller.modalTransitionStyle = .coverVertical
                 controller.LeftbtnClosour = {
-                    appDel.NavigateToHome()
+                    controller.dismiss(animated: true, completion: {
+                    self.postTruckViewController?.navigationController?.popToRootViewController(animated: false)
+                    })
                 }
                 controller.RightbtnClosour = {
-                    appDel.NavigateToHome()
+                    controller.dismiss(animated: true, completion: {
+                        if ( response?.data?.count ?? 0) == 0 {
+                            self.postTruckViewController?.navigationController?.popToRootViewController(animated: false)
+                        } else {
+                            
+                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
+                            let myLoadsNewDatum = MyLoadsNewDatum(PostedTruck: (response?.data)!, Type: "posted_truck", Date: response?.data?.date ?? "")
+                            controller.BidsData = myLoadsNewDatum
+                            controller.hidesBottomBarWhenPushed = true
+                            controller.PostTruckID = "\(response?.data?.id ?? 0)"
+                 
+                            if var vcArray = self.postTruckViewController?.navigationController?.viewControllers {
+                                vcArray.removeLast()
+                                vcArray.append(controller)
+                                self.postTruckViewController?.navigationController?.setViewControllers(vcArray, animated: false)
+                            }
+                       
+                        }
+                        
+                    })
+                   
                 }
-               
                 let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(250))])
                 self.postTruckViewController?.present(sheetController, animated: true, completion: nil)
                 
                
-              
-               
-                
-                // Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
-               // appDel.NavigateToHome()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
@@ -76,30 +103,4 @@ class PostTruckViewModel {
         
         return attributedString
     }
-}
-extension String {
-    func Bold(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
-        let attributes:[NSAttributedString.Key : Any] = [
-            .font : CustomFont.PoppinsBold.returnFont(FontSize),
-            .foregroundColor : color
-        ]
-        return NSMutableAttributedString(string: self, attributes:attributes)
-    }
-    
-    func Medium(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
-        let attributes:[NSAttributedString.Key : Any] = [
-            .font : CustomFont.PoppinsMedium.returnFont(FontSize),
-            .foregroundColor : color
-        ]
-        return NSMutableAttributedString(string: self, attributes:attributes)
-    }
-    
-    func Regular(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
-        let attributes:[NSAttributedString.Key : Any] = [
-            .font : CustomFont.PoppinsRegular.returnFont(FontSize),
-            .foregroundColor : color
-        ]
-        return NSMutableAttributedString(string: self, attributes:attributes)
-    }
-
 }

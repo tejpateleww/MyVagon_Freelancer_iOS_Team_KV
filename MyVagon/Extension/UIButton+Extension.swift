@@ -18,6 +18,27 @@ extension UIButton{
             return UIColor(cgColor: color)
         }
     }
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            layer.cornerRadius = newValue
+        }
+        get {
+            return layer.cornerRadius
+        }
+    }
+    
+   
+
+      
     //MARK:- Text In Two Differnt Color in Button Text
     func setTextColor(str1:String,str2:String,color1:UIColor,color2:UIColor){
 
