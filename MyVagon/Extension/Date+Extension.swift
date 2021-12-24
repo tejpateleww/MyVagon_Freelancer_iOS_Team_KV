@@ -39,16 +39,67 @@ extension Date {
         return Calendar.current.dateComponents([.second], from: date, to: self).second ?? 0
     }
     /// Returns the a custom time interval description from another date
-    func offset(from date: Date) -> String {
-        if years(from: date)   > 0 { return "\(years(from: date))y"   }
-        if months(from: date)  > 0 { return "\(months(from: date))M"  }
-        if weeks(from: date)   > 0 { return "\(weeks(from: date))w"   }
-        if days(from: date)    > 0 { return "\(days(from: date))d"    }
-        if hours(from: date)   > 0 { return "\(hours(from: date))h"   }
-        if minutes(from: date) > 0 { return "\(minutes(from: date))m" }
-        if seconds(from: date) > 0 { return "\(seconds(from: date))s" }
-        return ""
+    func offset(from date: Date) -> (String,Int,OffSetType) {
+        if years(from: date) > 0 {
+            if years(from: date) > 1 {
+                return ("\(years(from: date)) years",years(from: date),.Year)
+            } else {
+                return ("\(years(from: date)) year",years(from: date),.Year)
+            }
+        }
+       
+        if months(from: date) > 0 {
+            if months(from: date) > 1 {
+                return ("\(months(from: date)) months",months(from: date),.Month)
+            } else {
+                return ("\(months(from: date)) month",months(from: date),.Month)
+            }
+        }
+        
+        if weeks(from: date) > 0 {
+            if weeks(from: date) > 1 {
+                return ("\(weeks(from: date)) weeks",weeks(from: date),.Weeks)
+            } else {
+                return ("\(weeks(from: date)) week",weeks(from: date),.Weeks)
+            }
+        }
+        
+        if days(from: date) > 0 {
+            if days(from: date) > 1 {
+                return ("\(days(from: date)) days",days(from: date),.Day)
+            } else {
+                return ("\(days(from: date)) day",days(from: date),.Day)
+            }
+        }
+        
+        if hours(from: date) > 0 {
+            if hours(from: date) > 1 {
+                return ("\(hours(from: date)) hours",hours(from: date),.Hours)
+            } else {
+                return ("\(hours(from: date)) hour",hours(from: date),.Hours)
+            }
+        }
+        
+        if minutes(from: date) > 0 {
+            if minutes(from: date) > 1 {
+                return ("\(minutes(from: date)) minutes",minutes(from: date),.Minute)
+            } else {
+                return ("\(minutes(from: date)) minute",minutes(from: date),.Minute)
+            }
+        }
+        
+        if seconds(from: date) > 0 {
+            if seconds(from: date) > 1 {
+                return ("\(seconds(from: date)) seconds",seconds(from: date),.Second)
+            } else {
+                return ("\(seconds(from: date)) second",seconds(from: date),.Second)
+            }
+        }
+        
+        return ("0 second",0,.Second)
     }
+    
+ 
 }
 
 extension UIDatePicker {
@@ -71,4 +122,40 @@ extension Date {
         return DateinString
     }
     
+}
+extension Date {
+
+    func ConvertDataToHeaderDate() -> String {
+        
+        
+        let onlyDate = DateFormatter()
+        onlyDate.dateFormat = "dd'\(self.daySuffix())' MMM"
+        
+        let datewithMonth = onlyDate.string(from: self)
+        
+        onlyDate.dateFormat = "yy"
+        let datewithyear = onlyDate.string(from: self)
+       
+        return "\(datewithMonth)'\(datewithyear)"
+    }
+
+
+    func daySuffix() -> String {
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components(.day, from: self)
+        let dayOfMonth = components.day
+        switch dayOfMonth {
+        case 1, 21, 31:
+            return "st"
+        case 2, 22:
+            return "nd"
+        case 3, 23:
+            return "rd"
+        default:
+            return "th"
+        }
+    }
+}
+enum OffSetType : String {
+    case Year,Month,Day,Weeks,Hours,Minute,Second
 }

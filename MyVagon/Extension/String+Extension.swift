@@ -29,12 +29,12 @@ extension String{
                 output += "+"
             }
             else if thisChar == "." ||
-                thisChar == "-" ||
-                thisChar == "_" ||
-                thisChar == "~" ||
-                (thisChar >= "a" && thisChar <= "z") ||
-                (thisChar >= "A" && thisChar <= "Z") ||
-                (thisChar >= "0" && thisChar <= "9") {
+                        thisChar == "-" ||
+                        thisChar == "_" ||
+                        thisChar == "~" ||
+                        (thisChar >= "a" && thisChar <= "z") ||
+                        (thisChar >= "A" && thisChar <= "Z") ||
+                        (thisChar >= "0" && thisChar <= "9") {
                 let code = String(thisChar).utf8.map{ UInt8($0) }[0]
                 output += String(format: "%c", code)
             }
@@ -190,14 +190,14 @@ extension String{
     //MARK: Strike Through Words
     //MARK: ==================================
     func strikeThrough(color: UIColor)->NSAttributedString{
-            let textRange = NSMakeRange(0, self.count)
-            let attributedText = NSMutableAttributedString(string: self)
-            attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                        value: NSUnderlineStyle.single.rawValue,
-                                        range: textRange)
-            attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle, value: color, range: textRange)
-            return attributedText
-        }
+        let textRange = NSMakeRange(0, self.count)
+        let attributedText = NSMutableAttributedString(string: self)
+        attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle,
+                                    value: NSUnderlineStyle.single.rawValue,
+                                    range: textRange)
+        attributedText.addAttribute(NSAttributedString.Key.strikethroughStyle, value: color, range: textRange)
+        return attributedText
+    }
     
     func strikeThrough(color: UIColor, forString:String)->NSAttributedString{
         let textRange = (self as NSString).range(of: forString)
@@ -258,71 +258,91 @@ extension String{
     }
 }
 extension String {
-
+    
     func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
     }
-
+    
     func heightOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.height
     }
-
+    
     func sizeOfString(usingFont font: UIFont) -> CGSize {
         let fontAttributes = [NSAttributedString.Key.font: font]
         return self.size(withAttributes: fontAttributes)
     }
-    func ConvertDateFormat(FromFormat:String,ToFormat:String) -> String
+    func ConvertDateFormat(FromFormat:String,ToFormat:String = "") -> String
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = FromFormat
         let date = dateFormatter.date(from: self)
         dateFormatter.dateFormat = ToFormat
+        if ToFormat == "" {
+            return date?.ConvertDataToHeaderDate() ?? ""
+            //            dateFormatter.dateFormat = date?.dateFormatWithSuffix()
+        }
+        
+        //
         return  dateFormatter.string(from: date!)
         
     }
     
-  
+    func StringToDate(Format:String) -> Date
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Format
+        dateFormatter.amSymbol = "AM"
+        dateFormatter.pmSymbol = "PM"
+        let date = dateFormatter.date(from: self)
+        
+        return date ?? Date()
+        
+    }
 }
 extension String {
-
+    
     // formatting text for currency textField
     func currencyInputFormatting() -> String {
-
+        
         var number: NSNumber!
         let formatter = NumberFormatter()
         formatter.numberStyle = .currencyAccounting
         formatter.currencySymbol = Currency
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
-
+        
         var amountWithPrefix = self
-
+        
         // remove from String: "$", ".", ","
         let regex = try! NSRegularExpression(pattern: "[^0-9]", options: .caseInsensitive)
         amountWithPrefix = regex.stringByReplacingMatches(in: amountWithPrefix, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.count), withTemplate: "")
-
+        
         let double = (amountWithPrefix as NSString).doubleValue
         number = NSNumber(value: (double / 100))
-
+        
         // if first number is 0 or all numbers were deleted
         guard number != 0 as NSNumber else {
             return ""
         }
-
+        //  let formattedString = formatter.string(from: number)
+        //        return (formattedString?.replacingOccurrences(of: ".", with: ","))!
         return formatter.string(from: number)!
     }
-    public func removeFormatAmount() -> Double {
-               let formatter = NumberFormatter()
-               formatter.locale = Locale.current
-               formatter.numberStyle = .currency
-               formatter.currencySymbol = Currency
-               formatter.decimalSeparator = Locale.current.groupingSeparator
-               return formatter.number(from: self)?.doubleValue ?? 0.00
-           }
+  
+    
+    public func removeFormatAmount() -> (String,Double) {
+        let formatter = NumberFormatter()
+        formatter.locale = Locale.current
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = Currency
+        formatter.decimalSeparator = Locale.current.groupingSeparator
+        let formattedvalue = formatter.number(from: self)?.doubleValue ?? 0.00
+        return ("\(formattedvalue)",formattedvalue)
+    }
 }
 extension String {
     func Bold(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {
@@ -348,17 +368,17 @@ extension String {
         ]
         return NSMutableAttributedString(string: self, attributes:attributes)
     }
-
+    
 }
 extension String {
     func hasAllZero() -> Bool {
         
         let mobileNumberPattern = "^0*$"
         let mobileNumberPred = NSPredicate(format: "SELF MATCHES %@", mobileNumberPattern)
-
+        
         let matched = mobileNumberPred.evaluate(with: self)
         if matched {
-           return true
+            return true
         } else {
             return false
         }

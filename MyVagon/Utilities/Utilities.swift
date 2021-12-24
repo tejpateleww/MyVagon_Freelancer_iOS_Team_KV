@@ -11,6 +11,7 @@ import UIKit
  
 import NVActivityIndicatorView
 import SwiftMessages
+import Lottie
 // ----------------------------------------------------
 //MARK:- --------- Get Class Name Method ---------
 // ----------------------------------------------------
@@ -112,7 +113,32 @@ class Utilities:NSObject{
             vc.present(alertController, animated: true, completion: nil)
         }
     }
-    
+    static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], isOkRed : Bool, completion:((_ index:Int) -> Void)!) -> Void{
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        var style : UIAlertAction.Style
+        for index in 0..<buttons.count {
+            if isOkRed{
+                if buttons[index].lowercased() == UrlConstant.Ok.lowercased() || buttons[index].lowercased() == UrlConstant.Yes.lowercased(){
+                    style = .destructive
+                }else{
+                    style = .default
+                }
+            }else{
+                style = .default
+            }
+            
+            let action = UIAlertAction(title: buttons[index], style: style, handler: { (alert: UIAlertAction!) in
+                if(completion != nil) {
+                    completion(index)
+                }
+            })
+            alertController.addAction(action)
+        }
+        DispatchQueue.main.async {
+            vc.present(alertController, animated: true, completion: nil)
+        }
+    }
     static func displayAlert(_ title: String, message: String, completion:((_ index: Int) -> Void)?, otherTitles: String? ...) {
         
         if message.trimmedString == "" {
@@ -146,7 +172,26 @@ class Utilities:NSObject{
             AppDelegate.shared.window?.rootViewController!.present(alert, animated: true, completion: nil)
         }
     }
-    
+    static func showAlertWithTitleFromWindow(title:String?, andMessage message:String, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void {
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        for index in 0..<buttons.count
+        {
+            let action = UIAlertAction(title: buttons[index], style: .default, handler: {
+                (alert: UIAlertAction!) in
+                
+                if(completion != nil) {
+                    completion(index)
+                }
+            })
+            
+            alertController.addAction(action)
+        }
+        
+        appDel.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+        
+    }
     static func displayAlertWithOutAction(_ title: String, message: String, completion:((_ index: Int) -> Void)?, otherTitles: String? ...) {
         
         if message.trimmedString == "" {
@@ -361,15 +406,100 @@ class Utilities:NSObject{
             }
         }
     }
-    
-    
-    class func showHud()
-    {
-        let activityData = ActivityData(type: .circleStrokeSpin)
-        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+    class AnimationLoader: NSObject {
         
+        static var ViewBG = UIView()
+        static var loadingView = AnimationView(name: "LoaderLottie")
+       
+        
+        class func showActivityIndicatory() {
+            
+            let size:CGSize = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.frame.size ?? CGSize()
+            ViewBG.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+            ViewBG.center = CGPoint(x: size.width / 2, y: size.height / 2)
+            ViewBG.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+           
+            
+            loadingView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+            loadingView.contentMode = .scaleAspectFit
+            loadingView.center = CGPoint(x: size.width / 2, y: size.height / 2)
+            loadingView.backgroundColor = .white
+            loadingView.clipsToBounds = true
+            loadingView.animationSpeed = 1.0
+            loadingView.loopMode = .loop
+    //        loadingView.layer.cornerRadius = 10
+            loadingView.layer.cornerRadius = 10
+           
+            loadingView.contentMode = .scaleAspectFit
+            
+            if !ViewBG.subviews.contains(loadingView){
+                ViewBG.addSubview(loadingView)
+            }
+            loadingView.play()
+      
+            UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.addSubview(ViewBG)
+            print("ATDebug :: \(ViewBG.frame)")
+
+    //        UIApplication.shared.keyWindow?.addSubview(ViewBG)
+        }
+        
+        class func hideLoader(){
+            
+            DispatchQueue.main.async(execute: {
+                loadingView.stop()
+                ViewBG.removeFromSuperview()
+            })
+        }
+    }
+      static func showHud(){
+        DispatchQueue.main.async {
+            AnimationLoader.showActivityIndicatory()
+        }
+    }
+    
+    static func hideHud(){
+        DispatchQueue.main.async {
+            AnimationLoader.hideLoader()
+        }
+    }
+    
+    class func CheckLocation(currentVC:UIViewController){
+        
+        let alertController = UIAlertController(title: "Location Services Disabled".Localized(), message: "Please enable location services for this app.".Localized(), preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK".Localized(), style: .default, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings".Localized(), style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success)
+                    
+                    in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        
+        alertController.addAction(OKAction)
+        alertController.addAction(settingsAction)
+        
+        
+        OperationQueue.main.addOperation {
+            currentVC.present(alertController, animated: true,
+                              completion:nil)
+        }
         
     }
+    
+//    class func showHud()
+//    {
+//        let activityData = ActivityData(type: .circleStrokeSpin)
+//        NVActivityIndicatorPresenter.sharedInstance.startAnimating(activityData)
+//
+//
+//    }
     class func ShowLoaderButtonInButton(Button:themeButton,vc:UIViewController) {
         vc.view.isUserInteractionEnabled = false
         Button.showLoading()
@@ -378,10 +508,10 @@ class Utilities:NSObject{
         vc.view.isUserInteractionEnabled = true
         Button.hideLoading()
     }
-    class func hideHud()
-    {
-        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
-    }
+//    class func hideHud()
+//    {
+//        NVActivityIndicatorPresenter.sharedInstance.stopAnimating()
+//    }
     
     /*
      class func showHUDWithoutLottie(with mainView: UIView?) {

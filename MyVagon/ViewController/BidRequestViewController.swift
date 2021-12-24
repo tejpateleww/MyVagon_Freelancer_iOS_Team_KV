@@ -16,7 +16,7 @@ class BidRequestViewController: BaseViewController {
     var BidsData : MyLoadsNewDatum?
     let postTruckBidsViewModel = PostTruckBidsViewModel()
     var PostTruckID = ""
-    var arrBidsData : [SearchLoadsDatum]?
+    var arrBidsData : [MyLoadsNewPostedTruck]?
     var isLoading = true {
         didSet {
             tblAvailableData.isUserInteractionEnabled = !isLoading
@@ -58,7 +58,6 @@ class BidRequestViewController: BaseViewController {
     // ----------------------------------------------------
     
     
-    
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
@@ -74,17 +73,84 @@ class BidRequestViewController: BaseViewController {
         let reqModel = PostTruckBidReqModel()
         reqModel.availability_id = PostTruckID
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        self.postTruckBidsViewModel.PostedTruckBid(ReqModel: reqModel)
+        self.postTruckBidsViewModel.BidRequest(ReqModel: reqModel)
     }
     
-    func callAPIForAcceptReject(Accepted:Bool) {
-        self.postTruckBidsViewModel.bidRequestViewController =  self
+    func callAPIForAcceptReject(Accepted:Bool,bookingID:String,loadDetails:MyLoadsNewPostedTruck?,isForBook:Bool,RemainingsMinute:Int = 0) {
         
-        let reqModel = BidAcceptRejectReqModel()
-        reqModel.availability_id = PostTruckID
-        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        reqModel.is_accept = (Accepted == true) ? "1" : "0"
-        self.postTruckBidsViewModel.AcceptReject(ReqModel: reqModel)
+        
+        let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: BidAcceptRejectViewController.storyboardID) as! BidAcceptRejectViewController
+        controller.bidRequestViewController = self
+        controller.LoadDetails = loadDetails
+            controller.isAccept = Accepted
+        controller.isForBook = isForBook
+        let TitleAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(22)] as [NSAttributedString.Key : Any]
+        
+        
+        if isForBook {
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ReasonForCancelBookViewController.storyboardID) as! ReasonForCancelBookViewController
+                        controller.hidesBottomBarWhenPushed = true
+            controller.arrayForSort = [  SortModel(Title: "Rate too low", IsSelect: true),
+                                         SortModel(Title: "Pickup window", IsSelect: false),
+                                         SortModel(Title: "Delivery window", IsSelect: false),
+                                         SortModel(Title: "Equipment issue", IsSelect: false),
+                                         SortModel(Title: "Delayed by previous receiver", IsSelect: false),
+                                         SortModel(Title: "Other", IsSelect: false)]
+            controller.remainingsMinute = RemainingsMinute
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((6 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
+                    self.present(sheetController, animated: true, completion: nil)
+            
+            
+//
+//            let AttributedStringFinal = "Are you sure you want to ".Medium(color: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), FontSize: 16)
+//
+//                AttributedStringFinal.append("decline".Medium(color: #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), FontSize: 16))
+//
+//            AttributedStringFinal.append(" the book request?".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 16))
+//
+//            controller.TitleAttributedText = AttributedStringFinal
+//
+//            controller.TitleAttributedText = NSAttributedString(string: "Book Request", attributes: TitleAttribute)
+//            controller.DescriptionAttributedText = AttributedStringFinal
+//
+            
+            
+        } else {
+           
+            let AttributedStringFinal = "Are you sure you want to ".Medium(color: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), FontSize: 16)
+            if Accepted {
+                AttributedStringFinal.append("accept".Medium(color: #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1), FontSize: 16))
+            } else {
+                AttributedStringFinal.append("decline".Medium(color: #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), FontSize: 16))
+            }
+            
+            AttributedStringFinal.append(" the bid request?".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 16))
+            
+            controller.TitleAttributedText = AttributedStringFinal
+            
+            controller.TitleAttributedText = NSAttributedString(string: "Bid Request", attributes: TitleAttribute)
+            controller.DescriptionAttributedText = AttributedStringFinal
+        }
+        
+      
+        controller.IsHideImage = true
+        controller.LeftbtnTitle = "Cancel"
+        controller.RightBtnTitle = "Yes"
+        
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.modalTransitionStyle = .coverVertical
+        controller.LeftbtnClosour = {
+            controller.view.backgroundColor = .clear
+            controller.dismiss(animated: true, completion: nil)
+        }
+        controller.RightbtnClosour = {
+            
+            controller.view.backgroundColor = .clear
+            controller.dismiss(animated: true, completion: nil)
+        }
+        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(220) + appDel.GetSafeAreaHeightFromBottom())])
+        self.present(sheetController, animated: true, completion: nil)
+     
     }
     
 }
@@ -92,8 +158,9 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
-        var numOfSections: Int = 0
+        if isLoading {
+            return 2
+        }
         if arrBidsData?.count != 0
         {
             //tableView.separatorStyle = .singleLine
@@ -109,12 +176,18 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             tableView.backgroundView  = noDataLabel
             tableView.separatorStyle  = .none
         }
-        return numOfSections
-        
+
+        return 0
         // return arrHomeData?.count ?? 0// arrSection.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isLoading {
+            if section == 0 {
+                return 0
+            }
+            return 5
+        }
         if section == 0 {
             return 1
         }
@@ -143,38 +216,60 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             return cell
         } else {
             let cell =  tableView.dequeueReusableCell(withIdentifier: "PostAvailabilityRequestCell", for: indexPath) as! PostAvailabilityRequestCell
-            
-            cell.acceptRejectClosour = { (isAccept) in
-                if isAccept {
-                    self.callAPIForAcceptReject(Accepted: true)
+            cell.isLoading = self.isLoading
+            if !isLoading {
+                
+                let BookingDetails = arrBidsData?[indexPath.row].bookingInfo
+                cell.btnAccept.layer.borderWidth = 1
+                cell.btnReject.layer.borderWidth = 1
+                let TimeToCancel = (30*60)-(arrBidsData?[indexPath.row].time_difference ?? 0)
+
+                if (BookingDetails?.isBid ?? 0) == 1 {
+                    cell.acceptRejectClosour = { (isAccept) in
+                        if isAccept {
+                            self.callAPIForAcceptReject(Accepted: true, bookingID: "\(self.arrBidsData?[indexPath.row].id ?? 0)", loadDetails: self.arrBidsData?[indexPath.row], isForBook: false)
+                        } else {
+                            self.callAPIForAcceptReject(Accepted: false, bookingID: "\(self.arrBidsData?[indexPath.row].id ?? 0)", loadDetails: self.arrBidsData?[indexPath.row], isForBook: false)
+                        }
+                        
+                    }
                 } else {
-                    self.callAPIForAcceptReject(Accepted: true)
+                    let minutes = TimeToCancel / 60
+                    cell.acceptRejectClosour = { (isAccept) in
+                        self.callAPIForAcceptReject(Accepted: false, bookingID: "\(self.arrBidsData?[indexPath.row].id ?? 0)", loadDetails: self.arrBidsData?[indexPath.row], isForBook: true,RemainingsMinute: minutes)
+                        
+                    }
+                   
                 }
                 
+                cell.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
+                cell.lblCompanyName.text = BookingDetails?.shipperDetails?.name ?? ""
+                
+                cell.lblOfferPrice.text = "10% ↑"
+                cell.lblRatting.text = "(4)"
+                cell.lblWeightAndMiles.text = "\(BookingDetails?.totalWeight ?? "0 KG"), \(BookingDetails?.distance ?? "") Km"
+                
+                cell.lblDeadhead.text = "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "0") Mile Deadhead"
+              
+                cell.lblTruckType.text = BookingDetails?.trucks?.truckType?.name ?? "Truck type"
+                
+                let StringURLForProfile = "\(APIEnvironment.TempProfileURL)\(BookingDetails?.shipperDetails?.profile ?? "")"
+                cell.imgCompany.sd_imageIndicator = SDWebImageActivityIndicator.gray
+                cell.imgCompany.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
+               
+                cell.viewCosoms.rating = 4
+                cell.viewCosoms.isHidden = false
+                cell.PickUpDropOffData = BookingDetails?.trucks?.locations
+                
+                cell.btnAccept.isHidden = ((BookingDetails?.isBid ?? 0) == 1) ? false : true
+                
+                
+                cell.btnReject.setTitle(((BookingDetails?.isBid ?? 0) == 1) ? "Reject" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+            } else {
+                cell.viewCosoms.isHidden = true
+                cell.btnAccept.layer.borderWidth = 0
+                cell.btnReject.layer.borderWidth = 0
             }
-            
-            let BookingDetails = arrBidsData?[indexPath.row]
-            
-            cell.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
-            cell.lblCompanyName.text = BookingDetails?.shipperDetails?.name ?? ""
-            cell.lblOfferPrice.text = "10% ↑"
-            cell.lblRatting.text = "(4)"
-            cell.lblWeightAndMiles.text = "\(BookingDetails?.totalWeight ?? ""), \(BookingDetails?.distance ?? "") Km"
-            cell.lblDeadhead.text = (BookingDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? BookingDetails?.trucks?.truckType?.name ?? "" : "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "") : \(BookingDetails?.trucks?.truckType?.name ?? "")"
-            cell.lblTruckType.text = BookingDetails?.trucks?.truckType?.name ?? ""
-            
-            let StringURLForProfile = "\(APIEnvironment.TempProfileURL.rawValue)\(BookingDetails?.shipperDetails?.profile ?? "")"
-            cell.imgCompany.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            cell.imgCompany.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
-            
-            
-            cell.viewCosoms.rating = 4
-            
-            
-            
-            cell.PickUpDropOffData = arrBidsData?[indexPath.row].trucks?.locations
-            
-            
             cell.tblHeight = { (heightTBl) in
                 self.tblAvailableData.layoutIfNeeded()
                 self.tblAvailableData.layoutSubviews()
@@ -194,6 +289,12 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
+        controller.hidesBottomBarWhenPushed = true
+        controller.LoadDetails = self.arrBidsData?[indexPath.row]
+        
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
     
@@ -240,7 +341,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                 controller.arrayForSort = [  SortModel(Title: "Price : Low to high", IsSelect: true),
                                              SortModel(Title: "Price : High to Low", IsSelect: false),
                                              SortModel(Title: "Min Deadheading", IsSelect: false)]
-                let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((3 * 50) + 110))])
+                let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((3 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
                 self.present(sheetController, animated: true, completion: nil)
             }
             
@@ -280,29 +381,32 @@ class PostAvailabilityRequestCell : UITableViewCell {
     @IBOutlet weak var lblTruckType: themeLabel!
     @IBOutlet weak var imgCompany: UIImageView!
     @IBOutlet weak var viewCosoms: CosmosView!
+    @IBOutlet weak var btnAccept: themeButton!
+    @IBOutlet weak var btnReject: themeButton!
     
     
     
-    @IBAction func btnAccept(_ sender: themeButton) {
+    @IBAction func btnAcceptClick(_ sender: themeButton) {
         if let click = self.acceptRejectClosour{
             click(true)
         }
     }
     
-    @IBAction func btnSortClick(_ sender: themeButton) {
+    @IBAction func btnRejectClick(_ sender: themeButton) {
         if let click = self.acceptRejectClosour{
             click(false)
         }
     }
     
-    
+    var isLoading : Bool = false
+
     
     @IBOutlet weak var tblMultipleLocation: UITableView!
     @IBOutlet weak var conHeightOfTbl: NSLayoutConstraint!
     @IBOutlet weak var viewContents: UIView!
     
     
-    var PickUpDropOffData : [SearchLocation]?
+    var PickUpDropOffData : [MyLoadsNewLocation]?
     
     var tblHeight:((CGFloat)->())?
     
@@ -393,7 +497,9 @@ class PostAvailabilityRequestCell : UITableViewCell {
 extension PostAvailabilityRequestCell : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        if  isLoading {
+            return 2
+        }
         return PickUpDropOffData?.count ?? 0
         
         
@@ -406,7 +512,7 @@ extension PostAvailabilityRequestCell : UITableViewDataSource , UITableViewDeleg
         
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
-        
+        if !isLoading {
         cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
         
         cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
@@ -420,9 +526,17 @@ extension PostAvailabilityRequestCell : UITableViewDataSource , UITableViewDeleg
             
             cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
         }
-        
-        cell.lblDateTime.text = "\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? ""))"
-        
+            var StringForDateTime = ""
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append(" ")
+            
+            if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            } else {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")-\(PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "")")
+            }
+            cell.lblDateTime.text = StringForDateTime
+        }
         return cell
         
         
@@ -457,7 +571,5 @@ class bidRequestHeaderCell : UITableViewCell {
             click()
         }
       
-        
-        
     }
 }

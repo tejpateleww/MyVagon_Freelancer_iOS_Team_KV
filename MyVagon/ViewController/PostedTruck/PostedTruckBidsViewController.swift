@@ -29,6 +29,8 @@ class PostedTruckBidsViewController: BaseViewController {
     
     var customTabBarController: CustomTabBarVC?
     var refreshControl = UIRefreshControl()
+    
+    var NumberOfCount = 0
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -46,7 +48,7 @@ class PostedTruckBidsViewController: BaseViewController {
         }
         tblLocations.register(UINib(nibName: "PickUpDropOffCell", bundle: nil), forCellReuseIdentifier: "PickUpDropOffCell")
       
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Reload", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: false,subTitleString: "3 matches found")
+        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Reload", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: false,subTitleString: "\(NumberOfCount) matches found")
      
         
         DispatchQueue.main.async {
@@ -68,7 +70,7 @@ class PostedTruckBidsViewController: BaseViewController {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.customTabBarController?.showTabBar()
+        self.customTabBarController?.hideTabBar()
     }
     
        override func viewWillDisappear(_ animated: Bool) {

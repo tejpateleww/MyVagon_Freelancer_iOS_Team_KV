@@ -16,7 +16,7 @@ struct HomeProduct : Codable {
         let note : String?
         let productId : HomeProductId?
         let productType : HomeProductType?
-        let qty : Int?
+        let qty : String?
         let unit : HomeUnit?
         let updatedAt : String?
         let weight : String?
@@ -48,7 +48,7 @@ struct HomeProduct : Codable {
                 note = try? values.decodeIfPresent(String.self, forKey: .note)
                 productId = try? values.decodeIfPresent(HomeProductId.self, forKey: .productId)
                 productType = try? values.decodeIfPresent(HomeProductType.self, forKey: .productType)
-                qty = try? values.decodeIfPresent(Int.self, forKey: .qty)
+                qty = try? values.decodeIfPresent(String.self, forKey: .qty)
                 unit = try? values.decodeIfPresent(HomeUnit.self, forKey: .unit)
                 updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
                 weight = try? values.decodeIfPresent(String.self, forKey: .weight)

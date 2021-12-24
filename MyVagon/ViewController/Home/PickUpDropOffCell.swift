@@ -144,7 +144,16 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
                 cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
             }
             
-            cell.lblDateTime.text = "\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? ""))"
+            var StringForDateTime = ""
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append(" ")
+            
+            if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            } else {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")-\(PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "")")
+            }
+            cell.lblDateTime.text = StringForDateTime
         }
             return cell
         

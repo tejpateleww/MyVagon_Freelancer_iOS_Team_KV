@@ -13,7 +13,7 @@ class PostedTruckBidsViewModel {
     
     func PostedTruckBid(ReqModel:PostTruckBidReqModel){
      
-        WebServiceSubClass.PostedTruckBid(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+        WebServiceSubClass.PostedTruckResult(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
           
     
             if status {

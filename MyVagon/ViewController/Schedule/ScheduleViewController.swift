@@ -8,6 +8,7 @@
 import UIKit
 import FSCalendar
 import DropDown
+import CoreLocation
 enum MyLoadesStatus {
     
     case all,pending,scheduled,inprocess,completed,canceled
@@ -74,8 +75,13 @@ class ScheduleViewController: BaseViewController {
             tblLocations.reloadData()
         }
     }
+    // ----------------------------------------------------
+    // MARK: - --------- Life-cycle Methods ---------
+    // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RefreshViewForPostTruck), name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
         setupChooseDropDown()
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
@@ -89,31 +95,8 @@ class ScheduleViewController: BaseViewController {
         setNavigationBar(subTitle: "")
     
         
-        
-        //        calender.accessibilityIdentifier = "calender"
-        //        calender.delegate = self
-        //        calender.dataSource = self
-        
-        //
-        //        tblLocations.tableHeaderView = cell
-        
-        //        btnOptionClosour = { [self] in
-        //
-        ////            picker = UIPickerView.init()
-        ////            picker.delegate = self
-        ////            picker.dataSource = self
-        ////            picker.backgroundColor = UIColor.white
-        ////            picker.setValue(UIColor.black, forKey: "textColor")
-        ////            picker.autoresizingMask = .flexibleWidth
-        ////            picker.contentMode = .center
-        ////            picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 300)
-        ////            self.view.addSubview(picker)
-        ////
-        ////            toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
-        ////            toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
-        ////            self.view.addSubview(toolBar)
-        //        }
-        
+      
+     
         DispatchQueue.main.async {
             self.tblLocations.layoutIfNeeded()
             self.tblLocations.reloadData()
@@ -128,6 +111,10 @@ class ScheduleViewController: BaseViewController {
         btnOptionClosour = {
             self.chooseDropDown.show()
         }
+    }
+    @objc func RefreshViewForPostTruck() {
+        PageNumber = 0
+        CallWebSerive(status: CurrentFilterStatus)
     }
     func setNavigationBar(subTitle:String) {
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages:  [NavItemsRight.option.value], isTranslucent: true, ShowShadow: true,subTitleString: subTitle)
@@ -188,7 +175,7 @@ class ScheduleViewController: BaseViewController {
         self.myLoadsViewModel.getMyloads(ReqModel: ReqModelForMyLoades)
         
     }
-    
+   
     func setupChooseDropDown() {
         chooseDropDown.anchorView = btnOption
         
@@ -282,34 +269,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
            
         }
         return cell
-        
-//        if SingletonClass.sharedInstance.UserProfileData?.permissions?.postAvailibility ?? 0 == 1 {
-//
-//            //
-//
-//
-//        } else {
-//
-//            let cell =  tableView.dequeueReusableCell(withIdentifier: "MyLoadesCell", for: indexPath) as! MyLoadesCell
-//
-//            cell.myloadDetails = arrMyLoadesData?[indexPath.section][indexPath.row]
-//            //
-//            cell.isShowFooter = ((indexPath.row % 2 ) == 0) ? true : false
-//            cell.tblHeight = { (heightTBl) in
-//                self.tblLocations.layoutIfNeeded()
-//                self.tblLocations.layoutSubviews()
-//            }
-//            cell.tblMultipleLocation.reloadData()
-//            cell.tblMultipleLocation.layoutIfNeeded()
-//            cell.tblMultipleLocation.layoutSubviews()
-//
-//
-//
-//            return cell
-//
-//
-//        }
-        
+
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -338,7 +298,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             let label = UILabel()
             label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
             label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-            label.text = arrMyLoadesData?[section].first?.date ?? ""
+            label.text = arrMyLoadesData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "")
             label.textAlignment = .center
             label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
             label.textColor = UIColor(hexString: "#292929")
@@ -365,26 +325,29 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         
         if tableView == tblLocations {
             if indexPath.section == ((arrMyLoadesData?.count ?? 0) - 1) {
-                if arrMyLoadesData?.count != 0 {
-                    if indexPath.row == ((arrMyLoadesData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
+                if indexPath.row == ((arrMyLoadesData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
                     {
                         let spinner = UIActivityIndicatorView(style: .medium)
                         spinner.tintColor = RefreshControlColor
                         spinner.startAnimating()
                         spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
-
+                        
                         self.tblLocations.tableFooterView = spinner
                         self.tblLocations.tableFooterView?.isHidden = false
-                        CallWebSerive(status: CurrentFilterStatus)
+                    CallWebSerive(status: CurrentFilterStatus)
+
                     }
-                }   
             }
+            
         }
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (arrMyLoadesData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) == true {
+//            if (arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.isBid ?? 0) == 1 {
+//                
+//            }
             if (arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.bookingRequestCount ?? 0) != 0 {
                 print("View Match Clicked")
                 let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
@@ -392,8 +355,38 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                 controller.hidesBottomBarWhenPushed = true
                 controller.PostTruckID = "\(arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)"
                 self.navigationController?.pushViewController(controller, animated: true)
+            } else {
+                if !isLoading {
+                    WebServiceSubClass.SystemDateTime { (_, _, _, _) in
+                        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
+                        controller.hidesBottomBarWhenPushed = true
+                        controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.bookingInfo
+                        
+                        
+                     
+                        
+                        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+                    }
+                   
+                }
             }
-           
+            
+        } else {
+            if !isLoading {
+                WebServiceSubClass.SystemDateTime { (_, _, _, _) in
+                    let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
+                    controller.hidesBottomBarWhenPushed = true
+                    if (self.arrMyLoadesData?[indexPath.section][indexPath.row].type == MyLoadType.Bid.Name) {
+                        controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].bid
+                    } else {
+                        controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].book
+                    }
+                 
+                    
+                    UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+                }
+               
+            }
         }
 //        if (indexPath.row % 2) == 0 {
 //            print("View Match Clicked")
@@ -458,3 +451,8 @@ extension ScheduleViewController:UIPickerViewDelegate,UIPickerViewDataSource {
     
     
 }
+
+
+
+
+

@@ -9,23 +9,79 @@ import Foundation
 
 typealias NetworkRouterCompletion = ((Data?,[String:Any]?, Bool) -> ())
 
-enum APIEnvironment : String {
+enum APIEnvironment  {
  
-    case Development = "http://3.66.160.72/api/"
-    case Profilebu = "http://3.66.160.72/"
-    case Live = "not provided"
-    case TempProfileURL = "http://3.66.160.72/public/temp/"
-    case ShipperImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/shipper/"
-    case DriverImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/driver/"
-    
-    
-    static var baseURL: String{
-        return APIEnvironment.environment.rawValue
-    }
-    
-    static var environment: APIEnvironment{
+    static var environment: Environment{
+///For Development Server
         return .Development
+        
+///For Live Server
+//        return .Live
     }
+    
+    static var socketBaseURL : String {
+        if APIEnvironment.environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.DevelopmentSocketBaseURL.rawValue
+        } else {
+            return BaseURLS.LiveSocketBaseURL.rawValue
+        }
+       
+    }
+    static var PODImageURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.PODImageURL.rawValue
+        } else {
+            return BaseURLS.PODImageURL.rawValue
+        }
+       
+    }
+    
+    
+    
+    static var TempProfileURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.TempProfileURL.rawValue
+        } else {
+            return BaseURLS.TempProfileURL.rawValue
+        }
+       
+    }
+    
+    static var ShipperImageURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.ShipperImageURL.rawValue
+        } else {
+            return BaseURLS.ShipperImageURL.rawValue
+        }
+       
+    }
+    
+    static var DriverImageURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.DriverImageURL.rawValue
+        } else {
+            return BaseURLS.DriverImageURL.rawValue
+        }
+       
+    }
+    
+    static var baseURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.DevelopmentServer.rawValue
+        } else {
+            return BaseURLS.LiveServer.rawValue
+        }
+       
+    }
+    static var profileBaseURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.Copydevelopement.rawValue
+        } else {
+            return BaseURLS.CopyLiveServer.rawValue
+        }
+       
+    }
+   
     
     static var BearerHeader : String {
         if UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)  {
@@ -55,7 +111,7 @@ enum APIEnvironment : String {
 }
 
 enum ApiKey: String {
-    case Init                                   = "init/ios/"
+    case Init                                   = "init/ios_driver"
     case Login                                  = "driver/login"
     case forgotpassword                         = "forgot/password"
     case ResetPassword                          = "password/reset"
@@ -80,7 +136,16 @@ enum ApiKey: String {
     case ShipmentList                           = "shipment/search"
     case SearchLoads                            = "search-loads"
     case BookNow                                = "driver/post/book"
+    case BidRequest                             = "bid-requests"
     case PostAvailabilityResult                 = "post-availability-result"
+    case BidRequestAcceptreject                 = "bid-request-accept-reject"
+    
+    case SystemDateTime                         = "system-date-time"
+    
+    case RejectBookingRequest                   = "RejectBookingRequest"
+    
+
+
     
     case MyLoades                               = "my-loads"
     
@@ -88,7 +153,51 @@ enum ApiKey: String {
     
     case ManageDriver                           = "dispature/manage-drivers"
     case ChangePermission                       = "dispature/edit-permission"
+    
+    
+    case BookingLoadDetails                     = "booking-load-detail"
+    case ArrivedAtLocation                      = "arrived-at-location"
+    case StartLoading                           = "start-loading"
+    case StartJourney                           = "start-journey"
+    case CompleteTrip                           = "complete-trip"
+    case UploadPOD                              = "upload-pod"
+    
 }
 
  
+
+enum socketApiKeys : String {
+ 
+    
+    case driverConnect = "driver_connect"
+    case updateLocation = "update_location"
+    case startTrip = "start_trip"
+    
+    case HideAtPickup = "hide_at_pickup"
+
+  
+}
+enum BaseURLS:String {
+
+ 
+    case TempProfileURL = "http://3.66.160.72/public/temp/"
+    case ShipperImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/shipper/"
+    case DriverImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/driver/"
+    case PODImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/POD/"
+    
+    
+    case DevelopmentServer = "http://3.66.160.72/api/"
+    case Copydevelopement = "http://3.66.160.72/"
+    
+    case LiveServer = "http://3.66.160.72/api/live/"
+    case CopyLiveServer = "http://3.66.160.72/live/"
+    
+    case LiveSocketBaseURL = "http://3.66.160.72:3000/"
+    case DevelopmentSocketBaseURL = "http://3.66.160.72:3000"
+    
+}
+enum Environment : String {
+    case Development
+    case Live
+}
 

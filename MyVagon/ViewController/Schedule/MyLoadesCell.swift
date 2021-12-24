@@ -141,43 +141,68 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
         
         switch myloadDetails?.type {
         case MyLoadType.Bid.Name:
+            let PickUpDropOffData = myloadDetails?.bid?.trucks?.locations
             cell.lblAddress.isHidden = false
-            cell.imgLocation.image =  (myloadDetails?.bid?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            cell.imgLocation.image =  (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
             
-            cell.lblAddress.text = myloadDetails?.bid?.trucks?.locations?[indexPath.row].dropLocation
+            cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
             
             cell.BtnShowMore.superview?.isHidden = true
-            cell.lblCompanyName.text = myloadDetails?.bid?.trucks?.locations?[indexPath.row].companyName
+            cell.lblCompanyName.text = PickUpDropOffData?[indexPath.row].companyName
             
-            if (myloadDetails?.bid?.trucks?.locations?.count ?? 0) == 1 {
+            if (PickUpDropOffData?.count ?? 0) == 1 {
                 cell.viewLine.isHidden = true
             } else {
                 
-                cell.viewLine.isHidden = (indexPath.row == ((myloadDetails?.bid?.trucks?.locations?.count ?? 0) - 1)) ? true : false
+                cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
             }
             
-            cell.lblDateTime.text = "\(myloadDetails?.bid?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((myloadDetails?.bid?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+            
+            var StringForDateTime = ""
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append(" ")
+            
+            if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            } else {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "")-\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            }
+            cell.lblDateTime.text = StringForDateTime
+            
             
             break
         case MyLoadType.Book.Name:
+            let PickUpDropOffData = myloadDetails?.book?.trucks?.locations
             cell.lblAddress.isHidden = false
-            cell.imgLocation.image =  (myloadDetails?.book?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            cell.imgLocation.image =  (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
             
-            cell.lblAddress.text = myloadDetails?.book?.trucks?.locations?[indexPath.row].dropLocation
+            cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
             
             cell.BtnShowMore.superview?.isHidden = true
-            cell.lblCompanyName.text = myloadDetails?.book?.trucks?.locations?[indexPath.row].companyName
+            cell.lblCompanyName.text = PickUpDropOffData?[indexPath.row].companyName
             
-            if (myloadDetails?.book?.trucks?.locations?.count ?? 0) == 1 {
+            if (PickUpDropOffData?.count ?? 0) == 1 {
                 cell.viewLine.isHidden = true
             } else {
                 
-                cell.viewLine.isHidden = (indexPath.row == ((myloadDetails?.book?.trucks?.locations?.count ?? 0) - 1)) ? true : false
+                cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
             }
             
-            cell.lblDateTime.text = "\(myloadDetails?.book?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((myloadDetails?.book?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+            
+            var StringForDateTime = ""
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append(" ")
+            
+            if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            } else {
+                StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "")-\(PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "")")
+            }
+            cell.lblDateTime.text = StringForDateTime
             
             
+            
+           
             break
         case MyLoadType.PostedTruck.Name:
             if (myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0 {
@@ -195,8 +220,18 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                     
                     cell.viewLine.isHidden = (indexPath.row == ((myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) - 1)) ? true : false
                 }
+                var StringForDateTime = ""
+                StringForDateTime.append("\(myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+                StringForDateTime.append(" ")
                 
-                cell.lblDateTime.text = "\(myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((myloadDetails?.book?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+                if (myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "") == (myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? "") {
+                    StringForDateTime.append("\(myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")")
+                } else {
+                    StringForDateTime.append("\(myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")-\(myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? "")")
+                }
+                cell.lblDateTime.text = StringForDateTime
+                
+             
                 
                 
                 break
@@ -260,30 +295,38 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                     
                     btnViewMatchFound.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
                     
-                    if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
-                        let totalCount = (myloadDetails?.postedTruck?.bookingRequestCount ?? 0)
-                        if (myloadDetails?.postedTruck?.isBid ?? 0) == 0 {
-                            btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#9B51E0"), for: .normal)
-                           
-                            btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#9B51E0").cgColor
-                            btnViewMatchFound.backgroundColor = .clear
-                            btnViewMatchFound.setTitle("\(totalCount) Matches Found", for: .normal)
+             //       if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
+                        if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
+                            let totalCount = (myloadDetails?.postedTruck?.bookingRequestCount ?? 0)
+                            if (myloadDetails?.postedTruck?.isBid ?? 0) == 0 {
+                                btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#9B51E0"), for: .normal)
+                               
+                                btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#9B51E0").cgColor
+                                btnViewMatchFound.backgroundColor = .clear
+                                btnViewMatchFound.setTitle("\(totalCount) Matches Found", for: .normal)
+                            } else {
+                                btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#9B51E0"), for: .normal)
+                               
+                                btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#9B51E0").cgColor
+                                btnViewMatchFound.backgroundColor = .clear
+                                btnViewMatchFound.setTitle("View \(totalCount) Bid Requests", for: .normal)
+                            }
                         } else {
-                            btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#9B51E0"), for: .normal)
+                            btnViewMatchFound.backgroundColor = hexStringToUIColor(hex: "#D2D2D9")
+                            btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#FFFFFF"), for: .normal)
                            
-                            btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#9B51E0").cgColor
-                            btnViewMatchFound.backgroundColor = .clear
-                            btnViewMatchFound.setTitle("View \(totalCount) Bid Requests", for: .normal)
+                            btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#D2D2D9").cgColor
+                            btnViewMatchFound.setTitle("No Matches Found", for: .normal)
                         }
-                    } else {
-                        btnViewMatchFound.backgroundColor = hexStringToUIColor(hex: "#D2D2D9")
-                        btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#FFFFFF"), for: .normal)
-                       
-                        btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#D2D2D9").cgColor
-                        btnViewMatchFound.setTitle("No Matches Found", for: .normal)
-                    }
-                    
-                    
+
+//                    } else {
+////                        btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#D56969"), for: .normal)
+////
+////                        btnViewMatchFound.layer.borderColor = hexStringToUIColor(hex: "#D56969").cgColor
+////                        btnViewMatchFound.backgroundColor = .clear
+////                        btnViewMatchFound.setTitle("25 minutes remaining to cancel", for: .normal)
+//                    }
+//
 
                     headerView.addSubview(btnViewMatchFound)
                     
@@ -333,16 +376,16 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             
             switch myloadDetails?.bid?.status {
             case MyLoadesStatus.pending.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             case MyLoadesStatus.scheduled.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             case MyLoadesStatus.inprocess.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
             case MyLoadesStatus.completed.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
@@ -375,16 +418,16 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             
             switch myloadDetails?.book?.status {
             case MyLoadesStatus.pending.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             case MyLoadesStatus.scheduled.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             case MyLoadesStatus.inprocess.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
             case MyLoadesStatus.completed.Name:
-                header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name
+                header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
@@ -422,19 +465,19 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
 
                 switch myloadDetails?.postedTruck?.bookingInfo?.status {
                 case MyLoadesStatus.pending.Name:
-                    header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name
+                    header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
                 case MyLoadesStatus.scheduled.Name:
-                    header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name
+                    header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
                 case MyLoadesStatus.inprocess.Name:
-                    header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name
+                    header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
                 case MyLoadesStatus.completed.Name:
-                    header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name
+                    header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
                 case MyLoadesStatus.canceled.Name:
-                    header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
+                    header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name.capitalized
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                     
                 case .none:
@@ -488,7 +531,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
         case MyLoadType.PostedTruck.Name:
             
             if (myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0 {
-                return 100
+                return 130
             } else {
                 return 80
             }

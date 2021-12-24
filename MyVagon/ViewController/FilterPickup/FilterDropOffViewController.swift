@@ -49,12 +49,12 @@ class FilterDropOffViewController: UIViewController,UITextFieldDelegate {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     var isForPickUp = false
-    
+    var selectedHaul : String = ""
     
     var ArrayForDropOffLocation : [ModelForDropOffLocation] = []
   
     var customTabBarController: CustomTabBarVC?
-    var SelectedLocationClosour : ((CLLocationCoordinate2D,String)->())?
+    var SelectedLocationClosour : ((CLLocationCoordinate2D,String,String)->())?
     var selectedLocation : (CLLocationCoordinate2D,String)?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -148,7 +148,7 @@ class FilterDropOffViewController: UIViewController,UITextFieldDelegate {
         if CheckValidation.0 {
             
             if let click = self.SelectedLocationClosour {
-                click(selectedLocation!.0, selectedLocation!.1)
+                click(selectedLocation!.0, selectedLocation!.1,selectedHaul)
             }
             self.dismiss(animated: true, completion: nil)
             
@@ -197,6 +197,9 @@ extension FilterDropOffViewController : UITableViewDelegate,UITableViewDataSourc
         cell.LblDescripiton.text = ArrayForDropOffLocation[indexPath.section].subModelForDropOffLocation?[indexPath.row].uptoKM
         
         cell.ButtonSelect.isSelected = (ArrayForDropOffLocation[indexPath.section].subModelForDropOffLocation?[indexPath.row].isSelected == true) ? true : false
+        if (ArrayForDropOffLocation[indexPath.section].subModelForDropOffLocation?[indexPath.row].isSelected == true) {
+            selectedHaul = ArrayForDropOffLocation[indexPath.section].subModelForDropOffLocation?[indexPath.row].title ?? ""
+        }
         
         if ArrayForDropOffLocation[indexPath.section].subModelForDropOffLocation?[indexPath.row].uptoKM == "" {
             cell.LblDescripiton.isHidden = true

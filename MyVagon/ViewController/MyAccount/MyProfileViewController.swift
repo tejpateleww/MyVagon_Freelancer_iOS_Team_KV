@@ -126,7 +126,7 @@ class MyProfileViewController: BaseViewController {
     }
     func SetValue() {
         
-        let StringURLForProfile = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
+        let StringURLForProfile = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
         ImageViewProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
         ImageViewProfile.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
         
@@ -156,14 +156,14 @@ class MyProfileViewController: BaseViewController {
         
         LabelVehicalRunsOn.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.fuelType ?? ""
         
-        let StringURlForIdentityProof = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof ?? "")"
+        let StringURlForIdentityProof = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof ?? "")"
         ImageViewIdentityProofDocument.sd_imageIndicator = SDWebImageActivityIndicator.gray
         ImageViewIdentityProofDocument.sd_setImage(with: URL(string: StringURlForIdentityProof), placeholderImage: UIImage())
         
         textFieldLicenseNumber.text = SingletonClass.sharedInstance.UserProfileData?.licenceNumber ?? ""
         textFieldLicenseExpiryDate.text = SingletonClass.sharedInstance.UserProfileData?.licenceExpiryDate?.ConvertDateFormat(FromFormat: "yyyy-mm-dd", ToFormat: "dd-mm-yyyy")
         
-        let StringURlForLicense = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.license ?? "")"
+        let StringURlForLicense = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.license ?? "")"
         ImageViewLicense.sd_imageIndicator = SDWebImageActivityIndicator.gray
         ImageViewLicense.sd_setImage(with: URL(string: StringURlForLicense), placeholderImage: UIImage())
         
@@ -250,7 +250,7 @@ extension MyProfileViewController : UICollectionViewDelegate,UICollectionViewDat
         } else if collectionView == collectionImages {
             let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
             cell.btnCancel.tag = indexPath.row
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(arrImages[indexPath.row])"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImages[indexPath.row])"
             cell.imgPhotos.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
             cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)

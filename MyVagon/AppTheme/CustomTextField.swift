@@ -135,8 +135,8 @@ class CurrencyTextField: themeTextfield, UITextFieldDelegate {
     
     //6
     private func setup() {
-        self.textAlignment = .center
-        self.keyboardType = .numberPad
+//        self.textAlignment = .center
+        self.keyboardType = .asciiCapableNumberPad
         self.contentScaleFactor = 0.5
         delegate = self
 

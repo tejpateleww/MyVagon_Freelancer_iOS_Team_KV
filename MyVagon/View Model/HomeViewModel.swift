@@ -14,7 +14,7 @@ class HomeViewModel {
     func GetShipmentList(ReqModel:ShipmentListReqModel){
         self.homeViewController?.isNeedToReload = false
         WebServiceSubClass.GetShipmentList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            
+            Utilities.hideHud()
             self.homeViewController?.refreshControl.endRefreshing()
             if status {
                 let numberOfCount = response?.data?.count ?? 0

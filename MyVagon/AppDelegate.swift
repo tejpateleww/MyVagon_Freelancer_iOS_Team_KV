@@ -10,14 +10,20 @@ import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
 import Firebase
+import CoreLocation
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
 
-var window: UIWindow?
+    var locationManager: CLLocationManager?
+
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
@@ -25,12 +31,29 @@ var window: UIWindow?
         GMSServices.provideAPIKey(AppInfo.Google_API_Key)
         GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
-        
-       
+        setUpLocationServices()
         // Override point for customization after application launch.
         return true
     }
-
+    func setUpLocationServices() {
+            locationManager = CLLocationManager()
+            locationManager?.delegate = self
+            locationManager?.requestAlwaysAuthorization()
+            if( CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways){
+                
+                if ((locationManager?.responds(to: #selector(CLLocationManager.requestWhenInUseAuthorization))) != nil)
+                {
+                    if locationManager?.location != nil
+                    {
+                      //  locationManager?.startUpdatingLocation()
+                        //locationManager?.delegate = self
+                    }
+                    //                manager.startUpdatingLocation()
+                }
+            }
+        }
+    
     func NavigateToLogin(){
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SignInContainerVC.storyboardID) as! SignInContainerVC
         let nav = UINavigationController(rootViewController: controller)
@@ -91,7 +114,6 @@ var window: UIWindow?
             }
         }
         
-       
         
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = true
@@ -100,35 +122,35 @@ var window: UIWindow?
     func NavigateToSchedual(){
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
         controller.selectedIndex = 1
-       
+        
         
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav
     }
     func Logout() {
-      
-         
+        
+        
         UserDefault.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
         SingletonClass.sharedInstance.ClearSigletonClassForLogin()
-            
-            for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
-                //            print("\(key) = \(value) \n")
-                print(key)
-                if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue {
-                    
-                }
-                else {
-                    UserDefaults.standard.removeObject(forKey: key)
-                }
+        
+        for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
+            //            print("\(key) = \(value) \n")
+            print(key)
+            if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue {
+                
             }
-           
-                self.NavigateToLogin()
-         
+            else {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
+        
+        self.NavigateToLogin()
+        
     }
     func checkAndSetDefaultLanguage() {
         if UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) == nil {
-        
+            
             setLanguageEnglish()
         } else {
             if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "en" {
@@ -148,38 +170,50 @@ var window: UIWindow?
         UserDefault.setValue("el", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
         SingletonClass.sharedInstance.SelectedLanguage = "1"
     }
+    func GetSafeAreaHeightFromBottom() -> CGFloat {
+        var bottomSafeAreaHeight: CGFloat = 0
+        
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.windows[0]
+            let safeFrame = window.safeAreaLayoutGuide.layoutFrame
+            bottomSafeAreaHeight = window.frame.maxY - safeFrame.maxY
+            return bottomSafeAreaHeight
+        }
+        return 0.0
+    }
+    
 }
 
 class CustomTabBar: UITabBar {
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-//        self.clipsToBounds = false
-//        layer.masksToBounds = true
+        //        self.clipsToBounds = false
+        //        layer.masksToBounds = true
         layer.cornerRadius = 10
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-//        layer.shadowOffset = CGSize(width: -3, height: 0)
-//        layer.shadowColor = UIColor.black.cgColor
-//        layer.shadowOpacity = 0.3
+        //        layer.shadowOffset = CGSize(width: -3, height: 0)
+        //        layer.shadowColor = UIColor.black.cgColor
+        //        layer.shadowOpacity = 0.3
         
-//        self.backgroundImage = UIImage.from(color: .white)
+        //        self.backgroundImage = UIImage.from(color: .white)
     }
-
+    
     
     override func layoutSubviews() {
-          super.layoutSubviews()
-          self.isTranslucent = true
-          var tabFrame            = self.frame
-          tabFrame.size.height    = 55 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero)
-          tabFrame.origin.y       = self.frame.origin.y +   ( self.frame.height - 55 - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero))
-          self.layer.cornerRadius = 0
-          self.frame            = tabFrame
-
-          self.items?.forEach({ $0.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -5.0) })
-
-
-      }
-
+        super.layoutSubviews()
+        self.isTranslucent = true
+        var tabFrame            = self.frame
+        tabFrame.size.height    = 55 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero)
+        tabFrame.origin.y       = self.frame.origin.y +   ( self.frame.height - 55 - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero))
+        self.layer.cornerRadius = 0
+        self.frame            = tabFrame
+        
+        self.items?.forEach({ $0.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -5.0) })
+        
+        
+    }
+    
 }
 
 var selectedTabIndex = 1
@@ -203,14 +237,14 @@ extension CustomTabBarVC: UITabBarControllerDelegate {
             self.tabBar.items![tabBarController.selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
             print(self.tabBar.items![tabBarController.selectedIndex].imageInsets)
         }
-      
-      
+        
+        
     }
     
 }
 class CustomTabBarVC: UITabBarController {
     var lastSelectedIndex = 0
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
@@ -227,25 +261,25 @@ class CustomTabBarVC: UITabBarController {
         let leftEdge = self.tabBar.items![0].imageInsets.left
         let rightEdge = self.tabBar.items![0].imageInsets.right
         
-       
+        
         self.tabBar.items![selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
-       // tabBarFirstTimeHeight = tabBar.frame.height
+        // tabBarFirstTimeHeight = tabBar.frame.height
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
     }
-
+    
     private func addcoustmeTabBarView() {
         if #available(iOS 13.0, *) {
-           
+            
             let appearance = tabBar.standardAppearance
             appearance.shadowImage = nil
             appearance.shadowColor = nil
@@ -254,22 +288,22 @@ class CustomTabBarVC: UITabBarController {
         } else {
             // Fallback on earlier versions
         };
-       
+        
     }
     
     func hideTabBarBorder()  {
         let tabBar = self.tabBar
         tabBar.backgroundImage = UIImage.from(color: .clear)
-//        tabBar.layer.shadowColor = UIColor.black.cgColor
-       
-      
+        //        tabBar.layer.shadowColor = UIColor.black.cgColor
+        
+        
     }
     
     func hideTabBar() {
         self.tabBar.isHidden = true
-       // coustmeTabBarView.isHidden = true
+        // coustmeTabBarView.isHidden = true
     }
-
+    
     func showTabBar() {
         self.tabBar.isHidden = false
         //coustmeTabBarView.isHidden = false
@@ -286,5 +320,52 @@ extension UIImage {
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return img ?? UIImage()
+    }
+}
+extension AppDelegate: CLLocationManagerDelegate{
+    // MARK: - LocationManagerDelegate
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+          
+            let location: CLLocation = locations.last!
+            SingletonClass.sharedInstance.userCurrentLocation = location
+            
+          
+            
+        
+        }
+        
+        // Handle authorization for the location manager.
+        func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+            switch status {
+            case .restricted:
+                print("ATDebug :: Location Location access was restricted.")
+            case .denied:
+                print("ATDebug :: Location User denied access to location.")
+            // Display the map using the default location.
+            
+            case .notDetermined:
+                print("ATDebug :: Location  status not determined.")
+            case .authorizedAlways: fallthrough
+            case .authorizedWhenInUse:
+                print("ATDebug :: Location  status is OK.")
+             //   locationManager?.startUpdatingLocation()
+                
+            }
+        }
+        
+        // Handle location manager errors.
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            locationManager?.stopUpdatingLocation()
+            
+    //        SingletonClass.sharedInstance.arrCarLists
+            
+            print("ATDebug :: Location Error: \(error)")
+        }
+}
+extension CLLocationCoordinate2D {
+    //distance in meters, as explained in CLLoactionDistance definition
+    func distance(from: CLLocationCoordinate2D) -> CLLocationDistance {
+        let destination=CLLocation(latitude:from.latitude,longitude:from.longitude)
+        return CLLocation(latitude: latitude, longitude: longitude).distance(from: destination)
     }
 }

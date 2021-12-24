@@ -28,7 +28,7 @@ enum NavItemsLeft {
 
 
 enum NavItemsRight {
-    case none,skip,chat,notification,RequestEdit ,contactus,search,option
+    case none,skip,chat,notification,RequestEdit ,contactus,search,option,reset
     
     var value:String {
         switch self {
@@ -48,6 +48,8 @@ enum NavItemsRight {
             return "search"
         case .option:
             return "option"
+        case .reset:
+            return "reset"
         }
        
     }

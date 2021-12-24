@@ -94,7 +94,7 @@ class BidNowPopupViewController: UIViewController {
         
         let reqModel = BidReqModel()
         reqModel.booking_id = BookingId
-        reqModel.amount = bidTextField.text ?? ""
+        reqModel.amount = (bidTextField.text ?? "").removeFormatAmount().0
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         reqModel.availability_id = AvailabilityId
         self.bidNowViewModel.WebServiceBidPost(ReqModel: reqModel)

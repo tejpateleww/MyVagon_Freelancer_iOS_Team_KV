@@ -691,7 +691,7 @@ extension TruckDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         } else if collectionView == collectionImages {
             let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
             cell.btnCancel.tag = indexPath.row
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(arrImages[indexPath.row])"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImages[indexPath.row])"
             cell.imgPhotos.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
             cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)

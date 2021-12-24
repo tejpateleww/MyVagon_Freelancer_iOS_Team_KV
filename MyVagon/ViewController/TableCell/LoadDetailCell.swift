@@ -132,27 +132,24 @@ extension LoadDetailCell : UITableViewDataSource , UITableViewDelegate {
             controller.noteString = self.LoadDetails?[indexPath.row].note ?? ""
             controller.modalPresentationStyle = .overCurrentContext
             controller.modalTransitionStyle = .coverVertical
-            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280))])
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
             UIApplication.topViewController()?.present(sheetController, animated: true, completion:  {
             })
         }
         
-       
-        
-        
         cell.lblProductName.text = LoadDetails?[indexPath.row].productId?.name ?? ""
         cell.lblWeight.text = "\(LoadDetails?[indexPath.row].weight ?? "") \(LoadDetails?[indexPath.row].unit?.name ?? "")"
-        cell.lblCapacity.text = "\(LoadDetails?[indexPath.row].qty ?? 0) x \(LoadDetails?[indexPath.row].productType?.name ?? "")"
+        cell.lblCapacity.text = "\(LoadDetails?[indexPath.row].qty ?? "0") x \(LoadDetails?[indexPath.row].productType?.name ?? "")"
         
         if LoadDetails?[indexPath.row].isFragile == 0 && LoadDetails?[indexPath.row].isSensetive == 0 {
             cell.lblType.isHidden = true
         } else {
-            if (LoadDetails?[indexPath.row].isFragile == 1) && (LoadDetails?[indexPath.row].isFragile == 1) {
+            if (LoadDetails?[indexPath.row].isFragile == 1) && (LoadDetails?[indexPath.row].isSensetive == 1) {
                 cell.lblType.isHidden = false
                 cell.lblType.text = "Fragile, Sensetive to odour"
             } else {
                 cell.lblType.isHidden = false
-                cell.lblType.text = (LoadDetails?[indexPath.row].isFragile == 1) ? "Fragile" : "Sensetive"
+                cell.lblType.text = (LoadDetails?[indexPath.row].isFragile == 1) ? "Fragile" : "Sensetive to odour"
             }
             
         }

@@ -20,6 +20,7 @@ let AppURL = AppInfo.appUrl // "itms-apps://itunes.apple.com/app/id1547969270"
 let ReqDeviceType = "1"
 let Headerkey = ""
 
+typealias EmptyClosure = () -> Void
 
 let NotificationBadges = NSNotification.Name(rawValue:"NotificationBadges")
 

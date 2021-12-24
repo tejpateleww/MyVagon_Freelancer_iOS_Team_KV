@@ -13,6 +13,8 @@ pod 'Firebase/Crashlytics'
 pod 'MHLoadingButton'
 pod 'DropDown'
   pod 'UIView-Shimmer', '~> 1.0'
+pod 'lottie-ios'
+    pod 'SwiftyJSON', '~> 4.0'
 
 pod 'Firebase/Analytics'
   pod 'GooglePlacePicker'
@@ -25,6 +27,8 @@ pod 'Firebase/Analytics'
  pod 'GrowingTextView', '0.7.2'
   pod 'Cosmos', '~> 23.0'
   pod 'Charts'
+  pod 'Socket.IO-Client-Swift', '13.3.1'
+
 pod 'SwiftMessages'
 
 

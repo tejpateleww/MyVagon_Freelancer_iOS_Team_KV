@@ -81,62 +81,67 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="425" height="480"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifF-gE-z0R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="425" height="81.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="425" height="84.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IhO-AM-ig8">
-                                                                <rect key="frame" x="15" y="10" width="410" height="71.5"/>
+                                                                <rect key="frame" x="15" y="10" width="410" height="74.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ABC Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAu-1V-uGE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="5" y="5" width="261" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="14"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                <color key="value" name="ThemeBlackColor"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mithimnis 30, Loannina 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kId-1f-tpq" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="5" y="30.5" width="261" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="12"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                <color key="value" name="ThemeBlackColor"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="March 17,2021 8:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoK-pc-KYf" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="5" y="56" width="261" height="20.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="10"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                <color key="value" name="ThemeGrayColor"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7Lv-gh-DZb">
+                                                                        <rect key="frame" x="5" y="5" width="261" height="69.5"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ABC Inc" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAu-1V-uGE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="261" height="20.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                        <real key="value" value="14"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                        <color key="value" name="ThemeBlackColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mithimnis 30, Loannina 57, Greece" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kId-1f-tpq" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="24.5" width="261" height="20.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                        <real key="value" value="12"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                        <color key="value" name="ThemeBlackColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 17,2021 8:30am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoK-pc-KYf" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="49" width="261" height="20.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                        <real key="value" value="10"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                        <color key="value" name="ThemeGrayColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mxp-nI-4nj">
-                                                                        <rect key="frame" x="350" y="5" width="60" height="32"/>
+                                                                        <rect key="frame" x="276" y="5" width="134" height="32"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5c-wf-exQ">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="32"/>
+                                                                                <rect key="frame" x="54.5" y="0.0" width="79.5" height="32"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="10" y="5" width="40" height="22"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PICKUP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-Lu-dG0" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="10" y="5" width="59.5" height="22"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -150,7 +155,7 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <color key="backgroundColor" name="ThemeGreenColor"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="bottom" secondItem="gl6-Lu-dG0" secondAttribute="bottom" constant="5" id="Igm-iD-AOs"/>
                                                                                     <constraint firstAttribute="trailing" secondItem="gl6-Lu-dG0" secondAttribute="trailing" constant="10" id="Pab-ZT-7IG"/>
@@ -161,9 +166,8 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstAttribute="width" constant="60" id="AXC-9H-P4M"/>
                                                                             <constraint firstAttribute="height" constant="32" id="VsI-Qu-GIc"/>
-                                                                            <constraint firstItem="M5c-wf-exQ" firstAttribute="leading" secondItem="Mxp-nI-4nj" secondAttribute="leading" id="dUk-an-QVm"/>
+                                                                            <constraint firstItem="M5c-wf-exQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mxp-nI-4nj" secondAttribute="leading" id="dUk-an-QVm"/>
                                                                             <constraint firstItem="M5c-wf-exQ" firstAttribute="top" secondItem="Mxp-nI-4nj" secondAttribute="top" id="gQ0-oO-Iml"/>
                                                                             <constraint firstAttribute="trailing" secondItem="M5c-wf-exQ" secondAttribute="trailing" id="oYU-5I-Dm9"/>
                                                                             <constraint firstAttribute="bottom" secondItem="M5c-wf-exQ" secondAttribute="bottom" id="sYr-OT-RHE"/>
@@ -172,18 +176,12 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstItem="FoK-pc-KYf" firstAttribute="leading" secondItem="kId-1f-tpq" secondAttribute="leading" id="0xK-20-ZBE"/>
-                                                                    <constraint firstItem="FoK-pc-KYf" firstAttribute="trailing" secondItem="kId-1f-tpq" secondAttribute="trailing" id="1Vy-t9-oO6"/>
-                                                                    <constraint firstItem="kId-1f-tpq" firstAttribute="top" secondItem="dAu-1V-uGE" secondAttribute="bottom" constant="5" id="1kz-sd-bQu"/>
                                                                     <constraint firstItem="Mxp-nI-4nj" firstAttribute="top" secondItem="IhO-AM-ig8" secondAttribute="top" constant="5" id="7xI-hl-swB"/>
-                                                                    <constraint firstItem="Mxp-nI-4nj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kId-1f-tpq" secondAttribute="trailing" constant="10" id="Ca0-qL-3VB"/>
-                                                                    <constraint firstItem="kId-1f-tpq" firstAttribute="leading" secondItem="dAu-1V-uGE" secondAttribute="leading" id="UmP-Nb-Ce9"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="7Lv-gh-DZb" secondAttribute="bottom" id="HyG-hJ-QPo"/>
+                                                                    <constraint firstItem="7Lv-gh-DZb" firstAttribute="leading" secondItem="IhO-AM-ig8" secondAttribute="leading" constant="5" id="MpW-Sc-iKV"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Mxp-nI-4nj" secondAttribute="trailing" id="ccK-uX-E1H"/>
-                                                                    <constraint firstItem="dAu-1V-uGE" firstAttribute="top" secondItem="IhO-AM-ig8" secondAttribute="top" constant="5" id="cuw-co-icx"/>
-                                                                    <constraint firstItem="FoK-pc-KYf" firstAttribute="top" secondItem="kId-1f-tpq" secondAttribute="bottom" constant="5" id="eY6-lV-ZuU"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="FoK-pc-KYf" secondAttribute="bottom" constant="5" id="hiy-eW-Hux"/>
-                                                                    <constraint firstItem="dAu-1V-uGE" firstAttribute="leading" secondItem="IhO-AM-ig8" secondAttribute="leading" constant="5" id="kbM-Kr-QlV"/>
-                                                                    <constraint firstItem="dAu-1V-uGE" firstAttribute="trailing" secondItem="kId-1f-tpq" secondAttribute="trailing" id="mrs-5z-nd2"/>
+                                                                    <constraint firstItem="Mxp-nI-4nj" firstAttribute="leading" secondItem="7Lv-gh-DZb" secondAttribute="trailing" constant="10" id="prw-li-Tm0"/>
+                                                                    <constraint firstItem="7Lv-gh-DZb" firstAttribute="top" secondItem="IhO-AM-ig8" secondAttribute="top" constant="5" id="wTi-FM-sfA"/>
                                                                 </constraints>
                                                             </view>
                                                         </subviews>
@@ -196,7 +194,7 @@
                                                         </constraints>
                                                     </view>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3vZ-sP-LXk">
-                                                        <rect key="frame" x="0.0" y="91.5" width="425" height="287.5"/>
+                                                        <rect key="frame" x="0.0" y="94.5" width="425" height="287.5"/>
                                                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="287.5" id="e99-86-LxL"/>
@@ -204,19 +202,19 @@
                                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </tableView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ioy-Jl-kLp">
-                                                        <rect key="frame" x="0.0" y="389" width="425" height="91"/>
+                                                        <rect key="frame" x="0.0" y="392" width="425" height="88"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6WR-a5-GmK">
-                                                                <rect key="frame" x="10" y="15" width="415" height="61"/>
+                                                                <rect key="frame" x="10" y="15" width="415" height="58"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_tree" translatesAutoresizingMaskIntoConstraints="NO" id="ZnE-Sz-nJh">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="61"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="18.5" height="58"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="18.48" id="qj3-8m-CD7"/>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saving Trees by Picking from Same Location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WT-43-BKg" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="28.5" y="0.0" width="296.5" height="61"/>
+                                                                        <rect key="frame" x="28.5" y="0.0" width="296.5" height="58"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -230,10 +228,10 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a4O-6S-ogU">
-                                                                        <rect key="frame" x="335" y="0.0" width="80" height="61"/>
+                                                                        <rect key="frame" x="335" y="0.0" width="80" height="58"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grj-3a-u0j">
-                                                                                <rect key="frame" x="0.0" y="14.5" width="80" height="32"/>
+                                                                                <rect key="frame" x="0.0" y="13" width="80" height="32"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z3s-KZ-zV5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                                                                         <rect key="frame" x="10" y="5" width="60" height="22"/>

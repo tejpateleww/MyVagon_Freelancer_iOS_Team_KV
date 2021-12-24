@@ -7,8 +7,8 @@ import Foundation
 
 struct MyLoadsNewDatum : Codable {
     
-    let bid : MyLoadsNewBid?
-    let book : MyLoadsNewBook?
+    var bid : MyLoadsNewBid?
+    var book : MyLoadsNewBid?
     let postedTruck : MyLoadsNewPostedTruck?
     let type : String?
     let date : String?
@@ -24,7 +24,7 @@ struct MyLoadsNewDatum : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         bid = try? values.decodeIfPresent(MyLoadsNewBid.self, forKey: .bid)
-        book = try? values.decodeIfPresent(MyLoadsNewBook.self, forKey: .book)
+        book = try? values.decodeIfPresent(MyLoadsNewBid.self, forKey: .book)
         postedTruck = try? values.decodeIfPresent(MyLoadsNewPostedTruck.self, forKey: .postedTruck)
         type = try? values.decodeIfPresent(String.self, forKey: .type)
         date = try? values.decodeIfPresent(String.self, forKey: .date)

@@ -29,7 +29,7 @@ struct MyLoadsNewBook : Codable {
         let pickupTimeFrom : String?
         let pickupTimeTo : String?
         let shipperDetails : MyLoadsNewShipperDetail?
-        let status : String?
+        var status : String?
         let totalWeight : String?
         let trucks : MyLoadsNewTruck?
         let txnId : String?

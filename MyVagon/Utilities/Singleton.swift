@@ -8,12 +8,15 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 class SingletonClass: NSObject
 {
- 
+    static let sharedInstance = SingletonClass()
+    var SystemDate = ""
+    
     var RegisterData = RegisterSaveDataModel()
     var ProfileData = ProfileEditSaveModel()
-   
+    
     func clearSingletonClassForRegister() {
         
         RegisterData = RegisterSaveDataModel()
@@ -22,10 +25,7 @@ class SingletonClass: NSObject
         
     }
     
-    
-    
-    
-    static let sharedInstance = SingletonClass()
+    var initResModel : InitDatum?
     
     //Login Data
     var UserProfileData : LoginDatum?
@@ -40,7 +40,7 @@ class SingletonClass: NSObject
     //Language
     var SelectedLanguage : String = ""
     
-   
+    
     //Truck Data
     var PackageList : [PackageDatum]?
     var TruckTypeList : [TruckTypeDatum]?
@@ -53,7 +53,101 @@ class SingletonClass: NSObject
         UserProfileData = nil
         Token = ""
     }
- 
+    var searchReqModel = SearchSaveReqModel()
+    
+    var TimerForUpdateLocation = Timer()
+    
+    var CurrentTripStart: Bool = false {
+        didSet {
+            if CurrentTripStart {
+                
+                UpdateLocationClass.sharedLocationInstance.UpdateLocationStart()
+                UpdateLocationClass.sharedLocationInstance.UpdatedLocation = { (LocationUpdated) in
+                    SingletonClass.sharedInstance.userCurrentLocation = LocationUpdated
+                    let Location1 = CLLocationCoordinate2D(latitude: 23.070953, longitude: 72.5157073)
+                    let Location2 = CLLocationCoordinate2D(latitude: 23.071396, longitude: 72.513970)
+                    
+           //         let distanceBetweenPickupAndDriver = SingletonClass.sharedInstance.CurrentTripSecondLocation.distance(from: LocationUpdated.coordinate)
+                    
+                    
+                    let distanceBetweenPickupAndDriver = Location1.distance(from: Location2)
+               //     print("Distance Between distanceBetweenPickupAndDriver :: \(distanceBetweenPickupAndDriver / 1000) Km")
+                    if distanceBetweenPickupAndDriver < 300 {
+                        print("ATDebug :: location is near")
+                        if let topvc = UIApplication.topViewController() {
+                            if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
+                                let vc = topvc as! SchedualLoadDetailsViewController
+                                
+                                if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
+                                    vc.btnStartTrip.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
+                                } else {
+                                    vc.btnStartTrip.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                }
+                              
+                               
+                                vc.btnStartTrip.superview?.isHidden = false
+                            }
+                        }
+                        SingletonClass.sharedInstance.isNearByPickupLocation = true
+                    } else {
+                        SingletonClass.sharedInstance.isNearByPickupLocation = false
+                        if let topvc = UIApplication.topViewController() {
+                            if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
+                                let vc = topvc as! SchedualLoadDetailsViewController
+                                if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
+                                    vc.btnStartTrip.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
+                                } else {
+                                    vc.btnStartTrip.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                }
+                                vc.btnStartTrip.superview?.isHidden = true
+                            }
+                        }
+                    }
+                  
+                }
+                
+                StartTimerForUpdateLocation()
+            } else {
+                UpdateLocationClass.sharedLocationInstance.GeneralLocationManager.stopUpdatingLocation()
+                StopTimerForUpdateLocation()
+            }
+        }
+    }
+    
+    var isNearByPickupLocation : Bool = false
+ //   var CurrentTripSecondLocation = CLLocationCoordinate2D()
+    var CurrentTripSecondLocation : MyLoadsNewLocation?
+    var userCurrentLocation = CLLocation()
+    var CurrentTripShipperID : String = ""
+    func StartTimerForUpdateLocation() {
+        TimerForUpdateLocation.invalidate()
+        
+        
+        if SocketIOManager.shared.socket.status == .connected {
+            emitForCurrentLocation()
+            TimerForUpdateLocation = Timer.scheduledTimer(withTimeInterval: TimeInterval(SingletonClass.sharedInstance.initResModel?.updateLocationInterval ?? 5), repeats: true) { (timer) in
+                
+                self.emitForCurrentLocation()
+            }
+        }
+    }
+    func emitForCurrentLocation() {
+        
+        let params = [  "pickup_lat" : "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLat?.toDouble() ?? 0.0)",
+                        "pickup_lng" : "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLng?.toDouble() ?? 0.0)",
+                        "lat" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.latitude )",
+                        "lng" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.longitude )",
+                        "driver_id" : "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)",
+                        "shipper_id" : SingletonClass.sharedInstance.CurrentTripShipperID ]
+        
+        
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.updateLocation.rawValue , with: params)
+        
+    }
+    func StopTimerForUpdateLocation() {
+        
+        TimerForUpdateLocation.invalidate()
+    }
     
 }
 class RegisterSaveDataModel : Codable {
@@ -108,5 +202,23 @@ class ProfileEditSaveModel : Codable {
     var Reg_license_number = ""
     var Reg_license_expiry_date = ""
     
+    
+}
+class SearchSaveReqModel : Codable {
+    
+    var pickup_date : String = ""
+    var min_price : String = ""
+    var max_price : String = ""
+    var pickup_lat : String = ""
+    var pickup_lng : String = ""
+    var dropoff_lat : String = ""
+    var dropoff_lng : String = ""
+    var min_weight : String = ""
+    var max_weight : String = ""
+    var min_weight_unit : String = ""
+    var max_weight_unit : String = ""
+    
+    var pickup_address_string : String = ""
+    var dropoff_address_string : String = ""
     
 }

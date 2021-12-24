@@ -31,6 +31,10 @@ class FilterPickupDatePopupViewController: UIViewController {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
         configureCalendar()
+        if SingletonClass.sharedInstance.searchReqModel.pickup_date != "" {
+            calender.select(SingletonClass.sharedInstance.searchReqModel.pickup_date.StringToDate(Format: "yyyy-MM-dd"))
+          
+        }
         
         // Do any additional setup after loading the view.
     }
@@ -95,3 +99,4 @@ extension FilterPickupDatePopupViewController: FSCalendarDelegate, FSCalendarDat
     }
     
 }
+//SingletonClass.sharedInstance.searchReqModel.pickup_date

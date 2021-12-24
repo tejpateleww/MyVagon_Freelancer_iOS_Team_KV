@@ -26,10 +26,11 @@ class LoadDetailsVC: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    
     var loadDetailViewModel = LoadDetailViewModel()
     var LoadDetails : SearchLoadsDatum?
     var arrTypes:[(SearchTruckTypeCategory,Bool)] = []
-    var isLoading = false {
+    var isLoading = true {
         didSet {
             tblMainData.isUserInteractionEnabled = !isLoading
             tblMainData.reloadData()
@@ -74,6 +75,8 @@ class LoadDetailsVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
@@ -100,19 +103,13 @@ class LoadDetailsVC: BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        view.setTemplateWithSubviews(true, viewBackgroundColor: .systemBackground)
-        self.viewStatus.isHidden = true
-        self.scrollViewHide.isUserInteractionEnabled = false
+     
     }
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     func SetValue() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.view.setTemplateWithSubviews(false)
-            self.viewStatus.isHidden = false
-            self.scrollViewHide.isUserInteractionEnabled = true
-        }
+       
         
         viewStatus.backgroundColor = (LoadDetails?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
       
@@ -132,11 +129,12 @@ class LoadDetailsVC: BaseViewController {
         lblJourneyType.text = "\(LoadDetails?.journeyType ?? "")"
         
         lblTotalMiles.text = "\(LoadDetails?.distance ?? "")"
-            lblDeadHead.text = (LoadDetails?.trucks?.locations?.first?.deadhead ?? "" == "0") ? LoadDetails?.trucks?.truckType?.name ?? "" : "\(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") : \(LoadDetails?.trucks?.truckType?.name ?? "")"
+        
+        lblDeadHead.text = "\(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") Mile Deadhead"
         
         lblShipperName.text = LoadDetails?.shipperDetails?.name ?? ""
         
-        let strUrl = "\(APIEnvironment.ShipperImageURL.rawValue)\(LoadDetails?.shipperDetails?.profile ?? "")"
+        let strUrl = "\(APIEnvironment.ShipperImageURL)\(LoadDetails?.shipperDetails?.profile ?? "")"
         imgShipperProfile.isCircle()
         imgShipperProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
@@ -250,12 +248,9 @@ class LoadDetailsVC: BaseViewController {
                 controller.view.backgroundColor = .clear
                 controller.dismiss(animated: true, completion: nil)
             }
-            self.present(controller, animated: false, completion:  {
-
-                
-                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-
-            })
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(210) + appDel.GetSafeAreaHeightFromBottom())])
+            self.present(sheetController, animated: true, completion: nil)
+           
             
             break
         case bidStatus.BidNow.Name:
@@ -268,13 +263,9 @@ class LoadDetailsVC: BaseViewController {
             controller.modalPresentationStyle = .overCurrentContext
             controller.modalTransitionStyle = .coverVertical
            
-            self.present(controller, animated: false, completion:  {
-
-                
-                controller.view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-
-            })
-            
+          
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
+            self.present(sheetController, animated: true, completion: nil)
         case bidStatus.Bidded.Name:
             break
        
@@ -294,7 +285,7 @@ class LoadDetailsVC: BaseViewController {
             controller.noteString = LoadDetails?.trucks?.note ?? ""
             controller.modalPresentationStyle = .overCurrentContext
             controller.modalTransitionStyle = .coverVertical
-            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280))])
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
             self.present(sheetController, animated: true, completion:  {
             })
         } else {
@@ -337,7 +328,7 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
             cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
         }
         
-        cell.lblPickupDropOff.text = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? "Drop" : "Pick"
+        cell.lblPickupDropOff.text = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? "DROP" : "PICKUP"
         
         cell.lblPickupDropOff.superview?.backgroundColor = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
         
@@ -382,9 +373,7 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.isLoading = false
-        }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
@@ -425,9 +414,7 @@ extension LoadDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
         return UICollectionViewCell()
     }
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-            self.isLoading = false
-        }
+      
     }
 }
 //MARK: - Draw Root Line

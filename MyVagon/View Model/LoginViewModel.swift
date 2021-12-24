@@ -36,7 +36,7 @@ class LoginViewModel {
                     UserDefault.setValue(LoginType.driver.rawValue, forKey: UserDefaultsKey.LoginUserType.rawValue)
                     appDel.NavigateToHome()
                 }
-                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+              
                
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)

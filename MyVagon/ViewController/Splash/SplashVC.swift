@@ -29,46 +29,19 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
-    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let _ = UserDefault.getUserData()
      
         
-//        locationManager.delegate = self
-//        locationManager.requestAlwaysAuthorization()
         WebServiceForpackageListing()
         WebServiceForTruckType()
         WebServiceForTruckUnit()
         WebServiceForTruckBrand()
         WebServiceForTruckFeatures()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0, execute: {
-            let UserLogin = UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
-            if UserLogin {
-                let CheckLoginType = UserDefault.value(forKey: UserDefaultsKey.LoginUserType.rawValue) as? String ?? ""
-                if CheckLoginType == LoginType.company.rawValue {
-                    appDel.NavigateToDispatcher()
-                } else if CheckLoginType == LoginType.freelancer.rawValue {
-                    appDel.NavigateToHome()
-                }else if CheckLoginType == LoginType.driver.rawValue {
-                    appDel.NavigateToHome()
-                }
-                
-               
-            } else {
-                let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
-                if CheckIntro {
-                    appDel.NavigateToLogin()
-                    
-                } else {
-                    UserDefault.setValue(true, forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
-                    appDel.NavigateToIntroScreen()
-                    
-                }
-            }
-            
-        })
+        observeAnimationAndVersionChange()
+     
         
         // Do any additional setup after loading the view.
     }
@@ -92,38 +65,78 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     func WebServiceForTruckFeatures(){
         WebServiceSubClass.TruckFeatures {_, _, _, _ in}
     }
-    
-    private func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch status {
-        case .notDetermined:
-            // If status has not yet been determied, ask for authorization
-            manager.requestWhenInUseAuthorization()
-            break
-        case .authorizedWhenInUse:
-            // If authorized when in use
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0, execute: {
-                let controller:BoardingVC = AppStoryboard.Main.instance.instantiateViewController(withIdentifier: BoardingVC.storyboardID) as! BoardingVC
-                
-                self.navigationController?.pushViewController(controller,animated: true)
-            })
-            manager.startUpdatingLocation()
-            break
-        case .authorizedAlways:
-            // If always authorized
-            
-            manager.startUpdatingLocation()
-            break
-        case .restricted:
-            manager.requestAlwaysAuthorization()
-            // If restricted by e.g. parental controls. User can't enable Location Services
-            break
-        case .denied:
-            manager.requestAlwaysAuthorization()
-            // If user denied your app access to Location Services, but can grant access from Settings.app
-            break
-        default:
-            break
+    func openForceUpdateAlert(msg: String){
+        Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: msg, buttons: [UrlConstant.Ok]) { (ind) in
+            if ind == 0{
+                if let url = URL(string: AppURL) {
+                    UIApplication.shared.open(url)
+                }
+                self.openForceUpdateAlert(msg: msg)
+            }
         }
+    }
+    private func observeAnimationAndVersionChange() {
+        let group = DispatchGroup()
+        group.enter()
+        // call closure only once need to set root viewController
+        webserviceInit {
+            group.leave()
+        }
+//
+//        group.enter()
+//        WebServiceSubClass.PackageListing { (_, _, _, _) in
+//            group.leave()
+//        }
+//
+//        group.enter()
+//        WebServiceSubClass.TruckType { (_, _, _, _) in
+//            group.leave()
+//        }
+//
+//        group.enter()
+//        WebServiceSubClass.TruckUnit { (_, _, _, _) in
+//            group.leave()
+//        }
+//
+//        group.enter()
+//        WebServiceSubClass.TruckBrand { (_, _, _, _) in
+//            group.leave()
+//        }
+//
+//        group.enter()
+//        WebServiceSubClass.TruckFeatures { (_, _, _, _) in
+//            group.leave()
+//        }
+      
+        group.notify(queue: .main) {
+            self.setRootViewController()
+        }
+       
+    }
+    func setRootViewController(){
+    let UserLogin = UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
+    if UserLogin {
+        let CheckLoginType = UserDefault.value(forKey: UserDefaultsKey.LoginUserType.rawValue) as? String ?? ""
+        if CheckLoginType == LoginType.company.rawValue {
+            appDel.NavigateToDispatcher()
+        } else if CheckLoginType == LoginType.freelancer.rawValue {
+            appDel.NavigateToHome()
+        }else if CheckLoginType == LoginType.driver.rawValue {
+            appDel.NavigateToHome()
+        }
+        
+       
+    } else {
+        let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
+        if CheckIntro {
+            appDel.NavigateToLogin()
+            
+        } else {
+            UserDefault.setValue(true, forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
+            appDel.NavigateToIntroScreen()
+            
+        }
+    }
     }
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -135,10 +148,57 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     // MARK: - --------- Webservice Methods ---------
     // ----------------------------------------------------
     
-    
-    
-    
-    
-   
+    func webserviceInit(completion: @escaping EmptyClosure){
+        WebServiceSubClass.InitApi { (status, message, response, error) in
+            if let dic = error as? [String: Any], let msg = dic["The request timed out"] as? String, msg == UrlConstant.NoInternetConnection || msg == UrlConstant.SomethingWentWrong || msg == UrlConstant.RequestTimeOut{
+              
+                Utilities.showAlertWithTitleFromVC(vc: self, title: AppName, message: msg, buttons: [UrlConstant.Retry], isOkRed: false) { (ind) in
+                    self.webserviceInit(completion: completion)
+                }
+                return
+            }
 
+            if status {
+                SingletonClass.sharedInstance.initResModel = response?.data
+                
+                if (response?.data?.bookingData?.trucks?.locations?.count ?? 0) != 0{
+                    let arrLocation = response?.data?.bookingData?.trucks?.locations
+                    for i in 0...((arrLocation?.count ?? 0) - 1) {
+                        if ((arrLocation?[i].arrivedAt ?? "") == "") || ((arrLocation?[i].StartLoading ?? "") == "") || ((arrLocation?[i].startJourney ?? "") == "") {
+                           
+                            SingletonClass.sharedInstance.CurrentTripSecondLocation = arrLocation?[i]
+                            break
+                        }
+                    }
+                   
+                    SingletonClass.sharedInstance.CurrentTripShipperID = "\(response?.data?.bookingData?.shipperDetails?.id ?? 0)"
+                }
+                
+       
+                if let responseDic = error as? [String:Any], let _ = responseDic["update"] as? Bool{
+                    Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: message, buttons: [UrlConstant.Ok,UrlConstant.Cancel]) { (ind) in
+                        if ind == 0{
+                            if let url = URL(string: AppURL) {
+                                UIApplication.shared.open(url)
+                            }
+                        }else {
+                            completion()
+                        }
+                    }
+                }else{
+                    completion()
+                }
+            }else{
+                if let responseDic = error as? [String:Any], let _ = responseDic["maintenance"] as? Bool{
+                    Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: message, buttons: []) {_ in}
+                }else{
+                    if let responseDic = error as? [String:Any], let _ = responseDic["update"] as? Bool{
+                        self.openForceUpdateAlert(msg: message)
+                    }else{
+                        Utilities.showAlertOfAPIResponse(param: error, vc: self)
+                    }
+                }
+            }
+        }
+    }
 }

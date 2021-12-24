@@ -22,7 +22,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                    return UIMenu(title: "Select Option", children: [all,bid,book,postedtruck])
                }
     }
-    
+    var SearchResetClosour : (() -> ())?
     var BackClosure : (() -> ())?
     var btnOptionClosour : (() -> ())?
     
@@ -177,6 +177,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
             if rightImages.count != 0 {
                 var arrButtons = [UIBarButtonItem]()
                 rightImages.forEach { (title) in
+                    
                     if title == NavItemsRight.skip.value {
                         
                         let ViewSkip = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
@@ -196,6 +197,24 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
 
 
                         let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewSkip)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                    } else  if title == NavItemsRight.reset.value {
+                        
+                        let ViewSkip = UIView(frame: CGRect(x: 0, y: 0, width: 60, height: 40))
+
+                        let btnSkip = UIButton.init()
+                        btnSkip.frame = CGRect(x: 0, y: 0, width: 60, height: 40)
+                        btnSkip.setTitle("Reset", for: .normal)
+                        
+                        btnSkip.setTitleColor(colors.black.value, for: .normal)
+                        btnSkip.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(15)
+                       
+                        btnSkip.addTarget(self, action: #selector(btnResetSearchClick(_:)), for: .touchUpInside)
+                        btnSkip.contentHorizontalAlignment = .right
+                        btnSkip.layer.setValue(controller, forKey: "controller")
+                        ViewSkip.addSubview(btnSkip)
+ let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewSkip)
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
                     } else if title == NavItemsRight.chat.value {
@@ -304,6 +323,12 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
         
         appDel.NavigateToLogin()
 //        controller?.navigationController?.pushViewController(docInfoVc, animated: true)
+    }
+    @objc func btnResetSearchClick(_ sender: UIButton?) {
+        if let click = self.SearchResetClosour {
+            click()
+        }
+   
     }
     
     @objc func btnBackAction(sender:UIButton) {

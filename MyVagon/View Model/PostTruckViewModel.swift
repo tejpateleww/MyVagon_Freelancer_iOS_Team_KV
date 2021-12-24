@@ -49,18 +49,23 @@ class PostTruckViewModel {
                 controller.modalTransitionStyle = .coverVertical
                 controller.LeftbtnClosour = {
                     controller.dismiss(animated: true, completion: {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
                     self.postTruckViewController?.navigationController?.popToRootViewController(animated: false)
                     })
                 }
                 controller.RightbtnClosour = {
                     controller.dismiss(animated: true, completion: {
                         if ( response?.data?.count ?? 0) == 0 {
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
                             self.postTruckViewController?.navigationController?.popToRootViewController(animated: false)
                         } else {
                             
-                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
-                            let myLoadsNewDatum = MyLoadsNewDatum(PostedTruck: (response?.data)!, Type: "posted_truck", Date: response?.data?.date ?? "")
-                            controller.BidsData = myLoadsNewDatum
+                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
+                            controller.NumberOfCount = response?.data?.count ?? 0
+                            
+                         //   let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
+//                            let myLoadsNewDatum = MyLoadsNewDatum(PostedTruck: (response?.data)!, Type: "posted_truck", Date: response?.data?.date ?? "")
+//                            controller.BidsData = myLoadsNewDatum
                             controller.hidesBottomBarWhenPushed = true
                             controller.PostTruckID = "\(response?.data?.id ?? 0)"
                  
@@ -75,7 +80,7 @@ class PostTruckViewModel {
                     })
                    
                 }
-                let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(250))])
+                let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(250) + appDel.GetSafeAreaHeightFromBottom())])
                 self.postTruckViewController?.present(sheetController, animated: true, completion: nil)
                 
                

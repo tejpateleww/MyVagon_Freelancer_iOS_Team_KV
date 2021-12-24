@@ -54,13 +54,13 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // ----------------------------------------------------
     func setValue() {
         if SingletonClass.sharedInstance.RegisterData.Reg_license.count != 0 {
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.RegisterData.Reg_license[0])"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.RegisterData.Reg_license[0])"
             print(strUrl)
             ImageViewLicence.sd_imageIndicator = SDWebImageActivityIndicator.gray
             ImageViewLicence.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
         }
         if SingletonClass.sharedInstance.RegisterData.Reg_id_proof.count != 0 {
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.RegisterData.Reg_id_proof[0])"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.RegisterData.Reg_id_proof[0])"
             ImageViewIdentity.sd_imageIndicator = SDWebImageActivityIndicator.gray
             ImageViewIdentity.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
         }

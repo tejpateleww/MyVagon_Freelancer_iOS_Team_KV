@@ -9,7 +9,7 @@ struct MyLoadsNewPostedTruck : Codable {
     
     let bidAmount : String?
     let bookingId : String?
-    let bookingInfo : MyLoadsNewBook?
+    let bookingInfo : MyLoadsNewBid?
     let createdAt : String?
     let date : String?
     let driverId : String?
@@ -25,10 +25,9 @@ struct MyLoadsNewPostedTruck : Codable {
     let toAddress : String?
     let truckTypeId : Int?
     let updatedAt : String?
- //   let matchesFound : Int?
     let bookingRequestCount : Int?
     let count : Int?
-    
+    let time_difference : Int?
     enum CodingKeys: String, CodingKey {
         case bidAmount = "bid_amount"
         case bookingId = "booking_id"
@@ -51,7 +50,7 @@ struct MyLoadsNewPostedTruck : Codable {
      //   case matchesFound = "booking_request_count"
         case bookingRequestCount = "booking_request_count"
         case count = "count"
-        
+        case time_difference = "time_difference"
         
     }
     
@@ -59,7 +58,7 @@ struct MyLoadsNewPostedTruck : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         bidAmount = try? values.decodeIfPresent(String.self, forKey: .bidAmount)
         bookingId = try? values.decodeIfPresent(String.self, forKey: .bookingId)
-        bookingInfo = try? values.decodeIfPresent(MyLoadsNewBook.self, forKey: .bookingInfo)
+        bookingInfo = try? values.decodeIfPresent(MyLoadsNewBid.self, forKey: .bookingInfo)
         createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
         date = try? values.decodeIfPresent(String.self, forKey: .date)
         driverId = try? values.decodeIfPresent(String.self, forKey: .driverId)
@@ -78,6 +77,7 @@ struct MyLoadsNewPostedTruck : Codable {
 //        matchesFound = try? values.decodeIfPresent(Int.self, forKey: .matchesFound)
         bookingRequestCount = try? values.decodeIfPresent(Int.self, forKey: .bookingRequestCount)
         count = try? values.decodeIfPresent(Int.self, forKey: .count)
+        time_difference = try? values.decodeIfPresent(Int.self, forKey: .time_difference)
     }
     
 }

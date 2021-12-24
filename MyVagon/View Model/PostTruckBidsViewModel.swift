@@ -9,15 +9,16 @@ import Foundation
 import UIKit
 class PostTruckBidsViewModel {
     weak var bidRequestViewController : BidRequestViewController? = nil
-    
-    func PostedTruckBid(ReqModel:PostTruckBidReqModel){
+    weak var bidRequestDetailViewController : BidRequestDetailViewController? = nil
+ 
+    func BidRequest(ReqModel:PostTruckBidReqModel){
      
-        WebServiceSubClass.PostedTruckBid(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+        WebServiceSubClass.BidRequest(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
           
     
             if status {
                 
-                let tempArrHomeData = response?.data ?? []
+                let tempArrHomeData = response?.data?.booking_request ?? []
                 
                 self.bidRequestViewController?.arrBidsData = tempArrHomeData
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -26,27 +27,13 @@ class PostTruckBidsViewModel {
                 self.bidRequestViewController?.tblAvailableData.tableFooterView?.isHidden = true
                 
                 self.bidRequestViewController?.tblAvailableData.reloadDataWithAutoSizingCellWorkAround()
+
                 
-               // self.postedTruckBidsViewController?.tblLocations.reloadData()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         })
     }
-    
-    func AcceptReject(ReqModel:BidAcceptRejectReqModel){
-     
-        WebServiceSubClass.AcceptReject(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-          
-    
-            if status {
-                
-                self.bidRequestViewController?.navigationController?.popViewController(animated: true)
-            } else {
-                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
-            }
-        })
-    }
-    
+
     
 }

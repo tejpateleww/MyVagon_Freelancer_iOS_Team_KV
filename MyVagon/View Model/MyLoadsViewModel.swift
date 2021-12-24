@@ -76,12 +76,6 @@ class MyLoadsViewModel {
                     self.scheduleViewController?.isNeedToReload = false
                 }
                 
-                
-                
-                
-                
-               
-               
             } else {
                 self.scheduleViewController?.isLoading = false
                 self.scheduleViewController?.tblLocations.tableFooterView?.isHidden = true
@@ -95,6 +89,9 @@ class MyLoadsViewModel {
             }
         })
     }
-
+    func GetSystemDate(){
+        WebServiceSubClass.SystemDateTime{_, _, _, _ in}
+    }
+  
     
 }

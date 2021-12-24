@@ -196,7 +196,7 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
 //       SingletonClass.sharedInstance.ProfileData.Reg_vehicle_images = arrImages
 //        SingletonClass.sharedInstance.ProfileData.Reg_license_expiry_date =  SingletonClass.sharedInstance.UserProfileData?.licenceExpiryDate?.ConvertDateFormat(FromFormat: "yyyy-mm-dd", ToFormat: "dd-mm-yyyy") ?? ""
 //
-        let StringURLForProfile = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
+        let StringURLForProfile = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
         ImageViewProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
         ImageViewProfile.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
         TextFieldFullName.text = SingletonClass.sharedInstance.UserProfileData?.name ?? ""
@@ -219,13 +219,13 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
         TextFieldTrailerPlatNumber.superview?.isHidden = ((SingletonClass.sharedInstance.UserProfileData?.vehicle?.trailerRegistrationNo ?? "") == "") ? true : false
         
         if SingletonClass.sharedInstance.UserProfileData?.vehicle?.license != "" {
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.license ?? "")"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.license ?? "")"
             print(strUrl)
             ImageViewLicence.sd_imageIndicator = SDWebImageActivityIndicator.gray
             ImageViewLicence.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
         }
         if SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof != "" {
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof ?? "")"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.idProof ?? "")"
             ImageViewIdentity.sd_imageIndicator = SDWebImageActivityIndicator.gray
             ImageViewIdentity.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
         }
@@ -1008,7 +1008,7 @@ extension ProfileEditViewController : UICollectionViewDelegate,UICollectionViewD
         } else if collectionView == collectionImages {
             let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
             cell.btnCancel.tag = indexPath.row
-            let strUrl = "\(APIEnvironment.TempProfileURL.rawValue)\(arrImages[indexPath.row])"
+            let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImages[indexPath.row])"
             cell.imgPhotos.sd_imageIndicator = SDWebImageActivityIndicator.gray
             cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
             cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)

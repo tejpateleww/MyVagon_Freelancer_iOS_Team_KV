@@ -29,12 +29,14 @@ struct MyLoadsNewBid : Codable {
         let pickupTimeFrom : String?
         let pickupTimeTo : String?
         let shipperDetails : MyLoadsNewShipperDetail?
-        let status : String?
+        var status : String?
         let totalWeight : String?
         let trucks : MyLoadsNewTruck?
         let txnId : String?
         let updatedAt : String?
         let userId : Int?
+    let podURL : String?
+    let shipperRate : String?
 
         enum CodingKeys: String, CodingKey {
                 case amount = "amount"
@@ -65,6 +67,8 @@ struct MyLoadsNewBid : Codable {
                 case txnId = "txn_id"
                 case updatedAt = "updated_at"
                 case userId = "user_id"
+            case podURL = "pod_image"
+            case shipperRate = "shipper_rate"
         }
     
         init(from decoder: Decoder) throws {
@@ -97,6 +101,8 @@ struct MyLoadsNewBid : Codable {
                 txnId = try? values.decodeIfPresent(String.self, forKey: .txnId)
                 updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
                 userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
+            podURL = try? values.decodeIfPresent(String.self, forKey: .podURL)
+            shipperRate = try? values.decodeIfPresent(String.self, forKey: .shipperRate)
         }
 
 }

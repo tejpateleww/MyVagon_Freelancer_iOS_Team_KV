@@ -214,7 +214,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
             ReqModelForPostTruck.is_bid = "0"
         }
         
-        ReqModelForPostTruck.bid_amount = (SwitchAllowBidding.isOn == true) ? TextFieldEnterBidPrice.text ?? "" : TextFieldQuote.text ?? ""
+        ReqModelForPostTruck.bid_amount = (SwitchAllowBidding.isOn == true) ? "\((TextFieldEnterBidPrice.text ?? "").removeFormatAmount().0)" : "\((TextFieldQuote.text ?? "").removeFormatAmount().0)"
 
         self.postTruckViewModel.PostAvailability(ReqModel: ReqModelForPostTruck)
     }

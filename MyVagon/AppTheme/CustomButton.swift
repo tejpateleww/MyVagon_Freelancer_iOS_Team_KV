@@ -12,6 +12,7 @@ import UIKit
 //MARK: ====== themeButton ======
 class themeButton: UIButton {
     private var originalButtonText: String?
+    private var originalButtonImage: UIImage?
     var activityIndicator: UIActivityIndicatorView!
     
     @IBInspectable public var IsSubmit : Bool = false
@@ -39,7 +40,8 @@ class themeButton: UIButton {
             self.titleLabel?.font = CustomFont.PoppinsRegular.returnFont(FontSize)
         }  else {
             
-            self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
+//            self.setTitleColor(UIColor.appColor(ThemeColor.themeColorForButton), for: .normal)
+            self.setTitleColor(TextColor, for: .normal)
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
         }
         if IsUnderline {
@@ -52,8 +54,9 @@ class themeButton: UIButton {
 
     func showLoading() {
         originalButtonText = self.titleLabel?.text
+        originalButtonImage = self.imageView?.image
         self.setTitle("", for: .normal)
-        
+        self.setImage(nil, for: .normal)
         if (activityIndicator == nil) {
             activityIndicator = createActivityIndicator()
         }
@@ -62,6 +65,8 @@ class themeButton: UIButton {
     }
 
     func hideLoading() {
+        self.setImage(originalButtonImage, for: .normal)
+        
         self.setTitle(originalButtonText, for: .normal)
         activityIndicator.stopAnimating()
     }

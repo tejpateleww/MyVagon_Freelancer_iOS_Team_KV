@@ -8,18 +8,20 @@
 import UIKit
 import FSCalendar
 import FittedSheets
-
+import CoreLocation
 class HomeViewController: BaseViewController, UITextFieldDelegate {
 
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
+    let locationManager = CLLocationManager()
     var isLoading = true {
         didSet {
             tblLocations.isUserInteractionEnabled = !isLoading
             tblLocations.reloadData()
         }
     }
+    
     var PageNumber = 0
     var arrHomeData : [[SearchLoadsDatum]]?
     
@@ -51,22 +53,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         isLoading = true
-        let latStr = String(21.298100)
-            let   longStr = String(70.251404)
-        
-        
-        
-        
-        
-        
-        
-// "https://maps.googleapis.com/maps/api/directions/json?origin=Grodno&destination=Minsk&mode=driving&key=YOUR_API_KEY"
-//        let staticMapUrl = "http://maps.google.com/maps/api/staticmap?markers=color:blue|\(latStr),\(longStr)&\("zoom=10&size=400x300")&sensor=true&key=\(AppInfo.Google_API_Key)"
-        
-        let staticMapUrl = "https://maps.googleapis.com/maps/api/staticmap?size=600x400&path=enc%3AohqfIc_jpCkE%7DCx%40mJdDa%5BbD%7BM%7D%40e%40_MgKiQuVOoFlF%7DVnCnBn%40aDlDkN%7DDwEt%40%7DM%7DB_TjBy%7C%40lEgr%40lMa%60BhSi%7C%40%7COmuAxb%40k%7BGh%5E_%7BFjRor%40%7CaAq%7DC~iAomDle%40i%7BA~d%40ktBbp%40%7DqCvoA%7DjHpm%40uuDzH%7Dm%40sAg%7DB%60Bgy%40%7CHkv%40tTsxAtCgl%40aBoeAwKwaAqG%7B%5CeBc_%40p%40aZx%60%40gcGpNg%7CBGmWa%5CgpFyZolF%7BFgcDyPy%7CEoK_%7BAwm%40%7BqFqZaiBoNsqCuNq%7BHk%60%40crG%7B%5DqkBul%40guC%7BJ%7D%5DaNo%7B%40waA%7DmFsLc_%40_V%7Dh%40icAopBcd%40i_A_w%40mlBwbAiiBmv%40ajDozBibKsZ%7DvAkLm%5DysAk%7DCyr%40i%60BqUkp%40mj%40uoBex%40koAk_E_hG%7B%60Ac%7DAwp%40soAyk%40ogAml%40%7Bg%40qKsNeJw%5DeuA%7D%60Fkm%40czBmK%7Bg%40wCed%40b%40_e%40dT%7BgCzx%40csJrc%40ejFtGi%60CnB_pFhCa%60Gw%40%7Du%40wFwaAmP%7BoA%7Dj%40etBsRm_AiGos%40aCyy%40Lic%40tFohA~NeoCvC_%7CAWm~%40gb%40w~DuLex%40mUk_Ae_%40o_Aol%40qmAgv%40_%7DAaf%40qhAkMcl%40mHwn%40iCuq%40Nqi%40pF%7D%7CE~CyiDmFkgAoUedAcb%40ku%40ma%40cl%40mUko%40sLwr%40mg%40awIoA_aApDe~%40dKytAfw%40kyFtCib%40%7DA%7Bj%40kd%40usBcRgx%40uFwb%40%7BCulAjJmbC~CumAuGwlA_%5Du_C_PqyB%7BI%7DiAwKik%40%7DUcr%40ya%40up%40%7DkB%7DoCoQ%7Da%40aMyf%40an%40wjEimBuwKiYybC%7DLuyBoJ%7DhBuMieAwd%40i%7BB%7B~%40g%60D_Si%5Dsi%40%7Bk%40cPeSuH_T%7DNct%40kNcmC_Gyr%40mq%40_~AkmA%7DkCksByrE_N%7Bc%40oAcs%40%60J%7Bi%40t%7DByaHxNqt%40tGgxA%7CJ%7BkGeJ_aDsQi_HmFwuAmI%7BdA_XijByFgv%40%7DAiwBxDocAdM%7BlAtSmcAfUmaAptAmbGh~AcvGbwBc%7DHff%40shB~Isp%40nQu%7DB%60UsuCbBok%40l%40%7DzAhIwbA~OuaAnYwp%40rYwe%40%7CNke%40zc%40%7BhBrOwRdo%40sf%40xNaTb_%40uy%40ta%40k~%40xTap%40hl%40uiCre%40unHlIi~AlFsc%40rEkk%40aAce%40mL%7DlAwPcyB_GohBzDsqAtMqtA~h%40weDtFkd%40Bi%60%40_XwfEdAag%40dEkM%60%40zAqApJef%40%7BP_o%40sYys%40ai%40yf%40_j%40y_%40oi%40mVi%5EmFqSwAiPtDuQbc%40_nAtZyaAlEkc%40r%40eq%40%7CAo%5BrTwcAtVuz%40vQ%7Dd%40%7CPmb%40xT%7B%5CzZyd%40jG%7BRzL%7Dh%40jr%40ov%40rFiImFqPiD%7BJ&key=\(AppInfo.Google_API_Key)"
-
-               print(staticMapUrl)
-        
+     
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
@@ -86,11 +73,13 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
         refreshControl.tintColor = RefreshControlColor
         self.tblLocations.refreshControl = refreshControl
-        
+        AllSocketOnMethods()
         CallWebSerive()
+        setupLocationManager()
         // Do any additional setup after loading the view.
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        SingletonClass.sharedInstance.searchReqModel = SearchSaveReqModel()
         PageNumber = 0
         CallWebSerive()
         
@@ -108,8 +97,104 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
+    func AllSocketOnMethods() {
+        
+        if !SocketIOManager.shared.isSocketOn {
+            self.perform(#selector(self.SocketConnectionProcess), with: nil, afterDelay: 2.0)
+            
+            SocketIOManager.shared.socket.on(clientEvent: .connect) {data, ack in
+                print("socket Now connected")
+                SocketIOManager.shared.isSocketOn = true
+                self.setupforCustomerConnection()
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .disconnect) {data, ack in
+                print("socket Now Disconnected")
+               
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .reconnect) {data, ack in
+                print("socket Now Reconnected")
+                self.setupforCustomerConnection()
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .statusChange) { (data, ack) in
+                print("socket status change")
+                print(data)
+                /*
+                    if let status = data[1] as? Int, status == 2 {
+                        if !SocketIOManager.shared.isWaitingMessageDisplayed {
+                        if let _:SimpleTxtWithOKPopup = appDel.window?.rootViewController?.presentedViewController as? SimpleTxtWithOKPopup {
+                            return
+                        }
+                            self.perform(#selector(self.waitingForSocketConnect), with: nil, afterDelay: 0.10)
+                        }
+                    }
+                    else
+                        */
+//                    if let status = data[1] as? Int, status == 3 {
+//                        if SocketIOManager.shared.isWaitingMessageDisplayed {
+//                            if let simpleAlert:SimpleTxtWithOKPopup = appDel.window?.rootViewController?.presentedViewController as? SimpleTxtWithOKPopup {
+//                                simpleAlert.dismiss(animated: false, completion: nil)
+//                                SocketIOManager.shared.isWaitingMessageDisplayed = false
+//                            }
+//                        }
+//                    }
+             }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .error) { (data, ack) in
+                print("socket error")
+                print(data)
+                if let status = data[0] as? String , (status == "authentication error" || status == "Could not connect to the server." || status == "The operation couldn’t be completed. Socket is not connected") {
+                    if !SocketIOManager.shared.isWaitingMessageDisplayed {
+//                    if let _:SimpleTxtWithOKPopup = appDel.window?.rootViewController?.presentedViewController as? SimpleTxtWithOKPopup {
+//                        return
+//                    }
+//                        self.perform(#selector(self.waitingForSocketConnect), with: nil, afterDelay: 0.10)
+//                    }
+                }
+            }
+            
+       
+        }
+        }
+        else {
+            self.setupforCustomerConnection()
+        }
+        
+    }
+    func setupforCustomerConnection() {
+        let profile = SingletonClass.sharedInstance.UserProfileData
+        let AccessUser:Int = profile?.id ?? 0
+      
+        self.connectCustomer(AccessUserId: AccessUser)
+
+    }
+    
+    
+    func connectCustomer(AccessUserId:Int) {
+    
+        // Connect Customer
+        let UpdateCustomerSocketParams = ["user_id":"\(AccessUserId)" ]
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.driverConnect.rawValue , with: UpdateCustomerSocketParams)
+        
+        if SingletonClass.sharedInstance.initResModel?.bookingData != nil {
+            if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.arrivedAt ?? "") == "" {
+                SingletonClass.sharedInstance.CurrentTripStart = true
+            } else {
+                SingletonClass.sharedInstance.CurrentTripStart = false
+            }
+            
+        }
+        
+        
+    }
     func textFieldDidBeginEditing(_ textField: UITextField) {
        
+    }
+    @objc func SocketConnectionProcess() {
+        
+        SocketIOManager.shared.establishConnection()
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool   {
         if textField == TextFieldSearch {
@@ -117,20 +202,13 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
             let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: SearchOptionViewController.storyboardID) as! SearchOptionViewController
                         controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
-            
-//
-//
+
             return false
         }
         return true
         
     }
-    
-//    {
-//
-//
-//    }
-    
+
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
@@ -143,7 +221,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
                                      SortModel(Title: "Price (Highest First)", IsSelect: false),
                                      SortModel(Title: "Total Distance", IsSelect: false),
                                      SortModel(Title: "Rating", IsSelect: false)]
-        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((5 * 50) + 110))])
+        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((5 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
                 self.present(sheetController, animated: true, completion: nil)
         
         
@@ -160,10 +238,22 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         let ReqModelForGetShipment = ShipmentListReqModel()
         ReqModelForGetShipment.page = "\(PageNumber)"
         ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-//        ReqModelForGetShipment.driver_id = "271"
         
-     
-
+        ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.pickup_date 
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_price 
+        ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.max_price 
+        ReqModelForGetShipment.pickup_lat = SingletonClass.sharedInstance.searchReqModel.pickup_lat 
+        ReqModelForGetShipment.pickup_lng = SingletonClass.sharedInstance.searchReqModel.pickup_lng 
+        ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.dropoff_lat 
+        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.dropoff_lng 
+        
+        
+        
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_weight
+        ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.max_weight
+        ReqModelForGetShipment.min_weight_unit = SingletonClass.sharedInstance.searchReqModel.min_weight_unit
+        ReqModelForGetShipment.max_weight_unit = SingletonClass.sharedInstance.searchReqModel.max_weight_unit
+        
         self.homeViewModel.GetShipmentList(ReqModel: ReqModelForGetShipment)
         
     }
@@ -300,12 +390,12 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         if isLoading {
             return UIView()
         }
-        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
         label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "")
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")
@@ -391,4 +481,54 @@ extension Date {
 
         return localDate
     }
+}
+extension HomeViewController:CLLocationManagerDelegate {
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        self.UpdateLocationStart()
+    }
+    
+    func UpdateLocationStart(){
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch CLLocationManager.authorizationStatus() {
+            case .notDetermined, .restricted, .denied:
+                if UserDefaults.standard.bool(forKey: "isFirstTime") {
+                    Utilities.CheckLocation(currentVC: self)
+                }
+            case .authorizedAlways, .authorizedWhenInUse:
+                locationManager.startUpdatingLocation()
+                UserDefault.set(true, forKey: "isFirstTime")
+                UserDefault.synchronize()
+            @unknown default:
+                break
+            }
+        } else {
+            if UserDefaults.standard.bool(forKey: "isFirstTime") {
+                Utilities.CheckLocation(currentVC:self)
+                print("Location services are not enabled")
+            }
+        }
+        
+    }
+    //MARK:- ======== CLLocationManager Methods =======
+   
+   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        let userLocation:CLLocation = locations[0] as CLLocation
+   
+       guard let location = locations.first else {
+           return
+       }
+    SingletonClass.sharedInstance.userCurrentLocation = location
+       locationManager.stopUpdatingLocation()
+   }
+   
+   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+       guard status == .authorizedWhenInUse else {
+           return
+       }
+       locationManager.startUpdatingLocation()
+   }
 }
