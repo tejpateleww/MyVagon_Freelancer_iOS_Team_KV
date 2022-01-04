@@ -163,9 +163,10 @@
                                 <constraint firstAttribute="bottom" secondItem="C9h-75-B5s" secondAttribute="bottom" id="ySj-Dw-j07"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="5" y="95" width="566" height="35"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="szdxfcghgjhfgzfdfdfkhfdhdffgdhxjhgfxhfgxffghxfkghxggyff" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                            <rect key="frame" x="471" y="95" width="100" height="35"/>
                             <constraints>
+                                <constraint firstAttribute="width" constant="100" id="2P8-3n-ZZH"/>
                                 <constraint firstAttribute="height" constant="35" id="yRS-aX-0rY"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -189,7 +190,6 @@
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="leading" secondItem="exE-hF-9XD" secondAttribute="leading" id="Hfq-vm-Mmg"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="top" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="KsD-9T-SfX"/>
                         <constraint firstItem="jrR-LB-X1C" firstAttribute="top" secondItem="1KJ-IT-5UF" secondAttribute="bottom" constant="10" id="Vs0-dI-Ran"/>
-                        <constraint firstItem="Mra-rJ-9Br" firstAttribute="leading" secondItem="ikL-gx-6UI" secondAttribute="leading" constant="5" id="Y3X-Yf-Das"/>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="exE-hF-9XD" secondAttribute="bottom" constant="10" id="cOu-z1-qQO"/>
                         <constraint firstItem="1KJ-IT-5UF" firstAttribute="top" secondItem="exE-hF-9XD" secondAttribute="top" id="d5B-Yk-Rse"/>
                         <constraint firstAttribute="trailing" secondItem="1KJ-IT-5UF" secondAttribute="trailing" constant="15" id="dDp-Sb-GhJ"/>

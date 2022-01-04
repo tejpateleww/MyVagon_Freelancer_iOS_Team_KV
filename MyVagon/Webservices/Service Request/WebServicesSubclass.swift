@@ -287,5 +287,19 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    //MARK:- RateShipper
+    class func RateShipper(reqModel: RateReviewReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.RateShipper.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -NotificationList
+    class func NotificationList(completion: @escaping (Bool,String,NotificationListResModel?,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.NotificationList.rawValue + "/\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)", responseModel: NotificationListResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }
 

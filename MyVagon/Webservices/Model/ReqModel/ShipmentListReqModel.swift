@@ -154,3 +154,13 @@ class UploadPODReqModel : Encodable {
         
     }
 }
+class RateReviewReqModel : Encodable {
+    var driver_id,booking_id,rating,review : String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+        case booking_id = "booking_id"
+        case rating = "rating"
+        case review = "review"
+    }
+}

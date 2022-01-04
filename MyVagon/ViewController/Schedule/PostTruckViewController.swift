@@ -104,7 +104,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
       
         let formatter1 = DateFormatter()
          formatter1.dateStyle = .medium
-         formatter1.dateFormat = "dd MMMM, yyyy"
+         formatter1.dateFormat = DateFormatForDisplay
          
          let selectedDate = formatter1.string(from: Date())
         
@@ -196,7 +196,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         ReqModelForPostTruck.truck_type_id = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)"
         ReqModelForPostTruck.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         
-        ReqModelForPostTruck.date = LblSelectedDate.text?.ConvertDateFormat(FromFormat: "dd MMMM, yyyy", ToFormat: "yyyy-MM-dd")
+        ReqModelForPostTruck.date = LblSelectedDate.text?.ConvertDateFormat(FromFormat: DateFormatForDisplay, ToFormat: "yyyy-MM-dd")
         ReqModelForPostTruck.time = formattedDateFromString(dateString: TextFieldSelectTime.text ?? "", withFormat: "HH:mm:ss")?.trimmedString
         //TextFieldSelectTime.text?.ConvertDateFormat(FromFormat: "h:mm a", ToFormat: "HH:mm") ?? ""
         ReqModelForPostTruck.start_lat = "\(SelectedStartLocationCoordinate.latitude)"
@@ -317,7 +317,7 @@ extension PostTruckViewController: FSCalendarDelegate, FSCalendarDataSource{
         
         let formatter1 = DateFormatter()
          formatter1.dateStyle = .medium
-         formatter1.dateFormat = "dd MMMM, yyyy"
+         formatter1.dateFormat = DateFormatForDisplay
          
          let selectedDate = formatter1.string(from: date)
         

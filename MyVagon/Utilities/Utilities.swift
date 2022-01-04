@@ -493,6 +493,36 @@ class Utilities:NSObject{
         
     }
     
+    class func AlwaysAllowPermission(currentVC:UIViewController){
+        
+        let alertController = UIAlertController(title: "My Vagoon does not have access to your location while in the background. To enable access, tap Settings > Location and select Always".Localized(), message: "", preferredStyle: .alert)
+        let NotNowAction = UIAlertAction(title: "Not Now".Localized(), style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings".Localized(), style: .default) { (_) -> Void in
+            
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success)
+                    
+                    in
+                    print("Settings opened: \(success)") // Prints true
+                })
+            }
+        }
+        
+        alertController.addAction(NotNowAction)
+        alertController.addAction(settingsAction)
+        
+        
+        OperationQueue.main.addOperation {
+            currentVC.present(alertController, animated: true,
+                              completion:nil)
+        }
+        
+    }
+    
 //    class func showHud()
 //    {
 //        let activityData = ActivityData(type: .circleStrokeSpin)

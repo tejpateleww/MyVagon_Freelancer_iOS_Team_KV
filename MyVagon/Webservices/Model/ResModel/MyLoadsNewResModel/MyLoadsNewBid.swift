@@ -37,6 +37,8 @@ struct MyLoadsNewBid : Codable {
         let userId : Int?
     let podURL : String?
     let shipperRate : String?
+    
+    
 
         enum CodingKeys: String, CodingKey {
                 case amount = "amount"
@@ -68,7 +70,7 @@ struct MyLoadsNewBid : Codable {
                 case updatedAt = "updated_at"
                 case userId = "user_id"
             case podURL = "pod_image"
-            case shipperRate = "shipper_rate"
+            case shipperRate = "rate_shipper"
         }
     
         init(from decoder: Decoder) throws {

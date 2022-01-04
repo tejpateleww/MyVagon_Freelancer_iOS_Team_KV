@@ -98,7 +98,48 @@ extension Date {
         
         return ("0 second",0,.Second)
     }
-    
+    func CheckHours(from date: Date) -> (String,Int,OffSetType) {
+        if years(from: date) > 0 {
+            if years(from: date) > 1 {
+                return ("\(years(from: date)) years",years(from: date),.Year)
+            } else {
+                return ("\(years(from: date)) year",years(from: date),.Year)
+            }
+        }
+       
+        if months(from: date) > 0 {
+            if months(from: date) > 1 {
+                return ("\(months(from: date)) months",months(from: date),.Month)
+            } else {
+                return ("\(months(from: date)) month",months(from: date),.Month)
+            }
+        }
+        
+        if weeks(from: date) > 0 {
+            if weeks(from: date) > 1 {
+                return ("\(weeks(from: date)) weeks",weeks(from: date),.Weeks)
+            } else {
+                return ("\(weeks(from: date)) week",weeks(from: date),.Weeks)
+            }
+        }
+        
+        if days(from: date) > 0 {
+            if days(from: date) > 1 {
+                return ("\(days(from: date)) days",days(from: date),.Day)
+            } else {
+                return ("\(days(from: date)) day",days(from: date),.Day)
+            }
+        }
+        
+        if hours(from: date) > 0 {
+            if hours(from: date) > 1 {
+                return ("\(hours(from: date)) hours",hours(from: date),.Hours)
+            } else {
+                return ("\(hours(from: date)) hour",hours(from: date),.Hours)
+            }
+        }
+        return ("0 hour",0,.Hours)
+    }
  
 }
 
@@ -158,4 +199,13 @@ extension Date {
 }
 enum OffSetType : String {
     case Year,Month,Day,Weeks,Hours,Minute,Second
+}
+extension Date {
+    func localDate() -> Date {
+        let nowUTC = Date()
+        let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowUTC))
+        guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: nowUTC) else {return Date()}
+
+        return localDate
+    }
 }

@@ -6,17 +6,22 @@
 //
 
 import UIKit
-
+import Cosmos
 class ReviewShipperVC: BaseViewController {
-
+    
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    @IBOutlet weak var LblTitle: UILabel!
     
+    var rateShipperViewModel = RateShipperViewModel()
+    var bookingID = ""
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
+    @IBOutlet weak var LblTitle: UILabel!
+    @IBOutlet weak var btnRate: themeButton!
+    @IBOutlet weak var viewRatting: CosmosView!
+    @IBOutlet weak var textviewReview: ChatthemeTextView!
     
     
     // ----------------------------------------------------
@@ -37,18 +42,18 @@ class ReviewShipperVC: BaseViewController {
     
     func GetAttributedString(BoldString:String,String:String) -> NSMutableAttributedString {
         let text = "\(String) \(BoldString)"
-
+        
         let rangeString = (text as NSString).range(of: String)
-      
+        
         let rangeBoldString = (text as NSString).range(of: BoldString)
-
+        
         let OtherAttribute = [NSAttributedString.Key.foregroundColor: UIColor(hexString: "#1F1F41"), NSAttributedString.Key.font: CustomFont.PoppinsRegular.returnFont(16)]
         
         
         let BoldAttributes = [NSAttributedString.Key.foregroundColor: UIColor(hexString: "#9B51E0"), NSAttributedString.Key.font: CustomFont.PoppinsBold.returnFont(16)]
         
         
-         let attributedString = NSMutableAttributedString(string:text)
+        let attributedString = NSMutableAttributedString(string:text)
         attributedString.addAttributes(OtherAttribute, range: rangeString)
         
         attributedString.addAttributes(BoldAttributes, range: rangeBoldString)
@@ -61,9 +66,7 @@ class ReviewShipperVC: BaseViewController {
     // ----------------------------------------------------
     
     @IBAction func btnSaveClick(_ sender: Any) {
-        let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: shipperDetailsVC.storyboardID) as! shipperDetailsVC
-        controller.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(controller, animated: true)
+        CallAPI()
     }
     
     
@@ -72,6 +75,18 @@ class ReviewShipperVC: BaseViewController {
     // ----------------------------------------------------
     
     
-  
+    func CallAPI() {
+        
+        self.rateShipperViewModel.reviewShipperVC = self
+        
+        let reqModel = RateReviewReqModel()
+        reqModel.booking_id = bookingID
+        reqModel.rating = "\(viewRatting.rating)"
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.review = textviewReview.text
+        self.rateShipperViewModel.WebServiceForRate(ReqModel: reqModel)
+    }
+    
+    
     
 }

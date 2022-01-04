@@ -12,6 +12,7 @@ import SDWebImage
 import UIView_Shimmer
 import MapKit
 import FittedSheets
+import Cosmos
 extension UILabel: ShimmeringViewProtocol { }
 extension UISwitch: ShimmeringViewProtocol { }
 extension UIProgressView: ShimmeringViewProtocol { }
@@ -30,7 +31,7 @@ class LoadDetailsVC: BaseViewController {
     var loadDetailViewModel = LoadDetailViewModel()
     var LoadDetails : SearchLoadsDatum?
     var arrTypes:[(SearchTruckTypeCategory,Bool)] = []
-    var isLoading = true {
+    var isLoading = false {
         didSet {
             tblMainData.isUserInteractionEnabled = !isLoading
             tblMainData.reloadData()
@@ -69,6 +70,7 @@ class LoadDetailsVC: BaseViewController {
     @IBOutlet weak var lblShipperName: themeLabel!
     @IBOutlet weak var lblShipperRatting: themeLabel!
     @IBOutlet weak var imgShipperProfile: UIImageView!
+    @IBOutlet weak var viewRatting: CosmosView!
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -138,9 +140,10 @@ class LoadDetailsVC: BaseViewController {
         imgShipperProfile.isCircle()
         imgShipperProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
         imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
-        lblShipperRatting.text = ""
         
         
+        viewRatting.rating = LoadDetails?.shipperDetails?.shipperRating ?? 0.0
+        lblShipperRatting.attributedText = "(\(LoadDetails?.shipperDetails?.shipperRating ?? 0.0))".underLine()
         
         if (LoadDetails?.isBid ?? 0) == 1 {
             btnBidNow.setTitle(  bidStatus.BidNow.Name , for: .normal)
@@ -315,17 +318,30 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblMainData.dequeueReusableCell(withIdentifier: "LoadDetailCell") as! LoadDetailCell
         cell.ViewForSavingTree.isHidden = true
+        var pickupArray = LoadDetails?.trucks?.locations?.compactMap({$0.isPickup})
+      
+        pickupArray = pickupArray?.uniqued()
+        if pickupArray?.count == 1 {
+            cell.PickUpDropOffImageView.image = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+        } else {
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+        }
         
         
-        cell.PickUpDropOffImageView.image =  (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//        if LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != LoadDetails?.trucks?.locations?.count) {
+//          
+//        } else {
+//           
+//        }
+
         cell.lblName.text = LoadDetails?.trucks?.locations?[indexPath.row].companyName ?? ""
         cell.lblAddress.text = LoadDetails?.trucks?.locations?[indexPath.row].dropLocation ?? ""
         cell.lblDate.text = LoadDetails?.trucks?.locations?[indexPath.row].companyName ?? ""
         
         if (LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? "") == (LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "") {
-            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
         } else {
-            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
+            cell.lblDate.text =  "\(LoadDetails?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "") \((LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(LoadDetails?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
         }
         
         cell.lblPickupDropOff.text = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? "DROP" : "PICKUP"

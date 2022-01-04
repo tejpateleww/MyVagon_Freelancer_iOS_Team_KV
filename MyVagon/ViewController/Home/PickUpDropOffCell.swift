@@ -130,7 +130,14 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
             
             let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         if !isLoading {
-            cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            
+            
+            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+                cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+            } else {
+                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            }
+           
             
             cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
             
@@ -145,7 +152,7 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
             }
             
             var StringForDateTime = ""
-            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
             StringForDateTime.append(" ")
             
             if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {
@@ -257,3 +264,4 @@ extension UIApplication{
         return base
     }
 }
+

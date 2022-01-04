@@ -64,28 +64,39 @@ class SingletonClass: NSObject
                 UpdateLocationClass.sharedLocationInstance.UpdateLocationStart()
                 UpdateLocationClass.sharedLocationInstance.UpdatedLocation = { (LocationUpdated) in
                     SingletonClass.sharedInstance.userCurrentLocation = LocationUpdated
-                    let Location1 = CLLocationCoordinate2D(latitude: 23.070953, longitude: 72.5157073)
-                    let Location2 = CLLocationCoordinate2D(latitude: 23.071396, longitude: 72.513970)
-                    
-           //         let distanceBetweenPickupAndDriver = SingletonClass.sharedInstance.CurrentTripSecondLocation.distance(from: LocationUpdated.coordinate)
                     
                     
-                    let distanceBetweenPickupAndDriver = Location1.distance(from: Location2)
-               //     print("Distance Between distanceBetweenPickupAndDriver :: \(distanceBetweenPickupAndDriver / 1000) Km")
+                    let locationDrop = CLLocationCoordinate2DMake(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLat?.toDouble() ?? 0.0, SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLng?.toDouble() ?? 0.0)
+ 
+                    let distanceBetweenPickupAndDriver = locationDrop.distance(from: LocationUpdated.coordinate)
+                        //near by distance
                     if distanceBetweenPickupAndDriver < 300 {
                         print("ATDebug :: location is near")
                         if let topvc = UIApplication.topViewController() {
                             if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
                                 let vc = topvc as! SchedualLoadDetailsViewController
-                                
-                                if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
-                                    vc.btnStartTrip.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
-                                } else {
-                                    vc.btnStartTrip.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                if vc.LoadDetails?.trucks?.locations?.contains(where: {($0.id ?? 0) == (self.CurrentTripSecondLocation?.id ?? 0)}) == true {
+                                    var pickupArray = self.CurrentTripSecondLocation?.products?.compactMap({$0.isPickup})
+                                    pickupArray = pickupArray?.uniqued()
+                                    if pickupArray?.count != 0   {
+                                        if pickupArray?.count == 1 {
+                                            if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
+                                                vc.btnStartTrip?.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
+                                            } else {
+                                                vc.btnStartTrip?.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                            }
+                                        }  else {
+                                            vc.btnStartTrip?.setTitle(TripStatus.ArrivedatpickuplocationDropOff.Name, for: .normal)
+                                           
+                                        }
+                                    }
+                                    if vc.TruckMarker != nil {
+                                        vc.UpdatePath()
+                                    }
+                                    vc.btnStartTrip?.superview?.isHidden = false
                                 }
-                              
                                
-                                vc.btnStartTrip.superview?.isHidden = false
+                               
                             }
                         }
                         SingletonClass.sharedInstance.isNearByPickupLocation = true
@@ -94,12 +105,16 @@ class SingletonClass: NSObject
                         if let topvc = UIApplication.topViewController() {
                             if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
                                 let vc = topvc as! SchedualLoadDetailsViewController
-                                if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
-                                    vc.btnStartTrip.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
-                                } else {
-                                    vc.btnStartTrip.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                
+                                if vc.LoadDetails?.trucks?.locations?.contains(where: {($0.id ?? 0) == (self.CurrentTripSecondLocation?.id ?? 0)}) == true {
+                              
+                                    vc.btnStartTrip?.superview?.isHidden = true
+                                    if vc.TruckMarker != nil {
+                                        vc.UpdatePath()
+                                    }
                                 }
-                                vc.btnStartTrip.superview?.isHidden = true
+                                
+                        
                             }
                         }
                     }
@@ -108,7 +123,7 @@ class SingletonClass: NSObject
                 
                 StartTimerForUpdateLocation()
             } else {
-                UpdateLocationClass.sharedLocationInstance.GeneralLocationManager.stopUpdatingLocation()
+                UpdateLocationClass.sharedLocationInstance.locationManager.stopUpdatingLocation()
                 StopTimerForUpdateLocation()
             }
         }
@@ -145,7 +160,7 @@ class SingletonClass: NSObject
         
     }
     func StopTimerForUpdateLocation() {
-        
+        self.emitForCurrentLocation()
         TimerForUpdateLocation.invalidate()
     }
     

@@ -44,7 +44,6 @@ class ScheduleViewController: BaseViewController {
     @IBOutlet weak var calender: FSCalendar!
     @IBOutlet weak var collectionOfHistory: UICollectionView!
     @IBOutlet weak var viewPostAvailability: UIView!
-    
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
@@ -298,7 +297,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             let label = UILabel()
             label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
             label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-            label.text = arrMyLoadesData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "")
+            label.text = arrMyLoadesData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
             label.textAlignment = .center
             label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
             label.textColor = UIColor(hexString: "#292929")
@@ -348,14 +347,10 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
 //            if (arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.isBid ?? 0) == 1 {
 //                
 //            }
-            if (arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.bookingRequestCount ?? 0) != 0 {
-                print("View Match Clicked")
-                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
-                controller.BidsData = arrMyLoadesData?[indexPath.section][indexPath.row]
-                controller.hidesBottomBarWhenPushed = true
-                controller.PostTruckID = "\(arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)"
-                self.navigationController?.pushViewController(controller, animated: true)
-            } else {
+            
+            
+            let myloadDetails = arrMyLoadesData?[indexPath.section][indexPath.row]
+            if myloadDetails?.postedTruck?.bookingInfo != nil {
                 if !isLoading {
                     WebServiceSubClass.SystemDateTime { (_, _, _, _) in
                         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
@@ -369,8 +364,44 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                     }
                    
                 }
+            } else {
+                if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
+                    if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
+                        
+                 
+                        
+                        
+                        
+                        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
+                        controller.BidsData = arrMyLoadesData?[indexPath.section][indexPath.row]
+                        controller.hidesBottomBarWhenPushed = true
+                        controller.PostTruckID = "\(arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)"
+                        self.navigationController?.pushViewController(controller, animated: true)
+                    } else {
+
+                    }
+                }  else {
+                    if (myloadDetails?.postedTruck?.matchesCount ?? 0) != 0 {
+
+                        if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
+                            
+                            
+                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
+                            controller.NumberOfCount = myloadDetails?.postedTruck?.matchesCount ?? 0
+
+                            controller.hidesBottomBarWhenPushed = true
+                            controller.PostTruckID = "\(myloadDetails?.postedTruck?.id ?? 0)"
+                            self.navigationController?.pushViewController(controller, animated: true)
+                            
+                        } else {
+                          
+                         
+                        }
+                    } else {
+                      
+                    }
+                }
             }
-            
         } else {
             if !isLoading {
                 WebServiceSubClass.SystemDateTime { (_, _, _, _) in

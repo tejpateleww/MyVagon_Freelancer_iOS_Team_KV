@@ -62,10 +62,7 @@ class PostTruckViewModel {
                             
                             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
                             controller.NumberOfCount = response?.data?.count ?? 0
-                            
-                         //   let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
-//                            let myLoadsNewDatum = MyLoadsNewDatum(PostedTruck: (response?.data)!, Type: "posted_truck", Date: response?.data?.date ?? "")
-//                            controller.BidsData = myLoadsNewDatum
+
                             controller.hidesBottomBarWhenPushed = true
                             controller.PostTruckID = "\(response?.data?.id ?? 0)"
                  

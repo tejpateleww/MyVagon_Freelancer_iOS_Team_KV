@@ -11,9 +11,17 @@ import UIKit
 
 class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
 
-    static let sharedLocationInstance = UpdateLocationClass.init()
+    class var sharedLocationInstance: UpdateLocationClass {
+            struct Static {
+                static var instance = UpdateLocationClass()
+            }
+            return Static.instance
+        }
+    
+    
 
-    var GeneralLocationManager = CLLocationManager()
+
+    var locationManager = CLLocationManager()
     var CurrentLocation: CLLocation?
 
     var UpdatedLocation:((CLLocation) -> ())?
@@ -22,22 +30,25 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
 //
     override init() {
         super.init()
-        self.GeneralLocationManager.delegate = self
-//        self.GeneralLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-
-        //SJ_Change :
-        self.GeneralLocationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-
-
-//        if CLLocationManager.locationServicesEnabled() == false {
-//            self.GeneralLocationManager.requestLocation()
-//        }
+        
+        self.locationManager = CLLocationManager()
+       
+        
+        let status = CLLocationManager.authorizationStatus()
+        if status == .notDetermined {
+            self.locationManager.requestAlwaysAuthorization()
+           
+        }
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.delegate = self
+        
+        
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       
          self.CurrentLocation  = locations.first!
-    //    print(locations)
       
        
         if let UpdateLocation = self.UpdatedLocation {
@@ -48,8 +59,8 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // print (error)
         if (error as? CLError)?.code == .denied {
-            GeneralLocationManager.stopUpdatingLocation()
-            GeneralLocationManager.stopMonitoringSignificantLocationChanges()
+            locationManager.stopUpdatingLocation()
+            locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
 
@@ -63,7 +74,7 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
                 Utilities.CheckLocation(currentVC: UIApplication.topViewController()!)
 //                }
             case .authorizedAlways, .authorizedWhenInUse:
-                self.GeneralLocationManager.startUpdatingLocation()
+                self.locationManager.startUpdatingLocation()
 
             @unknown default:
                 break
@@ -75,16 +86,26 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
         }
 
     }
-
+    //checkPermisson
+    func isAlwaysPermissionGranted() -> Bool{
+        let aStatus = CLLocationManager.authorizationStatus()
+        if aStatus == .authorizedAlways {
+            return true
+        }
+         return false
+      }
 
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .restricted,.denied,.notDetermined:
-            self.GeneralLocationManager.stopUpdatingLocation()
-            Utilities.CheckLocation(currentVC: UIApplication.topViewController()!)
+            self.locationManager.stopUpdatingLocation()
+            if let topVC = UIApplication.topViewController() {
+                Utilities.CheckLocation(currentVC: topVC)
+            }
+             
         case .authorizedAlways, .authorizedWhenInUse:
-             self.GeneralLocationManager.startUpdatingLocation()
+             self.locationManager.startUpdatingLocation()
 
              print("Location status is OK.")
         @unknown default:
@@ -128,12 +149,12 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
 //        guard let locationManager = self.locationManager else {
 //            return
 //        }
-//        
+//
 //        let status = CLLocationManager.authorizationStatus()
 //        if status == .notDetermined {
 //            self.locationManager?.requestWhenInUseAuthorization()
 //        }
-//        
+//
 //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
 //        locationManager.delegate = self
 //    }

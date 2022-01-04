@@ -161,6 +161,9 @@ enum ApiKey: String {
     case StartJourney                           = "start-journey"
     case CompleteTrip                           = "complete-trip"
     case UploadPOD                              = "upload-pod"
+    case RateShipper                            = "review-rating"
+    
+    case NotificationList                       = "notification-list"
     
 }
 

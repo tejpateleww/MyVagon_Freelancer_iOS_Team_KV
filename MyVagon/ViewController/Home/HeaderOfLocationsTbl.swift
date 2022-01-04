@@ -60,6 +60,7 @@ class HeaderOfLocationsTbl: UITableViewHeaderFooterView,ShimmeringViewProtocol {
         //headerView.roundCorners(corners: [.topLeft,.topRight], radius: 15.0)
         viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
         
+        lblBidStatus.text = ""
         
         
     }

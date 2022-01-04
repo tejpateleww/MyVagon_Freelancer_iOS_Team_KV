@@ -364,15 +364,26 @@ extension BidRequestDetailViewController:UITableViewDelegate,UITableViewDataSour
         cell.ViewForSavingTree.isHidden = true
         
         let data = LoadDetails?.bookingInfo
-        cell.PickUpDropOffImageView.image =  (data?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+        
+        
+        var pickupArray = data?.trucks?.locations?.compactMap({$0.isPickup})
+      
+        pickupArray = pickupArray?.uniqued()
+        if pickupArray?.count == 1 {
+            cell.PickUpDropOffImageView.image = (data?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+        } else {
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+        }
+   
+        
         cell.lblName.text = data?.trucks?.locations?[indexPath.row].companyName ?? ""
         cell.lblAddress.text = data?.trucks?.locations?[indexPath.row].dropLocation ?? ""
         cell.lblDate.text = data?.trucks?.locations?[indexPath.row].companyName ?? ""
         
         if (data?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? "") == (data?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "") {
-            cell.lblDate.text =  "\(data?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((data?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
+            cell.lblDate.text =  "\(data?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "") \((data?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))"
         } else {
-            cell.lblDate.text =  "\(data?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "") \((data?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(data?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
+            cell.lblDate.text =  "\(data?.trucks?.locations?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "") \((data?.trucks?.locations?[indexPath.row].deliveryTimeFrom ?? ""))-\(data?.trucks?.locations?[indexPath.row].deliveryTimeTo ?? "")"
         }
         
         cell.lblPickupDropOff.text = (data?.trucks?.locations?[indexPath.row].isPickup == 0) ? "DROP" : "PICKUP"

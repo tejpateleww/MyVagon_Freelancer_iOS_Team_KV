@@ -166,7 +166,7 @@ extension PostedTruckBidsViewController : UITableViewDataSource , UITableViewDel
         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         
         
         
@@ -177,7 +177,7 @@ extension PostedTruckBidsViewController : UITableViewDataSource , UITableViewDel
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
         label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")

@@ -14,7 +14,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     // ----------------------------------------------------
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
-    let locationManager = CLLocationManager()
     var isLoading = true {
         didSet {
             tblLocations.isUserInteractionEnabled = !isLoading
@@ -75,7 +74,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         self.tblLocations.refreshControl = refreshControl
         AllSocketOnMethods()
         CallWebSerive()
-        setupLocationManager()
+        checkLocationPermission()
         // Do any additional setup after loading the view.
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
@@ -170,7 +169,15 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         self.connectCustomer(AccessUserId: AccessUser)
 
     }
-    
+    func checkLocationPermission(){
+        let LocationStatus = CLLocationManager.authorizationStatus()
+        if LocationStatus == .notDetermined {
+            appDel.locationManager.locationManager.requestAlwaysAuthorization()
+            
+        }else if LocationStatus == .restricted || LocationStatus == .denied {
+            Utilities.CheckLocation(currentVC:self)
+        }
+    }
     
     func connectCustomer(AccessUserId:Int) {
     
@@ -370,6 +377,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !isLoading {
+            
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
             controller.hidesBottomBarWhenPushed = true
             controller.LoadDetails = arrHomeData?[indexPath.section][indexPath.row]
@@ -381,7 +389,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         if isLoading {
             return ""
         }
-        return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+        return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         
         
         
@@ -395,7 +403,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         let label = UILabel()
         label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
         label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
-        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "")
+        label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")
@@ -471,64 +479,4 @@ enum NotificationKeys : CaseIterable{
     static let KGetTblHeight = "TblHeight"
     static let KUpdateHomeScreenArray = "UpdateHomeScreenArray"
     
-}
-
-extension Date {
-    func localDate() -> Date {
-        let nowUTC = Date()
-        let timeZoneOffset = Double(TimeZone.current.secondsFromGMT(for: nowUTC))
-        guard let localDate = Calendar.current.date(byAdding: .second, value: Int(timeZoneOffset), to: nowUTC) else {return Date()}
-
-        return localDate
-    }
-}
-extension HomeViewController:CLLocationManagerDelegate {
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        self.UpdateLocationStart()
-    }
-    
-    func UpdateLocationStart(){
-        
-        if CLLocationManager.locationServicesEnabled() {
-            switch CLLocationManager.authorizationStatus() {
-            case .notDetermined, .restricted, .denied:
-                if UserDefaults.standard.bool(forKey: "isFirstTime") {
-                    Utilities.CheckLocation(currentVC: self)
-                }
-            case .authorizedAlways, .authorizedWhenInUse:
-                locationManager.startUpdatingLocation()
-                UserDefault.set(true, forKey: "isFirstTime")
-                UserDefault.synchronize()
-            @unknown default:
-                break
-            }
-        } else {
-            if UserDefaults.standard.bool(forKey: "isFirstTime") {
-                Utilities.CheckLocation(currentVC:self)
-                print("Location services are not enabled")
-            }
-        }
-        
-    }
-    //MARK:- ======== CLLocationManager Methods =======
-   
-   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        let userLocation:CLLocation = locations[0] as CLLocation
-   
-       guard let location = locations.first else {
-           return
-       }
-    SingletonClass.sharedInstance.userCurrentLocation = location
-       locationManager.stopUpdatingLocation()
-   }
-   
-   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-       guard status == .authorizedWhenInUse else {
-           return
-       }
-       locationManager.startUpdatingLocation()
-   }
 }

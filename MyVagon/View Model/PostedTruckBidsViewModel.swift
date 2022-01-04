@@ -15,7 +15,7 @@ class PostedTruckBidsViewModel {
      
         WebServiceSubClass.PostedTruckResult(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
           
-    
+            self.postedTruckBidsViewController?.refreshControl.endRefreshing()
             if status {
                 
                 let tempArrHomeData = response?.data ?? []

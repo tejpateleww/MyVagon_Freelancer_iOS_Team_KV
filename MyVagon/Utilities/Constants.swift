@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+let DateFormatForDisplay = "dd/MM/yyyy"
+
 let Currency = "€ "
 var PageLimit = 10
 let keywindow = UIApplication.shared.keyWindow
@@ -20,8 +22,6 @@ let AppURL = AppInfo.appUrl // "itms-apps://itunes.apple.com/app/id1547969270"
 let ReqDeviceType = "1"
 let Headerkey = ""
 
-typealias EmptyClosure = () -> Void
-
 let NotificationBadges = NSNotification.Name(rawValue:"NotificationBadges")
 
 var NameTotalCount = 30
@@ -32,6 +32,10 @@ let CallKitIconName = "notification_icon"
 let RefreshControlColor : UIColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
 
 let MaximumFileUploadSize:Double = 10.0
+
+typealias EmptyClosure = () -> Void
+
+
 
 enum DateFormatterString : String{
     case timeWithDate = "yyyy-MM-dd HH:mm:ss"

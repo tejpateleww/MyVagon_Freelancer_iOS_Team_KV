@@ -26,6 +26,7 @@ struct MyLoadsNewPostedTruck : Codable {
     let truckTypeId : Int?
     let updatedAt : String?
     let bookingRequestCount : Int?
+    let matchesCount: Int?
     let count : Int?
     let time_difference : Int?
     enum CodingKeys: String, CodingKey {
@@ -47,7 +48,7 @@ struct MyLoadsNewPostedTruck : Codable {
         case toAddress = "to_address"
         case truckTypeId = "truck_type_id"
         case updatedAt = "updated_at"
-     //   case matchesFound = "booking_request_count"
+        case matchesCount = "matches_found"
         case bookingRequestCount = "booking_request_count"
         case count = "count"
         case time_difference = "time_difference"
@@ -74,7 +75,7 @@ struct MyLoadsNewPostedTruck : Codable {
         toAddress = try? values.decodeIfPresent(String.self, forKey: .toAddress)
         truckTypeId = try? values.decodeIfPresent(Int.self, forKey: .truckTypeId)
         updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
-//        matchesFound = try? values.decodeIfPresent(Int.self, forKey: .matchesFound)
+        matchesCount = try? values.decodeIfPresent(Int.self, forKey: .matchesCount)
         bookingRequestCount = try? values.decodeIfPresent(Int.self, forKey: .bookingRequestCount)
         count = try? values.decodeIfPresent(Int.self, forKey: .count)
         time_difference = try? values.decodeIfPresent(Int.self, forKey: .time_difference)

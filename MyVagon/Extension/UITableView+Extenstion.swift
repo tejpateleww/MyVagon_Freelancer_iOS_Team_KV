@@ -34,6 +34,16 @@ extension UITableView {
     func hasRowAtIndexPath(indexPath: IndexPath) -> Bool {
         return indexPath.section < self.numberOfSections && indexPath.row < self.numberOfRows(inSection: indexPath.section)
     }
+    func noDataFound(lblText:String){
+        let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        noDataLabel.text          = lblText
+        noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
+        noDataLabel.textColor     = #colorLiteral(red: 0, green: 0.08235294118, blue: 0.3882352941, alpha: 1)
+        noDataLabel.textAlignment = .center
+        self.backgroundView  = noDataLabel
+        self.separatorStyle  = .none
+        
+    }
 }
 extension UITableView {
   func reloadDataWithAutoSizingCellWorkAround() {
@@ -72,4 +82,5 @@ extension UITableViewController {
             tableView.tableFooterView = footerView
         }
     }
+    
 }

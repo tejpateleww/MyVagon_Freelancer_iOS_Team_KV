@@ -343,6 +343,19 @@ extension String {
         let formattedvalue = formatter.number(from: self)?.doubleValue ?? 0.00
         return ("\(formattedvalue)",formattedvalue)
     }
+    func underLine() -> NSAttributedString {
+        let text = self
+        
+        let textRange = NSRange(location: 0, length: text.count)
+        let attributedText = NSMutableAttributedString(string: text)
+        attributedText.addAttribute(.underlineStyle,
+                                    value: NSUnderlineStyle.single.rawValue,
+                                    range: textRange)
+        // Add other attributes if needed
+        return attributedText
+        
+    }
+    
 }
 extension String {
     func Bold(color:UIColor,FontSize:CGFloat)-> NSMutableAttributedString {

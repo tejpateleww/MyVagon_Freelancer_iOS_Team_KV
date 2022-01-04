@@ -70,7 +70,7 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
         if SingletonClass.sharedInstance.searchReqModel.pickup_date == "" {
             lblSelectedDate.text = "Select Date"
         } else {
-            lblSelectedDate.text = SingletonClass.sharedInstance.searchReqModel.pickup_date.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy")
+            lblSelectedDate.text = SingletonClass.sharedInstance.searchReqModel.pickup_date.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         }
         
         if SingletonClass.sharedInstance.searchReqModel.pickup_address_string == "" {
@@ -202,7 +202,7 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
         controller.selectDateClosour = { (selectedDate) in
             let formatter1 = DateFormatter()
              formatter1.dateStyle = .medium
-             formatter1.dateFormat = "dd MMMM, yyyy"
+             formatter1.dateFormat = DateFormatForDisplay
              
              let DateinString = formatter1.string(from: selectedDate)
             

@@ -280,8 +280,6 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             
             return cell
         }
-        
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -289,12 +287,22 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
-        controller.hidesBottomBarWhenPushed = true
-        controller.LoadDetails = self.arrBidsData?[indexPath.row]
-        
-        self.navigationController?.pushViewController(controller, animated: true)
+        if indexPath.section == 0 {
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
+            controller.NumberOfCount = BidsData?.postedTruck?.count ?? 0
+
+            controller.hidesBottomBarWhenPushed = true
+            controller.PostTruckID = "\(BidsData?.postedTruck?.id ?? 0)"
+            self.navigationController?.pushViewController(controller, animated: true)
+            
+        } else {
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
+            controller.hidesBottomBarWhenPushed = true
+            controller.LoadDetails = self.arrBidsData?[indexPath.row]
+            
+            self.navigationController?.pushViewController(controller, animated: true)
+        }
+      
         
     }
     
@@ -513,7 +521,14 @@ extension PostAvailabilityRequestCell : UITableViewDataSource , UITableViewDeleg
         
         let cell =  tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         if !isLoading {
-        cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+                cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+            } else {
+                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+            }
+            
+            
+       
         
         cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
         
@@ -527,7 +542,7 @@ extension PostAvailabilityRequestCell : UITableViewDataSource , UITableViewDeleg
             cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
         }
             var StringForDateTime = ""
-            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: "dd MMMM, yyyy") ?? "")")
+            StringForDateTime.append("\(PickUpDropOffData?[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
             StringForDateTime.append(" ")
             
             if (PickUpDropOffData?[indexPath.row].deliveryTimeTo ?? "") == (PickUpDropOffData?[indexPath.row].deliveryTimeFrom ?? "") {

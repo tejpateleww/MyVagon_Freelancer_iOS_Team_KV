@@ -133,7 +133,7 @@ class SchedualDetailViewModel {
                  
                     self.schedualLoadDetailsViewController?.btnStartTrip.setTitle(TripStatus.RateShipper.Name, for: .normal)
                     self.schedualLoadDetailsViewController?.btnStartTrip.superview?.isHidden = false
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
+                //    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
                     
                    
                 } else {
