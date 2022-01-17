@@ -148,9 +148,9 @@ class BidRequestDetailViewController: BaseViewController {
         
         lblTotalMiles.text = "\(data?.distance ?? "")"
         
-            lblDeadHead.text = "\(data?.trucks?.locations?.first?.deadhead ?? "") Mile Deadhead"
+        lblDeadHead.text = "\(Double(data?.trucks?.locations?.first?.deadhead ?? "") ?? 0.0) Km Deadhead"
        
-        lblShipperName.text = data?.shipperDetails?.name ?? ""
+        lblShipperName.text = data?.shipperDetails?.companyName ?? ""
         
         let strUrl = "\(APIEnvironment.ShipperImageURL)\(data?.shipperDetails?.profile ?? "")"
         imgShipperProfile.isCircle()

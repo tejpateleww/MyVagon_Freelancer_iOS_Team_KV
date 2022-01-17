@@ -397,3 +397,23 @@ extension String {
         }
     }
 }
+
+extension String {
+    var currency: String {
+        // removing all characters from string before formatting
+        let stringWithoutSymbol = self.replacingOccurrences(of: Currency, with: "")
+        let stringWithoutComma = stringWithoutSymbol.replacingOccurrences(of: ",", with: "")
+
+        let styler = NumberFormatter()
+        styler.minimumFractionDigits = 0
+        styler.maximumFractionDigits = 0
+        styler.currencySymbol = Currency
+        styler.numberStyle = .currency
+
+        if let result = NumberFormatter().number(from: stringWithoutComma) {
+            return styler.string(from: result)!
+        }
+
+        return self
+    }
+}

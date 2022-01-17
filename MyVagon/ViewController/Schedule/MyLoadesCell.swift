@@ -26,7 +26,7 @@ class MyLoadesCell: UITableViewCell {
     //MARK: - ====== Default Methods ========
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        //
         if tblMultipleLocation.observationInfo != nil {
             self.tblMultipleLocation.removeObserver(self, forKeyPath: "contentSize")
         }
@@ -71,7 +71,7 @@ class MyLoadesCell: UITableViewCell {
         self.viewContents.backgroundColor = nil
         self.viewContents.layer.backgroundColor =  UIColor.white.cgColor
         tblMultipleLocation.tableFooterView?.isHidden = true
-
+        tblMultipleLocation.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
       }
 
     //MARK: - ====== Observer methods ========
@@ -144,15 +144,22 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             let PickUpDropOffData = myloadDetails?.bid?.trucks?.locations
             cell.lblAddress.isHidden = false
             
-            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//                cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+//            } else {
+//                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//            }
+            
+            if(indexPath.row == 0){
+                cell.imgLocation.image = UIImage(named: "ic_PickUp")
+            }else if(indexPath.row == (PickUpDropOffData?.count ?? 0) - 1){
+                cell.imgLocation.image = UIImage(named: "ic_DropOff")
+            }else{
                 cell.imgLocation.image = UIImage(named: "ic_pickDrop")
-            } else {
-                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
             }
             
           
             cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
-            
             cell.BtnShowMore.superview?.isHidden = true
             cell.lblCompanyName.text = PickUpDropOffData?[indexPath.row].companyName
             
@@ -181,13 +188,19 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             let PickUpDropOffData = myloadDetails?.book?.trucks?.locations
             cell.lblAddress.isHidden = false
             
-            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//                cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+//            } else {
+//                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//            }
+            
+            if(indexPath.row == 0){
+                cell.imgLocation.image = UIImage(named: "ic_PickUp")
+            }else if(indexPath.row == (PickUpDropOffData?.count ?? 0) - 1){
+                cell.imgLocation.image = UIImage(named: "ic_DropOff")
+            }else{
                 cell.imgLocation.image = UIImage(named: "ic_pickDrop")
-            } else {
-                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
             }
-            
-            
           
             
             cell.lblAddress.text = PickUpDropOffData?[indexPath.row].dropLocation
@@ -223,13 +236,19 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                  cell.lblAddress.isHidden = false
                 
                 let PickUpDropOffData = myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations
-                if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
-                    cell.imgLocation.image = UIImage(named: "ic_pickDrop")
-                } else {
-                    cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-                }
+//                if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//                    cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+//                } else {
+//                    cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//                }
                 
-           
+                if(indexPath.row == 0){
+                    cell.imgLocation.image = UIImage(named: "ic_PickUp")
+                }else if(indexPath.row == (PickUpDropOffData?.count ?? 0) - 1){
+                    cell.imgLocation.image = UIImage(named: "ic_DropOff")
+                }else{
+                    cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+                }
                 
                 cell.lblAddress.text = myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?[indexPath.row].dropLocation
                 
@@ -411,8 +430,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             header.lblWeightAndDistance.isHidden = false
             
             header.lblDeadheadWithTruckType.isHidden = false
-            header.LblShipperName.text = myloadDetails?.bid?.shipperDetails?.name ?? ""
-            header.lblBidStatus.isHidden = false
+            header.LblShipperName.text = myloadDetails?.bid?.shipperDetails?.companyName ?? ""
             header.viewStatusBid.isHidden = false
             
             header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (myloadDetails?.bid?.amount ?? "") : ""
@@ -426,18 +444,24 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             switch myloadDetails?.bid?.status {
             case MyLoadesStatus.pending.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
+                header.lblBidStatus.isHidden = false
+                header.lblBidStatus.text = BidStatusLabel.bidConfirmationPending.Name
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             case MyLoadesStatus.scheduled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             case MyLoadesStatus.inprocess.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
             case MyLoadesStatus.completed.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                 
             case .none:
@@ -454,8 +478,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             
             header.lblDeadheadWithTruckType.isHidden = false
             header.lblStatus.text = "Book"
-            header.LblShipperName.text = myloadDetails?.book?.shipperDetails?.name ?? ""
-            header.lblBidStatus.isHidden = false
+            header.LblShipperName.text = myloadDetails?.book?.shipperDetails?.companyName ?? ""
             header.viewStatusBid.isHidden = false
             
             header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (myloadDetails?.book?.amount ?? "") : ""
@@ -468,18 +491,24 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             switch myloadDetails?.book?.status {
             case MyLoadesStatus.pending.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
+                header.lblBidStatus.isHidden = false
+                header.lblBidStatus.text = BidStatusLabel.bidConfirmationPending.Name
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
             case MyLoadesStatus.scheduled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             case MyLoadesStatus.inprocess.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
             case MyLoadesStatus.completed.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
+                header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                 
             case .none:
@@ -502,7 +531,6 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 header.lblDeadheadWithTruckType.isHidden = false
                 header.lblStatus.text = "Posted Truck"
                 header.LblShipperName.text = myloadDetails?.postedTruck?.bookingInfo?.shipperDetails?.name ?? ""
-                header.lblBidStatus.isHidden = false
                 header.viewStatusBid.isHidden = false
                 
                 header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (myloadDetails?.postedTruck?.bookingInfo?.amount ?? "") : ""
@@ -515,18 +543,24 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 switch myloadDetails?.postedTruck?.bookingInfo?.status {
                 case MyLoadesStatus.pending.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
+                    header.lblBidStatus.isHidden = false
+                    header.lblBidStatus.text = BidStatusLabel.bidConfirmationPending.Name
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
                 case MyLoadesStatus.scheduled.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
+                    header.lblBidStatus.isHidden = true
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
                 case MyLoadesStatus.inprocess.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
+                    header.lblBidStatus.isHidden = true
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
                 case MyLoadesStatus.completed.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
+                    header.lblBidStatus.isHidden = true
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
                 case MyLoadesStatus.canceled.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name.capitalized
+                    header.lblBidStatus.isHidden = true
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                     
                 case .none:
@@ -541,7 +575,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 header.LblShipperName.text = SingletonClass.sharedInstance.UserProfileData?.name ?? ""
                 header.lblBidStatus.isHidden = true
                 header.viewStatusBid.isHidden = true
-
+ 
                 header.lblStatus.isHidden = false
                 header.viewStatus.isHidden = true
                 header.lblStatus.text = "Posted Truck"

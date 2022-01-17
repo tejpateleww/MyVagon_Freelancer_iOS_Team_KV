@@ -188,8 +188,6 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             } else {
                 EmailVerify()
             }
-            
-           
         }
     }
     
@@ -198,14 +196,10 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 10))
             if (!checkMobileNumber.0){
                 Utilities.ShowAlertOfValidation(OfMessage: checkMobileNumber.1)
-                
             } else {
                 PhoneVerify()
             }
-            
-            
         }
-       
     }
     
     @IBAction func BtnSignInAction(_ sender: Any) {
@@ -224,15 +218,12 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
             SingletonClass.sharedInstance.RegisterData.Reg_password = TextFieldPassword.text ?? ""
             
             UserDefault.SetRegiterData()
-            
             UserDefault.setValue(0, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
             UserDefault.synchronize()
             
             let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
             let x = self.view.frame.size.width * 1
             RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-           
-            
             RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
@@ -280,20 +271,14 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     func PhoneVerify() {
         self.signUpViewModel.freelancerDriverSignupVC3 = self
-        
         let ReqModelForMobileVerify = MobileVerifyReqModel()
-     
-        ReqModelForMobileVerify.mobile_number = "\(TextFieldCountryCode.text ?? "")\(TextFieldMobileNumber.text ?? "")" 
-        
+        ReqModelForMobileVerify.mobile_number = "\(TextFieldCountryCode.text ?? "")\(TextFieldMobileNumber.text ?? "")"
         self.signUpViewModel.VerifyPhone(ReqModel: ReqModelForMobileVerify)
     }
     func EmailVerify() {
         self.signUpViewModel.freelancerDriverSignupVC3 = self
-        
         let ReqModelForEmailVerify = EmailVerifyReqModel()
-     
         ReqModelForEmailVerify.email = TextFieldEmail.text ?? ""
-        
         self.signUpViewModel.VerifyEmail(ReqModel: ReqModelForEmailVerify)
     }
     
@@ -306,8 +291,6 @@ extension FreelancerDriverSignupVC3: GeneralPickerViewDelegate {
         let item = CountryCodeArray[GeneralPicker.selectedRow(inComponent: 0)]
         self.TextFieldCountryCode.text = item
         self.TextFieldCountryCode.resignFirstResponder()
-       
-        
     }
     
     func didTapCancel() {
@@ -321,10 +304,7 @@ extension FreelancerDriverSignupVC3 : UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         return CountryCodeArray.count
-        
-        
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -332,10 +312,7 @@ extension FreelancerDriverSignupVC3 : UIPickerViewDelegate, UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         return CountryCodeArray[row]
-        
-        
     }
     
 }

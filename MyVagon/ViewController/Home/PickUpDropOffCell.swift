@@ -132,10 +132,18 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
         if !isLoading {
             
             
-            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//            if PickUpDropOffData?[indexPath.row].isPickup == 0 && (indexPath.row != 0 || indexPath.row != PickUpDropOffData?.count) {
+//                cell.imgLocation.image = UIImage(named: "ic_pickDrop")
+//            } else {
+//                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//            }
+            
+            if(indexPath.row == 0){
+                cell.imgLocation.image = UIImage(named: "ic_PickUp")
+            }else if(indexPath.row == (PickUpDropOffData?.count ?? 0) - 1){
+                cell.imgLocation.image = UIImage(named: "ic_DropOff")
+            }else{
                 cell.imgLocation.image = UIImage(named: "ic_pickDrop")
-            } else {
-                cell.imgLocation.image = (PickUpDropOffData?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
             }
            
             
@@ -175,7 +183,7 @@ extension PickUpDropOffCell : UITableViewDataSource , UITableViewDelegate {
         
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderOfLocationsTbl") as! HeaderOfLocationsTbl
         if !isLoading {
-        header.LblShipperName.text = BookingDetails?.shipperDetails?.name ?? ""
+        header.LblShipperName.text = BookingDetails?.shipperDetails?.companyName ?? ""
         header.lblBidStatus.isHidden = true
         header.viewStatusBid.isHidden = true
         

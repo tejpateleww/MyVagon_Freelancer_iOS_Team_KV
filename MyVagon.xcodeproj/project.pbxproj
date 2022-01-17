@@ -1317,12 +1317,12 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
+				18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */,
 				1899F893277AD6600058030B /* ARCarMovement.swift */,
 				18F496512779BD350069B26C /* StepIndicator */,
 				186834D12775AA83005E2674 /* CarAnimator.swift */,
 				186FCE96276C678E0087EFF9 /* LoaderLottie.json */,
 				18F15E4527043DED003A1D16 /* LocationManager Class */,
-				18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */,
 				18129AA926BA554000983AFC /* View Model */,
 				189FB65326B96BEF00BBD5A0 /* Webservices */,
 				180FCEE526B1359A008D28EE /* Localizable */,

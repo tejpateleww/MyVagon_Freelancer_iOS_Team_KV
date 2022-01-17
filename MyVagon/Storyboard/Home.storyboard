@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z2m-Ma-rFw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1158" y="1939"/>
+            <point key="canvasLocation" x="-1510" y="1914"/>
         </scene>
         <!--Post Truck View Controller-->
         <scene sceneID="gJM-aU-pmA">
@@ -899,7 +899,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1O-HA-N5u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323" y="1914"/>
+            <point key="canvasLocation" x="-838" y="1914"/>
         </scene>
         <!--My Profile View Controller-->
         <scene sceneID="ZmX-Lf-gff">
@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
+                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1587,7 +1587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gKA-br-Ovs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="636" y="2010"/>
+            <point key="canvasLocation" x="-168" y="1914"/>
         </scene>
         <!--Custom Tab BarVC-->
         <scene sceneID="CnK-j6-p7E">
@@ -1609,7 +1609,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqU-2e-CjS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1263" y="-9"/>
+            <point key="canvasLocation" x="-1443" y="374"/>
         </scene>
         <!--Search-->
         <scene sceneID="qs4-kf-AWk">
@@ -1663,7 +1663,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MyAccountCell" id="jhL-N5-0d0" customClass="MyAccountCell" customModule="MyVagon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="62"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="62"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jhL-N5-0d0" id="R9U-UA-Hl1">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
@@ -3099,7 +3099,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Ab-jo-EzD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1547" y="1059"/>
+            <point key="canvasLocation" x="1429" y="1077"/>
         </scene>
         <!--Notification View Controller-->
         <scene sceneID="4P4-x1-noD">
@@ -3117,7 +3117,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NotificationCell" id="tvl-rM-EAq" customClass="NotificationCell" customModule="MyVagon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="110.5"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="110.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tvl-rM-EAq" id="K9W-oS-DfO">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110.5"/>
@@ -3282,7 +3282,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYC-1V-TjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2173" y="1476"/>
+            <point key="canvasLocation" x="-2190" y="1914"/>
         </scene>
         <!--Account-->
         <scene sceneID="cIo-Zm-Zwf">
@@ -3564,9 +3564,9 @@
                                                     <constraint firstItem="Dmh-11-Ta7" firstAttribute="top" secondItem="BtR-OX-leh" secondAttribute="top" constant="1" id="dix-gO-RFt"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vAQ-Vy-hSt">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vAQ-Vy-hSt">
                                                 <rect key="frame" x="0.0" y="73" width="414" height="696"/>
-                                                <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <connections>
                                                     <outlet property="dataSource" destination="STv-Pd-7wT" id="8Nt-vX-mPu"/>
                                                     <outlet property="delegate" destination="STv-Pd-7wT" id="S5D-1O-OMi"/>
@@ -3623,19 +3623,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E6Q-aA-qBd">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No booking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MH-Au-ngK" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="23" y="8" width="208" height="64"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                <color key="value" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UrA-Rx-CCo" customClass="ThemeBidRequestButton" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="241" y="20" width="150" height="40"/>
+                                                        <rect key="frame" x="132" y="20" width="150" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="7Sn-RM-NfT"/>
                                                             <constraint firstAttribute="width" constant="150" id="7t1-uU-kzW"/>
@@ -3655,12 +3644,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="UrA-Rx-CCo" firstAttribute="leading" secondItem="7MH-Au-ngK" secondAttribute="trailing" constant="10" id="Lg9-pX-kgw"/>
-                                                    <constraint firstAttribute="bottom" secondItem="7MH-Au-ngK" secondAttribute="bottom" constant="8" id="LyB-7G-Jcm"/>
-                                                    <constraint firstItem="UrA-Rx-CCo" firstAttribute="centerY" secondItem="7MH-Au-ngK" secondAttribute="centerY" id="O4V-p8-HXB"/>
-                                                    <constraint firstAttribute="trailing" secondItem="UrA-Rx-CCo" secondAttribute="trailing" constant="23" id="dVM-JH-iBk"/>
-                                                    <constraint firstItem="7MH-Au-ngK" firstAttribute="leading" secondItem="E6Q-aA-qBd" secondAttribute="leading" constant="23" id="li2-xn-gQA"/>
-                                                    <constraint firstItem="7MH-Au-ngK" firstAttribute="top" secondItem="E6Q-aA-qBd" secondAttribute="top" constant="8" id="q3J-M2-PhF"/>
+                                                    <constraint firstItem="UrA-Rx-CCo" firstAttribute="centerX" secondItem="E6Q-aA-qBd" secondAttribute="centerX" id="EbP-bP-p79"/>
+                                                    <constraint firstItem="UrA-Rx-CCo" firstAttribute="centerY" secondItem="E6Q-aA-qBd" secondAttribute="centerY" id="K0P-yI-kDN"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -3774,7 +3759,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AVb-c9-iQl">
-                                        <rect key="frame" x="0.0" y="90" width="414" height="52"/>
+                                        <rect key="frame" x="0.0" y="80" width="414" height="52"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rwR-4I-iFd">
                                                 <rect key="frame" x="0.0" y="1" width="414" height="50"/>
@@ -3844,9 +3829,9 @@
                                             <constraint firstItem="rwR-4I-iFd" firstAttribute="leading" secondItem="AVb-c9-iQl" secondAttribute="leading" id="cXi-Ky-dHt"/>
                                         </constraints>
                                     </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-YU-s82">
-                                        <rect key="frame" x="0.0" y="142" width="414" height="627"/>
-                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-YU-s82">
+                                        <rect key="frame" x="0.0" y="132" width="414" height="637"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="Xpj-hs-bqK" id="CQ1-hF-qrW"/>
                                             <outlet property="delegate" destination="Xpj-hs-bqK" id="HhX-sE-mI4"/>
@@ -3856,7 +3841,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="zsW-YU-s82" firstAttribute="top" secondItem="AVb-c9-iQl" secondAttribute="bottom" id="2cv-kF-8x4"/>
-                                    <constraint firstItem="AVb-c9-iQl" firstAttribute="top" secondItem="gdR-u3-REX" secondAttribute="bottom" constant="10" id="6pC-rH-Ge3"/>
+                                    <constraint firstItem="AVb-c9-iQl" firstAttribute="top" secondItem="gdR-u3-REX" secondAttribute="bottom" id="6pC-rH-Ge3"/>
                                     <constraint firstItem="zsW-YU-s82" firstAttribute="leading" secondItem="TDv-BG-6vs" secondAttribute="leading" id="DSI-l1-DTY"/>
                                     <constraint firstItem="gdR-u3-REX" firstAttribute="leading" secondItem="TDv-BG-6vs" secondAttribute="leading" id="FPz-cu-r9Z"/>
                                     <constraint firstAttribute="trailing" secondItem="zsW-YU-s82" secondAttribute="trailing" id="MZ4-2l-vxj"/>
@@ -3921,7 +3906,7 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostAvailabilityRequestCell" id="CsI-M4-rZW" customClass="PostAvailabilityRequestCell" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="414" height="313.5"/>
+                                                                <rect key="frame" x="0.0" y="44.5" width="414" height="313.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CsI-M4-rZW" id="gRe-H3-Y4y">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="313.5"/>
@@ -3990,13 +3975,13 @@
                                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                                 </label>
                                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKu-IG-dxz">
-                                                                                                                    <rect key="frame" x="0.0" y="30.5" width="161.5" height="50"/>
+                                                                                                                    <rect key="frame" x="0.0" y="30.5" width="161.5" height="20.5"/>
                                                                                                                     <subviews>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zdw-mI-XU1">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="50"/>
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="20.5"/>
                                                                                                                             <subviews>
                                                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxc-Co-qbc" customClass="CosmosView" customModule="Cosmos">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="20.5"/>
                                                                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                                                                     <userDefinedRuntimeAttributes>
                                                                                                                                         <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="ic_Selected"/>
@@ -4008,7 +3993,7 @@
                                                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                                                 </view>
                                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-cO-9gH" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                                    <rect key="frame" x="130" y="0.0" width="31.5" height="50"/>
+                                                                                                                                    <rect key="frame" x="130" y="0.0" width="31.5" height="20.5"/>
                                                                                                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                                                                                                     <nil key="textColor"/>
                                                                                                                                     <nil key="highlightedColor"/>
@@ -4274,7 +4259,7 @@
                                                                 </connections>
                                                             </tableViewCell>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="bidRequestHeaderCell" id="JKj-Et-Rnd" customClass="bidRequestHeaderCell" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="341.5" width="414" height="48"/>
+                                                                <rect key="frame" x="0.0" y="358" width="414" height="48"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JKj-Et-Rnd" id="UmN-tV-6Jy">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
@@ -4394,7 +4379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2si-5l-vGq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1531.8840579710145" y="389.73214285714283"/>
+            <point key="canvasLocation" x="1429" y="390"/>
         </scene>
         <!--SettingVC-->
         <scene sceneID="3Yd-gZ-R38">
@@ -4476,7 +4461,7 @@
                                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="settingTblCell" rowHeight="120" id="bBY-nb-kJe" customClass="settingTblCell" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="414" height="120"/>
+                                                        <rect key="frame" x="0.0" y="44.5" width="414" height="120"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bBY-nb-kJe" id="Flw-ei-4Ln">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
@@ -4614,7 +4599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YSZ-LY-1uK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1675" y="2025"/>
+            <point key="canvasLocation" x="535" y="1914"/>
         </scene>
         <!--Review ShipperVC-->
         <scene sceneID="Tq9-UE-wro">
@@ -4777,7 +4762,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SLd-fC-SlS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4015.9420289855075" y="72.991071428571431"/>
+            <point key="canvasLocation" x="1212" y="1914"/>
         </scene>
         <!--Load DetailsVC-->
         <scene sceneID="jnM-C3-eci">
@@ -4962,8 +4947,8 @@
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mYO-Oh-vBc">
                                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                                                                                                 <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total KM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUp-Ni-W2h" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="128"/>
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Km : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUp-Ni-W2h" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="128"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -4978,7 +4963,7 @@
                                                                                                         </userDefinedRuntimeAttributes>
                                                                                                     </label>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyp-dE-ske" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="81.5" y="0.0" width="31" height="128"/>
+                                                                                                        <rect key="frame" x="90" y="0.0" width="31" height="128"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -5065,6 +5050,7 @@
                                                                                 </constraints>
                                                                             </view>
                                                                         </subviews>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </stackView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1e-4E-Oy2">
                                                                         <rect key="frame" x="20" y="512" width="374" height="1"/>
@@ -5419,7 +5405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWK-Yu-NxT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1501" y="-313"/>
+            <point key="canvasLocation" x="1429" y="-313"/>
         </scene>
         <!--Posted Truck Bids View Controller-->
         <scene sceneID="eCB-FX-5Xn">
@@ -5717,7 +5703,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8s-II-UzW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2386" y="-313"/>
+            <point key="canvasLocation" x="2291" y="-313"/>
         </scene>
         <!--Schedual Load Details View Controller-->
         <scene sceneID="joV-oz-j5B">
@@ -5848,16 +5834,41 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
+                                                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S7F-1k-oLU">
+                                                                                                <rect key="frame" x="79" y="51" width="40" height="26"/>
+                                                                                                <subviews>
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Bid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfd-Y6-x12" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                        <rect key="frame" x="10" y="2" width="20" height="22"/>
+                                                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                                                        <nil key="textColor"/>
+                                                                                                        <nil key="highlightedColor"/>
+                                                                                                        <userDefinedRuntimeAttributes>
+                                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                                <real key="value" value="10"/>
+                                                                                                            </userDefinedRuntimeAttribute>
+                                                                                                        </userDefinedRuntimeAttributes>
+                                                                                                    </label>
+                                                                                                </subviews>
+                                                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                                <constraints>
+                                                                                                    <constraint firstItem="Kfd-Y6-x12" firstAttribute="top" secondItem="S7F-1k-oLU" secondAttribute="top" constant="2" id="Rwm-7x-buU"/>
+                                                                                                    <constraint firstItem="Kfd-Y6-x12" firstAttribute="leading" secondItem="S7F-1k-oLU" secondAttribute="leading" constant="10" id="Vtv-gp-nKX"/>
+                                                                                                    <constraint firstAttribute="trailing" secondItem="Kfd-Y6-x12" secondAttribute="trailing" constant="10" id="Zh2-WU-QtW"/>
+                                                                                                    <constraint firstAttribute="height" constant="26" id="p1t-yY-WU1"/>
+                                                                                                    <constraint firstAttribute="bottom" secondItem="Kfd-Y6-x12" secondAttribute="bottom" constant="2" id="rxe-f2-yry"/>
+                                                                                                </constraints>
+                                                                                            </view>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                         <constraints>
                                                                                             <constraint firstItem="6oe-XY-htI" firstAttribute="leading" secondItem="3Q6-f1-OQJ" secondAttribute="leading" id="38M-nQ-uc2"/>
-                                                                                            <constraint firstItem="TXj-Lr-5qg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6oe-XY-htI" secondAttribute="trailing" constant="10" id="4ni-Ea-K8N"/>
                                                                                             <constraint firstAttribute="trailing" secondItem="TXj-Lr-5qg" secondAttribute="trailing" id="KUm-LV-M8t"/>
                                                                                             <constraint firstItem="6oe-XY-htI" firstAttribute="top" secondItem="3Q6-f1-OQJ" secondAttribute="top" id="UQJ-ij-9fK"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="6oe-XY-htI" secondAttribute="bottom" id="gM5-15-O55"/>
                                                                                             <constraint firstItem="TXj-Lr-5qg" firstAttribute="top" secondItem="3Q6-f1-OQJ" secondAttribute="top" id="hoM-6E-F7e"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="TXj-Lr-5qg" secondAttribute="bottom" id="lK1-tE-EXf"/>
+                                                                                            <constraint firstItem="S7F-1k-oLU" firstAttribute="leading" secondItem="6oe-XY-htI" secondAttribute="trailing" constant="8" id="tDB-99-nI4"/>
+                                                                                            <constraint firstItem="S7F-1k-oLU" firstAttribute="centerY" secondItem="6oe-XY-htI" secondAttribute="centerY" id="usf-XH-bmU"/>
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-yJ-adQ">
@@ -5878,7 +5889,7 @@
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-8N-FRT">
-                                                                                                <rect key="frame" x="201.5" y="0.0" width="172.5" height="40"/>
+                                                                                                <rect key="frame" x="221.5" y="0.0" width="172.5" height="40"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-Ep-4Rj">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
@@ -5922,7 +5933,6 @@
                                                                                             <constraint firstItem="Wd0-8N-FRT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lqg-lp-b19" secondAttribute="trailing" id="6do-09-lkb"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="Wd0-8N-FRT" secondAttribute="bottom" id="8Nm-2n-pFO"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="lqg-lp-b19" secondAttribute="bottom" id="MRF-XV-JaJ"/>
-                                                                                            <constraint firstAttribute="trailing" secondItem="Wd0-8N-FRT" secondAttribute="trailing" id="QWI-Ih-XAf"/>
                                                                                             <constraint firstItem="Wd0-8N-FRT" firstAttribute="top" secondItem="xCb-yJ-adQ" secondAttribute="top" id="WnU-AW-vsn"/>
                                                                                             <constraint firstItem="lqg-lp-b19" firstAttribute="leading" secondItem="xCb-yJ-adQ" secondAttribute="leading" id="hFf-dm-ba4"/>
                                                                                             <constraint firstItem="lqg-lp-b19" firstAttribute="top" secondItem="xCb-yJ-adQ" secondAttribute="top" id="mY5-rh-Bb4"/>
@@ -5952,8 +5962,8 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jc0-RG-L2Z">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                                                                                                         <subviews>
-                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total KM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-TD-bP5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="71.5" height="128"/>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Km : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkJ-TD-bP5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="128"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -5968,7 +5978,7 @@
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </label>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikS-QE-LWr" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="81.5" y="0.0" width="31" height="128"/>
+                                                                                                                <rect key="frame" x="90" y="0.0" width="31" height="128"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -6075,6 +6085,7 @@
                                                                             <constraint firstAttribute="trailing" secondItem="9CU-oa-vpZ" secondAttribute="trailing" constant="20" id="PeM-Ab-McG"/>
                                                                             <constraint firstItem="KoX-fB-EOO" firstAttribute="leading" secondItem="sa2-4J-BnU" secondAttribute="leading" constant="20" id="RKB-Qo-G8U"/>
                                                                             <constraint firstAttribute="bottom" secondItem="9CU-oa-vpZ" secondAttribute="bottom" id="WmJ-MA-YWG"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="rr7-Ep-4Rj" secondAttribute="trailing" symbolic="YES" id="sNf-t1-Ze0"/>
                                                                             <constraint firstAttribute="trailing" secondItem="KoX-fB-EOO" secondAttribute="trailing" constant="20" id="y6h-G0-vLw"/>
                                                                         </constraints>
                                                                     </view>
@@ -6430,6 +6441,7 @@
                         <outlet property="lblPrice" destination="TXj-Lr-5qg" id="zUj-T1-LPy"/>
                         <outlet property="lblShipperName" destination="uJU-JJ-79t" id="msa-F4-feL"/>
                         <outlet property="lblShipperRatting" destination="y60-6C-4wQ" id="mwR-mR-RyT"/>
+                        <outlet property="lblStatus" destination="Kfd-Y6-x12" id="8k6-4h-rm3"/>
                         <outlet property="lblTotalMiles" destination="ikS-QE-LWr" id="DAz-2Q-Nx5"/>
                         <outlet property="lblTruckType" destination="9KY-y4-DcR" id="XGe-cg-SEb"/>
                         <outlet property="lbljourney" destination="qVu-eu-GE2" id="AqL-Q7-rrU"/>
@@ -6439,12 +6451,13 @@
                         <outlet property="tblMainDataHeight" destination="r4a-Cg-N7a" id="BP4-bP-wxa"/>
                         <outlet property="viewRatting" destination="BXF-jj-EO4" id="PIO-GN-Gld"/>
                         <outlet property="viewStatus" destination="rr7-Ep-4Rj" id="BTm-Sf-NZS"/>
+                        <outlet property="viewStatusBid" destination="S7F-1k-oLU" id="cmE-bG-nir"/>
                         <outlet property="vwShimmer" destination="Wd0-8N-FRT" id="oJR-Me-f4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FBm-Fq-IIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2386" y="390"/>
+            <point key="canvasLocation" x="2290" y="390"/>
         </scene>
         <!--ViewPOD View Controller-->
         <scene sceneID="n99-V6-ngb">
@@ -6473,7 +6486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znU-wx-MNL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3067" y="390"/>
+            <point key="canvasLocation" x="1893" y="1914"/>
         </scene>
         <!--Bid Request Detail View Controller-->
         <scene sceneID="N1k-kS-9Cn">
@@ -6662,8 +6675,8 @@
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpZ-5v-b1b">
                                                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="128"/>
                                                                                                         <subviews>
-                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total KM:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UN4-6Y-TK2" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="0.0" y="0.0" width="71.5" height="128"/>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Km : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UN4-6Y-TK2" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="128"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -6678,7 +6691,7 @@
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </label>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPD-fd-coi" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="81.5" y="0.0" width="31" height="128"/>
+                                                                                                                <rect key="frame" x="90" y="0.0" width="31" height="128"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -7139,15 +7152,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WhE-aZ-LQS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2386" y="1059"/>
+            <point key="canvasLocation" x="2290" y="1091"/>
         </scene>
     </scenes>
     <designables>
+        <designable name="BXF-jj-EO4">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="Com-VW-sEt">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
+        </designable>
+        <designable name="pxc-Co-qbc">
+            <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
     </designables>
     <resources>

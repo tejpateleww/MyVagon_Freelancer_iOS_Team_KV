@@ -46,6 +46,10 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.textFieldMinPrice?.delegate = self
+        self.textFieldMaxPrice?.delegate = self
+        
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
@@ -68,7 +72,7 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
     func setValueInField() {
    
         if SingletonClass.sharedInstance.searchReqModel.pickup_date == "" {
-            lblSelectedDate.text = "Select Date"
+            lblSelectedDate.text = Date().convertToString(format: "EEEE, dd/MM/yyyy") //"Select Date"
         } else {
             lblSelectedDate.text = SingletonClass.sharedInstance.searchReqModel.pickup_date.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         }
@@ -141,6 +145,7 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
         
         GeneralPicker.generalPickerDelegate = self
     }
+    
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if textField == textFieldMinUnit {
             selectedTextField = textFieldMinUnit
@@ -151,11 +156,22 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
             textFieldMaxUnit?.inputView = GeneralPicker
             textFieldMaxUnit?.inputAccessoryView = GeneralPicker.toolbar
         }
-           
-          
-            
-           
+    }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
+        if(textField == self.textFieldMaxPrice){
+            let text: NSString = (textField.text ?? "") as NSString
+            let finalString = text.replacingCharacters(in: range, with: string)
+            self.textFieldMaxPrice?.text = finalString.currency
+        }
+        if(textField == self.textFieldMinPrice){
+            let text: NSString = (textField.text ?? "") as NSString
+            let finalString = text.replacingCharacters(in: range, with: string)
+            self.textFieldMinPrice?.text = finalString.currency
+        }
+        return false
     }
     
     // ----------------------------------------------------
@@ -198,22 +214,19 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
     
     @IBAction func BtnSelectDateAction(_ sender: themeButton) {
         let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: FilterPickupDatePopupViewController.storyboardID) as! FilterPickupDatePopupViewController
-                    controller.hidesBottomBarWhenPushed = true
+        controller.hidesBottomBarWhenPushed = true
         controller.selectDateClosour = { (selectedDate) in
             let formatter1 = DateFormatter()
-             formatter1.dateStyle = .medium
-             formatter1.dateFormat = DateFormatForDisplay
-             
-             let DateinString = formatter1.string(from: selectedDate)
-            
-            
+            formatter1.dateStyle = .medium
+            formatter1.dateFormat = DateFormatForDisplay
+            let DateinString = formatter1.string(from: selectedDate)
             self.lblSelectedDate.text = DateinString
-            self.searchLoadModel.date = selectedDate.convertToString(format: "yyyy-MM-dd")
+            self.searchLoadModel.date = selectedDate.convertToString(format: "EEEE, dd/MM/yyyy")
             
         }
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(408 + appDel.GetSafeAreaHeightFromBottom())])
         
-                self.present(sheetController, animated: true, completion: nil)
+        self.present(sheetController, animated: true, completion: nil)
         
     }
     
@@ -373,6 +386,7 @@ extension SearchOptionViewController : UIPickerViewDelegate, UIPickerViewDataSou
     }
     
 }
+
 class SearchLoadModel : Codable {
     var date = ""
     var truck_type_id = "\(SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)"

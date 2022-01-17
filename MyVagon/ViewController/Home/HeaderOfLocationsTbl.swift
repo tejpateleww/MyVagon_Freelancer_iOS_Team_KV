@@ -57,7 +57,6 @@ class HeaderOfLocationsTbl: UITableViewHeaderFooterView,ShimmeringViewProtocol {
         viewStatusBid.clipsToBounds = true
         
         let radius = viewStatus.frame.height / 2
-        //headerView.roundCorners(corners: [.topLeft,.topRight], radius: 15.0)
         viewStatus.roundCorners(corners: [.topLeft,.bottomLeft], radius: radius)
         
         lblBidStatus.text = ""

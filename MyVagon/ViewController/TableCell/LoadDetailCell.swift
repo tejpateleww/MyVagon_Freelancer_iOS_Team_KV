@@ -16,19 +16,15 @@ class LoadDetailCell: UITableViewCell,ShimmeringViewProtocol {
     @IBOutlet weak var ViewDottedbottom: UIView!
     @IBOutlet weak var ViewForHeader: UIView!
     @IBOutlet weak var vwShimmer: UIView!
-    
     @IBOutlet weak var PickUpDropOffImageView: UIImageView!
-    
     @IBOutlet weak var lblPickupDropOff: themeLabel!
-    
     @IBOutlet weak var lblName: themeLabel!
     @IBOutlet weak var lblAddress: themeLabel!
     @IBOutlet weak var lblDate: themeLabel!
-    
     @IBOutlet weak var viewContents: UIView!
     @IBOutlet weak var TblLoadDetails: UITableView!
-    
     @IBOutlet weak var ConHeightTblLoadDetails: NSLayoutConstraint!
+    @IBOutlet weak var vWHorizontalDotLine: DottedLineView!
     
     var LoadDetails : [SearchProduct]?
   
@@ -44,6 +40,7 @@ class LoadDetailCell: UITableViewCell,ShimmeringViewProtocol {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.vWHorizontalDotLine.isHidden = true
         if TblLoadDetails.observationInfo != nil {
             self.TblLoadDetails.removeObserver(self, forKeyPath: "contentSize")
         }

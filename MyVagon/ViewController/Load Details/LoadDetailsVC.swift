@@ -71,13 +71,14 @@ class LoadDetailsVC: BaseViewController {
     @IBOutlet weak var lblShipperRatting: themeLabel!
     @IBOutlet weak var imgShipperProfile: UIImageView!
     @IBOutlet weak var viewRatting: CosmosView!
+    
+  
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
@@ -132,9 +133,9 @@ class LoadDetailsVC: BaseViewController {
         
         lblTotalMiles.text = "\(LoadDetails?.distance ?? "")"
         
-        lblDeadHead.text = "\(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") Mile Deadhead"
+        lblDeadHead.text = "\(Double(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") ?? 0.0) Km Deadhead"
         
-        lblShipperName.text = LoadDetails?.shipperDetails?.name ?? ""
+        lblShipperName.text = LoadDetails?.shipperDetails?.companyName ?? ""
         
         let strUrl = "\(APIEnvironment.ShipperImageURL)\(LoadDetails?.shipperDetails?.profile ?? "")"
         imgShipperProfile.isCircle()
@@ -162,6 +163,34 @@ class LoadDetailsVC: BaseViewController {
             viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
         }
         
+//        switch LoadDetails?.bid?.status {
+//        case MyLoadesStatus.pending.Name:
+//            self.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
+////            cell.lblBidStatus.isHidden = false
+////            cell.lblBidStatus.text = BidStatusLabel.bidConfirmationPending.Name
+//            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+//        case MyLoadesStatus.scheduled.Name:
+//            self.ViewStatusBidText.text =  MyLoadesStatus.scheduled.Name.capitalized
+////            cell.lblBidStatus.isHidden = true
+//            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+//        case MyLoadesStatus.inprocess.Name:
+//            self.ViewStatusBidText.text =  MyLoadesStatus.inprocess.Name.capitalized
+////            cell.lblBidStatus.isHidden = true
+//            self.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
+//        case MyLoadesStatus.completed.Name:
+//            self.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
+////            cell.lblBidStatus.isHidden = true
+//            self.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+//        case MyLoadesStatus.canceled.Name:
+//            self.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
+////            cell.lblBidStatus.isHidden = true
+//            self.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+//            
+//        case .none:
+//            break
+//        case .some(_):
+//            break
+//        }
        
         
         
@@ -319,12 +348,21 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         let cell = tblMainData.dequeueReusableCell(withIdentifier: "LoadDetailCell") as! LoadDetailCell
         cell.ViewForSavingTree.isHidden = true
         var pickupArray = LoadDetails?.trucks?.locations?.compactMap({$0.isPickup})
-      
         pickupArray = pickupArray?.uniqued()
-        if pickupArray?.count == 1 {
-            cell.PickUpDropOffImageView.image = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-        } else {
+        
+//        if pickupArray?.count == 1 {
+//            cell.PickUpDropOffImageView.image = (LoadDetails?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//        } else {
+//            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+//        }
+        
+        if(indexPath.row == 0){
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_PickUp")
+        }else if(indexPath.row == (LoadDetails?.trucks?.locations?.count ?? 0) - 1){
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_DropOff")
+        }else{
             cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+            cell.vWHorizontalDotLine.isHidden = false
         }
         
         
@@ -382,6 +420,7 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         }
         cell.TblLoadDetails.reloadData()
         cell.selectionStyle = .none
+        
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

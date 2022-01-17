@@ -243,13 +243,13 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                 }
                 
                 cell.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
-                cell.lblCompanyName.text = BookingDetails?.shipperDetails?.name ?? ""
+                cell.lblCompanyName.text = BookingDetails?.shipperDetails?.companyName ?? ""
                 
                 cell.lblOfferPrice.text = "10% ↑"
                 cell.lblRatting.text = "(4)"
                 cell.lblWeightAndMiles.text = "\(BookingDetails?.totalWeight ?? "0 KG"), \(BookingDetails?.distance ?? "") Km"
                 
-                cell.lblDeadhead.text = "\(BookingDetails?.trucks?.locations?.first?.deadhead ?? "0") Mile Deadhead"
+                cell.lblDeadhead.text = "\(Double(BookingDetails?.trucks?.locations?.first?.deadhead ?? "0") ?? 0.0) Km Deadhead"
               
                 cell.lblTruckType.text = BookingDetails?.trucks?.truckType?.name ?? "Truck type"
                 

@@ -144,10 +144,8 @@ class SchedualLoadDetailsViewController: BaseViewController {
         
         SingletonClass.sharedInstance.CurrentTripShipperID = "\(data?.shipperDetails?.id ?? 0)"
         let DateOfPickup = "\(data?.date ?? "") \(data?.pickupTimeTo ?? "")"
-        
-        let DateFromatChange = DateOfPickup.StringToDate(Format: "yyyy-MM-dd h:m a")
-        
-        let serverDate =  SingletonClass.sharedInstance.SystemDate.StringToDate(Format: "yyyy-MM-dd hh:mm:ss")
+        let DateFromatChange = DateOfPickup.StringToDate(Format: "EEEE, dd/MM/yyyy h:m a")
+        let serverDate =  SingletonClass.sharedInstance.SystemDate.StringToDate(Format: "EEEE, dd/MM/yyyy hh:mm:ss")
         print(serverDate)
         print(DateFromatChange)
         
@@ -179,7 +177,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         
         lblTotalMiles.text = "\(data?.distance ?? "")"
         
-        lblDeadHead.text = "\(data?.trucks?.locations?.first?.deadhead ?? "") Mile Deadhead"
+        lblDeadHead.text = "\(Double(data?.trucks?.locations?.first?.deadhead ?? "") ?? 0.0) Km Deadhead"
         
         lblShipperName.text = data?.shipperDetails?.companyName ?? ""
         
@@ -556,19 +554,25 @@ extension SchedualLoadDetailsViewController:UITableViewDelegate,UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblMainData.dequeueReusableCell(withIdentifier: "LoadDetailCell") as! LoadDetailCell
         cell.ViewForSavingTree.isHidden = true
-        
         let data = LoadDetails
-        
-        
         var pickupArray = data?.trucks?.locations?.compactMap({$0.isPickup})
-      
         pickupArray = pickupArray?.uniqued()
-        if pickupArray?.count == 1 {
-            cell.PickUpDropOffImageView.image = (data?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
-        } else {
-            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
-        }
+
+        //        if pickupArray?.count == 1 {
+//            cell.PickUpDropOffImageView.image = (data?.trucks?.locations?[indexPath.row].isPickup == 0) ? UIImage(named: "ic_DropOff") : UIImage(named: "ic_PickUp")
+//        } else {
+//            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+//        }
    
+        if(indexPath.row == 0){
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_PickUp")
+        }else if(indexPath.row == (pickupArray?.count ?? 0) - 1){
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_DropOff")
+        }else{
+            cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")
+            cell.vWHorizontalDotLine.isHidden = false
+        }
+        
       
         cell.lblName.text = data?.trucks?.locations?[indexPath.row].companyName ?? ""
         cell.lblAddress.text = data?.trucks?.locations?[indexPath.row].dropLocation ?? ""
@@ -854,27 +858,22 @@ extension SchedualLoadDetailsViewController {
     }
     
     func fetchRoute(currentlat: String, currentlong:String, droplat: String, droplog:String,isStatic:Bool) {
-       print("ATdebug for live track \(#function)")
+        print("ATdebug for live track \(#function)")
         
         if isStatic {
             let start = CLLocationCoordinate2D(latitude: LoadDetails?.trucks?.locations?.first?.dropLat?.toDouble() ?? 0.0, longitude: LoadDetails?.trucks?.locations?.first?.dropLng?.toDouble() ?? 0.0)
-
-
             let sessionManager = SessionManager()
-           
             var endPoints : [CLLocationCoordinate2D] = []
-             LoadDetails?.trucks?.locations?.forEach({ (element) in
+            LoadDetails?.trucks?.locations?.forEach({ (element) in
                 let endLocation = CLLocationCoordinate2D(latitude: element.dropLat?.toDouble() ?? 0.0, longitude: element.dropLng?.toDouble() ?? 0.0)
                 endPoints.append(endLocation)
             })
             
             sessionManager.requestDirections(from: start, to: endPoints, completionHandler: { (path, error) in
-                
                 if let error = error {
                     print("Something went wrong, abort drawing!\nError: \(error)")
                 } else {
                     self.drawPath(from: path, isStatic: isStatic)
-                     
                 }
             })
             for data in endPoints{
@@ -886,27 +885,17 @@ extension SchedualLoadDetailsViewController {
                 marker.map = self.MapViewForLocation
             }
         } else {
-              let start = CLLocationCoordinate2D(latitude: currentlat.toDouble(), longitude: currentlong.toDouble())
-         
-              let end = CLLocationCoordinate2D(latitude: droplat.toDouble(), longitude: droplog.toDouble())
-
-
+            let start = CLLocationCoordinate2D(latitude: currentlat.toDouble(), longitude: currentlong.toDouble())
+            let end = CLLocationCoordinate2D(latitude: droplat.toDouble(), longitude: droplog.toDouble())
             let sessionManager = SessionManager()
-
-
-          
             sessionManager.requestDirections(from: start, to: [end], completionHandler: { (path, error) in
-                
                 if let error = error {
                     print("Something went wrong, abort drawing!\nError: \(error)")
                 } else {
                     self.drawPath(from: path, isStatic: isStatic)
-                     
                 }
             })
         }
-        
-      
     }
     
     func drawPath(from path: GMSPath?,isStatic:Bool){
@@ -924,7 +913,6 @@ extension SchedualLoadDetailsViewController {
         if !isStatic {
             self.setupTrackingMarker()
         }
-       //
     }
     
     func setupTrackingMarker(){
@@ -949,6 +937,7 @@ extension SchedualLoadDetailsViewController {
         self.MapViewForLocation.animate(to: camera)
         
     }
+    
     func UpdatePath() {
         print("ATdebug for live track \(#function)")
         let newCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(SingletonClass.sharedInstance.userCurrentLocation.coordinate.latitude, SingletonClass.sharedInstance.userCurrentLocation.coordinate.longitude)

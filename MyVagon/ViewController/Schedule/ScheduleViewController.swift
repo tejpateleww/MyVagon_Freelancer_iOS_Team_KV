@@ -34,7 +34,6 @@ enum MyLoadesStatus {
 
 class ScheduleViewController: BaseViewController {
     
-    
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -53,7 +52,6 @@ class ScheduleViewController: BaseViewController {
     let chooseDropDown = DropDown()
     
     var CurrentFilterStatus : MyLoadesStatus = .all
-    
     var myLoadsViewModel = MyLoadsViewModel()
     var refreshControl = UIRefreshControl()
     
@@ -79,6 +77,7 @@ class ScheduleViewController: BaseViewController {
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        tblLocations.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RefreshViewForPostTruck), name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
         setupChooseDropDown()
@@ -356,22 +355,12 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
                         controller.hidesBottomBarWhenPushed = true
                         controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.bookingInfo
-                        
-                        
-                     
-                        
                         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
                     }
-                   
                 }
             } else {
                 if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
                     if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
-                        
-                 
-                        
-                        
-                        
                         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
                         controller.BidsData = arrMyLoadesData?[indexPath.section][indexPath.row]
                         controller.hidesBottomBarWhenPushed = true

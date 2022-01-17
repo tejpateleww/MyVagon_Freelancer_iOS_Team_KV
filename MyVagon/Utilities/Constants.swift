@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let DateFormatForDisplay = "dd/MM/yyyy"
+let DateFormatForDisplay = "EEEE, dd/MM/yyyy"
 
 let Currency = "€ "
 var PageLimit = 10

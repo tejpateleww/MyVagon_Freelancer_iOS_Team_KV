@@ -27,13 +27,14 @@ class FilterPickupDatePopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureCalendar()
+        calender.select(Date())
+        
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        configureCalendar()
         if SingletonClass.sharedInstance.searchReqModel.pickup_date != "" {
             calender.select(SingletonClass.sharedInstance.searchReqModel.pickup_date.StringToDate(Format: "yyyy-MM-dd"))
-          
         }
         
         // Do any additional setup after loading the view.

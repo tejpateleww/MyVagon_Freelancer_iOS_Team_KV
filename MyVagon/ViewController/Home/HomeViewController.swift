@@ -52,6 +52,8 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         isLoading = true
+        tblLocations.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
+
      
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
@@ -222,14 +224,14 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func btnSortClick(_ sender: themeButton) {
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
-                    controller.hidesBottomBarWhenPushed = true
-        controller.arrayForSort = [  SortModel(Title: "Deadheading", IsSelect: true),
+        controller.hidesBottomBarWhenPushed = true
+        controller.arrayForSort = [  SortModel(Title: "Deadheading", IsSelect: false),
                                      SortModel(Title: "Price (Lowest First)", IsSelect: false),
                                      SortModel(Title: "Price (Highest First)", IsSelect: false),
                                      SortModel(Title: "Total Distance", IsSelect: false),
                                      SortModel(Title: "Rating", IsSelect: false)]
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((5 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
-                self.present(sheetController, animated: true, completion: nil)
+        self.present(sheetController, animated: true, completion: nil)
         
         
     }
@@ -245,29 +247,22 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         let ReqModelForGetShipment = ShipmentListReqModel()
         ReqModelForGetShipment.page = "\(PageNumber)"
         ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        
         ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.pickup_date 
         ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_price 
         ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.max_price 
         ReqModelForGetShipment.pickup_lat = SingletonClass.sharedInstance.searchReqModel.pickup_lat 
         ReqModelForGetShipment.pickup_lng = SingletonClass.sharedInstance.searchReqModel.pickup_lng 
         ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.dropoff_lat 
-        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.dropoff_lng 
-        
-        
-        
+        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.dropoff_lng
         ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_weight
         ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.max_weight
         ReqModelForGetShipment.min_weight_unit = SingletonClass.sharedInstance.searchReqModel.min_weight_unit
         ReqModelForGetShipment.max_weight_unit = SingletonClass.sharedInstance.searchReqModel.max_weight_unit
         
         self.homeViewModel.GetShipmentList(ReqModel: ReqModelForGetShipment)
-        
     }
     
-    // ----------------------------------------------------
-      //MARK:- ======== Calender Setup =======
-    // ----------------------------------------------------
+    //MARK: - ======== Calender Setup =======
     func configureCalendar() {
         
         calender.delegate = self
@@ -322,25 +317,19 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
             return 1
         }
         var numOfSections: Int = 0
-        if arrHomeData?.count != 0
-           {
-               //tableView.separatorStyle = .singleLine
-            numOfSections            = arrHomeData?.count ?? 0
-               tableView.backgroundView = nil
-           }
-           else
-           {
-               let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-               noDataLabel.text          = "No Records Found"
-               noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
-               noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
-               noDataLabel.textAlignment = .center
-               tableView.backgroundView  = noDataLabel
-               tableView.separatorStyle  = .none
-           }
-           return numOfSections
-        
-       // return arrHomeData?.count ?? 0// arrSection.count
+        if arrHomeData?.count != 0{
+            numOfSections = arrHomeData?.count ?? 0
+            tableView.backgroundView = nil
+        }else{
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No Records Found"
+            noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
+            noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -385,6 +374,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         }
         
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isLoading {
             return ""
@@ -394,6 +384,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         
         
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if isLoading {
             return UIView()
@@ -413,34 +404,34 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         return headerView
         
     }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         
         
        
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
         
         if tableView == tblLocations {
             if indexPath.section == ((arrHomeData?.count ?? 0) - 1) {
                 if indexPath.row == ((arrHomeData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
-                    {
-                        let spinner = UIActivityIndicatorView(style: .medium)
-                        spinner.tintColor = RefreshControlColor
-                        spinner.startAnimating()
-                        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
-                        
-                        self.tblLocations.tableFooterView = spinner
-                        self.tblLocations.tableFooterView?.isHidden = false
-                        CallWebSerive()
-                    }
+                {
+                    let spinner = UIActivityIndicatorView(style: .medium)
+                    spinner.tintColor = RefreshControlColor
+                    spinner.startAnimating()
+                    spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
+                    
+                    self.tblLocations.tableFooterView = spinner
+                    self.tblLocations.tableFooterView?.isHidden = false
+                    CallWebSerive()
+                }
             }
-            
-            
-            
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isLoading {
             return 0

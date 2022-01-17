@@ -18,3 +18,15 @@ enum GetRequestType: String{
     case POST
     case DELETE
 }
+
+enum BidStatusLabel {
+    
+    case bidConfirmationPending
+    
+    var Name:String {
+        switch self {
+        case .bidConfirmationPending:
+            return "Bid Confirmation Pending"
+        }
+    }
+}
