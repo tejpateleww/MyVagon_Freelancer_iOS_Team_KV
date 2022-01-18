@@ -88,7 +88,7 @@ class PickUpDropOffCell: UITableViewCell {
         if(keyPath == "contentSize"){
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
-                self.conHeightOfTbl.constant = newsize.height
+                self.conHeightOfTbl.constant = newsize.height - 40
                
                 
                 if let getHeight  = tblHeight.self {

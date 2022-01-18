@@ -78,7 +78,6 @@ class ScheduleViewController: BaseViewController {
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblLocations.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RefreshViewForPostTruck), name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil)
         setupChooseDropDown()
@@ -88,7 +87,6 @@ class ScheduleViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: NotificationKeys.KGetTblHeight), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getTblHeight(_:)), name: NSNotification.Name(NotificationKeys.KGetTblHeight), object: nil)
         tblLocations.register(UINib(nibName: "MyLoadesCell", bundle: nil), forCellReuseIdentifier: "MyLoadesCell")
-        
         tblLocations.register(UINib(nibName: "NoBookingTblCell", bundle: nil), forCellReuseIdentifier: "NoBookingTblCell")
         
         setNavigationBar(subTitle: "")
@@ -121,6 +119,7 @@ class ScheduleViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.showTabBar()
+        tblLocations.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
     }
     
     @objc func getTblHeight(_ notification: NSNotification) {
@@ -389,13 +388,12 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                 WebServiceSubClass.SystemDateTime { (_, _, _, _) in
                     let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
                     controller.hidesBottomBarWhenPushed = true
+                    controller.strLoadStatus = self.arrMyLoadesData?[indexPath.section][indexPath.row].type ?? ""
                     if (self.arrMyLoadesData?[indexPath.section][indexPath.row].type == MyLoadType.Bid.Name) {
                         controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].bid
                     } else {
                         controller.LoadDetails = self.arrMyLoadesData?[indexPath.section][indexPath.row].book
                     }
-                 
-                    
                     UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
                 }
                

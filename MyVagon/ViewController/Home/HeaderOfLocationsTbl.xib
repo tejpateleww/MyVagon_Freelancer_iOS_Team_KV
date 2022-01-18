@@ -62,7 +62,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ubq-cA-vCX">
-                            <rect key="frame" x="15" y="71.5" width="206.5" height="20.5"/>
+                            <rect key="frame" x="15" y="66.5" width="206.5" height="20.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="FTj-nx-f8p">
                                     <rect key="frame" x="0.0" y="0.0" width="206.5" height="20.5"/>
@@ -100,7 +100,7 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.2 mile Deadhead : Truck With Trailer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibF-qf-Aj9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="15" y="97" width="286" height="20.5"/>
+                            <rect key="frame" x="15" y="92" width="286" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -190,7 +190,7 @@
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="leading" secondItem="exE-hF-9XD" secondAttribute="leading" id="Hfq-vm-Mmg"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="top" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="KsD-9T-SfX"/>
                         <constraint firstItem="jrR-LB-X1C" firstAttribute="top" secondItem="1KJ-IT-5UF" secondAttribute="bottom" constant="10" id="Vs0-dI-Ran"/>
-                        <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="exE-hF-9XD" secondAttribute="bottom" constant="10" id="cOu-z1-qQO"/>
+                        <constraint firstItem="ubq-cA-vCX" firstAttribute="top" secondItem="exE-hF-9XD" secondAttribute="bottom" constant="5" id="cOu-z1-qQO"/>
                         <constraint firstItem="1KJ-IT-5UF" firstAttribute="top" secondItem="exE-hF-9XD" secondAttribute="top" id="d5B-Yk-Rse"/>
                         <constraint firstAttribute="trailing" secondItem="1KJ-IT-5UF" secondAttribute="trailing" constant="15" id="dDp-Sb-GhJ"/>
                         <constraint firstAttribute="trailing" secondItem="Mra-rJ-9Br" secondAttribute="trailing" constant="8" id="fGf-dN-fAI"/>

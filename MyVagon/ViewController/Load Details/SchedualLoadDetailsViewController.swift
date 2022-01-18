@@ -44,6 +44,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         }
     }
     var customTabBarController: CustomTabBarVC?
+    var strLoadStatus:String = ""
     
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -76,11 +77,21 @@ class SchedualLoadDetailsViewController: BaseViewController {
     @IBOutlet weak var btnStartTrip: themeButton!
     @IBOutlet weak var stepIndicatorView: StepIndicatorView!
     
+    @IBOutlet weak var vWLoadStatus: UIView!
+    @IBOutlet weak var lblLoadStatus: themeLabel!
+    @IBOutlet weak var lblLoadStatusDesc: themeLabel!
+    
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.lblLoadStatusDesc.isHidden = true
+        vWLoadStatus.layer.cornerRadius = vWLoadStatus.frame.height / 2
+        vWLoadStatus.clipsToBounds = true
+        self.lblLoadStatus.text = self.strLoadStatus.capitalized
+        
         self.moveMent = ARCarMovement()
         self.moveMent?.delegate = self
         
@@ -195,6 +206,8 @@ class SchedualLoadDetailsViewController: BaseViewController {
         MapViewForLocation.isUserInteractionEnabled = false
         switch data?.status {
         case MyLoadesStatus.pending.Name:
+            self.lblLoadStatusDesc.isHidden = false
+            self.lblLoadStatusDesc.text = BidStatusLabel.bidConfirmationPending.Name
             lblBookingStatus.text =  MyLoadesStatus.pending.Name.capitalized
             viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
         case MyLoadesStatus.scheduled.Name:

@@ -36,7 +36,6 @@ class MyLoadesCell: UITableViewCell {
         tblMultipleLocation.rowHeight = UITableView.automaticDimension
         tblMultipleLocation.estimatedRowHeight = 100
         tblMultipleLocation.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
-         
         tblMultipleLocation.register(UINib(nibName: "HeaderOfLocationsTbl", bundle: nil), forHeaderFooterViewReuseIdentifier: "HeaderOfLocationsTbl")
         ReloadAllData()
         
@@ -80,7 +79,7 @@ class MyLoadesCell: UITableViewCell {
         if(keyPath == "contentSize"){
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
-                self.conHeightOfTbl.constant = newsize.height
+                self.conHeightOfTbl.constant = newsize.height - 40
                
                 
                 if let getHeight  = tblHeight.self {
