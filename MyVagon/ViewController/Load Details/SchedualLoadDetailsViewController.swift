@@ -566,7 +566,7 @@ extension SchedualLoadDetailsViewController:UITableViewDelegate,UITableViewDataS
    
         if(indexPath.row == 0){
             cell.PickUpDropOffImageView.image = UIImage(named: "ic_PickUp")
-        }else if(indexPath.row == (pickupArray?.count ?? 0) - 1){
+        }else if(indexPath.row == (data?.trucks?.locations?.count ?? 0) - 1){
             cell.PickUpDropOffImageView.image = UIImage(named: "ic_DropOff")
         }else{
             cell.PickUpDropOffImageView.image = UIImage(named: "ic_pickDrop")

@@ -13,14 +13,14 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="MyLoadesCell" rowHeight="160" id="KGk-i7-Jjw" customClass="MyLoadesCell" customModule="MyVagon" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="527" height="160"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="527" height="160"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-dh-Shk">
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ln7-dh-Shk">
                         <rect key="frame" x="15" y="10" width="497" height="140"/>
                         <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZJu-GY-sBV">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJu-GY-sBV">
                                 <rect key="frame" x="0.0" y="0.0" width="497" height="140"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KdB-WX-RyY">
@@ -39,7 +39,7 @@
                                 <constraints>
                                     <constraint firstItem="KdB-WX-RyY" firstAttribute="leading" secondItem="ZJu-GY-sBV" secondAttribute="leading" id="DO1-oV-pez"/>
                                     <constraint firstAttribute="trailing" secondItem="KdB-WX-RyY" secondAttribute="trailing" id="Np4-Iu-7Z6"/>
-                                    <constraint firstAttribute="bottom" secondItem="KdB-WX-RyY" secondAttribute="bottom" constant="10" id="nth-R8-Vg9"/>
+                                    <constraint firstAttribute="bottom" secondItem="KdB-WX-RyY" secondAttribute="bottom" constant="12" id="nth-R8-Vg9"/>
                                     <constraint firstItem="KdB-WX-RyY" firstAttribute="top" secondItem="ZJu-GY-sBV" secondAttribute="top" id="x43-BV-qMj"/>
                                 </constraints>
                             </view>

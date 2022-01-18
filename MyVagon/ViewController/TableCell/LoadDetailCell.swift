@@ -135,7 +135,7 @@ extension LoadDetailCell : UITableViewDataSource , UITableViewDelegate {
         }
         
         cell.lblProductName.text = LoadDetails?[indexPath.row].productId?.name ?? ""
-        cell.lblWeight.text = "\(LoadDetails?[indexPath.row].weight ?? "") \(LoadDetails?[indexPath.row].unit?.name ?? "")"
+        cell.lblWeight.text = "\(LoadDetails?[indexPath.row].weight ?? "") \(LoadDetails?[indexPath.row].unit?.name ?? ""),"
         cell.lblCapacity.text = "\(LoadDetails?[indexPath.row].qty ?? "0") x \(LoadDetails?[indexPath.row].productType?.name ?? "")"
         
         if LoadDetails?[indexPath.row].isFragile == 0 && LoadDetails?[indexPath.row].isSensetive == 0 {

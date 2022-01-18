@@ -392,24 +392,17 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
         headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
         let label = UILabel()
-        label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
-        label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
+        label.frame = headerView.frame
         label.text = arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
         label.textAlignment = .center
         label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
         label.textColor = UIColor(hexString: "#292929")
         label.drawLineOnBothSides(labelWidth: label.frame.size.width, color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1))
         headerView.addSubview(label)
-        
         return headerView
-        
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
-    {
-        
-        
-       
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath){
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

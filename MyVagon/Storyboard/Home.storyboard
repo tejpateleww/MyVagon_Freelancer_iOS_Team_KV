@@ -5834,30 +5834,6 @@
                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
-                                                                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S7F-1k-oLU">
-                                                                                                <rect key="frame" x="79" y="51" width="40" height="26"/>
-                                                                                                <subviews>
-                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Bid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfd-Y6-x12" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="10" y="2" width="20" height="22"/>
-                                                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                                                        <nil key="textColor"/>
-                                                                                                        <nil key="highlightedColor"/>
-                                                                                                        <userDefinedRuntimeAttributes>
-                                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                                                <real key="value" value="10"/>
-                                                                                                            </userDefinedRuntimeAttribute>
-                                                                                                        </userDefinedRuntimeAttributes>
-                                                                                                    </label>
-                                                                                                </subviews>
-                                                                                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                                <constraints>
-                                                                                                    <constraint firstItem="Kfd-Y6-x12" firstAttribute="top" secondItem="S7F-1k-oLU" secondAttribute="top" constant="2" id="Rwm-7x-buU"/>
-                                                                                                    <constraint firstItem="Kfd-Y6-x12" firstAttribute="leading" secondItem="S7F-1k-oLU" secondAttribute="leading" constant="10" id="Vtv-gp-nKX"/>
-                                                                                                    <constraint firstAttribute="trailing" secondItem="Kfd-Y6-x12" secondAttribute="trailing" constant="10" id="Zh2-WU-QtW"/>
-                                                                                                    <constraint firstAttribute="height" constant="26" id="p1t-yY-WU1"/>
-                                                                                                    <constraint firstAttribute="bottom" secondItem="Kfd-Y6-x12" secondAttribute="bottom" constant="2" id="rxe-f2-yry"/>
-                                                                                                </constraints>
-                                                                                            </view>
                                                                                         </subviews>
                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                         <constraints>
@@ -5867,8 +5843,6 @@
                                                                                             <constraint firstAttribute="bottom" secondItem="6oe-XY-htI" secondAttribute="bottom" id="gM5-15-O55"/>
                                                                                             <constraint firstItem="TXj-Lr-5qg" firstAttribute="top" secondItem="3Q6-f1-OQJ" secondAttribute="top" id="hoM-6E-F7e"/>
                                                                                             <constraint firstAttribute="bottom" secondItem="TXj-Lr-5qg" secondAttribute="bottom" id="lK1-tE-EXf"/>
-                                                                                            <constraint firstItem="S7F-1k-oLU" firstAttribute="leading" secondItem="6oe-XY-htI" secondAttribute="trailing" constant="8" id="tDB-99-nI4"/>
-                                                                                            <constraint firstItem="S7F-1k-oLU" firstAttribute="centerY" secondItem="6oe-XY-htI" secondAttribute="centerY" id="usf-XH-bmU"/>
                                                                                         </constraints>
                                                                                     </view>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xCb-yJ-adQ">
@@ -6441,7 +6415,6 @@
                         <outlet property="lblPrice" destination="TXj-Lr-5qg" id="zUj-T1-LPy"/>
                         <outlet property="lblShipperName" destination="uJU-JJ-79t" id="msa-F4-feL"/>
                         <outlet property="lblShipperRatting" destination="y60-6C-4wQ" id="mwR-mR-RyT"/>
-                        <outlet property="lblStatus" destination="Kfd-Y6-x12" id="8k6-4h-rm3"/>
                         <outlet property="lblTotalMiles" destination="ikS-QE-LWr" id="DAz-2Q-Nx5"/>
                         <outlet property="lblTruckType" destination="9KY-y4-DcR" id="XGe-cg-SEb"/>
                         <outlet property="lbljourney" destination="qVu-eu-GE2" id="AqL-Q7-rrU"/>
@@ -6451,7 +6424,6 @@
                         <outlet property="tblMainDataHeight" destination="r4a-Cg-N7a" id="BP4-bP-wxa"/>
                         <outlet property="viewRatting" destination="BXF-jj-EO4" id="PIO-GN-Gld"/>
                         <outlet property="viewStatus" destination="rr7-Ep-4Rj" id="BTm-Sf-NZS"/>
-                        <outlet property="viewStatusBid" destination="S7F-1k-oLU" id="cmE-bG-nir"/>
                         <outlet property="vwShimmer" destination="Wd0-8N-FRT" id="oJR-Me-f4z"/>
                     </connections>
                 </viewController>
@@ -7062,7 +7034,7 @@
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s6n-y1-NXA" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="177" height="41"/>
                                                                 <color key="backgroundColor" name="ThemeTamotoColor"/>
-                                                                <state key="normal" title="Reject"/>
+                                                                <state key="normal" title="Decline"/>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
                                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

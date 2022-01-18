@@ -11,8 +11,7 @@ import DropDown
 import CoreLocation
 enum MyLoadesStatus {
     
-    case all,pending,scheduled,inprocess,completed,canceled
-    
+    case all,pending,scheduled,inprocess,past,completed,canceled
     
     var Name:String {
         switch self {
@@ -24,6 +23,8 @@ enum MyLoadesStatus {
             return "scheduled"
         case .inprocess:
             return "in-process"
+        case .past:
+            return "past"
         case .completed:
             return "completed"
         case .canceled:
@@ -60,7 +61,7 @@ class ScheduleViewController: BaseViewController {
     
     var customTabBarController: CustomTabBarVC?
     var tblCellHeight = CGFloat()
-    var arrStatus:[MyLoadesStatus] = [.all,.pending,.scheduled,.inprocess,.completed,.canceled]
+    var arrStatus:[MyLoadesStatus] = [.all,.pending,.scheduled,.inprocess,.past]
     
     var selectedIndex = 0
     var arrMyLoadesData : [[MyLoadsNewDatum]]?
@@ -227,7 +228,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             else
             {
                 let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-                noDataLabel.text          = "No Records Found"
+                noDataLabel.text          = "No loads found"
                 noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
                 noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
                 noDataLabel.textAlignment = .center
@@ -272,16 +273,12 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.postAvailibility ?? 0 == 1 {
-            
             return UITableView.automaticDimension
         } else {
-            
             return UITableView.automaticDimension
         }
-        
     }
     
-   
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if !isLoading {
             return arrMyLoadesData?[section].first?.date ?? ""
@@ -289,26 +286,23 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         return ""
         
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if !isLoading {
-            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+            let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
             headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
             let label = UILabel()
-            label.frame = CGRect.init(x: 0, y: 5, width: headerView.frame.width, height: headerView.frame.height-10)
-            label.center = CGPoint(x: headerView.frame.size.width / 2, y: headerView.frame.size.height / 2)
+            label.frame = headerView.frame
             label.text = arrMyLoadesData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
             label.textAlignment = .center
             label.font = CustomFont.PoppinsMedium.returnFont(FontSize.size15.rawValue)
             label.textColor = UIColor(hexString: "#292929")
             label.drawLineOnBothSides(labelWidth: label.frame.size.width, color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1))
             headerView.addSubview(label)
-            
             return headerView
         } else {
             return UIView()
         }
-        
-        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -318,28 +312,27 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             return 40
         }
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.setTemplateWithSubviews(isLoading, viewBackgroundColor: .systemBackground)
         
         if tableView == tblLocations {
             if indexPath.section == ((arrMyLoadesData?.count ?? 0) - 1) {
                 if indexPath.row == ((arrMyLoadesData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
-                    {
-                        let spinner = UIActivityIndicatorView(style: .medium)
-                        spinner.tintColor = RefreshControlColor
-                        spinner.startAnimating()
-                        spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
-                        
-                        self.tblLocations.tableFooterView = spinner
-                        self.tblLocations.tableFooterView?.isHidden = false
+                {
+                    let spinner = UIActivityIndicatorView(style: .medium)
+                    spinner.tintColor = RefreshControlColor
+                    spinner.startAnimating()
+                    spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblLocations.bounds.width, height: CGFloat(44))
+                    
+                    self.tblLocations.tableFooterView = spinner
+                    self.tblLocations.tableFooterView?.isHidden = false
                     CallWebSerive(status: CurrentFilterStatus)
-
-                    }
+                    
+                }
             }
-            
         }
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (arrMyLoadesData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) == true {
