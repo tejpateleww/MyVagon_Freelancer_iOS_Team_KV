@@ -164,7 +164,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="szdxfcghgjhfgzfdfdfkhfdhdffgdhxjhgfxhfgxffghxfkghxggyff" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mra-rJ-9Br" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                            <rect key="frame" x="430" y="95" width="150" height="43"/>
+                            <rect key="frame" x="430" y="90" width="150" height="43"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="150" id="2P8-3n-ZZH"/>
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="yRS-aX-0rY"/>
@@ -185,7 +185,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="jrR-LB-X1C" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ubq-cA-vCX" secondAttribute="trailing" constant="10" id="0mf-BX-CA6"/>
-                        <constraint firstItem="Mra-rJ-9Br" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="bottom" constant="5" id="AnF-Bl-J6d"/>
+                        <constraint firstItem="Mra-rJ-9Br" firstAttribute="top" secondItem="jrR-LB-X1C" secondAttribute="bottom" id="AnF-Bl-J6d"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="leading" secondItem="ubq-cA-vCX" secondAttribute="leading" id="CUF-2u-Wyj"/>
                         <constraint firstItem="ubq-cA-vCX" firstAttribute="leading" secondItem="exE-hF-9XD" secondAttribute="leading" id="Hfq-vm-Mmg"/>
                         <constraint firstItem="ibF-qf-Aj9" firstAttribute="top" secondItem="ubq-cA-vCX" secondAttribute="bottom" constant="5" id="KsD-9T-SfX"/>

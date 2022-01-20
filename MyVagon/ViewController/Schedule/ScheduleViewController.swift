@@ -22,13 +22,13 @@ enum MyLoadesStatus {
         case .scheduled:
             return "scheduled"
         case .inprocess:
-            return "in-process"
+            return "in-progress"
         case .past:
             return "past"
         case .completed:
             return "completed"
         case .canceled:
-            return "canceled"
+            return "cancelled"
         }
     }
 }
@@ -365,18 +365,18 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                     if (myloadDetails?.postedTruck?.matchesCount ?? 0) != 0 {
 
                         if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
-                            
-                            
                             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
                             controller.NumberOfCount = myloadDetails?.postedTruck?.matchesCount ?? 0
-
                             controller.hidesBottomBarWhenPushed = true
                             controller.PostTruckID = "\(myloadDetails?.postedTruck?.id ?? 0)"
                             self.navigationController?.pushViewController(controller, animated: true)
                             
                         } else {
-                          
-                         
+                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
+                            controller.NumberOfCount = myloadDetails?.postedTruck?.matchesCount ?? 0
+                            controller.hidesBottomBarWhenPushed = true
+                            controller.PostTruckID = "\(myloadDetails?.postedTruck?.id ?? 0)"
+                            self.navigationController?.pushViewController(controller, animated: true)
                         }
                     } else {
                       

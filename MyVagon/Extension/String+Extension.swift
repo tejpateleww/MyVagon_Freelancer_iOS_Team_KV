@@ -302,6 +302,15 @@ extension String {
         return date ?? Date()
         
     }
+    
+    func toDate(withFormat format: String = "yyyy-MM-dd HH:mm a")-> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date ?? Date()
+    }
+    
+    //
 }
 extension String {
     

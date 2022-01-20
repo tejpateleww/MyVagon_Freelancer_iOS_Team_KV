@@ -163,9 +163,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         var daysLeft:(String,Int,OffSetType) = ("0 hour",0,.Hours)
         if DateFromatChange.seconds(from: serverDate) > 0 {
             daysLeft = DateFromatChange.CheckHours(from: serverDate)
-//            daysLeft = DateFromatChange.offset(from: serverDate)
-            
-            
+  
         }
         self.lblDaysToGo.text = daysLeft.0 + " to go"
         
@@ -177,7 +175,9 @@ class SchedualLoadDetailsViewController: BaseViewController {
         
         lblBookingID.text = "#\(data?.id ?? 0)"
         
-        lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (data?.amount ?? "") : ""
+        let amount = (data?.bookingBidAmount != nil) ? data?.bookingBidAmount : data?.amount
+        lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + "\(amount ?? "")" : ""
+        //lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (data?.amount ?? "") : ""
         
         lblBookingStatus.text = data?.status
         

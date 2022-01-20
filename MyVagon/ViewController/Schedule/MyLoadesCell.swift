@@ -79,7 +79,7 @@ class MyLoadesCell: UITableViewCell {
         if(keyPath == "contentSize"){
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
-                self.conHeightOfTbl.constant = newsize.height - 40
+                self.conHeightOfTbl.constant = newsize.height
                
                 
                 if let getHeight  = tblHeight.self {
@@ -165,7 +165,6 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             if (PickUpDropOffData?.count ?? 0) == 1 {
                 cell.viewLine.isHidden = true
             } else {
-                
                 cell.viewLine.isHidden = (indexPath.row == ((PickUpDropOffData?.count ?? 0) - 1)) ? true : false
             }
             
@@ -277,16 +276,17 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 break
             } else {
                 if indexPath.row == 0 {
+                    cell.lblDateTime.isHidden = false
                     cell.lblDateTime.text = "\(myloadDetails?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
                     
-                    cell.lblDateTime.isHidden = false
+                    
                     cell.lblCompanyName.text = myloadDetails?.postedTruck?.fromAddress ?? ""
                     cell.imgLocation.image = UIImage(named: "ic_PickUp")
                     cell.viewLine.isHidden = false
                 } else {
-                    cell.lblDateTime.text = ""
-                    cell.lblDateTime.isHidden = true
-                    cell.lblCompanyName.text = myloadDetails?.postedTruck?.toAddress ?? ""
+                    cell.lblDateTime.isHidden = false
+                    cell.lblDateTime.text = "\(myloadDetails?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
+                    cell.lblCompanyName.text = (myloadDetails?.postedTruck?.toAddress != nil || myloadDetails?.postedTruck?.toAddress ?? "" != "") ? myloadDetails?.postedTruck?.toAddress ?? "" : "N/A"
                     cell.imgLocation.image = UIImage(named: "ic_DropOff")
                     cell.viewLine.isHidden = true
                 }
@@ -341,17 +341,12 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                             let totalCount = (myloadDetails?.postedTruck?.bookingRequestCount ?? 0)
                             if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
                                 btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
-                               
                                 btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
                                 btnViewMatchFound.backgroundColor = .clear
                                 btnViewMatchFound.setTitle("View \(totalCount) Bid Request", for: .normal)
                             } else {
                                 let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
-
-                               
-                                
                                 btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
-                               
                                 btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
                                 btnViewMatchFound.backgroundColor = .clear
                                 btnViewMatchFound.setTitle("\(TimeToCancel / 60) minutes remaining to cancel", for: .normal)
@@ -359,21 +354,26 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                         }  else {
                             if (myloadDetails?.postedTruck?.matchesCount ?? 0) != 0 {
                                 let totalCount = (myloadDetails?.postedTruck?.matchesCount ?? 0)
+                                
+                                btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), for: .normal)
+                                btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1).cgColor
+                                btnViewMatchFound.backgroundColor = .clear
+                                btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
 
-                                if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
-                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), for: .normal)
-                                   
-                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1).cgColor
-                                    btnViewMatchFound.backgroundColor = .clear
-                                    btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
-                                } else {
-                                    let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
-                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
-                                   
-                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
-                                    btnViewMatchFound.backgroundColor = .clear
-                                    btnViewMatchFound.setTitle("\(TimeToCancel / 60) minutes remaining to cancel", for: .normal)
-                                }
+//                                if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
+//                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), for: .normal)
+//
+//                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1).cgColor
+//                                    btnViewMatchFound.backgroundColor = .clear
+//                                    btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
+//                                } else {
+//                                    let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
+//                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
+//
+//                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
+//                                    btnViewMatchFound.backgroundColor = .clear
+//                                    btnViewMatchFound.setTitle("\(TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+//                                }
                             } else {
                                 btnViewMatchFound.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0.8235294118, blue: 0.8509803922, alpha: 1)
                                 btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#FFFFFF"), for: .normal)
@@ -432,7 +432,8 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             header.LblShipperName.text = myloadDetails?.bid?.shipperDetails?.companyName ?? ""
             header.viewStatusBid.isHidden = false
             
-            header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (myloadDetails?.bid?.amount ?? "") : ""
+            let amount = (myloadDetails?.bid?.bookingBidAmount != nil) ? myloadDetails?.bid?.bookingBidAmount : myloadDetails?.bid?.amount
+            header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + "\(amount ?? "")" : "" //
             
             header.lblbookingID.text = "#\(myloadDetails?.bid?.id ?? 0)"
             header.viewStatus.backgroundColor = (myloadDetails?.bid?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
@@ -572,21 +573,23 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             } else {
              
                 header.LblShipperName.text = SingletonClass.sharedInstance.UserProfileData?.name ?? ""
-                header.lblBidStatus.isHidden = true
-                header.viewStatusBid.isHidden = true
- 
+
+                header.viewStatus.isHidden = false
+                header.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+                header.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
+                
+                header.viewStatusBid.isHidden = false
                 header.lblStatus.isHidden = false
-                header.viewStatus.isHidden = true
                 header.lblStatus.text = "Posted Truck"
+                
+                header.lblBidStatus.isHidden = (myloadDetails?.postedTruck?.isBid == 0 && myloadDetails?.postedTruck?.bookingRequestCount ?? 0 == 0) ? false : true
+                header.lblBidStatus.text = BidStatusLabel.noBookings.Name
+                
                 header.lblPrice.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (myloadDetails?.postedTruck?.bidAmount ?? "") : ""
-
                 header.lblbookingID.text = "#\(myloadDetails?.postedTruck?.id ?? 0)"
-
                 header.lblWeightAndDistance.isHidden = true
-
                 header.lblDeadheadWithTruckType.isHidden = true
                 return header
-                
             }
             
       
@@ -615,7 +618,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             if (myloadDetails?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0 {
                 return 130
             } else {
-                return 80
+                return 110
             }
           
             

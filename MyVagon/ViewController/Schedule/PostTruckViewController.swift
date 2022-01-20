@@ -249,14 +249,20 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         } else if TextFieldStartLocation.text == "" {
             return (false,"Please select start location")
         } else if TextFieldEndLocation.text == "" {
-            return (false,"Please select end location")
+            if(SwitchAllowBidding.isOn){
+                return(true,"")
+            }else{
+                return (false,"Please select end location")
+            }
         } else {
             if SwitchAllowBidding.isOn {
-                let CheckBidPrice = TextFieldEnterBidPrice.validatedText(validationType: ValidatorType.requiredField(field: "bid starting price"))
-                
-                if(!CheckBidPrice.0){
-                    return (CheckBidPrice.0,CheckBidPrice.1)
+                if(TextFieldEnterBidPrice.text == ""){
+                    TextFieldEnterBidPrice.text = "0.0"
                 }
+//                let CheckBidPrice = TextFieldEnterBidPrice.validatedText(validationType: ValidatorType.requiredField(field: "bid starting price"))
+//                if(!CheckBidPrice.0){
+//                    return (CheckBidPrice.0,CheckBidPrice.1)
+//                }
             } else {
                 let CheckQuote = TextFieldQuote.validatedText(validationType: ValidatorType.requiredField(field: "quote"))
                 

@@ -21,12 +21,14 @@ enum GetRequestType: String{
 
 enum BidStatusLabel {
     
-    case bidConfirmationPending
+    case bidConfirmationPending,noBookings
     
     var Name:String {
         switch self {
         case .bidConfirmationPending:
             return "Bid Confirmation Pending"
+        case .noBookings:
+            return "No Bookings"
         }
     }
 }

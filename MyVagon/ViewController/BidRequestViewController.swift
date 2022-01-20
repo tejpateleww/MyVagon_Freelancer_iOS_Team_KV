@@ -192,7 +192,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             return 1
         }
         return arrBidsData?.count ?? 0
-    }
+    } //
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -237,9 +237,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                     let minutes = TimeToCancel / 60
                     cell.acceptRejectClosour = { (isAccept) in
                         self.callAPIForAcceptReject(Accepted: false, bookingID: "\(self.arrBidsData?[indexPath.row].id ?? 0)", loadDetails: self.arrBidsData?[indexPath.row], isForBook: true,RemainingsMinute: minutes)
-                        
                     }
-                   
                 }
                 
                 cell.lblPrice.text = Currency + (BookingDetails?.amount ?? "")

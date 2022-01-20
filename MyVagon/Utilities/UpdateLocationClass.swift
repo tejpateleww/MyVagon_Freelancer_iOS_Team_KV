@@ -42,8 +42,6 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self
         
-        
-        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -63,7 +61,6 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
             locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
-
 
     func UpdateLocationStart(){
 
