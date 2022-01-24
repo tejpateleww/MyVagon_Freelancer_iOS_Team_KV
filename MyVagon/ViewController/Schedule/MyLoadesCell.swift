@@ -86,11 +86,7 @@ class MyLoadesCell: UITableViewCell {
                     self.tblMultipleLocation.layoutSubviews()
                     self.tblMultipleLocation.layoutIfNeeded()
                     getHeight(self.tblMultipleLocation.contentSize.height)
-                    
-                  
-
                 }
-              
             }
         }
     }

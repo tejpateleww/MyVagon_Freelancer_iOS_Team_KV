@@ -29,6 +29,8 @@ struct MyLoadsNewPostedTruck : Codable {
     let matchesCount: Int?
     let count : Int?
     let time_difference : Int?
+    let offerPrice : String?
+    
     enum CodingKeys: String, CodingKey {
         case bidAmount = "bid_amount"
         case bookingId = "booking_id"
@@ -52,6 +54,7 @@ struct MyLoadsNewPostedTruck : Codable {
         case bookingRequestCount = "booking_request_count"
         case count = "count"
         case time_difference = "time_difference"
+        case offerPrice = "offer_price"
         
     }
     
@@ -79,6 +82,7 @@ struct MyLoadsNewPostedTruck : Codable {
         bookingRequestCount = try? values.decodeIfPresent(Int.self, forKey: .bookingRequestCount)
         count = try? values.decodeIfPresent(Int.self, forKey: .count)
         time_difference = try? values.decodeIfPresent(Int.self, forKey: .time_difference)
+        offerPrice = try? values.decodeIfPresent(String.self, forKey: .offerPrice)
     }
     
 }

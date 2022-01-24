@@ -135,6 +135,29 @@ class SchedualLoadDetailsViewController: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
+    
+    func getDateFromString(strDate:String) -> Date {
+        let dateString = strDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+        if let dateFromString = dateFormatter.date(from: dateString) {
+            return dateFromString
+        }else{
+            return Date()
+        }
+    }
+    
+    func getDateDiff(start: Date, end: Date) -> String  {
+        let calendar = Calendar(identifier: .iso8601)
+        let dateComponents = calendar.dateComponents([Calendar.Component.hour], from: start, to: end)
+
+        let hour = dateComponents.hour
+        return String(hour!)
+    }
+    
     func SetValue() {
         setupMap()
         let data = LoadDetails
@@ -151,21 +174,30 @@ class SchedualLoadDetailsViewController: BaseViewController {
                 break
             }
         }
+        
+        
        
         
         SingletonClass.sharedInstance.CurrentTripShipperID = "\(data?.shipperDetails?.id ?? 0)"
         let DateOfPickup = "\(data?.date ?? "") \(data?.pickupTimeTo ?? "")"
-        let DateFromatChange = DateOfPickup.StringToDate(Format: "EEEE, dd/MM/yyyy h:m a")
-        let serverDate =  SingletonClass.sharedInstance.SystemDate.StringToDate(Format: "EEEE, dd/MM/yyyy hh:mm:ss")
-        print(serverDate)
-        print(DateFromatChange)
         
-        var daysLeft:(String,Int,OffSetType) = ("0 hour",0,.Hours)
-        if DateFromatChange.seconds(from: serverDate) > 0 {
-            daysLeft = DateFromatChange.CheckHours(from: serverDate)
-  
+        //Tej's logic
+        self.lblDaysToGo.superview?.isHidden = true
+        let dateToCompare = self.getDateFromString(strDate: DateOfPickup)
+        let CurrentDate = self.getDateFromString(strDate: SingletonClass.sharedInstance.SystemDate)
+        let TotalHours = self.getDateDiff(start: CurrentDate, end: dateToCompare)
+        print(TotalHours)
+        
+        if(TotalHours.contains("-")){
+            self.lblDaysToGo.text = ""
+        }else{
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .full
+            let relativeDate = formatter.localizedString(for: dateToCompare, relativeTo: CurrentDate)
+            let dateToDisplay = relativeDate.components(separatedBy: "in ")
+            self.lblDaysToGo.text = dateToDisplay[1] + " to go"
         }
-        self.lblDaysToGo.text = daysLeft.0 + " to go"
+        //Tej's logic comp
         
         viewStatus.backgroundColor = (data?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
         
@@ -200,7 +232,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
        
         self.btnViewPOD.superview?.isHidden = true
-        lblDaysToGo.superview?.isHidden = true
+        
         
         self.btnStartTrip.superview?.isHidden = true
         MapViewForLocation.isUserInteractionEnabled = false
@@ -214,9 +246,9 @@ class SchedualLoadDetailsViewController: BaseViewController {
             lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#F9F1DF")
             lblDaysToGo.fontColor = UIColor(hexString: "#000000")
             lblDaysToGo.layoutSubviews()
-            self.btnStartTrip.superview?.isHidden = ( daysLeft.2 == .Hours && daysLeft.1 <= 8) ? false : true
-            lblDaysToGo.superview?.isHidden = ( daysLeft.2 == .Hours && daysLeft.1 <= 8) ? true : false
-            
+            self.btnStartTrip.superview?.isHidden = (Int(TotalHours) ?? 0 <= 8) ? false : true
+            lblDaysToGo.superview?.isHidden = (Int(TotalHours) ?? 0 <= 0) ? true : false
+            stepIndicatorView.isHidden = !self.lblDaysToGo.isHidden
             lblBookingStatus.text =  MyLoadesStatus.scheduled.Name.capitalized
             viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             

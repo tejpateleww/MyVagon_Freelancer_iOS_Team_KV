@@ -165,9 +165,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
         {
             //tableView.separatorStyle = .singleLine
             return 2
-        }
-        else
-        {
+        }else{
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No loads found"
             noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
@@ -243,7 +241,18 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                 cell.lblPrice.text = Currency + (BookingDetails?.amount ?? "")
                 cell.lblCompanyName.text = BookingDetails?.shipperDetails?.companyName ?? ""
                 
-                cell.lblOfferPrice.text = "10% ↑"
+                
+                if(arrBidsData?[indexPath.row].offerPrice == ""){
+                    cell.lblOfferPrice.isHidden = true
+                }else{
+                    cell.lblOfferPrice.isHidden = false
+                    let value = ((arrBidsData?[indexPath.row].offerPrice?.contains("-")) != nil) ? "% ↓" : "% ↑"
+                    cell.lblOfferPrice.fontColor = ((arrBidsData?[indexPath.row].offerPrice?.contains("-")) != nil) ? UIColor.red : UIColor.green
+                    cell.lblOfferPrice.text = arrBidsData?[indexPath.row].offerPrice ?? "" + value
+                }
+                
+                
+                
                 cell.lblRatting.text = "(4)"
                 cell.lblWeightAndMiles.text = "\(BookingDetails?.totalWeight ?? "0 KG"), \(BookingDetails?.distance ?? "") Km"
                 
@@ -262,7 +271,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                 cell.btnAccept.isHidden = ((BookingDetails?.isBid ?? 0) == 1) ? false : true
                 
                 
-                cell.btnReject.setTitle(((BookingDetails?.isBid ?? 0) == 1) ? "Reject" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+                cell.btnReject.setTitle(((BookingDetails?.isBid ?? 0) == 1) ? "Decline" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
             } else {
                 cell.viewCosoms.isHidden = true
                 cell.btnAccept.layer.borderWidth = 0
@@ -288,7 +297,6 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
         if indexPath.section == 0 {
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
             controller.NumberOfCount = BidsData?.postedTruck?.count ?? 0
-
             controller.hidesBottomBarWhenPushed = true
             controller.PostTruckID = "\(BidsData?.postedTruck?.id ?? 0)"
             self.navigationController?.pushViewController(controller, animated: true)
@@ -297,7 +305,6 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
             controller.hidesBottomBarWhenPushed = true
             controller.LoadDetails = self.arrBidsData?[indexPath.row]
-            
             self.navigationController?.pushViewController(controller, animated: true)
         }
       
@@ -485,16 +492,11 @@ class PostAvailabilityRequestCell : UITableViewCell {
                 let newsize  = newvalue as! CGSize
                 self.conHeightOfTbl.constant = newsize.height
                 
-                
                 if let getHeight  = tblHeight.self {
                     self.tblMultipleLocation.layoutSubviews()
                     self.tblMultipleLocation.layoutIfNeeded()
                     getHeight(self.tblMultipleLocation.contentSize.height)
-                    
-                    
-                    
                 }
-                
             }
         }
     }

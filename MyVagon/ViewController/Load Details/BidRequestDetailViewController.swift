@@ -184,7 +184,7 @@ class BidRequestDetailViewController: BaseViewController {
         }
         btnAccept.isHidden = ((data?.isBid ?? 0) == 1) ? false : true
         let TimeToCancel = (30*60)-(LoadDetails?.time_difference ?? 0)
-        btnReject.setTitle(((data?.isBid ?? 0) == 1) ? "Reject" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+        btnReject.setTitle(((data?.isBid ?? 0) == 1) ? "Decline" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
         
        
         

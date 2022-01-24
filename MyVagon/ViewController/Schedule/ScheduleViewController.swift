@@ -317,8 +317,7 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
         
         if tableView == tblLocations {
             if indexPath.section == ((arrMyLoadesData?.count ?? 0) - 1) {
-                if indexPath.row == ((arrMyLoadesData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true
-                {
+                if indexPath.row == ((arrMyLoadesData?[indexPath.section].count ?? 0) - 1) && isNeedToReload == true{
                     let spinner = UIActivityIndicatorView(style: .medium)
                     spinner.tintColor = RefreshControlColor
                     spinner.startAnimating()
@@ -327,7 +326,6 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                     self.tblLocations.tableFooterView = spinner
                     self.tblLocations.tableFooterView?.isHidden = false
                     CallWebSerive(status: CurrentFilterStatus)
-                    
                 }
             }
         }
@@ -359,7 +357,11 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                         controller.PostTruckID = "\(arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)"
                         self.navigationController?.pushViewController(controller, animated: true)
                     } else {
-
+                        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
+                        controller.BidsData = arrMyLoadesData?[indexPath.section][indexPath.row]
+                        controller.hidesBottomBarWhenPushed = true
+                        controller.PostTruckID = "\(arrMyLoadesData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)"
+                        self.navigationController?.pushViewController(controller, animated: true)
                     }
                 }  else {
                     if (myloadDetails?.postedTruck?.matchesCount ?? 0) != 0 {
