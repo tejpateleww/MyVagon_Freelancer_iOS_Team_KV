@@ -143,6 +143,17 @@ class CompleteTripReqModel : Encodable {
         
     }
 }
+
+class CancelBidReqModel : Encodable {
+    var driver_id,booking_id,shipper_id : String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+        case booking_id = "booking_id"
+        case shipper_id = "shipper_id"
+        
+    }
+}
 class UploadPODReqModel : Encodable {
     var driver_id,booking_id,pod_image : String?
 

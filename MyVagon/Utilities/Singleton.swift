@@ -33,7 +33,7 @@ class SingletonClass: NSObject
     
     //Default device data
     var DeviceName = UIDevice.modelName
-    var DeviceToken : String? = "1111"
+    var DeviceToken : String = UIDevice.current.identifierForVendor?.uuidString ?? ""
     var DeviceType : String? = "ios"
     var AppVersion : String?
     

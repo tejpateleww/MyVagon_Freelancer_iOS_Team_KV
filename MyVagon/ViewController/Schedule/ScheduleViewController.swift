@@ -160,16 +160,10 @@ class ScheduleViewController: BaseViewController {
         self.myLoadsViewModel.scheduleViewController =  self
         
         let ReqModelForMyLoades = MyLoadsReqModel()
-        
         ReqModelForMyLoades.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         ReqModelForMyLoades.page_num = "\(PageNumber)"
         ReqModelForMyLoades.status = status.Name
-      
         ReqModelForMyLoades.type = selectedType
-        //        ReqModelForGetShipment.driver_id = "271"
-        
-        
-        
         self.myLoadsViewModel.getMyloads(ReqModel: ReqModelForMyLoades)
         
     }

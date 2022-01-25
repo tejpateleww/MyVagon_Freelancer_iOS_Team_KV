@@ -15,6 +15,9 @@ PODS:
   - Firebase/Crashlytics (8.2.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 8.2.0)
+  - Firebase/Messaging (8.2.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 8.2.0)
   - FirebaseAnalytics (8.2.0):
     - FirebaseAnalytics/AdIdSupport (= 8.2.0)
     - FirebaseCore (~> 8.0)
@@ -53,6 +56,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
     - PromisesObjC (~> 1.2)
+  - FirebaseMessaging (8.2.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.4)
+    - GoogleUtilities/Environment (~> 7.4)
+    - GoogleUtilities/Reachability (~> 7.4)
+    - GoogleUtilities/UserDefaults (~> 7.4)
   - FittedSheets (2.0.13)
   - FSCalendar (2.8.2)
   - GoogleAppMeasurement (8.2.0):
@@ -134,6 +144,7 @@ DEPENDENCIES:
   - DropDown
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - Firebase/Messaging
   - FittedSheets (~> 2.0.0)
   - FSCalendar
   - GooglePlacePicker
@@ -161,6 +172,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseCrashlytics
     - FirebaseInstallations
+    - FirebaseMessaging
     - FittedSheets
     - FSCalendar
     - GoogleAppMeasurement
@@ -195,6 +207,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 61384f54989065b15c36b5922b65112e86811d3c
   FirebaseCrashlytics: 935dbdb043a286ca92a22d15e5780802403ea0ea
   FirebaseInstallations: 9394ea09e242bf0816e95ac30e56a9214cc86ced
+  FirebaseMessaging: abe18570508ef84ab6957bba35871410457ed588
   FittedSheets: f2d9b33bb894124367d1cb39c452702c4bb6e334
   FSCalendar: e6a2eb9c571bf0719ed797ef807e08426753c241
   GoogleAppMeasurement: b52eafc9dff542d580700e708216568bd2fbf168
@@ -218,6 +231,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   UIView-Shimmer: ff0a32c73d67c7dbdea3d9e530538b10d18aea56
 
-PODFILE CHECKSUM: 69447f4a1ecebdb7537b08be91704544153232c1
+PODFILE CHECKSUM: 0eaf9b723b1fb09d0d67f9f167ce3a017528e211
 
 COCOAPODS: 1.11.2

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>491335823320-p38daapb5us2pscmtq1742af8qvutscm.apps.googleusercontent.com</string>
+	<string>491335823320-qapvumt61v4vtebtltpp1rp9khj3hvut.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.491335823320-p38daapb5us2pscmtq1742af8qvutscm</string>
+	<string>com.googleusercontent.apps.491335823320-qapvumt61v4vtebtltpp1rp9khj3hvut</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBZmtlGI5gekjygMbW7cS8D4jS_SraBG5w</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +13,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.myvagon.driver</string>
+	<string>com.myvagon.freelancerdriver</string>
 	<key>PROJECT_ID</key>
 	<string>myvagon-5a5f1</string>
 	<key>STORAGE_BUCKET</key>
 	<string>myvagon-5a5f1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:491335823320:ios:d8ee69489bb338e2b2ccad</string>
+	<string>1:491335823320:ios:b8fbda59278a110db2ccad</string>
 </dict>
 </plist>

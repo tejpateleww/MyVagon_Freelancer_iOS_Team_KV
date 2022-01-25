@@ -72,14 +72,16 @@ class SchedualLoadDetailsViewController: BaseViewController {
     @IBOutlet weak var viewRatting: CosmosView!
     
     @IBOutlet weak var btnViewPOD: themeButton!
-    
-    
+    @IBOutlet weak var btnCancelBidRequest: themeButton!
     @IBOutlet weak var btnStartTrip: themeButton!
+    
     @IBOutlet weak var stepIndicatorView: StepIndicatorView!
     
     @IBOutlet weak var vWLoadStatus: UIView!
     @IBOutlet weak var lblLoadStatus: themeLabel!
     @IBOutlet weak var lblLoadStatusDesc: themeLabel!
+    
+    var strHour : String = ""
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -175,27 +177,28 @@ class SchedualLoadDetailsViewController: BaseViewController {
             }
         }
         
-        
-       
-        
         SingletonClass.sharedInstance.CurrentTripShipperID = "\(data?.shipperDetails?.id ?? 0)"
         let DateOfPickup = "\(data?.date ?? "") \(data?.pickupTimeTo ?? "")"
         
-        //Tej's logic
         self.lblDaysToGo.superview?.isHidden = true
-        let dateToCompare = self.getDateFromString(strDate: DateOfPickup)
-        let CurrentDate = self.getDateFromString(strDate: SingletonClass.sharedInstance.SystemDate)
-        let TotalHours = self.getDateDiff(start: CurrentDate, end: dateToCompare)
-        print(TotalHours)
         
-        if(TotalHours.contains("-")){
-            self.lblDaysToGo.text = ""
-        }else{
-            let formatter = RelativeDateTimeFormatter()
-            formatter.unitsStyle = .full
-            let relativeDate = formatter.localizedString(for: dateToCompare, relativeTo: CurrentDate)
-            let dateToDisplay = relativeDate.components(separatedBy: "in ")
-            self.lblDaysToGo.text = dateToDisplay[1] + " to go"
+        //Tej's logic
+        if(data?.status == MyLoadesStatus.scheduled.Name){
+            
+            let dateToCompare = self.getDateFromString(strDate: DateOfPickup)
+            let CurrentDate = self.getDateFromString(strDate: SingletonClass.sharedInstance.SystemDate)
+            strHour = self.getDateDiff(start: CurrentDate, end: dateToCompare)
+            print("TotalHours " + strHour)
+            
+            if(strHour.contains("-")){
+                self.lblDaysToGo.text = ""
+            }else{
+                let formatter = RelativeDateTimeFormatter()
+                formatter.unitsStyle = .full
+                let relativeDate = formatter.localizedString(for: dateToCompare, relativeTo: CurrentDate)
+                let dateToDisplay = relativeDate.components(separatedBy: "in ")
+                self.lblDaysToGo.text = dateToDisplay[1] + " to go"
+            }
         }
         //Tej's logic comp
         
@@ -232,33 +235,38 @@ class SchedualLoadDetailsViewController: BaseViewController {
         imgShipperProfile.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage(named: "ic_userIcon"))
        
         self.btnViewPOD.superview?.isHidden = true
-        
+        self.btnCancelBidRequest.superview?.isHidden = true
         
         self.btnStartTrip.superview?.isHidden = true
         MapViewForLocation.isUserInteractionEnabled = false
+        
         switch data?.status {
+            
         case MyLoadesStatus.pending.Name:
+            self.btnCancelBidRequest.superview?.isHidden = false
             self.lblLoadStatusDesc.isHidden = false
             self.lblLoadStatusDesc.text = BidStatusLabel.bidConfirmationPending.Name
-            lblBookingStatus.text =  MyLoadesStatus.pending.Name.capitalized
-            viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            self.lblBookingStatus.text =  MyLoadesStatus.pending.Name.capitalized
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            
         case MyLoadesStatus.scheduled.Name:
-            lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#F9F1DF")
-            lblDaysToGo.fontColor = UIColor(hexString: "#000000")
-            lblDaysToGo.layoutSubviews()
-            self.btnStartTrip.superview?.isHidden = (Int(TotalHours) ?? 0 <= 8) ? false : true
-            lblDaysToGo.superview?.isHidden = (Int(TotalHours) ?? 0 <= 0) ? true : false
-            stepIndicatorView.isHidden = !self.lblDaysToGo.isHidden
-            lblBookingStatus.text =  MyLoadesStatus.scheduled.Name.capitalized
-            viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+            self.btnCancelBidRequest.superview?.isHidden = false
+            self.lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#F9F1DF")
+            self.lblDaysToGo.fontColor = UIColor(hexString: "#000000")
+            self.lblDaysToGo.layoutSubviews()
+            self.btnStartTrip.superview?.isHidden = (Int(strHour) ?? 0 <= 8) ? false : true
+            self.lblDaysToGo.superview?.isHidden = (Int(strHour) ?? 0 <= 0) ? true : false
+            self.stepIndicatorView.isHidden = !self.lblDaysToGo.isHidden
+            self.lblBookingStatus.text =  MyLoadesStatus.scheduled.Name.capitalized
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
             
             
         case MyLoadesStatus.inprocess.Name:
-            MapViewForLocation.isUserInteractionEnabled = true
-            lblDaysToGo.superview?.isHidden = false
-            lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#1F1F41")
-            lblDaysToGo.fontColor = UIColor(hexString: "#FFFFFF")
-            lblDaysToGo.layoutSubviews()
+            self.MapViewForLocation.isUserInteractionEnabled = true
+            self.lblDaysToGo.superview?.isHidden = false
+            self.lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#1F1F41")
+            self.lblDaysToGo.fontColor = UIColor(hexString: "#FFFFFF")
+            self.lblDaysToGo.layoutSubviews()
             
             if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.arrivedAt ?? "") == "" {
                 self.lblDaysToGo.text = "Enroute to \(SingletonClass.sharedInstance.CurrentTripSecondLocation?.companyName ?? "")"
@@ -279,10 +287,9 @@ class SchedualLoadDetailsViewController: BaseViewController {
                         
                     }
                 }
-              
-                
                 self.lblDaysToGo.text =  "Arrived at \(SingletonClass.sharedInstance.CurrentTripSecondLocation?.companyName ?? "")"
                 self.btnStartTrip.superview?.isHidden = false
+                
             } else if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.startJourney ?? "") == "" {
                 var pickupArray = SingletonClass.sharedInstance.CurrentTripSecondLocation?.products?.compactMap({$0.isPickup})
                 pickupArray = pickupArray?.uniqued()
@@ -308,16 +315,14 @@ class SchedualLoadDetailsViewController: BaseViewController {
             } else {
                
             }
+            self.lblBookingStatus.text =  MyLoadesStatus.inprocess.Name.capitalized
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
             
-            lblBookingStatus.text =  MyLoadesStatus.inprocess.Name.capitalized
-            viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
         case MyLoadesStatus.completed.Name:
             self.btnViewPOD.superview?.isHidden = ((data?.podURL ?? "") != "") ? false : true
             if (data?.podURL ?? "") == "" {
                 self.btnStartTrip.setTitle(TripStatus.UploadPOD.Name, for: .normal)
-                
                 self.btnStartTrip.superview?.isHidden = false
-                
             } else {
                 if data?.shipperRate == "0" {
                     self.btnStartTrip.setTitle(TripStatus.RateShipper.Name, for: .normal)
@@ -327,29 +332,26 @@ class SchedualLoadDetailsViewController: BaseViewController {
                     self.btnStartTrip.superview?.isHidden = true
                 }
             }
-            lblBookingStatus.text =  MyLoadesStatus.completed.Name.capitalized
-            viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+            self.lblBookingStatus.text =  MyLoadesStatus.completed.Name.capitalized
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+            
         case MyLoadesStatus.canceled.Name.capitalized:
-            lblBookingStatus.text =  MyLoadesStatus.canceled.Name.capitalized
-            viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+            self.lblBookingStatus.text =  MyLoadesStatus.canceled.Name.capitalized
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
             
         case .none:
             break
+            
         case .some(_):
             break
         }
         if SingletonClass.sharedInstance.CurrentTripStart {
-            updateMap()
+            self.updateMap()
         } else {
             self.clearMap()
         }
-        
-        
-//        updateMap()
-        
-        
-        
     }
+    
     func ChangeStepIndicatorView(TotalSteps:Int,CurrentStep:Int) {
         stepIndicatorView.numberOfSteps = TotalSteps
         stepIndicatorView.currentStep = CurrentStep
@@ -358,11 +360,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         stepIndicatorView.lineMargin = 0
         stepIndicatorView.lineStrokeWidth = 2
         stepIndicatorView.directionRaw = 0
-        
-        
     }
-    
-    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
         if let info = object, let collObj = info as? UITableView{
@@ -371,11 +369,14 @@ class SchedualLoadDetailsViewController: BaseViewController {
             }
         }
     }
+    
     func showCurrentLocation() {
-        //Current Location pin setup
-       
     }
     
+    func popBack(){
+        navigationController?.popViewController(animated: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -383,66 +384,65 @@ class SchedualLoadDetailsViewController: BaseViewController {
     
     @IBAction func btnNotesClick(_ sender: themeButton) {
         let data = LoadDetails
-        
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewNotesPopupVC.storyboardID) as! ViewNotesPopupVC
-        
         controller.noteString = (data?.trucks?.note ?? "")
         controller.modalPresentationStyle = .overCurrentContext
         controller.modalTransitionStyle = .coverVertical
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280 + appDel.GetSafeAreaHeightFromBottom()))])
         self.present(sheetController, animated: true, completion:  {
         })
-        
-        
     }
+    
     @IBAction func btnViewPODClick(_ sender: themeButton) {
         
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ViewPODViewController.storyboardID) as! ViewPODViewController
         controller.hidesBottomBarWhenPushed = true
         controller.imageURl = LoadDetails?.podURL ?? ""
         self.navigationController?.pushViewController(controller, animated: true)
-        
-        
     }
+    
     @IBAction func btnStartTripClick(_ sender: themeButton) {
         if sender.titleLabel?.text == TripStatus.UploadPOD.Name {
-           AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
-           AttachmentHandler.shared.imagePickedBlock = { (image) in
-               self.ImageUploadAPI(arrImages: [image])
-           }
-       } else if sender.titleLabel?.text == TripStatus.RateShipper.Name {
-           let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ReviewShipperVC.storyboardID) as! ReviewShipperVC
-           controller.bookingID = "\(LoadDetails?.id ?? 0)"
-           controller.hidesBottomBarWhenPushed = true
-           self.navigationController?.pushViewController(controller, animated: true)
-       } else {
-        if appDel.locationManager.isAlwaysPermissionGranted() {
-            if sender.titleLabel?.text == TripStatus.ClicktoStartTrip.Name {
-                EmitForStartTrip(BookingID: "\(LoadDetails?.id ?? 0)", LocationID: "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)", ShipperID: "\(LoadDetails?.shipperDetails?.id ?? 0)")
-                self.clearMap()
-                
-            } else if sender.titleLabel?.text == TripStatus.Arrivedatpickuplocation.Name || sender.titleLabel?.text == TripStatus.ArrivedatpickuplocationDropOff.Name {
-                CallAPIForArriveAtLocation()
-            } else if sender.titleLabel?.text == TripStatus.StartLoading.Name || sender.titleLabel?.text == TripStatus.StartLoadingOffLoading.Name {
-                SingletonClass.sharedInstance.emitForCurrentLocation()
-                CallAPIForStartLoading()
-            } else if sender.titleLabel?.text == TripStatus.StartJourney.Name {
-                CallAPIForStartJourney()
-            } else if sender.titleLabel?.text == TripStatus.ArrivedatDroplocation.Name {
-                CallAPIForArriveAtLocation()
-            }  else if sender.titleLabel?.text == TripStatus.CompleteTrip.Name {
-                
-                CallAPIForCompleteTrip()
-            } else if sender.titleLabel?.text == TripStatus.StartOffLoad.Name {
-                CallAPIForStartLoading()
+            AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
+            AttachmentHandler.shared.imagePickedBlock = { (image) in
+                self.ImageUploadAPI(arrImages: [image])
             }
-            
+        } else if sender.titleLabel?.text == TripStatus.RateShipper.Name {
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ReviewShipperVC.storyboardID) as! ReviewShipperVC
+            controller.bookingID = "\(LoadDetails?.id ?? 0)"
+            controller.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
         } else {
-            Utilities.AlwaysAllowPermission(currentVC: self)
+            if appDel.locationManager.isAlwaysPermissionGranted() {
+                if sender.titleLabel?.text == TripStatus.ClicktoStartTrip.Name {
+                    EmitForStartTrip(BookingID: "\(LoadDetails?.id ?? 0)", LocationID: "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)", ShipperID: "\(LoadDetails?.shipperDetails?.id ?? 0)")
+                    self.clearMap()
+                } else if sender.titleLabel?.text == TripStatus.Arrivedatpickuplocation.Name || sender.titleLabel?.text == TripStatus.ArrivedatpickuplocationDropOff.Name {
+                    CallAPIForArriveAtLocation()
+                } else if sender.titleLabel?.text == TripStatus.StartLoading.Name || sender.titleLabel?.text == TripStatus.StartLoadingOffLoading.Name {
+                    SingletonClass.sharedInstance.emitForCurrentLocation()
+                    CallAPIForStartLoading()
+                } else if sender.titleLabel?.text == TripStatus.StartJourney.Name {
+                    CallAPIForStartJourney()
+                } else if sender.titleLabel?.text == TripStatus.ArrivedatDroplocation.Name {
+                    CallAPIForArriveAtLocation()
+                }  else if sender.titleLabel?.text == TripStatus.CompleteTrip.Name {
+                    CallAPIForCompleteTrip()
+                } else if sender.titleLabel?.text == TripStatus.StartOffLoad.Name {
+                    CallAPIForStartLoading()
+                }
+            } else {
+                Utilities.AlwaysAllowPermission(currentVC: self)
+            }
         }
-       }
-       
-         
+    }
+    
+    @IBAction func btnCancelBidRequestAction(_ sender: Any) {
+        Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: "Are you sure you want to cancel this bid request?", buttons: ["No", "Yes"]) { index in
+            if(index == 1){
+                self.CallAPIForCancelBid()
+            }
+        }
     }
     
     // ----------------------------------------------------
@@ -512,6 +512,17 @@ class SchedualLoadDetailsViewController: BaseViewController {
         reqModel.location_id = "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)"
         
         self.schedualDetailViewModel.StartLoading(ReqModel: reqModel)
+    }
+    
+    func CallAPIForCancelBid() {
+        self.schedualDetailViewModel.schedualLoadDetailsViewController = self
+        
+        let reqModel = CancelBidReqModel ()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
+        reqModel.shipper_id = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
+        
+        self.schedualDetailViewModel.CancelBidRequest(ReqModel: reqModel)
     }
     
     func CallAPIForCompleteTrip() {

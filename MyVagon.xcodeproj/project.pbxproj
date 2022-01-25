@@ -185,7 +185,6 @@
 		18E1A61F26D4CB5C00FD9A93 /* SettingDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A61D26D4CB5C00FD9A93 /* SettingDatum.swift */; };
 		18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E1A62026D4E7ED00FD9A93 /* Chat.storyboard */; };
 		18E1A62326D504C400FD9A93 /* UITableView+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1A62226D504C400FD9A93 /* UITableView+Extenstion.swift */; };
-		18E1A62526D5171B00FD9A93 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */; };
 		18E4400E2771D97800505F9E /* ReasonForCancelBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4400D2771D97800505F9E /* ReasonForCancelBookViewController.swift */; };
 		18E44013277200E700505F9E /* InitResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E44012277200E700505F9E /* InitResModel.swift */; };
 		18ECDC7A2766F7DD0097F10F /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDC792766F7DD0097F10F /* CustomView.swift */; };
@@ -240,6 +239,8 @@
 		84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */; };
 		84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */; };
 		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
+		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
+		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A528E92722D795004A292B /* ShimmerCell.swift */; };
 		90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A528EA2722D795004A292B /* ShimmerCell.xib */; };
@@ -507,7 +508,6 @@
 		18E1A61D26D4CB5C00FD9A93 /* SettingDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingDatum.swift; sourceTree = "<group>"; };
 		18E1A62026D4E7ED00FD9A93 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		18E1A62226D504C400FD9A93 /* UITableView+Extenstion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extenstion.swift"; sourceTree = "<group>"; };
-		18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		18E4400D2771D97800505F9E /* ReasonForCancelBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonForCancelBookViewController.swift; sourceTree = "<group>"; };
 		18E44012277200E700505F9E /* InitResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitResModel.swift; sourceTree = "<group>"; };
 		18ECDC792766F7DD0097F10F /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
@@ -565,6 +565,9 @@
 		84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerDriverSignupVC3.swift; sourceTree = "<group>"; };
 		84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContainerVC.swift; sourceTree = "<group>"; };
 		84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDriverVC.swift; sourceTree = "<group>"; };
+		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
+		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
+		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		90A528E92722D795004A292B /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
@@ -1225,6 +1228,7 @@
 			isa = PBXGroup;
 			children = (
 				A1519C8B26A00304001738B9 /* AppDelegate.swift */,
+				8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1317,7 +1321,9 @@
 		A1519C8A26A00304001738B9 /* MyVagon */ = {
 			isa = PBXGroup;
 			children = (
-				18E1A62426D5171A00FD9A93 /* GoogleService-Info.plist */,
+				8862C05427A02D6A00F3F630 /* MyVagon.entitlements */,
+				8862C05527A02FC000F3F630 /* GoogleService-Info.plist */,
+				18F5ED3A277ED8140015A6C1 /* AppDelegate */,
 				1899F893277AD6600058030B /* ARCarMovement.swift */,
 				18F496512779BD350069B26C /* StepIndicator */,
 				186834D12775AA83005E2674 /* CarAnimator.swift */,
@@ -1332,7 +1338,6 @@
 				189FB63F26B933A500BBD5A0 /* AttechmentService.swift */,
 				1802693326AFD6740088B49F /* AppInfo.swift */,
 				A1519CD426A0041F001738B9 /* Storyboard */,
-				18F5ED3A277ED8140015A6C1 /* AppDelegate */,
 				A1519CD326A00413001738B9 /* ViewController */,
 				A1519CBC26A00353001738B9 /* Extension */,
 				A1519CBB26A00343001738B9 /* AppTheme */,
@@ -1605,12 +1610,12 @@
 				189FB63826B922FB00BBD5A0 /* UploadVideoAndImagesCell.xib in Resources */,
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				84652F7F274F58330091B40B /* BidRequestCell.xib in Resources */,
-				18E1A62526D5171B00FD9A93 /* GoogleService-Info.plist in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
 				1808176126E7761E00D1C717 /* PickLoadCell.xib in Resources */,
 				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
 				1808175D26E76C0900D1C717 /* LoadDetailCell.xib in Resources */,
+				8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */,
 				18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */,
 				18A34F2A26CD1F2D00F252B6 /* LocationCell.xib in Resources */,
 				180FCEE826B135C3008D28EE /* Localizable.strings in Resources */,
@@ -1828,6 +1833,7 @@
 				1899F899277B111D0058030B /* RateShipperViewModel.swift in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */,
+				8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */,
 				18F2703926BD632300992892 /* TruckUnitResModel.swift in Sources */,
 				18C438D726D3AE2C009A06AC /* FilterDropOffViewController.swift in Sources */,
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
@@ -2246,6 +2252,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyVagon/MyVagon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = SQYCGM6LMB;
@@ -2269,6 +2276,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MyVagon/MyVagon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
 				DEVELOPMENT_TEAM = SQYCGM6LMB;

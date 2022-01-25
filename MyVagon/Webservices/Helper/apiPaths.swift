@@ -143,10 +143,6 @@ enum ApiKey: String {
     case SystemDateTime                         = "system-date-time"
     
     case RejectBookingRequest                   = "RejectBookingRequest"
-    
-
-
-    
     case MyLoades                               = "my-loads"
     
     case BidPost                                = "driver/post/bid"
@@ -164,6 +160,7 @@ enum ApiKey: String {
     case RateShipper                            = "review-rating"
     
     case NotificationList                       = "notification-list"
+    case CancelRequest                          = "cancel-request"
     
 }
 

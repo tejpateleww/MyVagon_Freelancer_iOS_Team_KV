@@ -15,6 +15,7 @@ target 'MyVagon' do
   pod 'lottie-ios'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
   pod 'GooglePlacePicker'
   pod 'SDWebImage'
   pod 'NVActivityIndicatorView', '4.8.0'

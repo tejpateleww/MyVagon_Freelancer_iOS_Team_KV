@@ -9,14 +9,19 @@ import UIKit
 import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
-import Firebase
 import CoreLocation
+import Firebase
+import FirebaseMessaging
+import FirebaseCore
+import FirebaseCrashlytics
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
     var window: UIWindow?
 
     var locationManager =  UpdateLocationClass()
+    static var pushNotificationObj : NotificationObjectModel?
+    static var pushNotificationType : String?
 
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -25,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
         FirebaseApp.configure()
+        registerForPushNotifications()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkAndSetDefaultLanguage()
@@ -32,9 +38,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
         // Override point for customization after application launch.
+    
         return true
     }
-   
     
     func NavigateToLogin(){
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SignInContainerVC.storyboardID) as! SignInContainerVC
@@ -56,12 +62,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav
     }
+    
     func NavigateToIntroScreen(){
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: BoardingVC.storyboardID) as! BoardingVC
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav
     }
+    
     func NavigateToHome(){
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 && SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
@@ -101,6 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav
     }
+    
     func NavigateToSchedual(){
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
         controller.selectedIndex = 1
@@ -110,29 +119,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.navigationBar.isHidden = true
         self.window?.rootViewController = nav
     }
+    
     func Logout() {
-        
-        
         UserDefault.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
         SingletonClass.sharedInstance.ClearSigletonClassForLogin()
-        
         for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
-            //            print("\(key) = \(value) \n")
-            print(key)
             if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue {
                 
-            }
-            else {
+            }else{
                 UserDefaults.standard.removeObject(forKey: key)
             }
         }
-        
         self.NavigateToLogin()
-        
     }
+    
     func checkAndSetDefaultLanguage() {
         if UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) == nil {
-            
             setLanguageEnglish()
         } else {
             if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "en" {
@@ -144,17 +146,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
     func setLanguageEnglish() {
         UserDefault.setValue("en", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
         SingletonClass.sharedInstance.SelectedLanguage = "0"
     }
+    
     func SetLanguageGreek() {
         UserDefault.setValue("el", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
         SingletonClass.sharedInstance.SelectedLanguage = "1"
     }
+    
     func GetSafeAreaHeightFromBottom() -> CGFloat {
         var bottomSafeAreaHeight: CGFloat = 0
-        
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.windows[0]
             let safeFrame = window.safeAreaLayoutGuide.layoutFrame

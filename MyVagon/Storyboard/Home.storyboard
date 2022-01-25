@@ -5727,7 +5727,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="748"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AtK-4G-Xnp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1578"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1655"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zTb-uw-UBj">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="932"/>
@@ -6272,7 +6272,7 @@
                                                                 </connections>
                                                             </tableView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-u1-BvK">
-                                                                <rect key="frame" x="0.0" y="1353" width="414" height="205"/>
+                                                                <rect key="frame" x="0.0" y="1353" width="414" height="282"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Q3-ar-LXY">
                                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
@@ -6373,6 +6373,42 @@
                                                                             <constraint firstItem="5cD-iL-hha" firstAttribute="centerY" secondItem="eDK-uB-K09" secondAttribute="centerY" id="jLu-oY-FU3"/>
                                                                         </constraints>
                                                                     </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cyr-to-XOr">
+                                                                        <rect key="frame" x="0.0" y="212" width="414" height="70"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6G-AS-XgU" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="20" y="12" width="374" height="46"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="46" id="qfa-7e-UvM"/>
+                                                                                </constraints>
+                                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                                <state key="normal" title="Cancel Bid Request"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                        <color key="value" name="ThemePurpleColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                        <real key="value" value="1"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsRegualar" value="YES"/>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
+                                                                                        <color key="value" name="ThemePurpleColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <action selector="btnCancelBidRequestAction:" destination="fVs-FL-a1n" eventType="touchUpInside" id="1cd-Rs-AUf"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="70" id="2Dt-M9-Ar8"/>
+                                                                            <constraint firstItem="p6G-AS-XgU" firstAttribute="leading" secondItem="cyr-to-XOr" secondAttribute="leading" constant="20" id="7VB-Tn-KP3"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="p6G-AS-XgU" secondAttribute="trailing" constant="20" id="ONk-rF-sqP"/>
+                                                                            <constraint firstItem="p6G-AS-XgU" firstAttribute="centerY" secondItem="cyr-to-XOr" secondAttribute="centerY" id="S6G-KQ-xzJ"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                 </subviews>
                                                             </stackView>
                                                         </subviews>
@@ -6451,6 +6487,7 @@
                     <connections>
                         <outlet property="ColTypes" destination="xB4-Su-KQd" id="7mG-ad-WPF"/>
                         <outlet property="MapViewForLocation" destination="S9R-IW-Uek" id="qLU-Lf-R1a"/>
+                        <outlet property="btnCancelBidRequest" destination="p6G-AS-XgU" id="lu7-Od-lO6"/>
                         <outlet property="btnStartTrip" destination="NuN-Nz-2T2" id="hLL-VF-5oO"/>
                         <outlet property="btnViewNotes" destination="EZA-4I-6k4" id="olI-C8-1bK"/>
                         <outlet property="btnViewPOD" destination="5cD-iL-hha" id="f7S-VG-rjO"/>
@@ -7179,20 +7216,59 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="1F0-CZ-tTn">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="1ik-zr-pIX">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="41b-G4-9LY">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="4Yk-CD-PZ6">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="BXF-jj-EO4">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="Com-VW-sEt">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
+        <designable name="EM0-cS-mSz">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="P4e-b1-Po8">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="XV4-UW-Qe0">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
+        </designable>
+        <designable name="f4a-G4-rAK">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="hye-uA-8rd">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
+        <designable name="m28-MZ-YP9">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="ovs-fh-rYv">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="pxc-Co-qbc">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="qQM-aq-rxT">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="up4-Kv-YNl">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
     </designables>
     <resources>
