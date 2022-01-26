@@ -341,6 +341,11 @@ class Utilities:NSObject{
         messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .error, TopBottom: true)
     }
     
+    class func ShowAlertOfInfo(OfMessage : String) {
+        let messageBar = MessageBarController()
+        messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .info, TopBottom: true)
+    }
+    
     class func ShowAlertOfSuccess(OfMessage : String) {
         let messageBar = MessageBarController()
 

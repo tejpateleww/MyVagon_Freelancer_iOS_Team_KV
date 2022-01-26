@@ -241,6 +241,9 @@
 		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
+		88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */; };
+		88B6865F27A14ACE006123B8 /* chatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865E27A14ACE006123B8 /* chatViewModel.swift */; };
+		88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6866027A1553F006123B8 /* ChatSocketClient.swift */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A528E92722D795004A292B /* ShimmerCell.swift */; };
 		90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A528EA2722D795004A292B /* ShimmerCell.xib */; };
@@ -569,6 +572,9 @@
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageResModel.swift; sourceTree = "<group>"; };
+		88B6865E27A14ACE006123B8 /* chatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatViewModel.swift; sourceTree = "<group>"; };
+		88B6866027A1553F006123B8 /* ChatSocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSocketClient.swift; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		90A528E92722D795004A292B /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
 		90A528EA2722D795004A292B /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
@@ -774,6 +780,7 @@
 				18114CEF27742DC000CD59D1 /* SchedualDetailViewModel.swift */,
 				1899F898277B111D0058030B /* RateShipperViewModel.swift */,
 				18CBA6B9278449E800372417 /* NotificationListViewModel.swift */,
+				88B6865E27A14ACE006123B8 /* chatViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -823,6 +830,7 @@
 		1858EA7826E609BB008E04A7 /* chat screen */ = {
 			isa = PBXGroup;
 			children = (
+				88B6866027A1553F006123B8 /* ChatSocketClient.swift */,
 				1858EA7926E609BB008E04A7 /* ReceiverCell.swift */,
 				1858EA7A26E609BB008E04A7 /* chatVC.swift */,
 				1858EA7B26E609BB008E04A7 /* SenderCell.swift */,
@@ -974,6 +982,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				88B6865B27A1498E006123B8 /* ChatMessageResModel */,
 				18CBA6AD2784487C00372417 /* NotificationListResModel */,
 				18ECDE112769C24B0097F10F /* BidRequestResModel */,
 				185BA7D42757843F00E99FAC /* MyLoadsNewResModel */,
@@ -1259,6 +1268,14 @@
 				18CC3479270D6BE40063E33B /* SearchLoadsDatum.swift */,
 			);
 			path = SearchResModel;
+			sourceTree = "<group>";
+		};
+		88B6865B27A1498E006123B8 /* ChatMessageResModel */ = {
+			isa = PBXGroup;
+			children = (
+				88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */,
+			);
+			path = ChatMessageResModel;
 			sourceTree = "<group>";
 		};
 		90A528E82722D779004A292B /* Shimmer Cell */ = {
@@ -1902,6 +1919,7 @@
 				185BA7EE2757843F00E99FAC /* MyLoadsNewUnit.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
 				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
+				88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */,
 				18ADA35B26F31DE600F12258 /* ShipmentListReqModel.swift in Sources */,
 				18129AC326BAD33D00983AFC /* LoginReqModel.swift in Sources */,
 				185BA7EC2757843F00E99FAC /* MyLoadsNewPostedTruck.swift in Sources */,
@@ -2002,6 +2020,7 @@
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
 				18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */,
 				18114D182774A6D200CD59D1 /* ViewPODViewController.swift in Sources */,
+				88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */,
 				18F15E4727043E8E003A1D16 /* LocationSessionManager.swift in Sources */,
 				186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */,
 				185BA7EB2757843F00E99FAC /* MyLoadsNewResModel.swift in Sources */,
@@ -2067,6 +2086,7 @@
 				18CC3478270D691D0063E33B /* MyLoadsViewModel.swift in Sources */,
 				18ADA34E26F31D2E00F12258 /* HomeViewModel.swift in Sources */,
 				18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */,
+				88B6865F27A14ACE006123B8 /* chatViewModel.swift in Sources */,
 				1802693026AFD5D70088B49F /* ImagePicker.swift in Sources */,
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 				18ECDC842766F7EF0097F10F /* CustomButton.swift in Sources */,

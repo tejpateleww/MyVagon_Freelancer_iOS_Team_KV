@@ -160,8 +160,12 @@ enum ApiKey: String {
     case RateShipper                            = "review-rating"
     
     case NotificationList                       = "notification-list"
-    case CancelRequest                          = "cancel-request"
+    case CancelRequest                          = "cancel-bid-request"
+    case DeleteRequest                          = "cancel-request"
     
+    case chatMessages                           = "chat-messages"
+    case chatUsers                              = "chat-users"
+
 }
 
  
@@ -172,9 +176,11 @@ enum socketApiKeys : String {
     case driverConnect = "driver_connect"
     case updateLocation = "update_location"
     case startTrip = "start_trip"
-    
     case HideAtPickup = "hide_at_pickup"
 
+    //Chat
+    case SendMessage                              = "send_message"
+    case ReceiverMessage                          = "new_message"
   
 }
 enum BaseURLS:String {

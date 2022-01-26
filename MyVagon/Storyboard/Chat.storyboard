@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -34,7 +34,7 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SenderCell" id="JP0-zC-JQk" customClass="SenderCell" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="24.5" width="414" height="98"/>
+                                                        <rect key="frame" x="0.0" y="44.5" width="414" height="98"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JP0-zC-JQk" id="AKR-PL-00m">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
@@ -135,11 +135,12 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="lblDate" destination="HBG-p9-hRn" id="Le7-rX-eB7"/>
                                                             <outlet property="lblMessage" destination="OYG-iA-1Zc" id="jML-TC-J79"/>
                                                         </connections>
                                                     </tableViewCell>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReceiverCell" id="3ZK-4f-qB7" customClass="ReceiverCell" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="122.5" width="414" height="98"/>
+                                                        <rect key="frame" x="0.0" y="142.5" width="414" height="98"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3ZK-4f-qB7" id="Pk7-pS-6RC">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
@@ -240,6 +241,7 @@
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="lblDate" destination="ZBK-U1-VSA" id="r1t-0P-sN4"/>
                                                             <outlet property="lblMessage" destination="S9G-Qt-5Zh" id="tvE-kD-d3b"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -409,7 +411,7 @@
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatListCell" id="9Vz-2E-t3p" customClass="ChatListCell" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="24.5" width="414" height="74.5"/>
+                                                                <rect key="frame" x="0.0" y="44.5" width="414" height="74.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Vz-2E-t3p" id="WcZ-Wa-FwM">
                                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
@@ -639,6 +641,11 @@
             <point key="canvasLocation" x="2482.608695652174" y="64.955357142857139"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="ILd-mq-GZW">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
+        </designable>
+    </designables>
     <resources>
         <image name="ic_ChatProfile" width="44" height="46"/>
         <image name="ic_Search" width="16.5" height="16.5"/>

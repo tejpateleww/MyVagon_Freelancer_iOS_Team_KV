@@ -32,3 +32,18 @@ enum BidStatusLabel {
         }
     }
 }
+
+enum ReqCancelTitle {
+    
+    case cencelBid,deleteBid
+    
+    var Name:String {
+        switch self {
+        case .cencelBid:
+            return "Cancel Bid Request"
+        case .deleteBid:
+            return "Request To Cancel"
+        }
+    }
+}
+

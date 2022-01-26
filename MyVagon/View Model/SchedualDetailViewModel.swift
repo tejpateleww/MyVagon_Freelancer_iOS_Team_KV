@@ -56,6 +56,21 @@ class SchedualDetailViewModel {
         })
     }
     
+    func DeleteBidRequest(ReqModel:CancelBidReqModel) {
+        Utilities.showHud()
+        WebServiceSubClass.DeleteBidRequest(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status {
+                self.schedualLoadDetailsViewController?.popBack()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                }
+            }else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+    
     func StartJourney(ReqModel:StartJourneyReqModel) {
         Utilities.ShowLoaderButtonInButton(Button: schedualLoadDetailsViewController?.btnStartTrip ?? themeButton(), vc: schedualLoadDetailsViewController ?? UIViewController())
         WebServiceSubClass.StartJourney(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in

@@ -106,7 +106,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         tblMainData.delegate = self
         tblMainData.dataSource = self
         tblMainData.reloadData()
-        setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: "Load Details", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        
         tblMainData.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
         
         tblMainData.register(UINib(nibName: "LoadDetailCell", bundle: nil), forCellReuseIdentifier: "LoadDetailCell")
@@ -116,12 +116,17 @@ class SchedualLoadDetailsViewController: BaseViewController {
         })
         
         ColTypes.reloadData()
+        AppDelegate.shared.shipperIdForChat = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
+        AppDelegate.shared.shipperNameForChat = self.LoadDetails?.shipperDetails?.name ?? ""
+        AppDelegate.shared.shipperProfileForChat = self.LoadDetails?.shipperDetails?.profile ?? ""
         
-        
-        
-        
-        
+        if(self.LoadDetails?.status == MyLoadesStatus.inprocess.Name){
+            setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: "Load Details", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.chatDirect.value], isTranslucent: true)
+        }else{
+            setNavigationBarInViewController(controller: self, naviColor: .white, naviTitle: "Load Details", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        }
     }
+    
     func setUserImageInMarker()->UIImage{
         if let url = URL(string: SingletonClass.sharedInstance.UserProfileData?.profile ?? ""), let data = try? Data(contentsOf: url), let imageFromUrl = UIImage(data: data){
             let image = imageFromUrl.sd_resizedImage(with: CGSize(width: 80, height: 80), scaleMode: .aspectFill)?.withRenderingMode(.alwaysOriginal).radiusImageWithBorder(width: 2, color: .white)
@@ -244,6 +249,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
             
         case MyLoadesStatus.pending.Name:
             self.btnCancelBidRequest.superview?.isHidden = false
+            self.btnCancelBidRequest.setTitle(ReqCancelTitle.cencelBid.Name, for: .normal)
             self.lblLoadStatusDesc.isHidden = false
             self.lblLoadStatusDesc.text = BidStatusLabel.bidConfirmationPending.Name
             self.lblBookingStatus.text =  MyLoadesStatus.pending.Name.capitalized
@@ -251,6 +257,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
             
         case MyLoadesStatus.scheduled.Name:
             self.btnCancelBidRequest.superview?.isHidden = false
+            self.btnCancelBidRequest.setTitle(ReqCancelTitle.deleteBid.Name, for: .normal)
             self.lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#F9F1DF")
             self.lblDaysToGo.fontColor = UIColor(hexString: "#000000")
             self.lblDaysToGo.layoutSubviews()
@@ -438,9 +445,17 @@ class SchedualLoadDetailsViewController: BaseViewController {
     }
     
     @IBAction func btnCancelBidRequestAction(_ sender: Any) {
-        Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: "Are you sure you want to cancel this bid request?", buttons: ["No", "Yes"]) { index in
-            if(index == 1){
-                self.CallAPIForCancelBid()
+        if(self.LoadDetails?.status == MyLoadesStatus.canceled.Name){
+            Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: "Are you sure you want to cancel this bid request?", buttons: ["No", "Yes"]) { index in
+                if(index == 1){
+                    self.CallAPIForCancelBid()
+                }
+            }
+        }else{
+            Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: "Are you sure you want to cancel?", buttons: ["No", "Yes"]) { index in
+                if(index == 1){
+                    self.CallAPIForDeleteBid()
+                }
             }
         }
     }
@@ -523,6 +538,17 @@ class SchedualLoadDetailsViewController: BaseViewController {
         reqModel.shipper_id = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
         
         self.schedualDetailViewModel.CancelBidRequest(ReqModel: reqModel)
+    }
+    
+    func CallAPIForDeleteBid() {
+        self.schedualDetailViewModel.schedualLoadDetailsViewController = self
+        
+        let reqModel = CancelBidReqModel ()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
+        reqModel.shipper_id = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
+        
+        self.schedualDetailViewModel.DeleteBidRequest(ReqModel: reqModel)
     }
     
     func CallAPIForCompleteTrip() {
@@ -648,10 +674,8 @@ extension SchedualLoadDetailsViewController:UITableViewDelegate,UITableViewDataS
         
         
         if indexPath.row == 0 {
-            
             cell.ViewDottedTop.isHidden = true
         } else if indexPath.row == ((data?.trucks?.locations?.count ?? 0) - 1) {
-            
             cell.ViewDottedbottom.isHidden = true
         } else {
             cell.ViewDottedTop.isHidden = false
@@ -659,7 +683,6 @@ extension SchedualLoadDetailsViewController:UITableViewDelegate,UITableViewDataS
         }
         cell.sizeForTableview = { (heightTBl) in
             self.tblMainData.layoutIfNeeded()
-            
         }
         cell.TblLoadDetails.reloadData()
         cell.selectionStyle = .none

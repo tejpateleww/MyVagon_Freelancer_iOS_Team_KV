@@ -268,6 +268,12 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    //MARK:- Delete Bid
+    class func DeleteBidRequest(reqModel: CancelBidReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.DeleteRequest.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
     //MARK:- CompleteTrip
     class func CompleteTrip(reqModel: CompleteTripReqModel, completion: @escaping (Bool,String,BookingLoadDetailsResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.CompleteTrip.rawValue, requestModel: reqModel, responseModel: BookingLoadDetailsResModel.self) { (status, message, response, error) in
@@ -307,5 +313,20 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    //MARK:- RateShipper
+    class func chatHistory(reqModel: chatMessageReqModel, completion: @escaping (Bool,String,ChatMessagesResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.chatMessages.rawValue, requestModel: reqModel, responseModel: ChatMessagesResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- RateShipper
+    class func chatUserList(reqModel: chatListReqModel, completion: @escaping (Bool,String,ChatUserListResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.chatUsers.rawValue, requestModel: reqModel, responseModel: ChatUserListResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
 }
 

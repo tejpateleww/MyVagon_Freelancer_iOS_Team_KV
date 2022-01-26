@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var locationManager =  UpdateLocationClass()
     static var pushNotificationObj : NotificationObjectModel?
     static var pushNotificationType : String?
+    
+    var shipperIdForChat:String = ""
+    var shipperNameForChat:String = ""
+    var shipperProfileForChat:String = ""
 
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate

@@ -9,67 +9,107 @@ import UIKit
 import IQKeyboardManagerSwift
 
 class chatVC: BaseViewController {
-    var arrayChat = ["delivered the last shipment","Have you left Athens?","Hello","Hi","delivered the last shipment","Have you left Athens?","Hello","Hi","delivered the last shipment","Have you left Athens?","Hello","Hi","delivered the last shipment","Have you left Athens?","Hello","Hi"]
+    
     @IBOutlet weak var tblChat: UITableView!
     @IBOutlet weak var tvWriteMessage: ChatthemeTextView!
     @IBOutlet weak var constraintBottomOfChatBG: NSLayoutConstraint!
+    
+    var shipperID:String = ""
+    var shipperName:String = ""
+    var vhatViewModel = chatViewModel()
+    var arrData : [chatData] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        tblChat.delegate = self
-        tblChat.dataSource = self
-        tblChat.reloadData()
-        scrollToBottom()
-        setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: "Ankur Thumar", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true,IsChatScreenLabel:true, IsChatScreen:true)
-        // Do any additional setup after loading the view.
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: shipperName, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true,IsChatScreenLabel:true, IsChatScreen:true)
+        self.prepareView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
-        setupKeyboard(false)
+        
+        self.ChatSocketOnMethods()
+        self.setupKeyboard(false)
         self.hideKeyboard()
         self.registerForKeyboardNotifications()
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        setupKeyboard(true)
-//        allSocketOffMethods()
+        
+        self.ChatSocketOffMethods()
+        self.setupKeyboard(true)
         self.deregisterFromKeyboardNotifications()
         IQKeyboardManager.shared.enableAutoToolbar = true
         IQKeyboardManager.shared.enable = true
-//        SocketIOManager.shared.isSocketOn = false
     }
     
+    func prepareView(){
+        self.setupUI()
+        self.setupData()
+    }
+    
+    func setupUI(){
+        self.tblChat.delegate = self
+        self.tblChat.dataSource = self
+    }
+    
+    func setupData(){
+        self.callChatHistoryAPI()
+    }
     
     func scrollToBottom(){
         DispatchQueue.main.async {
-            if self.arrayChat.count > 1 {
-                let indexPath = IndexPath(row: self.arrayChat.count-1, section: 0)
+            if self.arrData.count > 1 {
+                let indexPath = IndexPath(row: self.arrData.count-1, section: 0)
                 self.tblChat.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         }
     }
+    
     @IBAction func btnSendClick(_ sender: Any) {
         if tvWriteMessage.text.trimmingCharacters(in: .whitespacesAndNewlines) != "" {
-            arrayChat.append(tvWriteMessage.text)
+            let param = ["sender_id" : "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)",
+                         "receiver_id" : self.shipperID,
+                         "message" : self.tvWriteMessage.text ?? "",
+                         "type" : "shipper"] as [String : Any]
+            self.emitSocket_SendMessage(param: param)
             tvWriteMessage.text = ""
-            tblChat.reloadData()
-            scrollToBottom()
+        }else{
+            Utilities.ShowAlertOfInfo(OfMessage: "Please enter message.")
         }
         
     }
 }
+
+extension chatVC{
+    func callChatHistoryAPI() {
+        self.vhatViewModel.chatVC = self
+        
+        let reqModel = chatMessageReqModel ()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.shipper_id = self.shipperID
+
+        self.vhatViewModel.WebServiceChatHistory(ReqModel: reqModel)
+    }
+}
+
 extension chatVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayChat.count
+        return arrData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row % 2) == 0 {
+        
+        if(arrData[indexPath.row].senderId == SingletonClass.sharedInstance.UserProfileData?.id){
             let cell = tblChat.dequeueReusableCell(withIdentifier: "SenderCell") as! SenderCell
-            cell.lblMessage.text = arrayChat[indexPath.row]
+            cell.lblMessage.text = arrData[indexPath.row].message
+            cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
             cell.selectionStyle = .none
             return cell
-        } else {
+        }else{
             let cell = tblChat.dequeueReusableCell(withIdentifier: "ReceiverCell") as! ReceiverCell
-            cell.lblMessage.text = arrayChat[indexPath.row]
+            cell.lblMessage.text = arrData[indexPath.row].message
+            cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
             cell.selectionStyle = .none
             return cell
         }
@@ -127,10 +167,10 @@ extension chatVC{
         if #available(iOS 11.0, *) {
             
             DispatchQueue.main.async {
-                if self.arrayChat.count != 0 {
+                if self.arrData.count != 0 {
                     
                     self.tblChat.layoutIfNeeded()
-                    let indexpath = IndexPath(row: self.arrayChat.count - 1, section: 0)
+                    let indexpath = IndexPath(row: self.arrData.count - 1, section: 0)
                     self.tblChat.scrollToRow(at: indexpath , at: .top, animated: false)
                     
                 }
@@ -139,9 +179,9 @@ extension chatVC{
         } else {
             
             DispatchQueue.main.async {
-                if self.arrayChat.count != 0 {
+                if self.arrData.count != 0 {
                     self.tblChat.layoutIfNeeded()
-                    let indexpath = IndexPath(row: self.arrayChat.count - 1, section: 0)
+                    let indexpath = IndexPath(row: self.arrData.count - 1, section: 0)
                     self.tblChat.scrollToRow(at: indexpath , at: .top, animated: false)
                     
                 }

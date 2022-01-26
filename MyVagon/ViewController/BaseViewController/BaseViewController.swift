@@ -76,16 +76,17 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
             if IsChatScreenLabel ?? false {
                 if IsChatScreen ?? false {
                     let ViewNavTitle = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-                    
                     let myCustomView: NavigationTitleView = UIView.fromNib()
                     myCustomView.lblChat.text = naviTitle
                     myCustomView.lblCount.isHidden = true
                     myCustomView.ImageViewMainView.isHidden = false
+                    let url = URL.init(string:AppDelegate.shared.shipperProfileForChat)
+                    myCustomView.UserImageView.sd_setImage(with: url , placeholderImage: UIImage(named: "ic_userIcon"))
                     ViewNavTitle.addSubview(myCustomView)
                     self.navigationItem.titleView = ViewNavTitle
+                
                 }else {
                     let ViewNavTitle = UIView(frame: CGRect(x: 0, y: 0, width: 320, height: 40))
-                    
                     let myCustomView: NavigationTitleView = UIView.fromNib()
                     myCustomView.lblChat.text = naviTitle
                     myCustomView.lblCount.text = NumberOfChatCount
@@ -93,8 +94,6 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                     ViewNavTitle.addSubview(myCustomView)
                     self.navigationItem.titleView = ViewNavTitle
                 }
-                
-                
               
             } else {
                 if subTitleString != "" {
@@ -214,7 +213,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                         btnSkip.contentHorizontalAlignment = .right
                         btnSkip.layer.setValue(controller, forKey: "controller")
                         ViewSkip.addSubview(btnSkip)
- let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewSkip)
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewSkip)
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
                     } else if title == NavItemsRight.chat.value {
@@ -223,6 +222,19 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                         BtnRight.setImage(UIImage.init(named: "ic_chat"), for: .normal)
                         BtnRight.layer.setValue(controller, forKey: "controller")
                         BtnRight.addTarget(self, action: #selector(self.BtnChatAction), for: .touchUpInside)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                    
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                       
+                    } else if title == NavItemsRight.chatDirect.value {
+                        
+                        let BtnRight = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                        BtnRight.setImage(UIImage.init(named: "ic_chatDirect"), for: .normal)
+                        BtnRight.layer.setValue(controller, forKey: "controller")
+                        BtnRight.addTarget(self, action: #selector(self.BtnChatDirectAction), for: .touchUpInside)
                         let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
                         ViewRight.addSubview(BtnRight)
                     
@@ -343,13 +355,21 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
             click()
         }
     }
+    
     @objc func BtnChatAction(sender:UIButton) {
-        let controller = AppStoryboard.Chat
-            .instance.instantiateViewController(withIdentifier: ChatListVC.storyboardID) as! ChatListVC
+        let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: ChatListVC.storyboardID) as! ChatListVC
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
-        
     }
+    
+    @objc func BtnChatDirectAction(sender:UIButton) {
+        let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
+        controller.shipperID = AppDelegate.shared.shipperIdForChat
+        controller.shipperName = AppDelegate.shared.shipperNameForChat
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
     @objc func BtnNotificationAction(sender:UIButton) {
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: NotificationViewController.storyboardID) as! NotificationViewController
         controller.hidesBottomBarWhenPushed = true

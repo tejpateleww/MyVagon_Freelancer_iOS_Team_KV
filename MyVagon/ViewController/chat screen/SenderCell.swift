@@ -10,6 +10,8 @@ import UIKit
 class SenderCell: UITableViewCell {
 
     @IBOutlet weak var lblMessage: UILabel!
+    @IBOutlet weak var lblDate: themeLabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

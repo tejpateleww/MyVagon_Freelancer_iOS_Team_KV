@@ -175,3 +175,29 @@ class RateReviewReqModel : Encodable {
         case review = "review"
     }
 }
+class chatMessageReqModel : Encodable {
+    var driver_id,shipper_id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+        case shipper_id = "shipper_id"
+    }
+}
+
+class chatListReqModel : Encodable {
+    var driver_id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+    }
+}
+
+//class sendMessageReqModel : RequestModel {
+//    var sender_id : String = ""
+//    var receiver_id : String = ""
+//    var message : String = ""
+//    var sender_name : String = ""
+//    var receiver_name : String = ""
+//    var created_at : String = ""
+//}
+
