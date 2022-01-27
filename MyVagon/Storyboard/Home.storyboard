@@ -3596,6 +3596,7 @@
                     <navigationItem key="navigationItem" id="yiN-SO-wg5"/>
                     <connections>
                         <outlet property="TextFieldSearch" destination="Xcp-PI-2c6" id="fLY-iT-nPG"/>
+                        <outlet property="btnSort" destination="dha-0l-MiJ" id="Ndb-SK-UK3"/>
                         <outlet property="calender" destination="lnE-vl-xfd" id="JNf-Fw-MEB"/>
                         <outlet property="collectionOfHistory" destination="Dmh-11-Ta7" id="Nyk-ka-8eH"/>
                         <outlet property="conHeightOfCalender" destination="Ke9-JU-mJR" id="rfc-Tx-Xdp"/>
@@ -6386,14 +6387,14 @@
                                                                                 <state key="normal" title="Cancel Bid Request"/>
                                                                                 <userDefinedRuntimeAttributes>
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                        <color key="value" name="ThemePurpleColor"/>
+                                                                                        <color key="value" red="0.84313725490196079" green="0.40784313725490196" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                         <real key="value" value="1"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="IsRegualar" value="YES"/>
                                                                                     <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
-                                                                                        <color key="value" name="ThemePurpleColor"/>
+                                                                                        <color key="value" red="0.84313725490196079" green="0.40784313725490196" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                                 <connections>

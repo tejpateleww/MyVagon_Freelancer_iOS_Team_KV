@@ -391,6 +391,9 @@
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_Search"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="4iS-W0-66p" id="EWy-89-Osp"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -634,6 +637,7 @@
                     </view>
                     <connections>
                         <outlet property="tblChatList" destination="jxZ-xO-d8d" id="cdH-GY-7db"/>
+                        <outlet property="txtSearch" destination="WbF-qn-2z1" id="lJu-kq-R2o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dqt-tr-PhI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

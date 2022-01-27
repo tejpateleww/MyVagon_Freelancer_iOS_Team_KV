@@ -57,6 +57,9 @@ class SingletonClass: NSObject
     
     var TimerForUpdateLocation = Timer()
     
+    var isArriveAtPickUpLocation : Bool = false
+    var isArriveAtDropOffLocation : Bool = false
+    
     var CurrentTripStart: Bool = false {
         didSet {
             if CurrentTripStart {
@@ -81,13 +84,30 @@ class SingletonClass: NSObject
                                     if pickupArray?.count != 0   {
                                         if pickupArray?.count == 1 {
                                             if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
-                                                vc.btnStartTrip?.setTitle(TripStatus.Arrivedatpickuplocation.Name, for: .normal)
+                                                //Tej's new changes
+                                                if(!self.isArriveAtPickUpLocation){
+                                                    NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
+                                                    vc.btnStartTrip?.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
+                                                }
+                                                self.isArriveAtPickUpLocation = true
+                                                //Tej's new changes Comp
+                                                
                                             } else {
-                                                vc.btnStartTrip?.setTitle(TripStatus.ArrivedatDroplocation.Name, for: .normal)
+                                                if(!self.isArriveAtDropOffLocation){
+                                                    NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
+                                                    vc.btnStartTrip?.setTitle(TripStatus.DropOffComplete.Name, for: .normal)
+                                                }
+                                                self.isArriveAtDropOffLocation = true
+                                                
                                             }
                                         }  else {
-                                            vc.btnStartTrip?.setTitle(TripStatus.ArrivedatpickuplocationDropOff.Name, for: .normal)
-                                           
+                                            //Tej's new changes
+                                            if(!self.isArriveAtPickUpLocation){
+                                                NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
+                                            }
+                                            self.isArriveAtPickUpLocation = true
+                                            //Tej's new changes Comp
+                                            vc.btnStartTrip?.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
                                         }
                                     }
                                     if vc.TruckMarker != nil {

@@ -13,11 +13,12 @@ class NavigationTitleView: UIView {
     @IBOutlet weak var lblCount: themeLabel!
     @IBOutlet weak var UserImageView: UIImageView!
     @IBOutlet weak var ImageViewMainView: UIView!
+    @IBOutlet weak var vWCount: ViewCustomClass!
     
    
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.vWCount.isHidden = true
     }
      var nibName: String = "NavigationTitleView"
     var contentView:UIView?

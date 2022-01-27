@@ -89,16 +89,10 @@ class BidRequestViewController: BaseViewController {
         
         if isForBook {
             let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ReasonForCancelBookViewController.storyboardID) as! ReasonForCancelBookViewController
-                        controller.hidesBottomBarWhenPushed = true
-            controller.arrayForSort = [  SortModel(Title: "Rate too low", IsSelect: true),
-                                         SortModel(Title: "Pickup window", IsSelect: false),
-                                         SortModel(Title: "Delivery window", IsSelect: false),
-                                         SortModel(Title: "Equipment issue", IsSelect: false),
-                                         SortModel(Title: "Delayed by previous receiver", IsSelect: false),
-                                         SortModel(Title: "Other", IsSelect: false)]
+            controller.hidesBottomBarWhenPushed = true
             controller.remainingsMinute = RemainingsMinute
             let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((6 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
-                    self.present(sheetController, animated: true, completion: nil)
+            self.present(sheetController, animated: true, completion: nil)
             
             
 //
@@ -351,9 +345,6 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             cell.btnSortClosour = {
                 let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
                 controller.hidesBottomBarWhenPushed = true
-                controller.arrayForSort = [  SortModel(Title: "Price : Low to high", IsSelect: true),
-                                             SortModel(Title: "Price : High to Low", IsSelect: false),
-                                             SortModel(Title: "Min Deadheading", IsSelect: false)]
                 let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((3 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
                 self.present(sheetController, animated: true, completion: nil)
             }

@@ -89,6 +89,8 @@ class SchedualLoadDetailsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.addNotiObserver()
+        
         self.lblLoadStatusDesc.isHidden = true
         vWLoadStatus.layer.cornerRadius = vWLoadStatus.frame.height / 2
         vWLoadStatus.clipsToBounds = true
@@ -143,6 +145,15 @@ class SchedualLoadDetailsViewController: BaseViewController {
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
     
+    func addNotiObserver(){
+        NotificationCenter.default.removeObserver(self, name: .arriveAtPickUpLocation, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.arriveAtPickUpLocationAPICall), name: .arriveAtPickUpLocation, object: nil)
+    }
+    
+    @objc func arriveAtPickUpLocationAPICall() {
+        self.CallAPIForArriveAtLocation()
+    }
+    
     func getDateFromString(strDate:String) -> Date {
         let dateString = strDate
         let dateFormatter = DateFormatter()
@@ -179,6 +190,8 @@ class SchedualLoadDetailsViewController: BaseViewController {
                     self.ChangeStepIndicatorView(TotalSteps: data?.trucks?.locations?.count ?? 2, CurrentStep: i)
                 }
                 break
+            }else{
+                SingletonClass.sharedInstance.CurrentTripSecondLocation = arrLocation?[i]
             }
         }
         
@@ -242,18 +255,19 @@ class SchedualLoadDetailsViewController: BaseViewController {
         self.btnViewPOD.superview?.isHidden = true
         self.btnCancelBidRequest.superview?.isHidden = true
         
-        self.btnStartTrip.superview?.isHidden = true
+        //self.btnStartTrip.superview?.isHidden = true
         MapViewForLocation.isUserInteractionEnabled = false
         
         switch data?.status {
             
         case MyLoadesStatus.pending.Name:
+            self.btnStartTrip.superview?.isHidden = true
             self.btnCancelBidRequest.superview?.isHidden = false
             self.btnCancelBidRequest.setTitle(ReqCancelTitle.cencelBid.Name, for: .normal)
             self.lblLoadStatusDesc.isHidden = false
             self.lblLoadStatusDesc.text = BidStatusLabel.bidConfirmationPending.Name
             self.lblBookingStatus.text =  MyLoadesStatus.pending.Name.capitalized
-            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)
+            self.viewStatus.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.4078431373, blue: 0.4039215686, alpha: 1)
             
         case MyLoadesStatus.scheduled.Name:
             self.btnCancelBidRequest.superview?.isHidden = false
@@ -276,21 +290,29 @@ class SchedualLoadDetailsViewController: BaseViewController {
             self.lblDaysToGo.layoutSubviews()
             
             if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.arrivedAt ?? "") == "" {
+                
+                if(self.LoadDetails?.trucks?.locations?.last?.id == SingletonClass.sharedInstance.CurrentTripSecondLocation?.id){
+                    self.btnStartTrip.setTitle(TripStatus.DropOffComplete.Name, for: .normal)
+                }else{
+                    self.btnStartTrip.setTitle(TripStatus.ClicktoStartTrip.Name, for: .normal)
+                }
+                
                 self.lblDaysToGo.text = "Enroute to \(SingletonClass.sharedInstance.CurrentTripSecondLocation?.companyName ?? "")"
                 self.btnStartTrip.superview?.isHidden = false
-                self.btnStartTrip.setTitle(TripStatus.ClicktoStartTrip.Name, for: .normal)
+                
+                
             } else if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.StartLoading ?? "") == "" {
                 var pickupArray = SingletonClass.sharedInstance.CurrentTripSecondLocation?.products?.compactMap({$0.isPickup})
                 pickupArray = pickupArray?.uniqued()
                 if pickupArray?.count != 0   {
                     if pickupArray?.count == 1 {
                         if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
-                            self.btnStartTrip.setTitle(TripStatus.StartLoading.Name, for: .normal)
+                            self.btnStartTrip?.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
                         } else {
-                            self.btnStartTrip.setTitle(TripStatus.StartOffLoad.Name, for: .normal)
+                            self.btnStartTrip?.setTitle(TripStatus.DropOffComplete.Name, for: .normal)
                         }
                     }  else {
-                        self.btnStartTrip.setTitle(TripStatus.StartLoadingOffLoading.Name, for: .normal)
+                        self.btnStartTrip.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
                         
                     }
                 }
@@ -320,7 +342,14 @@ class SchedualLoadDetailsViewController: BaseViewController {
                 
                 self.btnStartTrip.superview?.isHidden = false
             } else {
-               
+                
+                if self.LoadDetails?.trucks?.locations?.last?.id == SingletonClass.sharedInstance.CurrentTripSecondLocation?.id {
+                    self.btnStartTrip.setTitle(TripStatus.CompleteTrip.Name, for: .normal)
+                } else {
+                    self.btnStartTrip.setTitle(TripStatus.StartJourney.Name, for: .normal)
+                }
+                
+                self.btnStartTrip.superview?.isHidden = false
             }
             self.lblBookingStatus.text =  MyLoadesStatus.inprocess.Name.capitalized
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.1764705882, green: 0.3882352941, blue: 0.8078431373, alpha: 1)
@@ -388,7 +417,6 @@ class SchedualLoadDetailsViewController: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
-    
     @IBAction func btnNotesClick(_ sender: themeButton) {
         let data = LoadDetails
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewNotesPopupVC.storyboardID) as! ViewNotesPopupVC
@@ -429,10 +457,15 @@ class SchedualLoadDetailsViewController: BaseViewController {
                 } else if sender.titleLabel?.text == TripStatus.StartLoading.Name || sender.titleLabel?.text == TripStatus.StartLoadingOffLoading.Name {
                     SingletonClass.sharedInstance.emitForCurrentLocation()
                     CallAPIForStartLoading()
-                } else if sender.titleLabel?.text == TripStatus.StartJourney.Name {
+                }
+//                else if sender.titleLabel?.text == TripStatus.StartJourney.Name {
+//                    CallAPIForStartJourney()
+//                }
+                else if sender.titleLabel?.text == TripStatus.PickUpComplete.Name{
                     CallAPIForStartJourney()
-                } else if sender.titleLabel?.text == TripStatus.ArrivedatDroplocation.Name {
-                    CallAPIForArriveAtLocation()
+                }
+                else if sender.titleLabel?.text == TripStatus.DropOffComplete.Name {
+                    CallAPIForStartJourney()
                 }  else if sender.titleLabel?.text == TripStatus.CompleteTrip.Name {
                     CallAPIForCompleteTrip()
                 } else if sender.titleLabel?.text == TripStatus.StartOffLoad.Name {
@@ -445,7 +478,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
     }
     
     @IBAction func btnCancelBidRequestAction(_ sender: Any) {
-        if(self.LoadDetails?.status == MyLoadesStatus.canceled.Name){
+        if(self.LoadDetails?.status == MyLoadesStatus.pending.Name){
             Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: "Are you sure you want to cancel this bid request?", buttons: ["No", "Yes"]) { index in
                 if(index == 1){
                     self.CallAPIForCancelBid()
@@ -807,6 +840,8 @@ enum TripStatus {
     case RateShipper
     case StartLoadingOffLoading
     case ArrivedatpickuplocationDropOff
+    case PickUpComplete
+    case DropOffComplete
     
     var Name:String {
         switch self {
@@ -832,6 +867,10 @@ enum TripStatus {
             return "Start Loading/Offloading"
         case .ArrivedatpickuplocationDropOff:
             return "Arrived at pickup/dropoff location"
+        case .PickUpComplete:
+            return "Pick up complete"
+        case .DropOffComplete:
+            return "Drop off complete"
         }
     }
 }

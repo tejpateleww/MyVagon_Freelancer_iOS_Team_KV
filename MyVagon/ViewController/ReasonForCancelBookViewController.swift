@@ -14,9 +14,8 @@ class ReasonForCancelBookViewController:  BaseViewController {
     // ----------------------------------------------------
    
     var remainingsMinute : Int?
-    
-    var arrayForSort : [SortModel] = []
-    
+    var arrSordData : [String] = ["Deadheading","Price (Lowest First)","Price (Highest First)","Total Distance","Rating"]
+    var selectedIndex:Int = -1
     var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
@@ -41,8 +40,9 @@ class ReasonForCancelBookViewController:  BaseViewController {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
         self.lblRemainingMinutes.text = "17 minutes remaining"// "\(remainingsMinute ?? 0) minutes remaining"
-            
-            self.btnDecline.setTitle("Decline", for: .normal)
+        
+        self.btnDecline.setTitle("Decline", for: .normal)
+        self.tblSort.reloadData()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -83,24 +83,20 @@ class ReasonForCancelBookViewController:  BaseViewController {
 }
 extension ReasonForCancelBookViewController : UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayForSort.count
+        return arrSordData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tblSort.dequeueReusableCell(withIdentifier: "SortPopupCell", for: indexPath) as! SortPopupCell
-        cell.btnSelected.setImage(UIImage(named: "ic_radio_unselected"), for: .normal)
-        cell.btnSelected.setImage((arrayForSort[indexPath.row].isSelect == true) ? UIImage(named: "ic_radio_selected") : UIImage(named: "ic_radio_unselected"), for: .normal)
-        cell.btnSelected.setTitle("", for: .normal)
-        cell.lblName.text = arrayForSort[indexPath.row].title
+        
+        cell.btnSelected.setImage((selectedIndex == indexPath.row) ? UIImage(named: "ic_radio_selected") : UIImage(named: "ic_radio_unselected"), for: .normal)
+        cell.lblName.text = arrSordData[indexPath.row]
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let _ = arrayForSort.map({$0.isSelect = false})
-        arrayForSort[indexPath.row].isSelect = true
-        tblSort.reloadData()
+        self.selectedIndex = indexPath.row
+        self.tblSort.reloadData()
     }
-    
-    
 }

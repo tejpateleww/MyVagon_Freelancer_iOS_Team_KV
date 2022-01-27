@@ -39,16 +39,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "203DA0AE-B946-4DE5-A710-5DA300DA779A"
+            uuid = "A4CA7B06-9926-4F75-AF2C-F37822809AB7"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyVagon/AppDelegate/AppDelegate+PushNotification.swift"
+            filePath = "MyVagon/ViewController/Load Details/SchedualLoadDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "messaging(_:didRefreshRegistrationToken:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "SetValue()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ECBFF775-12B7-430B-901E-5FE0E7F45398"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MyVagon/ViewController/Load Details/SchedualLoadDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "arriveAtPickUpLocationAPICall()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

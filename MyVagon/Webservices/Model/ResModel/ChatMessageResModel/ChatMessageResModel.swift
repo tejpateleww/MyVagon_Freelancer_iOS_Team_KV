@@ -140,6 +140,7 @@ struct ChatUserList: Codable {
     let createdAt: String
     let updatedAt: String
     let message: String
+    let messageTime: String
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -174,6 +175,8 @@ struct ChatUserList: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case message = "message"
+        case messageTime = "message_time"
+        
     }
 
     init(from decoder: Decoder) throws {
@@ -210,6 +213,7 @@ struct ChatUserList: Codable {
         createdAt = try values.decode(String.self, forKey: .createdAt)
         updatedAt = try values.decode(String.self, forKey: .updatedAt)
         message = try values.decode(String.self, forKey: .message)
+        messageTime = try values.decode(String.self, forKey: .messageTime)
     }
 
 }

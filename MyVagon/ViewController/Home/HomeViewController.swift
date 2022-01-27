@@ -9,6 +9,11 @@ import UIKit
 import FSCalendar
 import FittedSheets
 import CoreLocation
+
+
+
+
+
 class HomeViewController: BaseViewController, UITextFieldDelegate {
 
     // ----------------------------------------------------
@@ -40,6 +45,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var conHeightOfCalender: NSLayoutConstraint!
     @IBOutlet weak var calender: ThemeCalender!
     @IBOutlet weak var collectionOfHistory: UICollectionView!
+    @IBOutlet weak var btnSort: themeButton!
     
     @IBOutlet weak var TextFieldSearch: themeTextfield!
     
@@ -225,15 +231,9 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func btnSortClick(_ sender: themeButton) {
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
         controller.hidesBottomBarWhenPushed = true
-        controller.arrayForSort = [  SortModel(Title: "Deadheading", IsSelect: false),
-                                     SortModel(Title: "Price (Lowest First)", IsSelect: false),
-                                     SortModel(Title: "Price (Highest First)", IsSelect: false),
-                                     SortModel(Title: "Total Distance", IsSelect: false),
-                                     SortModel(Title: "Rating", IsSelect: false)]
+        controller.delegate = self
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((5 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
         self.present(sheetController, animated: true, completion: nil)
-        
-        
     }
     
     // ----------------------------------------------------
@@ -288,6 +288,14 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     }
     
 }
+
+//MARK:- CancelRideViewDelgate
+extension HomeViewController : HomeSorfDelgate{
+    func onSorfClick(strSort: String) {
+        print(strSort)
+    }
+}
+
 extension HomeViewController: FSCalendarDelegate, FSCalendarDataSource{
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         

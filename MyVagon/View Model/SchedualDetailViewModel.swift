@@ -111,8 +111,12 @@ class SchedualDetailViewModel {
     }
     
     func CompleteTrip(ReqModel:CompleteTripReqModel) {
+        Utilities.ShowLoaderButtonInButton(Button: schedualLoadDetailsViewController?.btnStartTrip ?? themeButton(), vc: schedualLoadDetailsViewController ?? UIViewController())
         WebServiceSubClass.CompleteTrip(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.HideLoaderButtonInButton(Button: self.schedualLoadDetailsViewController?.btnStartTrip ?? themeButton(), vc: self.schedualLoadDetailsViewController ?? UIViewController())
             if status {
+                SingletonClass.sharedInstance.isArriveAtPickUpLocation = false
+                SingletonClass.sharedInstance.isArriveAtDropOffLocation = false
                 SingletonClass.sharedInstance.CurrentTripStart = false
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
                 self.schedualLoadDetailsViewController?.LoadDetails = response?.data

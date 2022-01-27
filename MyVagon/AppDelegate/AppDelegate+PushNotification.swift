@@ -88,7 +88,6 @@ extension AppDelegate{
             AppDelegate.pushNotificationObj = pushObj
             AppDelegate.pushNotificationType = pushObj.type
             
-            
             if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
                 AppDelegate.shared.Logout()
                 return
@@ -131,6 +130,7 @@ extension AppDelegate{
 
 extension Notification.Name {
     static let sessionExpire = NSNotification.Name("sessionExpire")
+    static let arriveAtPickUpLocation = NSNotification.Name("arriveAtPickUpLocation")
 }
 
 enum NotificationTypes : String {
