@@ -32,6 +32,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
     var isNeedToReload = false
     var homeViewModel = HomeViewModel()
     var arrStatus = ["All","Pending","Scheduled","In-Progress","Past"]
+    var sortBy : String = ""
   
     var selectedIndex = 1
     
@@ -259,6 +260,19 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         ReqModelForGetShipment.min_weight_unit = SingletonClass.sharedInstance.searchReqModel.min_weight_unit
         ReqModelForGetShipment.max_weight_unit = SingletonClass.sharedInstance.searchReqModel.max_weight_unit
         
+        //Sorting logic
+        if(self.sortBy == "Deadheading"){
+            
+        }else if(self.sortBy == "Price (Lowest First)"){
+            ReqModelForGetShipment.price_sort = "asc"
+        }else if(self.sortBy == "Price (Highest First)"){
+            ReqModelForGetShipment.price_sort = "desc"
+        }else if(self.sortBy == "Total Distance"){
+            ReqModelForGetShipment.total_distance_sort = "desc"
+        }else if(self.sortBy == "Rating"){
+            ReqModelForGetShipment.rating_sort = "desc"
+        }
+        
         self.homeViewModel.GetShipmentList(ReqModel: ReqModelForGetShipment)
     }
     
@@ -292,7 +306,11 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
 //MARK:- CancelRideViewDelgate
 extension HomeViewController : HomeSorfDelgate{
     func onSorfClick(strSort: String) {
+        self.sortBy = strSort
         print(strSort)
+        
+        self.PageNumber = 1
+        self.CallWebSerive()
     }
 }
 
@@ -331,8 +349,8 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
         }else{
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No loads found"
-            noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
-            noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+            noDataLabel.font = CustomFont.PoppinsBold.returnFont(14)
+            noDataLabel.textColor     = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             noDataLabel.textAlignment = .center
             tableView.backgroundView  = noDataLabel
             tableView.separatorStyle  = .none
@@ -388,9 +406,6 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
             return ""
         }
         return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
-        
-        
-        
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

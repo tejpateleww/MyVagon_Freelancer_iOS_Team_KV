@@ -356,20 +356,20 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                                 btnViewMatchFound.backgroundColor = .clear
                                 btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
 
-//                                if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
-//                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), for: .normal)
-//
-//                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1).cgColor
-//                                    btnViewMatchFound.backgroundColor = .clear
-//                                    btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
-//                                } else {
-//                                    let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
-//                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
-//
-//                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
-//                                    btnViewMatchFound.backgroundColor = .clear
-//                                    btnViewMatchFound.setTitle("\(TimeToCancel / 60) minutes remaining to cancel", for: .normal)
-//                                }
+                                if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
+                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), for: .normal)
+
+                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1).cgColor
+                                    btnViewMatchFound.backgroundColor = .clear
+                                    btnViewMatchFound.setTitle("\(totalCount) Matches Load Found", for: .normal)
+                                } else {
+                                    let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
+                                    btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
+
+                                    btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
+                                    btnViewMatchFound.backgroundColor = .clear
+                                    btnViewMatchFound.setTitle("\(TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+                                }
                             } else {
                                 btnViewMatchFound.backgroundColor = #colorLiteral(red: 0.8235294118, green: 0.8235294118, blue: 0.8509803922, alpha: 1)
                                 btnViewMatchFound.setTitleColor(hexStringToUIColor(hex: "#FFFFFF"), for: .normal)

@@ -222,8 +222,8 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
             {
                 let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
                 noDataLabel.text          = "No loads found"
-                noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
-                noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+                noDataLabel.font = CustomFont.PoppinsBold.returnFont(14)
+                noDataLabel.textColor     = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 noDataLabel.textAlignment = .center
                 tableView.backgroundView  = noDataLabel
                 tableView.separatorStyle  = .none
@@ -395,17 +395,28 @@ extension ScheduleViewController : UITableViewDataSource , UITableViewDelegate {
                
             }
         }
-//        if (indexPath.row % 2) == 0 {
-//            print("View Match Clicked")
-//        }
-////        cell.btnViewMatchFoundClick = { (selected) in
-////            if (selected.row % 2) == 0 {
-////                print("View Match Clicked")
-////            }
-////
-////        }
         
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if !isLoading {
+            if (arrMyLoadesData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) {
+                return true
+            }else{
+                return false
+            }
+        }else{
+            return false
+        }
+
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            print("delete posted truck")
+        }
+    }
+
 }
 
 extension ScheduleViewController : UICollectionViewDataSource , UICollectionViewDelegate , UICollectionViewDelegateFlowLayout{

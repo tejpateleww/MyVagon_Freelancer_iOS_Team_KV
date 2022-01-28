@@ -22,6 +22,9 @@ class ShipmentListReqModel : Encodable {
     var min_weight_unit : String?
     var max_weight_unit : String?
     
+    var price_sort : String?
+    var total_distance_sort : String?
+    var rating_sort : String?
 
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
@@ -38,6 +41,10 @@ class ShipmentListReqModel : Encodable {
         case max_weight = "max_weight"
         case min_weight_unit = "min_weight_unit"
         case max_weight_unit = "max_weight_unit"
+        
+        case price_sort = "price_sort"
+        case total_distance_sort = "total_distance_sort"
+        case rating_sort = "rating_sort"
         
         
     }
@@ -185,6 +192,14 @@ class chatMessageReqModel : Encodable {
 }
 
 class chatListReqModel : Encodable {
+    var driver_id: String?
+
+    enum CodingKeys: String, CodingKey {
+        case driver_id = "driver_id"
+    }
+}
+
+class EarningReqModel : Encodable {
     var driver_id: String?
 
     enum CodingKeys: String, CodingKey {

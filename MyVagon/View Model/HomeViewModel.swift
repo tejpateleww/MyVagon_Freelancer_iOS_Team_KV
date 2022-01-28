@@ -71,10 +71,8 @@ class HomeViewModel {
                 }
                 self.homeViewController?.isLoading = false
                 self.homeViewController?.tblLocations.tableFooterView?.isHidden = true
-                
-                
-                
                 self.homeViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
+                self.homeViewController?.tblLocations.reloadData()
                 
                // self.homeViewController?.tblLocations.reloadData()
             } else {

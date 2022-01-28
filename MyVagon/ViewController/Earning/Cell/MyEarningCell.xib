@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="241" id="KGk-i7-Jjw" customClass="MyEarningCell" customModule="MyVagon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="445" height="241"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="445" height="241"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Pz-IZ-STO">
+                        <rect key="frame" x="10" y="5" width="425" height="231"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" ambiguous="YES" text="Truck with trailer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXA-wL-38j" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$500" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2E-sp-hI3" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="374" y="10" width="41" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSemibold" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="#567898" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jk-Vh-qDU" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="10" y="36" width="71" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="14"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="5 Ton . 500 miles" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8n-xO-fvq" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="86" y="36" width="329" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1.2 mile Deadhead : Truck With Trailer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p0u-ix-3Lg" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="10" y="61.5" width="405" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" red="0.60392156860000001" green="0.60392156860000001" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="P8U-DR-Er9">
+                                <rect key="frame" x="10" y="101" width="405" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="WkU-Dv-8ju"/>
+                                </constraints>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p0u-ix-3Lg" firstAttribute="trailing" secondItem="h8n-xO-fvq" secondAttribute="trailing" id="0rP-JH-vN3"/>
+                            <constraint firstItem="h8n-xO-fvq" firstAttribute="leading" secondItem="7jk-Vh-qDU" secondAttribute="trailing" constant="5" id="0ta-Fg-CMc"/>
+                            <constraint firstItem="p0u-ix-3Lg" firstAttribute="leading" secondItem="7jk-Vh-qDU" secondAttribute="leading" id="B4s-gL-WOt"/>
+                            <constraint firstItem="7jk-Vh-qDU" firstAttribute="centerY" secondItem="h8n-xO-fvq" secondAttribute="centerY" id="CFi-9k-RsS"/>
+                            <constraint firstItem="7jk-Vh-qDU" firstAttribute="top" secondItem="fXA-wL-38j" secondAttribute="bottom" constant="5" id="Edt-tl-pgc"/>
+                            <constraint firstItem="fXA-wL-38j" firstAttribute="top" secondItem="6Pz-IZ-STO" secondAttribute="top" constant="10" id="If2-sL-UKr"/>
+                            <constraint firstItem="P8U-DR-Er9" firstAttribute="trailing" secondItem="p0u-ix-3Lg" secondAttribute="trailing" id="L85-Lp-fWa"/>
+                            <constraint firstItem="p0u-ix-3Lg" firstAttribute="top" secondItem="7jk-Vh-qDU" secondAttribute="bottom" constant="5" id="LL8-R1-cjQ"/>
+                            <constraint firstItem="h8n-xO-fvq" firstAttribute="trailing" secondItem="Q2E-sp-hI3" secondAttribute="trailing" id="SmM-aW-CLO"/>
+                            <constraint firstAttribute="bottom" secondItem="P8U-DR-Er9" secondAttribute="bottom" constant="10" id="XBx-J7-wZg"/>
+                            <constraint firstItem="P8U-DR-Er9" firstAttribute="top" secondItem="p0u-ix-3Lg" secondAttribute="bottom" constant="5" id="Y1v-O7-3tl"/>
+                            <constraint firstAttribute="trailing" secondItem="Q2E-sp-hI3" secondAttribute="trailing" constant="10" id="Yi4-n0-XEv"/>
+                            <constraint firstItem="P8U-DR-Er9" firstAttribute="leading" secondItem="p0u-ix-3Lg" secondAttribute="leading" id="gj6-NB-ZBv"/>
+                            <constraint firstItem="Q2E-sp-hI3" firstAttribute="leading" secondItem="fXA-wL-38j" secondAttribute="trailing" constant="10" id="loD-Pz-adv"/>
+                            <constraint firstItem="7jk-Vh-qDU" firstAttribute="leading" secondItem="fXA-wL-38j" secondAttribute="leading" id="om1-Si-P34"/>
+                            <constraint firstItem="fXA-wL-38j" firstAttribute="leading" secondItem="6Pz-IZ-STO" secondAttribute="leading" constant="10" id="pbe-e8-p97"/>
+                            <constraint firstItem="Q2E-sp-hI3" firstAttribute="top" secondItem="fXA-wL-38j" secondAttribute="top" id="tKw-gR-OtY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="6Pz-IZ-STO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6uw-1C-Oef"/>
+                    <constraint firstAttribute="trailing" secondItem="6Pz-IZ-STO" secondAttribute="trailing" constant="10" id="Ai0-mW-frD"/>
+                    <constraint firstAttribute="bottom" secondItem="6Pz-IZ-STO" secondAttribute="bottom" constant="5" id="TYg-RR-SSr"/>
+                    <constraint firstItem="6Pz-IZ-STO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="g6U-7s-9gc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblAmount" destination="Q2E-sp-hI3" id="bDm-JU-vCX"/>
+                <outlet property="lblCompanyNAme" destination="fXA-wL-38j" id="Zod-xn-kWT"/>
+                <outlet property="lblDeadhead" destination="p0u-ix-3Lg" id="3VU-xT-KoR"/>
+                <outlet property="lblTon" destination="h8n-xO-fvq" id="BvW-G7-uvc"/>
+                <outlet property="lblTripID" destination="7jk-Vh-qDU" id="OGI-T6-Ebw"/>
+                <outlet property="tblEarningLocation" destination="P8U-DR-Er9" id="aRX-Fh-9a2"/>
+                <outlet property="tblEarningLocationHeight" destination="WkU-Dv-8ju" id="lSZ-OZ-3UA"/>
+                <outlet property="viewContents" destination="6Pz-IZ-STO" id="PF9-3V-a2k"/>
+            </connections>
+            <point key="canvasLocation" x="222.46376811594206" y="196.54017857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

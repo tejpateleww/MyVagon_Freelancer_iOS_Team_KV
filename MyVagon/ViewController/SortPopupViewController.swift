@@ -29,21 +29,18 @@ class SortPopupViewController: BaseViewController {
     //MARK: - Life-cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.prepareDate()
-
     }
+
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.hideTabBar()
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
-      
         if(keyPath == "contentSize"){
             if let newvalue = change?[.newKey]{
                 let newsize  = newvalue as! CGSize
                 self.tblSortHeight.constant = newsize.height
-                
             }
         }
     }
@@ -99,7 +96,6 @@ extension SortPopupViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.selectedIndex = indexPath.row
         self.tblSort.reloadData()
     }

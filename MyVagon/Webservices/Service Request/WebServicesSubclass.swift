@@ -328,5 +328,12 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Earning
+    class func earningList(reqModel: EarningReqModel, completion: @escaping (Bool,String,EarningResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.transactionHistory.rawValue, requestModel: reqModel, responseModel: EarningResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
 }
 

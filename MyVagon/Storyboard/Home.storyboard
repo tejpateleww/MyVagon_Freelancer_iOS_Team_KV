@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
+                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>

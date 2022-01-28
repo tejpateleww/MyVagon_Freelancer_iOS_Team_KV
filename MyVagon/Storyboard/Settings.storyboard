@@ -670,6 +670,40 @@
             </objects>
             <point key="canvasLocation" x="3959" y="73"/>
         </scene>
+        <!--My EarningVC-->
+        <scene sceneID="T14-4N-vab">
+            <objects>
+                <viewController storyboardIdentifier="MyEarningVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GHP-K6-trz" customClass="MyEarningVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FHn-r4-NA8">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bd5-Xn-e7X">
+                                <rect key="frame" x="0.0" y="49" width="414" height="813"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="GHP-K6-trz" id="uYs-CX-sq3"/>
+                                    <outlet property="delegate" destination="GHP-K6-trz" id="zY4-T3-uYZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="z65-Nq-ocO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bd5-Xn-e7X" firstAttribute="top" secondItem="z65-Nq-ocO" secondAttribute="top" constant="5" id="2Cv-8K-cXz"/>
+                            <constraint firstItem="Bd5-Xn-e7X" firstAttribute="leading" secondItem="z65-Nq-ocO" secondAttribute="leading" id="6P7-kX-rKu"/>
+                            <constraint firstItem="z65-Nq-ocO" firstAttribute="bottom" secondItem="Bd5-Xn-e7X" secondAttribute="bottom" id="Blu-Rw-4qD"/>
+                            <constraint firstItem="z65-Nq-ocO" firstAttribute="trailing" secondItem="Bd5-Xn-e7X" secondAttribute="trailing" id="oP1-PU-BJi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tblEarning" destination="Bd5-Xn-e7X" id="O7y-ou-bOw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uxv-dq-gHy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4648" y="73"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="1lo-De-Wiv">

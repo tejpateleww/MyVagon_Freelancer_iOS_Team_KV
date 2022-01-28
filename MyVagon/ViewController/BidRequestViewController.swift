@@ -162,8 +162,8 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
         }else{
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
             noDataLabel.text          = "No loads found"
-            noDataLabel.font = CustomFont.PoppinsRegular.returnFont(14)
-            noDataLabel.textColor     = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
+            noDataLabel.font = CustomFont.PoppinsBold.returnFont(14)
+            noDataLabel.textColor     = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             noDataLabel.textAlignment = .center
             tableView.backgroundView  = noDataLabel
             tableView.separatorStyle  = .none

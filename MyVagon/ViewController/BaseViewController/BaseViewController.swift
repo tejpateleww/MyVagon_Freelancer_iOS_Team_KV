@@ -82,6 +82,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                     myCustomView.ImageViewMainView.isHidden = false
                     let FullURL = AppDelegate.shared.shipperProfileForChat
                     let url1 = URL.init(string: BaseURLS.ShipperImageURL.rawValue + FullURL)
+                    myCustomView.UserImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
                     myCustomView.UserImageView.sd_setImage(with: url1 , placeholderImage: UIImage(named: "ic_userIcon"))
                     ViewNavTitle.addSubview(myCustomView)
                     self.navigationItem.titleView = ViewNavTitle

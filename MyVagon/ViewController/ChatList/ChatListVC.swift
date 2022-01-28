@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChatListVC: BaseViewController {
 
@@ -73,6 +74,7 @@ extension ChatListVC:UITableViewDelegate,UITableViewDataSource{
         
         let FullURL = (isSearched) ? self.arrFilterData[indexPath.row].profile : self.arrData[indexPath.row].profile
         let url = URL.init(string: BaseURLS.ShipperImageURL.rawValue + FullURL)
+        cell.imgProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imgProfile.sd_setImage(with: url , placeholderImage: UIImage(named: "ic_userIcon"))
         
         cell.selectionStyle = .none

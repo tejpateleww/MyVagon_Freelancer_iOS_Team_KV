@@ -244,6 +244,15 @@
 		88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */; };
 		88B6865F27A14ACE006123B8 /* chatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865E27A14ACE006123B8 /* chatViewModel.swift */; };
 		88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6866027A1553F006123B8 /* ChatSocketClient.swift */; };
+		88C3A9CC27A3C88B0018B9E8 /* NoDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9CA27A3C88B0018B9E8 /* NoDataTableViewCell.swift */; };
+		88C3A9CD27A3C88B0018B9E8 /* NoDataTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A9CB27A3C88B0018B9E8 /* NoDataTableViewCell.xib */; };
+		88C3A9D027A400730018B9E8 /* MyEarningVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9CF27A400730018B9E8 /* MyEarningVC.swift */; };
+		88C3A9D427A405830018B9E8 /* MyEarningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9D227A405830018B9E8 /* MyEarningCell.swift */; };
+		88C3A9D527A405830018B9E8 /* MyEarningCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A9D327A405830018B9E8 /* MyEarningCell.xib */; };
+		88C3A9D927A40B570018B9E8 /* EarningLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9D727A40B570018B9E8 /* EarningLocationCell.swift */; };
+		88C3A9DA27A40B570018B9E8 /* EarningLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A9D827A40B570018B9E8 /* EarningLocationCell.xib */; };
+		88C3A9DD27A413B90018B9E8 /* EarningResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */; };
+		88C3A9DF27A414C40018B9E8 /* EarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A528E92722D795004A292B /* ShimmerCell.swift */; };
 		90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A528EA2722D795004A292B /* ShimmerCell.xib */; };
@@ -575,6 +584,15 @@
 		88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageResModel.swift; sourceTree = "<group>"; };
 		88B6865E27A14ACE006123B8 /* chatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatViewModel.swift; sourceTree = "<group>"; };
 		88B6866027A1553F006123B8 /* ChatSocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSocketClient.swift; sourceTree = "<group>"; };
+		88C3A9CA27A3C88B0018B9E8 /* NoDataTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoDataTableViewCell.swift; sourceTree = "<group>"; };
+		88C3A9CB27A3C88B0018B9E8 /* NoDataTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoDataTableViewCell.xib; sourceTree = "<group>"; };
+		88C3A9CF27A400730018B9E8 /* MyEarningVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEarningVC.swift; sourceTree = "<group>"; };
+		88C3A9D227A405830018B9E8 /* MyEarningCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEarningCell.swift; sourceTree = "<group>"; };
+		88C3A9D327A405830018B9E8 /* MyEarningCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyEarningCell.xib; sourceTree = "<group>"; };
+		88C3A9D727A40B570018B9E8 /* EarningLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningLocationCell.swift; sourceTree = "<group>"; };
+		88C3A9D827A40B570018B9E8 /* EarningLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningLocationCell.xib; sourceTree = "<group>"; };
+		88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningResModel.swift; sourceTree = "<group>"; };
+		88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModel.swift; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		90A528E92722D795004A292B /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
 		90A528EA2722D795004A292B /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
@@ -690,6 +708,7 @@
 		1802692826AFD5D70088B49F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				88C3A9C927A3C88B0018B9E8 /* No Data Found Cell */,
 				18AC078926B826C00048E0A3 /* MessageBarController.swift */,
 				1802692926AFD5D70088B49F /* Constants.swift */,
 				1802692A26AFD5D70088B49F /* Utilities.swift */,
@@ -781,6 +800,7 @@
 				1899F898277B111D0058030B /* RateShipperViewModel.swift */,
 				18CBA6B9278449E800372417 /* NotificationListViewModel.swift */,
 				88B6865E27A14ACE006123B8 /* chatViewModel.swift */,
+				88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -982,6 +1002,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				88C3A9DB27A413A80018B9E8 /* EarningResModel */,
 				88B6865B27A1498E006123B8 /* ChatMessageResModel */,
 				18CBA6AD2784487C00372417 /* NotificationListResModel */,
 				18ECDE112769C24B0097F10F /* BidRequestResModel */,
@@ -1278,6 +1299,51 @@
 			path = ChatMessageResModel;
 			sourceTree = "<group>";
 		};
+		88C3A9C927A3C88B0018B9E8 /* No Data Found Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A9CA27A3C88B0018B9E8 /* NoDataTableViewCell.swift */,
+				88C3A9CB27A3C88B0018B9E8 /* NoDataTableViewCell.xib */,
+			);
+			path = "No Data Found Cell";
+			sourceTree = "<group>";
+		};
+		88C3A9CE27A4005A0018B9E8 /* Earning */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A9D627A40B370018B9E8 /* EarningLocationCell */,
+				88C3A9D127A4056E0018B9E8 /* Cell */,
+				88C3A9CF27A400730018B9E8 /* MyEarningVC.swift */,
+			);
+			path = Earning;
+			sourceTree = "<group>";
+		};
+		88C3A9D127A4056E0018B9E8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A9D227A405830018B9E8 /* MyEarningCell.swift */,
+				88C3A9D327A405830018B9E8 /* MyEarningCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		88C3A9D627A40B370018B9E8 /* EarningLocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A9D727A40B570018B9E8 /* EarningLocationCell.swift */,
+				88C3A9D827A40B570018B9E8 /* EarningLocationCell.xib */,
+			);
+			path = EarningLocationCell;
+			sourceTree = "<group>";
+		};
+		88C3A9DB27A413A80018B9E8 /* EarningResModel */ = {
+			isa = PBXGroup;
+			children = (
+				88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */,
+			);
+			path = EarningResModel;
+			sourceTree = "<group>";
+		};
 		90A528E82722D779004A292B /* Shimmer Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,6 +1489,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				88C3A9CE27A4005A0018B9E8 /* Earning */,
 				18114D162774A67300CD59D1 /* View POD */,
 				1858EA8E26E61A75008E04A7 /* NavigationTitleView */,
 				18A34F3226CD3F0900F252B6 /* FilterPickup */,
@@ -1618,8 +1685,10 @@
 				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
 				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
+				88C3A9DA27A40B570018B9E8 /* EarningLocationCell.xib in Resources */,
 				90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */,
 				18A34F2C26CD1F2D00F252B6 /* PickUpDropOffCell.xib in Resources */,
+				88C3A9CD27A3C88B0018B9E8 /* NoDataTableViewCell.xib in Resources */,
 				186FCE97276C678E0087EFF9 /* LoaderLottie.json in Resources */,
 				A14974C926A1AB440072AF33 /* Poppins-Black.ttf in Resources */,
 				185BA7C82757680200E99FAC /* NoBookingView.xib in Resources */,
@@ -1656,6 +1725,7 @@
 				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
 				8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */,
 				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
+				88C3A9D527A405830018B9E8 /* MyEarningCell.xib in Resources */,
 				18A34F3126CD3E3200F252B6 /* FilterPickup.storyboard in Resources */,
 				A14974C726A1AB440072AF33 /* Poppins-BlackItalic.ttf in Resources */,
 				A14974BA26A1AB440072AF33 /* Poppins-Medium.ttf in Resources */,
@@ -1895,6 +1965,7 @@
 				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
 				1858EA8026E609BB008E04A7 /* chatVC.swift in Sources */,
+				88C3A9DF27A414C40018B9E8 /* EarningViewModel.swift in Sources */,
 				186E382726C14A9500984D40 /* SignUpViewModel.swift in Sources */,
 				18A0BCC226C2824600F605E5 /* EnterOTPViewModel.swift in Sources */,
 				18CC3474270D67E00063E33B /* SearchTruck.swift in Sources */,
@@ -1959,6 +2030,7 @@
 				18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */,
 				18CC347E270D70A40063E33B /* MyLoadesCell.swift in Sources */,
 				18114CF52774410400CD59D1 /* BookingLoadDetailsResModel.swift in Sources */,
+				88C3A9D427A405830018B9E8 /* MyEarningCell.swift in Sources */,
 				18CC3472270D67E00063E33B /* SearchProduct.swift in Sources */,
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
@@ -1967,6 +2039,7 @@
 				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,
 				18CC346F270D67E00063E33B /* SearchTruckTypeCategory.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
+				88C3A9CC27A3C88B0018B9E8 /* NoDataTableViewCell.swift in Sources */,
 				18CC346E270D67E00063E33B /* SearchProductType.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				180EF5DB277035930056F899 /* BidRequestDetailViewController.swift in Sources */,
@@ -2007,10 +2080,12 @@
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				189B233A271D544D00431D94 /* DriverListDatum.swift in Sources */,
 				18F1B7B926CE69350071FC21 /* SettingViewModel.swift in Sources */,
+				88C3A9D027A400730018B9E8 /* MyEarningVC.swift in Sources */,
 				18E1A61F26D4CB5C00FD9A93 /* SettingDatum.swift in Sources */,
 				18F1B7BB26CE695C0071FC21 /* SettingReqModel.swift in Sources */,
 				185BA7FD2757B08900E99FAC /* BidRequestViewController.swift in Sources */,
 				18CC3473270D67E00063E33B /* SearchShipperDetail.swift in Sources */,
+				88C3A9DD27A413B90018B9E8 /* EarningResModel.swift in Sources */,
 				18F496592779BD350069B26C /* StepIndicatorView.swift in Sources */,
 				185BA7E62757843F00E99FAC /* MyLoadsNewTruckTypeCategory.swift in Sources */,
 				18BB0602270C6C2700B9839D /* ProfileEditViewController.swift in Sources */,
@@ -2077,6 +2152,7 @@
 				18CBA6AF2784489000372417 /* NotificationListResModel.swift in Sources */,
 				18A34F2B26CD1F2D00F252B6 /* PickUpDropOffCell.swift in Sources */,
 				18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */,
+				88C3A9D927A40B570018B9E8 /* EarningLocationCell.swift in Sources */,
 				18ECDC7A2766F7DD0097F10F /* CustomView.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				18F15E3B2704201F003A1D16 /* LoginTruckType.swift in Sources */,
