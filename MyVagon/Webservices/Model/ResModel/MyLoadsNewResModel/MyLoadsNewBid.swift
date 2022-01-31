@@ -38,6 +38,7 @@ struct MyLoadsNewBid : Codable {
         let userId : Int?
         let podURL : String?
         let shipperRate : String?
+    let paymentStatus : String?
     
 
         enum CodingKeys: String, CodingKey {
@@ -72,6 +73,7 @@ struct MyLoadsNewBid : Codable {
                 case userId = "user_id"
             case podURL = "pod_image"
             case shipperRate = "rate_shipper"
+            case paymentStatus = "payment_status"
         }
     
         init(from decoder: Decoder) throws {
@@ -107,6 +109,7 @@ struct MyLoadsNewBid : Codable {
                 userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
             podURL = try? values.decodeIfPresent(String.self, forKey: .podURL)
             shipperRate = try? values.decodeIfPresent(String.self, forKey: .shipperRate)
+            paymentStatus = try? values.decodeIfPresent(String.self, forKey: .paymentStatus)
         }
 
 }

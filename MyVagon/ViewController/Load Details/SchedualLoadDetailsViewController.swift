@@ -371,6 +371,9 @@ class SchedualLoadDetailsViewController: BaseViewController {
             self.lblBookingStatus.text =  MyLoadesStatus.completed.Name.capitalized
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             
+            self.viewStatus.backgroundColor = (self.LoadDetails?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+            self.lblBookingStatus.text = (self.LoadDetails?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
+            
         case MyLoadesStatus.canceled.Name.capitalized:
             self.lblBookingStatus.text =  MyLoadesStatus.canceled.Name.capitalized
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)

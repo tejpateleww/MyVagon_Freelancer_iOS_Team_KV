@@ -348,7 +348,7 @@ extension HomeViewController : UITableViewDataSource , UITableViewDelegate {
             tableView.backgroundView = nil
         }else{
             let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-            noDataLabel.text          = "No loads found"
+            noDataLabel.text          = "No Loads Found"
             noDataLabel.font = CustomFont.PoppinsBold.returnFont(14)
             noDataLabel.textColor     = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
             noDataLabel.textAlignment = .center

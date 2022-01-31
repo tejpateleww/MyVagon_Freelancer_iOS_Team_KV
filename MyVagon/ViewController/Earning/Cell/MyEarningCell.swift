@@ -19,7 +19,7 @@ class MyEarningCell: UITableViewCell {
     @IBOutlet weak var tblEarningLocation: UITableView!
     @IBOutlet weak var tblEarningLocationHeight: NSLayoutConstraint!
     
-    var arrLocations : [Location] = []
+    var arrLocations : [Locations] = []
     var tblHeight:((CGFloat)->())?
 
     override func awakeFromNib() {
@@ -79,10 +79,11 @@ extension MyEarningCell : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tblEarningLocation.dequeueReusableCell(withIdentifier: EarningLocationCell.className) as! EarningLocationCell
+        cell.selectionStyle = .none
         
-        cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName ?? ""
-        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt ?? ""
-        cell.lblAddress.text = self.arrLocations[indexPath.row].dropLocation ?? ""
+        cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName
+        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+        cell.lblAddress.text = self.arrLocations[indexPath.row].dropLocation
         
         if(indexPath.row == (self.arrLocations.count - 1)){
             cell.viewLine.isHidden = true

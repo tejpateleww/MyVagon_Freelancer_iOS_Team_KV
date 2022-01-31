@@ -241,6 +241,8 @@
 		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
+		888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */; };
+		888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */; };
 		88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */; };
 		88B6865F27A14ACE006123B8 /* chatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865E27A14ACE006123B8 /* chatViewModel.swift */; };
 		88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6866027A1553F006123B8 /* ChatSocketClient.swift */; };
@@ -581,6 +583,8 @@
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
+		888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningShimmerCell.swift; sourceTree = "<group>"; };
+		888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningShimmerCell.xib; sourceTree = "<group>"; };
 		88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageResModel.swift; sourceTree = "<group>"; };
 		88B6865E27A14ACE006123B8 /* chatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatViewModel.swift; sourceTree = "<group>"; };
 		88B6866027A1553F006123B8 /* ChatSocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSocketClient.swift; sourceTree = "<group>"; };
@@ -708,6 +712,7 @@
 		1802692826AFD5D70088B49F /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				888EEB1827A7E957004F7B87 /* Shimmer cells */,
 				88C3A9C927A3C88B0018B9E8 /* No Data Found Cell */,
 				18AC078926B826C00048E0A3 /* MessageBarController.swift */,
 				1802692926AFD5D70088B49F /* Constants.swift */,
@@ -1291,6 +1296,15 @@
 			path = SearchResModel;
 			sourceTree = "<group>";
 		};
+		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
+			isa = PBXGroup;
+			children = (
+				888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */,
+				888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */,
+			);
+			path = "Shimmer cells";
+			sourceTree = "<group>";
+		};
 		88B6865B27A1498E006123B8 /* ChatMessageResModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1698,6 +1712,7 @@
 				84652F7F274F58330091B40B /* BidRequestCell.xib in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
+				888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */,
 				1808176126E7761E00D1C717 /* PickLoadCell.xib in Resources */,
 				A14974C526A1AB440072AF33 /* Poppins-Regular.ttf in Resources */,
 				1808175D26E76C0900D1C717 /* LoadDetailCell.xib in Resources */,
@@ -1961,6 +1976,7 @@
 				18CC346C270D67E00063E33B /* SearchTruckType.swift in Sources */,
 				1858EA9126E61A75008E04A7 /* NavigationTitleView.swift in Sources */,
 				189FB65F26B96BF000BBD5A0 /* WebServicesSubclass.swift in Sources */,
+				888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */,
 				189FB63126B90F0600BBD5A0 /* MyAccountViewController.swift in Sources */,
 				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,

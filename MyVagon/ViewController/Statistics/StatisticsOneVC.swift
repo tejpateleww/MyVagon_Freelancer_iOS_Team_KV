@@ -26,9 +26,9 @@ class StatisticsOneVC: BaseViewController {
     // MARK: - --------- Variables ---------
     // ----------------------------------------------------
     
-    var ArrayStatistics : [StatisticsData] = [StatisticsData(Number: "$100", Details: "EARNINGS", Color: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)),
+    var ArrayStatistics : [StatisticsData] = [StatisticsData(Number: "\(Currency)100", Details: "EARNINGS", Color: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)),
                                               StatisticsData(Number: "81", Details: "LOADS/WEEK", Color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)),
-                                              StatisticsData(Number: "$25", Details: "/km/week", Color: #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)),
+                                              StatisticsData(Number: "\(Currency)25", Details: "/km/week", Color: #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)),
                                               StatisticsData(Number: "21", Details: "Deadhead", Color: #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1)),
                                               StatisticsData(Number: "45", Details: "EUR carbon saved", Color: #colorLiteral(red: 0.3038921356, green: 0.5736817122, blue: 0.8892048597, alpha: 1))]
     

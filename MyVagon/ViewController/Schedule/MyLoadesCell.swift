@@ -455,6 +455,10 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                 header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                
+                header.viewStatus.backgroundColor = (myloadDetails?.bid?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                header.ViewStatusBidText.text = (myloadDetails?.bid?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
+                
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
                 header.lblBidStatus.isHidden = true
@@ -502,6 +506,10 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                 header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                 header.lblBidStatus.isHidden = true
                 header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                
+                header.viewStatus.backgroundColor = (myloadDetails?.bid?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                header.ViewStatusBidText.text = (myloadDetails?.bid?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
+                
             case MyLoadesStatus.canceled.Name:
                 header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name
                 header.lblBidStatus.isHidden = true
@@ -554,6 +562,10 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                     header.ViewStatusBidText.text =  MyLoadesStatus.completed.Name.capitalized
                     header.lblBidStatus.isHidden = true
                     header.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                    
+                    header.viewStatus.backgroundColor = (myloadDetails?.bid?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+                    header.ViewStatusBidText.text = (myloadDetails?.bid?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
+                    
                 case MyLoadesStatus.canceled.Name:
                     header.ViewStatusBidText.text =  MyLoadesStatus.canceled.Name.capitalized
                     header.lblBidStatus.isHidden = true
