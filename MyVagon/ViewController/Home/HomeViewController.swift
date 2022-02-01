@@ -10,10 +10,6 @@ import FSCalendar
 import FittedSheets
 import CoreLocation
 
-
-
-
-
 class HomeViewController: BaseViewController, UITextFieldDelegate {
 
     // ----------------------------------------------------
@@ -212,6 +208,7 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         
         SocketIOManager.shared.establishConnection()
     }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool   {
         if textField == TextFieldSearch {
             

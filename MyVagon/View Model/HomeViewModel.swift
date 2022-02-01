@@ -89,3 +89,46 @@ extension Sequence where Element: Hashable {
         return filter { set.insert($0).inserted }
     }
 }
+
+
+class NewHomeViewModel {
+    
+    weak var newHomeVC : NewHomeVC? = nil
+    
+    func WebServiceSearchList(ReqModel:ShipmentListReqModel){
+        WebServiceSubClass.GetShipmentList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            DispatchQueue.main.async {
+                self.newHomeVC?.refreshControl.endRefreshing()
+            }
+            self.newHomeVC?.isTblReload = true
+            self.newHomeVC?.isLoading = false
+            self.newHomeVC?.sortBy = ""
+            
+            if status{
+        
+                let tempArrHomeData = response?.data ?? []
+                var datesArray = tempArrHomeData.compactMap({$0.date})
+                datesArray = datesArray.uniqued()
+                print(datesArray)
+                self.newHomeVC?.numberOfSections = datesArray.count
+                var dic = [[SearchLoadsDatum]]() // Your required result
+                datesArray.forEach { (element) in
+                    let NewDictonary =  tempArrHomeData.filter({$0.date == element})
+                    dic.append(NewDictonary)
+                }
+                
+                self.newHomeVC?.arrHomeData = dic
+                
+                self.newHomeVC?.tblSearchData.reloadData()
+                self.newHomeVC?.tblSearchData.layoutIfNeeded()
+                self.newHomeVC?.tblSearchData.beginUpdates()
+                self.newHomeVC?.tblSearchData.endUpdates()
+                
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+}
+
+

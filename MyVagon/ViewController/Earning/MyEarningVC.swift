@@ -116,6 +116,11 @@ extension MyEarningVC : UITableViewDelegate, UITableViewDataSource {
                     self.tblEarning.layoutIfNeeded()
                     self.tblEarning.layoutSubviews()
                 }
+                
+                cell.tblEarningLocation.reloadData()
+                cell.tblEarningLocation.layoutIfNeeded()
+                cell.tblEarningLocation.layoutSubviews()
+                
                 return cell
             }else{
                 let NoDatacell = self.tblEarning.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell

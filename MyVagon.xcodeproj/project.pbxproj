@@ -243,6 +243,11 @@
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */; };
 		888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */; };
+		88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */; };
+		88B65DC527A91A9E00DC9DE8 /* SearchDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */; };
+		88B65DC627A91A9E00DC9DE8 /* SearchDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */; };
+		88B65DCA27A929CE00DC9DE8 /* SearchLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DC827A929CE00DC9DE8 /* SearchLocationCell.swift */; };
+		88B65DCB27A929CE00DC9DE8 /* SearchLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B65DC927A929CE00DC9DE8 /* SearchLocationCell.xib */; };
 		88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */; };
 		88B6865F27A14ACE006123B8 /* chatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6865E27A14ACE006123B8 /* chatViewModel.swift */; };
 		88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6866027A1553F006123B8 /* ChatSocketClient.swift */; };
@@ -585,6 +590,11 @@
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningShimmerCell.swift; sourceTree = "<group>"; };
 		888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningShimmerCell.xib; sourceTree = "<group>"; };
+		88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeVC.swift; sourceTree = "<group>"; };
+		88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataCell.swift; sourceTree = "<group>"; };
+		88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDataCell.xib; sourceTree = "<group>"; };
+		88B65DC827A929CE00DC9DE8 /* SearchLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCell.swift; sourceTree = "<group>"; };
+		88B65DC927A929CE00DC9DE8 /* SearchLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchLocationCell.xib; sourceTree = "<group>"; };
 		88B6865C27A149A8006123B8 /* ChatMessageResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageResModel.swift; sourceTree = "<group>"; };
 		88B6865E27A14ACE006123B8 /* chatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatViewModel.swift; sourceTree = "<group>"; };
 		88B6866027A1553F006123B8 /* ChatSocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatSocketClient.swift; sourceTree = "<group>"; };
@@ -840,6 +850,7 @@
 		184DB31426B273330059B334 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				88B65DC127A91A7900DC9DE8 /* New Home */,
 				184DB31226B271E70059B334 /* HomeViewController.swift */,
 				18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */,
 				18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */,
@@ -1305,6 +1316,34 @@
 			path = "Shimmer cells";
 			sourceTree = "<group>";
 		};
+		88B65DC127A91A7900DC9DE8 /* New Home */ = {
+			isa = PBXGroup;
+			children = (
+				88B65DC727A929A900DC9DE8 /* SearchLocation Cell */,
+				88B65DC227A91A8700DC9DE8 /* New Home Cell */,
+				88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */,
+			);
+			path = "New Home";
+			sourceTree = "<group>";
+		};
+		88B65DC227A91A8700DC9DE8 /* New Home Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */,
+				88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */,
+			);
+			path = "New Home Cell";
+			sourceTree = "<group>";
+		};
+		88B65DC727A929A900DC9DE8 /* SearchLocation Cell */ = {
+			isa = PBXGroup;
+			children = (
+				88B65DC827A929CE00DC9DE8 /* SearchLocationCell.swift */,
+				88B65DC927A929CE00DC9DE8 /* SearchLocationCell.xib */,
+			);
+			path = "SearchLocation Cell";
+			sourceTree = "<group>";
+		};
 		88B6865B27A1498E006123B8 /* ChatMessageResModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1696,6 +1735,7 @@
 			files = (
 				A14974BB26A1AB440072AF33 /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				1858EA7726E60995008E04A7 /* Settings.storyboard in Resources */,
+				88B65DCB27A929CE00DC9DE8 /* SearchLocationCell.xib in Resources */,
 				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
 				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
@@ -1711,6 +1751,7 @@
 				A14974BE26A1AB440072AF33 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				84652F7F274F58330091B40B /* BidRequestCell.xib in Resources */,
 				A1519C9826A00305001738B9 /* LaunchScreen.storyboard in Resources */,
+				88B65DC627A91A9E00DC9DE8 /* SearchDataCell.xib in Resources */,
 				A14974C326A1AB440072AF33 /* Poppins-ExtraLight.ttf in Resources */,
 				888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */,
 				1808176126E7761E00D1C717 /* PickLoadCell.xib in Resources */,
@@ -1941,6 +1982,7 @@
 				18129ABB26BA9B1700983AFC /* TruckTypeListingResModel.swift in Sources */,
 				18E1A62326D504C400FD9A93 /* UITableView+Extenstion.swift in Sources */,
 				185BA7E82757843F00E99FAC /* MyLoadsNewTruck.swift in Sources */,
+				88B65DC527A91A9E00DC9DE8 /* SearchDataCell.swift in Sources */,
 				18289F2726C557E7002240C3 /* GeneralMessageResModel.swift in Sources */,
 				18CBA6BA278449E800372417 /* NotificationListViewModel.swift in Sources */,
 				18CC347A270D6BE40063E33B /* SearchLoadsDatum.swift in Sources */,
@@ -1970,6 +2012,7 @@
 				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
 				18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */,
 				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
+				88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */,
 				18E44013277200E700505F9E /* InitResModel.swift in Sources */,
 				1802693626AFD7A70088B49F /* UIColor+Extension.swift in Sources */,
 				1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */,
@@ -2110,6 +2153,7 @@
 				18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
 				18F2702A26BD4F8900992892 /* RegisterResModel.swift in Sources */,
+				88B65DCA27A929CE00DC9DE8 /* SearchLocationCell.swift in Sources */,
 				18114D182774A6D200CD59D1 /* ViewPODViewController.swift in Sources */,
 				88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */,
 				18F15E4727043E8E003A1D16 /* LocationSessionManager.swift in Sources */,

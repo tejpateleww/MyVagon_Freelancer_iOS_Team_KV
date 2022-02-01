@@ -52,8 +52,6 @@ class PickUpDropOffCell: UITableViewCell {
             self.tblMultipleLocation.layoutIfNeeded()
             self.tblMultipleLocation.reloadDataWithAutoSizingCellWorkAround()//reloadDataWithAutoSizingCellWorkAround()
         })
-     
-       
     }
    
     override func layoutSubviews() {

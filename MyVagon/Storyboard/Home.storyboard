@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
+                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1622,12 +1622,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="STv-Pd-7wT" kind="relationship" relationship="rootViewController" id="3nX-9H-vio"/>
+                        <segue destination="STv-Pd-7wT" kind="relationship" relationship="rootViewController" id="G5h-ht-uFf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zo-8e-GN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-373.91304347826087" y="-313.39285714285711"/>
+            <point key="canvasLocation" x="-365" y="-313"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="EWH-SH-Ah6">
@@ -7215,61 +7215,136 @@
             </objects>
             <point key="canvasLocation" x="2290" y="1091"/>
         </scene>
+        <!--New HomeVC-->
+        <scene sceneID="EQk-x4-m9E">
+            <objects>
+                <viewController storyboardIdentifier="NewHomeVC" id="hYD-1f-0Fa" customClass="NewHomeVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7iF-it-cyw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ck7-2k-1YP">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GL-yo-ajS">
+                                        <rect key="frame" x="0.0" y="10" width="414" height="48"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="HZj-0R-BH9">
+                                                <rect key="frame" x="19" y="10" width="376" height="38"/>
+                                                <subviews>
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search Options " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QjB-Fz-tBv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="256" height="38"/>
+                                                        <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                                <color key="value" red="0.74901960779999999" green="0.74901960779999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_Search"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="CornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" semanticContentAttribute="forceRightToLeft" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WQx-Pr-l5K" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="276" y="0.0" width="100" height="38"/>
+                                                        <color key="backgroundColor" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="0.2753207667" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="xfC-fk-Awg"/>
+                                                        </constraints>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                                        <state key="normal" title="Sort by" image="ic_sort">
+                                                            <color key="titleColor" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsRegualar" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="CornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
+                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="CornerRadiusForButton">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="btnSortAction:" destination="hYD-1f-0Fa" eventType="touchUpInside" id="2Sx-al-bxq"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="38" id="dJX-xK-1dc"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="HZj-0R-BH9" secondAttribute="bottom" id="D4t-dq-21f"/>
+                                            <constraint firstItem="HZj-0R-BH9" firstAttribute="top" secondItem="2GL-yo-ajS" secondAttribute="top" constant="10" id="f9m-vi-Jj6"/>
+                                            <constraint firstAttribute="trailing" secondItem="HZj-0R-BH9" secondAttribute="trailing" constant="19" id="hBR-2T-hpv"/>
+                                            <constraint firstItem="HZj-0R-BH9" firstAttribute="leading" secondItem="2GL-yo-ajS" secondAttribute="leading" constant="19" id="rm3-BR-NFe"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4oz-17-mLb">
+                                        <rect key="frame" x="0.0" y="68" width="414" height="740"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="hYD-1f-0Fa" id="8eJ-g4-VAi"/>
+                                            <outlet property="delegate" destination="hYD-1f-0Fa" id="oPV-Ih-atf"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="2GL-yo-ajS" firstAttribute="leading" secondItem="ck7-2k-1YP" secondAttribute="leading" id="2R5-aW-QEu"/>
+                                    <constraint firstItem="4oz-17-mLb" firstAttribute="top" secondItem="2GL-yo-ajS" secondAttribute="bottom" constant="10" id="B66-YH-r06"/>
+                                    <constraint firstAttribute="trailing" secondItem="2GL-yo-ajS" secondAttribute="trailing" id="IzK-U1-x6L"/>
+                                    <constraint firstItem="4oz-17-mLb" firstAttribute="leading" secondItem="ck7-2k-1YP" secondAttribute="leading" id="MCX-wq-CYz"/>
+                                    <constraint firstAttribute="trailing" secondItem="4oz-17-mLb" secondAttribute="trailing" id="eFh-Mb-w8I"/>
+                                    <constraint firstItem="2GL-yo-ajS" firstAttribute="top" secondItem="ck7-2k-1YP" secondAttribute="top" constant="10" id="iBe-td-PFI"/>
+                                    <constraint firstAttribute="bottom" secondItem="4oz-17-mLb" secondAttribute="bottom" constant="10" id="ow6-e9-eeC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0dg-Mk-EW9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ck7-2k-1YP" firstAttribute="leading" secondItem="0dg-Mk-EW9" secondAttribute="leading" id="W9l-VQ-LK9"/>
+                            <constraint firstItem="0dg-Mk-EW9" firstAttribute="bottom" secondItem="ck7-2k-1YP" secondAttribute="bottom" id="cqi-k5-MQH"/>
+                            <constraint firstItem="ck7-2k-1YP" firstAttribute="top" secondItem="0dg-Mk-EW9" secondAttribute="top" id="dO6-ah-vLj"/>
+                            <constraint firstItem="0dg-Mk-EW9" firstAttribute="trailing" secondItem="ck7-2k-1YP" secondAttribute="trailing" id="dsu-sS-mdb"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="lZX-cK-rFf"/>
+                    <connections>
+                        <outlet property="btnSort" destination="WQx-Pr-l5K" id="Ygp-EK-42Y"/>
+                        <outlet property="tblSearchData" destination="4oz-17-mLb" id="Cd8-8L-hco"/>
+                        <outlet property="txtSearch" destination="QjB-Fz-tBv" id="uoC-ek-kl2"/>
+                        <outlet property="vWSearchSort" destination="2GL-yo-ajS" id="Ns0-sH-tcQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LOO-HD-xvu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="535" y="-964"/>
+        </scene>
     </scenes>
     <designables>
-        <designable name="1F0-CZ-tTn">
-            <size key="intrinsicContentSize" width="117.5" height="18.5"/>
-        </designable>
-        <designable name="1ik-zr-pIX">
-            <size key="intrinsicContentSize" width="105.5" height="18.5"/>
-        </designable>
-        <designable name="41b-G4-9LY">
-            <size key="intrinsicContentSize" width="118" height="18.5"/>
-        </designable>
-        <designable name="4Yk-CD-PZ6">
-            <size key="intrinsicContentSize" width="134.5" height="18.5"/>
-        </designable>
         <designable name="BXF-jj-EO4">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="Com-VW-sEt">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
-        <designable name="EM0-cS-mSz">
-            <size key="intrinsicContentSize" width="66" height="18.5"/>
-        </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="P4e-b1-Po8">
-            <size key="intrinsicContentSize" width="135" height="18.5"/>
-        </designable>
-        <designable name="XV4-UW-Qe0">
-            <size key="intrinsicContentSize" width="-1" height="30"/>
-        </designable>
-        <designable name="f4a-G4-rAK">
-            <size key="intrinsicContentSize" width="96.5" height="18.5"/>
-        </designable>
-        <designable name="hye-uA-8rd">
-            <size key="intrinsicContentSize" width="114" height="18.5"/>
         </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
-        <designable name="m28-MZ-YP9">
-            <size key="intrinsicContentSize" width="114" height="18.5"/>
-        </designable>
-        <designable name="ovs-fh-rYv">
-            <size key="intrinsicContentSize" width="127.5" height="18.5"/>
-        </designable>
         <designable name="pxc-Co-qbc">
             <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="qQM-aq-rxT">
-            <size key="intrinsicContentSize" width="122" height="18.5"/>
-        </designable>
-        <designable name="up4-Kv-YNl">
-            <size key="intrinsicContentSize" width="78.5" height="18.5"/>
         </designable>
     </designables>
     <resources>

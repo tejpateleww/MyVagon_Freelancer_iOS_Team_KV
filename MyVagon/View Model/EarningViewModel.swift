@@ -20,7 +20,12 @@ class EarningListViewModel {
             self.myEarningVC?.isLoading = false
             if status{
                 self.myEarningVC?.arrData = response?.data ?? []
-                self.myEarningVC?.tblEarning.reloadDataWithAutoSizingCellWorkAround()
+                //self.myEarningVC?.tblEarning.reloadDataWithAutoSizingCellWorkAround()
+                
+                self.myEarningVC?.tblEarning.reloadData()
+                self.myEarningVC?.tblEarning.layoutIfNeeded()
+                self.myEarningVC?.tblEarning.beginUpdates()
+                self.myEarningVC?.tblEarning.endUpdates()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
