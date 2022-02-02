@@ -96,7 +96,10 @@ class NewHomeViewModel {
     weak var newHomeVC : NewHomeVC? = nil
     
     func WebServiceSearchList(ReqModel:ShipmentListReqModel){
+        
+        self.newHomeVC?.isApiProcessing = true
         WebServiceSubClass.GetShipmentList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            self.newHomeVC?.isApiProcessing = false
             DispatchQueue.main.async {
                 self.newHomeVC?.refreshControl.endRefreshing()
             }
@@ -105,19 +108,55 @@ class NewHomeViewModel {
             self.newHomeVC?.sortBy = ""
             
             if status{
-        
-                let tempArrHomeData = response?.data ?? []
-                var datesArray = tempArrHomeData.compactMap({$0.date})
-                datesArray = datesArray.uniqued()
-                print(datesArray)
-                self.newHomeVC?.numberOfSections = datesArray.count
-                var dic = [[SearchLoadsDatum]]() // Your required result
-                datesArray.forEach { (element) in
-                    let NewDictonary =  tempArrHomeData.filter({$0.date == element})
-                    dic.append(NewDictonary)
+                if(response?.data?.count == 0){
+                    if(self.newHomeVC?.PageNumber == 1){
+                        
+                        let tempArrHomeData = response?.data ?? []
+                        var datesArray = tempArrHomeData.compactMap({$0.date})
+                        datesArray = datesArray.uniqued()
+                        print(datesArray)
+                        self.newHomeVC?.numberOfSections = datesArray.count
+                        var dic = [[SearchLoadsDatum]]() // Your required result
+                        datesArray.forEach { (element) in
+                            let NewDictonary =  tempArrHomeData.filter({$0.date == element})
+                            dic.append(NewDictonary)
+                        }
+                        self.newHomeVC?.arrHomeData = dic
+                    }else{
+                        self.newHomeVC?.isStopPaging = true
+                        return
+                    }
+                }else{
+                    if(self.newHomeVC?.PageNumber == 1){
+                        
+                        let tempArrHomeData = response?.data ?? []
+                        var datesArray = tempArrHomeData.compactMap({$0.date})
+                        datesArray = datesArray.uniqued()
+                        print(datesArray)
+                        self.newHomeVC?.numberOfSections = datesArray.count
+                        var dic = [[SearchLoadsDatum]]() // Your required result
+                        datesArray.forEach { (element) in
+                            let NewDictonary =  tempArrHomeData.filter({$0.date == element})
+                            dic.append(NewDictonary)
+                        }
+                        self.newHomeVC?.arrHomeData = dic
+                    }else{
+                        
+                        var tempArrHomeData = [SearchLoadsDatum]()
+                        self.newHomeVC?.arrHomeData?.forEach({ element in
+                            tempArrHomeData.append(contentsOf: element)
+                        })
+                        tempArrHomeData.append(contentsOf: response?.data ?? [])
+                        var datesArray = tempArrHomeData.compactMap({$0.date})
+                        datesArray = datesArray.uniqued()
+                        var dic = [[SearchLoadsDatum]]() // Your required result
+                        datesArray.forEach { (element) in
+                            let NewDictonary =  tempArrHomeData.filter({$0.date == element})
+                            dic.append(NewDictonary)
+                        }
+                        self.newHomeVC?.arrHomeData = dic
+                    }
                 }
-                
-                self.newHomeVC?.arrHomeData = dic
                 
                 self.newHomeVC?.tblSearchData.reloadData()
                 self.newHomeVC?.tblSearchData.layoutIfNeeded()
@@ -129,6 +168,7 @@ class NewHomeViewModel {
             }
         })
     }
+    
 }
 
 

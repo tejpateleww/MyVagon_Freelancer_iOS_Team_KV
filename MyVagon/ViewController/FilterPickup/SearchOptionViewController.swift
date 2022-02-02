@@ -330,9 +330,7 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate,
     // ----------------------------------------------------
     func CallWebSerive() {
         Utilities.showHud()
-        
-        if let viewControllers = self.navigationController?.viewControllers
-        {
+        if let viewControllers = self.navigationController?.viewControllers{
             for vc in viewControllers {
                 if vc.isKind(of: HomeViewController.self) {
                     let homeVC = vc as! HomeViewController
@@ -403,7 +401,5 @@ class SearchLoadModel : Codable {
   
     var pickupAddressString = ""
     var dropoffAddressString = ""
- 
-    
 }
 

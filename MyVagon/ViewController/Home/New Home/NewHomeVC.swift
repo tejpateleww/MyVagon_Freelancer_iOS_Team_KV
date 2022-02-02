@@ -21,12 +21,10 @@ class NewHomeVC: BaseViewController {
     var homeViewModel = NewHomeViewModel()
     var customTabBarController: CustomTabBarVC?
     var sortBy : String = ""
-    var PageNumber = 0
     var numberOfSections = 0
-    //var arrHomeData : [SearchLoadsDatum] = []
     var arrHomeData : [[SearchLoadsDatum]]?
     
-    // Pull to refresh
+    //Pull to refresh
     let refreshControl = UIRefreshControl()
     
     //shimmer
@@ -37,6 +35,11 @@ class NewHomeVC: BaseViewController {
             self.tblSearchData.reloadData()
         }
     }
+    
+    //Pagination
+    var PageNumber = 0
+    var isApiProcessing = false
+    var isStopPaging = false
     
     //MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -98,6 +101,7 @@ class NewHomeVC: BaseViewController {
     }
     
     func reloadSearchData(){
+        self.isStopPaging = false
         self.PageNumber = 0
         self.arrHomeData = []
         self.isTblReload = false
@@ -299,6 +303,13 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
             }else{
                 return tableView.frame.height
             }
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (self.tblSearchData.contentOffset.y >= (self.tblSearchData.contentSize.height - self.tblSearchData.frame.size.height)) && self.isStopPaging == false && self.isApiProcessing == false {
+            print("call from scroll..")
+            self.callSearchDataAPI()
         }
     }
     
