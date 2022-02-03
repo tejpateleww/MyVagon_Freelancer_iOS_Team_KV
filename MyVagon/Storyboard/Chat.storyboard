@@ -372,10 +372,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVv-Uv-wOG">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search Option" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbF-qn-2z1" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="11" width="374" height="43"/>
+                                                        <rect key="frame" x="20" y="10" width="374" height="40"/>
                                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -399,17 +399,17 @@
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="WbF-qn-2z1" secondAttribute="trailing" constant="20" id="1dQ-1M-JRd"/>
-                                                    <constraint firstAttribute="bottom" secondItem="WbF-qn-2z1" secondAttribute="bottom" constant="16" id="Fjv-FX-0Mp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="WbF-qn-2z1" secondAttribute="bottom" constant="10" id="Fjv-FX-0Mp"/>
                                                     <constraint firstItem="WbF-qn-2z1" firstAttribute="leading" secondItem="MVv-Uv-wOG" secondAttribute="leading" constant="20" id="aIa-qn-F4v"/>
-                                                    <constraint firstItem="WbF-qn-2z1" firstAttribute="top" secondItem="MVv-Uv-wOG" secondAttribute="top" constant="11" id="oG7-uZ-qyO"/>
-                                                    <constraint firstAttribute="height" constant="70" id="vYf-9b-Uou"/>
+                                                    <constraint firstItem="WbF-qn-2z1" firstAttribute="top" secondItem="MVv-Uv-wOG" secondAttribute="top" constant="10" id="oG7-uZ-qyO"/>
+                                                    <constraint firstAttribute="height" constant="60" id="vYf-9b-Uou"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yoe-bU-ZoT">
-                                                <rect key="frame" x="0.0" y="75" width="414" height="743"/>
+                                                <rect key="frame" x="0.0" y="65" width="414" height="753"/>
                                                 <subviews>
                                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jxZ-xO-d8d">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="743"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>

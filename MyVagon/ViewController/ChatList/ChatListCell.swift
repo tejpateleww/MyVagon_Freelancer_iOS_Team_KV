@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
 class ChatListCell: UITableViewCell {
 
@@ -15,6 +16,16 @@ class ChatListCell: UITableViewCell {
     @IBOutlet weak var lblMessage: themeLabel!
     @IBOutlet weak var lblNoOfMessage: themeLabel!
     @IBOutlet weak var vwNumber: UIView!
+    
+    var shimmeringAnimatedItems: [UIView] {
+        [
+            self.imgProfile,
+            self.lblName,
+            self.lblDate,
+            self.lblMessage,
+        ]
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

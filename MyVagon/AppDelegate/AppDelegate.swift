@@ -76,6 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func NavigateToHome(){
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
+        
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 && SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
             let indexToRemove = 0
             if indexToRemove < controller.viewControllers?.count ?? 3 {
@@ -106,6 +107,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                     controller.viewControllers = viewControllers
                 }
             }
+        }
+
+        // Remove MyFleet Tab
+        let indexToRemove = 3
+        if indexToRemove < controller.viewControllers?.count ?? 3 {
+            var viewControllers = controller.viewControllers
+            viewControllers?.remove(at: indexToRemove)
+            controller.viewControllers = viewControllers
         }
         
         
@@ -187,6 +196,7 @@ class CustomTabBar: UITabBar {
         //        layer.shadowOpacity = 0.3
         
         //        self.backgroundImage = UIImage.from(color: .white)
+        
     }
     
     
@@ -232,6 +242,7 @@ extension CustomTabBarVC: UITabBarControllerDelegate {
     }
     
 }
+
 class CustomTabBarVC: UITabBarController {
     var lastSelectedIndex = 0
     

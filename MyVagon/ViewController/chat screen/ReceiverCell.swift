@@ -6,11 +6,19 @@
 //
 
 import UIKit
+import UIView_Shimmer
 
 class ReceiverCell: UITableViewCell {
 
     @IBOutlet weak var lblMessage: UILabel!
     @IBOutlet weak var lblDate: themeLabel!
+    
+    var shimmeringAnimatedItems: [UIView] {
+        [
+            self.lblMessage,
+            self.lblDate,
+        ]
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

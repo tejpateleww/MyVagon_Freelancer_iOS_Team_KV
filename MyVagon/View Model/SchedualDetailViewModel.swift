@@ -154,4 +154,19 @@ class SchedualDetailViewModel {
             }
         })
     }
+    
+    func WebServiceAcceptPayment(ReqModel:AcceptPaymentReqModel){
+        Utilities.showHud()
+        WebServiceSubClass.AcceptPayment(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status{
+                self.schedualLoadDetailsViewController?.popBack()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                }
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
 }

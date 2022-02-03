@@ -30,6 +30,12 @@ class chatListViewModel {
     
     func WebServiceChatList(ReqModel:chatListReqModel){
         WebServiceSubClass.chatUserList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            self.chatListVC?.tblChatList.isHidden = false
+            self.chatListVC?.isTblReload = true
+            self.chatListVC?.isLoading = false
+            DispatchQueue.main.async {
+                self.chatListVC?.refreshControl.endRefreshing()
+            }
             if status{
                 self.chatListVC?.arrData = response?.data ?? []
                 self.chatListVC?.tblChatList.reloadData()

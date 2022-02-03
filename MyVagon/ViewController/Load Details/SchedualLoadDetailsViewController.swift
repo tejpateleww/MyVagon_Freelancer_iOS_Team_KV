@@ -73,6 +73,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
     
     @IBOutlet weak var btnViewPOD: themeButton!
     @IBOutlet weak var btnCancelBidRequest: themeButton!
+    @IBOutlet weak var btnMarkAsPaid: themeButton!
     @IBOutlet weak var btnStartTrip: themeButton!
     
     @IBOutlet weak var stepIndicatorView: StepIndicatorView!
@@ -254,6 +255,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
        
         self.btnViewPOD.superview?.isHidden = true
         self.btnCancelBidRequest.superview?.isHidden = true
+        self.btnMarkAsPaid.superview?.isHidden = true
         
         //self.btnStartTrip.superview?.isHidden = true
         MapViewForLocation.isUserInteractionEnabled = false
@@ -371,6 +373,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
             self.lblBookingStatus.text =  MyLoadesStatus.completed.Name.capitalized
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             
+            self.btnMarkAsPaid.superview?.isHidden = (self.LoadDetails?.paymentStatus == "pending") ? false : true
             self.viewStatus.backgroundColor = (self.LoadDetails?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             self.lblBookingStatus.text = (self.LoadDetails?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
             
@@ -496,6 +499,11 @@ class SchedualLoadDetailsViewController: BaseViewController {
         }
     }
     
+    @IBAction func btnMarkAsPaidAction(_ sender: Any) {
+        self.CallAPIForAcceptPayment()
+    }
+    
+    
     // ----------------------------------------------------
     // MARK: - --------- Socket Emit ---------
     // ----------------------------------------------------
@@ -574,6 +582,16 @@ class SchedualLoadDetailsViewController: BaseViewController {
         reqModel.shipper_id = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
         
         self.schedualDetailViewModel.CancelBidRequest(ReqModel: reqModel)
+    }
+    
+    func CallAPIForAcceptPayment() {
+        self.schedualDetailViewModel.schedualLoadDetailsViewController = self
+        
+        let reqModel = AcceptPaymentReqModel ()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
+    
+        self.schedualDetailViewModel.WebServiceAcceptPayment(ReqModel: reqModel)
     }
     
     func CallAPIForDeleteBid() {

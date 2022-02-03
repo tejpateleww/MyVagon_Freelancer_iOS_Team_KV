@@ -241,6 +241,17 @@
 		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
+		8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */; };
+		8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066727ABA22900EACE5A /* DriversTableViewCell.xib */; };
+		8877066D27ABA22900EACE5A /* DriversTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877066827ABA22900EACE5A /* DriversTableViewCell.swift */; };
+		8877066E27ABA22900EACE5A /* MyFleetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877066927ABA22900EACE5A /* MyFleetVC.swift */; };
+		8877066F27ABA22900EACE5A /* VehiclesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877066A27ABA22900EACE5A /* VehiclesTableViewCell.swift */; };
+		8877067627ABA30D00EACE5A /* AddVehicleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877067327ABA30D00EACE5A /* AddVehicleVC.swift */; };
+		8877067727ABA30D00EACE5A /* AddDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877067527ABA30D00EACE5A /* AddDriverVC.swift */; };
+		8877067A27ABA35F00EACE5A /* DriverPermissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877067927ABA35F00EACE5A /* DriverPermissionVC.swift */; };
+		8877067E27ABAF7B00EACE5A /* NotiShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877067C27ABAF7A00EACE5A /* NotiShimmerCell.swift */; };
+		8877067F27ABAF7B00EACE5A /* NotiShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877067D27ABAF7A00EACE5A /* NotiShimmerCell.xib */; };
+		8877068227ABFD5E00EACE5A /* AcceptPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877068127ABFD5E00EACE5A /* AcceptPaymentViewModel.swift */; };
 		888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */; };
 		888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */; };
 		88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */; };
@@ -587,6 +598,17 @@
 		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehiclesTableViewCell.xib; sourceTree = "<group>"; };
+		8877066727ABA22900EACE5A /* DriversTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriversTableViewCell.xib; sourceTree = "<group>"; };
+		8877066827ABA22900EACE5A /* DriversTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriversTableViewCell.swift; sourceTree = "<group>"; };
+		8877066927ABA22900EACE5A /* MyFleetVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyFleetVC.swift; sourceTree = "<group>"; };
+		8877066A27ABA22900EACE5A /* VehiclesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VehiclesTableViewCell.swift; sourceTree = "<group>"; };
+		8877067327ABA30D00EACE5A /* AddVehicleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVehicleVC.swift; sourceTree = "<group>"; };
+		8877067527ABA30D00EACE5A /* AddDriverVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDriverVC.swift; sourceTree = "<group>"; };
+		8877067927ABA35F00EACE5A /* DriverPermissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriverPermissionVC.swift; sourceTree = "<group>"; };
+		8877067C27ABAF7A00EACE5A /* NotiShimmerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotiShimmerCell.swift; sourceTree = "<group>"; };
+		8877067D27ABAF7A00EACE5A /* NotiShimmerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotiShimmerCell.xib; sourceTree = "<group>"; };
+		8877068127ABFD5E00EACE5A /* AcceptPaymentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptPaymentViewModel.swift; sourceTree = "<group>"; };
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningShimmerCell.swift; sourceTree = "<group>"; };
 		888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningShimmerCell.xib; sourceTree = "<group>"; };
@@ -816,6 +838,7 @@
 				18CBA6B9278449E800372417 /* NotificationListViewModel.swift */,
 				88B6865E27A14ACE006123B8 /* chatViewModel.swift */,
 				88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */,
+				8877068127ABFD5E00EACE5A /* AcceptPaymentViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1307,11 +1330,84 @@
 			path = SearchResModel;
 			sourceTree = "<group>";
 		};
-		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
+		8877066527ABA22900EACE5A /* MyFleet */ = {
+			isa = PBXGroup;
+			children = (
+				8877066927ABA22900EACE5A /* MyFleetVC.swift */,
+				8877067827ABA35F00EACE5A /* Driver Permission */,
+				8877067227ABA30D00EACE5A /* AddVehicle */,
+				8877067427ABA30D00EACE5A /* Add Driver */,
+				8877067127ABA24C00EACE5A /* Vehicle Cell */,
+				8877067027ABA23B00EACE5A /* Driver Cell */,
+			);
+			path = MyFleet;
+			sourceTree = "<group>";
+		};
+		8877067027ABA23B00EACE5A /* Driver Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8877066727ABA22900EACE5A /* DriversTableViewCell.xib */,
+				8877066827ABA22900EACE5A /* DriversTableViewCell.swift */,
+			);
+			path = "Driver Cell";
+			sourceTree = "<group>";
+		};
+		8877067127ABA24C00EACE5A /* Vehicle Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8877066A27ABA22900EACE5A /* VehiclesTableViewCell.swift */,
+				8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */,
+			);
+			path = "Vehicle Cell";
+			sourceTree = "<group>";
+		};
+		8877067227ABA30D00EACE5A /* AddVehicle */ = {
+			isa = PBXGroup;
+			children = (
+				8877067327ABA30D00EACE5A /* AddVehicleVC.swift */,
+			);
+			path = AddVehicle;
+			sourceTree = "<group>";
+		};
+		8877067427ABA30D00EACE5A /* Add Driver */ = {
+			isa = PBXGroup;
+			children = (
+				8877067527ABA30D00EACE5A /* AddDriverVC.swift */,
+			);
+			path = "Add Driver";
+			sourceTree = "<group>";
+		};
+		8877067827ABA35F00EACE5A /* Driver Permission */ = {
+			isa = PBXGroup;
+			children = (
+				8877067927ABA35F00EACE5A /* DriverPermissionVC.swift */,
+			);
+			path = "Driver Permission";
+			sourceTree = "<group>";
+		};
+		8877067B27ABAF7A00EACE5A /* Noti Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				8877067C27ABAF7A00EACE5A /* NotiShimmerCell.swift */,
+				8877067D27ABAF7A00EACE5A /* NotiShimmerCell.xib */,
+			);
+			path = "Noti Shimmer";
+			sourceTree = "<group>";
+		};
+		8877068027ABED8000EACE5A /* Earning Shimmer */ = {
 			isa = PBXGroup;
 			children = (
 				888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */,
 				888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */,
+			);
+			path = "Earning Shimmer";
+			sourceTree = "<group>";
+		};
+		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
+			isa = PBXGroup;
+			children = (
+				8877068027ABED8000EACE5A /* Earning Shimmer */,
+				8877067B27ABAF7A00EACE5A /* Noti Shimmer */,
 			);
 			path = "Shimmer cells";
 			sourceTree = "<group>";
@@ -1542,6 +1638,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8877066527ABA22900EACE5A /* MyFleet */,
 				88C3A9CE27A4005A0018B9E8 /* Earning */,
 				18114D162774A67300CD59D1 /* View POD */,
 				1858EA8E26E61A75008E04A7 /* NavigationTitleView */,
@@ -1761,10 +1858,13 @@
 				18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */,
 				18A34F2A26CD1F2D00F252B6 /* LocationCell.xib in Resources */,
 				180FCEE826B135C3008D28EE /* Localizable.strings in Resources */,
+				8877067F27ABAF7B00EACE5A /* NotiShimmerCell.xib in Resources */,
 				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
+				8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */,
 				18CC347D270D70A40063E33B /* MyLoadesCell.xib in Resources */,
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
+				8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */,
 				18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */,
 				1858EA9226E61A75008E04A7 /* NavigationTitleView.xib in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
@@ -1970,6 +2070,7 @@
 				18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */,
 				185BA7EF2757843F00E99FAC /* MyLoadsNewTruckType.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
+				8877067E27ABAF7B00EACE5A /* NotiShimmerCell.swift in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */,
 				1808176326E7802500D1C717 /* LoadDetailsVC.swift in Sources */,
@@ -2011,6 +2112,7 @@
 				18ECDE202769C24C0097F10F /* BidRequestData.swift in Sources */,
 				1802692F26AFD5D70088B49F /* Singleton.swift in Sources */,
 				18A34F1C26CD1EE100F252B6 /* ScheduleViewController.swift in Sources */,
+				8877066E27ABA22900EACE5A /* MyFleetVC.swift in Sources */,
 				A14974D126A1AB800072AF33 /* Poppins-ExtraBold.ttf in Sources */,
 				88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */,
 				18E44013277200E700505F9E /* InitResModel.swift in Sources */,
@@ -2040,6 +2142,7 @@
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
 				185BA7C72757680200E99FAC /* NoBookingView.swift in Sources */,
 				18129AAF26BA61B300983AFC /* IdentifyYourselfViewModel.swift in Sources */,
+				8877068227ABFD5E00EACE5A /* AcceptPaymentViewModel.swift in Sources */,
 				185BA7E42757843F00E99FAC /* MyLoadsNewProductType.swift in Sources */,
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
@@ -2048,6 +2151,7 @@
 				1803810026C69F0A00DBF6F0 /* PostTruckViewController.swift in Sources */,
 				185BA7EE2757843F00E99FAC /* MyLoadsNewUnit.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
+				8877066F27ABA22900EACE5A /* VehiclesTableViewCell.swift in Sources */,
 				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
 				88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */,
 				18ADA35B26F31DE600F12258 /* ShipmentListReqModel.swift in Sources */,
@@ -2109,6 +2213,7 @@
 				A1519CCF26A00407001738B9 /* String+Extension.swift in Sources */,
 				189B2332271D544D00431D94 /* DriverListTruckFeature.swift in Sources */,
 				18129ABA26BA9B1700983AFC /* TruckTypeDatum.swift in Sources */,
+				8877067627ABA30D00EACE5A /* AddVehicleVC.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
 				18F496582779BD350069B26C /* LineLayer.swift in Sources */,
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
@@ -2158,6 +2263,7 @@
 				88B6865D27A149A8006123B8 /* ChatMessageResModel.swift in Sources */,
 				18F15E4727043E8E003A1D16 /* LocationSessionManager.swift in Sources */,
 				186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */,
+				8877067A27ABA35F00EACE5A /* DriverPermissionVC.swift in Sources */,
 				185BA7EB2757843F00E99FAC /* MyLoadsNewResModel.swift in Sources */,
 				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
 				18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */,
@@ -2196,6 +2302,7 @@
 				18793B0A2702E6B700022D32 /* TermsConditionVC.swift in Sources */,
 				18ECDD3427677E030097F10F /* SchedualLoadDetailsViewController.swift in Sources */,
 				A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */,
+				8877066D27ABA22900EACE5A /* DriversTableViewCell.swift in Sources */,
 				1858EA9826E64821008E04A7 /* ReviewShipperVC.swift in Sources */,
 				189FB63426B911A400BBD5A0 /* UINavigationController+Extension.swift in Sources */,
 				189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */,
@@ -2203,6 +2310,7 @@
 				18087004270B26FF00D8C8C6 /* PostTruckResModel.swift in Sources */,
 				189B2339271D544D00431D94 /* DriverListVehicle.swift in Sources */,
 				18F15E432704201F003A1D16 /* LoginLoadCapacityUnit.swift in Sources */,
+				8877067727ABA30D00EACE5A /* AddDriverVC.swift in Sources */,
 				18F1F2FC2758E04E00613125 /* PostedTruckBidsViewModel.swift in Sources */,
 				18CC346D270D67E00063E33B /* SearchResModel.swift in Sources */,
 				189B2338271D544D00431D94 /* DriverListBrand.swift in Sources */,

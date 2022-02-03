@@ -307,9 +307,11 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (self.tblSearchData.contentOffset.y >= (self.tblSearchData.contentSize.height - self.tblSearchData.frame.size.height)) && self.isStopPaging == false && self.isApiProcessing == false {
-            print("call from scroll..")
-            self.callSearchDataAPI()
+        if(self.arrHomeData?.count ?? 0 > 2){
+            if (self.tblSearchData.contentOffset.y >= (self.tblSearchData.contentSize.height - self.tblSearchData.frame.size.height)) && self.isStopPaging == false && self.isApiProcessing == false {
+                print("call from scroll..")
+                self.callSearchDataAPI()
+            }
         }
     }
     

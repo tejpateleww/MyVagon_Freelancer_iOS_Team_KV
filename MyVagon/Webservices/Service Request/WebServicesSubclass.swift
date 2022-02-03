@@ -335,5 +335,12 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK:- Accept Payment
+    class func AcceptPayment(reqModel: AcceptPaymentReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.acceptPayment.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
 }
 

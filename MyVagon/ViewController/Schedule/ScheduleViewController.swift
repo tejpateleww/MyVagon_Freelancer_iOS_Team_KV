@@ -109,10 +109,12 @@ class ScheduleViewController: BaseViewController {
             self.chooseDropDown.show()
         }
     }
+    
     @objc func RefreshViewForPostTruck() {
         PageNumber = 0
         CallWebSerive(status: CurrentFilterStatus)
     }
+    
     func setNavigationBar(subTitle:String) {
         setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages:  [NavItemsRight.option.value], isTranslucent: true, ShowShadow: true,subTitleString: subTitle)
         

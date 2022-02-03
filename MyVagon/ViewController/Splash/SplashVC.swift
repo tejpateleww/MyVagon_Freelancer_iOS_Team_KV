@@ -25,7 +25,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var lbl_myvagon: UILabel!
     @IBOutlet weak var img_myvagon: UIImageView!
-    
+    var customTabBarController: CustomTabBarVC?
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
     // ----------------------------------------------------
@@ -45,6 +45,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         
         // Do any additional setup after loading the view.
     }
+
     
     
     // ----------------------------------------------------
