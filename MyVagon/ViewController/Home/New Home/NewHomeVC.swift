@@ -24,6 +24,10 @@ class NewHomeVC: BaseViewController {
     var numberOfSections = 0
     var arrHomeData : [[SearchLoadsDatum]]?
     
+    //For Filter
+    var isFilter:Bool = false
+    var arrFilterHomeData : [SearchLoadsDatum] = []
+    
     //Pull to refresh
     let refreshControl = UIRefreshControl()
     
@@ -101,9 +105,21 @@ class NewHomeVC: BaseViewController {
     }
     
     func reloadSearchData(){
+        self.isFilter = false
         self.isStopPaging = false
         self.PageNumber = 0
         self.arrHomeData = []
+        self.arrFilterHomeData = []
+        self.isTblReload = false
+        self.isLoading = true
+        self.callSearchDataAPI()
+    }
+    
+    func reloadFilterData(){
+        self.isStopPaging = false
+        self.PageNumber = 0
+        self.arrHomeData = []
+        self.arrFilterHomeData = []
         self.isTblReload = false
         self.isLoading = true
         self.callSearchDataAPI()
@@ -169,8 +185,9 @@ extension NewHomeVC {
 //MARK: - HomeSorfDelgate methods
 extension NewHomeVC : HomeSorfDelgate{
     func onSorfClick(strSort: String) {
+        self.isFilter = true
         self.sortBy = strSort
-        self.reloadSearchData()
+        self.reloadFilterData()
     }
 }
 
@@ -192,14 +209,19 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if isLoading {return 1}
-        return self.numberOfSections
+        return (self.isFilter) ? 1 : self.numberOfSections
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.arrHomeData?.count ?? 0 > 0 {
-            return arrHomeData?[section].count ?? 0
-        } else {
-            return (!self.isTblReload) ? 10 : 1
+        
+        if(self.isFilter){
+            return (!self.isTblReload) ? 10 : self.arrFilterHomeData.count
+        }else{
+            if self.arrHomeData?.count ?? 0 > 0 {
+                return arrHomeData?[section].count ?? 0
+            } else {
+                return (!self.isTblReload) ? 10 : 1
+            }
         }
     }
     
@@ -210,52 +232,90 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
         if(!self.isTblReload){
             return cell
         }else{
-            if(self.arrHomeData?.count ?? 0 > 0){
-                let cell = self.tblSearchData.dequeueReusableCell(withIdentifier: SearchDataCell.className) as! SearchDataCell
-                
-                cell.selectionStyle = .none
-                
-                cell.lblCompanyName.text = arrHomeData?[indexPath.section][indexPath.row].shipperDetails?.companyName ?? ""
-                cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (arrHomeData?[indexPath.section][indexPath.row].amount ?? "" ) : ""
-                cell.lblLoadId.text = "#\(arrHomeData?[indexPath.section][indexPath.row].id ?? 0)"
-                cell.lblTonMiles.text =   "\(arrHomeData?[indexPath.section][indexPath.row].totalWeight ?? ""), \(arrHomeData?[indexPath.section][indexPath.row].distance ?? "") Km"
-                let DeadheadValue = (arrHomeData?[indexPath.section][indexPath.row].trucks?.locations?.first?.deadhead ?? "" == "0") ? arrHomeData?[indexPath.section][indexPath.row].trucks?.truckType?.name ?? "" : "\(arrHomeData?[indexPath.section][indexPath.row].trucks?.locations?.first?.deadhead ?? "") : \(arrHomeData?[indexPath.section][indexPath.row].trucks?.truckType?.name ?? "")"
-                cell.lblDeadhead.text = DeadheadValue
-                
-                if (self.arrHomeData?[indexPath.section][indexPath.row].isBid ?? 0) == 1 {
-                    cell.lblStatus.text = bidStatus.BidNow.Name
-                    cell.vWStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
-                } else {
-                    cell.lblStatus.text =  bidStatus.BookNow.Name
-                    cell.vWStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+            if(self.isFilter){
+                if(self.arrFilterHomeData.count > 0){
+                    let cell = self.tblSearchData.dequeueReusableCell(withIdentifier: SearchDataCell.className) as! SearchDataCell
+                    cell.selectionStyle = .none
+                    
+                    cell.lblCompanyName.text = arrFilterHomeData[indexPath.row].shipperDetails?.companyName ?? ""
+                    cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (arrFilterHomeData[indexPath.row].amount ?? "" ) : ""
+                    cell.lblLoadId.text = "#\(arrFilterHomeData[indexPath.row].id ?? 0)"
+                    cell.lblTonMiles.text =   "\(arrFilterHomeData[indexPath.row].totalWeight ?? ""), \(arrFilterHomeData[indexPath.row].distance ?? "") Km"
+                    let DeadheadValue = (arrFilterHomeData[indexPath.row].trucks?.locations?.first?.deadhead ?? "" == "0") ? arrFilterHomeData[indexPath.row].trucks?.truckType?.name ?? "" : "\(arrFilterHomeData[indexPath.row].trucks?.locations?.first?.deadhead ?? "") : \(arrFilterHomeData[indexPath.row].trucks?.truckType?.name ?? "")"
+                    cell.lblDeadhead.text = DeadheadValue
+                    
+                    if (self.arrFilterHomeData[indexPath.row].isBid ?? 0) == 1 {
+                        cell.lblStatus.text = bidStatus.BidNow.Name
+                        cell.vWStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                    } else {
+                        cell.lblStatus.text =  bidStatus.BookNow.Name
+                        cell.vWStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+                    }
+                    
+                    cell.arrLocations = arrFilterHomeData[indexPath.row].trucks?.locations ?? []
+                    cell.tblHeight = { (heightTBl) in
+                        self.tblSearchData.layoutIfNeeded()
+                        self.tblSearchData.layoutSubviews()
+                    }
+                    
+                    cell.tblSearchLocation.reloadData()
+                    cell.tblSearchLocation.layoutIfNeeded()
+                    cell.tblSearchLocation.layoutSubviews()
+                    return cell
+                }else{
+                    let NoDatacell = self.tblSearchData.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell
+                    NoDatacell.lblNoDataTitle.text = "No Loads Found"
+                    return NoDatacell
                 }
-                
-                cell.arrLocations = arrHomeData?[indexPath.section][indexPath.row].trucks?.locations ?? []
-                cell.tblHeight = { (heightTBl) in
-                    self.tblSearchData.layoutIfNeeded()
-                    self.tblSearchData.layoutSubviews()
-                }
-                
-                cell.tblSearchLocation.reloadData()
-                cell.tblSearchLocation.layoutIfNeeded()
-                cell.tblSearchLocation.layoutSubviews()
-                
-                return cell
             }else{
-                let NoDatacell = self.tblSearchData.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell
-                NoDatacell.lblNoDataTitle.text = "No Loads Found"
-                return NoDatacell
+                if(self.arrHomeData?.count ?? 0 > 0){
+                    let cell = self.tblSearchData.dequeueReusableCell(withIdentifier: SearchDataCell.className) as! SearchDataCell
+                    cell.selectionStyle = .none
+                    
+                    cell.lblCompanyName.text = arrHomeData?[indexPath.section][indexPath.row].shipperDetails?.companyName ?? ""
+                    cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (arrHomeData?[indexPath.section][indexPath.row].amount ?? "" ) : ""
+                    cell.lblLoadId.text = "#\(arrHomeData?[indexPath.section][indexPath.row].id ?? 0)"
+                    cell.lblTonMiles.text =   "\(arrHomeData?[indexPath.section][indexPath.row].totalWeight ?? ""), \(arrHomeData?[indexPath.section][indexPath.row].distance ?? "") Km"
+                    let DeadheadValue = (arrHomeData?[indexPath.section][indexPath.row].trucks?.locations?.first?.deadhead ?? "" == "0") ? arrHomeData?[indexPath.section][indexPath.row].trucks?.truckType?.name ?? "" : "\(arrHomeData?[indexPath.section][indexPath.row].trucks?.locations?.first?.deadhead ?? "") : \(arrHomeData?[indexPath.section][indexPath.row].trucks?.truckType?.name ?? "")"
+                    cell.lblDeadhead.text = DeadheadValue
+                    
+                    if (self.arrHomeData?[indexPath.section][indexPath.row].isBid ?? 0) == 1 {
+                        cell.lblStatus.text = bidStatus.BidNow.Name
+                        cell.vWStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
+                    } else {
+                        cell.lblStatus.text =  bidStatus.BookNow.Name
+                        cell.vWStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
+                    }
+                    
+                    cell.arrLocations = arrHomeData?[indexPath.section][indexPath.row].trucks?.locations ?? []
+                    cell.tblHeight = { (heightTBl) in
+                        self.tblSearchData.layoutIfNeeded()
+                        self.tblSearchData.layoutSubviews()
+                    }
+                    
+                    cell.tblSearchLocation.reloadData()
+                    cell.tblSearchLocation.layoutIfNeeded()
+                    cell.tblSearchLocation.layoutSubviews()
+                    
+                    return cell
+                }else{
+                    let NoDatacell = self.tblSearchData.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell
+                    NoDatacell.lblNoDataTitle.text = "No Loads Found"
+                    return NoDatacell
+                }
             }
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if isLoading {return ""}
+        if isFilter {return ""}
         return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if isLoading {return UIView()}
+        if isFilter {return UIView()}
         if self.arrHomeData?.count ?? 0 > 0 {
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
             headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
@@ -274,6 +334,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if isLoading {return 0}
+        if isFilter {return 0}
         return 40
     }
     
@@ -287,10 +348,12 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !isLoading {
-            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
-            controller.hidesBottomBarWhenPushed = true
-            controller.LoadDetails = arrHomeData?[indexPath.section][indexPath.row]
-            UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+            if(isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
+                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
+                controller.hidesBottomBarWhenPushed = true
+                controller.LoadDetails = (isFilter) ? arrFilterHomeData[indexPath.row] : arrHomeData?[indexPath.section][indexPath.row]
+                UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
     
@@ -298,7 +361,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
         if(!isTblReload){
             return UITableView.automaticDimension
         }else{
-            if self.arrHomeData?.count ?? 0 != 0 {
+            if isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0 {
                 return UITableView.automaticDimension
             }else{
                 return tableView.frame.height
@@ -307,7 +370,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(self.arrHomeData?.count ?? 0 > 2){
+        if(isFilter ? arrFilterHomeData.count > 2 : arrHomeData?.count ?? 0 > 2){
             if (self.tblSearchData.contentOffset.y >= (self.tblSearchData.contentSize.height - self.tblSearchData.frame.size.height)) && self.isStopPaging == false && self.isApiProcessing == false {
                 print("call from scroll..")
                 self.callSearchDataAPI()

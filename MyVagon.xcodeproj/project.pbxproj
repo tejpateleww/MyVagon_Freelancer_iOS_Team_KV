@@ -1460,9 +1460,9 @@
 		88C3A9CE27A4005A0018B9E8 /* Earning */ = {
 			isa = PBXGroup;
 			children = (
+				88C3A9CF27A400730018B9E8 /* MyEarningVC.swift */,
 				88C3A9D627A40B370018B9E8 /* EarningLocationCell */,
 				88C3A9D127A4056E0018B9E8 /* Cell */,
-				88C3A9CF27A400730018B9E8 /* MyEarningVC.swift */,
 			);
 			path = Earning;
 			sourceTree = "<group>";

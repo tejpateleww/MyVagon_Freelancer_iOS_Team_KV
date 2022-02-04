@@ -106,6 +106,7 @@ struct BookingData: Codable {
     let paymentStatus: String
     let transactionId: Int
     let shipperCancelDriver: String
+    let scheduleTime: String
     let trucks: EarningResTrucks
     let shipperDetails: ShipperDetails
 
@@ -141,6 +142,7 @@ struct BookingData: Codable {
         case paymentStatus = "payment_status"
         case transactionId = "transaction_id"
         case shipperCancelDriver = "shipper_cancel_driver"
+        case scheduleTime = "schedule_time"
         case trucks = "trucks"
         case shipperDetails = "shipper_details"
     }
@@ -178,6 +180,7 @@ struct BookingData: Codable {
         paymentStatus = try values.decode(String.self, forKey: .paymentStatus)
         transactionId = try values.decode(Int.self, forKey: .transactionId)
         shipperCancelDriver = try values.decode(String.self, forKey: .shipperCancelDriver)
+        scheduleTime = try values.decode(String.self, forKey: .scheduleTime)
         trucks = try values.decode(EarningResTrucks.self, forKey: .trucks)
         shipperDetails = try values.decode(ShipperDetails.self, forKey: .shipperDetails)
     }

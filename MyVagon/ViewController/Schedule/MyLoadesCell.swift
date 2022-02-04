@@ -292,7 +292,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
             
            
             
-            
+
             break
         default:
             break

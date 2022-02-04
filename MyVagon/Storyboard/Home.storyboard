@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
+                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1604,8 +1604,8 @@
                     <connections>
                         <segue destination="Mz1-co-uSF" kind="relationship" relationship="viewControllers" id="iLM-BZ-Hfv"/>
                         <segue destination="xFw-Oj-SJH" kind="relationship" relationship="viewControllers" id="0QQ-JB-6SO"/>
-                        <segue destination="T6c-AA-DWH" kind="relationship" relationship="viewControllers" id="Uxd-aL-Qpc"/>
                         <segue destination="wa2-QK-5r5" kind="relationship" relationship="viewControllers" id="Jni-fB-d7l"/>
+                        <segue destination="T6c-AA-DWH" kind="relationship" relationship="viewControllers" id="0LX-LV-2DD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqU-2e-CjS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3278,7 +3278,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="TblNotification" destination="9bT-bj-Mi6" id="hJv-1A-UG7"/>
+                        <outlet property="tblNotification" destination="9bT-bj-Mi6" id="KnU-LX-xGq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYC-1V-TjQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -7534,7 +7534,7 @@
         <scene sceneID="MQc-we-kgL">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="wa2-QK-5r5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="My Fleet" image="unselected_account" selectedImage="selected_account" id="QtF-1c-IrD"/>
+                    <tabBarItem key="tabBarItem" title="My Fleet" image="unselected_fleet" selectedImage="selected_account" id="QtF-1c-IrD"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="TVU-E1-oBD"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pvr-Vw-NZR">
@@ -7547,7 +7547,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KhF-Yn-9zO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-403" y="1830"/>
+            <point key="canvasLocation" x="-365" y="1829"/>
         </scene>
         <!--Driver PermissionVC-->
         <scene sceneID="R5v-Ah-lJZ">
@@ -8457,50 +8457,20 @@
         </scene>
     </scenes>
     <designables>
-        <designable name="2XH-Ao-qft">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
-        <designable name="8Aw-Bh-8Xr">
-            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
-        </designable>
         <designable name="BXF-jj-EO4">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="Com-VW-sEt">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
-        <designable name="DBo-Gu-s5O">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
-        <designable name="DRM-Lm-Ptg">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="JGu-Rd-dQY">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
-        <designable name="OjE-hj-r8W">
-            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
-        </designable>
-        <designable name="YWH-rb-rSd">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
-        <designable name="dKe-u7-VRd">
-            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
-        <designable name="lr4-96-DZG">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
-        </designable>
         <designable name="pxc-Co-qbc">
             <size key="intrinsicContentSize" width="120" height="20"/>
-        </designable>
-        <designable name="xPV-7n-xnf">
-            <size key="intrinsicContentSize" width="335" height="39.220703125"/>
         </designable>
     </designables>
     <resources>
@@ -8533,6 +8503,7 @@
         <image name="selected_schedule" width="68" height="68"/>
         <image name="selected_search" width="68" height="68"/>
         <image name="unselected_account" width="21.5" height="24"/>
+        <image name="unselected_fleet" width="29.5" height="18"/>
         <image name="unselected_schedule" width="22" height="24"/>
         <image name="unselected_search" width="19.5" height="19.5"/>
         <namedColor name="ThemeBlackColor">

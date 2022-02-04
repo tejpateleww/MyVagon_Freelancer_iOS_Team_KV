@@ -15,6 +15,12 @@ class NotificationListViewModel {
        
         WebServiceSubClass.NotificationList(completion: { (status, apiMessage, response, error) in
            
+            self.notificationViewController?.isTblReload = true
+            self.notificationViewController?.isLoading = false
+            DispatchQueue.main.async {
+                self.notificationViewController?.refreshControl.endRefreshing()
+            }
+            
             if status{
                 self.notificationViewController?.arrNotification = response?.data ?? []
                 self.notificationViewController?.isLoading = false

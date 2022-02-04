@@ -92,7 +92,6 @@ extension Sequence where Element: Hashable {
 
 
 class NewHomeViewModel {
-    
     weak var newHomeVC : NewHomeVC? = nil
     
     func WebServiceSearchList(ReqModel:ShipmentListReqModel){
@@ -108,6 +107,30 @@ class NewHomeViewModel {
             self.newHomeVC?.sortBy = ""
             
             if status{
+
+                if(self.newHomeVC?.isFilter ?? false == true){
+                    if(response?.data?.count == 0){
+                        if(self.newHomeVC?.PageNumber == 1){
+                            self.newHomeVC?.arrFilterHomeData = response?.data ?? []
+                        }else{
+                            self.newHomeVC?.isStopPaging = true
+                            return
+                        }
+                    }else{
+                        if(self.newHomeVC?.PageNumber == 1){
+                            self.newHomeVC?.arrFilterHomeData = response?.data ?? []
+                        }else{
+                            self.newHomeVC?.arrFilterHomeData.append(contentsOf: response?.data ?? [])
+                        }
+                    }
+                    self.newHomeVC?.tblSearchData.reloadData()
+                    self.newHomeVC?.tblSearchData.layoutIfNeeded()
+                    self.newHomeVC?.tblSearchData.beginUpdates()
+                    self.newHomeVC?.tblSearchData.endUpdates()
+                    
+                    return
+                }
+                
                 if(response?.data?.count == 0){
                     if(self.newHomeVC?.PageNumber == 1){
                         

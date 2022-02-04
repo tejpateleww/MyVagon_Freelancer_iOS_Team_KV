@@ -110,13 +110,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
 
         // Remove MyFleet Tab
-        let indexToRemove = 3
+        let indexToRemove = 2
         if indexToRemove < controller.viewControllers?.count ?? 3 {
             var viewControllers = controller.viewControllers
             viewControllers?.remove(at: indexToRemove)
             controller.viewControllers = viewControllers
         }
-        
+//        
         
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = true
