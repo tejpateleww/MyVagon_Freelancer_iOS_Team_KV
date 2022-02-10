@@ -82,7 +82,7 @@ extension MyEarningCell : UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName
-        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
         cell.lblAddress.text = self.arrLocations[indexPath.row].dropLocation
         
         if(indexPath.row == (self.arrLocations.count - 1)){

@@ -27,6 +27,7 @@ class MyAccountViewController: BaseViewController {
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
     @IBOutlet weak var AccountTableView: UITableView!
+    @IBOutlet weak var lblVersion: themeLabel!
     
     // ----------------------------------------------------
     // MARK: - --------- Life-cycle Methods ---------
@@ -34,6 +35,10 @@ class MyAccountViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let Version = "Version : \(Bundle.main.releaseVersionNumber ?? "")(\(Bundle.main.buildVersionNumber ?? ""))"
+        self.lblVersion.text = Version
+        
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }

@@ -31,11 +31,11 @@ class NewHomeVC: BaseViewController {
     //Pull to refresh
     let refreshControl = UIRefreshControl()
     
-    //shimmer
+    //Shimmer
     var isTblReload = false
     var isLoading = true {
         didSet {
-            self.tblSearchData.isUserInteractionEnabled = !isLoading
+            self.tblSearchData.isUserInteractionEnabled = !self.isLoading
             self.tblSearchData.reloadData()
         }
     }
@@ -61,7 +61,6 @@ class NewHomeVC: BaseViewController {
     }
     
     func setupUI(){
-        self.tblSearchData.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
         self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Search and Book Loads", leftImage: NavItemsLeft.none.value, rightImages: [NavItemsRight.notification.value,NavItemsRight.chat.value], isTranslucent: true, ShowShadow: false)
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
@@ -73,9 +72,11 @@ class NewHomeVC: BaseViewController {
         self.tblSearchData.separatorStyle = .none
         self.tblSearchData.showsHorizontalScrollIndicator = false
         self.tblSearchData.showsVerticalScrollIndicator = false
+        self.tblSearchData.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: .leastNormalMagnitude))
         
         self.registerNib()
         self.addRefreshControl()
+        self.allSocketOnMethods()
     }
     
     func setupData(){
@@ -132,6 +133,71 @@ class NewHomeVC: BaseViewController {
         }else if LocationStatus == .restricted || LocationStatus == .denied {
             Utilities.CheckLocation(currentVC:self)
         }
+    }
+    
+    
+    //MARK: - Socket connection methods
+    func allSocketOnMethods() {
+        
+        if !SocketIOManager.shared.isSocketOn {
+            self.perform(#selector(self.SocketConnectionProcess), with: nil, afterDelay: 2.0)
+            
+            SocketIOManager.shared.socket.on(clientEvent: .connect) {data, ack in
+                print("socket Now connected")
+                SocketIOManager.shared.isSocketOn = true
+                self.setupforCustomerConnection()
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .disconnect) {data, ack in
+                print("socket Now Disconnected")
+                
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .reconnect) {data, ack in
+                print("socket Now Reconnected")
+                self.setupforCustomerConnection()
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .statusChange) { (data, ack) in
+                print("socket status change")
+                print(data)
+            }
+            
+            SocketIOManager.shared.socket.on(clientEvent: .error) { (data, ack) in
+                print("socket error")
+                print(data)
+                if let status = data[0] as? String , (status == "authentication error" || status == "Could not connect to the server." || status == "The operation couldn’t be completed. Socket is not connected") {
+                    if !SocketIOManager.shared.isWaitingMessageDisplayed {
+                    }
+                }
+            }
+        }
+        else {
+            self.setupforCustomerConnection()
+        }
+        
+    }
+    
+    func setupforCustomerConnection() {
+        let profile = SingletonClass.sharedInstance.UserProfileData
+        let AccessUser:Int = profile?.id ?? 0
+        self.connectCustomer(AccessUserId: AccessUser)
+    }
+    
+    func connectCustomer(AccessUserId:Int) {
+        let UpdateCustomerSocketParams = ["user_id":"\(AccessUserId)" ]
+        SocketIOManager.shared.socketEmit(for: socketApiKeys.driverConnect.rawValue , with: UpdateCustomerSocketParams)
+        if SingletonClass.sharedInstance.initResModel?.bookingData != nil {
+            if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.arrivedAt ?? "") == "" {
+                SingletonClass.sharedInstance.CurrentTripStart = true
+            } else {
+                SingletonClass.sharedInstance.CurrentTripStart = false
+            }
+        }
+    }
+    
+    @objc func SocketConnectionProcess() {
+        SocketIOManager.shared.establishConnection()
     }
     
     //MARK: - UIButton Action methods
@@ -208,7 +274,7 @@ extension NewHomeVC : UITextFieldDelegate {
 extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if isLoading {return 1}
+        if self.isLoading {return 1}
         return (self.isFilter) ? 1 : self.numberOfSections
     }
     
@@ -270,7 +336,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
             }else{
                 if(self.arrHomeData?.count ?? 0 > 0){
                     let cell = self.tblSearchData.dequeueReusableCell(withIdentifier: SearchDataCell.className) as! SearchDataCell
-                    cell.selectionStyle = .none
+                    cell.selectionStyle = .none 
                     
                     cell.lblCompanyName.text = arrHomeData?[indexPath.section][indexPath.row].shipperDetails?.companyName ?? ""
                     cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (arrHomeData?[indexPath.section][indexPath.row].amount ?? "" ) : ""
@@ -283,7 +349,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
                         cell.lblStatus.text = bidStatus.BidNow.Name
                         cell.vWStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
                     } else {
-                        cell.lblStatus.text =  bidStatus.BookNow.Name
+                        cell.lblStatus.text = bidStatus.BookNow.Name
                         cell.vWStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
                     }
                     
@@ -308,14 +374,14 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if isLoading {return ""}
-        if isFilter {return ""}
+        if self.isLoading {return ""}
+        if self.isFilter {return ""}
         return arrHomeData?[section].first?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if isLoading {return UIView()}
-        if isFilter {return UIView()}
+        if self.isLoading {return UIView()}
+        if self.isFilter {return UIView()}
         if self.arrHomeData?.count ?? 0 > 0 {
             let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 40))
             headerView.backgroundColor = UIColor(hexString: "#FAFAFA")
@@ -333,25 +399,25 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if isLoading {return 0}
-        if isFilter {return 0}
+        if self.isLoading {return 0}
+        if self.isFilter {return 0}
         return 40
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if #available(iOS 13.0, *) {
-            cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+            cell.setTemplateWithSubviews(self.isLoading, animate: true, viewBackgroundColor: .systemBackground)
         } else {
-            cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: UIColor.lightGray.withAlphaComponent(0.3))
+            cell.setTemplateWithSubviews(self.isLoading, animate: true, viewBackgroundColor: UIColor.lightGray.withAlphaComponent(0.3))
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !isLoading {
-            if(isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
+        if !self.isLoading {
+            if(self.isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
                 let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
                 controller.hidesBottomBarWhenPushed = true
-                controller.LoadDetails = (isFilter) ? arrFilterHomeData[indexPath.row] : arrHomeData?[indexPath.section][indexPath.row]
+                controller.LoadDetails = (self.isFilter) ? arrFilterHomeData[indexPath.row] : arrHomeData?[indexPath.section][indexPath.row]
                 UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
             }
         }
@@ -361,7 +427,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
         if(!isTblReload){
             return UITableView.automaticDimension
         }else{
-            if isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0 {
+            if self.isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0 {
                 return UITableView.automaticDimension
             }else{
                 return tableView.frame.height
@@ -370,7 +436,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(isFilter ? arrFilterHomeData.count > 2 : arrHomeData?.count ?? 0 > 2){
+        if(self.isFilter ? arrFilterHomeData.count > 2 : arrHomeData?.count ?? 0 > 2){
             if (self.tblSearchData.contentOffset.y >= (self.tblSearchData.contentSize.height - self.tblSearchData.frame.size.height)) && self.isStopPaging == false && self.isApiProcessing == false {
                 print("call from scroll..")
                 self.callSearchDataAPI()

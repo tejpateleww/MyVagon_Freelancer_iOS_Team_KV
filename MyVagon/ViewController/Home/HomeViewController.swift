@@ -205,7 +205,6 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
        
     }
     @objc func SocketConnectionProcess() {
-        
         SocketIOManager.shared.establishConnection()
     }
     

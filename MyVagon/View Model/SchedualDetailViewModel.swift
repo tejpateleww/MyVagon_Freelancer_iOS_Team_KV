@@ -153,6 +153,7 @@ class SchedualDetailViewModel {
                 }
             }
         })
+        
     }
     
     func WebServiceAcceptPayment(ReqModel:AcceptPaymentReqModel){

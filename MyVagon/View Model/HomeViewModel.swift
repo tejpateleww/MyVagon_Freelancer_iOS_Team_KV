@@ -103,12 +103,12 @@ class NewHomeViewModel {
                 self.newHomeVC?.refreshControl.endRefreshing()
             }
             self.newHomeVC?.isTblReload = true
-            self.newHomeVC?.isLoading = false
+            self.newHomeVC?.self.isLoading = false
             self.newHomeVC?.sortBy = ""
             
             if status{
 
-                if(self.newHomeVC?.isFilter ?? false == true){
+                if(self.newHomeVC?.self.isFilter ?? false == true){
                     if(response?.data?.count == 0){
                         if(self.newHomeVC?.PageNumber == 1){
                             self.newHomeVC?.arrFilterHomeData = response?.data ?? []

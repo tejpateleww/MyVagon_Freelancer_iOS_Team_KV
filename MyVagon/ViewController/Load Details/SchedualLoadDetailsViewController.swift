@@ -216,7 +216,12 @@ class SchedualLoadDetailsViewController: BaseViewController {
                 formatter.unitsStyle = .full
                 let relativeDate = formatter.localizedString(for: dateToCompare, relativeTo: CurrentDate)
                 let dateToDisplay = relativeDate.components(separatedBy: "in ")
-                self.lblDaysToGo.text = dateToDisplay[1] + " to go"
+                if(dateToDisplay.count > 1){
+                    self.lblDaysToGo.text = dateToDisplay[1] + " to go"
+                }else{
+                    self.lblDaysToGo.text = dateToDisplay[0] + " to go"
+                }
+                
             }
         }
         //Tej's logic comp
@@ -373,7 +378,16 @@ class SchedualLoadDetailsViewController: BaseViewController {
             self.lblBookingStatus.text =  MyLoadesStatus.completed.Name.capitalized
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
             
-            self.btnMarkAsPaid.superview?.isHidden = (self.LoadDetails?.paymentStatus == "pending") ? false : true
+            var Visible = true
+            if(self.LoadDetails?.paymentStatus == "pending"){
+                Visible = true
+                if(self.LoadDetails?.podURL != ""){
+                    Visible = false
+                }else{
+                    Visible = true
+                }
+            }
+            self.btnMarkAsPaid.superview?.isHidden = Visible
             self.viewStatus.backgroundColor = (self.LoadDetails?.paymentStatus == "pending") ? #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1) : #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
             self.lblBookingStatus.text = (self.LoadDetails?.paymentStatus == "pending") ? MyLoadesStatus.completed.Name.capitalized : "Paid"
             
@@ -590,7 +604,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         let reqModel = AcceptPaymentReqModel ()
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
-    
+        
         self.schedualDetailViewModel.WebServiceAcceptPayment(ReqModel: reqModel)
     }
     
@@ -608,31 +622,26 @@ class SchedualLoadDetailsViewController: BaseViewController {
     func CallAPIForCompleteTrip() {
         
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: CommonAcceptRejectPopupVC.storyboardID) as! CommonAcceptRejectPopupVC
-        
         let DescriptionAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(16)] as [NSAttributedString.Key : Any]
-        
         let AttributedStringFinal = "Shipment completed Successfully".Medium(color: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), FontSize: 18)
-        
         controller.IsHideImage = false
         controller.ShownImage = #imageLiteral(resourceName: "ic_truck_completed")
         controller.TitleAttributedText = AttributedStringFinal
         controller.DescriptionAttributedText = NSAttributedString(string: "", attributes: DescriptionAttribute)
         controller.LeftbtnTitle = "Not Now"
         controller.RightBtnTitle = "Upload POD"
-        
-        
         controller.modalPresentationStyle = .overCurrentContext
         controller.modalTransitionStyle = .coverVertical
+        
         controller.LeftbtnClosour = {
             controller.dismiss(animated: true) {
                 self.schedualDetailViewModel.schedualLoadDetailsViewController = self
-                
+
                 let reqModel = CompleteTripReqModel()
                 reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
                 reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
                 reqModel.location_id = "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)"
                 reqModel.pod_image = ""
-                
                 self.schedualDetailViewModel.CompleteTrip(ReqModel: reqModel)
             }
             
@@ -641,16 +650,12 @@ class SchedualLoadDetailsViewController: BaseViewController {
             controller.dismiss(animated: true) {
                 AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
                 AttachmentHandler.shared.imagePickedBlock = { (image) in
-                    
-                    
                     self.ImageUploadAPI(arrImages: [image])
                 }
             }
         }
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(270) + appDel.GetSafeAreaHeightFromBottom())])
         self.present(sheetController, animated: true, completion: nil)
-        
-        
     }
     
     func getLoadsData() {
@@ -664,9 +669,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
     }
     
     func ImageUploadAPI(arrImages:[UIImage]) {
-        
         self.schedualDetailViewModel.schedualLoadDetailsViewController = self
-        
         self.schedualDetailViewModel.WebServiceImageUpload(images: arrImages)
     }
     
@@ -991,7 +994,6 @@ extension SchedualLoadDetailsViewController {
         self.TruckMarker?.iconView = markerView2
         self.TruckMarker?.map = self.MapViewForLocation
         //self.MapViewForLocation.selectedMarker = self.DropLocMarker
-        
 
         self.fetchRoute(currentlat: currentlat, currentlong: currentlong, droplat: droplat, droplog: droplog, isStatic: false)
     }
@@ -1059,8 +1061,6 @@ extension SchedualLoadDetailsViewController {
         if(self.path.count() <= 0) {
             return
         }
-        
-
         if(self.oldCoordinate == nil){
             self.oldCoordinate = CLLocationCoordinate2DMake(SingletonClass.sharedInstance.userCurrentLocation.coordinate.latitude, SingletonClass.sharedInstance.userCurrentLocation.coordinate.longitude)
             
@@ -1135,11 +1135,7 @@ extension SchedualLoadDetailsViewController {
             self.polyline.strokeColor = UIColor.black
             self.polyline.strokeWidth = 3.0
             self.polyline.map = self.MapViewForLocation
-            
         }
-      
-       
-        
     }
     
     func getAllCoordinate(startPoint:CLLocation, endPoint:CLLocation){

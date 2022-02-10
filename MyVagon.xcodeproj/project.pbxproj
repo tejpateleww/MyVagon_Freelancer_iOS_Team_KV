@@ -239,6 +239,9 @@
 		84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */; };
 		84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */; };
 		84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */; };
+		880F69F327B4F68400E2CDD2 /* NewScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */; };
+		880F69F727B4F6B200E2CDD2 /* ScheduleDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */; };
+		880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */; };
@@ -254,6 +257,7 @@
 		8877068227ABFD5E00EACE5A /* AcceptPaymentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877068127ABFD5E00EACE5A /* AcceptPaymentViewModel.swift */; };
 		888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */; };
 		888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */; };
+		8892B9B127B1339C00FE1074 /* CustomeMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892B9B027B1339C00FE1074 /* CustomeMapVC.swift */; };
 		88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */; };
 		88B65DC527A91A9E00DC9DE8 /* SearchDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */; };
 		88B65DC627A91A9E00DC9DE8 /* SearchDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */; };
@@ -595,6 +599,9 @@
 		84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreelancerDriverSignupVC3.swift; sourceTree = "<group>"; };
 		84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInContainerVC.swift; sourceTree = "<group>"; };
 		84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDriverVC.swift; sourceTree = "<group>"; };
+		880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleVC.swift; sourceTree = "<group>"; };
+		880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataCell.swift; sourceTree = "<group>"; };
+		880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDataCell.xib; sourceTree = "<group>"; };
 		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -612,6 +619,7 @@
 		887BA18B49DFAA6FF2B0EE6A /* Pods-MyVagonTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagonTests.debug.xcconfig"; path = "Target Support Files/Pods-MyVagonTests/Pods-MyVagonTests.debug.xcconfig"; sourceTree = "<group>"; };
 		888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningShimmerCell.swift; sourceTree = "<group>"; };
 		888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningShimmerCell.xib; sourceTree = "<group>"; };
+		8892B9B027B1339C00FE1074 /* CustomeMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMapVC.swift; sourceTree = "<group>"; };
 		88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeVC.swift; sourceTree = "<group>"; };
 		88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataCell.swift; sourceTree = "<group>"; };
 		88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDataCell.xib; sourceTree = "<group>"; };
@@ -874,6 +882,7 @@
 			isa = PBXGroup;
 			children = (
 				88B65DC127A91A7900DC9DE8 /* New Home */,
+				880F69F127B4F66500E2CDD2 /* New Schedule */,
 				184DB31226B271E70059B334 /* HomeViewController.swift */,
 				18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */,
 				18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */,
@@ -1330,6 +1339,24 @@
 			path = SearchResModel;
 			sourceTree = "<group>";
 		};
+		880F69F127B4F66500E2CDD2 /* New Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */,
+				880F69F427B4F69100E2CDD2 /* New Schedule Cell */,
+			);
+			path = "New Schedule";
+			sourceTree = "<group>";
+		};
+		880F69F427B4F69100E2CDD2 /* New Schedule Cell */ = {
+			isa = PBXGroup;
+			children = (
+				880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */,
+				880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */,
+			);
+			path = "New Schedule Cell";
+			sourceTree = "<group>";
+		};
 		8877066527ABA22900EACE5A /* MyFleet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1412,12 +1439,20 @@
 			path = "Shimmer cells";
 			sourceTree = "<group>";
 		};
+		8892B9AF27B1337B00FE1074 /* Custome Map */ = {
+			isa = PBXGroup;
+			children = (
+				8892B9B027B1339C00FE1074 /* CustomeMapVC.swift */,
+			);
+			path = "Custome Map";
+			sourceTree = "<group>";
+		};
 		88B65DC127A91A7900DC9DE8 /* New Home */ = {
 			isa = PBXGroup;
 			children = (
-				88B65DC727A929A900DC9DE8 /* SearchLocation Cell */,
-				88B65DC227A91A8700DC9DE8 /* New Home Cell */,
 				88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */,
+				88B65DC227A91A8700DC9DE8 /* New Home Cell */,
+				88B65DC727A929A900DC9DE8 /* SearchLocation Cell */,
 			);
 			path = "New Home";
 			sourceTree = "<group>";
@@ -1638,6 +1673,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8892B9AF27B1337B00FE1074 /* Custome Map */,
 				8877066527ABA22900EACE5A /* MyFleet */,
 				88C3A9CE27A4005A0018B9E8 /* Earning */,
 				18114D162774A67300CD59D1 /* View POD */,
@@ -1858,6 +1894,7 @@
 				18A34F1B26CD1EE100F252B6 /* NoBookingTblCell.xib in Resources */,
 				18A34F2A26CD1F2D00F252B6 /* LocationCell.xib in Resources */,
 				180FCEE826B135C3008D28EE /* Localizable.strings in Resources */,
+				880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */,
 				8877067F27ABAF7B00EACE5A /* NotiShimmerCell.xib in Resources */,
 				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
@@ -2089,6 +2126,7 @@
 				18CC347A270D6BE40063E33B /* SearchLoadsDatum.swift in Sources */,
 				18129ABF26BACC5F00983AFC /* UIDevice+Extension.swift in Sources */,
 				184DB31326B271E70059B334 /* HomeViewController.swift in Sources */,
+				880F69F727B4F6B200E2CDD2 /* ScheduleDataCell.swift in Sources */,
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
@@ -2165,6 +2203,7 @@
 				A14974DB26A1AB800072AF33 /* Poppins-SemiBold.ttf in Sources */,
 				1858EA7F26E609BB008E04A7 /* ReceiverCell.swift in Sources */,
 				18CC3475270D67E00063E33B /* SearchUnit.swift in Sources */,
+				8892B9B127B1339C00FE1074 /* CustomeMapVC.swift in Sources */,
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
 				18A34F1E26CD1EE100F252B6 /* BidRequestTblCell.swift in Sources */,
 				189B2345271D558100431D94 /* DriverListViewModel.swift in Sources */,
@@ -2335,6 +2374,7 @@
 				84AF91B626AEE94F004BB88D /* FreelancerDriverSignupVC3.swift in Sources */,
 				18ECDC842766F7EF0097F10F /* CustomButton.swift in Sources */,
 				185BA7E72757843F00E99FAC /* MyLoadsNewProduct.swift in Sources */,
+				880F69F327B4F68400E2CDD2 /* NewScheduleVC.swift in Sources */,
 				18AAB0FB26CA6E32002C002D /* CommonAcceptRejectPopupVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2526,7 +2566,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myvagon.freelancerdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2550,7 +2590,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.myvagon.freelancerdriver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

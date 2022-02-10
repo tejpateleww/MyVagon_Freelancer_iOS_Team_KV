@@ -41,8 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GMSServices.provideAPIKey(AppInfo.Google_API_Key)
         GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
-        // Override point for customization after application launch.
-    
+      
         return true
     }
     
@@ -116,7 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             viewControllers?.remove(at: indexToRemove)
             controller.viewControllers = viewControllers
         }
-//        
         
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = true
@@ -187,18 +185,9 @@ class CustomTabBar: UITabBar {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        //        self.clipsToBounds = false
-        //        layer.masksToBounds = true
         layer.cornerRadius = 10
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
-        //        layer.shadowOffset = CGSize(width: -3, height: 0)
-        //        layer.shadowColor = UIColor.black.cgColor
-        //        layer.shadowOpacity = 0.3
-        
-        //        self.backgroundImage = UIImage.from(color: .white)
-        
     }
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -208,10 +197,7 @@ class CustomTabBar: UITabBar {
         tabFrame.origin.y       = self.frame.origin.y +   ( self.frame.height - 55 - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero))
         self.layer.cornerRadius = 0
         self.frame            = tabFrame
-        
         self.items?.forEach({ $0.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -5.0) })
-        
-        
     }
     
 }

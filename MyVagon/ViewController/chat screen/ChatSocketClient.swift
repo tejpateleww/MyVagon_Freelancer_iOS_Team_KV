@@ -53,26 +53,12 @@ extension chatVC{
     }
     
     //MARK:- On Methods
-    
     func onSocket_ReceiveMessage(){
         SocketIOManager.shared.socketCall(for: socketApiKeys.ReceiverMessage.rawValue) { (json) in
             print(#function, "\n ", json)
             let dict = json
             print(dict)
             self.callChatHistoryAPI()
-            
-//            let chatObj : chatHistoryDatum = chatHistoryDatum()
-//            chatObj.id = dict["id"].stringValue
-//            chatObj.bookingId = dict["booking_id"].stringValue
-//            chatObj.message =  dict["message"].stringValue
-//            chatObj.receiverId =  dict["receiver_id"].stringValue
-//            chatObj.receiverType = dict["receiver_type"].stringValue
-//            chatObj.senderId =  dict["sender_id"].stringValue
-//            chatObj.senderType = dict["sender_type"].stringValue
-//            chatObj.createdAt = dict["created_at"].stringValue
-//
-//            self.arrayChatHistory.append(chatObj)
-//            self.filterArrayData(isFromDidLoad: true)
         }
     }
     

@@ -47,6 +47,8 @@ class MyEarningVC: BaseViewController {
         self.tblEarning.delegate = self
         self.tblEarning.dataSource = self
         self.tblEarning.separatorStyle = .none
+        self.tblEarning.showsHorizontalScrollIndicator = false
+        self.tblEarning.showsVerticalScrollIndicator = false
     }
     
     func setupData(){
@@ -105,12 +107,12 @@ extension MyEarningVC : UITableViewDelegate, UITableViewDataSource {
                 
                 cell.selectionStyle = .none
                 
-                cell.lblCompanyNAme.text = self.arrData[indexPath.row].bookingData.shipperDetails.companyName
-                cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (self.arrData[indexPath.row].bookingData.amount ) : ""
-                cell.lblTripID.text = "#\(self.arrData[indexPath.row].bookingId )"
-                cell.lblTon.text =   "\(self.arrData[indexPath.row].bookingData.trucks.locations[0].products[0].weight ) Ton, \(self.arrData[indexPath.row].bookingData.distance) miles"
-                cell.lblDeadhead.text = "\(self.arrData[indexPath.row].bookingData.trucks.locations[0].deadhead ) mile Deadhead : \(self.arrData[indexPath.row].bookingData.trucks.truckTypeCategory[0].name)"
-                cell.arrLocations = self.arrData[indexPath.row].bookingData.trucks.locations
+                cell.lblCompanyNAme.text = self.arrData[indexPath.row].bookingData?.shipperDetails?.companyName
+                cell.lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (self.arrData[indexPath.row].bookingData?.amount ?? "" ) : ""
+                cell.lblTripID.text = "#\(self.arrData[indexPath.row].bookingId ?? 0 )"
+                cell.lblTon.text =   "\(self.arrData[indexPath.row].bookingData?.trucks?.locations?[0].products?[0].weight ?? "" ) Ton, \(self.arrData[indexPath.row].bookingData?.distance ?? "") miles"
+                cell.lblDeadhead.text = "\(self.arrData[indexPath.row].bookingData?.trucks?.locations?[0].deadhead ?? "") mile Deadhead : \(self.arrData[indexPath.row].bookingData?.trucks?.truckTypeCategory?[0].name ?? "")"
+                cell.arrLocations = self.arrData[indexPath.row].bookingData?.trucks?.locations ?? []
                 
                 cell.tblHeight = { (heightTBl) in
                     self.tblEarning.layoutIfNeeded()

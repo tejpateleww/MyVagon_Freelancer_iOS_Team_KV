@@ -420,7 +420,7 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
         
         switch myloadDetails?.type {
         case MyLoadType.Bid.Name:
-            header.lblStatus.isHidden = false
+            header.lblStatus.isHidden  = false
             header.viewStatus.isHidden = false
             header.lblWeightAndDistance.isHidden = false
             
