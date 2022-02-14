@@ -131,7 +131,6 @@ enum ApiKey: String {
     case TruckFeatureListing                    = "truck/features"
     case TruckUnitListing                       = "truck/unit"
     
-    
     case PackageListing                         = "package/listing"
     case ShipmentList                           = "shipment/search"
     case SearchLoads                            = "search-loads"

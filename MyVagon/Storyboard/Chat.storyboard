@@ -414,10 +414,10 @@
                                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChatListCell" id="9Vz-2E-t3p" customClass="ChatListCell" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="44.5" width="414" height="74.5"/>
+                                                                <rect key="frame" x="0.0" y="44.5" width="414" height="75.5"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Vz-2E-t3p" id="WcZ-Wa-FwM">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="74.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75.5"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waQ-hz-zdE">
@@ -586,12 +586,22 @@
                                                                                 <constraint firstAttribute="bottom" secondItem="cFa-zH-N8n" secondAttribute="bottom" id="VwV-j5-MV2"/>
                                                                             </constraints>
                                                                         </view>
+                                                                        <view alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICP-h8-Z1w">
+                                                                            <rect key="frame" x="0.0" y="74.5" width="414" height="1"/>
+                                                                            <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="1" id="L4k-zT-sub"/>
+                                                                            </constraints>
+                                                                        </view>
                                                                     </subviews>
                                                                     <constraints>
+                                                                        <constraint firstItem="ICP-h8-Z1w" firstAttribute="leading" secondItem="WcZ-Wa-FwM" secondAttribute="leading" id="8no-kR-N8e"/>
                                                                         <constraint firstItem="waQ-hz-zdE" firstAttribute="top" secondItem="WcZ-Wa-FwM" secondAttribute="top" constant="17" id="PpD-AD-upb"/>
                                                                         <constraint firstItem="waQ-hz-zdE" firstAttribute="leading" secondItem="WcZ-Wa-FwM" secondAttribute="leading" constant="20" id="VZl-SF-sFN"/>
                                                                         <constraint firstAttribute="trailing" secondItem="waQ-hz-zdE" secondAttribute="trailing" constant="20" id="aSI-7g-NDd"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="waQ-hz-zdE" secondAttribute="bottom" constant="17" id="dHL-kY-TsD"/>
+                                                                        <constraint firstItem="ICP-h8-Z1w" firstAttribute="top" secondItem="waQ-hz-zdE" secondAttribute="bottom" constant="17" id="hFh-Va-IGg"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="ICP-h8-Z1w" secondAttribute="trailing" id="rHn-zX-iy4"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="ICP-h8-Z1w" secondAttribute="bottom" id="zAJ-E2-c8c"/>
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
@@ -665,6 +675,9 @@
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

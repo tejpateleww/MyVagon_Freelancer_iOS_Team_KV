@@ -52,6 +52,7 @@ class NewHomeVC: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.showTabBar()
+        self.checkForNotification()
     }
     
     //MARK: - Custom methods
@@ -77,11 +78,36 @@ class NewHomeVC: BaseViewController {
         self.registerNib()
         self.addRefreshControl()
         self.allSocketOnMethods()
+        self.addNotificationObs()
     }
     
     func setupData(){
         self.callSearchDataAPI()
         self.checkLocationPermission()
+    }
+    
+    func addNotificationObs(){
+        NotificationCenter.default.removeObserver(self, name: .goToChatScreen, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(goToChatScreen), name: .goToChatScreen, object: nil)
+    }
+    
+    func checkForNotification(){
+        if(AppDelegate.pushNotificationObj != nil){
+            if(AppDelegate.pushNotificationType == NotificationTypes.newMeassage.rawValue){
+                self.goToChatScreen()
+            }
+        }
+    }
+    
+    @objc func goToChatScreen() {
+        let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
+        controller.shipperID = AppDelegate.shared.shipperIdForChat
+        controller.shipperName = AppDelegate.shared.shipperNameForChat
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        AppDelegate.pushNotificationObj = nil
+        AppDelegate.pushNotificationType = nil
     }
     
     func registerNib(){
@@ -314,7 +340,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
                         cell.lblStatus.text = bidStatus.BidNow.Name
                         cell.vWStatus.backgroundColor = #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
                     } else {
-                        cell.lblStatus.text =  bidStatus.BookNow.Name
+                        cell.lblStatus.text = bidStatus.BookNow.Name
                         cell.vWStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
                     }
                     

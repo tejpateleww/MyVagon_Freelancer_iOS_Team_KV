@@ -54,6 +54,7 @@ class ChatListVC: BaseViewController {
         self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Chat", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.contactus.value], isTranslucent: true, IsChatScreenLabel:true,NumberOfChatCount: "5")
         self.tblChatList.delegate = self
         self.tblChatList.dataSource = self
+        self.tblChatList.separatorStyle = .none
         self.tblChatList.showsHorizontalScrollIndicator = false
         self.tblChatList.showsVerticalScrollIndicator = false
         
@@ -151,10 +152,15 @@ extension ChatListVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(isSearched ? self.arrFilterData.count > 0 : self.arrData.count > 0){
-            let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
-            controller.shipperID = (isSearched) ? "\(self.arrFilterData[indexPath.row].id)" : "\(self.arrData[indexPath.row].id)"
-            controller.shipperName = (isSearched) ? self.arrFilterData[indexPath.row].name  : self.arrData[indexPath.row].name
+            
+            AppDelegate.shared.shipperIdForChat = (isSearched) ? "\(self.arrFilterData[indexPath.row].id)" : "\(self.arrData[indexPath.row].id)"
+            AppDelegate.shared.shipperNameForChat = (isSearched) ? "\(self.arrFilterData[indexPath.row].name)" : "\(self.arrData[indexPath.row].name)"
             AppDelegate.shared.shipperProfileForChat = (isSearched) ? self.arrFilterData[indexPath.row].profile : self.arrData[indexPath.row].profile
+            
+            let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
+            controller.shipperID = AppDelegate.shared.shipperIdForChat
+            controller.shipperName = AppDelegate.shared.shipperNameForChat
+            AppDelegate.shared.shipperProfileForChat = AppDelegate.shared.shipperProfileForChat
             self.navigationController?.pushViewController(controller, animated: true)
         }
       

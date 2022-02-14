@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
+                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -7912,7 +7912,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tZ-ee-BBv" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -7927,7 +7927,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="eTB-S3-fWQ" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
+                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -8645,6 +8645,12 @@
         </designable>
         <designable name="Com-VW-sEt">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="Exb-wM-eW9">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="jX1-JX-WA3">
+            <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
         <designable name="pxc-Co-qbc">
             <size key="intrinsicContentSize" width="120" height="20"/>

@@ -19,6 +19,15 @@ class chatVC: BaseViewController {
     var vhatViewModel = chatViewModel()
     var arrData : [chatData] = []
     
+    //shimmer
+    var isTblReload = false
+    var isLoading = true {
+        didSet {
+            self.tblChat.isUserInteractionEnabled = !isLoading
+            self.tblChat.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: shipperName, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true,IsChatScreenLabel:true, IsChatScreen:true)
@@ -51,10 +60,27 @@ class chatVC: BaseViewController {
     func setupUI(){
         self.tblChat.delegate = self
         self.tblChat.dataSource = self
+        self.addNotificationObs()
+        self.registerNib()
+    }
+    
+    func registerNib(){
+        let nib3 = UINib(nibName: NoDataTableViewCell.className, bundle: nil)
+        self.tblChat.register(nib3, forCellReuseIdentifier: NoDataTableViewCell.className)
+        let nib = UINib(nibName: ChatShimmerCell.className, bundle: nil)
+        self.tblChat.register(nib, forCellReuseIdentifier: ChatShimmerCell.className)
     }
     
     func setupData(){
         self.callChatHistoryAPI()
+    }
+    
+    func addNotificationObs(){
+        NotificationCenter.default.removeObserver(self, name: .reloadChatScreen, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadChatScreen), name: .reloadChatScreen, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .reloadNewUserChatScreen, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadNewUserChatScreen), name: .reloadNewUserChatScreen, object: nil)
     }
     
     func scrollToBottom(){
@@ -64,6 +90,27 @@ class chatVC: BaseViewController {
                 self.tblChat.scrollToRow(at: indexPath, at: .bottom, animated: true)
             }
         }
+    }
+    
+    @objc func reloadChatScreen() {
+        self.arrData = []
+        self.isTblReload = false
+        self.isLoading = true
+        self.callChatHistoryAPI()
+        
+        AppDelegate.pushNotificationObj = nil
+        AppDelegate.pushNotificationType = nil
+    }
+    
+    @objc func reloadNewUserChatScreen() {
+        
+        self.shipperID = AppDelegate.shared.shipperIdForChat
+        self.shipperName = AppDelegate.shared.shipperNameForChat
+        self.setNavigationBarInViewController(controller: self, naviColor: colors.white.value, naviTitle: shipperName, leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true,IsChatScreenLabel:true, IsChatScreen:true)
+        self.callChatHistoryAPI()
+        
+        AppDelegate.pushNotificationObj = nil
+        AppDelegate.pushNotificationType = nil
     }
     
     @IBAction func btnSendClick(_ sender: Any) {
@@ -88,32 +135,68 @@ extension chatVC{
         let reqModel = chatMessageReqModel ()
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         reqModel.shipper_id = self.shipperID
-
+        
         self.vhatViewModel.WebServiceChatHistory(ReqModel: reqModel)
     }
 }
 
 extension chatVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrData.count
+        if(self.arrData.count > 0){
+            return self.arrData.count
+        }else{
+            return (!self.isTblReload) ? 10 : 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if(arrData[indexPath.row].senderId == SingletonClass.sharedInstance.UserProfileData?.id){
-            let cell = tblChat.dequeueReusableCell(withIdentifier: "SenderCell") as! SenderCell
-            cell.lblMessage.text = arrData[indexPath.row].message
-            cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
-            cell.selectionStyle = .none
+        if(!self.isTblReload){
+            let cell = tblChat.dequeueReusableCell(withIdentifier: ChatShimmerCell.className) as! ChatShimmerCell
             return cell
         }else{
-            let cell = tblChat.dequeueReusableCell(withIdentifier: "ReceiverCell") as! ReceiverCell
-            cell.lblMessage.text = arrData[indexPath.row].message
-            cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
-            cell.selectionStyle = .none
-            return cell
+            if(self.arrData.count > 0){
+                if(arrData[indexPath.row].senderId == SingletonClass.sharedInstance.UserProfileData?.id){
+                    let cell = tblChat.dequeueReusableCell(withIdentifier: "SenderCell") as! SenderCell
+                    cell.lblMessage.text = arrData[indexPath.row].message
+                    cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+                    cell.selectionStyle = .none
+                    return cell
+                }else{
+                    let cell = tblChat.dequeueReusableCell(withIdentifier: "ReceiverCell") as! ReceiverCell
+                    cell.lblMessage.text = arrData[indexPath.row].message
+                    cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+                    cell.selectionStyle = .none
+                    return cell
+                }
+            }else{
+                let NoDatacell = self.tblChat.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell
+                NoDatacell.imgNoData.image = UIImage(named: "ic_chat")?.withTintColor(#colorLiteral(red: 0.6078431373, green: 0.3176470588, blue: 0.8784313725, alpha: 1))
+                NoDatacell.lblNoDataTitle.text = "No Chat Available!"
+                return NoDatacell
+            }
         }
-       
+        
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if #available(iOS 13.0, *) {
+            cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: .systemBackground)
+        } else {
+            cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: UIColor.lightGray.withAlphaComponent(0.3))
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if(!isTblReload){
+            return UITableView.automaticDimension
+        }else{
+            if(self.arrData.count > 0){
+                return UITableView.automaticDimension
+            }else{
+                return tableView.frame.height
+            }
+        }
     }
     
     

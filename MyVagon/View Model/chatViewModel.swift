@@ -13,6 +13,8 @@ class chatViewModel {
     
     func WebServiceChatHistory(ReqModel:chatMessageReqModel){
         WebServiceSubClass.chatHistory(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            self.chatVC?.isTblReload = true
+            self.chatVC?.isLoading = false
             if status{
                 self.chatVC?.arrData = response?.data ?? []
                 self.chatVC?.tblChat.reloadData()

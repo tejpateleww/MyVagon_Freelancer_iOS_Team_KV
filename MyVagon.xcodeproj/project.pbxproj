@@ -275,6 +275,8 @@
 		88C3A9DA27A40B570018B9E8 /* EarningLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C3A9D827A40B570018B9E8 /* EarningLocationCell.xib */; };
 		88C3A9DD27A413B90018B9E8 /* EarningResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */; };
 		88C3A9DF27A414C40018B9E8 /* EarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */; };
+		88C4D48827BA763400B0D9DD /* ChatShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4D48627BA763400B0D9DD /* ChatShimmerCell.swift */; };
+		88C4D48927BA763400B0D9DD /* ChatShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C4D48727BA763400B0D9DD /* ChatShimmerCell.xib */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A528E92722D795004A292B /* ShimmerCell.swift */; };
 		90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A528EA2722D795004A292B /* ShimmerCell.xib */; };
@@ -637,6 +639,8 @@
 		88C3A9D827A40B570018B9E8 /* EarningLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningLocationCell.xib; sourceTree = "<group>"; };
 		88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarningResModel.swift; sourceTree = "<group>"; };
 		88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModel.swift; sourceTree = "<group>"; };
+		88C4D48627BA763400B0D9DD /* ChatShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatShimmerCell.swift; sourceTree = "<group>"; };
+		88C4D48727BA763400B0D9DD /* ChatShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatShimmerCell.xib; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		90A528E92722D795004A292B /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
 		90A528EA2722D795004A292B /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
@@ -883,6 +887,7 @@
 			children = (
 				88B65DC127A91A7900DC9DE8 /* New Home */,
 				880F69F127B4F66500E2CDD2 /* New Schedule */,
+				8877066527ABA22900EACE5A /* MyFleet */,
 				184DB31226B271E70059B334 /* HomeViewController.swift */,
 				18A34F2126CD1F2C00F252B6 /* HeaderOfLocationsTbl.swift */,
 				18A34F2226CD1F2C00F252B6 /* HeaderOfLocationsTbl.xib */,
@@ -1433,6 +1438,7 @@
 		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
 			isa = PBXGroup;
 			children = (
+				88C4D48527BA761900B0D9DD /* Chat Shimmer */,
 				8877068027ABED8000EACE5A /* Earning Shimmer */,
 				8877067B27ABAF7A00EACE5A /* Noti Shimmer */,
 			);
@@ -1526,6 +1532,15 @@
 				88C3A9DC27A413B90018B9E8 /* EarningResModel.swift */,
 			);
 			path = EarningResModel;
+			sourceTree = "<group>";
+		};
+		88C4D48527BA761900B0D9DD /* Chat Shimmer */ = {
+			isa = PBXGroup;
+			children = (
+				88C4D48627BA763400B0D9DD /* ChatShimmerCell.swift */,
+				88C4D48727BA763400B0D9DD /* ChatShimmerCell.xib */,
+			);
+			path = "Chat Shimmer";
 			sourceTree = "<group>";
 		};
 		90A528E82722D779004A292B /* Shimmer Cell */ = {
@@ -1674,7 +1689,6 @@
 			isa = PBXGroup;
 			children = (
 				8892B9AF27B1337B00FE1074 /* Custome Map */,
-				8877066527ABA22900EACE5A /* MyFleet */,
 				88C3A9CE27A4005A0018B9E8 /* Earning */,
 				18114D162774A67300CD59D1 /* View POD */,
 				1858EA8E26E61A75008E04A7 /* NavigationTitleView */,
@@ -1905,6 +1919,7 @@
 				18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */,
 				1858EA9226E61A75008E04A7 /* NavigationTitleView.xib in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
+				88C4D48927BA763400B0D9DD /* ChatShimmerCell.xib in Resources */,
 				184DB31126B26B540059B334 /* Home.storyboard in Resources */,
 				189FB63E26B932B100BBD5A0 /* collectionPhotos.xib in Resources */,
 				A14974CB26A1AB440072AF33 /* Poppins-SemiBold.ttf in Resources */,
@@ -2236,6 +2251,7 @@
 				18CC3472270D67E00063E33B /* SearchProduct.swift in Sources */,
 				189FB66326B96BF000BBD5A0 /* UploadMediaModel.swift in Sources */,
 				A1519CE326A01CDF001738B9 /* Colors.swift in Sources */,
+				88C4D48827BA763400B0D9DD /* ChatShimmerCell.swift in Sources */,
 				1808175826E742EA00D1C717 /* ShipperDetailsCell.swift in Sources */,
 				84652F7E274F58330091B40B /* BidRequestCell.swift in Sources */,
 				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,

@@ -300,7 +300,7 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
             cell.setTemplateWithSubviews(isLoading, animate: true, viewBackgroundColor: UIColor.lightGray.withAlphaComponent(0.3))
         }
         if !isLoading{
-            if indexPath.section == ((arrMyScheduleData?.count ?? 0) - 1) {
+            if indexPath.section == ((arrMyScheduleData?.count ?? 0) - 1){
                 if indexPath.row == ((arrMyScheduleData?[indexPath.section].count ?? 0) - 1) && isNeedToReload {
                     let spinner = UIActivityIndicatorView(style: .medium)
                     spinner.tintColor = RefreshControlColor

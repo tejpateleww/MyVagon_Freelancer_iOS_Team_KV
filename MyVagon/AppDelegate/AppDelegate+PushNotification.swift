@@ -67,7 +67,7 @@ extension AppDelegate{
         NotificationCenter.default.post(name: NotificationBadges, object: content)
 
         print(#function, notification)
-        completionHandler([.alert, .sound])
+        
         
         if let mainDic = userInfo as? [String: Any]{
             
@@ -90,8 +90,36 @@ extension AppDelegate{
             
             if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
                 AppDelegate.shared.Logout()
+                completionHandler([.alert, .sound])
                 return
             }
+            
+            if pushObj.type == NotificationTypes.newMeassage.rawValue {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    do {
+                        let strDict =  mainDic["gcm.notification.data"] as! String
+                        let DictData = try JSONSerialization.jsonObject(with: strDict.data(using: .utf8)!, options: []) as! [String:Any]
+                        pushObj.senderId = DictData["sender_id"] as? String ?? ""
+                        pushObj.senderName = DictData["sender_name"] as? String ?? ""
+                        pushObj.senderImage = DictData["sender_image"] as? String ?? ""
+                        
+                        if (UIApplication.appTopViewController()?.isKind(of: chatVC.self) ?? false){
+                            if(AppDelegate.shared.shipperIdForChat == pushObj.senderId){
+                                NotificationCenter.default.post(name: .reloadChatScreen, object: nil)
+                            }else{
+                                completionHandler([.alert, .sound])
+                            }
+                        }else{
+                            completionHandler([.alert, .sound])
+                        }
+                    }catch{
+                        print("Error : detected")
+                    }
+                }
+                return
+            }
+            
+            
         }
     }
     
@@ -124,6 +152,32 @@ extension AppDelegate{
                 completionHandler()
                 return
             }
+            
+            if pushObj.type == NotificationTypes.newMeassage.rawValue {
+                do {
+                    let strDict =  mainDic["gcm.notification.data"] as! String
+                    let DictData = try JSONSerialization.jsonObject(with: strDict.data(using: .utf8)!, options: []) as! [String:Any]
+                    AppDelegate.shared.shipperIdForChat = DictData["sender_id"] as? String ?? ""
+                    AppDelegate.shared.shipperNameForChat = DictData["sender_name"] as? String ?? ""
+                    AppDelegate.shared.shipperProfileForChat = DictData["sender_image"] as? String ?? ""
+                    
+                    if(UIApplication.appTopViewController()?.isKind(of: chatVC.self) ?? false){
+                        if(AppDelegate.shared.shipperIdForChat == pushObj.senderId){
+                            AppDelegate.pushNotificationObj = nil
+                            AppDelegate.pushNotificationType = nil
+                        }else{
+                            NotificationCenter.default.post(name: .reloadNewUserChatScreen, object: nil)
+                        }
+                    }else{
+                        NotificationCenter.default.post(name: .goToChatScreen, object: nil)
+                    }
+                    
+                }catch{
+                    print("Error : detected")
+                }
+            }
+            
+            
         }
     }
 }
@@ -131,10 +185,15 @@ extension AppDelegate{
 extension Notification.Name {
     static let sessionExpire = NSNotification.Name("sessionExpire")
     static let arriveAtPickUpLocation = NSNotification.Name("arriveAtPickUpLocation")
+    static let goToChatScreen = NSNotification.Name("goToChatScreen")
+    static let reloadChatScreen = NSNotification.Name("reloadChatScreen")
+    static let reloadNewUserChatScreen = NSNotification.Name("reloadNewUserChatScreen")
+    
 }
 
 enum NotificationTypes : String {
     case notifLoggedOut = "sessionTimeout"
+    case newMeassage = "new_message"
 }
 
 class NotificationObjectModel: Codable {
@@ -142,4 +201,25 @@ class NotificationObjectModel: Codable {
     var type: String?
     var title: String?
     var text: String?
+    
+    var senderId: String?
+    var senderName: String?
+    var senderImage: String?
+}
+
+extension UIApplication {
+    class func appTopViewController(controller: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let navigationController = controller as? UINavigationController {
+            return appTopViewController(controller: navigationController.visibleViewController)
+        }
+        if let tabController = controller as? UITabBarController {
+            if let selected = tabController.selectedViewController {
+                return appTopViewController(controller: selected)
+            }
+        }
+        if let presented = controller?.presentedViewController {
+            return appTopViewController(controller: presented)
+        }
+        return controller
+    }
 }
