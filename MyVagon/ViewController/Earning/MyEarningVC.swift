@@ -114,11 +114,6 @@ extension MyEarningVC : UITableViewDelegate, UITableViewDataSource {
                 cell.lblDeadhead.text = "\(self.arrData[indexPath.row].bookingData?.trucks?.locations?[0].deadhead ?? "") mile Deadhead : \(self.arrData[indexPath.row].bookingData?.trucks?.truckTypeCategory?[0].name ?? "")"
                 cell.arrLocations = self.arrData[indexPath.row].bookingData?.trucks?.locations ?? []
                 
-                cell.tblHeight = { (heightTBl) in
-                    self.tblEarning.layoutIfNeeded()
-                    self.tblEarning.layoutSubviews()
-                }
-                
                 cell.tblEarningLocation.reloadData()
                 cell.tblEarningLocation.layoutIfNeeded()
                 cell.tblEarningLocation.layoutSubviews()

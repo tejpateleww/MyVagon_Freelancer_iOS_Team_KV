@@ -167,7 +167,7 @@ extension chatVC:UITableViewDelegate,UITableViewDataSource{
                     cell.lblMessage.text = arrData[indexPath.row].message
                     cell.lblDate.text = arrData[indexPath.row].createdAt.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
                     cell.selectionStyle = .none
-                    return cell
+                    return cell;
                 }
             }else{
                 let NoDatacell = self.tblChat.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell

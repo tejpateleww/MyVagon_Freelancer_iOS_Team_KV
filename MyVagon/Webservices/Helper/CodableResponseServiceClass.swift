@@ -53,8 +53,14 @@ class CodableService {
                                 completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
                                 
                                 //MARK:- Session Expoire -> Do Force Logout
+                            }else if httpResponse.statusCode == 401{
+                                completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
+                                appDel.Logout()
+                                
+                                //MARK:- Session Expoire -> Do Force Logout
                             }else if httpResponse.statusCode == 403{
-                                completion(statusCode, UrlConstant.SessionExpired, nil, SessionExpiredResponseDic)
+                                completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
+                                appDel.Logout()
                                 
                                 //MARK:- Server Error
                             }else if httpResponse.statusCode == 500{

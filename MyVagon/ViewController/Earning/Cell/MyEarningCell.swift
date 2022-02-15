@@ -80,6 +80,7 @@ extension MyEarningCell : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tblEarningLocation.dequeueReusableCell(withIdentifier: EarningLocationCell.className) as! EarningLocationCell
         cell.selectionStyle = .none
+        cell.viewLine.isHidden = false
         
         cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName
         cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)

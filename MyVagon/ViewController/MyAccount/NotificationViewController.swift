@@ -58,8 +58,6 @@ class NotificationViewController: BaseViewController {
     }
     
     func registerNib(){
-        let nib = UINib(nibName: NotificationCell.className, bundle: nil)
-        self.tblNotification.register(nib, forCellReuseIdentifier: NotificationCell.className)
         let nib2 = UINib(nibName: NotiShimmerCell.className, bundle: nil)
         self.tblNotification.register(nib2, forCellReuseIdentifier: NotiShimmerCell.className)
         let nib3 = UINib(nibName: NoDataTableViewCell.className, bundle: nil)
@@ -114,6 +112,9 @@ extension NotificationViewController:UITableViewDelegate,UITableViewDataSource {
         }else{
             if(self.arrNotification?.count ?? 0 > 0){
                 let cell = tblNotification.dequeueReusableCell(withIdentifier: NotificationCell.className) as! NotificationCell
+                cell.LblTitle.text = self.arrNotification?[indexPath.row].title ?? ""
+                cell.LblDescription.text = self.arrNotification?[indexPath.row].message ?? ""
+                cell.LblDate.text = self.arrNotification?[indexPath.row].date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay)
                 cell.selectionStyle = .none
                 return cell
             }else{

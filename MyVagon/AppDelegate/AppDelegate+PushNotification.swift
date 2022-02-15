@@ -119,7 +119,7 @@ extension AppDelegate{
                 return
             }
             
-            
+            completionHandler([.alert, .sound])
         }
     }
     
@@ -176,8 +176,6 @@ extension AppDelegate{
                     print("Error : detected")
                 }
             }
-            
-            
         }
     }
 }
