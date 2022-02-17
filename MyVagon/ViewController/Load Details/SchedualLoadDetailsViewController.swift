@@ -527,7 +527,10 @@ class SchedualLoadDetailsViewController: BaseViewController {
         let params = [  "booking_id" : BookingID,
                         "locaition_id" : LocationID,
                         "driver_id" : "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)",
-                        "shipper_id" : ShipperID]
+                        "shipper_id" : ShipperID,
+                        "lat" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.latitude)",
+                        "lng" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.longitude)",
+        ]
         
         
         SocketIOManager.shared.socketEmit(for: socketApiKeys.startTrip.rawValue , with: params)

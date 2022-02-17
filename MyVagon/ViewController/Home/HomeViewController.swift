@@ -244,15 +244,15 @@ class HomeViewController: BaseViewController, UITextFieldDelegate {
         let ReqModelForGetShipment = ShipmentListReqModel()
         ReqModelForGetShipment.page = "\(PageNumber)"
         ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.pickup_date 
-        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_price 
-        ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.max_price 
+        ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.date
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.price_min
+        ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.price_max
         ReqModelForGetShipment.pickup_lat = SingletonClass.sharedInstance.searchReqModel.pickup_lat 
         ReqModelForGetShipment.pickup_lng = SingletonClass.sharedInstance.searchReqModel.pickup_lng 
-        ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.dropoff_lat 
-        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.dropoff_lng
-        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_weight
-        ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.max_weight
+        ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.delivery_lat
+        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.delivery_lng
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.weight_min
+        ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.weight_max
         ReqModelForGetShipment.min_weight_unit = SingletonClass.sharedInstance.searchReqModel.min_weight_unit
         ReqModelForGetShipment.max_weight_unit = SingletonClass.sharedInstance.searchReqModel.max_weight_unit
         

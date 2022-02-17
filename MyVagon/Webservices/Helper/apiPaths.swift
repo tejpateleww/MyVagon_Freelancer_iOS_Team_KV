@@ -167,6 +167,8 @@ enum ApiKey: String {
     
     case transactionHistory                     = "transaction-history"
     case acceptPayment                          = "accept-payment"
+    case contactUs                              = "contact-us"
+    
 
 }
 

@@ -89,6 +89,9 @@ class NewHomeVC: BaseViewController {
     func addNotificationObs(){
         NotificationCenter.default.removeObserver(self, name: .goToChatScreen, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(goToChatScreen), name: .goToChatScreen, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: .reloadDataForSearch, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadDataForSearch), name: .reloadDataForSearch, object: nil)
     }
     
     func checkForNotification(){
@@ -108,6 +111,10 @@ class NewHomeVC: BaseViewController {
         
         AppDelegate.pushNotificationObj = nil
         AppDelegate.pushNotificationType = nil
+    }
+    
+    @objc func reloadDataForSearch() {
+        self.reloadFilterData()
     }
     
     func registerNib(){
@@ -132,6 +139,7 @@ class NewHomeVC: BaseViewController {
     }
     
     func reloadSearchData(){
+        SingletonClass.sharedInstance.searchReqModel = SearchSaveReqModel()
         self.isFilter = false
         self.isStopPaging = false
         self.PageNumber = 0
@@ -245,15 +253,15 @@ extension NewHomeVC {
         let ReqModelForGetShipment = ShipmentListReqModel()
         ReqModelForGetShipment.page = "\(PageNumber)"
         ReqModelForGetShipment.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
-        ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.pickup_date
-        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_price
-        ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.max_price
+        ReqModelForGetShipment.pickup_date = SingletonClass.sharedInstance.searchReqModel.date
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.price_min
+        ReqModelForGetShipment.max_price = SingletonClass.sharedInstance.searchReqModel.price_max
         ReqModelForGetShipment.pickup_lat = SingletonClass.sharedInstance.searchReqModel.pickup_lat
         ReqModelForGetShipment.pickup_lng = SingletonClass.sharedInstance.searchReqModel.pickup_lng
-        ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.dropoff_lat
-        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.dropoff_lng
-        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.min_weight
-        ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.max_weight
+        ReqModelForGetShipment.dropoff_lat = SingletonClass.sharedInstance.searchReqModel.delivery_lng
+        ReqModelForGetShipment.dropoff_lng = SingletonClass.sharedInstance.searchReqModel.delivery_lat
+        ReqModelForGetShipment.min_price = SingletonClass.sharedInstance.searchReqModel.weight_min
+        ReqModelForGetShipment.max_weight = SingletonClass.sharedInstance.searchReqModel.weight_max
         ReqModelForGetShipment.min_weight_unit = SingletonClass.sharedInstance.searchReqModel.min_weight_unit
         ReqModelForGetShipment.max_weight_unit = SingletonClass.sharedInstance.searchReqModel.max_weight_unit
         

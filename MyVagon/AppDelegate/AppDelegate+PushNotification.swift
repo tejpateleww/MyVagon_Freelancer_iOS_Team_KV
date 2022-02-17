@@ -187,6 +187,9 @@ extension Notification.Name {
     static let reloadChatScreen = NSNotification.Name("reloadChatScreen")
     static let reloadNewUserChatScreen = NSNotification.Name("reloadNewUserChatScreen")
     
+    static let reloadDataForSearch = NSNotification.Name("reloadDataForSearch")
+    static let openSupportPopUp = NSNotification.Name("openSupportPopUp")
+    
 }
 
 enum NotificationTypes : String {

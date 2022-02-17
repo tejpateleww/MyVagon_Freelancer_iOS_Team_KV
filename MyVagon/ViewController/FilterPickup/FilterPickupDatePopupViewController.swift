@@ -33,8 +33,8 @@ class FilterPickupDatePopupViewController: UIViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        if SingletonClass.sharedInstance.searchReqModel.pickup_date != "" {
-            calender.select(SingletonClass.sharedInstance.searchReqModel.pickup_date.StringToDate(Format: "yyyy-MM-dd"))
+        if SingletonClass.sharedInstance.searchReqModel.date != "" {
+            calender.select(SingletonClass.sharedInstance.searchReqModel.date.StringToDate(Format: "yyyy-MM-dd"))
         }
         
         // Do any additional setup after loading the view.

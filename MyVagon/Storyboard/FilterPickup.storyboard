@@ -129,263 +129,245 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i0Q-0t-ppw">
-                                        <rect key="frame" x="0.0" y="461.5" width="414" height="590.5"/>
+                                        <rect key="frame" x="0.0" y="489.5" width="414" height="362.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="R2L-dh-8kl">
-                                                <rect key="frame" x="20" y="30" width="374" height="316.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Delivery Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNI-7u-sGl" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="20" width="374" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                        <real key="value" value="16"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                        <color key="value" name="ThemeBlackColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDh-1i-DWh" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="55.5" width="374" height="50"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter Delivery Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iNI-7u-sGl" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuc-sn-qOj" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="ViR-h0-bPR"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_myLocation"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                <real key="value" value="16"/>
+                                                                <real key="value" value="14"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="PlaceholderColor">
+                                                                <color key="value" name="ThemeSeperatorColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_Search"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="FontColor">
                                                                 <color key="value" name="ThemeBlackColor"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EDh-1i-DWh" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="50.5" width="374" height="50"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuc-sn-qOj" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="ViR-h0-bPR"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="image" keyPath="rightImage" value="ic_myLocation"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                        <real key="value" value="14"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="PlaceholderColor">
-                                                                        <color key="value" name="ThemeSeperatorColor"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_Search"/>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="FontColor">
-                                                                        <color key="value" name="ThemeBlackColor"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <outlet property="delegate" destination="UaN-2f-6ll" id="KDD-b1-W8y"/>
-                                                                </connections>
-                                                            </textField>
-                                                        </subviews>
-                                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="0.56999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstItem="fuc-sn-qOj" firstAttribute="top" secondItem="EDh-1i-DWh" secondAttribute="top" id="1f1-aC-bpq"/>
-                                                            <constraint firstAttribute="trailing" secondItem="fuc-sn-qOj" secondAttribute="trailing" id="2bN-Zl-KtU"/>
-                                                            <constraint firstAttribute="bottom" secondItem="fuc-sn-qOj" secondAttribute="bottom" id="OkC-7w-Bix"/>
-                                                            <constraint firstItem="fuc-sn-qOj" firstAttribute="leading" secondItem="EDh-1i-DWh" secondAttribute="leading" id="Wkx-33-h52"/>
-                                                        </constraints>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="CornerRadius">
-                                                                <real key="value" value="9"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCB-Uv-foL">
-                                                        <rect key="frame" x="0.0" y="130.5" width="374" height="108"/>
-                                                        <subviews>
-                                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KqG-p8-j5W">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="108"/>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="108" id="3by-ZA-5iA"/>
-                                                                </constraints>
-                                                                <prototypes>
-                                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropOffLocationCell" id="7Tb-CT-LoK" customClass="DropOffLocationCell" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="44.5" width="374" height="66"/>
-                                                                        <autoresizingMask key="autoresizingMask"/>
-                                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Tb-CT-LoK" id="vlE-Bu-Kmo">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="UaN-2f-6ll" id="KDD-b1-W8y"/>
+                                                        </connections>
+                                                    </textField>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="0.56999999999999995" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="fuc-sn-qOj" firstAttribute="top" secondItem="EDh-1i-DWh" secondAttribute="top" id="1f1-aC-bpq"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fuc-sn-qOj" secondAttribute="trailing" id="2bN-Zl-KtU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fuc-sn-qOj" secondAttribute="bottom" id="OkC-7w-Bix"/>
+                                                    <constraint firstItem="fuc-sn-qOj" firstAttribute="leading" secondItem="EDh-1i-DWh" secondAttribute="leading" id="Wkx-33-h52"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="CornerRadius">
+                                                        <real key="value" value="9"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What distance around the selected cities are you willing to pick up a load?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPu-T9-aBl" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="120.5" width="374" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                        <color key="value" name="ThemeBlackColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                        <real key="value" value="14"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KqG-p8-j5W">
+                                                <rect key="frame" x="20" y="171.5" width="374" height="108"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="108" id="3by-ZA-5iA"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropOffLocationCell" id="7Tb-CT-LoK" customClass="DropOffLocationCell" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="44.5" width="374" height="66"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Tb-CT-LoK" id="vlE-Bu-Kmo">
+                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="66"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5KT-77-stm">
+                                                                    <rect key="frame" x="0.0" y="10" width="374" height="46"/>
+                                                                    <subviews>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-UL-SV6">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
                                                                             <subviews>
-                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5KT-77-stm">
-                                                                                    <rect key="frame" x="0.0" y="10" width="374" height="46"/>
+                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTt-RA-mQe">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="46"/>
                                                                                     <subviews>
-                                                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Tls-UL-SV6">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
-                                                                                            <subviews>
-                                                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTt-RA-mQe">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="46"/>
-                                                                                                    <subviews>
-                                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44D-GW-tDM">
-                                                                                                            <rect key="frame" x="2" y="5.5" width="35" height="35"/>
-                                                                                                            <constraints>
-                                                                                                                <constraint firstAttribute="height" constant="35" id="4hZ-RE-O8z"/>
-                                                                                                                <constraint firstAttribute="width" secondItem="44D-GW-tDM" secondAttribute="height" multiplier="1:1" id="oUb-WL-kvS"/>
-                                                                                                            </constraints>
-                                                                                                            <state key="normal" image="ic_unselectedCheckbox"/>
-                                                                                                            <state key="selected" image="ic_selectedCheckbox"/>
-                                                                                                            <connections>
-                                                                                                                <action selector="ButtonSelectAction:" destination="7Tb-CT-LoK" eventType="touchUpInside" id="kz4-Ve-vvK"/>
-                                                                                                            </connections>
-                                                                                                        </button>
-                                                                                                    </subviews>
-                                                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                                                    <constraints>
-                                                                                                        <constraint firstItem="44D-GW-tDM" firstAttribute="leading" secondItem="qTt-RA-mQe" secondAttribute="leading" constant="2" id="2UM-vc-78u"/>
-                                                                                                        <constraint firstAttribute="trailing" secondItem="44D-GW-tDM" secondAttribute="trailing" constant="2" id="O0y-ve-omG"/>
-                                                                                                        <constraint firstItem="44D-GW-tDM" firstAttribute="centerY" secondItem="qTt-RA-mQe" secondAttribute="centerY" id="Un2-mC-0Lu"/>
-                                                                                                    </constraints>
-                                                                                                </view>
-                                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gx5-Uh-Uxp">
-                                                                                                    <rect key="frame" x="46" y="0.0" width="328" height="46"/>
-                                                                                                    <subviews>
-                                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short Haul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izx-0H-BvC" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="328" height="20.5"/>
-                                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                                            <nil key="textColor"/>
-                                                                                                            <nil key="highlightedColor"/>
-                                                                                                            <userDefinedRuntimeAttributes>
-                                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                                                    <real key="value" value="14"/>
-                                                                                                                </userDefinedRuntimeAttribute>
-                                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
-                                                                                                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                                                    <color key="value" name="ThemeBlackColor"/>
-                                                                                                                </userDefinedRuntimeAttribute>
-                                                                                                            </userDefinedRuntimeAttributes>
-                                                                                                        </label>
-                                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(up to 50 km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXR-05-Dr1" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                            <rect key="frame" x="0.0" y="25.5" width="328" height="20.5"/>
-                                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                                            <nil key="textColor"/>
-                                                                                                            <nil key="highlightedColor"/>
-                                                                                                            <userDefinedRuntimeAttributes>
-                                                                                                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                                                    <color key="value" name="ThemeGrayColor"/>
-                                                                                                                </userDefinedRuntimeAttribute>
-                                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                                                    <real key="value" value="12"/>
-                                                                                                                </userDefinedRuntimeAttribute>
-                                                                                                            </userDefinedRuntimeAttributes>
-                                                                                                        </label>
-                                                                                                    </subviews>
-                                                                                                </stackView>
-                                                                                            </subviews>
+                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44D-GW-tDM">
+                                                                                            <rect key="frame" x="2" y="5.5" width="35" height="35"/>
                                                                                             <constraints>
-                                                                                                <constraint firstItem="qTt-RA-mQe" firstAttribute="top" secondItem="Gx5-Uh-Uxp" secondAttribute="top" id="ltK-Yb-YI5"/>
+                                                                                                <constraint firstAttribute="height" constant="35" id="4hZ-RE-O8z"/>
+                                                                                                <constraint firstAttribute="width" secondItem="44D-GW-tDM" secondAttribute="height" multiplier="1:1" id="oUb-WL-kvS"/>
                                                                                             </constraints>
-                                                                                        </stackView>
+                                                                                            <state key="normal" image="ic_unselectedCheckbox"/>
+                                                                                            <state key="selected" image="ic_selectedCheckbox"/>
+                                                                                            <connections>
+                                                                                                <action selector="ButtonSelectAction:" destination="7Tb-CT-LoK" eventType="touchUpInside" id="kz4-Ve-vvK"/>
+                                                                                            </connections>
+                                                                                        </button>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                     <constraints>
-                                                                                        <constraint firstItem="Tls-UL-SV6" firstAttribute="top" secondItem="5KT-77-stm" secondAttribute="top" id="VVR-tx-Jgp"/>
-                                                                                        <constraint firstAttribute="trailing" secondItem="Tls-UL-SV6" secondAttribute="trailing" id="brw-T4-XEq"/>
-                                                                                        <constraint firstAttribute="bottom" secondItem="Tls-UL-SV6" secondAttribute="bottom" id="ii9-d4-N4m"/>
-                                                                                        <constraint firstItem="Tls-UL-SV6" firstAttribute="leading" secondItem="5KT-77-stm" secondAttribute="leading" id="xTd-aS-Tn6"/>
+                                                                                        <constraint firstItem="44D-GW-tDM" firstAttribute="leading" secondItem="qTt-RA-mQe" secondAttribute="leading" constant="2" id="2UM-vc-78u"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="44D-GW-tDM" secondAttribute="trailing" constant="2" id="O0y-ve-omG"/>
+                                                                                        <constraint firstItem="44D-GW-tDM" firstAttribute="centerY" secondItem="qTt-RA-mQe" secondAttribute="centerY" id="Un2-mC-0Lu"/>
                                                                                     </constraints>
                                                                                 </view>
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Gx5-Uh-Uxp">
+                                                                                    <rect key="frame" x="46" y="0.0" width="328" height="46"/>
+                                                                                    <subviews>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short Haul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="izx-0H-BvC" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="328" height="20.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                    <real key="value" value="14"/>
+                                                                                                </userDefinedRuntimeAttribute>
+                                                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                    <color key="value" name="ThemeBlackColor"/>
+                                                                                                </userDefinedRuntimeAttribute>
+                                                                                            </userDefinedRuntimeAttributes>
+                                                                                        </label>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(up to 50 km)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXR-05-Dr1" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                            <rect key="frame" x="0.0" y="25.5" width="328" height="20.5"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                            <nil key="textColor"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                            <userDefinedRuntimeAttributes>
+                                                                                                <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                    <color key="value" name="ThemeGrayColor"/>
+                                                                                                </userDefinedRuntimeAttribute>
+                                                                                                <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                    <real key="value" value="12"/>
+                                                                                                </userDefinedRuntimeAttribute>
+                                                                                            </userDefinedRuntimeAttributes>
+                                                                                        </label>
+                                                                                    </subviews>
+                                                                                </stackView>
                                                                             </subviews>
                                                                             <constraints>
-                                                                                <constraint firstItem="5KT-77-stm" firstAttribute="top" secondItem="vlE-Bu-Kmo" secondAttribute="top" constant="10" id="68j-1d-QUF"/>
-                                                                                <constraint firstItem="5KT-77-stm" firstAttribute="leading" secondItem="vlE-Bu-Kmo" secondAttribute="leading" id="ORe-hs-pd0"/>
-                                                                                <constraint firstAttribute="trailing" secondItem="5KT-77-stm" secondAttribute="trailing" id="TVL-c8-lvu"/>
-                                                                                <constraint firstAttribute="bottom" secondItem="5KT-77-stm" secondAttribute="bottom" constant="10" id="qt7-cG-ooX"/>
+                                                                                <constraint firstItem="qTt-RA-mQe" firstAttribute="top" secondItem="Gx5-Uh-Uxp" secondAttribute="top" id="ltK-Yb-YI5"/>
                                                                             </constraints>
-                                                                        </tableViewCellContentView>
-                                                                        <connections>
-                                                                            <outlet property="ButtonSelect" destination="44D-GW-tDM" id="xh2-P0-rmu"/>
-                                                                            <outlet property="LblDescripiton" destination="lXR-05-Dr1" id="cEt-em-X0J"/>
-                                                                            <outlet property="LblTitle" destination="izx-0H-BvC" id="t04-G1-VxR"/>
-                                                                        </connections>
-                                                                    </tableViewCell>
-                                                                </prototypes>
-                                                                <connections>
-                                                                    <outlet property="dataSource" destination="UaN-2f-6ll" id="tlk-y3-Ozx"/>
-                                                                    <outlet property="delegate" destination="UaN-2f-6ll" id="d2S-g8-d2a"/>
-                                                                </connections>
-                                                            </tableView>
-                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SNO-Td-6I0">
-                                                                <rect key="frame" x="0.0" y="10" width="374" height="108"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What distance around the selected cities are you willing to pick up a load?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zm4-SF-yrL" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="108"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="14"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                                <color key="value" name="ThemeBlackColor"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </label>
-                                                                </subviews>
-                                                            </stackView>
-                                                        </subviews>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        </stackView>
+                                                                    </subviews>
+                                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                    <constraints>
+                                                                        <constraint firstItem="Tls-UL-SV6" firstAttribute="top" secondItem="5KT-77-stm" secondAttribute="top" id="VVR-tx-Jgp"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="Tls-UL-SV6" secondAttribute="trailing" id="brw-T4-XEq"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="Tls-UL-SV6" secondAttribute="bottom" id="ii9-d4-N4m"/>
+                                                                        <constraint firstItem="Tls-UL-SV6" firstAttribute="leading" secondItem="5KT-77-stm" secondAttribute="leading" id="xTd-aS-Tn6"/>
+                                                                    </constraints>
+                                                                </view>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="5KT-77-stm" firstAttribute="top" secondItem="vlE-Bu-Kmo" secondAttribute="top" constant="10" id="68j-1d-QUF"/>
+                                                                <constraint firstItem="5KT-77-stm" firstAttribute="leading" secondItem="vlE-Bu-Kmo" secondAttribute="leading" id="ORe-hs-pd0"/>
+                                                                <constraint firstAttribute="trailing" secondItem="5KT-77-stm" secondAttribute="trailing" id="TVL-c8-lvu"/>
+                                                                <constraint firstAttribute="bottom" secondItem="5KT-77-stm" secondAttribute="bottom" constant="10" id="qt7-cG-ooX"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="ButtonSelect" destination="44D-GW-tDM" id="xh2-P0-rmu"/>
+                                                            <outlet property="LblDescripiton" destination="lXR-05-Dr1" id="cEt-em-X0J"/>
+                                                            <outlet property="LblTitle" destination="izx-0H-BvC" id="t04-G1-VxR"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="UaN-2f-6ll" id="tlk-y3-Ozx"/>
+                                                    <outlet property="delegate" destination="UaN-2f-6ll" id="d2S-g8-d2a"/>
+                                                </connections>
+                                            </tableView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-9t-OBW">
+                                                <rect key="frame" x="20" y="294.5" width="374" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0P-Fp-pV9" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="48"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="BtnCancelAction:" destination="UaN-2f-6ll" eventType="touchUpInside" id="9bk-I3-8nn"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWF-Cb-SP6" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="197" y="0.0" width="177" height="48"/>
                                                         <constraints>
-                                                            <constraint firstItem="SNO-Td-6I0" firstAttribute="top" secondItem="SCB-Uv-foL" secondAttribute="top" constant="10" id="0Jd-VT-61w"/>
-                                                            <constraint firstAttribute="bottom" secondItem="KqG-p8-j5W" secondAttribute="bottom" id="9Gh-fX-wEd"/>
-                                                            <constraint firstAttribute="trailing" secondItem="KqG-p8-j5W" secondAttribute="trailing" id="FmO-t2-3GK"/>
-                                                            <constraint firstItem="KqG-p8-j5W" firstAttribute="leading" secondItem="SCB-Uv-foL" secondAttribute="leading" id="LzN-I3-UhX"/>
-                                                            <constraint firstItem="KqG-p8-j5W" firstAttribute="top" secondItem="SCB-Uv-foL" secondAttribute="top" id="TXT-Oa-p6I"/>
-                                                            <constraint firstItem="SNO-Td-6I0" firstAttribute="leading" secondItem="SCB-Uv-foL" secondAttribute="leading" id="q8A-TN-JUv"/>
-                                                            <constraint firstAttribute="trailing" secondItem="SNO-Td-6I0" secondAttribute="trailing" id="uRL-iD-jb1"/>
-                                                            <constraint firstAttribute="bottom" secondItem="SNO-Td-6I0" secondAttribute="bottom" constant="10" id="uUo-eQ-ARn"/>
+                                                            <constraint firstAttribute="height" constant="48" id="iKa-MS-dn4"/>
                                                         </constraints>
-                                                        <variation key="default">
-                                                            <mask key="subviews">
-                                                                <exclude reference="SNO-Td-6I0"/>
-                                                            </mask>
-                                                        </variation>
-                                                    </view>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-9t-OBW">
-                                                        <rect key="frame" x="0.0" y="268.5" width="374" height="48"/>
-                                                        <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H0P-Fp-pV9" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="177" height="48"/>
-                                                                <state key="normal" title="Cancel"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="BtnCancelAction:" destination="UaN-2f-6ll" eventType="touchUpInside" id="9bk-I3-8nn"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWF-Cb-SP6" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="197" y="0.0" width="177" height="48"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="48" id="iKa-MS-dn4"/>
-                                                                </constraints>
-                                                                <state key="normal" title="Submit"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                                <connections>
-                                                                    <action selector="BtnSubmitAction:" destination="UaN-2f-6ll" eventType="touchUpInside" id="faL-ea-1Jq"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                    </stackView>
+                                                        <state key="normal" title="Submit"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="BtnSubmitAction:" destination="UaN-2f-6ll" eventType="touchUpInside" id="faL-ea-1Jq"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="R2L-dh-8kl" firstAttribute="leading" secondItem="i0Q-0t-ppw" secondAttribute="leading" constant="20" id="D9I-HN-0mP"/>
-                                            <constraint firstItem="R2L-dh-8kl" firstAttribute="top" secondItem="i0Q-0t-ppw" secondAttribute="top" constant="30" id="FE0-BB-HyI"/>
-                                            <constraint firstAttribute="trailing" secondItem="R2L-dh-8kl" secondAttribute="trailing" constant="20" id="s1f-Q9-XjD"/>
+                                            <constraint firstItem="KqG-p8-j5W" firstAttribute="top" secondItem="tPu-T9-aBl" secondAttribute="bottom" constant="10" id="3tF-to-bdc"/>
+                                            <constraint firstItem="EDh-1i-DWh" firstAttribute="top" secondItem="iNI-7u-sGl" secondAttribute="bottom" constant="15" id="Ggh-vB-mno"/>
+                                            <constraint firstItem="EDh-1i-DWh" firstAttribute="leading" secondItem="iNI-7u-sGl" secondAttribute="leading" id="GqY-tC-6oa"/>
+                                            <constraint firstItem="tPu-T9-aBl" firstAttribute="leading" secondItem="EDh-1i-DWh" secondAttribute="leading" id="Ouz-nF-fED"/>
+                                            <constraint firstItem="KqG-p8-j5W" firstAttribute="leading" secondItem="EDh-1i-DWh" secondAttribute="leading" id="T9i-ug-w6U"/>
+                                            <constraint firstItem="tPu-T9-aBl" firstAttribute="top" secondItem="EDh-1i-DWh" secondAttribute="bottom" constant="15" id="UHT-Mb-ZbW"/>
+                                            <constraint firstAttribute="trailing" secondItem="iNI-7u-sGl" secondAttribute="trailing" constant="20" id="Ude-2f-43V"/>
+                                            <constraint firstItem="W9d-9t-OBW" firstAttribute="top" secondItem="KqG-p8-j5W" secondAttribute="bottom" constant="15" id="V8q-Ow-7tg"/>
+                                            <constraint firstItem="W9d-9t-OBW" firstAttribute="leading" secondItem="KqG-p8-j5W" secondAttribute="leading" id="Wdn-Uo-t6P"/>
+                                            <constraint firstAttribute="bottom" secondItem="W9d-9t-OBW" secondAttribute="bottom" constant="20" id="WsK-au-S6o"/>
+                                            <constraint firstItem="iNI-7u-sGl" firstAttribute="leading" secondItem="i0Q-0t-ppw" secondAttribute="leading" constant="20" id="cHZ-gg-ZZR"/>
+                                            <constraint firstItem="KqG-p8-j5W" firstAttribute="trailing" secondItem="EDh-1i-DWh" secondAttribute="trailing" id="k8E-gh-MWt"/>
+                                            <constraint firstItem="tPu-T9-aBl" firstAttribute="trailing" secondItem="EDh-1i-DWh" secondAttribute="trailing" id="t8g-py-oHb"/>
+                                            <constraint firstItem="iNI-7u-sGl" firstAttribute="top" secondItem="i0Q-0t-ppw" secondAttribute="top" constant="20" id="vOc-J1-7f6"/>
+                                            <constraint firstItem="W9d-9t-OBW" firstAttribute="trailing" secondItem="KqG-p8-j5W" secondAttribute="trailing" id="z4S-nL-e5p"/>
+                                            <constraint firstItem="EDh-1i-DWh" firstAttribute="trailing" secondItem="iNI-7u-sGl" secondAttribute="trailing" id="z9R-3U-UQ1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="i0Q-0t-ppw" secondAttribute="bottom" constant="-200" id="EcH-8N-Cva"/>
+                                    <constraint firstAttribute="bottom" secondItem="i0Q-0t-ppw" secondAttribute="bottom" id="EcH-8N-Cva"/>
                                     <constraint firstItem="i0Q-0t-ppw" firstAttribute="leading" secondItem="zqf-d3-f31" secondAttribute="leading" id="syT-f1-fcQ"/>
                                     <constraint firstAttribute="trailing" secondItem="i0Q-0t-ppw" secondAttribute="trailing" id="xNK-ym-5hB"/>
                                 </constraints>
@@ -396,7 +378,6 @@
                         <constraints>
                             <constraint firstItem="zqf-d3-f31" firstAttribute="trailing" secondItem="cKT-RK-2Ap" secondAttribute="trailing" id="3y4-j8-IPm"/>
                             <constraint firstItem="lcD-9y-CM3" firstAttribute="top" secondItem="fPY-H2-iTi" secondAttribute="top" id="Hs1-jo-nCh"/>
-                            <constraint firstItem="cKT-RK-2Ap" firstAttribute="bottom" secondItem="R2L-dh-8kl" secondAttribute="bottom" constant="10" id="QPH-0f-yRj"/>
                             <constraint firstAttribute="bottom" secondItem="zqf-d3-f31" secondAttribute="bottom" id="VOa-dx-0pm"/>
                             <constraint firstItem="lcD-9y-CM3" firstAttribute="trailing" secondItem="cKT-RK-2Ap" secondAttribute="trailing" id="ViA-f6-M8G"/>
                             <constraint firstItem="zqf-d3-f31" firstAttribute="leading" secondItem="cKT-RK-2Ap" secondAttribute="leading" id="WXb-Px-6lx"/>
@@ -1231,6 +1212,133 @@
             </objects>
             <point key="canvasLocation" x="-667" y="48"/>
         </scene>
+        <!--Support Pop UpVC-->
+        <scene sceneID="ZoH-Cq-gUo">
+            <objects>
+                <viewController storyboardIdentifier="SupportPopUpVC" id="CbE-rG-QiK" customClass="SupportPopUpVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bTB-ZA-v4o">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHY-Ci-FTP">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eac-Lq-3bB">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-ab-SLI">
+                                        <rect key="frame" x="0.0" y="673" width="414" height="179"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To better assist you, contact us from one of below options" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gco-Ik-FBr" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="50" width="374" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                        <color key="value" name="ThemeBlackColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aig-3w-rTF">
+                                                <rect key="frame" x="20" y="111" width="374" height="48"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Rh-Th-nNV" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="48"/>
+                                                        <state key="normal" title="Chat"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="btnChatAction:" destination="CbE-rG-QiK" eventType="touchUpInside" id="mFG-NJ-qQd"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xy9-Vf-ymG" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="197" y="0.0" width="177" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="LS8-Iz-rd6"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Call"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="btnCallAction:" destination="CbE-rG-QiK" eventType="touchUpInside" id="uQ5-gf-sB6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Close" translatesAutoresizingMaskIntoConstraints="NO" id="3xP-rw-2dD">
+                                                <rect key="frame" x="374" y="15" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="3xP-rw-2dD" secondAttribute="height" id="El9-IQ-sjD"/>
+                                                    <constraint firstAttribute="width" constant="20" id="Peg-3B-6bO"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHq-hQ-jce">
+                                                <rect key="frame" x="374" y="15" width="20" height="20"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="btnCloseAction:" destination="CbE-rG-QiK" eventType="touchUpInside" id="eSy-c1-ZHe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Gco-Ik-FBr" secondAttribute="trailing" constant="20" id="0jL-fc-xBU"/>
+                                            <constraint firstItem="SHq-hQ-jce" firstAttribute="trailing" secondItem="3xP-rw-2dD" secondAttribute="trailing" id="Atj-nr-hmx"/>
+                                            <constraint firstItem="aig-3w-rTF" firstAttribute="trailing" secondItem="Gco-Ik-FBr" secondAttribute="trailing" id="IJB-So-6oD"/>
+                                            <constraint firstItem="aig-3w-rTF" firstAttribute="top" secondItem="Gco-Ik-FBr" secondAttribute="bottom" constant="20" id="IeJ-oX-7J5"/>
+                                            <constraint firstItem="SHq-hQ-jce" firstAttribute="trailing" secondItem="Gco-Ik-FBr" secondAttribute="trailing" id="RJ0-LJ-UHc"/>
+                                            <constraint firstItem="Gco-Ik-FBr" firstAttribute="top" secondItem="3xP-rw-2dD" secondAttribute="bottom" constant="15" id="WPq-5Q-7PI"/>
+                                            <constraint firstItem="Gco-Ik-FBr" firstAttribute="leading" secondItem="FvE-ab-SLI" secondAttribute="leading" constant="20" id="ep7-nB-8oK"/>
+                                            <constraint firstItem="SHq-hQ-jce" firstAttribute="bottom" secondItem="3xP-rw-2dD" secondAttribute="bottom" id="g4e-mg-4rq"/>
+                                            <constraint firstItem="aig-3w-rTF" firstAttribute="leading" secondItem="Gco-Ik-FBr" secondAttribute="leading" id="gPc-hI-RrL"/>
+                                            <constraint firstItem="3xP-rw-2dD" firstAttribute="top" secondItem="FvE-ab-SLI" secondAttribute="top" constant="15" id="gSz-US-wxZ"/>
+                                            <constraint firstItem="SHq-hQ-jce" firstAttribute="leading" secondItem="3xP-rw-2dD" secondAttribute="leading" id="pBi-b6-pk7"/>
+                                            <constraint firstItem="SHq-hQ-jce" firstAttribute="top" secondItem="3xP-rw-2dD" secondAttribute="top" id="yIe-o0-wIi"/>
+                                            <constraint firstAttribute="bottom" secondItem="aig-3w-rTF" secondAttribute="bottom" constant="20" id="yc0-wR-6jk"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="FvE-ab-SLI" secondAttribute="bottom" id="IJT-Ym-iPp"/>
+                                    <constraint firstItem="FvE-ab-SLI" firstAttribute="leading" secondItem="Eac-Lq-3bB" secondAttribute="leading" id="VIX-St-w3h"/>
+                                    <constraint firstAttribute="trailing" secondItem="FvE-ab-SLI" secondAttribute="trailing" id="gOw-Na-lvK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Zph-iU-Ew4"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dHY-Ci-FTP" firstAttribute="trailing" secondItem="Zph-iU-Ew4" secondAttribute="trailing" id="Fqm-cc-ejP"/>
+                            <constraint firstItem="Eac-Lq-3bB" firstAttribute="top" secondItem="Zph-iU-Ew4" secondAttribute="top" id="IYN-PB-Y2T"/>
+                            <constraint firstItem="dHY-Ci-FTP" firstAttribute="top" secondItem="bTB-ZA-v4o" secondAttribute="top" id="U1l-EA-UQu"/>
+                            <constraint firstAttribute="bottom" secondItem="dHY-Ci-FTP" secondAttribute="bottom" id="W8j-LW-360"/>
+                            <constraint firstItem="Eac-Lq-3bB" firstAttribute="leading" secondItem="Zph-iU-Ew4" secondAttribute="leading" id="Wcr-Xy-jRe"/>
+                            <constraint firstAttribute="bottom" secondItem="Eac-Lq-3bB" secondAttribute="bottom" id="Xs2-Ft-1ME"/>
+                            <constraint firstItem="Eac-Lq-3bB" firstAttribute="trailing" secondItem="Zph-iU-Ew4" secondAttribute="trailing" id="YhS-GO-cbM"/>
+                            <constraint firstItem="dHY-Ci-FTP" firstAttribute="leading" secondItem="Zph-iU-Ew4" secondAttribute="leading" id="kFu-7P-WoG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="MainView" destination="FvE-ab-SLI" id="vYW-o5-GhE"/>
+                        <outlet property="btnCall" destination="Xy9-Vf-ymG" id="PVh-b2-PU2"/>
+                        <outlet property="btnChat" destination="8Rh-Th-nNV" id="S0D-t2-siQ"/>
+                        <outlet property="imgClose" destination="3xP-rw-2dD" id="ufK-Od-Zvg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQD-vh-hNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1398.5507246376812" y="47.544642857142854"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_Search" width="16.5" height="16.5"/>
@@ -1240,6 +1348,7 @@
         <image name="ic_next" width="20.5" height="20.5"/>
         <image name="ic_selectedCheckbox" width="20" height="20"/>
         <image name="ic_unselectedCheckbox" width="20" height="20"/>
+        <image name="icon_Close" width="170.5" height="170.5"/>
         <namedColor name="ThemeBlackColor">
             <color red="0.062745098039215685" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

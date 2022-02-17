@@ -241,18 +241,17 @@ class ProfileEditSaveModel : Codable {
 }
 class SearchSaveReqModel : Codable {
     
-    var pickup_date : String = ""
-    var min_price : String = ""
-    var max_price : String = ""
+    var date : String = ""
+    var price_min : String = ""
+    var price_max : String = ""
     var pickup_lat : String = ""
     var pickup_lng : String = ""
-    var dropoff_lat : String = ""
-    var dropoff_lng : String = ""
-    var min_weight : String = ""
-    var max_weight : String = ""
+    var delivery_lat : String = ""
+    var delivery_lng : String = ""
+    var weight_min : String = ""
+    var weight_max : String = ""
     var min_weight_unit : String = ""
     var max_weight_unit : String = ""
-    
     var pickup_address_string : String = ""
     var dropoff_address_string : String = ""
     

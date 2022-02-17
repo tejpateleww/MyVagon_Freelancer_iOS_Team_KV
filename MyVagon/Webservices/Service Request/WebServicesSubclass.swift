@@ -342,5 +342,11 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: -getSupportAPI
+    class func getSupportAPI(completion: @escaping (Bool,String,SupportResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.contactUs.rawValue, responseModel: SupportResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }
 

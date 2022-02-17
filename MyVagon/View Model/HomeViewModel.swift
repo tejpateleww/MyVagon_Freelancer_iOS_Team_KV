@@ -137,7 +137,6 @@ class NewHomeViewModel {
                         let tempArrHomeData = response?.data ?? []
                         var datesArray = tempArrHomeData.compactMap({$0.date})
                         datesArray = datesArray.uniqued()
-                        print(datesArray)
                         self.newHomeVC?.numberOfSections = datesArray.count
                         var dic = [[SearchLoadsDatum]]() // Your required result
                         datesArray.forEach { (element) in
@@ -155,7 +154,6 @@ class NewHomeViewModel {
                         let tempArrHomeData = response?.data ?? []
                         var datesArray = tempArrHomeData.compactMap({$0.date})
                         datesArray = datesArray.uniqued()
-                        print(datesArray)
                         self.newHomeVC?.numberOfSections = datesArray.count
                         var dic = [[SearchLoadsDatum]]() // Your required result
                         datesArray.forEach { (element) in

@@ -280,10 +280,11 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                         BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
                         BtnRight.semanticContentAttribute = .forceLeftToRight
                         BtnRight.setImage(UIImage.init(named: "ic_call"), for: .normal)
-                        BtnRight.setTitle("Contact Us", for: .normal)
+                        BtnRight.setTitle(" Support", for: .normal)
                         BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
                         BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
                         BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        BtnRight.addTarget(self, action: #selector(self.btnSupportAction(sender:)), for: .touchUpInside)
                         let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
                         ViewRight.addSubview(BtnRight)
                         
@@ -408,6 +409,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
         
     }
 
+    @objc func btnSupportAction(sender:UIButton) {
+        NotificationCenter.default.post(name: .openSupportPopUp, object: nil)
+    }
    
 
 }

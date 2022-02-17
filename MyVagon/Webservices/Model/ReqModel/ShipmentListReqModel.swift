@@ -29,16 +29,16 @@ class ShipmentListReqModel : Encodable {
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
         case page = "page_num"
-        case pickup_date = "pickup_date"
-        case min_price = "min_price"
-        case max_price = "max_price"
+        case pickup_date = "date"
+        case min_price = "price_min"
+        case max_price = "price_max"
         case pickup_lat = "pickup_lat"
         case pickup_lng = "pickup_lng"
-        case dropoff_lat = "dropoff_lat"
-        case dropoff_lng = "dropoff_lng"
+        case dropoff_lat = "delivery_lat"
+        case dropoff_lng = "delivery_lng"
         
-        case min_weight = "min_weight"
-        case max_weight = "max_weight"
+        case min_weight = "weight_min"
+        case max_weight = "weight_max"
         case min_weight_unit = "min_weight_unit"
         case max_weight_unit = "max_weight_unit"
         

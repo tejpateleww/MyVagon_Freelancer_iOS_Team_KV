@@ -244,6 +244,8 @@
 		880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
+		8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */; };
+		8868ABCF27BD208200AA048F /* SupportResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABCE27BD208200AA048F /* SupportResModel.swift */; };
 		8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */; };
 		8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066727ABA22900EACE5A /* DriversTableViewCell.xib */; };
 		8877066D27ABA22900EACE5A /* DriversTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877066827ABA22900EACE5A /* DriversTableViewCell.swift */; };
@@ -607,6 +609,8 @@
 		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPopUpVC.swift; sourceTree = "<group>"; };
+		8868ABCE27BD208200AA048F /* SupportResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportResModel.swift; sourceTree = "<group>"; };
 		8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehiclesTableViewCell.xib; sourceTree = "<group>"; };
 		8877066727ABA22900EACE5A /* DriversTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriversTableViewCell.xib; sourceTree = "<group>"; };
 		8877066827ABA22900EACE5A /* DriversTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriversTableViewCell.swift; sourceTree = "<group>"; };
@@ -1055,6 +1059,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				8868ABCD27BD204500AA048F /* SupportResModel */,
 				88C3A9DB27A413A80018B9E8 /* EarningResModel */,
 				88B6865B27A1498E006123B8 /* ChatMessageResModel */,
 				18CBA6AD2784487C00372417 /* NotificationListResModel */,
@@ -1360,6 +1365,22 @@
 				880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */,
 			);
 			path = "New Schedule Cell";
+			sourceTree = "<group>";
+		};
+		8868ABC327BCF13E00AA048F /* Support Popup */ = {
+			isa = PBXGroup;
+			children = (
+				8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */,
+			);
+			path = "Support Popup";
+			sourceTree = "<group>";
+		};
+		8868ABCD27BD204500AA048F /* SupportResModel */ = {
+			isa = PBXGroup;
+			children = (
+				8868ABCE27BD208200AA048F /* SupportResModel.swift */,
+			);
+			path = SupportResModel;
 			sourceTree = "<group>";
 		};
 		8877066527ABA22900EACE5A /* MyFleet */ = {
@@ -1688,6 +1709,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8868ABC327BCF13E00AA048F /* Support Popup */,
 				8892B9AF27B1337B00FE1074 /* Custome Map */,
 				88C3A9CE27A4005A0018B9E8 /* Earning */,
 				18114D162774A67300CD59D1 /* View POD */,
@@ -2190,6 +2212,7 @@
 				18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				18F15E412704201F003A1D16 /* LoginResModel.swift in Sources */,
+				8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				185BA7F02757843F00E99FAC /* MyLoadsNewDatum.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
@@ -2236,6 +2259,7 @@
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
 				1806E53926FCBDE4001F7888 /* PackageDatum.swift in Sources */,
 				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
+				8868ABCF27BD208200AA048F /* SupportResModel.swift in Sources */,
 				1802694426B023F20088B49F /* TruckDetailVC.swift in Sources */,
 				1884512127564F370078E65F /* LoadDetailViewModel.swift in Sources */,
 				18A34F1D26CD1EE100F252B6 /* NoBookingTblCell.swift in Sources */,

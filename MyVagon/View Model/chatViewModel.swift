@@ -46,4 +46,18 @@ class chatListViewModel {
             }
         })
     }
+    
+    func WebServiceSupportAPI(isCall:Bool){
+        WebServiceSubClass.getSupportAPI(completion: { (status, apiMessage, response, error) in
+            if status{
+                if(isCall){
+                    self.chatListVC?.callAdmin(strPhone: response?.data?.call ?? "")
+                }else{
+                    self.chatListVC?.chatWithAdmin(strId: "\(response?.data?.chat ?? 0)")
+                }
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import FittedSheets
 
 class ChatListVC: BaseViewController {
 
@@ -15,6 +16,7 @@ class ChatListVC: BaseViewController {
     @IBOutlet weak var txtSearch: themeTextfield!
     
     var vhatListViewModel = chatListViewModel()
+  //  var supportViewModel = SupportViewModel()
     var arrData : [ChatUserList] = []
     var arrFilterData : [ChatUserList] = []
     var isSearched : Bool = false
@@ -58,6 +60,8 @@ class ChatListVC: BaseViewController {
         self.tblChatList.showsHorizontalScrollIndicator = false
         self.tblChatList.showsVerticalScrollIndicator = false
         
+        self.addNotificationObs()
+        
     }
     
     func addRefreshControl(){
@@ -96,6 +100,48 @@ class ChatListVC: BaseViewController {
         self.tblChatList.register(nib3, forCellReuseIdentifier: NoDataTableViewCell.className)
         let nib = UINib(nibName: NotiShimmerCell.className, bundle: nil)
         self.tblChatList.register(nib, forCellReuseIdentifier: NotiShimmerCell.className)
+    }
+    
+    func addNotificationObs(){
+        NotificationCenter.default.removeObserver(self, name: .openSupportPopUp, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(openSupportPopUp), name: .openSupportPopUp, object: nil)
+    }
+    
+    func callAdmin(strPhone:String){
+        if let url = URL(string: "tel://\(strPhone)"), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10, *) {
+                UIApplication.shared.open(url)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }else{
+            Utilities.ShowAlertOfInfo(OfMessage: "Calling not supported.")
+        }
+    }
+    
+    func chatWithAdmin(strId:String){
+        AppDelegate.shared.shipperIdForChat = strId
+        AppDelegate.shared.shipperNameForChat = "Admin"
+        AppDelegate.shared.shipperProfileForChat = ""
+        
+        let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
+        controller.shipperID = AppDelegate.shared.shipperIdForChat
+        controller.shipperName = AppDelegate.shared.shipperNameForChat
+        AppDelegate.shared.shipperProfileForChat = AppDelegate.shared.shipperProfileForChat
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func openSupportPopUp() {
+        let controller = AppStoryboard.FilterPickup.instance.instantiateViewController(withIdentifier: SupportPopUpVC.storyboardID) as! SupportPopUpVC
+        controller.selectCallClosour = {
+            self.callSupportAPI(isCall: true)
+        }
+        controller.selectChatClosour = {
+            self.callSupportAPI(isCall: false)
+        }
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.modalTransitionStyle = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
     }
 }
 
@@ -195,6 +241,11 @@ extension ChatListVC{
         let reqModel = chatListReqModel ()
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         self.vhatListViewModel.WebServiceChatList(ReqModel: reqModel)
+    }
+    
+    func callSupportAPI(isCall : Bool = false) {
+        self.vhatListViewModel.chatListVC = self
+        self.vhatListViewModel.WebServiceSupportAPI(isCall: isCall)
     }
 }
 

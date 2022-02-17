@@ -66,7 +66,6 @@ class MyEarningCell: UITableViewCell {
         let nib = UINib(nibName: EarningLocationCell.className, bundle: nil)
         self.tblEarningLocation.register(nib, forCellReuseIdentifier: EarningLocationCell.className)
     }
-    
 }
 
 //MARK: - UITableView Delegate and Data Sourse Methods
