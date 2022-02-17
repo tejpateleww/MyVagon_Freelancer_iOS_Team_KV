@@ -309,13 +309,16 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         if self.isLoading {return 1}
-        return (self.isFilter) ? 1 : self.numberOfSections
+        let section = (numberOfSections == 0) ? 1 : numberOfSections
+        return (self.isFilter) ? 1 : section
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(self.isFilter){
-            return (!self.isTblReload) ? 10 : self.arrFilterHomeData.count
+            //return (!self.isTblReload) ? 10 : self.arrFilterHomeData.count
+            let count = (self.arrFilterHomeData.count == 0) ? 1 : self.arrFilterHomeData.count
+            return (!self.isTblReload) ? 10 : count
         }else{
             if self.arrHomeData?.count ?? 0 > 0 {
                 return arrHomeData?[section].count ?? 0

@@ -313,7 +313,7 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
         selectedBtnUIChanges(Selected: false, Btn:btnSelection[0])
         selectedBtnUIChanges(Selected: false, Btn:btnSelection[1])
         selectedBtnUIChanges(Selected: false, Btn:btnSelection[2])
-        switch SingletonClass.sharedInstance.RegisterData.Reg_fuel_type  {
+        switch SingletonClass.sharedInstance.RegisterData.Reg_fuel_type {
         
         case Tabselect.Diesel.rawValue:
             selectedBtnUIChanges(Selected: true, Btn:btnSelection[0])
@@ -358,15 +358,11 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
             SelectedTextField = TextFieldCategory
             TextFieldCategory.inputView = GeneralPicker
             TextFieldCategory.inputAccessoryView = GeneralPicker.toolbar
-            
             if let DummyFirst = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.name == TextFieldCategory.text ?? ""}) {
-                
-                
+                print("Dummy First",DummyFirst)
                 GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
-                
-                self.GeneralPicker.reloadAllComponents()
             }
-            
+            self.GeneralPicker.reloadAllComponents()
         } else if textField == TextFieldSubCategory {
             if TextFieldCategory.text != "" {
                 if TextFieldCategory.text?.lowercased() == "other" {
@@ -379,15 +375,11 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
                     TextFieldSubCategory.inputAccessoryView = GeneralPicker.toolbar
                     
                     if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)}) {
-                        
-                       
-                        
                         if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory?.id ?? 0)}) {
                             
                             GeneralPicker.selectRow(IndexForSubTruckType, inComponent: 0, animated: false)
                         }
                     }
-                    
                     self.GeneralPicker.reloadAllComponents()
                     
                 }
@@ -417,27 +409,19 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
         } else if textField == truckWeightUnitTF {
             truckWeightUnitTF.inputView = GeneralPicker
             truckWeightUnitTF.inputAccessoryView = GeneralPicker.toolbar
-            
-            if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == truckWeightUnitTF.text ?? ""}) {
-                
-              
-                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
-                
-                self.GeneralPicker.reloadAllComponents()
-            }
             SelectedTextField = truckWeightUnitTF
+            if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where: {$0.name == truckWeightUnitTF.text ?? ""}) {
+                GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
+            }
+            self.GeneralPicker.reloadAllComponents()
         } else if textField == cargoLoadUnitTF {
             cargoLoadUnitTF.inputView = GeneralPicker
             cargoLoadUnitTF.inputAccessoryView = GeneralPicker.toolbar
-            
+            SelectedTextField = cargoLoadUnitTF
             if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.firstIndex(where:{$0.name == cargoLoadUnitTF.text ?? ""}) {
-                
-               
                 GeneralPicker.selectRow(DummyFirst, inComponent: 0, animated: false)
-                
                 self.GeneralPicker.reloadAllComponents()
             }
-            SelectedTextField = cargoLoadUnitTF
         }
         
     }
@@ -865,11 +849,8 @@ extension ProfileEditViewController: GeneralPickerViewDelegate {
             
             self.cargoLoadUnitTF.resignFirstResponder()
         }
-        
-        
         self.TextFieldCategory.resignFirstResponder()
         self.TextFieldSubCategory.resignFirstResponder()
-        
     }
     
     func didTapCancel() {
@@ -921,6 +902,7 @@ extension ProfileEditViewController : UIPickerViewDelegate, UIPickerViewDataSour
         return ""
         
     }
+    
     
 }
 

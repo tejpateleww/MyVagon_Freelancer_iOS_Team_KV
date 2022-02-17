@@ -68,20 +68,27 @@ open class ImagePicker: NSObject {
         if let action = self.action(for: .photoLibrary, title: "Photo library", tag: self.SelectedTag) {
             alertController.addAction(action)
         }
-        let api_vector = UIImageView()
-        api_vector.sd_setImage(with: URL(string: "http://qwnched.excellentwebworld.in/assets/images/default_user.png"))
-//        http://qwnched.excellentwebworld.in/assets/images/default_user.png
-        if let sourceImage = (sourceView as! UIImageView).image {
-            if let defaultImage = UIImage(named: "default_profile") {
-                let isDefaultImage = sourceImage.isEqualToImage(defaultImage)
-                if (!isDefaultImage) && !(sourceImage.isEqualToImage(api_vector.image ?? UIImage())) && isRemove == true{
-                    alertController.addAction(UIAlertAction(title: "Remove Photo", style: .destructive, handler:
-                    { (action) in
-                        self.delegate?.didSelect(image: nil, SelectedTag:101)
-                    }))
-                }
-            }
+        
+        if isRemove {
+            alertController.addAction(UIAlertAction(title: "Remove Photo", style: .destructive, handler:{ (action) in
+            self.delegate?.didSelect(image: nil, SelectedTag:101)
+            }))
         }
+        
+//        let api_vector = UIImageView()
+//        api_vector.sd_setImage(with: URL(string: "http://qwnched.excellentwebworld.in/assets/images/default_user.png"))
+////        http://qwnched.excellentwebworld.in/assets/images/default_user.png
+//        if let sourceImage = (sourceView as! UIImageView).image {
+//            if let defaultImage = UIImage(named: "default_profile") {
+//                let isDefaultImage = sourceImage.isEqualToImage(defaultImage)
+//                if (!isDefaultImage) && !(sourceImage.isEqualToImage(api_vector.image ?? UIImage())) && isRemove == true{
+//                    alertController.addAction(UIAlertAction(title: "Remove Photo", style: .destructive, handler:
+//                    { (action) in
+//                        self.delegate?.didSelect(image: nil, SelectedTag:101)
+//                    }))
+//                }
+//            }
+//        }
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
