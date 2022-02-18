@@ -201,9 +201,12 @@ class chatListReqModel : Encodable {
 
 class EarningReqModel : Encodable {
     var driver_id: String?
+    var statisticType: String?
 
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
+        case statisticType = "statistic_type"
+        
     }
 }
 

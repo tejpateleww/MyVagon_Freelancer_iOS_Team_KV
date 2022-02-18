@@ -330,7 +330,7 @@ class WebServiceSubClass{
     
     //MARK:- Earning
     class func earningList(reqModel: EarningReqModel, completion: @escaping (Bool,String,EarningResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.transactionHistory.rawValue, requestModel: reqModel, responseModel: EarningResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.statisticsDetail.rawValue, requestModel: reqModel, responseModel: EarningResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -345,6 +345,13 @@ class WebServiceSubClass{
     //MARK: -getSupportAPI
     class func getSupportAPI(completion: @escaping (Bool,String,SupportResModel?,Any) -> ()) {
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.contactUs.rawValue, responseModel: SupportResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -StatiscticList
+    class func StatisticListAPI(reqModel: StatisticListReqModel, completion: @escaping (Bool,String,StatisticResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.statistics.rawValue, requestModel: reqModel, responseModel: StatisticResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

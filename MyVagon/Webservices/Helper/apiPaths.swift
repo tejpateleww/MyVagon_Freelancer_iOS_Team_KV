@@ -165,9 +165,10 @@ enum ApiKey: String {
     case chatMessages                           = "chat-messages"
     case chatUsers                              = "chat-users"
     
-    case transactionHistory                     = "transaction-history"
+    case statisticsDetail                       = "statistics-detail"
     case acceptPayment                          = "accept-payment"
     case contactUs                              = "contact-us"
+    case statistics                              = "statistics"
     
 
 }

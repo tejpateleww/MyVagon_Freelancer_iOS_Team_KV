@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 class AcceptPaymentViewModel {
     
     weak var schedualLoadDetailsViewController : SchedualLoadDetailsViewController? = nil

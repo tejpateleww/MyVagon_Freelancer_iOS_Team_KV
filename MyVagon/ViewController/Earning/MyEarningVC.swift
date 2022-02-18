@@ -14,6 +14,7 @@ class MyEarningVC: BaseViewController {
     
     var earningListViewModel = EarningListViewModel()
     var arrData : [EarningResData] = []
+    var strId : String = ""
     
     //shimmer
     var isTblReload = false
@@ -156,6 +157,7 @@ extension MyEarningVC{
         
         let reqModel = EarningReqModel ()
         reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.statisticType = self.strId
         self.earningListViewModel.WebServiceEarningList(ReqModel: reqModel)
     }
 }

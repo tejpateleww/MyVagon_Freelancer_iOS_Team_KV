@@ -19,9 +19,11 @@ class SearchDataCell: UITableViewCell {
     @IBOutlet weak var tblSearchLocationHeight: NSLayoutConstraint!
     @IBOutlet weak var vWStatus: UIView!
     @IBOutlet weak var lblStatus: themeLabel!
+    @IBOutlet weak var btnMainTap: UIButton!
     
     var arrLocations : [SearchLocation] = []
     var tblHeight:((CGFloat)->())?
+    var btnMainTapCousure : (()->())?
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -76,6 +78,13 @@ class SearchDataCell: UITableViewCell {
         let nib = UINib(nibName: SearchLocationCell.className, bundle: nil)
         self.tblSearchLocation.register(nib, forCellReuseIdentifier: SearchLocationCell.className)
     }
+    
+    @IBAction func btnMainTapAction(_ sender: Any) {
+        if let obj = self.btnMainTapCousure{
+            obj()
+        }
+    }
+    
     
 }
 

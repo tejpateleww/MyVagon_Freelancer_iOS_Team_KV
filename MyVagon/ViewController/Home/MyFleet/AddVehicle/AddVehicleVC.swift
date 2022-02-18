@@ -9,8 +9,8 @@ import UIKit
 
 //MARK: -
 class AddVehicleVC: BaseViewController {
-
-    //MARK: ===== Outlets ======
+    
+    //MARK: - Properties
     @IBOutlet weak var txtTruckType: themeTextfield!
     @IBOutlet weak var txtTruckSubType: themeTextfield!
     @IBOutlet weak var txtTruckWeight: themeTextfield!
@@ -32,7 +32,6 @@ class AddVehicleVC: BaseViewController {
     @IBOutlet weak var btnAdd: themeButton!
     @IBOutlet var btnSelection: [UIButton]!
     
-    //MARK: ===== Variables ======
     private var imagePicker : ImagePicker!
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField : UITextField?
@@ -53,50 +52,49 @@ class AddVehicleVC: BaseViewController {
         }
     }
     
-    //MARK: - lifecycle methods
+    //MARK: - LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setupData()
     }
     
+    //MARK: - Custom methods
     func setupUI(){
         self.imagePicker = ImagePicker(presentationController: self, delegate: self, allowsEditing: true)
-        //self.imagePicker.checkCameraAccess()
-        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Vehicle", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
-        txtTruckSubType.isUserInteractionEnabled = false
+        self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Vehicle", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
+        self.txtTruckSubType.isUserInteractionEnabled = false
         for i in btnSelection{
-            selectedBtnUIChanges(Selected: false, Btn: i)
+            self.selectedBtnUIChanges(Selected: false, Btn: i)
         }
-        selectedBtnUIChanges(Selected: true, Btn:btnSelection.first!)
+        self.selectedBtnUIChanges(Selected: true, Btn:btnSelection.first!)
         self.tabTypeSelection = Tabselect.Diesel.rawValue
     }
     
     func setupData(){
-        txtTruckBrand.delegate = self
-        txtTruckType.delegate = self
-        txtTruckSubType.delegate = self
-        txtTruckPlate.delegate = self
-        txtTrailerPlate.delegate = self
-        txtTruckWeight.delegate = self
-        txtCapacityType.delegate = self
-        txtCargoLoadCapacity.delegate = self
-        truckWeightTF.delegate = self
-        cargoLoadCapTF.delegate = self
-        GeneralPicker.dataSource = self
-        GeneralPicker.delegate = self
-        collectionTruckCapacity.dataSource = self
-        collectionTruckCapacity.delegate = self
-        GeneralPicker.generalPickerDelegate = self
-
+        self.txtTruckBrand.delegate = self
+        self.txtTruckType.delegate = self
+        self.txtTruckSubType.delegate = self
+        self.txtTruckPlate.delegate = self
+        self.txtTrailerPlate.delegate = self
+        self.txtTruckWeight.delegate = self
+        self.txtCapacityType.delegate = self
+        self.txtCargoLoadCapacity.delegate = self
+        self.truckWeightTF.delegate = self
+        self.cargoLoadCapTF.delegate = self
+        self.GeneralPicker.dataSource = self
+        self.GeneralPicker.delegate = self
+        self.collectionTruckCapacity.dataSource = self
+        self.collectionTruckCapacity.delegate = self
+        self.GeneralPicker.generalPickerDelegate = self
+        
     }
     
-    //MARK: ===== btn Action hydraulic door ======
+    //MARK: - UIButton Action methods
     @IBAction func btnActionHydraulicDoor(_ sender: UIButton) {
-        btnHydraulicDoor.isSelected = !btnHydraulicDoor.isSelected
+        self.btnHydraulicDoor.isSelected = !self.btnHydraulicDoor.isSelected
     }
     
-    //MARK: ===== btn Action Add Vehicle ======
     @IBAction func btnActionAddVehicle(_ sender: UIButton) {
         let validation = validation()
         if validation.0{
@@ -106,33 +104,25 @@ class AddVehicleVC: BaseViewController {
         }
     }
     
-    //MARK: ===== btn Action Vehicle Photo ======
     @IBAction func btnActionVehiclePhoto(_ sender: UIButton) {
         self.imagePicker.present(from: imgVehicle, viewPresented: self.view, isRemove: isvahicalImg)
     }
     
     @IBAction func btnTabSelection(_ sender: UIButton) {
-        let _ = btnSelection.map{$0.isSelected = false}
-        for i in btnSelection{
-            selectedBtnUIChanges(Selected: false, Btn: i)
+        let _ = self.btnSelection.map{$0.isSelected = false}
+        for i in self.btnSelection{
+            self.selectedBtnUIChanges(Selected: false, Btn: i)
         }
-        if(sender.tag == 0)
-        {
-            selectedBtnUIChanges(Selected: true, Btn:sender)
+        if(sender.tag == 0){
+            self.selectedBtnUIChanges(Selected: true, Btn:sender)
             self.tabTypeSelection = Tabselect.Diesel.rawValue
-            
-        }
-        else  if(sender.tag == 1)
-        {
+        }else if(sender.tag == 1){
             self.tabTypeSelection = Tabselect.Electrical.rawValue
-            selectedBtnUIChanges(Selected: true, Btn: sender)
-        }
-        else  if(sender.tag == 2)
-        {
+            self.selectedBtnUIChanges(Selected: true, Btn: sender)
+        }else if(sender.tag == 2){
             self.tabTypeSelection = Tabselect.Hydrogen.rawValue
-            selectedBtnUIChanges(Selected: true, Btn: sender)
+            self.selectedBtnUIChanges(Selected: true, Btn: sender)
         }
-        
         
         self.btnLeadingConstaintOfAnimationView.constant = sender.superview?.frame.origin.x ?? 0.0
         UIView.animate(withDuration: 0.3) {
@@ -154,42 +144,40 @@ class AddVehicleVC: BaseViewController {
                 let previousIDType = TruckCapacityAdded[SelectedIndexOfType].type
                 if updatedIdType == previousIDType {
                     TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
-                        btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
-                        ButtonTypeForAddingCapacity = .Add
-                        self.setCollection()
+                    btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                    ButtonTypeForAddingCapacity = .Add
+                    self.setCollection()
                 } else {
                     if TruckCapacityAdded.contains(where: {$0.type == updatedIdType}) {
                         let IndexOfValue = TruckCapacityAdded.firstIndex(where: {$0.type == updatedIdType})
                         if IndexOfValue == SelectedIndexOfType {
                             TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
-                                btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
-                                ButtonTypeForAddingCapacity = .Add
+                            btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                            ButtonTypeForAddingCapacity = .Add
                             self.setCollection()
                         } else {
                             Utilities.ShowAlertOfInfo(OfMessage: "You can add only one time \(SingletonClass.sharedInstance.PackageList?[IndexOfType].name ?? "")")
                         }
                     } else {
                         TruckCapacityAdded[SelectedIndexOfType] = (TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: updatedIdType))
-                            btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
-                            ButtonTypeForAddingCapacity = .Add
-                            self.setCollection()
+                        btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
+                        ButtonTypeForAddingCapacity = .Add
+                        self.setCollection()
                     }
                 }
             } else {
-                    if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.name == txtCapacityType.text ?? ""})
-                    {
-                        if TruckCapacityAdded.contains(where: {$0.type == SingletonClass.sharedInstance.PackageList?[index].id ?? 0}) {
-                            Utilities.ShowAlertOfInfo(OfMessage: "You can add only one time \(SingletonClass.sharedInstance.PackageList?[index].name ?? "")")
-                        } else {
-                            TruckCapacityAdded.append(TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: SingletonClass.sharedInstance.PackageList?[index].id ?? 0))
-                            self.setCollection()
-                        }
+                if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.name == txtCapacityType.text ?? ""})
+                {
+                    if TruckCapacityAdded.contains(where: {$0.type == SingletonClass.sharedInstance.PackageList?[index].id ?? 0}) {
+                        Utilities.ShowAlertOfInfo(OfMessage: "You can add only one time \(SingletonClass.sharedInstance.PackageList?[index].name ?? "")")
+                    } else {
+                        TruckCapacityAdded.append(TruckCapacityType(Capacity: TextFieldCapacity.text ?? "", Type: SingletonClass.sharedInstance.PackageList?[index].id ?? 0))
+                        self.setCollection()
                     }
                 }
+            }
         }
     }
-    
-    //MARK: - Coustom Function
     
     func setCollection(){
         TextFieldCapacity.text = ""
@@ -242,7 +230,6 @@ class AddVehicleVC: BaseViewController {
 }
 
 //MARK: - image picker Delegate method
-
 extension AddVehicleVC: ImagePickerDelegate {
     func didSelect(image: UIImage?, SelectedTag: Int) {
         if image != nil {
@@ -256,7 +243,6 @@ extension AddVehicleVC: ImagePickerDelegate {
 }
 
 //MARK: - Textfield Delegate
-
 extension AddVehicleVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -327,7 +313,6 @@ extension AddVehicleVC: UITextFieldDelegate {
 }
 
 //MARK: - PickerView delegate
-
 extension AddVehicleVC: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
@@ -374,7 +359,6 @@ extension AddVehicleVC: UIPickerViewDelegate, UIPickerViewDataSource {
 }
 
 //MARK: - GeneralPickerView Delegate
-
 extension AddVehicleVC: GeneralPickerViewDelegate{
     func didTapDone() {
         if SelectedTextField == txtTruckType {
@@ -404,7 +388,7 @@ extension AddVehicleVC: GeneralPickerViewDelegate{
             }
             
         } else if SelectedTextField == txtTruckSubType {
-         
+            
             if SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count != 0 {
                 SelectedSubCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
                 let item =
@@ -436,11 +420,10 @@ extension AddVehicleVC: GeneralPickerViewDelegate{
     
     func didTapCancel() {
     }
-
+    
 }
 
 //MARK: - Collection view delegate
-
 extension AddVehicleVC : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionTruckCapacity {
@@ -456,7 +439,7 @@ extension AddVehicleVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
             if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {
                 let StringForSize = "\(TruckCapacityAdded[indexPath.row].capacity ?? "") \(SingletonClass.sharedInstance.PackageList?[index].name ?? "" )"
                 cell.lblCapacity.text = StringForSize
-             
+                
             }
             cell.BGView.layer.cornerRadius = 17
             cell.BGView.layer.borderWidth = 1
@@ -494,8 +477,8 @@ extension AddVehicleVC : UICollectionViewDelegate,UICollectionViewDataSource,UIC
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
-         return 10
-     }
+        return 10
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == collectionTruckCapacity{
             if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {

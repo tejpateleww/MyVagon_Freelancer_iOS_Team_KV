@@ -242,6 +242,8 @@
 		880F69F327B4F68400E2CDD2 /* NewScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */; };
 		880F69F727B4F6B200E2CDD2 /* ScheduleDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */; };
 		880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */; };
+		885A27C727BFA93200BE7A6B /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */; };
+		885A27CA27BFA9B500BE7A6B /* StatisticResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */; };
@@ -606,6 +608,8 @@
 		880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleVC.swift; sourceTree = "<group>"; };
 		880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataCell.swift; sourceTree = "<group>"; };
 		880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDataCell.xib; sourceTree = "<group>"; };
+		885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
+		885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticResModel.swift; sourceTree = "<group>"; };
 		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
 		8862C05427A02D6A00F3F630 /* MyVagon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MyVagon.entitlements; sourceTree = "<group>"; };
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -855,6 +859,7 @@
 				88B6865E27A14ACE006123B8 /* chatViewModel.swift */,
 				88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */,
 				8877068127ABFD5E00EACE5A /* AcceptPaymentViewModel.swift */,
+				885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1003,7 +1008,6 @@
 		189FB65326B96BEF00BBD5A0 /* Webservices */ = {
 			isa = PBXGroup;
 			children = (
-				189FB66A26B96F8C00BBD5A0 /* Model */,
 				189FB65426B96BEF00BBD5A0 /* Service Request */,
 				189FB65726B96BEF00BBD5A0 /* Helper */,
 				18ECDDA427699D1F0097F10F /* Socket */,
@@ -1059,6 +1063,10 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				885A27C827BFA9A000BE7A6B /* StatisticResModel */,
+				18E44012277200E700505F9E /* InitResModel.swift */,
+				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
+				18114CF42774410400CD59D1 /* BookingLoadDetailsResModel.swift */,
 				8868ABCD27BD204500AA048F /* SupportResModel */,
 				88C3A9DB27A413A80018B9E8 /* EarningResModel */,
 				88B6865B27A1498E006123B8 /* ChatMessageResModel */,
@@ -1073,7 +1081,6 @@
 				18E1A61B26D4CB5C00FD9A93 /* SettingsGetResModel */,
 				18E1A60A26D4BFFE00FD9A93 /* LoginResModel */,
 				18F1B7BC26CE6C730071FC21 /* SettingsResModel */,
-				18289F2626C557E7002240C3 /* GeneralMessageResModel.swift */,
 				186E382826C14B9400984D40 /* VerifyResModel */,
 				18F2703226BD632300992892 /* TruckUnitResModel */,
 				18F2702C26BD632200992892 /* TruckFeaturesResModel */,
@@ -1081,8 +1088,6 @@
 				18F2702726BD4F8900992892 /* RegisterResModel */,
 				18129AB726BA9B1700983AFC /* TruckTypeListingResModel */,
 				189FB66D26B976F400BBD5A0 /* ImageUploadResModel */,
-				18E44012277200E700505F9E /* InitResModel.swift */,
-				18114CF42774410400CD59D1 /* BookingLoadDetailsResModel.swift */,
 			);
 			path = ResModel;
 			sourceTree = "<group>";
@@ -1367,6 +1372,14 @@
 			path = "New Schedule Cell";
 			sourceTree = "<group>";
 		};
+		885A27C827BFA9A000BE7A6B /* StatisticResModel */ = {
+			isa = PBXGroup;
+			children = (
+				885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */,
+			);
+			path = StatisticResModel;
+			sourceTree = "<group>";
+		};
 		8868ABC327BCF13E00AA048F /* Support Popup */ = {
 			isa = PBXGroup;
 			children = (
@@ -1454,6 +1467,32 @@
 				888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */,
 			);
 			path = "Earning Shimmer";
+			sourceTree = "<group>";
+		};
+		887EB94D27BE6C76003AB92C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				186834D12775AA83005E2674 /* CarAnimator.swift */,
+				1899F893277AD6600058030B /* ARCarMovement.swift */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		887EB94E27BE6CA6003AB92C /* Common Files */ = {
+			isa = PBXGroup;
+			children = (
+				189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */,
+				1802693326AFD6740088B49F /* AppInfo.swift */,
+				189FB63F26B933A500BBD5A0 /* AttechmentService.swift */,
+				18F496512779BD350069B26C /* StepIndicator */,
+				18F15E4527043DED003A1D16 /* LocationManager Class */,
+				A14974A526A1AAC90072AF33 /* Font */,
+				A1519CD926A01C9D001738B9 /* Enum */,
+				A1519CBC26A00353001738B9 /* Extension */,
+				A1519CBB26A00343001738B9 /* AppTheme */,
+				180FCEE526B1359A008D28EE /* Localizable */,
+			);
+			path = "Common Files";
 			sourceTree = "<group>";
 		};
 		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
@@ -1626,27 +1665,18 @@
 			children = (
 				8862C05427A02D6A00F3F630 /* MyVagon.entitlements */,
 				8862C05527A02FC000F3F630 /* GoogleService-Info.plist */,
-				18F5ED3A277ED8140015A6C1 /* AppDelegate */,
-				1899F893277AD6600058030B /* ARCarMovement.swift */,
-				18F496512779BD350069B26C /* StepIndicator */,
-				186834D12775AA83005E2674 /* CarAnimator.swift */,
 				186FCE96276C678E0087EFF9 /* LoaderLottie.json */,
-				18F15E4527043DED003A1D16 /* LocationManager Class */,
+				18F5ED3A277ED8140015A6C1 /* AppDelegate */,
 				18129AA926BA554000983AFC /* View Model */,
-				189FB65326B96BEF00BBD5A0 /* Webservices */,
-				180FCEE526B1359A008D28EE /* Localizable */,
-				1802692826AFD5D70088B49F /* Utilities */,
-				A14974A526A1AAC90072AF33 /* Font */,
-				A1519CD926A01C9D001738B9 /* Enum */,
-				189FB63F26B933A500BBD5A0 /* AttechmentService.swift */,
-				1802693326AFD6740088B49F /* AppInfo.swift */,
-				A1519CD426A0041F001738B9 /* Storyboard */,
+				189FB66A26B96F8C00BBD5A0 /* Model */,
 				A1519CD326A00413001738B9 /* ViewController */,
-				A1519CBC26A00353001738B9 /* Extension */,
-				A1519CBB26A00343001738B9 /* AppTheme */,
+				887EB94E27BE6CA6003AB92C /* Common Files */,
+				1802692826AFD5D70088B49F /* Utilities */,
+				887EB94D27BE6C76003AB92C /* Library */,
+				189FB65326B96BEF00BBD5A0 /* Webservices */,
+				A1519CD426A0041F001738B9 /* Storyboard */,
 				A1519CD526A00740001738B9 /* Images */,
 				A1519C9926A00305001738B9 /* Info.plist */,
-				189FB66626B96E6A00BBD5A0 /* ConstantEnum.swift */,
 			);
 			path = MyVagon;
 			sourceTree = "<group>";
@@ -2144,6 +2174,7 @@
 				18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */,
 				185BA7EF2757843F00E99FAC /* MyLoadsNewTruckType.swift in Sources */,
 				A14974CC26A1AB800072AF33 /* OFL.txt in Sources */,
+				885A27CA27BFA9B500BE7A6B /* StatisticResModel.swift in Sources */,
 				8877067E27ABAF7B00EACE5A /* NotiShimmerCell.swift in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */,
@@ -2374,6 +2405,7 @@
 				185BA7EA2757843F00E99FAC /* MyLoadsNewShipperDetail.swift in Sources */,
 				18F2703526BD632300992892 /* TruckFeaturesResModel.swift in Sources */,
 				18F1F2EE2758CEC000613125 /* PostTruckBidsViewModel.swift in Sources */,
+				885A27C727BFA93200BE7A6B /* StatisticsViewModel.swift in Sources */,
 				18F4013126CBEAE4002C1ABB /* MyProfileViewController.swift in Sources */,
 				A1519CCB26A00407001738B9 /* userDefaults+Extension.swift in Sources */,
 				189B2337271D544D00431D94 /* DriverListPermission.swift in Sources */,

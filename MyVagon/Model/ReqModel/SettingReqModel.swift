@@ -38,6 +38,14 @@ class GetSettingsListReqModel : Encodable {
     }
 }
 
+class StatisticListReqModel : Encodable {
+    var driverId : String?
+
+    enum CodingKeys: String, CodingKey {
+        case driverId = "driver_id"
+    }
+}
+
 
 
 class GetDriverListReqModel : Encodable {

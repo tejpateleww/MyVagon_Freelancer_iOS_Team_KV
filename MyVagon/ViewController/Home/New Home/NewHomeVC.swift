@@ -234,6 +234,17 @@ class NewHomeVC: BaseViewController {
         SocketIOManager.shared.establishConnection()
     }
     
+    func goToDeatilScreen(index : IndexPath){
+        if !self.isLoading {
+            if(self.isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
+                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
+                controller.hidesBottomBarWhenPushed = true
+                controller.LoadDetails = (self.isFilter) ? arrFilterHomeData[index.row] : arrHomeData?[index.section][index.row]
+                UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+            }
+        }
+    }
+    
     //MARK: - UIButton Action methods
     @IBAction func btnSortAction(_ sender: Any) {
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
@@ -361,6 +372,10 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
                         self.tblSearchData.layoutSubviews()
                     }
                     
+                    cell.btnMainTapCousure = {
+                        self.goToDeatilScreen(index: indexPath)
+                    }
+                    
                     cell.tblSearchLocation.reloadData()
                     cell.tblSearchLocation.layoutIfNeeded()
                     cell.tblSearchLocation.layoutSubviews()
@@ -394,6 +409,10 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
                     cell.tblHeight = { (heightTBl) in
                         self.tblSearchData.layoutIfNeeded()
                         self.tblSearchData.layoutSubviews()
+                    }
+                    
+                    cell.btnMainTapCousure = {
+                        self.goToDeatilScreen(index: indexPath)
                     }
                     
                     cell.tblSearchLocation.reloadData()
@@ -450,14 +469,7 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if !self.isLoading {
-            if(self.isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
-                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC
-                controller.hidesBottomBarWhenPushed = true
-                controller.LoadDetails = (self.isFilter) ? arrFilterHomeData[indexPath.row] : arrHomeData?[indexPath.section][indexPath.row]
-                UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
-            }
-        }
+        self.goToDeatilScreen(index: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
