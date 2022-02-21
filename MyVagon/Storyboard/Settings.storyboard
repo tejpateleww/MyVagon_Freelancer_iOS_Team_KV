@@ -26,23 +26,23 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="statisticsCell" id="cNb-m6-LYn" customClass="statisticsCell" customModule="MyVagon" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="414" height="119"/>
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="99"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cNb-m6-LYn" id="6wo-UN-T8E">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="99"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-kc-1S9" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="13.5" width="374" height="92"/>
+                                                            <rect key="frame" x="20" y="13.5" width="374" height="72"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QzL-iG-3VO" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                    <rect key="frame" x="24" y="16" width="53" height="60"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                                                    <rect key="frame" x="25" y="15" width="37.5" height="42"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                            <real key="value" value="50"/>
+                                                                            <real key="value" value="40"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isBold" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
@@ -51,13 +51,13 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADS/WEEK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JT-AG-iG4" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                    <rect key="frame" x="82" y="47.5" width="105.5" height="20.5"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <rect key="frame" x="67.5" y="35" width="89" height="17"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                            <real key="value" value="18"/>
+                                                                            <real key="value" value="15"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
@@ -66,7 +66,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_GreaterThenSign" translatesAutoresizingMaskIntoConstraints="NO" id="roN-Pd-c5n">
-                                                                    <rect key="frame" x="339" y="22" width="22" height="48"/>
+                                                                    <rect key="frame" x="339" y="12" width="22" height="48"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="48" id="Djn-YT-PxS"/>
                                                                         <constraint firstAttribute="width" constant="22" id="U6N-OC-rP1"/>
@@ -75,14 +75,14 @@
                                                             </subviews>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <constraints>
-                                                                <constraint firstItem="QzL-iG-3VO" firstAttribute="top" secondItem="FfR-kc-1S9" secondAttribute="top" constant="16" id="Fob-Ft-E43"/>
+                                                                <constraint firstItem="QzL-iG-3VO" firstAttribute="top" secondItem="FfR-kc-1S9" secondAttribute="top" constant="15" id="Fob-Ft-E43"/>
                                                                 <constraint firstItem="roN-Pd-c5n" firstAttribute="centerY" secondItem="QzL-iG-3VO" secondAttribute="centerY" id="FxE-or-DXn"/>
-                                                                <constraint firstItem="QzL-iG-3VO" firstAttribute="leading" secondItem="FfR-kc-1S9" secondAttribute="leading" constant="24" id="LlH-JC-meg"/>
+                                                                <constraint firstItem="QzL-iG-3VO" firstAttribute="leading" secondItem="FfR-kc-1S9" secondAttribute="leading" constant="25" id="LlH-JC-meg"/>
+                                                                <constraint firstItem="roN-Pd-c5n" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3JT-AG-iG4" secondAttribute="trailing" constant="5" id="ONj-xc-xHS"/>
                                                                 <constraint firstItem="3JT-AG-iG4" firstAttribute="leading" secondItem="QzL-iG-3VO" secondAttribute="trailing" constant="5" id="c1L-uZ-u50"/>
-                                                                <constraint firstItem="QzL-iG-3VO" firstAttribute="centerY" secondItem="FfR-kc-1S9" secondAttribute="centerY" id="qtl-aZ-MhM"/>
                                                                 <constraint firstItem="3JT-AG-iG4" firstAttribute="firstBaseline" secondItem="QzL-iG-3VO" secondAttribute="firstBaseline" id="sNs-LW-Gg0"/>
                                                                 <constraint firstAttribute="trailing" secondItem="roN-Pd-c5n" secondAttribute="trailing" constant="13" id="ugq-nD-Ggm"/>
-                                                                <constraint firstAttribute="bottom" secondItem="QzL-iG-3VO" secondAttribute="bottom" constant="16" id="yNN-Sy-xxn"/>
+                                                                <constraint firstAttribute="bottom" secondItem="QzL-iG-3VO" secondAttribute="bottom" constant="15" id="yNN-Sy-xxn"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -704,6 +704,229 @@
             </objects>
             <point key="canvasLocation" x="4648" y="73"/>
         </scene>
+        <!--PaymentsVC-->
+        <scene sceneID="ctX-vd-kjf">
+            <objects>
+                <viewController storyboardIdentifier="PaymentsVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="J57-YF-hUa" customClass="PaymentsVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FqA-Zy-epE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2O6-En-P2g">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-7b-Hy3">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmz-0U-zja">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="397"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8gC-Ay-hhM">
+                                                        <rect key="frame" x="10" y="10" width="394" height="322"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZN4-rL-LP2" userLabel="cashView">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F1V-lE-vBg">
+                                                                        <rect key="frame" x="5" y="12.5" width="25" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="5H2-zC-zHf"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="dFT-sW-7Oo"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="ic_radio_selected"/>
+                                                                        <connections>
+                                                                            <action selector="redioBtnClicked:" destination="J57-YF-hUa" eventType="touchUpInside" id="3WE-fh-DBZ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-X7-IhD">
+                                                                        <rect key="frame" x="40" y="0.0" width="39" height="50"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="F1V-lE-vBg" firstAttribute="leading" secondItem="ZN4-rL-LP2" secondAttribute="leading" constant="5" id="5bc-EQ-BrY"/>
+                                                                    <constraint firstItem="F1V-lE-vBg" firstAttribute="centerY" secondItem="ZN4-rL-LP2" secondAttribute="centerY" id="D8d-xl-vSr"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="eGC-X7-IhD" secondAttribute="bottom" id="Lu6-AP-CfX"/>
+                                                                    <constraint firstItem="eGC-X7-IhD" firstAttribute="centerY" secondItem="F1V-lE-vBg" secondAttribute="centerY" id="M95-r3-wg1"/>
+                                                                    <constraint firstItem="eGC-X7-IhD" firstAttribute="top" secondItem="ZN4-rL-LP2" secondAttribute="top" id="PfL-OW-dck"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="c6z-sB-uLW"/>
+                                                                    <constraint firstItem="eGC-X7-IhD" firstAttribute="leading" secondItem="F1V-lE-vBg" secondAttribute="trailing" constant="10" id="njg-2j-7cj"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UnF-DU-nDS" userLabel="bankView">
+                                                                <rect key="frame" x="0.0" y="56" width="394" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9F-rp-DhJ">
+                                                                        <rect key="frame" x="5" y="12.5" width="25" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="25" id="eB4-Ar-hjL"/>
+                                                                            <constraint firstAttribute="width" constant="25" id="r6i-XU-eMG"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain" image="ic_radio_unselected"/>
+                                                                        <connections>
+                                                                            <action selector="redioBtnClicked:" destination="J57-YF-hUa" eventType="touchUpInside" id="R7n-U3-3wq"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJh-g8-jBV">
+                                                                        <rect key="frame" x="40" y="0.0" width="38" height="50"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="EJh-g8-jBV" firstAttribute="top" secondItem="UnF-DU-nDS" secondAttribute="top" id="5Z9-uS-oQl"/>
+                                                                    <constraint firstItem="c9F-rp-DhJ" firstAttribute="leading" secondItem="UnF-DU-nDS" secondAttribute="leading" constant="5" id="NUD-2l-5Nd"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="EJh-g8-jBV" secondAttribute="bottom" id="Np9-gn-Ud0"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="SPe-ks-2Jd"/>
+                                                                    <constraint firstItem="EJh-g8-jBV" firstAttribute="centerY" secondItem="c9F-rp-DhJ" secondAttribute="centerY" id="UmP-hZ-Axj"/>
+                                                                    <constraint firstItem="EJh-g8-jBV" firstAttribute="leading" secondItem="c9F-rp-DhJ" secondAttribute="trailing" constant="10" id="WlL-Dn-vBG"/>
+                                                                    <constraint firstItem="c9F-rp-DhJ" firstAttribute="centerY" secondItem="UnF-DU-nDS" secondAttribute="centerY" id="dqI-py-DwV"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-Ax-3h4">
+                                                                <rect key="frame" x="0.0" y="112" width="394" height="210"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOa-xg-XpF" userLabel="IBAN View" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="IBAN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXt-RZ-kTh" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="4" width="394" height="37"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="cXt-RZ-kTh" secondAttribute="trailing" id="BsZ-hB-l9J"/>
+                                                                            <constraint firstItem="cXt-RZ-kTh" firstAttribute="top" secondItem="rOa-xg-XpF" secondAttribute="top" constant="4" id="Cpm-0y-Q2u"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="cXt-RZ-kTh" secondAttribute="bottom" constant="4" id="EDn-3h-E10"/>
+                                                                            <constraint firstItem="cXt-RZ-kTh" firstAttribute="leading" secondItem="rOa-xg-XpF" secondAttribute="leading" id="eR9-zk-tix"/>
+                                                                            <constraint firstAttribute="height" constant="45" id="eft-Rr-2zc"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRD-sR-JPQ" userLabel="Account Number View" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="55" width="394" height="45"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Account Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1S7-V8-zDi" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="4" width="394" height="37"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="1S7-V8-zDi" firstAttribute="leading" secondItem="pRD-sR-JPQ" secondAttribute="leading" id="No1-mh-mwa"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="1S7-V8-zDi" secondAttribute="trailing" id="p6P-rb-dlV"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="1S7-V8-zDi" secondAttribute="bottom" constant="4" id="xEp-6E-xFD"/>
+                                                                            <constraint firstItem="1S7-V8-zDi" firstAttribute="top" secondItem="pRD-sR-JPQ" secondAttribute="top" constant="4" id="zxu-rs-Yls"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EU0-nf-QKo" userLabel="Bank Name view" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="110" width="394" height="45"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bank Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZe-fI-Rcc" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="4" width="394" height="37"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="VZe-fI-Rcc" secondAttribute="trailing" id="3fJ-Gn-WIu"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="VZe-fI-Rcc" secondAttribute="bottom" constant="4" id="KGz-eN-Mam"/>
+                                                                            <constraint firstItem="VZe-fI-Rcc" firstAttribute="leading" secondItem="EU0-nf-QKo" secondAttribute="leading" id="ROS-6e-mDl"/>
+                                                                            <constraint firstItem="VZe-fI-Rcc" firstAttribute="top" secondItem="EU0-nf-QKo" secondAttribute="top" constant="4" id="cLd-Pd-kgp"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1T6-GC-NQB" userLabel="Country view" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="165" width="394" height="45"/>
+                                                                        <subviews>
+                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Country" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="35x-Sw-55l" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="0.0" y="4" width="394" height="37"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                            </textField>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="35x-Sw-55l" firstAttribute="leading" secondItem="1T6-GC-NQB" secondAttribute="leading" id="3LG-SF-0Fb"/>
+                                                                            <constraint firstItem="35x-Sw-55l" firstAttribute="top" secondItem="1T6-GC-NQB" secondAttribute="top" constant="4" id="Hqx-QQ-4aD"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="35x-Sw-55l" secondAttribute="bottom" constant="4" id="Nt5-wR-LP2"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="35x-Sw-55l" secondAttribute="trailing" id="skC-Fe-skz"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jK8-27-c8F">
+                                                        <rect key="frame" x="10" y="342" width="394" height="45"/>
+                                                        <color key="backgroundColor" name="ThemePurpleColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="45" id="cfO-Ne-BH5"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.98430448770000001" green="0.98430746790000001" blue="0.98431414370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="SAVE"/>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="8gC-Ay-hhM" firstAttribute="leading" secondItem="Kmz-0U-zja" secondAttribute="leading" constant="10" id="1HH-Bi-hXS"/>
+                                                    <constraint firstAttribute="trailing" secondItem="jK8-27-c8F" secondAttribute="trailing" constant="10" id="Ca9-As-iU9"/>
+                                                    <constraint firstItem="jK8-27-c8F" firstAttribute="top" secondItem="8gC-Ay-hhM" secondAttribute="bottom" constant="10" id="HxC-5h-lYE"/>
+                                                    <constraint firstItem="jK8-27-c8F" firstAttribute="leading" secondItem="Kmz-0U-zja" secondAttribute="leading" constant="10" id="Jty-8B-CtN"/>
+                                                    <constraint firstItem="8gC-Ay-hhM" firstAttribute="top" secondItem="Kmz-0U-zja" secondAttribute="top" constant="10" id="Vd2-Ul-jk8"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8gC-Ay-hhM" secondAttribute="trailing" constant="10" id="bjg-LG-dUd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="jK8-27-c8F" secondAttribute="bottom" constant="10" id="lHd-nf-C5D"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Kmz-0U-zja" firstAttribute="top" secondItem="rvq-7b-Hy3" secondAttribute="top" id="1l8-Mp-9qL"/>
+                                            <constraint firstAttribute="trailing" secondItem="Kmz-0U-zja" secondAttribute="trailing" id="5nU-rF-qk0"/>
+                                            <constraint firstItem="Kmz-0U-zja" firstAttribute="width" secondItem="rvq-7b-Hy3" secondAttribute="width" id="Acp-UN-TUg"/>
+                                            <constraint firstAttribute="bottom" secondItem="Kmz-0U-zja" secondAttribute="bottom" id="L5f-zh-Duz"/>
+                                            <constraint firstItem="Kmz-0U-zja" firstAttribute="leading" secondItem="rvq-7b-Hy3" secondAttribute="leading" id="oa5-2q-iae"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="rvq-7b-Hy3" secondAttribute="bottom" id="edI-Ij-e7q"/>
+                                    <constraint firstItem="rvq-7b-Hy3" firstAttribute="leading" secondItem="2O6-En-P2g" secondAttribute="leading" id="hqt-dk-XHe"/>
+                                    <constraint firstItem="rvq-7b-Hy3" firstAttribute="top" secondItem="2O6-En-P2g" secondAttribute="top" id="ucQ-ql-ukg"/>
+                                    <constraint firstAttribute="trailing" secondItem="rvq-7b-Hy3" secondAttribute="trailing" id="wHd-Pw-aRj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Whx-LN-Id9"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2O6-En-P2g" firstAttribute="trailing" secondItem="Whx-LN-Id9" secondAttribute="trailing" id="Es0-bM-6QK"/>
+                            <constraint firstItem="2O6-En-P2g" firstAttribute="leading" secondItem="Whx-LN-Id9" secondAttribute="leading" id="GZe-N1-pZQ"/>
+                            <constraint firstItem="2O6-En-P2g" firstAttribute="top" secondItem="Whx-LN-Id9" secondAttribute="top" id="Zxt-IW-OQ2"/>
+                            <constraint firstItem="2O6-En-P2g" firstAttribute="bottom" secondItem="Whx-LN-Id9" secondAttribute="bottom" id="hvu-4R-9mL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xn9-uT-m35"/>
+                    <connections>
+                        <outlet property="detailStackView" destination="jZL-Ax-3h4" id="hwb-CT-bJd"/>
+                        <outlet property="redioBtnBank" destination="c9F-rp-DhJ" id="dLf-SN-R0P"/>
+                        <outlet property="redioBtnCash" destination="F1V-lE-vBg" id="fZB-X0-qd8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BrX-Ko-Oqs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5352" y="73"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="1lo-De-Wiv">
@@ -719,6 +942,8 @@
         <image name="ic_Selected" width="39" height="37.5"/>
         <image name="ic_ShipperGallery" width="39.5" height="39.5"/>
         <image name="ic_deselected" width="39" height="37.5"/>
+        <image name="ic_radio_selected" width="20" height="20"/>
+        <image name="ic_radio_unselected" width="20" height="20"/>
         <namedColor name="ThemeBlackColor">
             <color red="0.062745098039215685" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

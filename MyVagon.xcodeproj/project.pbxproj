@@ -248,6 +248,9 @@
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */; };
 		8868ABCF27BD208200AA048F /* SupportResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABCE27BD208200AA048F /* SupportResModel.swift */; };
+		8876A51A27C39B5F00CF4D6F /* StatisticShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */; };
+		8876A51B27C39B5F00CF4D6F /* StatisticShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */; };
+		8876A51E27C3BDEA00CF4D6F /* PaymentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */; };
 		8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */; };
 		8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8877066727ABA22900EACE5A /* DriversTableViewCell.xib */; };
 		8877066D27ABA22900EACE5A /* DriversTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8877066827ABA22900EACE5A /* DriversTableViewCell.swift */; };
@@ -615,6 +618,9 @@
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPopUpVC.swift; sourceTree = "<group>"; };
 		8868ABCE27BD208200AA048F /* SupportResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportResModel.swift; sourceTree = "<group>"; };
+		8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticShimmerCell.swift; sourceTree = "<group>"; };
+		8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticShimmerCell.xib; sourceTree = "<group>"; };
+		8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsVC.swift; sourceTree = "<group>"; };
 		8877066627ABA22900EACE5A /* VehiclesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VehiclesTableViewCell.xib; sourceTree = "<group>"; };
 		8877066727ABA22900EACE5A /* DriversTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DriversTableViewCell.xib; sourceTree = "<group>"; };
 		8877066827ABA22900EACE5A /* DriversTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriversTableViewCell.swift; sourceTree = "<group>"; };
@@ -1396,6 +1402,23 @@
 			path = SupportResModel;
 			sourceTree = "<group>";
 		};
+		8876A51727C39B4100CF4D6F /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */,
+				8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
+		8876A51C27C3BDD900CF4D6F /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		8877066527ABA22900EACE5A /* MyFleet */ = {
 			isa = PBXGroup;
 			children = (
@@ -1498,6 +1521,7 @@
 		888EEB1827A7E957004F7B87 /* Shimmer cells */ = {
 			isa = PBXGroup;
 			children = (
+				8876A51727C39B4100CF4D6F /* Statistics */,
 				88C4D48527BA761900B0D9DD /* Chat Shimmer */,
 				8877068027ABED8000EACE5A /* Earning Shimmer */,
 				8877067B27ABAF7A00EACE5A /* Noti Shimmer */,
@@ -1739,6 +1763,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8876A51C27C3BDD900CF4D6F /* Payment */,
 				8868ABC327BCF13E00AA048F /* Support Popup */,
 				8892B9AF27B1337B00FE1074 /* Custome Map */,
 				88C3A9CE27A4005A0018B9E8 /* Earning */,
@@ -1968,6 +1993,7 @@
 				18CC347D270D70A40063E33B /* MyLoadesCell.xib in Resources */,
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
 				8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */,
+				8876A51B27C39B5F00CF4D6F /* StatisticShimmerCell.xib in Resources */,
 				18E1A62126D4E7ED00FD9A93 /* Chat.storyboard in Resources */,
 				1858EA9226E61A75008E04A7 /* NavigationTitleView.xib in Resources */,
 				A1519C9526A00305001738B9 /* Assets.xcassets in Resources */,
@@ -2179,6 +2205,7 @@
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
 				189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */,
 				1808176326E7802500D1C717 /* LoadDetailsVC.swift in Sources */,
+				8876A51A27C39B5F00CF4D6F /* StatisticShimmerCell.swift in Sources */,
 				1899F899277B111D0058030B /* RateShipperViewModel.swift in Sources */,
 				189FB63D26B932B100BBD5A0 /* collectionPhotos.swift in Sources */,
 				18289F2526C55603002240C3 /* ResetPasswordViewModel.swift in Sources */,
@@ -2433,6 +2460,7 @@
 				18BA362D26B7B8F400F83069 /* CommonWebviewVC.swift in Sources */,
 				88C3A9D927A40B570018B9E8 /* EarningLocationCell.swift in Sources */,
 				18ECDC7A2766F7DD0097F10F /* CustomView.swift in Sources */,
+				8876A51E27C3BDEA00CF4D6F /* PaymentsVC.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				18F15E3B2704201F003A1D16 /* LoginTruckType.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,

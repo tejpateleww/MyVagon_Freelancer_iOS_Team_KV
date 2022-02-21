@@ -68,8 +68,8 @@ class StatisticsOneVC: BaseViewController {
     }
     
     func registerNib(){
-        let nib2 = UINib(nibName: NotiShimmerCell.className, bundle: nil)
-        self.tblStatistics.register(nib2, forCellReuseIdentifier: NotiShimmerCell.className)
+        let nib2 = UINib(nibName: StatisticShimmerCell.className, bundle: nil)
+        self.tblStatistics.register(nib2, forCellReuseIdentifier: StatisticShimmerCell.className)
         let nib3 = UINib(nibName: NoDataTableViewCell.className, bundle: nil)
         self.tblStatistics.register(nib3, forCellReuseIdentifier: NoDataTableViewCell.className)
        
@@ -88,17 +88,16 @@ extension StatisticsOneVC:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tblStatistics.dequeueReusableCell(withIdentifier: NotiShimmerCell.className) as! NotiShimmerCell
+        let cell = tblStatistics.dequeueReusableCell(withIdentifier: StatisticShimmerCell.className) as! StatisticShimmerCell
         if(!self.isTblReload){
-            cell.lblNotiDesc.text = "DummyDataForShimmer"
-            cell.lblNotiTitle.text = "DummyDataForShimmer"
             return cell
         }else{
             if(self.arrData.count > 0){
                 let cell:statisticsCell = tblStatistics.dequeueReusableCell(withIdentifier: statisticsCell.className) as! statisticsCell
                 cell.selectionStyle = .none
+                
                 cell.vwMain.backgroundColor =  UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")").withAlphaComponent(0.13)
-                cell.lblNumber.text = String(arrData[indexPath.row].value ?? 0.0).uppercased()
+                cell.lblNumber.text = String(arrData[indexPath.row].value ?? "0.0").uppercased()
                 cell.lblNumber.fontColor = UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")")
                 cell.lblDetails.text = arrData[indexPath.row].name?.uppercased()
                 cell.lblDetails.fontColor = UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")")
@@ -145,7 +144,7 @@ extension StatisticsOneVC:UITableViewDelegate,UITableViewDataSource{
     
 }
 
-//MARK: - API calls
+//MARK: - API callskk
 extension StatisticsOneVC{
     func callStatisticListAPI() {
         self.statisticsViewModel.VC =  self

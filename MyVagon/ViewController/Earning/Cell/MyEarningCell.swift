@@ -19,7 +19,7 @@ class MyEarningCell: UITableViewCell {
     @IBOutlet weak var tblEarningLocation: UITableView!
     @IBOutlet weak var tblEarningLocationHeight: NSLayoutConstraint!
     
-    var arrLocations : [Locations] = []
+    var arrLocations : [EarningLocations] = []
     var tblHeight:((CGFloat)->())?
 
     override func awakeFromNib() {

@@ -48,6 +48,7 @@ class MyAccountViewController: BaseViewController {
         AccountTableView.dataSource = self
         MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Language.StringName, isLanguageButton: true))
         MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Myprofile.StringName, isLanguageButton: false))
+        MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Payment.StringName, isLanguageButton: false))
         MyAccountDetails.append( MyAccountSection(Name: MyAccountSectionTitle.settings.StringName, isLanguageButton: false))
        
       
@@ -69,24 +70,7 @@ class MyAccountViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.showTabBar()
     }
-    
-    
-    // ----------------------------------------------------
-    // MARK: - --------- Custom Methods ---------
-    // ----------------------------------------------------
-    
-    
-    
-    // ----------------------------------------------------
-    // MARK: - --------- IBAction Methods ---------
-    // ----------------------------------------------------
-    
-    
-    
-    // ----------------------------------------------------
-    // MARK: - --------- Webservice Methods ---------
-    // ----------------------------------------------------
-    
+
 
 }
 extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
@@ -95,12 +79,10 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = AccountTableView.dequeueReusableCell(withIdentifier: "MyAccountCell", for: indexPath) as! MyAccountCell
-        
         cell.BtnLanguage.superview?.isHidden = (MyAccountDetails[indexPath.row].HaslanguageButton == true) ? false : true
-        
         cell.TitleLabel.text = MyAccountDetails[indexPath.row].TitleName?.capitalized
-        
         return cell
     }
     
@@ -110,6 +92,11 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
             break
         case MyAccountSectionTitle.Myprofile.StringName:
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: MyProfileViewController.storyboardID) as! MyProfileViewController
+            controller.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(controller, animated: true)
+            break
+        case MyAccountSectionTitle.Payment.StringName:
+            let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: PaymentsVC.storyboardID) as! PaymentsVC
             controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
             break
@@ -166,7 +153,7 @@ class MyAccountCell : UITableViewCell {
     }
 }
 enum MyAccountSectionTitle {
-    case Language,Myprofile,settings,Statistics,Changepassword,PrivacyPolicy,TermsandConditions,AboutUs,Logout
+    case Language,Myprofile,Payment,settings,Statistics,Changepassword,PrivacyPolicy,TermsandConditions,AboutUs,Logout
     
     var StringName:String  {
         switch self {
@@ -174,8 +161,10 @@ enum MyAccountSectionTitle {
             return "Language"
         case .Myprofile:
             return "My profile"
+        case .Payment:
+            return "Payment"
         case .settings:
-            return "settings"
+            return "Notifications"
         case .Statistics:
             return "Statistics"
         case .Changepassword:

@@ -30,7 +30,7 @@ struct StatisticResModel: Codable {
 struct StatisticListData: Codable {
 
     var name: String?
-    var value: Double?
+    var value: String?
     var color: String?
     var statisticType: String?
 
@@ -44,7 +44,7 @@ struct StatisticListData: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = try values.decodeIfPresent(String.self, forKey: .name)
-        value = try values.decodeIfPresent(Double.self, forKey: .value)
+        value = try values.decodeIfPresent(String.self, forKey: .value)
         color = try values.decodeIfPresent(String.self, forKey: .color)
         statisticType = try values.decodeIfPresent(String.self, forKey: .statisticType)
     }

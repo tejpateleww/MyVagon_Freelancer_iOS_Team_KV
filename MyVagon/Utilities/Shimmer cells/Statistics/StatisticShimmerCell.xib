@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="77" id="KGk-i7-Jjw" customClass="StatisticShimmerCell" customModule="MyVagon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="77"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="421" height="77"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X73-hM-cGm">
+                        <rect key="frame" x="5" y="5" width="411" height="53"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZc-3Y-YGU" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="20" y="10" width="42" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="Gcx-Kz-ghl"/>
+                                    <constraint firstAttribute="width" secondItem="bZc-3Y-YGU" secondAttribute="height" id="aIj-ZZ-ieu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBold" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" name="ThemePurpleColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADS/WEEKLOADS/WEEK" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSe-cF-KPc" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="67" y="30" width="177.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                        <color key="value" name="ThemePurpleColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_GreaterThenSign" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-9q-3d1">
+                                <rect key="frame" x="371" y="16" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="T1Y-9q-3d1" secondAttribute="height" id="fK9-sd-3Ca"/>
+                                    <constraint firstAttribute="width" constant="30" id="gJp-fj-NPj"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="aSe-cF-KPc" firstAttribute="leading" secondItem="bZc-3Y-YGU" secondAttribute="trailing" constant="5" id="1oU-X3-5nH"/>
+                            <constraint firstAttribute="trailing" secondItem="T1Y-9q-3d1" secondAttribute="trailing" constant="10" id="LgQ-jo-7R4"/>
+                            <constraint firstItem="T1Y-9q-3d1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aSe-cF-KPc" secondAttribute="trailing" constant="5" id="OB6-4g-Mo8"/>
+                            <constraint firstItem="bZc-3Y-YGU" firstAttribute="leading" secondItem="X73-hM-cGm" secondAttribute="leading" constant="20" id="WPr-gT-FjA"/>
+                            <constraint firstAttribute="bottom" secondItem="bZc-3Y-YGU" secondAttribute="bottom" constant="1" id="Z9C-pO-Zyq"/>
+                            <constraint firstItem="bZc-3Y-YGU" firstAttribute="top" secondItem="X73-hM-cGm" secondAttribute="top" constant="10" id="am1-Uc-ahN"/>
+                            <constraint firstItem="T1Y-9q-3d1" firstAttribute="centerY" secondItem="bZc-3Y-YGU" secondAttribute="centerY" id="l1E-s5-dNa"/>
+                            <constraint firstItem="aSe-cF-KPc" firstAttribute="firstBaseline" secondItem="bZc-3Y-YGU" secondAttribute="firstBaseline" id="nkJ-6h-hhJ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="X73-hM-cGm" secondAttribute="trailing" constant="5" id="CzP-rX-u6q"/>
+                    <constraint firstItem="X73-hM-cGm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="SsP-mc-ES7"/>
+                    <constraint firstAttribute="bottom" secondItem="X73-hM-cGm" secondAttribute="bottom" constant="5" id="jSh-aR-Mh1"/>
+                    <constraint firstItem="X73-hM-cGm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="xy5-g3-WA2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="ImgArrow" destination="T1Y-9q-3d1" id="zw1-wq-LdZ"/>
+                <outlet property="lblCount" destination="bZc-3Y-YGU" id="Nlc-As-wV9"/>
+                <outlet property="lblDesc" destination="aSe-cF-KPc" id="stc-a1-p6I"/>
+                <outlet property="vWContainer" destination="X73-hM-cGm" id="IG1-xX-gBu"/>
+            </connections>
+            <point key="canvasLocation" x="205.07246376811597" y="141.62946428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_GreaterThenSign" width="21" height="48"/>
+        <namedColor name="ThemePurpleColor">
+            <color red="0.60784313725490191" green="0.31764705882352939" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
