@@ -76,7 +76,7 @@ class StatisticsOneVC: BaseViewController {
     }
     
 }
-
+ 
 //MARK: - UITableView Delegate and Data Sourse Methods
 extension StatisticsOneVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,7 +139,6 @@ extension StatisticsOneVC:UITableViewDelegate,UITableViewDataSource{
             controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
         }
-        
     }
     
 }

@@ -29,6 +29,7 @@ class chatViewModel {
 class chatListViewModel {
     
     weak var chatListVC : ChatListVC? = nil
+    weak var myAccountViewController : MyAccountViewController? = nil
     
     func WebServiceChatList(ReqModel:chatListReqModel){
         WebServiceSubClass.chatUserList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
@@ -54,6 +55,20 @@ class chatListViewModel {
                     self.chatListVC?.callAdmin(strPhone: response?.data?.call ?? "")
                 }else{
                     self.chatListVC?.chatWithAdmin(strId: "\(response?.data?.chat ?? 0)")
+                }
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+    
+    func WebServiceSupportAPIForSetting(isCall:Bool){
+        WebServiceSubClass.getSupportAPI(completion: { (status, apiMessage, response, error) in
+            if status{
+                if(isCall){
+                    self.myAccountViewController?.callAdmin(strPhone: response?.data?.call ?? "")
+                }else{
+                    self.myAccountViewController?.chatWithAdmin(strId: "\(response?.data?.chat ?? 0)")
                 }
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CloseSettingTabbarDelgate {
+    func onCloseTap()
+}
+
 class SupportPopUpVC: UIViewController {
     
     @IBOutlet weak var btnCall: themeButton!
@@ -14,6 +18,7 @@ class SupportPopUpVC: UIViewController {
     @IBOutlet weak var MainView: UIView!
     @IBOutlet weak var imgClose: UIImageView!
     
+    var delegate : CloseSettingTabbarDelgate?
     var selectChatClosour : (()->())?
     var selectCallClosour : (()->())?
 
@@ -46,6 +51,9 @@ class SupportPopUpVC: UIViewController {
     
     @IBAction func btnCloseAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        if(delegate != nil){
+            delegate?.onCloseTap()
+        }
     }
     
 }

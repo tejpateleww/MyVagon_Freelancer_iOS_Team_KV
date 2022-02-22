@@ -97,6 +97,7 @@ class Utilities:NSObject{
         }
         return ""
     }
+    
     static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void{
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

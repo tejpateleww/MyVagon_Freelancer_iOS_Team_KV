@@ -248,6 +248,9 @@
 		8862C05627A02FC100F3F630 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8862C05527A02FC000F3F630 /* GoogleService-Info.plist */; };
 		8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */; };
 		8868ABCF27BD208200AA048F /* SupportResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8868ABCE27BD208200AA048F /* SupportResModel.swift */; };
+		886A920B27C4F69200B04D3F /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A920A27C4F69100B04D3F /* AboutUsVC.swift */; };
+		886A920F27C4F7EC00B04D3F /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A920D27C4F7EC00B04D3F /* AboutCell.swift */; };
+		886A921027C4F7EC00B04D3F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886A920E27C4F7EC00B04D3F /* AboutCell.xib */; };
 		8876A51A27C39B5F00CF4D6F /* StatisticShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */; };
 		8876A51B27C39B5F00CF4D6F /* StatisticShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */; };
 		8876A51E27C3BDEA00CF4D6F /* PaymentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */; };
@@ -618,6 +621,9 @@
 		8862C05527A02FC000F3F630 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8868ABC427BCF15C00AA048F /* SupportPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportPopUpVC.swift; sourceTree = "<group>"; };
 		8868ABCE27BD208200AA048F /* SupportResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportResModel.swift; sourceTree = "<group>"; };
+		886A920A27C4F69100B04D3F /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		886A920D27C4F7EC00B04D3F /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
+		886A920E27C4F7EC00B04D3F /* AboutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
 		8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticShimmerCell.swift; sourceTree = "<group>"; };
 		8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticShimmerCell.xib; sourceTree = "<group>"; };
 		8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsVC.swift; sourceTree = "<group>"; };
@@ -1402,6 +1408,24 @@
 			path = SupportResModel;
 			sourceTree = "<group>";
 		};
+		886A920927C4F67600B04D3F /* AboutUS */ = {
+			isa = PBXGroup;
+			children = (
+				886A920C27C4F7D500B04D3F /* AboutCell */,
+				886A920A27C4F69100B04D3F /* AboutUsVC.swift */,
+			);
+			path = AboutUS;
+			sourceTree = "<group>";
+		};
+		886A920C27C4F7D500B04D3F /* AboutCell */ = {
+			isa = PBXGroup;
+			children = (
+				886A920D27C4F7EC00B04D3F /* AboutCell.swift */,
+				886A920E27C4F7EC00B04D3F /* AboutCell.xib */,
+			);
+			path = AboutCell;
+			sourceTree = "<group>";
+		};
 		8876A51727C39B4100CF4D6F /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
@@ -1763,6 +1787,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				886A920927C4F67600B04D3F /* AboutUS */,
 				8876A51C27C3BDD900CF4D6F /* Payment */,
 				8868ABC327BCF13E00AA048F /* Support Popup */,
 				8892B9AF27B1337B00FE1074 /* Custome Map */,
@@ -1990,6 +2015,7 @@
 				A14974BF26A1AB440072AF33 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				A14974C626A1AB440072AF33 /* Poppins-BoldItalic.ttf in Resources */,
 				8877066B27ABA22900EACE5A /* VehiclesTableViewCell.xib in Resources */,
+				886A921027C4F7EC00B04D3F /* AboutCell.xib in Resources */,
 				18CC347D270D70A40063E33B /* MyLoadesCell.xib in Resources */,
 				A14974C826A1AB440072AF33 /* Poppins-Light.ttf in Resources */,
 				8877066C27ABA22900EACE5A /* DriversTableViewCell.xib in Resources */,
@@ -2253,6 +2279,7 @@
 				1802691A26AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift in Sources */,
 				18CC346C270D67E00063E33B /* SearchTruckType.swift in Sources */,
 				1858EA9126E61A75008E04A7 /* NavigationTitleView.swift in Sources */,
+				886A920B27C4F69200B04D3F /* AboutUsVC.swift in Sources */,
 				189FB65F26B96BF000BBD5A0 /* WebServicesSubclass.swift in Sources */,
 				888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */,
 				189FB63126B90F0600BBD5A0 /* MyAccountViewController.swift in Sources */,
@@ -2315,6 +2342,7 @@
 				189B233D271D544D00431D94 /* DriverListLoadCapacityUnit.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
+				886A920F27C4F7EC00B04D3F /* AboutCell.swift in Sources */,
 				1806E53926FCBDE4001F7888 /* PackageDatum.swift in Sources */,
 				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
 				8868ABCF27BD208200AA048F /* SupportResModel.swift in Sources */,

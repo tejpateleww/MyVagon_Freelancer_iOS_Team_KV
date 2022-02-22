@@ -93,6 +93,10 @@ class SettingVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tblSettings.showsVerticalScrollIndicator = false
+        self.tblSettings.showsHorizontalScrollIndicator = false
+        
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
