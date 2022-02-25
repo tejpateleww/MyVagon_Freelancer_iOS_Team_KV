@@ -7,13 +7,11 @@
 
 import Foundation
 class RegisterReqModel : Encodable {
+    
     var device_name,device_token,device_type,app_version : String?
     var fullname,country_code,mobile_number,email,password : String?
-    
     var truck_type,truck_sub_category,truck_weight,weight_unit,truck_capacity,capacity_unit,plate_number_truck,plate_number_trailer : String?
-    
     var brand,pallets,fuel_type,truck_features	: String?
-    
     var vehicle_images,id_proof,license,license_number,license_expiry_date :String?
 
     enum CodingKeys: String, CodingKey {
@@ -47,6 +45,7 @@ class RegisterReqModel : Encodable {
         case license_expiry_date = "license_expiry_date"
     }
 }
+
 class MobileVerifyReqModel : Encodable {
     var mobile_number : String?
 

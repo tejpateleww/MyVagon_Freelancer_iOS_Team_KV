@@ -31,9 +31,9 @@ class SettingViewModel {
             if status {
                 
                 
-                self.settingVC?.arrNotification = [NotificationList(Title: "General Settings", Details: [NotificationData(Title: NotificationTitle.AllNotification.Name,IsSelect: (response?.data?.notification == 0) ? false : true),
+                self.settingVC?.arrNotification = [NotificationList(Title: "General Notifications", Details: [NotificationData(Title: NotificationTitle.AllNotification.Name,IsSelect: (response?.data?.notification == 0) ? false : true),
                     NotificationData(Title: NotificationTitle.Messages.Name, IsSelect: (response?.data?.message == 0) ? false : true)]),
-                    NotificationList(Title: "Load Settings", Details: [NotificationData(Title: "Bid received", IsSelect: (response?.data?.bidReceived == 0) ? false : true),
+                    NotificationList(Title: "Load Notifications", Details: [NotificationData(Title: "Bid received", IsSelect: (response?.data?.bidReceived == 0) ? false : true),
                                                               NotificationData(Title: NotificationTitle.Bidaccepted.Name, IsSelect: (response?.data?.bidAccepted == 0) ? false : true),
                                                               NotificationData(Title: NotificationTitle.Loadsassignedbydispacter.Name, IsSelect: (response?.data?.loadAssignByDispatcher == 0) ? false : true),
                                                               NotificationData(Title: NotificationTitle.Starttripreminder.Name, IsSelect: (response?.data?.startTripReminder == 0) ? false : true),

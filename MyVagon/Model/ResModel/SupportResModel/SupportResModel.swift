@@ -30,7 +30,7 @@ struct SupportResModel: Codable {
 struct SupportData: Codable {
 
     let call: String?
-    let chat: Int?
+    let chat: SupportChat?
 
     private enum CodingKeys: String, CodingKey {
         case call = "call"
@@ -40,7 +40,30 @@ struct SupportData: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         call = try values.decodeIfPresent(String.self, forKey: .call)
-        chat = try values.decodeIfPresent(Int.self, forKey: .chat)
+        chat = try values.decodeIfPresent(SupportChat.self, forKey: .chat)
     }
 
 }
+
+struct SupportChat: Codable {
+
+    let id: Int?
+    let name: String?
+    let profile: String?
+
+    private enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "name"
+        case profile = "profile"
+    }
+
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(Int.self, forKey: .id)
+        name = try values.decodeIfPresent(String.self, forKey: .name)
+        profile = try values.decodeIfPresent(String.self, forKey: .profile)
+    }
+
+}
+
+

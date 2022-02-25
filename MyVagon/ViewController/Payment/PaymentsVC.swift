@@ -13,6 +13,8 @@ class PaymentsVC: BaseViewController {
     @IBOutlet weak var redioBtnCash: UIButton!
     @IBOutlet weak var redioBtnBank: UIButton!
     @IBOutlet weak var detailStackView: UIStackView!
+    @IBOutlet weak var imgCash: UIImageView!
+    @IBOutlet weak var imgBank: UIImageView!
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -34,20 +36,46 @@ class PaymentsVC: BaseViewController {
     }
     
     func setupData(){
+        self.selecCash()
+    }
+    
+    func selecCash() {
+        self.redioBtnCash.isSelected = true
+        self.redioBtnBank.isSelected = false
+        self.detailStackView.isHidden = true
+        self.setupImage()
+    }
+    
+    func selecBank() {
+        self.redioBtnCash.isSelected = false
+        self.redioBtnBank.isSelected = true
+        self.detailStackView.isHidden = false
+        self.setupImage()
+    }
+    
+    func setupImage() {
+        if(self.redioBtnCash.isSelected){
+            self.imgCash.image = UIImage(named: "ic_radio_selected")
+        }else{
+            self.imgCash.image = UIImage(named: "ic_radio_unselected")
+        }
         
+        if(self.redioBtnBank.isSelected){
+            self.imgBank.image = UIImage(named: "ic_radio_selected")
+        }else{
+            self.imgBank.image = UIImage(named: "ic_radio_unselected")
+        }
     }
      
     // MARK: - UIButton action methods
-    @IBAction func redioBtnClicked(_ sender: UIButton) {
-        view.endEditing(true)
-        self.redioBtnCash.setImage(UIImage(named: "ic_radio_unselected"), for: .normal)
-        self.redioBtnBank.setImage(UIImage(named: "ic_radio_unselected"), for: .normal)
-        sender.setImage(UIImage(named: "ic_radio_selected"), for: .normal)
-        if sender == redioBtnBank{
-            self.detailStackView.isHidden = false
-        }else{
-            self.detailStackView.isHidden = true
-        }
+    
+    @IBAction func btnCashAction(_ sender: Any) {
+        self.selecCash()
     }
+    
+    @IBAction func btnBnakAction(_ sender: Any) {
+        self.selecBank()
+    }
+    
     
 }

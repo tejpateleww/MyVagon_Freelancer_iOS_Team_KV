@@ -119,10 +119,10 @@ class ChatListVC: BaseViewController {
         }
     }
     
-    func chatWithAdmin(strId:String){
-        AppDelegate.shared.shipperIdForChat = strId
-        AppDelegate.shared.shipperNameForChat = "Admin"
-        AppDelegate.shared.shipperProfileForChat = ""
+    func chatWithAdmin(chatObj:SupportChat){
+        AppDelegate.shared.shipperIdForChat = "\(chatObj.id ?? 0)"
+        AppDelegate.shared.shipperNameForChat = chatObj.name ?? "Admin"
+        AppDelegate.shared.shipperProfileForChat = chatObj.profile ?? ""
         
         let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: chatVC.storyboardID) as! chatVC
         controller.shipperID = AppDelegate.shared.shipperIdForChat

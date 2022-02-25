@@ -95,13 +95,7 @@ extension StatisticsOneVC:UITableViewDelegate,UITableViewDataSource{
             if(self.arrData.count > 0){
                 let cell:statisticsCell = tblStatistics.dequeueReusableCell(withIdentifier: statisticsCell.className) as! statisticsCell
                 cell.selectionStyle = .none
-                
-                cell.vwMain.backgroundColor =  UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")").withAlphaComponent(0.13)
-                cell.lblNumber.text = String(arrData[indexPath.row].value ?? "0.0").uppercased()
-                cell.lblNumber.fontColor = UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")")
-                cell.lblDetails.text = arrData[indexPath.row].name?.uppercased()
-                cell.lblDetails.fontColor = UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")")
-                cell.imgGreater.tintColor = UIColor(hexString: "#\(self.arrData[indexPath.row].color ?? "")")
+                cell.setData(data: self.arrData[indexPath.row])
                 return cell
             }else{
                 let NoDatacell = self.tblStatistics.dequeueReusableCell(withIdentifier: "NoDataTableViewCell", for: indexPath) as! NoDataTableViewCell

@@ -54,7 +54,7 @@ class chatListViewModel {
                 if(isCall){
                     self.chatListVC?.callAdmin(strPhone: response?.data?.call ?? "")
                 }else{
-                    self.chatListVC?.chatWithAdmin(strId: "\(response?.data?.chat ?? 0)")
+                    self.chatListVC?.chatWithAdmin(chatObj: (response?.data?.chat)!)
                 }
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
@@ -68,7 +68,7 @@ class chatListViewModel {
                 if(isCall){
                     self.myAccountViewController?.callAdmin(strPhone: response?.data?.call ?? "")
                 }else{
-                    self.myAccountViewController?.chatWithAdmin(strId: "\(response?.data?.chat ?? 0)")
+                    self.myAccountViewController?.chatWithAdmin(chatObj: (response?.data?.chat)!)
                 }
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)

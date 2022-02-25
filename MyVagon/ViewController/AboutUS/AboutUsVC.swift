@@ -35,7 +35,6 @@ class AboutUsVC: BaseViewController {
         self.tblData.showsHorizontalScrollIndicator = false
         self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "About MYVAGON", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         self.registerNib()
-        
     }
     
     func setupData(){

@@ -128,9 +128,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
                
                 self.GeneralPicker.reloadAllComponents()
             }
-            
         }
-        
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -267,7 +265,7 @@ class FreelancerDriverSignupVC3: UIViewController, UITextFieldDelegate {
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------
-    // ----------------------------------------------------
+    // ----------------------------------------------------
     
     func PhoneVerify() {
         self.signUpViewModel.freelancerDriverSignupVC3 = self
