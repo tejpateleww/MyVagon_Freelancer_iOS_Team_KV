@@ -279,6 +279,7 @@ extension MyAccountViewController : UIPickerViewDelegate, UIPickerViewDataSource
             self.picker.alpha = 0
         }) { _ in
             self.toolBar.removeFromSuperview()
+            
             self.picker.removeFromSuperview()
             self.customTabBarController?.showTabBar()
         }

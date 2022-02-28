@@ -94,6 +94,16 @@ extension AppDelegate{
                 return
             }
             
+            if pushObj.type == NotificationTypes.cancelShipment.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
+            
+            if pushObj.type == NotificationTypes.cancelDriver.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
+            
             if pushObj.type == NotificationTypes.newMeassage.rawValue {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     do {
@@ -153,6 +163,20 @@ extension AppDelegate{
                 return
             }
             
+            if pushObj.type == NotificationTypes.cancelShipment.rawValue {
+                AppDelegate.pushNotificationObj = nil
+                AppDelegate.pushNotificationType = nil
+                completionHandler()
+                return
+            }
+            
+            if pushObj.type == NotificationTypes.cancelDriver.rawValue {
+                AppDelegate.pushNotificationObj = nil
+                AppDelegate.pushNotificationType = nil
+                completionHandler()
+                return
+            }
+            
             if pushObj.type == NotificationTypes.newMeassage.rawValue {
                 do {
                     let strDict =  mainDic["gcm.notification.data"] as! String
@@ -193,8 +217,10 @@ extension Notification.Name {
 }
 
 enum NotificationTypes : String {
-    case notifLoggedOut = "sessionTimeout"
-    case newMeassage = "new_message"
+    case notifLoggedOut = "sessionTimeout" //Forced logout
+    case newMeassage = "new_message" //Chat new message arrive
+    case cancelShipment = "cancel_shipment" //Shipper cancel his shipment
+    case cancelDriver = "cancel_driver" //Shipper cancel driver for his shipment
 }
 
 class NotificationObjectModel: Codable {

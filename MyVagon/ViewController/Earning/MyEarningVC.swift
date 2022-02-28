@@ -105,7 +105,6 @@ extension MyEarningVC : UITableViewDelegate, UITableViewDataSource {
             if(self.arrData.count > 0){
                 
                 let cell = tblEarning.dequeueReusableCell(withIdentifier: MyEarningCell.className) as! MyEarningCell
-                
                 cell.selectionStyle = .none
                 
                 cell.lblCompanyNAme.text = self.arrData[indexPath.row].shipperDetails?.companyName

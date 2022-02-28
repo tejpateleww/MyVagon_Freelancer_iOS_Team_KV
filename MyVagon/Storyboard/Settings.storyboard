@@ -719,10 +719,10 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmz-0U-zja">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="397"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="453"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="8gC-Ay-hhM">
-                                                        <rect key="frame" x="10" y="10" width="394" height="322"/>
+                                                        <rect key="frame" x="10" y="10" width="394" height="378"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZN4-rL-LP2" userLabel="cashView">
                                                                 <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
@@ -804,8 +804,48 @@
                                                                     <constraint firstItem="vx1-S4-kw8" firstAttribute="centerY" secondItem="UnF-DU-nDS" secondAttribute="centerY" id="xb8-7P-S1m"/>
                                                                 </constraints>
                                                             </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N8w-AC-aQm" userLabel="bankView">
+                                                                <rect key="frame" x="0.0" y="112" width="394" height="50"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_radio_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="cxY-yg-Yqk">
+                                                                        <rect key="frame" x="8" y="12.5" width="25" height="25"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="25" id="8Bg-TZ-dmi"/>
+                                                                            <constraint firstAttribute="width" secondItem="cxY-yg-Yqk" secondAttribute="height" id="uaj-Ga-mgw"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXl-Qr-Aal">
+                                                                        <rect key="frame" x="8" y="12.5" width="25" height="25"/>
+                                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" title="Button"/>
+                                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                                        <connections>
+                                                                            <action selector="btnBothAction:" destination="J57-YF-hUa" eventType="touchUpInside" id="xc1-hb-gJM"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Both" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1WN-4T-eqf">
+                                                                        <rect key="frame" x="40" y="0.0" width="36" height="50"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="1WN-4T-eqf" firstAttribute="top" secondItem="N8w-AC-aQm" secondAttribute="top" id="2Gl-eW-tNo"/>
+                                                                    <constraint firstItem="1WN-4T-eqf" firstAttribute="leading" secondItem="cxY-yg-Yqk" secondAttribute="trailing" constant="7" id="8k9-ji-1NR"/>
+                                                                    <constraint firstItem="eXl-Qr-Aal" firstAttribute="bottom" secondItem="cxY-yg-Yqk" secondAttribute="bottom" id="OGw-2t-4l4"/>
+                                                                    <constraint firstItem="cxY-yg-Yqk" firstAttribute="centerY" secondItem="N8w-AC-aQm" secondAttribute="centerY" id="Szi-gC-wdt"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="1WN-4T-eqf" secondAttribute="bottom" id="T7g-LZ-a85"/>
+                                                                    <constraint firstItem="eXl-Qr-Aal" firstAttribute="leading" secondItem="cxY-yg-Yqk" secondAttribute="leading" id="a7O-Es-9Dx"/>
+                                                                    <constraint firstItem="eXl-Qr-Aal" firstAttribute="trailing" secondItem="cxY-yg-Yqk" secondAttribute="trailing" id="erp-SA-vcl"/>
+                                                                    <constraint firstItem="cxY-yg-Yqk" firstAttribute="leading" secondItem="N8w-AC-aQm" secondAttribute="leading" constant="8" id="i9J-wF-nYG"/>
+                                                                    <constraint firstItem="eXl-Qr-Aal" firstAttribute="top" secondItem="cxY-yg-Yqk" secondAttribute="top" id="mSi-Mf-SGy"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="q69-jR-PlN"/>
+                                                                </constraints>
+                                                            </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-Ax-3h4">
-                                                                <rect key="frame" x="0.0" y="112" width="394" height="210"/>
+                                                                <rect key="frame" x="0.0" y="168" width="394" height="210"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOa-xg-XpF" userLabel="IBAN View" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="394" height="45"/>
@@ -881,14 +921,14 @@
                                                         </subviews>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jK8-27-c8F">
-                                                        <rect key="frame" x="10" y="342" width="394" height="45"/>
+                                                        <rect key="frame" x="10" y="398" width="394" height="45"/>
                                                         <color key="backgroundColor" name="ThemePurpleColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="cfO-Ne-BH5"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.98430448770000001" green="0.98430746790000001" blue="0.98431414370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="SAVE"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -934,8 +974,10 @@
                     <connections>
                         <outlet property="detailStackView" destination="jZL-Ax-3h4" id="hwb-CT-bJd"/>
                         <outlet property="imgBank" destination="vx1-S4-kw8" id="aUa-xV-gPr"/>
+                        <outlet property="imgBoth" destination="cxY-yg-Yqk" id="YXn-Ag-ipv"/>
                         <outlet property="imgCash" destination="aVU-Fi-XiY" id="viL-ms-WPh"/>
                         <outlet property="redioBtnBank" destination="c9F-rp-DhJ" id="dLf-SN-R0P"/>
+                        <outlet property="redioBtnBoth" destination="eXl-Qr-Aal" id="05E-2P-Db1"/>
                         <outlet property="redioBtnCash" destination="hem-H2-qWg" id="Gza-xA-Ouo"/>
                     </connections>
                 </viewController>

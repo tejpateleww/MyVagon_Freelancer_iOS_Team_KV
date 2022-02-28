@@ -107,12 +107,7 @@ class SettingVC: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.customTabBarController?.hideTabBar()
     }
-    // ----------------------------------------------------
-    // MARK: - --------- Custom Methods ---------
-    // ----------------------------------------------------
-    
-    
-    
+
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
