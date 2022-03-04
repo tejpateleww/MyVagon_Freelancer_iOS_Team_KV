@@ -44,8 +44,6 @@ class AddTruckVC: BaseViewController {
     var SelectedIndexOfType = NSNotFound
     var arrImages : [String] = []
     var arrFeatureID : [String] = []
-    var selectedIndex = -1
-    
     
     var addTruckViewModel = AddTruckViewModel()
     var TruckCapacityAdded : [TruckCapacityType] = [] {
@@ -549,7 +547,7 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
         cell.selectionStyle = .none
         cell.lblFeature.text = self.arrTruckFeature[indexPath.row].name ?? ""
         
-        if(self.arrFeatureID.contains("\(indexPath.row)")){
+        if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
             cell.imgCell.image = UIImage(named: "ic_checkbox_selected")
         }else{
             cell.imgCell.image = UIImage(named: "ic_checkbox_unselected")
@@ -564,12 +562,13 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if(self.arrFeatureID.contains("\(indexPath.row)")){
-            let index = self.arrFeatureID.firstIndex(where: { $0 == "\(indexPath.row)" })
+        
+        if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
+            let index = self.arrFeatureID.firstIndex(where: { $0 == "\(self.arrTruckFeature[indexPath.row].id ?? 0)" })
             self.arrFeatureID.remove(at: index!)
 
         }else{
-            self.arrFeatureID.append(String(indexPath.row))
+            self.arrFeatureID.append("\(self.arrTruckFeature[indexPath.row].id ?? 0)")
         }
         
         self.tblTruckFeature.reloadData()
