@@ -268,6 +268,11 @@
 		888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */; };
 		888EEB1C27A7E973004F7B87 /* EarningShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */; };
 		8892B9B127B1339C00FE1074 /* CustomeMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8892B9B027B1339C00FE1074 /* CustomeMapVC.swift */; };
+		889BF1E027CF3FBE00369B41 /* TractorDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BF1DF27CF3FBE00369B41 /* TractorDetailVC.swift */; };
+		889BF1E227CF44F500369B41 /* RegisterTruckListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BF1E127CF44F500369B41 /* RegisterTruckListVC.swift */; };
+		889BF1E727CF476400369B41 /* RegisterTruckCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BF1E527CF476400369B41 /* RegisterTruckCell.swift */; };
+		889BF1E827CF476400369B41 /* RegisterTruckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 889BF1E627CF476400369B41 /* RegisterTruckCell.xib */; };
+		889BF1EA27CF51BC00369B41 /* AddTruckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889BF1E927CF51BC00369B41 /* AddTruckVC.swift */; };
 		88B65DC027A913BF00DC9DE8 /* NewHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */; };
 		88B65DC527A91A9E00DC9DE8 /* SearchDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */; };
 		88B65DC627A91A9E00DC9DE8 /* SearchDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */; };
@@ -642,6 +647,11 @@
 		888EEB1927A7E973004F7B87 /* EarningShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningShimmerCell.swift; sourceTree = "<group>"; };
 		888EEB1A27A7E973004F7B87 /* EarningShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EarningShimmerCell.xib; sourceTree = "<group>"; };
 		8892B9B027B1339C00FE1074 /* CustomeMapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMapVC.swift; sourceTree = "<group>"; };
+		889BF1DF27CF3FBE00369B41 /* TractorDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TractorDetailVC.swift; sourceTree = "<group>"; };
+		889BF1E127CF44F500369B41 /* RegisterTruckListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTruckListVC.swift; sourceTree = "<group>"; };
+		889BF1E527CF476400369B41 /* RegisterTruckCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTruckCell.swift; sourceTree = "<group>"; };
+		889BF1E627CF476400369B41 /* RegisterTruckCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterTruckCell.xib; sourceTree = "<group>"; };
+		889BF1E927CF51BC00369B41 /* AddTruckVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTruckVC.swift; sourceTree = "<group>"; };
 		88B65DBF27A913BF00DC9DE8 /* NewHomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHomeVC.swift; sourceTree = "<group>"; };
 		88B65DC327A91A9E00DC9DE8 /* SearchDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataCell.swift; sourceTree = "<group>"; };
 		88B65DC427A91A9E00DC9DE8 /* SearchDataCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDataCell.xib; sourceTree = "<group>"; };
@@ -767,8 +777,6 @@
 				84AF91B826AEEF10004BB88D /* SignInContainerVC.swift */,
 				84AF91BC26AEF2FA004BB88D /* SignInDriverVC.swift */,
 				1802691726AFCEEC0088B49F /* ChooseTruckCategoryViewController.swift */,
-				1802691826AFCEEC0088B49F /* EnterTruckDetailsVC.swift */,
-				1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1147,12 +1155,12 @@
 		18BA362F26B7CA4000F83069 /* Register */ = {
 			isa = PBXGroup;
 			children = (
+				889BF1DE27CF316C00369B41 /* New Register Flow */,
+				1802691826AFCEEC0088B49F /* EnterTruckDetailsVC.swift */,
 				84AF91B326AECAFE004BB88D /* SignupContainerVC.swift */,
-				84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */,
 				1854BFBB26B414A6005355DD /* SendOTPForForgotVC.swift */,
 				1854BFBD26B418A8005355DD /* SetNewPasswordViewController.swift */,
 				189FB63926B9328300BBD5A0 /* GalaryVC.swift */,
-				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
 				18793B092702E6B700022D32 /* TermsConditionVC.swift */,
 			);
 			path = Register;
@@ -1561,6 +1569,37 @@
 			path = "Custome Map";
 			sourceTree = "<group>";
 		};
+		889BF1DE27CF316C00369B41 /* New Register Flow */ = {
+			isa = PBXGroup;
+			children = (
+				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
+				84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */,
+				889BF1DF27CF3FBE00369B41 /* TractorDetailVC.swift */,
+				889BF1E427CF471300369B41 /* RegisterTruckList */,
+				889BF1E927CF51BC00369B41 /* AddTruckVC.swift */,
+				1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */,
+			);
+			path = "New Register Flow";
+			sourceTree = "<group>";
+		};
+		889BF1E327CF470100369B41 /* RegisterTruckCell */ = {
+			isa = PBXGroup;
+			children = (
+				889BF1E527CF476400369B41 /* RegisterTruckCell.swift */,
+				889BF1E627CF476400369B41 /* RegisterTruckCell.xib */,
+			);
+			path = RegisterTruckCell;
+			sourceTree = "<group>";
+		};
+		889BF1E427CF471300369B41 /* RegisterTruckList */ = {
+			isa = PBXGroup;
+			children = (
+				889BF1E127CF44F500369B41 /* RegisterTruckListVC.swift */,
+				889BF1E327CF470100369B41 /* RegisterTruckCell */,
+			);
+			path = RegisterTruckList;
+			sourceTree = "<group>";
+		};
 		88B65DC127A91A7900DC9DE8 /* New Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1809,9 +1848,9 @@
 				18129AAD26BA617700983AFC /* CollectionPhotosView */,
 				18129AAC26BA616800983AFC /* UploadVideoAndImageCell */,
 				18BA362F26B7CA4000F83069 /* Register */,
+				1802691626AFCEEC0088B49F /* Login */,
 				18BA362E26B7BBAF00F83069 /* Common Web View */,
 				184DB31426B273330059B334 /* Home */,
-				1802691626AFCEEC0088B49F /* Login */,
 				A1519CEE26A0351B001738B9 /* BaseViewController */,
 				A1519CF326A04488001738B9 /* BoardingVC.swift */,
 				1871010527281A1800878AB8 /* SortPopupViewController.swift */,
@@ -1986,6 +2025,7 @@
 				1858EA7726E60995008E04A7 /* Settings.storyboard in Resources */,
 				88B65DCB27A929CE00DC9DE8 /* SearchLocationCell.xib in Resources */,
 				A14974C126A1AB440072AF33 /* Poppins-MediumItalic.ttf in Resources */,
+				889BF1E827CF476400369B41 /* RegisterTruckCell.xib in Resources */,
 				A14974B926A1AB440072AF33 /* Poppins-ExtraBold.ttf in Resources */,
 				A14974BC26A1AB440072AF33 /* Poppins-LightItalic.ttf in Resources */,
 				88C3A9DA27A40B570018B9E8 /* EarningLocationCell.xib in Resources */,
@@ -2229,6 +2269,7 @@
 				885A27CA27BFA9B500BE7A6B /* StatisticResModel.swift in Sources */,
 				8877067E27ABAF7B00EACE5A /* NotiShimmerCell.swift in Sources */,
 				A14974CD26A1AB800072AF33 /* Poppins-Black.ttf in Sources */,
+				889BF1E227CF44F500369B41 /* RegisterTruckListVC.swift in Sources */,
 				189B2319271D48AE00431D94 /* DriversViewController.swift in Sources */,
 				1808176326E7802500D1C717 /* LoadDetailsVC.swift in Sources */,
 				8876A51A27C39B5F00CF4D6F /* StatisticShimmerCell.swift in Sources */,
@@ -2312,6 +2353,7 @@
 				1803810026C69F0A00DBF6F0 /* PostTruckViewController.swift in Sources */,
 				185BA7EE2757843F00E99FAC /* MyLoadsNewUnit.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
+				889BF1E027CF3FBE00369B41 /* TractorDetailVC.swift in Sources */,
 				8877066F27ABA22900EACE5A /* VehiclesTableViewCell.swift in Sources */,
 				189FB66026B96BF000BBD5A0 /* UrlServiceConstant.swift in Sources */,
 				88B6866127A15540006123B8 /* ChatSocketClient.swift in Sources */,
@@ -2330,6 +2372,7 @@
 				A14974DC26A1AB800072AF33 /* Poppins-SemiBoldItalic.ttf in Sources */,
 				18A34F1E26CD1EE100F252B6 /* BidRequestTblCell.swift in Sources */,
 				189B2345271D558100431D94 /* DriverListViewModel.swift in Sources */,
+				889BF1EA27CF51BC00369B41 /* AddTruckVC.swift in Sources */,
 				A14974DD26A1AB800072AF33 /* Poppins-Thin.ttf in Sources */,
 				1858EA8226E609BB008E04A7 /* ChatListCell.swift in Sources */,
 				189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */,
@@ -2469,6 +2512,7 @@
 				18ECDD3427677E030097F10F /* SchedualLoadDetailsViewController.swift in Sources */,
 				A1519CC226A003AE001738B9 /* ThemeShadow.swift in Sources */,
 				8877066D27ABA22900EACE5A /* DriversTableViewCell.swift in Sources */,
+				889BF1E727CF476400369B41 /* RegisterTruckCell.swift in Sources */,
 				1858EA9826E64821008E04A7 /* ReviewShipperVC.swift in Sources */,
 				189FB63426B911A400BBD5A0 /* UINavigationController+Extension.swift in Sources */,
 				189FB64026B933A500BBD5A0 /* AttechmentService.swift in Sources */,

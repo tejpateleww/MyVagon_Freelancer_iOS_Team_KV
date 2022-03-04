@@ -120,7 +120,7 @@ enum ApiKey: String {
     case Settings                               = "driver/settings"
     case GetSettings                            = "driver/get/settings"
     
-    case Register                               = "driver/register"
+    case Register                               = "driver/register_new"
     case ProfileUpdate                          = "driver/profile/update"
     case EmailVerify                            = "email/verify"
     case PhoneNumberVerify                      = "phone/verify"

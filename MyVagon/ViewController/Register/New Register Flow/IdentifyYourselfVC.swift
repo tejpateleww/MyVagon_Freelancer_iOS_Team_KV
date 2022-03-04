@@ -156,24 +156,19 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     @IBAction func NextButtonPress(_ sender: themeButton) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
+
             SingletonClass.sharedInstance.RegisterData.Reg_license_number = TextFieldLicenseNumber.text ?? ""
             SingletonClass.sharedInstance.RegisterData.Reg_license_expiry_date = TextFieldLicenseExpiryDate.text ?? ""
             
             UserDefault.SetRegiterData()
-            
             UserDefault.setValue(3, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
             UserDefault.synchronize()
-            
             
             let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
             let x = self.view.frame.size.width * 4
             RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-            
-           // UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-           // UserDefault.synchronize()
             RegisterMainVC.viewDidLayoutSubviews()
            
-            
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }

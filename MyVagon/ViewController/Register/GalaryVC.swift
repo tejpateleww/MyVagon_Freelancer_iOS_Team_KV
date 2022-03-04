@@ -13,19 +13,18 @@ struct ImageData{
 }
 
 class GalaryVC: UIViewController {
-
-    //MARK:- IBOutlets
     
+    //MARK:- IBOutlets
     @IBOutlet weak var collectionGalary: UICollectionView!
     @IBOutlet weak var btnPrevious: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     @IBOutlet weak var lblNumberofImage: UILabel!
     
     //MARK:- Varibles and Properties
-//    var arrImage = [ImageData]()
+    //    var arrImage = [ImageData]()
     var arrImage : [String] = []
     var firstTimeSelectedIndex = 0
-    //MARK: - Lifecycle Methods
+    //MARK:- Lifecycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,43 +32,42 @@ class GalaryVC: UIViewController {
         btnPrevious.tintColor = UIColor.appColor(ThemeColor.ThemePlaceHolderTextColor)
         collectionGalary.delegate = self
         collectionGalary.dataSource = self
-//        arrImages[selectedIndex]
+        //        arrImages[selectedIndex]
         
         lblNumberofImage.text = "1" + " / " + "\(arrImage.count)"
-//        self.moveITem(to: self.firstTimeSelectedIndex, direction: .right,animated: false)
-//        self.showHUD()
+        //        self.moveITem(to: self.firstTimeSelectedIndex, direction: .right,animated: false)
+        //        self.showHUD()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-//            self.hideHUD()
+            //            self.hideHUD()
             self.moveITem(to: self.firstTimeSelectedIndex, direction: .left,animated: false)
         })
-//        Do any additional setup after loading the view.
+        //        Do any additional setup after loading the view.
     }
     
-    //MARK: - IBAction Methods
-    
+    //MARK:- IBAction Methods
     @IBAction func btnPreviousTap(_ sender: Any) {
         
-//        let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
-//        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-////        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
-//        let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
-////        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
-////        lblNumberofImage.text =
-//        if nextItem.row < arrImages.count && nextItem.row >= 0{
-//        self.collectionGalary.scrollToItem(at: nextItem, at: .right, animated: true)
-//            lblNumberofImage.text = "\(nextItem.row+1)" + " / " + "\(arrImages.count)"
-//        }
+        //        let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
+        //        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        ////        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
+        //        let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
+        ////        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
+        ////        lblNumberofImage.text =
+        //        if nextItem.row < arrImages.count && nextItem.row >= 0{
+        //        self.collectionGalary.scrollToItem(at: nextItem, at: .right, animated: true)
+        //            lblNumberofImage.text = "\(nextItem.row+1)" + " / " + "\(arrImages.count)"
+        //        }
         
         let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
         let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-//        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
+        //        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
         let nextItem: IndexPath = IndexPath(item: currentItem.item - 1, section: 0)
-//        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
-//        lblNumberofImage.text =
+        //        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
+        //        lblNumberofImage.text =
         if nextItem.row < arrImage.count && nextItem.row >= 0{
-//            self.collectionGalary.scrollToItem(at: nextItem, at: .right, animated: true)
-//            let count = nextItem.row+1 > 9 ? "\(nextItem.row+1)" : "0\(nextItem.row+1)"
-//            lblNumberofImage.text = "\(count)" + "/" + "\(arrImage.count)"
+            //            self.collectionGalary.scrollToItem(at: nextItem, at: .right, animated: true)
+            //            let count = nextItem.row+1 > 9 ? "\(nextItem.row+1)" : "0\(nextItem.row+1)"
+            //            lblNumberofImage.text = "\(count)" + "/" + "\(arrImage.count)"
             self.moveITem(to: nextItem.row, direction: .left,animated: true)
         }
     }
@@ -89,21 +87,21 @@ class GalaryVC: UIViewController {
     }
     
     @IBAction func btnNextTap(_ sender: Any) {
-//        let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
-//        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-////        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
-//        let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
-////        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
-//
-//        if nextItem.row < arrImages.count {
-//        self.collectionGalary.scrollToItem(at: nextItem, at: .left, animated: true)
-//            lblNumberofImage.text = "\(nextItem.row+1)" + " / " + "\(arrImages.count)"
-//        }
+        //        let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
+        //        let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
+        ////        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
+        //        let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
+        ////        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
+        //
+        //        if nextItem.row < arrImages.count {
+        //        self.collectionGalary.scrollToItem(at: nextItem, at: .left, animated: true)
+        //            lblNumberofImage.text = "\(nextItem.row+1)" + " / " + "\(arrImages.count)"
+        //        }
         let visibleItems: NSArray = self.collectionGalary.indexPathsForVisibleItems as NSArray
         let currentItem: IndexPath = visibleItems.object(at: 0) as! IndexPath
-//        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
+        //        lblNumberofImage.text = "\(currentItem.row)" + "/" + "\(arrImage.count)"
         let nextItem: IndexPath = IndexPath(item: currentItem.item + 1, section: 0)
-//        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
+        //        lblNumberofImage.text = "\(nextItem.row)" + "/" + "\(arrImage.count)"
         
         if nextItem.row < arrImage.count {
             self.moveITem(to: nextItem.row, direction: .right,animated: true)
@@ -111,7 +109,7 @@ class GalaryVC: UIViewController {
     }
 }
 
-//MARK:- UICollectionview Delegate and DataSourse Methods
+//MARK: - UICollectionview Delegate and DataSourse Methods
 
 extension GalaryVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,UICollectionViewDataSource
 {
@@ -124,7 +122,7 @@ extension GalaryVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayou
         let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImage[indexPath.row])"
         cell.imgGalary.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imgGalary.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
-       
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -138,20 +136,20 @@ extension GalaryVC : UICollectionViewDelegate, UICollectionViewDelegateFlowLayou
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedIndex = indexPath.row
-//        print("delegate called")
-//        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-
+        //        selectedIndex = indexPath.row
+        //        print("delegate called")
+        //        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        
     }
-        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            let centerPoint = CGPoint(x: collectionGalary.bounds.midX, y: collectionGalary.bounds.midY)
-
-
-                           if let indexPath = collectionGalary.indexPathForItem(at: centerPoint) {
-                               print(indexPath.row)
-                            lblNumberofImage.text = "\(indexPath.row + 1)" + " / " + "\(arrImage.count)"
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let centerPoint = CGPoint(x: collectionGalary.bounds.midX, y: collectionGalary.bounds.midY)
+        
+        
+        if let indexPath = collectionGalary.indexPathForItem(at: centerPoint) {
+            print(indexPath.row)
+            lblNumberofImage.text = "\(indexPath.row + 1)" + " / " + "\(arrImage.count)"
         }
-}
+    }
 }
 class GalaryCell : UICollectionViewCell{
     

@@ -18,7 +18,6 @@ class IdentifyYourselfViewModel {
             
                 response?.data?.images?.forEach({ element in
                     if uploadFor == .IdentityProof {
-                        
                         SingletonClass.sharedInstance.RegisterData.Reg_id_proof = response?.data?.images ?? []
                     } else if uploadFor == .Licence {
                         SingletonClass.sharedInstance.RegisterData.Reg_license = response?.data?.images ?? []

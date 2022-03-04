@@ -210,6 +210,7 @@ extension Notification.Name {
     static let goToChatScreen = NSNotification.Name("goToChatScreen")
     static let reloadChatScreen = NSNotification.Name("reloadChatScreen")
     static let reloadNewUserChatScreen = NSNotification.Name("reloadNewUserChatScreen")
+    static let reloadRegTruckListScreen = NSNotification.Name("reloadRegTruckListScreen")
     
     static let reloadDataForSearch = NSNotification.Name("reloadDataForSearch")
     static let openSupportPopUp = NSNotification.Name("openSupportPopUp")

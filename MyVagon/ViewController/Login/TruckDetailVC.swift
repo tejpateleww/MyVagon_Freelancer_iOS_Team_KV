@@ -79,6 +79,11 @@ class TruckCapacityType : Codable   {
         self.capacity = Capacity
         self.type = Type
     }
+    
+    private enum CodingKeys : String, CodingKey {
+        case capacity = "value", type = "id"
+    }
+    
     func toDictionary() -> [String:Any]
     {
         var dictionary = [String:Any]()
@@ -91,6 +96,7 @@ class TruckCapacityType : Codable   {
         
         return dictionary
     }
+    
     class func ConvetToDictonary(arrayDataCart : [TruckCapacityType]) -> [[String:Any]] {
         var arrayDataDictionaries : [[String:Any]] = []
         for objDataCart in arrayDataCart {

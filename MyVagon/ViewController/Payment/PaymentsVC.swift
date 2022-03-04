@@ -17,6 +17,13 @@ class PaymentsVC: BaseViewController {
     @IBOutlet weak var imgCash: UIImageView!
     @IBOutlet weak var imgBank: UIImageView!
     @IBOutlet weak var imgBoth: UIImageView!
+    @IBOutlet weak var btnSave: themeButton!
+    @IBOutlet weak var txtIBAN: themeTextfield!
+    @IBOutlet weak var txtAccountNumber: themeTextfield!
+    @IBOutlet weak var txtBankName: themeTextfield!
+    @IBOutlet weak var txtCountry: themeTextfield!
+    
+    var selectedPaymentMode = "0"
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -38,10 +45,22 @@ class PaymentsVC: BaseViewController {
     }
     
     func setupData(){
-        self.selecCash()
+        let paymentMode = SingletonClass.sharedInstance.RegisterData.Reg_payment_type
+        if(paymentMode == "0"){
+            self.selecCash()
+        }else if(paymentMode == "1"){
+            self.selecBank()
+        }else{
+            self.selecBoth()
+        }
+        self.txtIBAN.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_iban
+        self.txtAccountNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number
+        self.txtBankName.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name
+        self.txtCountry.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_country
     }
     
     func selecCash() {
+        self.selectedPaymentMode = "0"
         self.redioBtnCash.isSelected = true
         self.redioBtnBank.isSelected = false
         self.redioBtnBoth.isSelected = false
@@ -50,6 +69,7 @@ class PaymentsVC: BaseViewController {
     }
     
     func selecBank() {
+        self.selectedPaymentMode = "1"
         self.redioBtnCash.isSelected = false
         self.redioBtnBank.isSelected = true
         self.redioBtnBoth.isSelected = false
@@ -58,6 +78,7 @@ class PaymentsVC: BaseViewController {
     }
     
     func selecBoth() {
+        self.selectedPaymentMode = "2"
         self.redioBtnCash.isSelected = false
         self.redioBtnBank.isSelected = false
         self.redioBtnBoth.isSelected = true
@@ -66,18 +87,12 @@ class PaymentsVC: BaseViewController {
     }
     
     func setView(view: UIView, hidden: Bool) {
+        view.alpha = hidden ? 0 : 1
         UIView.transition(with: view, duration: 0.3, options: .transitionCrossDissolve, animations: {
             view.isHidden = hidden
+        }, completion: { _ in
+            view.alpha = 1
         })
-    }
-    
-    func viewSlideInFromTopToBottom(view: UIView) -> Void {
-        let transition:CATransition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromBottom
-        view.layer.add(transition, forKey: kCATransition)
     }
     
     func setupImage() {
@@ -99,9 +114,30 @@ class PaymentsVC: BaseViewController {
             self.imgBoth.image = UIImage(named: "ic_radio_unselected")
         }
     }
+    
+    func Validate() -> (Bool,String) {
+
+        let checkIBAN = self.txtIBAN.validatedText(validationType: ValidatorType.requiredField(field: "IBAN"))
+        let checkAccount = self.txtAccountNumber.validatedText(validationType: ValidatorType.requiredField(field: "acccount number"))
+        let checkBank = self.txtBankName.validatedText(validationType: ValidatorType.requiredField(field: "bank name"))
+        let checkCountry = self.txtCountry.validatedText(validationType: ValidatorType.requiredField(field: "country"))
+
+
+        if (!checkIBAN.0){
+            return (checkIBAN.0,checkIBAN.1)
+        }else if (!checkAccount.0){
+            return (checkAccount.0,checkAccount.1)
+        }else if (!checkBank.0){
+            return (checkBank.0,checkBank.1)
+        }else if (!checkCountry.0){
+            return (checkCountry.0,checkCountry.1)
+        }
+
+        return (true,"")
+
+    }
      
     // MARK: - UIButton action methods
-    
     @IBAction func btnCashAction(_ sender: Any) {
         self.selecCash()
     }
@@ -114,5 +150,27 @@ class PaymentsVC: BaseViewController {
         self.selecBoth()
     }
     
-    
+    @IBAction func btnSaveAction(_ sender: Any) {
+        let CheckValidation = Validate()
+        if CheckValidation.0 {
+
+            SingletonClass.sharedInstance.RegisterData.Reg_payment_type = self.selectedPaymentMode
+            SingletonClass.sharedInstance.RegisterData.Reg_payment_iban = self.txtIBAN.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number = self.txtAccountNumber.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name = self.txtBankName.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_payment_country = self.txtCountry.text ?? ""
+            
+            UserDefault.SetRegiterData()
+            UserDefault.setValue(4, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.synchronize()
+            
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 5
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            RegisterMainVC.viewDidLayoutSubviews()
+           
+        } else {
+            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+        }
+    }
 }

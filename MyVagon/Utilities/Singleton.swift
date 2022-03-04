@@ -192,26 +192,43 @@ class RegisterSaveDataModel : Codable {
     var Reg_mobile_number = ""
     var Reg_email = ""
     var Reg_password = ""
+    
+    var Reg_tractor_fual_type = ""
+    var Reg_tractor_brand = ""
+    var Reg_tractor_plate_number = ""
+    var Reg_tractor_images : [String] = []
+    
+    var Reg_truck_data : [RegTruckDetailModel] = []
+    
     var Reg_truck_type = ""
     var Reg_truck_sub_category = ""
-    var Reg_truck_plat_number = ""
-    var Reg_trailer_plat_number = ""
     var Reg_truck_weight = ""
     var Reg_weight_unit = ""
     var Reg_truck_capacity = ""
     var Reg_capacity_unit = ""
-    var Reg_brand = ""
     var Reg_pallets : [TruckCapacityType] = []
-    var Reg_truck_features : [String] = []
-    var Reg_fuel_type = ""
-    var Reg_vehicle_images : [String] = []
+    var Reg_truck_plat_number = ""
+    var Reg_truck_images : [String] = []
+
     var Reg_id_proof : [String] = []
     var Reg_license : [String] = []
     var Reg_license_number = ""
     var Reg_license_expiry_date = ""
     
+    var Reg_payment_type = "0"
+    var Reg_payment_iban = ""
+    var Reg_payment_account_number = ""
+    var Reg_payment_bank_name = ""
+    var Reg_payment_country = ""
     
+    //Extra for new reg
+    var Reg_trailer_plat_number = ""
+    var Reg_brand = ""
+    var Reg_truck_features : [String] = []
+    var Reg_fuel_type = ""
+    var Reg_vehicle_images : [String] = []    
 }
+
 class ProfileEditSaveModel : Codable {
     var Reg_profilePic : [String] = []
     var Reg_fullname = ""
@@ -255,4 +272,18 @@ class SearchSaveReqModel : Codable {
     var pickup_address_string : String = ""
     var dropoff_address_string : String = ""
     
+}
+
+struct RegTruckDetailModel : Codable {
+    
+    var truck_type = ""
+    var truck_sub_category = ""
+    var weight = ""
+    var weight_unit = ""
+    var capacity = ""
+    var capacity_unit = ""
+    var pallets : [TruckCapacityType] = []
+    var plate_number = ""
+    var images = ""
+    var truck_features = ""
 }

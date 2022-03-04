@@ -11,11 +11,20 @@ import UIKit
 class UploadVideoAndImagesCell: UICollectionViewCell {
 
     @IBOutlet weak var vwBackground: UIView!
-    @IBOutlet weak var btnUpload: themeButton!
+    @IBOutlet weak var btnAddImg: UIButton!
+    
     var isForImage : Bool = false
+    var btnUploadImg : (() -> ())?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         vwBackground.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
     }
 
+    @IBAction func btnAddImgAction(_ sender: Any) {
+        if let click = self.btnUploadImg{
+            click()
+        }
+    }
+    
 }
