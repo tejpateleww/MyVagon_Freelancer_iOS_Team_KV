@@ -60,6 +60,7 @@ class TractorDetailVC: UIViewController {
         let nib = UINib(nibName: collectionPhotos.className, bundle: nil)
         collectionImages.register(nib, forCellWithReuseIdentifier: collectionPhotos.className)
     }
+
     
     func setupPreviousData(){
         

@@ -242,6 +242,8 @@
 		880F69F327B4F68400E2CDD2 /* NewScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */; };
 		880F69F727B4F6B200E2CDD2 /* ScheduleDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */; };
 		880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */; };
+		8840AC5127D1EF820092678B /* TruckFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */; };
+		8840AC5227D1EF820092678B /* TruckFeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8840AC5027D1EF820092678B /* TruckFeatureCell.xib */; };
 		885A27C727BFA93200BE7A6B /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */; };
 		885A27CA27BFA9B500BE7A6B /* StatisticResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */; };
 		8862C05327A0166500F3F630 /* AppDelegate+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */; };
@@ -619,6 +621,8 @@
 		880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleVC.swift; sourceTree = "<group>"; };
 		880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataCell.swift; sourceTree = "<group>"; };
 		880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDataCell.xib; sourceTree = "<group>"; };
+		8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckFeatureCell.swift; sourceTree = "<group>"; };
+		8840AC5027D1EF820092678B /* TruckFeatureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TruckFeatureCell.xib; sourceTree = "<group>"; };
 		885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticResModel.swift; sourceTree = "<group>"; };
 		8862C05227A0166500F3F630 /* AppDelegate+PushNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+PushNotification.swift"; sourceTree = "<group>"; };
@@ -1392,6 +1396,15 @@
 			path = "New Schedule Cell";
 			sourceTree = "<group>";
 		};
+		8840AC4E27D1EF610092678B /* Truck feature */ = {
+			isa = PBXGroup;
+			children = (
+				8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */,
+				8840AC5027D1EF820092678B /* TruckFeatureCell.xib */,
+			);
+			path = "Truck feature";
+			sourceTree = "<group>";
+		};
 		885A27C827BFA9A000BE7A6B /* StatisticResModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1575,6 +1588,7 @@
 				18BA363026B7CA5300F83069 /* RegisterAllInOneViewController.swift */,
 				84AF91B526AEE94F004BB88D /* FreelancerDriverSignupVC3.swift */,
 				889BF1DF27CF3FBE00369B41 /* TractorDetailVC.swift */,
+				8840AC4E27D1EF610092678B /* Truck feature */,
 				889BF1E427CF471300369B41 /* RegisterTruckList */,
 				889BF1E927CF51BC00369B41 /* AddTruckVC.swift */,
 				1802691926AFCEEC0088B49F /* IdentifyYourselfVC.swift */,
@@ -2074,6 +2088,7 @@
 				A14974C026A1AB440072AF33 /* Poppins-Italic.ttf in Resources */,
 				18A34F1F26CD1EE100F252B6 /* BidRequestTblCell.xib in Resources */,
 				A14974CA26A1AB440072AF33 /* Poppins-Thin.ttf in Resources */,
+				8840AC5227D1EF820092678B /* TruckFeatureCell.xib in Resources */,
 				A14974C426A1AB440072AF33 /* Poppins-ThinItalic.ttf in Resources */,
 				8455BE8126AE96FB00089B1F /* Auth.storyboard in Resources */,
 				A14974BD26A1AB440072AF33 /* OFL.txt in Resources */,
@@ -2459,6 +2474,7 @@
 				18CC3473270D67E00063E33B /* SearchShipperDetail.swift in Sources */,
 				88C3A9DD27A413B90018B9E8 /* EarningResModel.swift in Sources */,
 				18F496592779BD350069B26C /* StepIndicatorView.swift in Sources */,
+				8840AC5127D1EF820092678B /* TruckFeatureCell.swift in Sources */,
 				185BA7E62757843F00E99FAC /* MyLoadsNewTruckTypeCategory.swift in Sources */,
 				18BB0602270C6C2700B9839D /* ProfileEditViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,

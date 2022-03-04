@@ -29,9 +29,12 @@ class AddTruckVC: BaseViewController {
     @IBOutlet weak var btnHydraulicDoor: UIButton!
     @IBOutlet weak var btnSave: UIButton!
     
+    @IBOutlet weak var tblTruckFeature: UITableView!
+    @IBOutlet weak var tblTruckFeatureHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var heightConstrentImagcollection: NSLayoutConstraint!
     
-    
+    var arrTruckFeature : [TruckFeaturesDatum] = []
     var SelectedTextField : UITextField?
     var SelectedCategoryIndex = 0
     var SelectedSubCategoryIndex = 0
@@ -40,6 +43,10 @@ class AddTruckVC: BaseViewController {
     var ButtonTypeForAddingCapacity : AddCapacityTypeButtonName?
     var SelectedIndexOfType = NSNotFound
     var arrImages : [String] = []
+    var arrFeatureID : [String] = []
+    var selectedIndex = -1
+    
+    
     var addTruckViewModel = AddTruckViewModel()
     var TruckCapacityAdded : [TruckCapacityType] = [] {
         didSet {
@@ -60,12 +67,38 @@ class AddTruckVC: BaseViewController {
         self.setupData()
     }
     
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        self.tblTruckFeature.layer.removeAllAnimations()
+        self.tblTruckFeatureHeight.constant = self.tblTruckFeature.contentSize.height
+        UIView.animate(withDuration: 0.5) {
+            self.updateViewConstraints()
+        }
+    }
+    
     //MARK: - Custom methods
     func setupUI(){
         self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        
+        self.tblTruckFeature.delegate = self
+        self.tblTruckFeature.dataSource = self
+        self.tblTruckFeature.showsVerticalScrollIndicator = false
+        self.tblTruckFeature.showsHorizontalScrollIndicator = false
+        self.tblTruckFeature.separatorStyle = .none
+        self.tblTruckFeature.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+        
+        self.registerNib()
+    }
+    
+    
+    func registerNib(){
+        let nib = UINib(nibName: TruckFeatureCell.className, bundle: nil)
+        self.tblTruckFeature.register(nib, forCellReuseIdentifier: TruckFeatureCell.className)
     }
     
     func setupData(){
+        self.arrTruckFeature = SingletonClass.sharedInstance.TruckFeatureList ?? []
+        self.tblTruckFeature.reloadData()
+        
         self.txtTruckType.delegate = self
         self.txtTruckSubType.delegate = self
         self.truckWeightTF.delegate = self
@@ -115,6 +148,9 @@ class AddTruckVC: BaseViewController {
         let loadCapacity = txtCargoLoadCapacity.validatedText(validationType: .requiredField(field: "cargo load capacity"))
         let loadUnit = cargoLoadCapTF.validatedText(validationType: .requiredField(field: "cargo load capacity unit"))
         let licenceNumber = txtTruckLicencePlate.validatedText(validationType: .requiredField(field: "truck licence plate number"))
+        
+
+        
         if viewSubType.isHidden{
            truckSubType = (true,"")
         }
@@ -131,12 +167,15 @@ class AddTruckVC: BaseViewController {
         }else if !loadUnit.0{
             return loadUnit
         }else if TruckCapacityAdded.count == 0{
-            return (false,"add capacity")
+            return (false,"Plaese add capacity")
         }else if !licenceNumber.0{
             return licenceNumber
         }else if arrImages.count == 0{
-            return (false,"add truck images")
-        }else{
+            return (false,"Plaese add truck images")
+        }else if(self.arrFeatureID.count == 0){
+            return (false,"Plaese select truck features")
+        }
+        else{
             return (true,"Succesfull")
         }
     }
@@ -207,7 +246,7 @@ class AddTruckVC: BaseViewController {
             self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
             self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
             self.tructData.pallets = TruckCapacityAdded
-            self.tructData.truck_features = "13"
+            self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
             SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
             
             UserDefault.SetRegiterData()
@@ -495,5 +534,45 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
     @objc func deleteImagesClicked(sender : UIButton){
         arrImages.remove(at: sender.tag)
         self.collectionImages.reloadData()
+    }
+}
+
+//MARK: - UITableView Methods
+extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.arrTruckFeature.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tblTruckFeature.dequeueReusableCell(withIdentifier: "TruckFeatureCell") as! TruckFeatureCell
+        cell.selectionStyle = .none
+        cell.lblFeature.text = self.arrTruckFeature[indexPath.row].name ?? ""
+        
+        if(self.arrFeatureID.contains("\(indexPath.row)")){
+            cell.imgCell.image = UIImage(named: "ic_checkbox_selected")
+        }else{
+            cell.imgCell.image = UIImage(named: "ic_checkbox_unselected")
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if(self.arrFeatureID.contains("\(indexPath.row)")){
+            let index = self.arrFeatureID.firstIndex(where: { $0 == "\(indexPath.row)" })
+            self.arrFeatureID.remove(at: index!)
+
+        }else{
+            self.arrFeatureID.append(String(indexPath.row))
+        }
+        
+        self.tblTruckFeature.reloadData()
+        print(self.arrFeatureID)
     }
 }
