@@ -116,23 +116,24 @@ class PaymentsVC: BaseViewController {
     }
     
     func Validate() -> (Bool,String) {
+        
+        if(self.selectedPaymentMode != "0"){
+            let checkIBAN = self.txtIBAN.validatedText(validationType: ValidatorType.requiredField(field: "IBAN"))
+            let checkAccount = self.txtAccountNumber.validatedText(validationType: ValidatorType.requiredField(field: "acccount number"))
+            let checkBank = self.txtBankName.validatedText(validationType: ValidatorType.requiredField(field: "bank name"))
+            let checkCountry = self.txtCountry.validatedText(validationType: ValidatorType.requiredField(field: "country"))
 
-        let checkIBAN = self.txtIBAN.validatedText(validationType: ValidatorType.requiredField(field: "IBAN"))
-        let checkAccount = self.txtAccountNumber.validatedText(validationType: ValidatorType.requiredField(field: "acccount number"))
-        let checkBank = self.txtBankName.validatedText(validationType: ValidatorType.requiredField(field: "bank name"))
-        let checkCountry = self.txtCountry.validatedText(validationType: ValidatorType.requiredField(field: "country"))
 
-
-        if (!checkIBAN.0){
-            return (checkIBAN.0,checkIBAN.1)
-        }else if (!checkAccount.0){
-            return (checkAccount.0,checkAccount.1)
-        }else if (!checkBank.0){
-            return (checkBank.0,checkBank.1)
-        }else if (!checkCountry.0){
-            return (checkCountry.0,checkCountry.1)
+            if (!checkIBAN.0){
+                return (checkIBAN.0,checkIBAN.1)
+            }else if (!checkAccount.0){
+                return (checkAccount.0,checkAccount.1)
+            }else if (!checkBank.0){
+                return (checkBank.0,checkBank.1)
+            }else if (!checkCountry.0){
+                return (checkCountry.0,checkCountry.1)
+            }
         }
-
         return (true,"")
 
     }

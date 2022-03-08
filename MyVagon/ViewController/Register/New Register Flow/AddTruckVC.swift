@@ -39,6 +39,7 @@ class AddTruckVC: BaseViewController {
     var SelectedCategoryIndex = 0
     var SelectedSubCategoryIndex = 0
     var SelectedCategory = 0
+    var SelectedSubCategory = 0
     let GeneralPicker = GeneralPickerView()
     var ButtonTypeForAddingCapacity : AddCapacityTypeButtonName?
     var SelectedIndexOfType = NSNotFound
@@ -140,7 +141,7 @@ class AddTruckVC: BaseViewController {
     
     func validetion() -> (Bool,String){
         let truckType = txtTruckType.validatedText(validationType: .requiredField(field: "truck type"))
-        var truckSubType = txtTruckSubType.validatedText(validationType: .requiredField(field: "truck sub type"))
+        let truckSubType = txtTruckSubType.validatedText(validationType: .requiredField(field: "truck sub type"))
         let overallWeight = txtTruckWeight.validatedText(validationType: .requiredField(field: "truck weight"))
         let weightUnit = truckWeightTF.validatedText(validationType: .requiredField(field: "truck weight unit"))
         let loadCapacity = txtCargoLoadCapacity.validatedText(validationType: .requiredField(field: "cargo load capacity"))
@@ -148,10 +149,6 @@ class AddTruckVC: BaseViewController {
         let licenceNumber = txtTruckLicencePlate.validatedText(validationType: .requiredField(field: "truck licence plate number"))
         
 
-        
-        if viewSubType.isHidden{
-           truckSubType = (true,"")
-        }
         if !truckType.0{
             return truckType
         }else if !truckSubType.0{
@@ -236,7 +233,7 @@ class AddTruckVC: BaseViewController {
         if velidetion.0{
             
             self.tructData.truck_type = "\(self.SelectedCategory)"
-            self.tructData.truck_sub_category = "\(self.SelectedSubCategoryIndex)"
+            self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
             self.tructData.weight = self.txtTruckWeight.text ?? ""
             self.tructData.weight_unit = self.truckWeightTF.text ?? ""
             self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
@@ -401,9 +398,9 @@ extension AddTruckVC: GeneralPickerViewDelegate{
             
             if SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count != 0 {
                 SelectedSubCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
-                let item =
-                SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[GeneralPicker.selectedRow(inComponent: 0)]
+                let item = SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[GeneralPicker.selectedRow(inComponent: 0)]
                 self.txtTruckSubType.text = item?.name
+                self.SelectedSubCategory  = item?.id ?? 0
             }
         }else  if SelectedTextField == truckWeightTF {
             let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
