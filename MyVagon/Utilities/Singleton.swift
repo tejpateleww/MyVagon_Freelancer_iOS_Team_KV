@@ -28,7 +28,7 @@ class SingletonClass: NSObject
     var initResModel : InitDatum?
     
     //Login Data
-    var UserProfileData : LoginDatum?
+    var UserProfileData : LoginData?
     var Token = ""
     
     //Default device data

@@ -76,16 +76,13 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     }
     @objc func btnDoneDatePickerClicked() {
         if let datePicker = self.TextFieldLicenseExpiryDate.inputView as? UIDatePicker {
-            
             let formatter = DateFormatter()
             formatter.dateFormat = DateFormatterString.onlyDate.rawValue
             TextFieldLicenseExpiryDate.text = formatter.string(from: datePicker.date)
-
         }
         self.TextFieldLicenseExpiryDate.resignFirstResponder() // 2-5
     }
    
-    
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
@@ -111,15 +108,12 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
             print(image)
             self.ImageUploadAPI(arrImages: [image], documentType: .IdentityProof)
         }
-        
     }
     
     @IBAction func btnLicenceClick(_ sender: themeButton) {
         AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
         AttachmentHandler.shared.imagePickedBlock = { (image) in
             self.ImageViewLicence.image = image
-         
-            print(image)
             self.ImageUploadAPI(arrImages: [image], documentType: .Licence)
         }
     }
@@ -128,15 +122,11 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
     // ----------------------------------------------------
     // MARK: - --------- Validation ---------
     // ----------------------------------------------------
-    
-    
     func Validate() -> (Bool,String) {
         
         let checkLicenseNumber = TextFieldLicenseNumber.validatedText(validationType: ValidatorType.requiredField(field: "license number"))
-        
         let checkLicenseExpiryDate = TextFieldLicenseExpiryDate.validatedText(validationType: ValidatorType.requiredField(field: "license expiry date"))
         
-    
         if SingletonClass.sharedInstance.RegisterData.Reg_id_proof.count == 0 {
             return (false,"Please attach id proof document")
         } else if SingletonClass.sharedInstance.RegisterData.Reg_license.count == 0 {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sld-Jb-vrw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Sld-Jb-vrw">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -44,10 +44,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="316"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LgC-vL-1Ri">
-                                                                <rect key="frame" x="101" y="15.000000000000007" width="212" height="105.66666666666669"/>
+                                                                <rect key="frame" x="101.00000000000001" y="15.000000000000007" width="212.33333333333337" height="105.66666666666669"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYVAGON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCO-cl-35R" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="75.333333333333329"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="212.33333333333334" height="75.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -59,7 +59,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started using MyVagon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sI-zH-GQP" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="85.333333333333329" width="212" height="20.333333333333329"/>
+                                                                        <rect key="frame" x="0.0" y="85.333333333333329" width="212.33333333333334" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -746,10 +746,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="301.66666666666669"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lef-rC-foA">
-                                                                <rect key="frame" x="101" y="15.000000000000004" width="212" height="51.333333333333343"/>
+                                                                <rect key="frame" x="101.00000000000001" y="15.000000000000004" width="212.33333333333337" height="51.333333333333343"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MYVAGON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-XY-acc" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="212" height="21"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="212.33333333333334" height="21"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -761,7 +761,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get started using MyVagon!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wh1-kW-dAT" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="31" width="212" height="20.333333333333329"/>
+                                                                        <rect key="frame" x="0.0" y="31" width="212.33333333333334" height="20.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1667,7 +1667,7 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-Jh-5hY" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="103.66666666666667" y="47" width="166.66666666666663" height="26.333333333333329"/>
+                                                                        <rect key="frame" x="104.00000000000001" y="47" width="166.33333333333337" height="26.333333333333329"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>

@@ -135,7 +135,7 @@ class MyAccountViewController: BaseViewController, CloseSettingTabbarDelgate {
         
         //        let cancelButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         //        cancelButton.setTitle("Cancel".uppercased(), for: .normal)
-        //        cancelButton.contentHorizontalAlignment = .left
+        //        cancelButton.contentHorizontalAlignment = .left=
         //        cancelButton.titleLabel?.font = UIFont.systemFont(ofSize: 18.0, weight: .bold)
         //        cancelButton.backgroundColor = UIColor.clear
         //        cancelButton.setTitleColor(UIColor.systemBlue, for: .normal)
@@ -336,7 +336,7 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case MyAccountSectionTitle.Payment.StringName:
-            let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: PaymentsVC.storyboardID) as! PaymentsVC
+            let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: PaymentsVC.storyboardID) as! PaymentsVC
             controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
             break

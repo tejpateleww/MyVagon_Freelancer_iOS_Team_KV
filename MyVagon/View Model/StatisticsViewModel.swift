@@ -29,3 +29,19 @@ class StatisticsViewModel {
         })
     }
 }
+
+class PaymentViewModel {
+    
+    weak var VC : PaymentsVC? = nil
+    
+    func WebServiceForPaymentDeatilList(){
+        WebServiceSubClass.getPaymentDeatilAPI(completion: { (status, apiMessage, response, error) in
+           
+            if status{
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+}

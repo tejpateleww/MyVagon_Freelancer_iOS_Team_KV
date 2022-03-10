@@ -83,7 +83,6 @@
 		185BA7F02757843F00E99FAC /* MyLoadsNewDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BA7E22757843F00E99FAC /* MyLoadsNewDatum.swift */; };
 		185BA7FD2757B08900E99FAC /* BidRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BA7FC2757B08900E99FAC /* BidRequestViewController.swift */; };
 		1863AEA626FCB92100587DDC /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863AEA526FCB92000587DDC /* RegisterViewModel.swift */; };
-		186537212705AD4D007EC6DB /* LoginPermission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537202705AD4D007EC6DB /* LoginPermission.swift */; };
 		186537232705E857007EC6DB /* BidNowPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537222705E856007EC6DB /* BidNowPopupViewController.swift */; };
 		186537252705EF73007EC6DB /* BidNowViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186537242705EF72007EC6DB /* BidNowViewModel.swift */; };
 		186834D22775AA83005E2674 /* CarAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186834D12775AA83005E2674 /* CarAnimator.swift */; };
@@ -196,17 +195,6 @@
 		18ECDDA627699D1F0097F10F /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDDA527699D1F0097F10F /* SocketManager.swift */; };
 		18ECDE202769C24C0097F10F /* BidRequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDE142769C24B0097F10F /* BidRequestData.swift */; };
 		18ECDE212769C24C0097F10F /* BidRequestResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECDE152769C24B0097F10F /* BidRequestResModel.swift */; };
-		18F15E3A2704201F003A1D16 /* LoginWeightUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E2F27042015003A1D16 /* LoginWeightUnit.swift */; };
-		18F15E3B2704201F003A1D16 /* LoginTruckType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E3027042016003A1D16 /* LoginTruckType.swift */; };
-		18F15E3C2704201F003A1D16 /* LoginTruckFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E3127042016003A1D16 /* LoginTruckFeature.swift */; };
-		18F15E3D2704201F003A1D16 /* LoginBrand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E3227042017003A1D16 /* LoginBrand.swift */; };
-		18F15E3E2704201F003A1D16 /* LoginTruckSubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E3327042018003A1D16 /* LoginTruckSubCategory.swift */; };
-		18F15E3F2704201F003A1D16 /* LoginVehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E3427042019003A1D16 /* LoginVehicle.swift */; };
-		18F15E402704201F003A1D16 /* LoginPackageTypeId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E352704201A003A1D16 /* LoginPackageTypeId.swift */; };
-		18F15E412704201F003A1D16 /* LoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E362704201B003A1D16 /* LoginResModel.swift */; };
-		18F15E422704201F003A1D16 /* LoginDatum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E372704201C003A1D16 /* LoginDatum.swift */; };
-		18F15E432704201F003A1D16 /* LoginLoadCapacityUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E382704201D003A1D16 /* LoginLoadCapacityUnit.swift */; };
-		18F15E442704201F003A1D16 /* LoginVehicleCapacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E392704201F003A1D16 /* LoginVehicleCapacity.swift */; };
 		18F15E4727043E8E003A1D16 /* LocationSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F15E4627043E8E003A1D16 /* LocationSessionManager.swift */; };
 		18F1B7AD26CE30AB0071FC21 /* PostTruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */; };
 		18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */; };
@@ -253,6 +241,7 @@
 		886A920B27C4F69200B04D3F /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A920A27C4F69100B04D3F /* AboutUsVC.swift */; };
 		886A920F27C4F7EC00B04D3F /* AboutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886A920D27C4F7EC00B04D3F /* AboutCell.swift */; };
 		886A921027C4F7EC00B04D3F /* AboutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 886A920E27C4F7EC00B04D3F /* AboutCell.xib */; };
+		886E307527D7252700527F42 /* NewLoginResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886E307427D7252700527F42 /* NewLoginResModel.swift */; };
 		8876A51A27C39B5F00CF4D6F /* StatisticShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */; };
 		8876A51B27C39B5F00CF4D6F /* StatisticShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */; };
 		8876A51E27C3BDEA00CF4D6F /* PaymentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */; };
@@ -459,7 +448,6 @@
 		185BA7E22757843F00E99FAC /* MyLoadsNewDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLoadsNewDatum.swift; sourceTree = "<group>"; };
 		185BA7FC2757B08900E99FAC /* BidRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidRequestViewController.swift; sourceTree = "<group>"; };
 		1863AEA526FCB92000587DDC /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
-		186537202705AD4D007EC6DB /* LoginPermission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPermission.swift; sourceTree = "<group>"; };
 		186537222705E856007EC6DB /* BidNowPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidNowPopupViewController.swift; sourceTree = "<group>"; };
 		186537242705EF72007EC6DB /* BidNowViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidNowViewModel.swift; sourceTree = "<group>"; };
 		186834D12775AA83005E2674 /* CarAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarAnimator.swift; sourceTree = "<group>"; };
@@ -572,17 +560,6 @@
 		18ECDDA527699D1F0097F10F /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		18ECDE142769C24B0097F10F /* BidRequestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidRequestData.swift; sourceTree = "<group>"; };
 		18ECDE152769C24B0097F10F /* BidRequestResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BidRequestResModel.swift; sourceTree = "<group>"; };
-		18F15E2F27042015003A1D16 /* LoginWeightUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginWeightUnit.swift; sourceTree = "<group>"; };
-		18F15E3027042016003A1D16 /* LoginTruckType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckType.swift; sourceTree = "<group>"; };
-		18F15E3127042016003A1D16 /* LoginTruckFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckFeature.swift; sourceTree = "<group>"; };
-		18F15E3227042017003A1D16 /* LoginBrand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginBrand.swift; sourceTree = "<group>"; };
-		18F15E3327042018003A1D16 /* LoginTruckSubCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTruckSubCategory.swift; sourceTree = "<group>"; };
-		18F15E3427042019003A1D16 /* LoginVehicle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVehicle.swift; sourceTree = "<group>"; };
-		18F15E352704201A003A1D16 /* LoginPackageTypeId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPackageTypeId.swift; sourceTree = "<group>"; };
-		18F15E362704201B003A1D16 /* LoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginResModel.swift; sourceTree = "<group>"; };
-		18F15E372704201C003A1D16 /* LoginDatum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginDatum.swift; sourceTree = "<group>"; };
-		18F15E382704201D003A1D16 /* LoginLoadCapacityUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginLoadCapacityUnit.swift; sourceTree = "<group>"; };
-		18F15E392704201F003A1D16 /* LoginVehicleCapacity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVehicleCapacity.swift; sourceTree = "<group>"; };
 		18F15E4627043E8E003A1D16 /* LocationSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSessionManager.swift; sourceTree = "<group>"; };
 		18F1B7AC26CE30AB0071FC21 /* PostTruckViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckViewModel.swift; sourceTree = "<group>"; };
 		18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTruckReqModel.swift; sourceTree = "<group>"; };
@@ -633,6 +610,7 @@
 		886A920A27C4F69100B04D3F /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		886A920D27C4F7EC00B04D3F /* AboutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCell.swift; sourceTree = "<group>"; };
 		886A920E27C4F7EC00B04D3F /* AboutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutCell.xib; sourceTree = "<group>"; };
+		886E307427D7252700527F42 /* NewLoginResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewLoginResModel.swift; sourceTree = "<group>"; };
 		8876A51827C39B5F00CF4D6F /* StatisticShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticShimmerCell.swift; sourceTree = "<group>"; };
 		8876A51927C39B5F00CF4D6F /* StatisticShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StatisticShimmerCell.xib; sourceTree = "<group>"; };
 		8876A51D27C3BDEA00CF4D6F /* PaymentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentsVC.swift; sourceTree = "<group>"; };
@@ -1219,18 +1197,7 @@
 		18E1A60A26D4BFFE00FD9A93 /* LoginResModel */ = {
 			isa = PBXGroup;
 			children = (
-				186537202705AD4D007EC6DB /* LoginPermission.swift */,
-				18F15E3227042017003A1D16 /* LoginBrand.swift */,
-				18F15E372704201C003A1D16 /* LoginDatum.swift */,
-				18F15E382704201D003A1D16 /* LoginLoadCapacityUnit.swift */,
-				18F15E352704201A003A1D16 /* LoginPackageTypeId.swift */,
-				18F15E362704201B003A1D16 /* LoginResModel.swift */,
-				18F15E3127042016003A1D16 /* LoginTruckFeature.swift */,
-				18F15E3327042018003A1D16 /* LoginTruckSubCategory.swift */,
-				18F15E3027042016003A1D16 /* LoginTruckType.swift */,
-				18F15E3427042019003A1D16 /* LoginVehicle.swift */,
-				18F15E392704201F003A1D16 /* LoginVehicleCapacity.swift */,
-				18F15E2F27042015003A1D16 /* LoginWeightUnit.swift */,
+				886E307427D7252700527F42 /* NewLoginResModel.swift */,
 			);
 			path = LoginResModel;
 			sourceTree = "<group>";
@@ -2276,7 +2243,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18F15E3C2704201F003A1D16 /* LoginTruckFeature.swift in Sources */,
 				18E4400E2771D97800505F9E /* ReasonForCancelBookViewController.swift in Sources */,
 				18A34F2F26CD36D300F252B6 /* UILabel+Extension.swift in Sources */,
 				185BA7EF2757843F00E99FAC /* MyLoadsNewTruckType.swift in Sources */,
@@ -2307,7 +2273,6 @@
 				A14974CE26A1AB800072AF33 /* Poppins-BlackItalic.ttf in Sources */,
 				18DD7F8826CA304D007F4754 /* UIView+Extension.swift in Sources */,
 				A14974CF26A1AB800072AF33 /* Poppins-Bold.ttf in Sources */,
-				18F15E3F2704201F003A1D16 /* LoginVehicle.swift in Sources */,
 				18A34F3426CD3F2300F252B6 /* FilterPickupDatePopupViewController.swift in Sources */,
 				189B234D271D6AD400431D94 /* DriverPermissionChangeDatum.swift in Sources */,
 				1858EA8626E609D0008E04A7 /* statisticsCell.swift in Sources */,
@@ -2319,9 +2284,7 @@
 				1885DB44270EC1B50020846E /* ProfileUpdateViewModel.swift in Sources */,
 				185BA7E32757843F00E99FAC /* MyLoadsNewLocation.swift in Sources */,
 				180EF5E5277051730056F899 /* BidAcceptRejectViewModel.swift in Sources */,
-				186537212705AD4D007EC6DB /* LoginPermission.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
-				18F15E442704201F003A1D16 /* LoginVehicleCapacity.swift in Sources */,
 				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
 				1808176026E7761E00D1C717 /* PickLoadCell.swift in Sources */,
 				18ECDE202769C24C0097F10F /* BidRequestData.swift in Sources */,
@@ -2352,7 +2315,6 @@
 				A14974D426A1AB800072AF33 /* Poppins-ExtraLightItalic.ttf in Sources */,
 				18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
-				18F15E412704201F003A1D16 /* LoginResModel.swift in Sources */,
 				8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				185BA7F02757843F00E99FAC /* MyLoadsNewDatum.swift in Sources */,
@@ -2364,7 +2326,6 @@
 				A14974D726A1AB800072AF33 /* Poppins-LightItalic.ttf in Sources */,
 				A14974D826A1AB800072AF33 /* Poppins-Medium.ttf in Sources */,
 				A14974D926A1AB800072AF33 /* Poppins-MediumItalic.ttf in Sources */,
-				18F15E3E2704201F003A1D16 /* LoginTruckSubCategory.swift in Sources */,
 				1803810026C69F0A00DBF6F0 /* PostTruckViewController.swift in Sources */,
 				185BA7EE2757843F00E99FAC /* MyLoadsNewUnit.swift in Sources */,
 				A14974DA26A1AB800072AF33 /* Poppins-Regular.ttf in Sources */,
@@ -2392,10 +2353,10 @@
 				1858EA8226E609BB008E04A7 /* ChatListCell.swift in Sources */,
 				189FB67326B9777400BBD5A0 /* ImageUploadReqModel.swift in Sources */,
 				84AF91B926AEEF10004BB88D /* SignInContainerVC.swift in Sources */,
-				18F15E402704201F003A1D16 /* LoginPackageTypeId.swift in Sources */,
 				18F1F2F42758E03D00613125 /* PostedTruckBidsViewController.swift in Sources */,
 				1858EA8126E609BB008E04A7 /* SenderCell.swift in Sources */,
 				84AF91BD26AEF2FA004BB88D /* SignInDriverVC.swift in Sources */,
+				886E307527D7252700527F42 /* NewLoginResModel.swift in Sources */,
 				186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */,
 				189B233D271D544D00431D94 /* DriverListLoadCapacityUnit.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
@@ -2448,7 +2409,6 @@
 				18CC3476270D67E00063E33B /* SearchProductId.swift in Sources */,
 				1871010627281A1800878AB8 /* SortPopupViewController.swift in Sources */,
 				184DB31826B2C9000059B334 /* EnterOTPViewController.swift in Sources */,
-				18F15E3A2704201F003A1D16 /* LoginWeightUnit.swift in Sources */,
 				A1519CF226A037EF001738B9 /* SplashVC.swift in Sources */,
 				1802693426AFD6740088B49F /* AppInfo.swift in Sources */,
 				189B233B271D544D00431D94 /* DriverListTruckSubCategory.swift in Sources */,
@@ -2492,7 +2452,6 @@
 				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
 				18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */,
 				18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */,
-				18F15E3D2704201F003A1D16 /* LoginBrand.swift in Sources */,
 				18CC3471270D67E00063E33B /* SearchLocation.swift in Sources */,
 				189FB66226B96BF000BBD5A0 /* apiPaths.swift in Sources */,
 				189FB66126B96BF000BBD5A0 /* RequestBodyParamService.swift in Sources */,
@@ -2502,7 +2461,6 @@
 				90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */,
 				18A34F2726CD1F2D00F252B6 /* LocationCell.swift in Sources */,
 				A1519CD026A00407001738B9 /* Date+Extension.swift in Sources */,
-				18F15E422704201F003A1D16 /* LoginDatum.swift in Sources */,
 				18ECDDA627699D1F0097F10F /* SocketManager.swift in Sources */,
 				1854BFBC26B414A6005355DD /* SendOTPForForgotVC.swift in Sources */,
 				1858EA8326E609BB008E04A7 /* ChatListVC.swift in Sources */,
@@ -2535,7 +2493,6 @@
 				1899F894277AD6600058030B /* ARCarMovement.swift in Sources */,
 				18087004270B26FF00D8C8C6 /* PostTruckResModel.swift in Sources */,
 				189B2339271D544D00431D94 /* DriverListVehicle.swift in Sources */,
-				18F15E432704201F003A1D16 /* LoginLoadCapacityUnit.swift in Sources */,
 				8877067727ABA30D00EACE5A /* AddDriverVC.swift in Sources */,
 				18F1F2FC2758E04E00613125 /* PostedTruckBidsViewModel.swift in Sources */,
 				18CC346D270D67E00063E33B /* SearchResModel.swift in Sources */,
@@ -2550,7 +2507,6 @@
 				18ECDC7A2766F7DD0097F10F /* CustomView.swift in Sources */,
 				8876A51E27C3BDEA00CF4D6F /* PaymentsVC.swift in Sources */,
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
-				18F15E3B2704201F003A1D16 /* LoginTruckType.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				1808175C26E76C0900D1C717 /* LoadDetailCell.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,

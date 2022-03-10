@@ -168,7 +168,8 @@ enum ApiKey: String {
     case statisticsDetail                       = "statistics-detail"
     case acceptPayment                          = "accept-payment"
     case contactUs                              = "contact-us"
-    case statistics                              = "statistics"
+    case statistics                             = "statistics"
+    case getPaymentDetails                      = "get-payment-details"
     
 
 }

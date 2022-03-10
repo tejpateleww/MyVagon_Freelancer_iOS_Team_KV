@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
@@ -3979,13 +3979,13 @@
                                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                                 </label>
                                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKu-IG-dxz">
-                                                                                                                    <rect key="frame" x="0.0" y="30.5" width="161.5" height="50"/>
+                                                                                                                    <rect key="frame" x="0.0" y="30.5" width="161.5" height="20.5"/>
                                                                                                                     <subviews>
                                                                                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="zdw-mI-XU1">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="50"/>
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="161.5" height="20.5"/>
                                                                                                                             <subviews>
                                                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pxc-Co-qbc" customClass="CosmosView" customModule="Cosmos">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="20.5"/>
                                                                                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                                                                     <userDefinedRuntimeAttributes>
                                                                                                                                         <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="ic_Selected"/>
@@ -3997,7 +3997,7 @@
                                                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                                                 </view>
                                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oiB-cO-9gH" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                                    <rect key="frame" x="130" y="0.0" width="31.5" height="50"/>
+                                                                                                                                    <rect key="frame" x="130" y="0.0" width="31.5" height="20.5"/>
                                                                                                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                                                                                                     <nil key="textColor"/>
                                                                                                                                     <nil key="highlightedColor"/>
@@ -4781,13 +4781,13 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6a5-Sp-qvn">
-                                                                                        <rect key="frame" x="222" y="0.0" width="172" height="32"/>
+                                                                                        <rect key="frame" x="221.5" y="0.0" width="172.5" height="32"/>
                                                                                         <subviews>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZ2-FG-AQl">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="172" height="32"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="32"/>
                                                                                                 <subviews>
                                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Starting Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="65x-SH-D2g" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="20" y="5" width="132" height="22"/>
+                                                                                                        <rect key="frame" x="20" y="5" width="132.5" height="22"/>
                                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                         <nil key="textColor"/>
                                                                                                         <nil key="highlightedColor"/>
@@ -5795,13 +5795,13 @@
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-8N-FRT">
-                                                                                                <rect key="frame" x="222" y="0.0" width="172" height="40"/>
+                                                                                                <rect key="frame" x="221.5" y="0.0" width="172.5" height="40"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rr7-Ep-4Rj">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Starting Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sQV-Qo-q5K" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="20" y="5" width="132" height="30"/>
+                                                                                                                <rect key="frame" x="20" y="5" width="132.5" height="30"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -6603,13 +6603,13 @@
                                                                                                 </userDefinedRuntimeAttributes>
                                                                                             </label>
                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m58-uh-OIm">
-                                                                                                <rect key="frame" x="202" y="0.0" width="172" height="40"/>
+                                                                                                <rect key="frame" x="201.5" y="0.0" width="172.5" height="40"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pZD-Eg-hKS">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="40"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="172.5" height="40"/>
                                                                                                         <subviews>
                                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bid Starting Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQl-1Q-jmK" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="20" y="5" width="132" height="30"/>
+                                                                                                                <rect key="frame" x="20" y="5" width="132.5" height="30"/>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                 <nil key="textColor"/>
                                                                                                                 <nil key="highlightedColor"/>
@@ -8933,49 +8933,67 @@
     </scenes>
     <designables>
         <designable name="1F0-CZ-tTn">
-            <size key="intrinsicContentSize" width="117.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="1ik-zr-pIX">
-            <size key="intrinsicContentSize" width="105.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="41b-G4-9LY">
-            <size key="intrinsicContentSize" width="118" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="4Yk-CD-PZ6">
-            <size key="intrinsicContentSize" width="134.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="74U-9b-YmG">
-            <size key="intrinsicContentSize" width="34.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="BXF-jj-EO4">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="Com-VW-sEt">
+            <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="EM0-cS-mSz">
-            <size key="intrinsicContentSize" width="66" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="Exb-wM-eW9">
+            <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="P4e-b1-Po8">
-            <size key="intrinsicContentSize" width="135" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="XV4-UW-Qe0">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
         </designable>
         <designable name="ZnP-vh-q9A">
-            <size key="intrinsicContentSize" width="99" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="dqj-gP-pH2">
-            <size key="intrinsicContentSize" width="64.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="f4a-G4-rAK">
-            <size key="intrinsicContentSize" width="96.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="hye-uA-8rd">
-            <size key="intrinsicContentSize" width="114" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="jX1-JX-WA3">
+            <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
         <designable name="m28-MZ-YP9">
-            <size key="intrinsicContentSize" width="114" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="ovs-fh-rYv">
-            <size key="intrinsicContentSize" width="127.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="pxc-Co-qbc">
+            <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="qQM-aq-rxT">
-            <size key="intrinsicContentSize" width="122" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="up4-Kv-YNl">
-            <size key="intrinsicContentSize" width="78.5" height="18.5"/>
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
     </designables>
     <resources>

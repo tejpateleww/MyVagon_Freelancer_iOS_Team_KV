@@ -11,10 +11,10 @@ import GoogleMaps
 import GooglePlaces
 
 class TruckTypeModel : NSObject {
-    var truckData : LoginTruckSubCategory?
+    var truckData : TruckSubCategory?
     var isSelected : Bool!
     
-     init(TruckData:LoginTruckSubCategory,IsSelected:Bool) {
+     init(TruckData:TruckSubCategory,IsSelected:Bool) {
         self.truckData = TruckData
         self.isSelected = IsSelected
     }

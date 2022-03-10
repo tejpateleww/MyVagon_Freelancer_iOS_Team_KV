@@ -25,7 +25,7 @@ class TractorDetailVC: UIViewController {
     var SelectedTextField : UITextField?
     var arrImages : [String] = []
     var tractorDetailsViewModel = TractorDetailViewModel()
-    
+    var selectedBrandID = 0
     
     //MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -61,7 +61,6 @@ class TractorDetailVC: UIViewController {
         collectionImages.register(nib, forCellWithReuseIdentifier: collectionPhotos.className)
     }
 
-    
     func setupPreviousData(){
         
         switch SingletonClass.sharedInstance.RegisterData.Reg_tractor_fual_type  {
@@ -107,7 +106,6 @@ class TractorDetailVC: UIViewController {
     func selectedBtnUIChanges(Selected : Bool , Btn : UIButton) {
         Btn.titleLabel?.font = CustomFont.PoppinsMedium.returnFont(16)
         Btn.setTitleColor(Selected == true ? UIColor(hexString: "9B51E0") : UIColor.appColor(.themeLightGrayText), for: .normal)
-        
     }
     
     func ImageUploadAPI(arrImages:[UIImage]) {
@@ -157,7 +155,7 @@ class TractorDetailVC: UIViewController {
         if velidetion.0{
             
             SingletonClass.sharedInstance.RegisterData.Reg_tractor_fual_type = self.tabTypeSelection
-            SingletonClass.sharedInstance.RegisterData.Reg_tractor_brand = txtTractorBrand.text ?? ""
+            SingletonClass.sharedInstance.RegisterData.Reg_tractor_brand = "\(self.selectedBrandID)"
             SingletonClass.sharedInstance.RegisterData.Reg_tractor_plate_number = txtLicencePlateNumber.text ?? ""
             SingletonClass.sharedInstance.RegisterData.Reg_tractor_images = self.arrImages
             
@@ -230,7 +228,7 @@ extension TractorDetailVC: GeneralPickerViewDelegate{
         if SelectedTextField == txtTractorBrand {
             let item = SingletonClass.sharedInstance.TruckBrandList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.txtTractorBrand.text = item?.name
-            
+            self.selectedBrandID = item?.id ?? 0
             self.txtTractorBrand.resignFirstResponder()
         }
     }

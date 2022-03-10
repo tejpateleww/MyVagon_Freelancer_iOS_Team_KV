@@ -29,8 +29,8 @@ class WebServiceSubClass{
     
     
     //MARK: -Login
-    class func Login(reqModel: LoginReqModel, completion: @escaping (Bool,String,LoginResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.Login.rawValue, requestModel: reqModel, responseModel: LoginResModel.self) { (status, message, response, error) in
+    class func Login(reqModel: LoginReqModel, completion: @escaping (Bool,String,NewLoginResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.Login.rawValue, requestModel: reqModel, responseModel: NewLoginResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -230,8 +230,8 @@ class WebServiceSubClass{
         }
     }
     //MARK:- ProfileEdit
-    class func ProfileEdit(reqModel: ProfileEditReqModel, completion: @escaping (Bool,String,LoginResModel?,Any) -> ()){
-        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ProfileUpdate.rawValue, requestModel: reqModel, responseModel: LoginResModel.self) { (status, message, response, error) in
+    class func ProfileEdit(reqModel: ProfileEditReqModel, completion: @escaping (Bool,String,NewLoginResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.ProfileUpdate.rawValue, requestModel: reqModel, responseModel: NewLoginResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }
@@ -352,6 +352,13 @@ class WebServiceSubClass{
     //MARK: -StatiscticList
     class func StatisticListAPI(reqModel: StatisticListReqModel, completion: @escaping (Bool,String,StatisticResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.statistics.rawValue, requestModel: reqModel, responseModel: StatisticResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: -Payment Deatil API
+    class func getPaymentDeatilAPI(completion: @escaping (Bool,String,SupportResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getPaymentDetails.rawValue, responseModel: SupportResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

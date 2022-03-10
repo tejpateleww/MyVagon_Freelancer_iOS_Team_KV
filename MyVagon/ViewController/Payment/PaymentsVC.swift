@@ -24,6 +24,7 @@ class PaymentsVC: BaseViewController {
     @IBOutlet weak var txtCountry: themeTextfield!
     
     var selectedPaymentMode = "0"
+    var paymentViewModel = PaymentViewModel()
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -57,6 +58,8 @@ class PaymentsVC: BaseViewController {
         self.txtAccountNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number
         self.txtBankName.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name
         self.txtCountry.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_country
+        
+        self.callPaymentDeatilAPI()
     }
     
     func selecCash() {
@@ -173,5 +176,13 @@ class PaymentsVC: BaseViewController {
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
+    }
+}
+
+//MARK: - API callskk
+extension PaymentsVC{
+    func callPaymentDeatilAPI() {
+        self.paymentViewModel.VC =  self
+        self.paymentViewModel.WebServiceForPaymentDeatilList()
     }
 }

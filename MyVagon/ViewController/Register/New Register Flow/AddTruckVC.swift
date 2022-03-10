@@ -46,6 +46,9 @@ class AddTruckVC: BaseViewController {
     var arrImages : [String] = []
     var arrFeatureID : [String] = []
     
+    var selectedWeightUnitID = 0
+    var selectedCategoryUnitID = 0
+    
     var addTruckViewModel = AddTruckViewModel()
     var TruckCapacityAdded : [TruckCapacityType] = [] {
         didSet {
@@ -235,9 +238,9 @@ class AddTruckVC: BaseViewController {
             self.tructData.truck_type = "\(self.SelectedCategory)"
             self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
             self.tructData.weight = self.txtTruckWeight.text ?? ""
-            self.tructData.weight_unit = self.truckWeightTF.text ?? ""
+            self.tructData.weight_unit = "\(self.selectedWeightUnitID)"
             self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
-            self.tructData.capacity_unit = self.cargoLoadCapTF.text ?? ""
+            self.tructData.capacity_unit = "\(self.selectedCategoryUnitID)"
             self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
             self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
             self.tructData.pallets = TruckCapacityAdded
@@ -403,17 +406,21 @@ extension AddTruckVC: GeneralPickerViewDelegate{
                 self.SelectedSubCategory  = item?.id ?? 0
             }
         }else  if SelectedTextField == truckWeightTF {
+            
             let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.truckWeightTF.text = item?.name
+            self.selectedWeightUnitID = item?.id ?? 0
             self.truckWeightTF.resignFirstResponder()
         } else if SelectedTextField == cargoLoadCapTF {
+            
             let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.cargoLoadCapTF.text = item?.name
+            self.selectedCategoryUnitID = item?.id ?? 0
             self.cargoLoadCapTF.resignFirstResponder()
         }else if SelectedTextField == txtCapacityType {
+            
             let item = SingletonClass.sharedInstance.PackageList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.txtCapacityType.text = item?.name
-
             self.txtCapacityType.resignFirstResponder()
         }
         self.txtTruckType.resignFirstResponder()

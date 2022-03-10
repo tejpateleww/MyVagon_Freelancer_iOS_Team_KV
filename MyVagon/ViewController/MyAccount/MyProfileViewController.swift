@@ -15,7 +15,7 @@ class MyProfileViewController: BaseViewController {
     // ----------------------------------------------------
     
     var arrImages : [String] = []
-    var arrTypes:[(LoginTruckFeature,Bool)] = []
+    var arrTypes:[(TruckFeatures,Bool)] = []
     var customTabBarController: CustomTabBarVC?
     var Iseditable = false
     // ----------------------------------------------------

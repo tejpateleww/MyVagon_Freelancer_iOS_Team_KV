@@ -139,6 +139,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             }
         }
     }
+    var selectedBrandID : Int = 0
     
     
     var SelectedTextField :SelectedTextFieldForGeneralPicker?
@@ -470,17 +471,17 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
     }
     
     @IBAction func BtnContinueClick(_ sender: themeButton) {
-//        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: IdentifyYourselfVC.storyboardID) as! IdentifyYourselfVC
-//        self.navigationController?.pushViewController(controller, animated: true)
+        //        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: IdentifyYourselfVC.storyboardID) as! IdentifyYourselfVC
+        //        self.navigationController?.pushViewController(controller, animated: true)
         let CheckValidation = Validate()
         if CheckValidation.0 {
-          
-        
             
-             SingletonClass.sharedInstance.RegisterData.Reg_brand = TextFieldTruckBrand.text ?? ""
+            
+            
+            SingletonClass.sharedInstance.RegisterData.Reg_brand = "\(self.selectedBrandID)"
             SingletonClass.sharedInstance.RegisterData.Reg_pallets = TruckCapacityAdded
-           
-             
+            
+            
             
             var TempAdditionType : [String] = []
             arrTypes.forEach { element in
@@ -491,7 +492,7 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             SingletonClass.sharedInstance.RegisterData.Reg_fuel_type = tabTypeSelection
             SingletonClass.sharedInstance.RegisterData.Reg_truck_features = TempAdditionType
             SingletonClass.sharedInstance.RegisterData.Reg_vehicle_images = arrImages
-           
+            
             UserDefault.SetRegiterData()
             
             UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
@@ -501,14 +502,14 @@ class TruckDetailVC: BaseViewController, UITextFieldDelegate,UIDocumentPickerDel
             let x = self.view.frame.size.width * 3
             RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
             
-           // UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-           // UserDefault.synchronize()
+            // UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            // UserDefault.synchronize()
             RegisterMainVC.viewDidLayoutSubviews()
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
         
-       
+        
     }
     
     @IBAction func btnTabSelection(_ sender: UIButton) {
@@ -800,7 +801,7 @@ extension TruckDetailVC: GeneralPickerViewDelegate {
         } else if SelectedTextField == .TruckBrandList {
             let item = SingletonClass.sharedInstance.TruckBrandList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.TextFieldTruckBrand.text = item?.name
-            
+            self.selectedBrandID = item?.id ?? 0
             self.TextFieldTruckBrand.resignFirstResponder()
         }
     }

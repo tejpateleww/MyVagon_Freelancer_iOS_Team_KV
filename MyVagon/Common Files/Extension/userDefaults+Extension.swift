@@ -29,8 +29,8 @@ func get<T: Codable>(objectType: T.Type, forKey: String) throws -> T? {
         try? UserDefaults.standard.set(object:  SingletonClass.sharedInstance.UserProfileData, forKey: UserDefaultsKey.userProfile.rawValue)
     }
     
-    func getUserData() -> LoginDatum? {
-        let objResponse = try? UserDefaults.standard.get(objectType: LoginDatum.self, forKey:  UserDefaultsKey.userProfile.rawValue)
+    func getUserData() -> LoginData? {
+        let objResponse = try? UserDefaults.standard.get(objectType: LoginData.self, forKey:  UserDefaultsKey.userProfile.rawValue)
         SingletonClass.sharedInstance.UserProfileData = objResponse
         return objResponse ?? nil
     }
