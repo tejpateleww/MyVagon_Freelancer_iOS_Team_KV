@@ -147,7 +147,8 @@ class CurrencyTextField: themeTextfield, UITextFieldDelegate {
     //AFTER entered string is registered in the textField
     @objc private func textFieldDidChange(textField:UITextField) {
         let cur = textField.text?.currencyInputFormatting()
-           textField.text = cur
+        let trimmed = cur?.components(separatedBy: .whitespaces).joined(separator: "")
+        textField.text = trimmed
         
     }
     
