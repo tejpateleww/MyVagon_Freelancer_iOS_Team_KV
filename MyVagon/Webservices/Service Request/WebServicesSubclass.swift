@@ -56,6 +56,13 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: - ShipperDetail
+    class func ShipperDetail(shipperID: String,completion: @escaping (Bool,String,ReviewResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.shipperDetail.rawValue + "/\(shipperID)", responseModel: ReviewResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
     //MARK: -PostTruck
     class func PostTruck(reqModel: PostTruckReqModel, completion: @escaping (Bool,String,PostTruckResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.PostAvailability.rawValue, requestModel: reqModel, responseModel: PostTruckResModel.self) { (status, message, response, error) in

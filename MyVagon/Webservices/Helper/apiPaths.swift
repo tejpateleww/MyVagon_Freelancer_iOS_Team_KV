@@ -171,6 +171,8 @@ enum ApiKey: String {
     case statistics                             = "statistics"
     case getPaymentDetails                      = "get-payment-details"
     
+    case shipperDetail                          = "shipper-detail"
+    
 
 }
 

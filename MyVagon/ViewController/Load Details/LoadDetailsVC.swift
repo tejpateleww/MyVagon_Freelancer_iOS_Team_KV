@@ -50,6 +50,7 @@ class LoadDetailsVC: BaseViewController {
     @IBOutlet weak var btnViewNotes: themeButton!
     
     
+    @IBOutlet weak var viewShipperDetail: UIView!
     @IBOutlet weak var imgMapDistance: UIImageView!
     @IBOutlet weak var lblBookingID: themeLabel!
     @IBOutlet weak var lblDeadHead: themeLabel!
@@ -162,6 +163,8 @@ class LoadDetailsVC: BaseViewController {
             lblBookingStatus.text = bidStatus.BookNow.Name
             viewStatus.backgroundColor = #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1)
         }
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(reviewGesture(_:)))
+        self.viewShipperDetail.addGestureRecognizer(gesture)
         
 //        switch LoadDetails?.bid?.status {
 //        case MyLoadesStatus.pending.Name:
@@ -236,6 +239,12 @@ class LoadDetailsVC: BaseViewController {
     
     }
     
+    @objc func reviewGesture(_ sender: UITapGestureRecognizer){
+        let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: shipperDetailsVC.storyboardID) as! shipperDetailsVC
+        controller.shipperId = "\(LoadDetails?.shipperDetails?.id ?? 0)"
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+        }
+                                          
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?){
         if let info = object, let collObj = info as? UITableView{
             if collObj == self.tblMainData{
@@ -291,16 +300,16 @@ class LoadDetailsVC: BaseViewController {
             controller.MinimumBidAmount = LoadDetails?.amount ?? ""
             controller.BookingId = "\(LoadDetails?.id ?? 0)"
             controller.AvailabilityId = "\(LoadDetails?.availabilityId ?? 0)"
-          
+
             controller.modalPresentationStyle = .overCurrentContext
             controller.modalTransitionStyle = .coverVertical
-           
-          
+
+
             let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
             self.present(sheetController, animated: true, completion: nil)
         case bidStatus.Bidded.Name:
             break
-       
+
         case .none:
             break
         case .some(_):
@@ -434,6 +443,11 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         return UITableView.automaticDimension
     }
   
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LocationDetailVC.storyboardID) as! LocationDetailVC
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+    }
+    
 }
 // ----------------------------------------------------
 // MARK: - --------- Collectionview Methods ---------

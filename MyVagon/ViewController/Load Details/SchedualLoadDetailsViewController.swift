@@ -81,6 +81,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
     @IBOutlet weak var vWLoadStatus: UIView!
     @IBOutlet weak var lblLoadStatus: themeLabel!
     @IBOutlet weak var lblLoadStatusDesc: themeLabel!
+    @IBOutlet weak var viewShipperDetail: UIView!
     
     var strHour : String = ""
     
@@ -89,7 +90,6 @@ class SchedualLoadDetailsViewController: BaseViewController {
     // ----------------------------------------------------
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.addNotiObserver()
         
         self.lblLoadStatusDesc.isHidden = true
@@ -200,6 +200,9 @@ class SchedualLoadDetailsViewController: BaseViewController {
         let DateOfPickup = "\(data?.date ?? "") \(data?.pickupTimeTo ?? "")"
         
         self.lblDaysToGo.superview?.isHidden = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(reviewGesture(_:)))
+        self.viewShipperDetail.addGestureRecognizer(gesture)
         
         //Tej's logic
         if(data?.status == MyLoadesStatus.scheduled.Name){
@@ -517,6 +520,12 @@ class SchedualLoadDetailsViewController: BaseViewController {
         self.CallAPIForAcceptPayment()
     }
     
+    @objc func reviewGesture(_ sender: UITapGestureRecognizer){
+        let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: shipperDetailsVC.storyboardID) as! shipperDetailsVC
+        controller.shipperId = "\(LoadDetails?.shipperDetails?.id ?? 0)"
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+        }
+    
     
     // ----------------------------------------------------
     // MARK: - --------- Socket Emit ---------
@@ -803,6 +812,11 @@ extension SchedualLoadDetailsViewController:UITableViewDelegate,UITableViewDataS
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LocationDetailVC.storyboardID) as! LocationDetailVC
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     
 }

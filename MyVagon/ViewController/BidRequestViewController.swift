@@ -242,7 +242,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                     cell.lblOfferPrice.isHidden = false
                     let value = ((arrBidsData?[indexPath.row].offerPrice?.contains("-")) != nil) ? "% ↓" : "% ↑"
                     cell.lblOfferPrice.fontColor = ((arrBidsData?[indexPath.row].offerPrice?.contains("-")) != nil) ? UIColor.red : UIColor.green
-                    cell.lblOfferPrice.text = arrBidsData?[indexPath.row].offerPrice ?? "" + value
+                    cell.lblOfferPrice.text = "\(arrBidsData?[indexPath.row].offerPrice ?? "")" + value
                 }
                 
                 
