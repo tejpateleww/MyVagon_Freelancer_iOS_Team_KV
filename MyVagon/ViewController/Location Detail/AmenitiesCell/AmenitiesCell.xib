@@ -69,6 +69,10 @@
                 <constraint firstAttribute="bottom" secondItem="Ied-FB-LJ5" secondAttribute="bottom" id="z6A-ff-XPC"/>
             </constraints>
             <size key="customSize" width="375" height="71"/>
+            <connections>
+                <outlet property="lblName" destination="X9T-uJ-gDK" id="ZwD-ii-qdn"/>
+                <outlet property="lblValue" destination="v0e-VO-Kib" id="5ph-3D-hsD"/>
+            </connections>
             <point key="canvasLocation" x="367.39130434782612" y="120.87053571428571"/>
         </collectionViewCell>
     </objects>

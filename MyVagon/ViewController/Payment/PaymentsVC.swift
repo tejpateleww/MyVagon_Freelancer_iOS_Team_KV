@@ -25,6 +25,8 @@ class PaymentsVC: BaseViewController {
     
     var selectedPaymentMode = "0"
     var paymentViewModel = PaymentViewModel()
+    var paymentDetailData : PaymentDetailData?
+    var isFromEdit = false
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -43,23 +45,27 @@ class PaymentsVC: BaseViewController {
         self.redioBtnBank.setTitle("", for: .normal)
         self.redioBtnCash.setTitle("", for: .normal)
         self.detailStackView.isHidden = true
+        txtCountry.text = "Greece"
+        txtCountry.isUserInteractionEnabled = false
     }
     
     func setupData(){
-        let paymentMode = SingletonClass.sharedInstance.RegisterData.Reg_payment_type
-        if(paymentMode == "0"){
+        self.callPaymentDeatilAPI()
+    }
+    
+    func setupDataAfterAPI(){
+        let paymentMode = self.paymentDetailData?.paymentType
+        self.selectedPaymentMode = "\(self.paymentDetailData?.paymentType ?? 0)"
+        if(paymentMode == 0){
             self.selecCash()
-        }else if(paymentMode == "1"){
+        }else if(paymentMode == 1){
             self.selecBank()
         }else{
             self.selecBoth()
         }
-        self.txtIBAN.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_iban
-        self.txtAccountNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number
-        self.txtBankName.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name
-        self.txtCountry.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_country
-        
-        self.callPaymentDeatilAPI()
+        self.txtIBAN.text = self.paymentDetailData?.paymentDetail?.iban ?? ""
+        self.txtAccountNumber.text = self.paymentDetailData?.paymentDetail?.accountNumber ?? ""
+        self.txtBankName.text = self.paymentDetailData?.paymentDetail?.bankName ?? ""
     }
     
     func selecCash() {
@@ -140,7 +146,11 @@ class PaymentsVC: BaseViewController {
         return (true,"")
 
     }
-     
+
+    func popBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     // MARK: - UIButton action methods
     @IBAction func btnCashAction(_ sender: Any) {
         self.selecCash()
@@ -157,22 +167,24 @@ class PaymentsVC: BaseViewController {
     @IBAction func btnSaveAction(_ sender: Any) {
         let CheckValidation = Validate()
         if CheckValidation.0 {
-
-            SingletonClass.sharedInstance.RegisterData.Reg_payment_type = self.selectedPaymentMode
-            SingletonClass.sharedInstance.RegisterData.Reg_payment_iban = self.txtIBAN.text ?? ""
-            SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number = self.txtAccountNumber.text ?? ""
-            SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name = self.txtBankName.text ?? ""
-            SingletonClass.sharedInstance.RegisterData.Reg_payment_country = self.txtCountry.text ?? ""
-            
-            UserDefault.SetRegiterData()
-            UserDefault.setValue(4, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-            UserDefault.synchronize()
-            
-            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
-            let x = self.view.frame.size.width * 5
-            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-            RegisterMainVC.viewDidLayoutSubviews()
-           
+            if isFromEdit {
+                self.callPaymentDetailUpdateAPI()
+            }else{
+                SingletonClass.sharedInstance.RegisterData.Reg_payment_type = self.selectedPaymentMode
+                SingletonClass.sharedInstance.RegisterData.Reg_payment_iban = self.txtIBAN.text ?? ""
+                SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number = self.txtAccountNumber.text ?? ""
+                SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name = self.txtBankName.text ?? ""
+                SingletonClass.sharedInstance.RegisterData.Reg_payment_country = self.txtCountry.text ?? ""
+                
+                UserDefault.SetRegiterData()
+                UserDefault.setValue(4, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+                UserDefault.synchronize()
+                
+                let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+                let x = self.view.frame.size.width * 5
+                RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+                RegisterMainVC.viewDidLayoutSubviews()
+            }
         } else {
             Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
         }
@@ -184,5 +196,16 @@ extension PaymentsVC{
     func callPaymentDeatilAPI() {
         self.paymentViewModel.VC =  self
         self.paymentViewModel.WebServiceForPaymentDeatilList()
+    }
+    
+    func callPaymentDetailUpdateAPI() {
+        self.paymentViewModel.VC =  self
+        let reqModel = PaymentDetailUpdateReqModel()
+        reqModel.payment_type = selectedPaymentMode
+        reqModel.iban = txtIBAN.text
+        reqModel.account_number = txtAccountNumber.text
+        reqModel.bank_name = txtBankName.text
+        reqModel.country = txtCountry.text
+        self.paymentViewModel.WebServiceForPaymentDeatilUpdate(ReqModel: reqModel)
     }
 }

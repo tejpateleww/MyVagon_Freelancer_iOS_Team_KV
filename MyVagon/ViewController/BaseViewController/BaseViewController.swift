@@ -388,7 +388,7 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
         
     }
     @objc func btnRequestEdit(sender:UIButton) {
-        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: ProfileEditViewController.storyboardID) as! ProfileEditViewController
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: NewEditProfile.storyboardID) as! NewEditProfile
         controller.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(controller, animated: true)
         

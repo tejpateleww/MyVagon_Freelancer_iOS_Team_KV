@@ -445,6 +445,7 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
   
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LocationDetailVC.storyboardID) as! LocationDetailVC
+        controller.locationId = "\(self.LoadDetails?.trucks?.locations?[indexPath.row].id ?? 0)"
         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     

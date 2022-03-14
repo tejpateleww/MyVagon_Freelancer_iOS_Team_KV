@@ -220,6 +220,25 @@ class AcceptPaymentReqModel : Encodable {
     }
 }
 
+class PaymentDetailUpdateReqModel : Encodable {
+    var payment_type: String?
+    var iban: String?
+    var account_number: String?
+    var bank_name: String?
+    var country: String?
+    
+    
+
+    enum CodingKeys: String, CodingKey {
+        case payment_type = "payment_type"
+        case iban = "iban"
+        case account_number = "account_number"
+        case bank_name = "bank_name"
+        case country = "country"
+    }
+}
+
+
 //class sendMessageReqModel : RequestModel {
 //    var sender_id : String = ""
 //    var receiver_id : String = ""

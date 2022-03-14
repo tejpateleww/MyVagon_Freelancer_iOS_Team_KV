@@ -364,8 +364,20 @@ class WebServiceSubClass{
     }
     
     //MARK: -Payment Deatil API
-    class func getPaymentDeatilAPI(completion: @escaping (Bool,String,SupportResModel?,Any) -> ()) {
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getPaymentDetails.rawValue, responseModel: SupportResModel.self) { (status, message, response, error) in
+    class func getPaymentDeatilAPI(completion: @escaping (Bool,String,PaymentDetailResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getPaymentDetails.rawValue + "/\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)", responseModel: PaymentDetailResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    //MARK:- Update Payment Details
+    class func updatePaymentDetail(reqModel: PaymentDetailUpdateReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.updatePaymentDetails.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    //MARK: - LocationDetail
+    class func LocationDetail(locationID: String,completion: @escaping (Bool,String,LocationDetailResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.locationDetail.rawValue + "/\(locationID)", responseModel: LocationDetailResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

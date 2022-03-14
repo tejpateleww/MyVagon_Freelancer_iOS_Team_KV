@@ -38,7 +38,23 @@ class PaymentViewModel {
         WebServiceSubClass.getPaymentDeatilAPI(completion: { (status, apiMessage, response, error) in
            
             if status{
-                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                //Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                self.VC?.paymentDetailData = response?.data
+                self.VC?.setupDataAfterAPI()
+                
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+    
+    func WebServiceForPaymentDeatilUpdate(ReqModel:PaymentDetailUpdateReqModel){
+        WebServiceSubClass.updatePaymentDetail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            if status{
+                self.VC?.popBack()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                }
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }

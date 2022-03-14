@@ -338,6 +338,7 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
         case MyAccountSectionTitle.Payment.StringName:
             let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: PaymentsVC.storyboardID) as! PaymentsVC
             controller.hidesBottomBarWhenPushed = true
+            controller.isFromEdit = true
             self.navigationController?.pushViewController(controller, animated: true)
             break
         case MyAccountSectionTitle.settings.StringName:
