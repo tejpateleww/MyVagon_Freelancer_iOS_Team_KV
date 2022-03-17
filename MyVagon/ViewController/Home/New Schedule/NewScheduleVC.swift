@@ -328,30 +328,32 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (arrMyScheduleData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) == true {
-            let myloadDetails = arrMyScheduleData?[indexPath.section][indexPath.row]
-            if myloadDetails?.postedTruck?.bookingInfo != nil {
+        if(arrMyScheduleData?.count ?? 0 > 0){
+            if (arrMyScheduleData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) == true {
+                let myloadDetails = arrMyScheduleData?[indexPath.section][indexPath.row]
+                if myloadDetails?.postedTruck?.bookingInfo != nil {
+                    if !isLoading {
+                        WebServiceSubClass.SystemDateTime { (_, _, _, _) in
+                            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
+                            controller.hidesBottomBarWhenPushed = true
+                            controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].postedTruck?.bookingInfo
+                            UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+                        }
+                    }
+                }
+            } else {
                 if !isLoading {
                     WebServiceSubClass.SystemDateTime { (_, _, _, _) in
                         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
                         controller.hidesBottomBarWhenPushed = true
-                        controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].postedTruck?.bookingInfo
+                        controller.strLoadStatus = self.arrMyScheduleData?[indexPath.section][indexPath.row].type ?? ""
+                        if (self.arrMyScheduleData?[indexPath.section][indexPath.row].type == MyLoadType.Bid.Name) {
+                            controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].bid
+                        } else {
+                            controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].book
+                        }
                         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
                     }
-                }
-            } 
-        } else {
-            if !isLoading {
-                WebServiceSubClass.SystemDateTime { (_, _, _, _) in
-                    let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: SchedualLoadDetailsViewController.storyboardID) as! SchedualLoadDetailsViewController
-                    controller.hidesBottomBarWhenPushed = true
-                    controller.strLoadStatus = self.arrMyScheduleData?[indexPath.section][indexPath.row].type ?? ""
-                    if (self.arrMyScheduleData?[indexPath.section][indexPath.row].type == MyLoadType.Bid.Name) {
-                        controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].bid
-                    } else {
-                        controller.LoadDetails = self.arrMyScheduleData?[indexPath.section][indexPath.row].book
-                    }
-                    UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
                 }
             }
         }

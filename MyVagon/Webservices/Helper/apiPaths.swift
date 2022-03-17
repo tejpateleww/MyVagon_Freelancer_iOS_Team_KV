@@ -174,6 +174,10 @@ enum ApiKey: String {
     
     case shipperDetail                          = "shipper-detail"
     case locationDetail                         = "location-details"
+    case updateBasicDetails                     = "update-basic-details"
+    case updateLicenceDetails                   = "update-personal-details"
+    case tractorDetailEdit                      = "update-tractor-details"
+    case editTruckDetail                        = "update-truck-details"
     
 
 }

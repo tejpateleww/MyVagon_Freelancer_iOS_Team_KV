@@ -331,7 +331,7 @@ extension MyAccountViewController : UITableViewDelegate,UITableViewDataSource {
         case MyAccountSectionTitle.Language.StringName:
             break
         case MyAccountSectionTitle.Myprofile.StringName:
-            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: MyProfileViewController.storyboardID) as! MyProfileViewController
+            let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: NewEditProfile.storyboardID) as! NewEditProfile
             controller.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(controller, animated: true)
             break

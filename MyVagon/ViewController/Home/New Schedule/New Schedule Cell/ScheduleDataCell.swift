@@ -51,6 +51,7 @@ class ScheduleDataCell: UITableViewCell {
         self.tblSearchLocation.isScrollEnabled = false
         self.tblSearchLocation.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         btnMatches.isUserInteractionEnabled = false
+        self.tblSearchLocation.isUserInteractionEnabled = false
         self.registerNib()
     }
     override func layoutSubviews() {

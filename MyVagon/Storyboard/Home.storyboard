@@ -8613,7 +8613,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2f1-6r-UKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042.753623188406" y="1865.625"/>
+            <point key="canvasLocation" x="3041" y="1844"/>
         </scene>
         <!--Add DriverVC-->
         <scene sceneID="pu0-1I-TTM">
@@ -9229,6 +9229,660 @@
             </objects>
             <point key="canvasLocation" x="3072" y="1091"/>
         </scene>
+        <!--Edit Personal InfoVC-->
+        <scene sceneID="LPB-RO-Oht">
+            <objects>
+                <viewController storyboardIdentifier="EditPersonalInfoVC" id="CfB-QY-FTB" customClass="EditPersonalInfoVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Vse-fa-Gs2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-il-2kp">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LCl-u5-aQI">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="509.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UXo-Zj-221">
+                                                <rect key="frame" x="10" y="10" width="394" height="264.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qYA-jw-lyW">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPP-7u-DvI" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                        <color key="value" name="ThemePurpleColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSemibold" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                        <real key="value" value="14"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jo2-x5-zwB" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="34"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="120" id="8c8-Vn-H1g"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isBold" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                        <real key="value" value="14"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                        <color key="value" name="ThemeBlackColor"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2NE-DV-dJj">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zI8-Vb-gin">
+                                                        <rect key="frame" x="0.0" y="54" width="394" height="210.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="R68-PT-cAv">
+                                                                <rect key="frame" x="114.5" y="10" width="165" height="190.5"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4l2-2D-kwL">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="100"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_userIcon" translatesAutoresizingMaskIntoConstraints="NO" id="RbX-x9-btE" customClass="RoundedImageView" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="32.5" y="0.0" width="100" height="100"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="100" id="3bC-Oj-Bcw"/>
+                                                                                    <constraint firstAttribute="width" secondItem="RbX-x9-btE" secondAttribute="height" multiplier="1:1" id="BbZ-Qg-uT4"/>
+                                                                                    <constraint firstAttribute="height" constant="100" id="hZ1-lp-vxR"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Add" translatesAutoresizingMaskIntoConstraints="NO" id="eOA-91-ss1">
+                                                                                <rect key="frame" x="98.5" y="76" width="24" height="24"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="eOA-91-ss1" secondAttribute="height" multiplier="1:1" id="4Hr-hJ-Hct"/>
+                                                                                    <constraint firstAttribute="height" constant="24" id="5FS-8i-OrP"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="efi-Iq-xXa">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="165" height="100"/>
+                                                                                <connections>
+                                                                                    <action selector="btnProfileClick:" destination="CfB-QY-FTB" eventType="touchUpInside" id="gzq-3B-hAB"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="RbX-x9-btE" firstAttribute="top" secondItem="4l2-2D-kwL" secondAttribute="top" id="4P2-N7-mja"/>
+                                                                            <constraint firstItem="eOA-91-ss1" firstAttribute="bottom" secondItem="RbX-x9-btE" secondAttribute="bottom" id="Io7-QR-y70"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="efi-Iq-xXa" secondAttribute="trailing" id="QoM-6h-z5l"/>
+                                                                            <constraint firstItem="RbX-x9-btE" firstAttribute="centerX" secondItem="4l2-2D-kwL" secondAttribute="centerX" id="RFB-AF-ljW"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="RbX-x9-btE" secondAttribute="bottom" id="WBB-xk-dOe"/>
+                                                                            <constraint firstItem="eOA-91-ss1" firstAttribute="trailing" secondItem="RbX-x9-btE" secondAttribute="trailing" constant="-10" id="bh0-9v-aND"/>
+                                                                            <constraint firstItem="efi-Iq-xXa" firstAttribute="leading" secondItem="4l2-2D-kwL" secondAttribute="leading" id="dHn-2L-atO"/>
+                                                                            <constraint firstItem="efi-Iq-xXa" firstAttribute="top" secondItem="4l2-2D-kwL" secondAttribute="top" id="jvO-x7-wzN"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="efi-Iq-xXa" secondAttribute="bottom" id="xmi-6P-Wp6"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Profile picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXs-F0-6p3" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="120" width="165" height="70.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="14"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                <color key="value" name="ThemeBlackColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstItem="4l2-2D-kwL" firstAttribute="centerX" secondItem="R68-PT-cAv" secondAttribute="centerX" id="ZhX-UY-O5y"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="R68-PT-cAv" secondAttribute="bottom" constant="10" id="0A4-fg-vA8"/>
+                                                            <constraint firstItem="R68-PT-cAv" firstAttribute="top" secondItem="zI8-Vb-gin" secondAttribute="top" constant="10" id="gQ4-jn-RuY"/>
+                                                            <constraint firstItem="R68-PT-cAv" firstAttribute="centerX" secondItem="zI8-Vb-gin" secondAttribute="centerX" id="nXC-TU-d9r"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="KZh-Ms-NZT">
+                                                <rect key="frame" x="10" y="294.5" width="394" height="121"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wkn-wp-4x6" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="394" height="52"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mDh-qt-m3E" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="52"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_user"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="52" id="Fiz-h6-S6F"/>
+                                                            <constraint firstItem="mDh-qt-m3E" firstAttribute="leading" secondItem="Wkn-wp-4x6" secondAttribute="leading" id="TZo-ke-y56"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mDh-qt-m3E" secondAttribute="bottom" id="c3s-on-hIG"/>
+                                                            <constraint firstItem="mDh-qt-m3E" firstAttribute="top" secondItem="Wkn-wp-4x6" secondAttribute="top" id="lLB-bj-OTT"/>
+                                                            <constraint firstAttribute="trailing" secondItem="mDh-qt-m3E" secondAttribute="trailing" id="snR-Ik-uss"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CmY-aE-pWN" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="67" width="394" height="54"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="C46-wa-l6r">
+                                                                <rect key="frame" x="0.0" y="0.0" width="394" height="54"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+30" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0xS-Lh-clt" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="54"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="90" id="0ip-L7-a5P"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="image" keyPath="LeftImage" value="ic_phone"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dvi-nZ-WTm">
+                                                                        <rect key="frame" x="95" y="0.0" width="1" height="54"/>
+                                                                        <subviews>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.14000000059604645" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a04-aJ-ioY">
+                                                                                <rect key="frame" x="0.0" y="10" width="1" height="34"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" constant="1" id="Wfl-Xx-ICp"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                            </label>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="trailing" secondItem="a04-aJ-ioY" secondAttribute="trailing" id="4qa-LW-Raq"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="a04-aJ-ioY" secondAttribute="bottom" constant="10" id="KGA-U1-0Bj"/>
+                                                                            <constraint firstItem="a04-aJ-ioY" firstAttribute="top" secondItem="Dvi-nZ-WTm" secondAttribute="top" constant="10" id="Z0c-dz-8Uq"/>
+                                                                            <constraint firstItem="a04-aJ-ioY" firstAttribute="leading" secondItem="Dvi-nZ-WTm" secondAttribute="leading" id="hvf-01-jra"/>
+                                                                            <constraint firstAttribute="width" constant="1" id="uvt-Zk-eG8"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dMp-hh-Zha" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="101" y="0.0" width="293" height="54"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="ASCIICapableNumberPad"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="C46-wa-l6r" firstAttribute="top" secondItem="CmY-aE-pWN" secondAttribute="top" id="71n-0O-U1K"/>
+                                                            <constraint firstAttribute="trailing" secondItem="C46-wa-l6r" secondAttribute="trailing" id="Ceb-Y5-VQ8"/>
+                                                            <constraint firstAttribute="height" constant="54" id="PBO-9j-AoD"/>
+                                                            <constraint firstItem="C46-wa-l6r" firstAttribute="leading" secondItem="CmY-aE-pWN" secondAttribute="leading" id="Unv-dY-uOf"/>
+                                                            <constraint firstAttribute="bottom" secondItem="C46-wa-l6r" secondAttribute="bottom" id="j3D-pD-Eqw"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bh6-3n-cdd" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="10" y="435.5" width="394" height="54"/>
+                                                <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="54" id="TFh-Xo-pLA"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnUpdateClick:" destination="CfB-QY-FTB" eventType="touchUpInside" id="75t-ya-IGz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="KZh-Ms-NZT" firstAttribute="top" secondItem="UXo-Zj-221" secondAttribute="bottom" constant="20" id="Kff-lf-3yo"/>
+                                            <constraint firstItem="UXo-Zj-221" firstAttribute="top" secondItem="LCl-u5-aQI" secondAttribute="top" constant="10" id="PGN-Ci-46r"/>
+                                            <constraint firstItem="UXo-Zj-221" firstAttribute="leading" secondItem="LCl-u5-aQI" secondAttribute="leading" constant="10" id="ZvQ-Wk-vVR"/>
+                                            <constraint firstAttribute="trailing" secondItem="UXo-Zj-221" secondAttribute="trailing" constant="10" id="ayG-FO-aTv"/>
+                                            <constraint firstAttribute="bottom" secondItem="bh6-3n-cdd" secondAttribute="bottom" constant="20" id="nyg-2y-v0C"/>
+                                            <constraint firstItem="KZh-Ms-NZT" firstAttribute="trailing" secondItem="UXo-Zj-221" secondAttribute="trailing" id="pbQ-88-bsb"/>
+                                            <constraint firstItem="bh6-3n-cdd" firstAttribute="leading" secondItem="KZh-Ms-NZT" secondAttribute="leading" id="puc-ba-vcT"/>
+                                            <constraint firstItem="KZh-Ms-NZT" firstAttribute="leading" secondItem="UXo-Zj-221" secondAttribute="leading" id="qrU-Z5-zbT"/>
+                                            <constraint firstItem="bh6-3n-cdd" firstAttribute="top" secondItem="KZh-Ms-NZT" secondAttribute="bottom" constant="20" id="xHY-hT-J3I"/>
+                                            <constraint firstItem="bh6-3n-cdd" firstAttribute="trailing" secondItem="KZh-Ms-NZT" secondAttribute="trailing" id="zYL-kY-0o0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="LCl-u5-aQI" secondAttribute="trailing" id="D1B-Zp-giX"/>
+                                    <constraint firstItem="LCl-u5-aQI" firstAttribute="top" secondItem="1DP-il-2kp" secondAttribute="top" id="HVR-eG-izn"/>
+                                    <constraint firstAttribute="bottom" secondItem="LCl-u5-aQI" secondAttribute="bottom" id="Ial-gn-hVA"/>
+                                    <constraint firstItem="LCl-u5-aQI" firstAttribute="width" secondItem="1DP-il-2kp" secondAttribute="width" id="JXG-Df-Pmo"/>
+                                    <constraint firstItem="LCl-u5-aQI" firstAttribute="leading" secondItem="1DP-il-2kp" secondAttribute="leading" id="nEk-tO-6MK"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bhU-WH-rzx"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="1DP-il-2kp" firstAttribute="leading" secondItem="bhU-WH-rzx" secondAttribute="leading" id="Ms6-Cj-7Ff"/>
+                            <constraint firstItem="bhU-WH-rzx" firstAttribute="bottom" secondItem="1DP-il-2kp" secondAttribute="bottom" id="WqT-rf-MXv"/>
+                            <constraint firstItem="bhU-WH-rzx" firstAttribute="trailing" secondItem="1DP-il-2kp" secondAttribute="trailing" id="lhu-9n-ZWY"/>
+                            <constraint firstItem="1DP-il-2kp" firstAttribute="top" secondItem="bhU-WH-rzx" secondAttribute="top" id="mYL-XO-f5g"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ImageViewProfile" destination="RbX-x9-btE" id="rcD-oQ-lkN"/>
+                        <outlet property="TextFieldCountryCode" destination="0xS-Lh-clt" id="dJH-cU-bBT"/>
+                        <outlet property="TextFieldFullName" destination="mDh-qt-m3E" id="oP3-je-Jxy"/>
+                        <outlet property="TextFieldMobileNumber" destination="dMp-hh-Zha" id="CT8-Dl-d4m"/>
+                        <outlet property="btnProfieImage" destination="efi-Iq-xXa" id="Pgo-BR-QiH"/>
+                        <outlet property="btnSave" destination="bh6-3n-cdd" id="2B9-g8-v96"/>
+                        <outlet property="imgAddIcon" destination="eOA-91-ss1" id="Hc3-MK-IEe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jBL-6D-fzy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3042" y="2530"/>
+        </scene>
+        <!--Edit Licence DetailsVC-->
+        <scene sceneID="Guc-oE-py7">
+            <objects>
+                <viewController storyboardIdentifier="EditLicenceDetailsVC" id="r32-BR-T0S" customClass="EditLicenceDetailsVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UAE-YM-fEG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bf9-5b-wlD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKC-cD-DW1">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <subviews>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="edl-SZ-Mrh" customClass="IQPreviousNextView" customModule="IQKeyboardManagerSwift">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFk-GI-NzH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="154.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="DAV-GP-hwi">
+                                                                <rect key="frame" x="20" y="20" width="374" height="114.5"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon feather-users" translatesAutoresizingMaskIntoConstraints="NO" id="aBJ-Mu-8BQ">
+                                                                        <rect key="frame" x="168" y="0.0" width="38" height="42"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="42" id="EUp-0V-peZ"/>
+                                                                            <constraint firstAttribute="width" constant="38" id="Sc7-qB-zoJ"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identify Yourself" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9V-5Q-yCM" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="110.5" y="47" width="153" height="26.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="22"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpf-Wa-tC7" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="12" y="78.5" width="350.5" height="36"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <color key="textColor" systemColor="systemGray3Color"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                <color key="value" red="0.1215686275" green="0.1215686275" blue="0.25490196079999999" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="DAV-GP-hwi" secondAttribute="bottom" constant="20" id="05G-u3-xuD"/>
+                                                            <constraint firstAttribute="trailing" secondItem="DAV-GP-hwi" secondAttribute="trailing" constant="20" id="3I0-XA-BSz"/>
+                                                            <constraint firstItem="DAV-GP-hwi" firstAttribute="centerX" secondItem="xFk-GI-NzH" secondAttribute="centerX" id="dOQ-Ok-wI1"/>
+                                                            <constraint firstItem="DAV-GP-hwi" firstAttribute="top" secondItem="xFk-GI-NzH" secondAttribute="top" constant="20" id="diL-KD-ODF"/>
+                                                            <constraint firstItem="DAV-GP-hwi" firstAttribute="centerY" secondItem="xFk-GI-NzH" secondAttribute="centerY" id="gf0-rU-AYF"/>
+                                                            <constraint firstItem="DAV-GP-hwi" firstAttribute="leading" secondItem="xFk-GI-NzH" secondAttribute="leading" constant="20" id="x8o-vI-39s"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NO1-Gb-ipk">
+                                                        <rect key="frame" x="20" y="154.5" width="374" height="358.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="2YQ-nc-04B">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="234.5"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s8V-vs-qkO" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="178.5" height="234.5"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_upload" translatesAutoresizingMaskIntoConstraints="NO" id="Mya-Af-NOc">
+                                                                                <rect key="frame" x="5" y="10" width="168.5" height="168.5"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="Mya-Af-NOc" secondAttribute="height" multiplier="1:1" id="EWO-AP-liQ"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Identity Proof Document" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4v4-Hd-A0y" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="5" y="183.5" width="168.5" height="41"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40.670000000000002" id="LvG-UT-MmK"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                        <real key="value" value="14"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                        <color key="value" name="ThemeBlackColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgQ-kf-1rc">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="178.5" height="234.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <connections>
+                                                                                    <action selector="btnIdentityClick:" destination="r32-BR-T0S" eventType="touchUpInside" id="SOD-SU-z6T"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="4v4-Hd-A0y" firstAttribute="top" secondItem="Mya-Af-NOc" secondAttribute="bottom" constant="5" id="3vg-h7-Zz1"/>
+                                                                            <constraint firstItem="HgQ-kf-1rc" firstAttribute="centerX" secondItem="s8V-vs-qkO" secondAttribute="centerX" id="3yd-Gz-odO"/>
+                                                                            <constraint firstItem="HgQ-kf-1rc" firstAttribute="top" secondItem="s8V-vs-qkO" secondAttribute="top" id="BS1-7c-igi"/>
+                                                                            <constraint firstItem="4v4-Hd-A0y" firstAttribute="centerX" secondItem="s8V-vs-qkO" secondAttribute="centerX" id="BZS-Hg-YQJ"/>
+                                                                            <constraint firstItem="4v4-Hd-A0y" firstAttribute="leading" secondItem="s8V-vs-qkO" secondAttribute="leading" constant="5" id="Pfb-ar-iZ8"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Mya-Af-NOc" secondAttribute="trailing" constant="5" id="dGg-xG-fwk"/>
+                                                                            <constraint firstItem="Mya-Af-NOc" firstAttribute="top" secondItem="s8V-vs-qkO" secondAttribute="top" constant="10" id="dmb-OB-nRO"/>
+                                                                            <constraint firstItem="Mya-Af-NOc" firstAttribute="centerX" secondItem="s8V-vs-qkO" secondAttribute="centerX" id="ej3-fU-Sm8"/>
+                                                                            <constraint firstItem="HgQ-kf-1rc" firstAttribute="leading" secondItem="s8V-vs-qkO" secondAttribute="leading" id="fKn-UE-qnO"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="4v4-Hd-A0y" secondAttribute="trailing" constant="5" id="fmf-6d-sj6"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="4v4-Hd-A0y" secondAttribute="bottom" constant="10" id="gMg-fx-Fnv"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="HgQ-kf-1rc" secondAttribute="bottom" id="kZO-bZ-hc8"/>
+                                                                            <constraint firstItem="Mya-Af-NOc" firstAttribute="leading" secondItem="s8V-vs-qkO" secondAttribute="leading" constant="5" id="rcA-sH-wY9"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="HgQ-kf-1rc" secondAttribute="trailing" id="xAz-RF-ADw"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHc-rT-eZx" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="195.5" y="0.0" width="178.5" height="234.5"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_upload" translatesAutoresizingMaskIntoConstraints="NO" id="sjS-8n-c4R">
+                                                                                <rect key="frame" x="5" y="10" width="168.5" height="168.5"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="width" secondItem="sjS-8n-c4R" secondAttribute="height" multiplier="1:1" id="RYl-xW-XpT"/>
+                                                                                </constraints>
+                                                                            </imageView>
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1N6-wd-KQ4" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                <rect key="frame" x="5" y="183.5" width="168.5" height="41"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40.670000000000002" id="IaI-kj-E1O"/>
+                                                                                </constraints>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <nil key="textColor"/>
+                                                                                <nil key="highlightedColor"/>
+                                                                                <userDefinedRuntimeAttributes>
+                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                        <real key="value" value="14"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                        <color key="value" name="ThemeBlackColor"/>
+                                                                                    </userDefinedRuntimeAttribute>
+                                                                                </userDefinedRuntimeAttributes>
+                                                                            </label>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsT-eb-9Na">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="178.5" height="234.5"/>
+                                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                <connections>
+                                                                                    <action selector="btnLicenceClick:" destination="r32-BR-T0S" eventType="touchUpInside" id="QKp-Q0-Umh"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="sjS-8n-c4R" firstAttribute="leading" secondItem="tHc-rT-eZx" secondAttribute="leading" constant="5" id="0fz-1M-3rj"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="1N6-wd-KQ4" secondAttribute="trailing" constant="5" id="3BU-Fa-3M2"/>
+                                                                            <constraint firstItem="1N6-wd-KQ4" firstAttribute="centerX" secondItem="tHc-rT-eZx" secondAttribute="centerX" id="3S3-bo-o3n"/>
+                                                                            <constraint firstItem="1N6-wd-KQ4" firstAttribute="top" secondItem="sjS-8n-c4R" secondAttribute="bottom" constant="5" id="8Gc-ir-axf"/>
+                                                                            <constraint firstItem="lsT-eb-9Na" firstAttribute="centerX" secondItem="tHc-rT-eZx" secondAttribute="centerX" id="Cg6-Q9-Uvc"/>
+                                                                            <constraint firstItem="sjS-8n-c4R" firstAttribute="centerX" secondItem="tHc-rT-eZx" secondAttribute="centerX" id="PBj-Ld-NKQ"/>
+                                                                            <constraint firstItem="sjS-8n-c4R" firstAttribute="top" secondItem="tHc-rT-eZx" secondAttribute="top" constant="10" id="Pxm-pQ-p70"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="lsT-eb-9Na" secondAttribute="bottom" id="Q4W-ai-X6r"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="1N6-wd-KQ4" secondAttribute="bottom" constant="10" id="TMK-8d-LQN"/>
+                                                                            <constraint firstItem="lsT-eb-9Na" firstAttribute="leading" secondItem="tHc-rT-eZx" secondAttribute="leading" id="WvL-RN-0wf"/>
+                                                                            <constraint firstItem="lsT-eb-9Na" firstAttribute="top" secondItem="tHc-rT-eZx" secondAttribute="top" id="XPi-UJ-rdd"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="sjS-8n-c4R" secondAttribute="trailing" constant="5" id="ah5-22-Uqv"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="lsT-eb-9Na" secondAttribute="trailing" id="gmJ-lV-8md"/>
+                                                                            <constraint firstItem="1N6-wd-KQ4" firstAttribute="leading" secondItem="tHc-rT-eZx" secondAttribute="leading" constant="5" id="mDQ-l2-ddQ"/>
+                                                                        </constraints>
+                                                                    </view>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Efo-45-lcE" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="244.5" width="374" height="52"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter license number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bGQ-uz-Vux" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" textContentType="one-time-code"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="52" id="DwY-bp-foa"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="bGQ-uz-Vux" secondAttribute="trailing" id="OgC-NZ-AA3"/>
+                                                                    <constraint firstItem="bGQ-uz-Vux" firstAttribute="top" secondItem="Efo-45-lcE" secondAttribute="top" id="Qn4-FH-5lK"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="bGQ-uz-Vux" secondAttribute="bottom" id="eFo-b3-Zja"/>
+                                                                    <constraint firstItem="bGQ-uz-Vux" firstAttribute="leading" secondItem="Efo-45-lcE" secondAttribute="leading" id="iyM-5J-GaP"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="974-aK-LLs" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="306.5" width="374" height="52"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter license expiry date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dhF-rS-pfb" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="one-time-code"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="dhF-rS-pfb" firstAttribute="leading" secondItem="974-aK-LLs" secondAttribute="leading" id="Dtz-vv-0X5"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="dhF-rS-pfb" secondAttribute="trailing" id="JLG-dm-fNo"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="dhF-rS-pfb" secondAttribute="bottom" id="P9k-HU-Gkq"/>
+                                                                    <constraint firstItem="dhF-rS-pfb" firstAttribute="top" secondItem="974-aK-LLs" secondAttribute="top" id="c0Y-Q0-kw0"/>
+                                                                    <constraint firstAttribute="height" constant="52" id="gnq-qR-gGh"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JU-oC-eXe">
+                                                                <rect key="frame" x="0.0" y="358.5" width="374" height="14"/>
+                                                                <subviews>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8RC-li-VFR">
+                                                                        <rect key="frame" x="0.0" y="7" width="374" height="0.0"/>
+                                                                        <subviews>
+                                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uvD-ar-L8b">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="0.0"/>
+                                                                                <subviews>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F44-rM-ZDT">
+                                                                                        <rect key="frame" x="5" y="-10" width="20" height="20"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" constant="20" id="Fca-WF-h5r"/>
+                                                                                            <constraint firstAttribute="width" secondItem="F44-rM-ZDT" secondAttribute="height" multiplier="1:1" id="UxS-c5-E3n"/>
+                                                                                        </constraints>
+                                                                                        <state key="normal" image="ic_checkbox_unselected"/>
+                                                                                        <state key="selected" image="ic_checkbox_selected"/>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="F44-rM-ZDT" firstAttribute="centerY" secondItem="uvD-ar-L8b" secondAttribute="centerY" id="OsH-rt-kAP"/>
+                                                                                    <constraint firstItem="F44-rM-ZDT" firstAttribute="leading" secondItem="uvD-ar-L8b" secondAttribute="leading" constant="5" id="pDM-9M-ai7"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="F44-rM-ZDT" secondAttribute="trailing" constant="5" id="tcd-bx-AFn"/>
+                                                                                </constraints>
+                                                                            </view>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Taf-t2-LDA">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                                                <subviews>
+                                                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I accept" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrn-ZY-rqu" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                                        <nil key="textColor"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                                <real key="value" value="14"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                            </userDefinedRuntimeAttribute>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q8a-8N-CXk" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="0.0"/>
+                                                                                        <state key="normal" title="Terms and Conditions"/>
+                                                                                        <userDefinedRuntimeAttributes>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
+                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsUnderline" value="YES"/>
+                                                                                        </userDefinedRuntimeAttributes>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                            </stackView>
+                                                                        </subviews>
+                                                                    </stackView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="8RC-li-VFR" secondAttribute="bottom" constant="7" id="B1F-jk-TOf"/>
+                                                                    <constraint firstItem="8RC-li-VFR" firstAttribute="top" secondItem="7JU-oC-eXe" secondAttribute="top" constant="7" id="Vbr-UK-0M8"/>
+                                                                    <constraint firstItem="8RC-li-VFR" firstAttribute="leading" secondItem="7JU-oC-eXe" secondAttribute="leading" id="sO8-fJ-FmL"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="8RC-li-VFR" secondAttribute="trailing" id="z4D-Di-uew"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YEg-VN-hg0" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                        <rect key="frame" x="20" y="758" width="374" height="50"/>
+                                                        <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="fsd-Dr-mbM"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                        <state key="normal" title="Save">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="SaveButtonPress:" destination="r32-BR-T0S" eventType="touchUpInside" id="fUK-bD-kid"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="xFk-GI-NzH" firstAttribute="leading" secondItem="edl-SZ-Mrh" secondAttribute="leading" id="FL2-4V-PVS"/>
+                                                    <constraint firstItem="YEg-VN-hg0" firstAttribute="leading" secondItem="edl-SZ-Mrh" secondAttribute="leading" constant="20" symbolic="YES" id="Q7Q-4r-cxw"/>
+                                                    <constraint firstItem="NO1-Gb-ipk" firstAttribute="leading" secondItem="edl-SZ-Mrh" secondAttribute="leading" constant="20" id="WDq-Cj-4Wv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="NO1-Gb-ipk" secondAttribute="trailing" constant="20" id="j9P-3G-4J1"/>
+                                                    <constraint firstAttribute="bottom" secondItem="YEg-VN-hg0" secondAttribute="bottom" constant="10" id="lfJ-KK-3bR"/>
+                                                    <constraint firstItem="YEg-VN-hg0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="NO1-Gb-ipk" secondAttribute="bottom" constant="10" id="rEO-a9-naA"/>
+                                                    <constraint firstItem="xFk-GI-NzH" firstAttribute="top" secondItem="edl-SZ-Mrh" secondAttribute="top" id="uoe-Ga-IoW"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xFk-GI-NzH" secondAttribute="trailing" id="wZq-xW-MFw"/>
+                                                    <constraint firstItem="NO1-Gb-ipk" firstAttribute="top" secondItem="xFk-GI-NzH" secondAttribute="bottom" id="yfR-Mz-m84"/>
+                                                    <constraint firstAttribute="trailing" secondItem="YEg-VN-hg0" secondAttribute="trailing" constant="20" symbolic="YES" id="yl5-fw-tAH"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="edl-SZ-Mrh" firstAttribute="top" secondItem="UKC-cD-DW1" secondAttribute="top" id="Cr8-Gz-gqS"/>
+                                            <constraint firstItem="edl-SZ-Mrh" firstAttribute="leading" secondItem="UKC-cD-DW1" secondAttribute="leading" id="HR4-hV-W81"/>
+                                            <constraint firstAttribute="bottom" secondItem="edl-SZ-Mrh" secondAttribute="bottom" id="HVB-bd-quV"/>
+                                            <constraint firstAttribute="trailing" secondItem="edl-SZ-Mrh" secondAttribute="trailing" id="mUz-ew-cNZ"/>
+                                            <constraint firstItem="edl-SZ-Mrh" firstAttribute="height" secondItem="UKC-cD-DW1" secondAttribute="height" id="vcn-wR-Uix"/>
+                                            <constraint firstItem="edl-SZ-Mrh" firstAttribute="width" secondItem="UKC-cD-DW1" secondAttribute="width" id="vkW-HC-uD9"/>
+                                        </constraints>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UKC-cD-DW1" secondAttribute="trailing" id="6jx-1t-QSC"/>
+                                    <constraint firstItem="UKC-cD-DW1" firstAttribute="leading" secondItem="Bf9-5b-wlD" secondAttribute="leading" id="Bl1-JV-yjf"/>
+                                    <constraint firstAttribute="bottom" secondItem="UKC-cD-DW1" secondAttribute="bottom" id="HPP-wP-Nxw"/>
+                                    <constraint firstItem="UKC-cD-DW1" firstAttribute="top" secondItem="Bf9-5b-wlD" secondAttribute="top" id="b2d-be-Ii1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KYC-gd-gPc"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bf9-5b-wlD" firstAttribute="top" secondItem="KYC-gd-gPc" secondAttribute="top" id="GCv-Xc-Gep"/>
+                            <constraint firstItem="Bf9-5b-wlD" firstAttribute="leading" secondItem="KYC-gd-gPc" secondAttribute="leading" id="Tjv-bJ-CYv"/>
+                            <constraint firstItem="Bf9-5b-wlD" firstAttribute="trailing" secondItem="KYC-gd-gPc" secondAttribute="trailing" id="lHF-uN-tyK"/>
+                            <constraint firstItem="Bf9-5b-wlD" firstAttribute="bottom" secondItem="KYC-gd-gPc" secondAttribute="bottom" id="mtc-Ke-uYa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ImageViewIdentity" destination="Mya-Af-NOc" id="FRG-uK-LlW"/>
+                        <outlet property="ImageViewLicence" destination="sjS-8n-c4R" id="lvY-rE-N7h"/>
+                        <outlet property="SaveButton" destination="YEg-VN-hg0" id="FZr-Zo-xOI"/>
+                        <outlet property="TextFieldLicenseExpiryDate" destination="dhF-rS-pfb" id="CAA-E5-ARP"/>
+                        <outlet property="TextFieldLicenseNumber" destination="bGQ-uz-Vux" id="Mmk-c0-E9q"/>
+                        <outlet property="btnIdentityProof" destination="HgQ-kf-1rc" id="PDG-0C-dIa"/>
+                        <outlet property="btnLicence" destination="lsT-eb-9Na" id="Rzr-rn-bfT"/>
+                        <outlet property="loremLabel" destination="Rpf-Wa-tC7" id="xgd-Rx-tvy"/>
+                        <outlet property="personIV" destination="aBJ-Mu-8BQ" id="VAW-eD-9vI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Pj-wn-O4L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3759" y="2530"/>
+        </scene>
     </scenes>
     <designables>
         <designable name="1F0-CZ-tTn">
@@ -9278,6 +9932,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="Icon feather-users" width="14" height="15.5"/>
         <image name="delivery-truck" width="18.5" height="13"/>
         <image name="ic_Profile" width="40" height="40"/>
         <image name="ic_Search" width="16.5" height="16.5"/>
@@ -9303,7 +9958,8 @@
         <image name="ic_upload" width="750" height="750"/>
         <image name="ic_user" width="19" height="19"/>
         <image name="ic_userIcon" width="56" height="56"/>
-        <image name="maps-and-flags" width="170" height="170"/>
+        <image name="icon_Add" width="170.5" height="170.5"/>
+        <image name="maps-and-flags" width="170.5" height="170.5"/>
         <image name="selected_account" width="68" height="68"/>
         <image name="selected_fleet" width="68" height="68"/>
         <image name="selected_schedule" width="68" height="68"/>

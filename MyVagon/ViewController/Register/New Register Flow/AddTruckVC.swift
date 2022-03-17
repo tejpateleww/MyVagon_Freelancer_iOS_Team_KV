@@ -28,6 +28,8 @@ class AddTruckVC: BaseViewController {
     @IBOutlet weak var collectionImages: UICollectionView!
     @IBOutlet weak var btnHydraulicDoor: UIButton!
     @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var viewAddCapacity: UIView!
+    @IBOutlet weak var CollectionViewImageHeightConst: NSLayoutConstraint!
     
     @IBOutlet weak var tblTruckFeature: UITableView!
     @IBOutlet weak var tblTruckFeatureHeight: NSLayoutConstraint!
@@ -62,11 +64,23 @@ class AddTruckVC: BaseViewController {
     
     var tructData = RegTruckDetailModel()
     
+    var isFromEdit = false
+    var isEditEnable = true
+    var truckEditDeta : TruckDetails?
+    var truckIndex = 0
+    var editeData : ((TruckDetails) -> Void)?
+    
     //MARK: - LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupUI()
         self.setupData()
+        print("setdata ",truckEditDeta)
+        if isFromEdit {
+            self.setEditDeta()
+        }
+        self.enableEdit()
+        self.setUpNevigetionBar()
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -77,9 +91,15 @@ class AddTruckVC: BaseViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "editprofile"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileEdit), name: NSNotification.Name(rawValue: "editprofile"), object: nil)
+    }
+    
+    
     //MARK: - Custom methods
     func setupUI(){
-        self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         
         self.tblTruckFeature.delegate = self
         self.tblTruckFeature.dataSource = self
@@ -87,14 +107,38 @@ class AddTruckVC: BaseViewController {
         self.tblTruckFeature.showsHorizontalScrollIndicator = false
         self.tblTruckFeature.separatorStyle = .none
         self.tblTruckFeature.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
-        
+        self.CollectionViewImageHeightConst.constant = collectionImages.bounds.width/3 - 10
         self.registerNib()
     }
     
+    func setUpNevigetionBar(){
+        if isFromEdit{
+            if isEditEnable {
+                self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Edit Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+            }else{
+                setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editProfile.value], isTranslucent: true, ShowShadow: true)
+            }
+        }
+    }
+
     
     func registerNib(){
         let nib = UINib(nibName: TruckFeatureCell.className, bundle: nil)
         self.tblTruckFeature.register(nib, forCellReuseIdentifier: TruckFeatureCell.className)
+    }
+    
+    func enableEdit(){
+        self.txtTruckType.isUserInteractionEnabled = isEditEnable
+        self.txtTruckSubType.isUserInteractionEnabled = isEditEnable
+        self.truckWeightTF.isUserInteractionEnabled = isEditEnable
+        self.cargoLoadCapTF.isUserInteractionEnabled = isEditEnable
+        self.txtCapacityType.isUserInteractionEnabled = isEditEnable
+        self.txtTruckWeight.isUserInteractionEnabled = isEditEnable
+        self.txtCargoLoadCapacity.isUserInteractionEnabled = isEditEnable
+        self.txtTruckLicencePlate.isUserInteractionEnabled = isEditEnable
+        self.btnAdd.isUserInteractionEnabled = isEditEnable
+        self.viewAddCapacity.isHidden = !isEditEnable
+        self.btnSave.isHidden = !isEditEnable
     }
     
     func setupData(){
@@ -134,6 +178,24 @@ class AddTruckVC: BaseViewController {
         self.heightConstrentImagcollection.constant = collectionImages.bounds.width/3 - 10
         self.TextFieldCapacity.resignFirstResponder()
         self.txtCapacityType.resignFirstResponder()
+    }
+    
+    func setEditDeta(){
+        self.txtTruckType.text = truckEditDeta?.truckType?.name
+        self.txtTruckSubType.text = truckEditDeta?.truckSubCategory?.name
+        self.viewSubType.isHidden = false
+        self.truckWeightTF.text = truckEditDeta?.weightUnit?.name
+        self.cargoLoadCapTF.text = truckEditDeta?.loadCapacityUnit?.name
+        self.txtTruckWeight.text = truckEditDeta?.weight
+        self.txtCargoLoadCapacity.text = truckEditDeta?.loadCapacity
+        self.txtTruckLicencePlate.text = truckEditDeta?.plateNumber
+        self.arrImages = truckEditDeta?.images ?? []
+        self.arrFeatureID = truckEditDeta?.truckFeatures?.components(separatedBy: ",") ?? []
+        let capacity = SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?[truckIndex]
+        let item = TruckCapacityType(Capacity: capacity?.value ?? "", Type: capacity?.packageTypeId?.id ?? 0)
+        TruckCapacityAdded.removeAll()
+        TruckCapacityAdded.append(item)
+        collectionTruckCapacity.reloadData()
     }
     
     func ImageUploadAPI(arrImages:[UIImage]) {
@@ -177,6 +239,14 @@ class AddTruckVC: BaseViewController {
             return (true,"Succesfull")
         }
     }
+    
+    @objc func ProfileEdit(){
+        print("in edit notification")
+        self.isEditEnable = true
+        self.enableEdit()
+        self.collectionImages.reloadData()
+        self.setUpNevigetionBar()
+        }
     
     @IBAction func btnActionHydraulicDoor(_ sender: UIButton) {
         self.btnHydraulicDoor.isSelected = !self.btnHydraulicDoor.isSelected
@@ -234,27 +304,57 @@ class AddTruckVC: BaseViewController {
     @IBAction func btnSaveClicked(_ sender: Any) {
         let velidetion = validetion()
         if velidetion.0{
-            
-            self.tructData.truck_type = "\(self.SelectedCategory)"
-            self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
-            self.tructData.weight = self.txtTruckWeight.text ?? ""
-            self.tructData.weight_unit = "\(self.selectedWeightUnitID)"
-            self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
-            self.tructData.capacity_unit = "\(self.selectedCategoryUnitID)"
-            self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
-            self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
-            self.tructData.pallets = TruckCapacityAdded
-            self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
-            SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
-            
-            UserDefault.SetRegiterData()
-            UserDefault.synchronize()
-            
-            self.navigationController?.popViewController(animated: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NotificationCenter.default.post(name: .reloadRegTruckListScreen, object: nil)
+            if isFromEdit{
+                truckEditDeta?.images = arrImages
+                truckEditDeta?.weight = txtTruckWeight.text
+                truckEditDeta?.loadCapacity = self.txtCargoLoadCapacity.text
+                truckEditDeta?.plateNumber = self.txtTruckLicencePlate.text
+                truckEditDeta?.truckFeatures = arrFeatureID.map({$0}).joined(separator: ",")
+                truckEditDeta?.loadCapacityUnit?.name = cargoLoadCapTF.text
+                if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.first(where:{$0.name == cargoLoadCapTF.text ?? ""}) {
+                    truckEditDeta?.loadCapacityUnit?.id = DummyFirst.id
+                }
+                
+                truckEditDeta?.weightUnit?.name = truckWeightTF.text
+                if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.first(where: {$0.name == truckWeightTF.text ?? ""}) {
+                    truckEditDeta?.weightUnit?.id = DummyFirst.id
+                }
+                
+                truckEditDeta?.truckType?.name = txtTruckType.text
+                if let DummyFirst = SingletonClass.sharedInstance.TruckTypeList?.first(where: {$0.name == txtTruckType.text ?? ""}) {
+                    truckEditDeta?.truckSubCategory?.id = DummyFirst.id
+                }
+                
+                truckEditDeta?.truckSubCategory?.name = txtTruckSubType.text
+                if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)}) {
+                    if let DummyFirst = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.first(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory?.id ?? 0)}) {
+                        truckEditDeta?.truckSubCategory?.id = DummyFirst.id
+                    }
+                }
+                
+                self.editeData?(truckEditDeta!)
+                self.navigationController?.popViewController(animated: true)
+            }else{
+                self.tructData.truck_type = "\(self.SelectedCategory)"
+                self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
+                self.tructData.weight = self.txtTruckWeight.text ?? ""
+                self.tructData.weight_unit = "\(self.selectedWeightUnitID)"
+                self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
+                self.tructData.capacity_unit = "\(self.selectedCategoryUnitID)"
+                self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
+                self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
+                self.tructData.pallets = TruckCapacityAdded
+                self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
+                SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
+                
+                UserDefault.SetRegiterData()
+                UserDefault.synchronize()
+                
+                self.navigationController?.popViewController(animated: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    NotificationCenter.default.post(name: .reloadRegTruckListScreen, object: nil)
+                }
             }
-           
         }else{
             Utilities.ShowAlertOfInfo(OfMessage: velidetion.1)
         }
@@ -437,7 +537,11 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
         if collectionView == collectionTruckCapacity {
             return TruckCapacityAdded.count
         }else if collectionView == collectionImages {
-            return (arrImages.count > 0) ? arrImages.count + 1 : 1
+            var count = 0
+            if isEditEnable{
+                count = 1
+            }
+            return (arrImages.count > 0) ? arrImages.count + count : count
         }
         return 0
     }
@@ -458,6 +562,7 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
             cell.BGView.layer.borderColor = UIColor.appColor(.themeButtonBlue).cgColor
             
             cell.RemoveClick = {
+                if self.isEditEnable{
                 self.btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
                 self.ButtonTypeForAddingCapacity = .Add
                 
@@ -469,10 +574,11 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 
                 self.TruckCapacityAdded.remove(at: indexPath.row)
                 self.collectionTruckCapacity.reloadData()
+                }
             }
             return cell
         }else if collectionView == collectionImages {
-            if(indexPath.row == 0){
+            if(indexPath.row == 0 && isEditEnable){
                 let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: UploadVideoAndImagesCell.className, for: indexPath)as! UploadVideoAndImagesCell
                 cell.btnUploadImg = {
                     AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
@@ -484,12 +590,16 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 }
                 return cell
             }else{
+                var count = 0
+                if isEditEnable{
+                    count = 1
+                }
                 let cell = collectionImages.dequeueReusableCell(withReuseIdentifier: collectionPhotos.className, for: indexPath)as! collectionPhotos
-                let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImages[indexPath.row - 1])"
+                let strUrl = "\(APIEnvironment.TempProfileURL)\(arrImages[indexPath.row - count])"
                 cell.imgPhotos.sd_imageIndicator = SDWebImageActivityIndicator.gray
                 cell.imgPhotos.sd_setImage(with: URL(string: strUrl), placeholderImage: UIImage())
-                
-                cell.btnCancel.tag = indexPath.row - 1
+                cell.btnCancel.isHidden = !isEditEnable
+                cell.btnCancel.tag = indexPath.row - count
                 cell.btnCancel.addTarget(self, action: #selector(deleteImagesClicked(sender:)), for: .touchUpInside)
                 return cell
             }
@@ -507,13 +617,13 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 txtCapacityType.text = SingletonClass.sharedInstance.PackageList?[index].name ?? ""
             }
         }else if collectionView == collectionImages {
-            if(indexPath.row != 0){
+//            if(indexPath.row != 0){
                 let vc : GalaryVC = GalaryVC.instantiate(fromAppStoryboard: .Auth)
                 vc.firstTimeSelectedIndex = indexPath.row - 1
                 vc.arrImage = self.arrImages
                 self.navigationController?.present(vc, animated: true)
             }
-        }
+//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat{
@@ -566,16 +676,17 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
-            let index = self.arrFeatureID.firstIndex(where: { $0 == "\(self.arrTruckFeature[indexPath.row].id ?? 0)" })
-            self.arrFeatureID.remove(at: index!)
+        if isEditEnable{
+            if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
+                let index = self.arrFeatureID.firstIndex(where: { $0 == "\(self.arrTruckFeature[indexPath.row].id ?? 0)" })
+                self.arrFeatureID.remove(at: index!)
 
-        }else{
-            self.arrFeatureID.append("\(self.arrTruckFeature[indexPath.row].id ?? 0)")
+            }else{
+                self.arrFeatureID.append("\(self.arrTruckFeature[indexPath.row].id ?? 0)")
+            }
+            
+            self.tblTruckFeature.reloadData()
         }
-        
-        self.tblTruckFeature.reloadData()
         print(self.arrFeatureID)
     }
 }

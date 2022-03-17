@@ -15,7 +15,13 @@ class RegisterTruckListVC: BaseViewController {
     @IBOutlet weak var btnContinue: UIButton!
     
     var arrtruckData : [RegTruckDetailModel] = []
+    var arrTruckEditData : [TruckDetails] = []
+    var editTruckDetailViewModel = EditTruckViewModel()
     var truckType : String = ""
+    var isFromEdit = false
+    var isEditEnable = true
+    var selectedIndex = 0
+    var isEdit = true
     
     //MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -35,15 +41,26 @@ class RegisterTruckListVC: BaseViewController {
         self.tblTruckList.separatorStyle = .none
         self.tblTruckList.showsHorizontalScrollIndicator = false
         self.tblTruckList.showsVerticalScrollIndicator = false
-        
+        setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Truck List", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
         self.registerNib()
         self.addNotificationObs()
+        if isFromEdit{
+            self.btnAddTruck.isHidden = true
+            self.btnContinue.isHidden = false
+            self.btnContinue.setTitle("Save", for: .normal)
+        }
     }
     
     func setupData(){
-        self.arrtruckData = SingletonClass.sharedInstance.RegisterData.Reg_truck_data
+        if isFromEdit{
+            self.arrTruckEditData = SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckDetails ?? []
+        }else{
+            self.arrtruckData = SingletonClass.sharedInstance.RegisterData.Reg_truck_data
+        }
         self.tblTruckList.reloadData()
+        if !isFromEdit{
         self.checkContinue()
+        }
     }
     
     func addNotificationObs(){
@@ -75,54 +92,79 @@ class RegisterTruckListVC: BaseViewController {
     //MARK: - UIButton action methods
     @IBAction func btnAddTruckAction(_ sender: Any) {
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: AddTruckVC.storyboardID) as! AddTruckVC
+        controller.isFromEdit = self.isFromEdit
+        self.isEdit = false
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnContinueAction(_ sender: Any) {
-        
-        SingletonClass.sharedInstance.RegisterData.Reg_truck_data = self.arrtruckData
-        UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-        UserDefault.SetRegiterData()
-        UserDefault.synchronize()
-        
-        let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
-        let x = self.view.frame.size.width * 3
-        RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
-        RegisterMainVC.viewDidLayoutSubviews()
+        if isFromEdit{
+            self.callWebService()
+        }else{
+            SingletonClass.sharedInstance.RegisterData.Reg_truck_data = self.arrtruckData
+            UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+            UserDefault.SetRegiterData()
+            UserDefault.synchronize()
+            
+            let RegisterMainVC = self.navigationController?.viewControllers.last as! RegisterAllInOneViewController
+            let x = self.view.frame.size.width * 3
+            RegisterMainVC.MainScrollView.setContentOffset(CGPoint(x:x, y:0), animated: true)
+            RegisterMainVC.viewDidLayoutSubviews()
+        }
     }
 }
 
+extension RegisterTruckListVC{
+    
+    func callWebService(){
+        let reqModel = EditTruckReqModel()
+        reqModel.truck_details = arrTruckEditData.description
+        self.editTruckDetailViewModel.callWebserviceForEditTruck(reqModel: reqModel)
+    }
+}
 
 //MARK: - UITableView Delegate and Data Sourse Methods
 extension RegisterTruckListVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (self.arrtruckData.count > 0) ? self.arrtruckData.count : 1
+        if isFromEdit{
+            return (self.arrTruckEditData.count > 0) ? self.arrTruckEditData.count : 1
+        }else{
+            return (self.arrtruckData.count > 0) ? self.arrtruckData.count : 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
  
-        if(self.arrtruckData.count > 0){
+        if(self.arrtruckData.count > 0 || self.arrTruckEditData.count > 0){
             let cell = tblTruckList.dequeueReusableCell(withIdentifier: RegisterTruckCell.className) as! RegisterTruckCell
             cell.selectionStyle = .none
-            
-            for truck in SingletonClass.sharedInstance.TruckTypeList ?? []{
-                if(truck.id ?? 0 == Int(self.arrtruckData[indexPath.row].truck_type)){
-                    cell.lbltruckType.text = truck.name
+            if isFromEdit{
+                cell.lbltruckType.text = self.arrTruckEditData[indexPath.row].truckType?.name
+                cell.lblTruckNumber.text = self.arrTruckEditData[indexPath.row].plateNumber
+                cell.btnDeleteClick = {
+                    self.arrTruckEditData.remove(at: indexPath.row)
+                    self.tblTruckList.reloadData()
                 }
-            }
-            cell.lblTruckNumber.text = self.arrtruckData[indexPath.row].plate_number
-            
-            cell.btnDeleteClick = {
-                self.arrtruckData.remove(at: indexPath.row)
+            }else{
+                for truck in SingletonClass.sharedInstance.TruckTypeList ?? []{
+                    if(truck.id ?? 0 == Int(self.arrtruckData[indexPath.row].truck_type)){
+                        cell.lbltruckType.text = truck.name
+                    }
+                }
+                cell.lblTruckNumber.text = self.arrtruckData[indexPath.row].plate_number
                 
-                SingletonClass.sharedInstance.RegisterData.Reg_truck_data = self.arrtruckData
-                UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-                UserDefault.SetRegiterData()
-                UserDefault.synchronize()
-                
-                self.tblTruckList.reloadData()
-                self.checkContinue()
+                cell.btnDeleteClick = {
+                    self.arrtruckData.remove(at: indexPath.row)
+                    
+                    SingletonClass.sharedInstance.RegisterData.Reg_truck_data = self.arrtruckData
+                    UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
+                    UserDefault.SetRegiterData()
+                    UserDefault.synchronize()
+                    
+                    self.tblTruckList.reloadData()
+                    self.checkContinue()
+                }
             }
             return cell
         }else{
@@ -131,9 +173,31 @@ extension RegisterTruckListVC : UITableViewDelegate, UITableViewDataSource {
             return NoDatacell
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("didselect")
+        if (isFromEdit && arrTruckEditData.count > 0){
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: AddTruckVC.storyboardID) as! AddTruckVC
+        controller.isFromEdit = true
+        controller.isEditEnable = false
+        controller.truckIndex = indexPath.row
+        self.selectedIndex = indexPath.row
+        self.isEdit = true
+        controller.editeData = { (data) in
+            if self.isEdit{
+                self.arrTruckEditData.remove(at: self.selectedIndex)
+                self.arrTruckEditData.insert(data, at: self.selectedIndex)
+            }else{
+                self.arrTruckEditData.append(data)
+            }
+            self.tblTruckList.reloadData()
+        }
+        controller.truckEditDeta = arrTruckEditData[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(self.arrtruckData.count > 0){
+        if(self.arrtruckData.count > 0 || self.arrTruckEditData.count > 0){
             return UITableView.automaticDimension
         }else{
             return tableView.frame.height

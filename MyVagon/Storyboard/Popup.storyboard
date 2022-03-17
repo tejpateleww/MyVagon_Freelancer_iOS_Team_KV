@@ -1424,6 +1424,169 @@ like to view them?</string>
             </objects>
             <point key="canvasLocation" x="1063.768115942029" y="75"/>
         </scene>
+        <!--View ReloadVC-->
+        <scene sceneID="D9m-hU-t4l">
+            <objects>
+                <viewController storyboardIdentifier="ViewReloadVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DKW-LH-bss" customClass="ViewReloadVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="72V-dT-Y4m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tw9-8x-PgI" customClass="BlurView" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QRL-O6-fx2" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NH8-eq-VBa" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="591.5" width="414" height="303.5"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ef1-l6-3e5">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="250.5"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-ov-waz">
+                                                        <rect key="frame" x="20" y="20" width="374" height="220.5"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nND-oV-aK6">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="49"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_truck_completed" translatesAutoresizingMaskIntoConstraints="NO" id="vcg-zX-2Ah">
+                                                                        <rect key="frame" x="152" y="0.0" width="70" height="49"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="vcg-zX-2Ah" secondAttribute="height" multiplier="10:7" id="MXM-N9-4Om"/>
+                                                                            <constraint firstAttribute="width" constant="70" id="VLE-9N-2gK"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="vcg-zX-2Ah" firstAttribute="top" secondItem="nND-oV-aK6" secondAttribute="top" id="3fu-C2-pGH"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="vcg-zX-2Ah" secondAttribute="bottom" id="KhO-bA-5KB"/>
+                                                                    <constraint firstItem="vcg-zX-2Ah" firstAttribute="centerX" secondItem="nND-oV-aK6" secondAttribute="centerX" id="QMq-bv-gAN"/>
+                                                                    <constraint firstItem="vcg-zX-2Ah" firstAttribute="centerY" secondItem="nND-oV-aK6" secondAttribute="centerY" id="Vxl-57-Cf5"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Confirmed" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nAj-lb-d6c" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="69" width="374" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSemibold" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                        <real key="value" value="18"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                        <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0T-rp-I9s">
+                                                                <rect key="frame" x="0.0" y="109.5" width="374" height="41"/>
+                                                                <string key="text">3 matches have been found, would you 
+like to view them?</string>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0F3-Mh-bPm">
+                                                                <rect key="frame" x="0.0" y="170.5" width="374" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZE-1Y-SAm" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="w0E-OE-MIy"/>
+                                                                        </constraints>
+                                                                        <state key="normal" title="Dismiss"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" name="ThemeSubmitColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnDismissAction:" destination="DKW-LH-bss" eventType="touchUpInside" id="7ET-iG-HqK"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHC-RM-qVr" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
+                                                                        <state key="normal" title="View Reloads"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnReloadAction:" destination="DKW-LH-bss" eventType="touchUpInside" id="6NE-7N-zsr"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="gS2-ov-waz" secondAttribute="trailing" constant="20" id="C46-dR-pM9"/>
+                                                    <constraint firstItem="gS2-ov-waz" firstAttribute="leading" secondItem="Ef1-l6-3e5" secondAttribute="leading" constant="20" id="I0J-WL-p7C"/>
+                                                    <constraint firstItem="gS2-ov-waz" firstAttribute="top" secondItem="Ef1-l6-3e5" secondAttribute="top" constant="20" id="m3K-CJ-eJ0"/>
+                                                    <constraint firstAttribute="bottom" secondItem="gS2-ov-waz" secondAttribute="bottom" constant="10" id="x9r-2v-8Wl"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Ef1-l6-3e5" secondAttribute="trailing" id="Cqo-6z-60G"/>
+                                            <constraint firstItem="Ef1-l6-3e5" firstAttribute="top" secondItem="NH8-eq-VBa" secondAttribute="top" id="hiy-e8-4hh"/>
+                                            <constraint firstItem="Ef1-l6-3e5" firstAttribute="leading" secondItem="NH8-eq-VBa" secondAttribute="leading" id="nxM-Yp-ykh"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="NH8-eq-VBa" secondAttribute="trailing" id="RSB-Tc-yzV"/>
+                                    <constraint firstAttribute="bottom" secondItem="NH8-eq-VBa" secondAttribute="bottom" constant="1" id="byc-yB-Ud5"/>
+                                    <constraint firstItem="NH8-eq-VBa" firstAttribute="leading" secondItem="QRL-O6-fx2" secondAttribute="leading" id="lT6-P5-sEl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HCH-s6-JQb"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QRL-O6-fx2" firstAttribute="top" secondItem="72V-dT-Y4m" secondAttribute="top" id="3zQ-eF-6Lb"/>
+                            <constraint firstItem="tw9-8x-PgI" firstAttribute="top" secondItem="72V-dT-Y4m" secondAttribute="top" id="Bwn-qS-m1M"/>
+                            <constraint firstItem="tw9-8x-PgI" firstAttribute="leading" secondItem="72V-dT-Y4m" secondAttribute="leading" id="Kq5-fo-jOx"/>
+                            <constraint firstItem="QRL-O6-fx2" firstAttribute="leading" secondItem="HCH-s6-JQb" secondAttribute="leading" id="ReF-Iq-Jqm"/>
+                            <constraint firstItem="HCH-s6-JQb" firstAttribute="trailing" secondItem="tw9-8x-PgI" secondAttribute="trailing" id="YvA-dR-QP2"/>
+                            <constraint firstItem="HCH-s6-JQb" firstAttribute="bottom" secondItem="Ef1-l6-3e5" secondAttribute="bottom" constant="20" id="bXn-EW-7XC"/>
+                            <constraint firstAttribute="bottom" secondItem="QRL-O6-fx2" secondAttribute="bottom" id="gKy-GC-xwM"/>
+                            <constraint firstItem="QRL-O6-fx2" firstAttribute="trailing" secondItem="HCH-s6-JQb" secondAttribute="trailing" id="pKP-Dy-9Ty"/>
+                            <constraint firstAttribute="bottom" secondItem="tw9-8x-PgI" secondAttribute="bottom" id="zy5-6y-0bc"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnDismiss" destination="eZE-1Y-SAm" id="rb4-oq-zox"/>
+                        <outlet property="btnViewReloads" destination="dHC-RM-qVr" id="8Np-GK-gL6"/>
+                        <outlet property="lblReloadsFound" destination="D0T-rp-I9s" id="MH3-fs-rjc"/>
+                        <outlet property="lblTitleBookingConfirmed" destination="nAj-lb-d6c" id="EFr-0A-XYD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k54-PU-IhP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587" y="75"/>
+        </scene>
     </scenes>
     <resources>
         <image name="cross" width="25.5" height="25.5"/>

@@ -29,16 +29,26 @@ class NewEditProfile: BaseViewController {
     
     //MARK: - UIButton Action methods
     @IBAction func btnPersnolInfoClicked(_ sender: Any) {
-        print("btn persnol info clicked")
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: EditPersonalInfoVC.storyboardID) as! EditPersonalInfoVC
+        controller.hidesBottomBarWhenPushed = true
+        controller.Iseditable = false
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func btnTractorDetailClicked(_ sender: Any) {
-        print("btn tractor info clicked")
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: TractorDetailVC.storyboardID) as! TractorDetailVC
+        controller.isFromEdit = true
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func btnTruckDetailClicked(_ sender: Any) {
-        print("btn truck info clicked")
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: RegisterTruckListVC.storyboardID) as! RegisterTruckListVC
+        controller.isFromEdit = true
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     @IBAction func btnLicenceClicked(_ sender: Any) {
         print("btn licence info clicked")
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: EditLicenceDetailsVC.storyboardID) as! EditLicenceDetailsVC
+        controller.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnPaymentDetailClicked(_ sender: Any) {

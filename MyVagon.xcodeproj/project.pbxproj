@@ -230,6 +230,17 @@
 		880F69F327B4F68400E2CDD2 /* NewScheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */; };
 		880F69F727B4F6B200E2CDD2 /* ScheduleDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */; };
 		880F69F827B4F6B200E2CDD2 /* ScheduleDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */; };
+		88169B1727E04E3D00FCFC3E /* EditPersonalInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88169B1627E04E3D00FCFC3E /* EditPersonalInfoVC.swift */; };
+		88169B1927E06E9100FCFC3E /* EditPersonalInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88169B1827E06E9100FCFC3E /* EditPersonalInfoViewModel.swift */; };
+		88169B1B27E0730200FCFC3E /* EditPersonalInfoReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88169B1A27E0730200FCFC3E /* EditPersonalInfoReqModel.swift */; };
+		882DDAA927E1B7A1004A4B70 /* EditLicenceDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAA827E1B7A1004A4B70 /* EditLicenceDetailsVC.swift */; };
+		882DDAAB27E1CBD3004A4B70 /* EditLicenceDetailsReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAAA27E1CBD3004A4B70 /* EditLicenceDetailsReqModel.swift */; };
+		882DDAAD27E1CCCD004A4B70 /* EditLicenceDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAAC27E1CCCD004A4B70 /* EditLicenceDetailViewModel.swift */; };
+		882DDAAF27E20CFB004A4B70 /* ViewReloadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAAE27E20CFB004A4B70 /* ViewReloadVC.swift */; };
+		882DDAB427E2186F004A4B70 /* EditTruckViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAB127E2186F004A4B70 /* EditTruckViewModel.swift */; };
+		882DDAB527E2186F004A4B70 /* EditTractorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAB327E2186F004A4B70 /* EditTractorViewModel.swift */; };
+		882DDAB827E218C4004A4B70 /* EditTrucksReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAB627E218C4004A4B70 /* EditTrucksReqModel.swift */; };
+		882DDAB927E218C4004A4B70 /* EditTractorDetailReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */; };
 		8840AC5127D1EF820092678B /* TruckFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */; };
 		8840AC5227D1EF820092678B /* TruckFeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8840AC5027D1EF820092678B /* TruckFeatureCell.xib */; };
 		885A27C727BFA93200BE7A6B /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */; };
@@ -607,6 +618,17 @@
 		880F69F227B4F68400E2CDD2 /* NewScheduleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewScheduleVC.swift; sourceTree = "<group>"; };
 		880F69F527B4F6B200E2CDD2 /* ScheduleDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleDataCell.swift; sourceTree = "<group>"; };
 		880F69F627B4F6B200E2CDD2 /* ScheduleDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDataCell.xib; sourceTree = "<group>"; };
+		88169B1627E04E3D00FCFC3E /* EditPersonalInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalInfoVC.swift; sourceTree = "<group>"; };
+		88169B1827E06E9100FCFC3E /* EditPersonalInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalInfoViewModel.swift; sourceTree = "<group>"; };
+		88169B1A27E0730200FCFC3E /* EditPersonalInfoReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonalInfoReqModel.swift; sourceTree = "<group>"; };
+		882DDAA827E1B7A1004A4B70 /* EditLicenceDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicenceDetailsVC.swift; sourceTree = "<group>"; };
+		882DDAAA27E1CBD3004A4B70 /* EditLicenceDetailsReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicenceDetailsReqModel.swift; sourceTree = "<group>"; };
+		882DDAAC27E1CCCD004A4B70 /* EditLicenceDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLicenceDetailViewModel.swift; sourceTree = "<group>"; };
+		882DDAAE27E20CFB004A4B70 /* ViewReloadVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewReloadVC.swift; sourceTree = "<group>"; };
+		882DDAB127E2186F004A4B70 /* EditTruckViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTruckViewModel.swift; sourceTree = "<group>"; };
+		882DDAB327E2186F004A4B70 /* EditTractorViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTractorViewModel.swift; sourceTree = "<group>"; };
+		882DDAB627E218C4004A4B70 /* EditTrucksReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTrucksReqModel.swift; sourceTree = "<group>"; };
+		882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTractorDetailReqModel.swift; sourceTree = "<group>"; };
 		8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckFeatureCell.swift; sourceTree = "<group>"; };
 		8840AC5027D1EF820092678B /* TruckFeatureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TruckFeatureCell.xib; sourceTree = "<group>"; };
 		885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
@@ -854,6 +876,8 @@
 		18129AA926BA554000983AFC /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				882DDAB227E2186F004A4B70 /* edit tractor View model */,
+				882DDAB027E2186F004A4B70 /* editTruckViewModel */,
 				18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */,
 				18129AAE26BA61B300983AFC /* IdentifyYourselfViewModel.swift */,
 				18129AC026BAD30000983AFC /* LoginViewModel.swift */,
@@ -882,6 +906,8 @@
 				885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */,
 				88A3380527D9D13200F327EA /* ShipperDetailViewModel.swift */,
 				8860BB6227DF6230004FA35A /* LocationDetailViewModel.swift */,
+				88169B1827E06E9100FCFC3E /* EditPersonalInfoViewModel.swift */,
+				882DDAAC27E1CCCD004A4B70 /* EditLicenceDetailViewModel.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -1072,12 +1098,16 @@
 		189FB66B26B96F9100BBD5A0 /* ReqModel */ = {
 			isa = PBXGroup;
 			children = (
+				882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */,
+				882DDAB627E218C4004A4B70 /* EditTrucksReqModel.swift */,
 				189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */,
 				189FB67226B9777400BBD5A0 /* ImageUploadReqModel.swift */,
 				18129AC226BAD33D00983AFC /* LoginReqModel.swift */,
 				18F1B7AE26CE32EA0071FC21 /* PostTruckReqModel.swift */,
 				18F1B7BA26CE695C0071FC21 /* SettingReqModel.swift */,
 				18ADA35A26F31DE600F12258 /* ShipmentListReqModel.swift */,
+				88169B1A27E0730200FCFC3E /* EditPersonalInfoReqModel.swift */,
+				882DDAAA27E1CBD3004A4B70 /* EditLicenceDetailsReqModel.swift */,
 			);
 			path = ReqModel;
 			sourceTree = "<group>";
@@ -1213,6 +1243,7 @@
 				1808176226E7802500D1C717 /* LoadDetailsVC.swift */,
 				18ECDD3327677E030097F10F /* SchedualLoadDetailsViewController.swift */,
 				180EF5DA277035930056F899 /* BidRequestDetailViewController.swift */,
+				882DDAAE27E20CFB004A4B70 /* ViewReloadVC.swift */,
 			);
 			path = "Load Details";
 			sourceTree = "<group>";
@@ -1386,6 +1417,22 @@
 			path = "New Schedule Cell";
 			sourceTree = "<group>";
 		};
+		882DDAB027E2186F004A4B70 /* editTruckViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				882DDAB127E2186F004A4B70 /* EditTruckViewModel.swift */,
+			);
+			path = editTruckViewModel;
+			sourceTree = "<group>";
+		};
+		882DDAB227E2186F004A4B70 /* edit tractor View model */ = {
+			isa = PBXGroup;
+			children = (
+				882DDAB327E2186F004A4B70 /* EditTractorViewModel.swift */,
+			);
+			path = "edit tractor View model";
+			sourceTree = "<group>";
+		};
 		8840AC4E27D1EF610092678B /* Truck feature */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,6 +1470,8 @@
 			isa = PBXGroup;
 			children = (
 				8860BB6827DF627F004FA35A /* NewEditProfile.swift */,
+				88169B1627E04E3D00FCFC3E /* EditPersonalInfoVC.swift */,
+				882DDAA827E1B7A1004A4B70 /* EditLicenceDetailsVC.swift */,
 			);
 			path = "New Edit Profile";
 			sourceTree = "<group>";
@@ -2356,9 +2405,11 @@
 				18E1A61E26D4CB5C00FD9A93 /* SettingsGetResModel.swift in Sources */,
 				18ECDC912766F9AD0097F10F /* CustomImageView.swift in Sources */,
 				18F496562779BD350069B26C /* AnnularLayer.swift in Sources */,
+				882DDAB427E2186F004A4B70 /* EditTruckViewModel.swift in Sources */,
 				189FB67026B976F400BBD5A0 /* ImageUploadResModel.swift in Sources */,
 				1885DB44270EC1B50020846E /* ProfileUpdateViewModel.swift in Sources */,
 				185BA7E32757843F00E99FAC /* MyLoadsNewLocation.swift in Sources */,
+				88169B1B27E0730200FCFC3E /* EditPersonalInfoReqModel.swift in Sources */,
 				180EF5E5277051730056F899 /* BidAcceptRejectViewModel.swift in Sources */,
 				18F2703A26BD632300992892 /* TruckUnitDatum.swift in Sources */,
 				189FB67126B976F400BBD5A0 /* Datum.swift in Sources */,
@@ -2378,6 +2429,7 @@
 				189FB65F26B96BF000BBD5A0 /* WebServicesSubclass.swift in Sources */,
 				888EEB1B27A7E973004F7B87 /* EarningShimmerCell.swift in Sources */,
 				189FB63126B90F0600BBD5A0 /* MyAccountViewController.swift in Sources */,
+				882DDAB827E218C4004A4B70 /* EditTrucksReqModel.swift in Sources */,
 				1802691C26AFCEEC0088B49F /* IdentifyYourselfVC.swift in Sources */,
 				A14974D226A1AB800072AF33 /* Poppins-ExtraBoldItalic.ttf in Sources */,
 				1858EA8026E609BB008E04A7 /* chatVC.swift in Sources */,
@@ -2454,6 +2506,7 @@
 				185BA7ED2757843F00E99FAC /* MyLoadsNewBid.swift in Sources */,
 				18F2702B26BD4F8900992892 /* RegisterDatum.swift in Sources */,
 				18CC347E270D70A40063E33B /* MyLoadesCell.swift in Sources */,
+				88169B1927E06E9100FCFC3E /* EditPersonalInfoViewModel.swift in Sources */,
 				18114CF52774410400CD59D1 /* BookingLoadDetailsResModel.swift in Sources */,
 				88C3A9D427A405830018B9E8 /* MyEarningCell.swift in Sources */,
 				18CC3472270D67E00063E33B /* SearchProduct.swift in Sources */,
@@ -2465,6 +2518,7 @@
 				18F1B7BF26CE6C730071FC21 /* SettingsResModel.swift in Sources */,
 				18CC346F270D67E00063E33B /* SearchTruckTypeCategory.swift in Sources */,
 				189FB63A26B9328300BBD5A0 /* GalaryVC.swift in Sources */,
+				882DDAAF27E20CFB004A4B70 /* ViewReloadVC.swift in Sources */,
 				88C3A9CC27A3C88B0018B9E8 /* NoDataTableViewCell.swift in Sources */,
 				18CC346E270D67E00063E33B /* SearchProductType.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
@@ -2509,6 +2563,7 @@
 				A1519CD726A00B19001738B9 /* BaseViewController.swift in Sources */,
 				189B233A271D544D00431D94 /* DriverListDatum.swift in Sources */,
 				18F1B7B926CE69350071FC21 /* SettingViewModel.swift in Sources */,
+				882DDAB927E218C4004A4B70 /* EditTractorDetailReqModel.swift in Sources */,
 				88C3A9D027A400730018B9E8 /* MyEarningVC.swift in Sources */,
 				18E1A61F26D4CB5C00FD9A93 /* SettingDatum.swift in Sources */,
 				8860BB6627DF6252004FA35A /* LocationDetailResModel.swift in Sources */,
@@ -2516,6 +2571,7 @@
 				185BA7FD2757B08900E99FAC /* BidRequestViewController.swift in Sources */,
 				18CC3473270D67E00063E33B /* SearchShipperDetail.swift in Sources */,
 				88C3A9DD27A413B90018B9E8 /* EarningResModel.swift in Sources */,
+				882DDAAD27E1CCCD004A4B70 /* EditLicenceDetailViewModel.swift in Sources */,
 				18F496592779BD350069B26C /* StepIndicatorView.swift in Sources */,
 				8840AC5127D1EF820092678B /* TruckFeatureCell.swift in Sources */,
 				185BA7E62757843F00E99FAC /* MyLoadsNewTruckTypeCategory.swift in Sources */,
@@ -2531,8 +2587,10 @@
 				18F15E4727043E8E003A1D16 /* LocationSessionManager.swift in Sources */,
 				186E382C26C14B9400984D40 /* VerifyDatum.swift in Sources */,
 				8877067A27ABA35F00EACE5A /* DriverPermissionVC.swift in Sources */,
+				882DDAA927E1B7A1004A4B70 /* EditLicenceDetailsVC.swift in Sources */,
 				185BA7EB2757843F00E99FAC /* MyLoadsNewResModel.swift in Sources */,
 				18129AAB26BA565000983AFC /* TruckDetailsViewModel.swift in Sources */,
+				882DDAB527E2186F004A4B70 /* EditTractorViewModel.swift in Sources */,
 				18A34F2D26CD1F2D00F252B6 /* HomeCollectionViewCell.swift in Sources */,
 				18F1B7AF26CE32EA0071FC21 /* PostTruckReqModel.swift in Sources */,
 				18CC3471270D67E00063E33B /* SearchLocation.swift in Sources */,
@@ -2582,6 +2640,7 @@
 				18CC346D270D67E00063E33B /* SearchResModel.swift in Sources */,
 				189B2338271D544D00431D94 /* DriverListBrand.swift in Sources */,
 				189B2334271D544D00431D94 /* DriverListVehicleCapacity.swift in Sources */,
+				882DDAAB27E1CBD3004A4B70 /* EditLicenceDetailsReqModel.swift in Sources */,
 				A1519CCE26A00407001738B9 /* UIImage+Extension.swift in Sources */,
 				186537252705EF73007EC6DB /* BidNowViewModel.swift in Sources */,
 				18CBA6AF2784489000372417 /* NotificationListResModel.swift in Sources */,
@@ -2593,6 +2652,7 @@
 				A1519CC126A003AE001738B9 /* AppTheme_FontColor.swift in Sources */,
 				A1519CE526A02ACE001738B9 /* Validation.swift in Sources */,
 				1808175C26E76C0900D1C717 /* LoadDetailCell.swift in Sources */,
+				88169B1727E04E3D00FCFC3E /* EditPersonalInfoVC.swift in Sources */,
 				A1519CE726A02C99001738B9 /* UIButton+Extension.swift in Sources */,
 				18CC3478270D691D0063E33B /* MyLoadsViewModel.swift in Sources */,
 				18ADA34E26F31D2E00F12258 /* HomeViewModel.swift in Sources */,

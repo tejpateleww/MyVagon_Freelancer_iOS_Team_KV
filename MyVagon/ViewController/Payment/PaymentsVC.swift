@@ -27,21 +27,50 @@ class PaymentsVC: BaseViewController {
     var paymentViewModel = PaymentViewModel()
     var paymentDetailData : PaymentDetailData?
     var isFromEdit = false
+    var Iseditable = false
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "EditPaymentsDetails"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ProfileEdit), name: NSNotification.Name(rawValue: "EditPaymentsDetails"), object: nil)
         self.prepareView()
+        self.setupData()
     }
     
     // MARK: - Custome methods
     func prepareView(){
+        if Iseditable {
+            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        } else {
+            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editPaymentDetails.value], isTranslucent: true)
+        }
+        if Iseditable{
+            isProfileEdit(allow: true)
+            btnSave.isHidden = false
+        }else{
+            isProfileEdit(allow: false)
+            btnSave.isHidden = true
+        }
         self.setupUI()
-        self.setupData()
+    }
+    @objc func ProfileEdit(){
+        Iseditable = true
+        prepareView()
+       }
+    func isProfileEdit(allow:Bool) {
+        let arrayOfDisableElement = (redioBtnCash,redioBtnBank,redioBtnBoth,txtIBAN,txtAccountNumber,txtBankName)
+        arrayOfDisableElement.0?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.1?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.2?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.3?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.4?.isUserInteractionEnabled = allow
+        arrayOfDisableElement.5?.isUserInteractionEnabled = allow
+
     }
     
     func setupUI(){
-        self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
+        //self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         self.redioBtnBank.setTitle("", for: .normal)
         self.redioBtnCash.setTitle("", for: .normal)
         self.detailStackView.isHidden = true

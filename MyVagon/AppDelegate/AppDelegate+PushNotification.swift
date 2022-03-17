@@ -214,7 +214,7 @@ extension Notification.Name {
     
     static let reloadDataForSearch = NSNotification.Name("reloadDataForSearch")
     static let openSupportPopUp = NSNotification.Name("openSupportPopUp")
-    
+    static let backToLoadDeatil = NSNotification.Name("backToLoadDeatil")
 }
 
 enum NotificationTypes : String {

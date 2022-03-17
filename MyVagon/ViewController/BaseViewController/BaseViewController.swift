@@ -274,7 +274,79 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                         let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
                         btnRightBar.style = .plain
                         arrButtons.append(btnRightBar)
-                    }else if title == NavItemsRight.contactus.value{
+                    }else if title == NavItemsRight.editPersonalInfo.value {
+                        let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
+                        BtnRight.FontSize = 14
+                        BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                        BtnRight.semanticContentAttribute = .forceLeftToRight
+                        BtnRight.setImage(UIImage.init(named: "ic_edit"), for: .normal)
+                        BtnRight.setTitle("Request Edit", for: .normal)
+                        BtnRight.addTarget(self, action: #selector(self.btneditPersonalInfo(sender:)), for: .touchUpInside)
+                        BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
+                        BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+                        BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                        
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                    }
+                    else if title == NavItemsRight.editPaymentDetails.value {
+                        let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
+                        BtnRight.FontSize = 14
+                        BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                        BtnRight.semanticContentAttribute = .forceLeftToRight
+                        BtnRight.setImage(UIImage.init(named: "ic_edit"), for: .normal)
+                        BtnRight.setTitle("Request Edit", for: .normal)
+                        BtnRight.addTarget(self, action: #selector(self.btneditPaymentsDetails(sender:)), for: .touchUpInside)
+                        BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
+                        BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+                        BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                        
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                    }
+                    else if title == NavItemsRight.editLicenceDetails.value {
+                        let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
+                        BtnRight.FontSize = 14
+                        BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                        BtnRight.semanticContentAttribute = .forceLeftToRight
+                        BtnRight.setImage(UIImage.init(named: "ic_edit"), for: .normal)
+                        BtnRight.setTitle("Request Edit", for: .normal)
+                        BtnRight.addTarget(self, action: #selector(self.btneditLicenceDetails(sender:)), for: .touchUpInside)
+                        BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
+                        BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+                        BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                        
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                    }
+                    else if title == NavItemsRight.editProfile.value {
+                        let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
+                        BtnRight.FontSize = 14
+                        BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                        BtnRight.semanticContentAttribute = .forceLeftToRight
+                        BtnRight.setImage(UIImage.init(named: "ic_edit"), for: .normal)
+                        BtnRight.setTitle("Request Edit", for: .normal)
+                        BtnRight.addTarget(self, action: #selector(self.btnEditProfile(sender:)), for: .touchUpInside)
+                        BtnRight.roundCorners(corners: [.topLeft,.bottomLeft], radius: 14)
+                        BtnRight.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+                        BtnRight.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 10)
+                        let ViewRight = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
+                        ViewRight.addSubview(BtnRight)
+                        
+                        let btnRightBar : UIBarButtonItem = UIBarButtonItem.init(customView: ViewRight)
+                        btnRightBar.style = .plain
+                        arrButtons.append(btnRightBar)
+                    }
+                    else if title == NavItemsRight.contactus.value{
                         let BtnRight = themeButton(frame: CGRect(x: 30, y: 5, width: 140, height: 30))
                         BtnRight.FontSize = 14
                         BtnRight.TextColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
@@ -330,6 +402,9 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
                    
                 }
                 controller.navigationItem.rightBarButtonItems = arrButtons
+            }else{
+                //dhananjay
+                controller.navigationItem.rightBarButtonItems = []
             }
         
     }
@@ -393,6 +468,21 @@ class BaseViewController: UIViewController, UIGestureRecognizerDelegate, UIConte
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
+    
+    @objc func btneditPersonalInfo(sender:UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "EditPersonalInfo"), object: nil, userInfo: nil)
+    }
+    
+    @objc func btneditPaymentsDetails(sender:UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "EditPaymentsDetails"), object: nil, userInfo: nil)
+    }
+    @objc func btneditLicenceDetails(sender:UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "EditLicenceDetails"), object: nil, userInfo: nil)
+    }
+    @objc func btnEditProfile(sender:UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name("editprofile"), object: nil)
+    }
+    
     @objc func btnOptionAction(sender:UIButton) {
         
 

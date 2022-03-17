@@ -98,7 +98,7 @@ class LoadDetailsVC: BaseViewController {
         })
         ColTypes.reloadData()
         
-       
+        addNotificationObs()
         
         MapViewForLocation.isUserInteractionEnabled = false
         
@@ -109,6 +109,20 @@ class LoadDetailsVC: BaseViewController {
         super.viewDidLayoutSubviews()
      
     }
+    
+    func addNotificationObs(){
+        NotificationCenter.default.removeObserver(self, name: .backToLoadDeatil, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(backToLoadDeatil), name: .backToLoadDeatil, object: nil)
+    }
+    
+    @objc func backToLoadDeatil() {
+        NotificationCenter.default.post(name: .reloadDataForSearch, object: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
     // ----------------------------------------------------
     // MARK: - --------- Custom Methods ---------
     // ----------------------------------------------------
@@ -237,6 +251,16 @@ class LoadDetailsVC: BaseViewController {
         
         
     
+    }
+    
+    func openReloadView(strTitle : String){
+        let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewReloadVC.storyboardID) as! ViewReloadVC
+        controller.strTitle = strTitle
+        
+        controller.modalPresentationStyle = .overCurrentContext
+        controller.modalTransitionStyle = .coverVertical
+        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
+        self.present(sheetController, animated: true, completion: nil)
     }
     
     @objc func reviewGesture(_ sender: UITapGestureRecognizer){

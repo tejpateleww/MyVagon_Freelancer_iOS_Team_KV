@@ -381,5 +381,33 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    //MARK:- Update Personal Info
+    class func editPersonalInfo(reqModel: EditPersonalInfoReqModel, completion: @escaping (Bool,String,NewLoginResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.updateBasicDetails.rawValue, requestModel: reqModel, responseModel: NewLoginResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- Update Licence Details
+    class func updateLicenceDetail(reqModel: EditLicenceDetailsReqModel, completion: @escaping (Bool,String,GeneralMessageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.updateLicenceDetails.rawValue, requestModel: reqModel, responseModel: GeneralMessageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: - edit tractor
+    class func editTractorDetail(reqModel: EditTractorDetailReqModel, completion: @escaping (Bool,String,RegisterResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.tractorDetailEdit.rawValue, requestModel: reqModel, responseModel: RegisterResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK: - edit truck
+    class func editTruckDetail(reqModel: EditTruckReqModel, completion: @escaping (Bool,String,RegisterResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.editTruckDetail.rawValue, requestModel: reqModel, responseModel: RegisterResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }
 
