@@ -66,6 +66,7 @@ class AddTruckVC: BaseViewController {
     
     var isFromEdit = false
     var isEditEnable = true
+    var isToAdd = false
     var truckEditDeta : TruckDetails?
     var truckIndex = 0
     var editeData : ((TruckDetails) -> Void)?
@@ -75,7 +76,6 @@ class AddTruckVC: BaseViewController {
         super.viewDidLoad()
         self.setupUI()
         self.setupData()
-        print("setdata ",truckEditDeta)
         if isFromEdit {
             self.setEditDeta()
         }
@@ -118,6 +118,8 @@ class AddTruckVC: BaseViewController {
             }else{
                 setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editProfile.value], isTranslucent: true, ShowShadow: true)
             }
+        }else{
+            setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
         }
     }
 
@@ -191,11 +193,25 @@ class AddTruckVC: BaseViewController {
         self.txtTruckLicencePlate.text = truckEditDeta?.plateNumber
         self.arrImages = truckEditDeta?.images ?? []
         self.arrFeatureID = truckEditDeta?.truckFeatures?.components(separatedBy: ",") ?? []
-        let capacity = SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?[truckIndex]
-        let item = TruckCapacityType(Capacity: capacity?.value ?? "", Type: capacity?.packageTypeId?.id ?? 0)
-        TruckCapacityAdded.removeAll()
-        TruckCapacityAdded.append(item)
+        self.SelectedCategory = truckEditDeta?.truckType?.id ?? 0
+        self.SelectedSubCategory  = truckEditDeta?.truckSubCategory?.id ?? 0
+        self.selectedWeightUnitID = truckEditDeta?.weightUnit?.id ?? 0
+        self.selectedCategoryUnitID = truckEditDeta?.loadCapacityUnit?.id ?? 0
+
+        // pallets
+        
+       let vehicleCapacity = SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity ?? []
+        for i in vehicleCapacity{
+            if i.driverTruckDetailsId == truckEditDeta?.id{
+                let item = TruckCapacityType(Capacity: i.value ?? "", Type: i.packageTypeId?.id ?? 0)
+                TruckCapacityAdded.removeAll()
+                TruckCapacityAdded.append(item)
+            }
+        }
         collectionTruckCapacity.reloadData()
+        if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.name == txtTruckType.text ?? ""}) {
+            SelectedCategoryIndex = IndexForTruckType
+        }
     }
     
     func ImageUploadAPI(arrImages:[UIImage]) {
@@ -226,14 +242,10 @@ class AddTruckVC: BaseViewController {
             return loadCapacity
         }else if !loadUnit.0{
             return loadUnit
-        }else if TruckCapacityAdded.count == 0{
-            return (false,"Plaese add capacity")
         }else if !licenceNumber.0{
             return licenceNumber
         }else if arrImages.count == 0{
             return (false,"Plaese add truck images")
-        }else if(self.arrFeatureID.count == 0){
-            return (false,"Plaese select truck features")
         }
         else{
             return (true,"Succesfull")
@@ -245,6 +257,8 @@ class AddTruckVC: BaseViewController {
         self.isEditEnable = true
         self.enableEdit()
         self.collectionImages.reloadData()
+        //dhananjay
+        self.collectionTruckCapacity.reloadData()
         self.setUpNevigetionBar()
         }
     
@@ -305,33 +319,19 @@ class AddTruckVC: BaseViewController {
         let velidetion = validetion()
         if velidetion.0{
             if isFromEdit{
-                truckEditDeta?.images = arrImages
-                truckEditDeta?.weight = txtTruckWeight.text
+                truckEditDeta?.images = self.arrImages
+                truckEditDeta?.weight = self.txtTruckWeight.text
                 truckEditDeta?.loadCapacity = self.txtCargoLoadCapacity.text
                 truckEditDeta?.plateNumber = self.txtTruckLicencePlate.text
-                truckEditDeta?.truckFeatures = arrFeatureID.map({$0}).joined(separator: ",")
-                truckEditDeta?.loadCapacityUnit?.name = cargoLoadCapTF.text
-                if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.first(where:{$0.name == cargoLoadCapTF.text ?? ""}) {
-                    truckEditDeta?.loadCapacityUnit?.id = DummyFirst.id
-                }
-                
-                truckEditDeta?.weightUnit?.name = truckWeightTF.text
-                if let DummyFirst = SingletonClass.sharedInstance.TruckunitList?.first(where: {$0.name == truckWeightTF.text ?? ""}) {
-                    truckEditDeta?.weightUnit?.id = DummyFirst.id
-                }
-                
-                truckEditDeta?.truckType?.name = txtTruckType.text
-                if let DummyFirst = SingletonClass.sharedInstance.TruckTypeList?.first(where: {$0.name == txtTruckType.text ?? ""}) {
-                    truckEditDeta?.truckSubCategory?.id = DummyFirst.id
-                }
-                
-                truckEditDeta?.truckSubCategory?.name = txtTruckSubType.text
-                if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)}) {
-                    if let DummyFirst = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.first(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory?.id ?? 0)}) {
-                        truckEditDeta?.truckSubCategory?.id = DummyFirst.id
-                    }
-                }
-                
+                truckEditDeta?.truckFeatures = self.arrFeatureID.map({$0}).joined(separator: ",")
+                truckEditDeta?.loadCapacityUnit?.name = self.cargoLoadCapTF.text
+                truckEditDeta?.loadCapacityUnit?.id = self.selectedCategoryUnitID
+                truckEditDeta?.weightUnit?.name = self.truckWeightTF.text
+                truckEditDeta?.weightUnit?.id = self.selectedWeightUnitID
+                truckEditDeta?.truckType?.name = self.txtTruckType.text
+                truckEditDeta?.truckType?.id = self.SelectedCategory
+                truckEditDeta?.truckSubCategory?.name = self.txtTruckSubType.text
+                truckEditDeta?.truckSubCategory?.id = self.SelectedSubCategory
                 self.editeData?(truckEditDeta!)
                 self.navigationController?.popViewController(animated: true)
             }else{
@@ -345,14 +345,19 @@ class AddTruckVC: BaseViewController {
                 self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
                 self.tructData.pallets = TruckCapacityAdded
                 self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
-                SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
                 
-                UserDefault.SetRegiterData()
-                UserDefault.synchronize()
-                
-                self.navigationController?.popViewController(animated: true)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    NotificationCenter.default.post(name: .reloadRegTruckListScreen, object: nil)
+                if isToAdd{
+                    self.callWebService()
+                }else{
+                    SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
+                    
+                    UserDefault.SetRegiterData()
+                    UserDefault.synchronize()
+                    
+                    self.navigationController?.popViewController(animated: true)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                        NotificationCenter.default.post(name: .reloadRegTruckListScreen, object: nil)
+                    }
                 }
             }
         }else{
@@ -382,9 +387,9 @@ extension AddTruckVC : UITextFieldDelegate{
                     txtTruckSubType.inputView = GeneralPicker
                     txtTruckSubType.inputAccessoryView = GeneralPicker.toolbar
                     
-                    if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckType?.id ?? 0)}) {
+                    if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.name == txtTruckType.text ?? ""}) {
                         
-                        if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.id == (SingletonClass.sharedInstance.UserProfileData?.vehicle?.truckSubCategory?.id ?? 0)}) {
+                        if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.name == txtTruckSubType.text}) {
                             GeneralPicker.selectRow(IndexForSubTruckType, inComponent: 0, animated: false)
                         }
                     }
@@ -484,7 +489,7 @@ extension AddTruckVC: GeneralPickerViewDelegate{
             self.txtTruckType.text = item?.name
             self.SelectedCategory  = item?.id ?? 0
             self.txtTruckSubType.text = ""
-            
+            self.SelectedSubCategory = 0
             if SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count ?? 0 < 1{
                 viewSubType.isHidden = true
             }else{
@@ -560,7 +565,8 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
             
             cell.BGView.backgroundColor = .clear
             cell.BGView.layer.borderColor = UIColor.appColor(.themeButtonBlue).cgColor
-            
+            cell.btnRemove.isHidden = !isEditEnable
+            cell.btnView.isHidden = !isEditEnable
             cell.RemoveClick = {
                 if self.isEditEnable{
                 self.btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
@@ -689,4 +695,20 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
         }
         print(self.arrFeatureID)
     }
+}
+
+//MARK: - Web service
+extension AddTruckVC{
+    
+    func callWebService(){
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let jsonString = try! encoder.encode([self.tructData])
+        print(String(data: jsonString, encoding: .utf8)!)
+        let finalJson = String(data: jsonString, encoding: .utf8)!
+        let reqModel = AddTruckReqModel()
+        reqModel.truck_details = finalJson
+        self.addTruckViewModel.webServiceForAddTruck(reqModel: reqModel)
+    }
+    
 }

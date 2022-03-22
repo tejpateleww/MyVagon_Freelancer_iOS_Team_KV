@@ -45,7 +45,6 @@ class RegisterTruckListVC: BaseViewController {
         self.registerNib()
         self.addNotificationObs()
         if isFromEdit{
-            self.btnAddTruck.isHidden = true
             self.btnContinue.isHidden = false
             self.btnContinue.setTitle("Save", for: .normal)
         }
@@ -92,14 +91,18 @@ class RegisterTruckListVC: BaseViewController {
     //MARK: - UIButton action methods
     @IBAction func btnAddTruckAction(_ sender: Any) {
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: AddTruckVC.storyboardID) as! AddTruckVC
-        controller.isFromEdit = self.isFromEdit
+        if isFromEdit{
+            controller.isToAdd = true
+        }
         self.isEdit = false
         self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnContinueAction(_ sender: Any) {
         if isFromEdit{
-            self.callWebService()
+            if arrTruckEditData.count > 0{
+                self.callWebService()
+            }
         }else{
             SingletonClass.sharedInstance.RegisterData.Reg_truck_data = self.arrtruckData
             UserDefault.setValue(2, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
@@ -117,9 +120,36 @@ class RegisterTruckListVC: BaseViewController {
 extension RegisterTruckListVC{
     
     func callWebService(){
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let jsonString = try! encoder.encode(getReqModel())
+        print(String(data: jsonString, encoding: .utf8)!)
+        let finalJson = String(data: jsonString, encoding: .utf8)!
         let reqModel = EditTruckReqModel()
-        reqModel.truck_details = arrTruckEditData.description
+        reqModel.truck_details = finalJson
+
         self.editTruckDetailViewModel.callWebserviceForEditTruck(reqModel: reqModel)
+    }
+    
+    func getReqModel() -> [TruckEditReqModel] {
+        var array = [TruckEditReqModel]()
+        for i in arrTruckEditData{
+            let temp = TruckEditReqModel()
+            temp.truck_type = i.truckType?.id
+            temp.id = i.id
+            temp.plate_number = i.plateNumber
+            temp.truck_sub_category = i.truckSubCategory?.id
+            temp.truck_features = i.truckFeatures
+            temp.weight = i.weight
+            temp.weight_unit = i.weightUnit?.id
+            temp.capacity = i.loadCapacity
+            temp.capacity_unit = i.loadCapacityUnit?.id
+            temp.images = i.images.map({$0})?.joined(separator: ",")
+            temp.default_truck = i.defaultTruck
+            array.append(temp)
+        }
+        return array
     }
 }
 
@@ -143,8 +173,10 @@ extension RegisterTruckListVC : UITableViewDelegate, UITableViewDataSource {
                 cell.lbltruckType.text = self.arrTruckEditData[indexPath.row].truckType?.name
                 cell.lblTruckNumber.text = self.arrTruckEditData[indexPath.row].plateNumber
                 cell.btnDeleteClick = {
+                    if self.arrTruckEditData.count > 1{
                     self.arrTruckEditData.remove(at: indexPath.row)
                     self.tblTruckList.reloadData()
+                    }
                 }
             }else{
                 for truck in SingletonClass.sharedInstance.TruckTypeList ?? []{
@@ -174,7 +206,6 @@ extension RegisterTruckListVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didselect")
         if (isFromEdit && arrTruckEditData.count > 0){
         let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: AddTruckVC.storyboardID) as! AddTruckVC
         controller.isFromEdit = true

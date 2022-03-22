@@ -178,8 +178,10 @@ enum ApiKey: String {
     case updateLicenceDetails                   = "update-personal-details"
     case tractorDetailEdit                      = "update-tractor-details"
     case editTruckDetail                        = "update-truck-details"
+    case addTruck                               = "add-truck-details"
+    case relatedMatch                           = "related-matches"
+    case startTrip                              = "start-trip"
     
-
 }
 
  

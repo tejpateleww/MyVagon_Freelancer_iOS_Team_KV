@@ -18,7 +18,8 @@ class LoadDetailViewModel {
             Utilities.HideLoaderButtonInButton(Button: self.commonAcceptRejectPopupVC?.BtnRight ?? themeButton(), vc: self.commonAcceptRejectPopupVC ?? UIViewController())
             self.commonAcceptRejectPopupVC?.dismiss(animated: true, completion: nil)
             if status {
-                self.loadDetailsVC?.openReloadView(strTitle: apiMessage)
+                print("data in responce = ",response?.data)
+                self.loadDetailsVC?.openReloadView(strTitle: apiMessage,bookingId: "",driverId: "")
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }

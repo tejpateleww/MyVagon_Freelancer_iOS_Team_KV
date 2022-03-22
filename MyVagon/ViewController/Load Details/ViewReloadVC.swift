@@ -16,7 +16,8 @@ class ViewReloadVC: BaseViewController {
     
     var strTitle : String = ""
     var customTabBarController: CustomTabBarVC?
-
+    var driverId = ""
+    var bookingId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareView()
@@ -37,6 +38,12 @@ class ViewReloadVC: BaseViewController {
     }
     
     @IBAction func btnReloadAction(_ sender: Any) {
+        appDel.NavigateToHome()
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: RelatedMatchesVC.storyboardID) as! RelatedMatchesVC
+        controller.hidesBottomBarWhenPushed = true
+        controller.driverId = self.driverId
+        controller.bookingId = self.bookingId
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     
     @IBAction func btnDismissAction(_ sender: Any) {

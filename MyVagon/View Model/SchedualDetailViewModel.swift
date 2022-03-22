@@ -170,4 +170,21 @@ class SchedualDetailViewModel {
             }
         })
     }
+    func WebServiceStartTrip(ReqModel:StartTripReqModel){
+        Utilities.showHud()
+        WebServiceSubClass.StartTrip(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status{
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                self.schedualLoadDetailsViewController?.LoadDetails?.status = "in-process"
+                self.schedualLoadDetailsViewController?.SetValue()
+                self.schedualLoadDetailsViewController?.btnStartTrip.superview?.isHidden = true
+                
+                SingletonClass.sharedInstance.CurrentTripStart = true
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshViewForPostTruck"), object: nil, userInfo: nil)
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
 }

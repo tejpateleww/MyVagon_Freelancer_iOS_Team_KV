@@ -286,4 +286,5 @@ struct RegTruckDetailModel : Codable {
     var plate_number = ""
     var images = ""
     var truck_features = ""
+    var default_truck = "0"
 }

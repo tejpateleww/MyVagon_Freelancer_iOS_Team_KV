@@ -243,6 +243,7 @@
 		882DDAB927E218C4004A4B70 /* EditTractorDetailReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */; };
 		8840AC5127D1EF820092678B /* TruckFeatureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */; };
 		8840AC5227D1EF820092678B /* TruckFeatureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8840AC5027D1EF820092678B /* TruckFeatureCell.xib */; };
+		8859102627E88EB5002A4999 /* AddTruckReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8859102527E88EB5002A4999 /* AddTruckReqModel.swift */; };
 		885A27C727BFA93200BE7A6B /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */; };
 		885A27CA27BFA9B500BE7A6B /* StatisticResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */; };
 		8860BB6127DF39E7004FA35A /* PaymentDetailResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8860BB6027DF39E7004FA35A /* PaymentDetailResModel.swift */; };
@@ -303,6 +304,11 @@
 		88C3A9DF27A414C40018B9E8 /* EarningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */; };
 		88C4D48827BA763400B0D9DD /* ChatShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C4D48627BA763400B0D9DD /* ChatShimmerCell.swift */; };
 		88C4D48927BA763400B0D9DD /* ChatShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88C4D48727BA763400B0D9DD /* ChatShimmerCell.xib */; };
+		88D0BF5027E99CFB00BD4D48 /* RelatedMatchesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0BF4F27E99CFB00BD4D48 /* RelatedMatchesVC.swift */; };
+		88D0BF5327E9AE9900BD4D48 /* RelatedMatchReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0BF5227E9AE9900BD4D48 /* RelatedMatchReqModel.swift */; };
+		88D0BF5627E9B1FE00BD4D48 /* RelatedMatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0BF5527E9B1FE00BD4D48 /* RelatedMatchViewModel.swift */; };
+		88D0BF5827E9FBE300BD4D48 /* StartTripResModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0BF5727E9FBE300BD4D48 /* StartTripResModel.swift */; };
+		88D0BF5A27E9FBFF00BD4D48 /* StartTripReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D0BF5927E9FBFF00BD4D48 /* StartTripReqModel.swift */; };
 		8EB964AA078428719424A87A /* Pods_MyVagonTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AF004DB727012A21FB7A169 /* Pods_MyVagonTests.framework */; };
 		90A528EB2722D795004A292B /* ShimmerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A528E92722D795004A292B /* ShimmerCell.swift */; };
 		90A528EC2722D795004A292B /* ShimmerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90A528EA2722D795004A292B /* ShimmerCell.xib */; };
@@ -631,6 +637,7 @@
 		882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTractorDetailReqModel.swift; sourceTree = "<group>"; };
 		8840AC4F27D1EF820092678B /* TruckFeatureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TruckFeatureCell.swift; sourceTree = "<group>"; };
 		8840AC5027D1EF820092678B /* TruckFeatureCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TruckFeatureCell.xib; sourceTree = "<group>"; };
+		8859102527E88EB5002A4999 /* AddTruckReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTruckReqModel.swift; sourceTree = "<group>"; };
 		885A27C627BFA93200BE7A6B /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		885A27C927BFA9B500BE7A6B /* StatisticResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticResModel.swift; sourceTree = "<group>"; };
 		8860BB6027DF39E7004FA35A /* PaymentDetailResModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailResModel.swift; sourceTree = "<group>"; };
@@ -693,6 +700,11 @@
 		88C3A9DE27A414C40018B9E8 /* EarningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarningViewModel.swift; sourceTree = "<group>"; };
 		88C4D48627BA763400B0D9DD /* ChatShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatShimmerCell.swift; sourceTree = "<group>"; };
 		88C4D48727BA763400B0D9DD /* ChatShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatShimmerCell.xib; sourceTree = "<group>"; };
+		88D0BF4F27E99CFB00BD4D48 /* RelatedMatchesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedMatchesVC.swift; sourceTree = "<group>"; };
+		88D0BF5227E9AE9900BD4D48 /* RelatedMatchReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedMatchReqModel.swift; sourceTree = "<group>"; };
+		88D0BF5527E9B1FE00BD4D48 /* RelatedMatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedMatchViewModel.swift; sourceTree = "<group>"; };
+		88D0BF5727E9FBE300BD4D48 /* StartTripResModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTripResModel.swift; sourceTree = "<group>"; };
+		88D0BF5927E9FBFF00BD4D48 /* StartTripReqModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartTripReqModel.swift; sourceTree = "<group>"; };
 		8DDD11883D6B224086DF9213 /* Pods-MyVagon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVagon.debug.xcconfig"; path = "Target Support Files/Pods-MyVagon/Pods-MyVagon.debug.xcconfig"; sourceTree = "<group>"; };
 		90A528E92722D795004A292B /* ShimmerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerCell.swift; sourceTree = "<group>"; };
 		90A528EA2722D795004A292B /* ShimmerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerCell.xib; sourceTree = "<group>"; };
@@ -876,6 +888,7 @@
 		18129AA926BA554000983AFC /* View Model */ = {
 			isa = PBXGroup;
 			children = (
+				88D0BF5427E9B1E100BD4D48 /* RelatedMatch */,
 				882DDAB227E2186F004A4B70 /* edit tractor View model */,
 				882DDAB027E2186F004A4B70 /* editTruckViewModel */,
 				18129AAA26BA565000983AFC /* TruckDetailsViewModel.swift */,
@@ -1098,6 +1111,9 @@
 		189FB66B26B96F9100BBD5A0 /* ReqModel */ = {
 			isa = PBXGroup;
 			children = (
+				88D0BF5927E9FBFF00BD4D48 /* StartTripReqModel.swift */,
+				88D0BF5127E9AE7A00BD4D48 /* ReleatedMatch */,
+				8859102427E88E00002A4999 /* AddTruckReqModel */,
 				882DDAB727E218C4004A4B70 /* EditTractorDetailReqModel.swift */,
 				882DDAB627E218C4004A4B70 /* EditTrucksReqModel.swift */,
 				189FB66826B96F8800BBD5A0 /* RegisterReqModel.swift */,
@@ -1115,6 +1131,7 @@
 		189FB66C26B976EC00BBD5A0 /* ResModel */ = {
 			isa = PBXGroup;
 			children = (
+				88D0BF5727E9FBE300BD4D48 /* StartTripResModel.swift */,
 				8860BB6427DF6252004FA35A /* LocationDetailResModel */,
 				8860BB5F27DF39BA004FA35A /* PaymentDetailsResponse */,
 				88A3380227D9CBEC00F327EA /* ReviewResponceModel */,
@@ -1440,6 +1457,14 @@
 				8840AC5027D1EF820092678B /* TruckFeatureCell.xib */,
 			);
 			path = "Truck feature";
+			sourceTree = "<group>";
+		};
+		8859102427E88E00002A4999 /* AddTruckReqModel */ = {
+			isa = PBXGroup;
+			children = (
+				8859102527E88EB5002A4999 /* AddTruckReqModel.swift */,
+			);
+			path = AddTruckReqModel;
 			sourceTree = "<group>";
 		};
 		885A27C827BFA9A000BE7A6B /* StatisticResModel */ = {
@@ -1793,6 +1818,30 @@
 			path = "Chat Shimmer";
 			sourceTree = "<group>";
 		};
+		88D0BF4E27E99CB500BD4D48 /* RelatedMatches */ = {
+			isa = PBXGroup;
+			children = (
+				88D0BF4F27E99CFB00BD4D48 /* RelatedMatchesVC.swift */,
+			);
+			path = RelatedMatches;
+			sourceTree = "<group>";
+		};
+		88D0BF5127E9AE7A00BD4D48 /* ReleatedMatch */ = {
+			isa = PBXGroup;
+			children = (
+				88D0BF5227E9AE9900BD4D48 /* RelatedMatchReqModel.swift */,
+			);
+			path = ReleatedMatch;
+			sourceTree = "<group>";
+		};
+		88D0BF5427E9B1E100BD4D48 /* RelatedMatch */ = {
+			isa = PBXGroup;
+			children = (
+				88D0BF5527E9B1FE00BD4D48 /* RelatedMatchViewModel.swift */,
+			);
+			path = RelatedMatch;
+			sourceTree = "<group>";
+		};
 		90A528E82722D779004A292B /* Shimmer Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1929,6 +1978,7 @@
 		A1519CD326A00413001738B9 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				88D0BF4E27E99CB500BD4D48 /* RelatedMatches */,
 				8860BB6727DF627F004FA35A /* New Edit Profile */,
 				886A920927C4F67600B04D3F /* AboutUS */,
 				8876A51C27C3BDD900CF4D6F /* Payment */,
@@ -2444,6 +2494,7 @@
 				18A34F2826CD1F2D00F252B6 /* HeaderOfLocationsTbl.swift in Sources */,
 				A14974D526A1AB800072AF33 /* Poppins-Italic.ttf in Sources */,
 				8868ABC527BCF15C00AA048F /* SupportPopUpVC.swift in Sources */,
+				88D0BF5627E9B1FE00BD4D48 /* RelatedMatchViewModel.swift in Sources */,
 				18BA363126B7CA5300F83069 /* RegisterAllInOneViewController.swift in Sources */,
 				185BA7F02757843F00E99FAC /* MyLoadsNewDatum.swift in Sources */,
 				A14974D626A1AB800072AF33 /* Poppins-Light.ttf in Sources */,
@@ -2490,7 +2541,9 @@
 				186E382B26C14B9400984D40 /* VerifyResModel.swift in Sources */,
 				189B233D271D544D00431D94 /* DriverListLoadCapacityUnit.swift in Sources */,
 				A14974DE26A1AB800072AF33 /* Poppins-ThinItalic.ttf in Sources */,
+				88D0BF5027E99CFB00BD4D48 /* RelatedMatchesVC.swift in Sources */,
 				A1519CCD26A00407001738B9 /* UIViewController+Extension.swift in Sources */,
+				8859102627E88EB5002A4999 /* AddTruckReqModel.swift in Sources */,
 				886A920F27C4F7EC00B04D3F /* AboutCell.swift in Sources */,
 				1806E53926FCBDE4001F7888 /* PackageDatum.swift in Sources */,
 				1802692D26AFD5D70088B49F /* Constants.swift in Sources */,
@@ -2521,6 +2574,7 @@
 				882DDAAF27E20CFB004A4B70 /* ViewReloadVC.swift in Sources */,
 				88C3A9CC27A3C88B0018B9E8 /* NoDataTableViewCell.swift in Sources */,
 				18CC346E270D67E00063E33B /* SearchProductType.swift in Sources */,
+				88D0BF5827E9FBE300BD4D48 /* StartTripResModel.swift in Sources */,
 				189FB66426B96BF000BBD5A0 /* CodableResponseServiceClass.swift in Sources */,
 				180EF5DB277035930056F899 /* BidRequestDetailViewController.swift in Sources */,
 				8860BB6F27DF62B1004FA35A /* LocationDetailVC.swift in Sources */,
@@ -2535,6 +2589,7 @@
 				8877067627ABA30D00EACE5A /* AddVehicleVC.swift in Sources */,
 				8860BB6327DF6230004FA35A /* LocationDetailViewModel.swift in Sources */,
 				1802691B26AFCEEC0088B49F /* EnterTruckDetailsVC.swift in Sources */,
+				88D0BF5327E9AE9900BD4D48 /* RelatedMatchReqModel.swift in Sources */,
 				18F496582779BD350069B26C /* LineLayer.swift in Sources */,
 				A1519CD226A00407001738B9 /* UIImageView+Extension.swift in Sources */,
 				189FB66926B96F8800BBD5A0 /* RegisterReqModel.swift in Sources */,
@@ -2577,6 +2632,7 @@
 				185BA7E62757843F00E99FAC /* MyLoadsNewTruckTypeCategory.swift in Sources */,
 				18BB0602270C6C2700B9839D /* ProfileEditViewController.swift in Sources */,
 				A1519CE026A01CDF001738B9 /* Fonts.swift in Sources */,
+				88D0BF5A27E9FBFF00BD4D48 /* StartTripReqModel.swift in Sources */,
 				A1519CCC26A00407001738B9 /* UITextField+Extensions.swift in Sources */,
 				18129AC126BAD30000983AFC /* LoginViewModel.swift in Sources */,
 				A1519CC026A003AE001738B9 /* Themes.swift in Sources */,
@@ -2846,7 +2902,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyVagon/MyVagon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = SQYCGM6LMB;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
@@ -2870,7 +2926,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MyVagon/MyVagon.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0;
+				CURRENT_PROJECT_VERSION = 1.0.1;
 				DEVELOPMENT_TEAM = SQYCGM6LMB;
 				INFOPLIST_FILE = MyVagon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;

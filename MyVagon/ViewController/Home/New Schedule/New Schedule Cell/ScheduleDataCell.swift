@@ -119,7 +119,7 @@ class ScheduleDataCell: UITableViewCell {
         if bid == 1{
             switch status{
             case NewScheduleStatus.pending.Name:
-                return "Bid Confermation Panding"
+                return "Bid Confirmation Pending"
             case NewScheduleStatus.inprocess.Name:
                 return ""
             case NewScheduleStatus.completed.Name:
@@ -141,7 +141,8 @@ class ScheduleDataCell: UITableViewCell {
         
         if (lodeData?.bookingInfo?.trucks?.locations?.count ?? 0) != 0{
             lblCompanyName.text = lodeData?.bookingInfo?.shipperDetails?.name ?? ""
-            lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (lodeData?.bookingInfo?.amount ?? "" ) : ""
+            let amount = (lodeData?.bookingInfo?.bookingBidAmount != nil) ? lodeData?.bookingInfo?.bookingBidAmount : lodeData?.bookingInfo?.amount
+            lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + "\(amount ?? "")" : ""
             lblLoadId.text = "#\(lodeData?.bookingInfo?.id ?? 0)"
             lblTonMiles.text =   "\(lodeData?.bookingInfo?.totalWeight ?? ""), \(lodeData?.bookingInfo?.distance ?? "") Km"
             let DeadheadValue = (lodeData?.bookingInfo?.trucks?.locations?.first?.deadhead ?? "" == "0") ? lodeData?.bookingInfo?.trucks?.truckType?.name ?? "" : "\(lodeData?.bookingInfo?.trucks?.locations?.first?.deadhead ?? "") : \(lodeData?.bookingInfo?.trucks?.truckType?.name ?? "")"
@@ -200,7 +201,8 @@ class ScheduleDataCell: UITableViewCell {
         lblDeadhead.isHidden = false
         lblTonMiles.isHidden = false
         lblCompanyName.text = data?.shipperDetails?.companyName ?? ""
-        lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + (data?.amount ?? "" ) : ""
+        let amount = (data?.bookingBidAmount != nil) ? data?.bookingBidAmount : data?.amount
+        lblAmount.text = (SingletonClass.sharedInstance.UserProfileData?.permissions?.viewPrice ?? 0 == 1) ? Currency + "\(amount ?? "")" : ""
         lblLoadId.text = "#\(data?.id ?? 0)"
         lblTonMiles.text =   "\(data?.totalWeight ?? ""), \(data?.distance ?? "") Km"
         let DeadheadValue = (data?.trucks?.locations?.first?.deadhead ?? "" == "0") ? data?.trucks?.truckType?.name ?? "" : "\(data?.trucks?.locations?.first?.deadhead ?? "") : \(data?.trucks?.truckType?.name ?? "")"
@@ -255,7 +257,18 @@ extension ScheduleDataCell : UITableViewDelegate, UITableViewDataSource {
         cell.viewLine.isHidden = false
         cell.viewHorizontalLine.isHidden = true
         cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName
-        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+//        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+        var StringForDateTime = ""
+        StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
+        StringForDateTime.append(" ")
+        
+        if (self.arrLocations[indexPath.row].deliveryTimeTo ?? "") == (self.arrLocations[indexPath.row].deliveryTimeFrom ?? "") {
+            StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveryTimeTo ?? "")")
+        } else {
+            StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveryTimeTo ?? "")-\(self.arrLocations[indexPath.row].deliveryTimeFrom ?? "")")
+        }
+        cell.lblDateTime.text = StringForDateTime
+        
         cell.lblAddress.text = self.arrLocations[indexPath.row].dropLocation
         
         if(indexPath.row == (self.arrLocations.count - 1)){

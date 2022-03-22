@@ -253,10 +253,11 @@ class LoadDetailsVC: BaseViewController {
     
     }
     
-    func openReloadView(strTitle : String){
+    func openReloadView(strTitle : String,bookingId: String,driverId: String){
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewReloadVC.storyboardID) as! ViewReloadVC
         controller.strTitle = strTitle
-        
+        controller.bookingId = bookingId
+        controller.driverId = driverId
         controller.modalPresentationStyle = .overCurrentContext
         controller.modalTransitionStyle = .coverVertical
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
@@ -483,7 +484,6 @@ extension LoadDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource,UI
             return arrTypes.count
         }
         return 0
-        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == ColTypes{

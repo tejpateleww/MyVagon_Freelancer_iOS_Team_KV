@@ -35,6 +35,7 @@ class TruckCapacityCell : UICollectionViewCell {
     @IBOutlet weak var lblCapacity: themeLabel!
     @IBOutlet weak var btnRemove: themeButton!
     @IBOutlet weak var BGView: UIView!
+    @IBOutlet weak var btnView: UIView!
     var RemoveClick : (() -> ())?
     
     override func awakeFromNib() {

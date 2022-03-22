@@ -20,6 +20,7 @@ class EditPersonalInfoVC: BaseViewController {
     @IBOutlet weak var btnProfieImage: UIButton!
     @IBOutlet weak var btnSave: UIButton!
     @IBOutlet weak var imgAddIcon: UIImageView!
+    @IBOutlet weak var txtEmail: themeTextfield!
     
     var CountryCodeArray: [String] = ["+30"]
     let GeneralPicker = GeneralPickerView()
@@ -75,6 +76,7 @@ class EditPersonalInfoVC: BaseViewController {
         TextFieldFullName.text = SingletonClass.sharedInstance.UserProfileData?.name ?? ""
         
         TextFieldMobileNumber.text = SingletonClass.sharedInstance.UserProfileData?.mobileNumber ?? ""
+        txtEmail.text = SingletonClass.sharedInstance.UserProfileData?.email ?? ""
         if SingletonClass.sharedInstance.RegisterData.Reg_country_code != "" {
             self.TextFieldCountryCode.text = SingletonClass.sharedInstance.RegisterData.Reg_country_code
         } else {

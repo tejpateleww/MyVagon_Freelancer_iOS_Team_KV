@@ -303,9 +303,10 @@ class SchedualLoadDetailsViewController: BaseViewController {
                 
                 if(self.LoadDetails?.trucks?.locations?.last?.id == SingletonClass.sharedInstance.CurrentTripSecondLocation?.id){
                     self.btnStartTrip.setTitle(TripStatus.DropOffComplete.Name, for: .normal)
-                }else{
-                    self.btnStartTrip.setTitle(TripStatus.ClicktoStartTrip.Name, for: .normal)
                 }
+//                else{
+//                    self.btnStartTrip.setTitle(TripStatus.ClicktoStartTrip.Name, for: .normal)
+//                }
                 
                 self.lblDaysToGo.text = "Enroute to \(SingletonClass.sharedInstance.CurrentTripSecondLocation?.companyName ?? "")"
                 self.btnStartTrip.superview?.isHidden = false
@@ -473,7 +474,8 @@ class SchedualLoadDetailsViewController: BaseViewController {
         } else {
             if appDel.locationManager.isAlwaysPermissionGranted() {
                 if sender.titleLabel?.text == TripStatus.ClicktoStartTrip.Name {
-                    EmitForStartTrip(BookingID: "\(LoadDetails?.id ?? 0)", LocationID: "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)", ShipperID: "\(LoadDetails?.shipperDetails?.id ?? 0)")
+//                    EmitForStartTrip(BookingID: "\(LoadDetails?.id ?? 0)", LocationID: "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)", ShipperID: "\(LoadDetails?.shipperDetails?.id ?? 0)")
+                    CallAPIForStartTrip()
                     self.clearMap()
                 } else if sender.titleLabel?.text == TripStatus.Arrivedatpickuplocation.Name || sender.titleLabel?.text == TripStatus.ArrivedatpickuplocationDropOff.Name {
                     CallAPIForArriveAtLocation()
@@ -566,6 +568,16 @@ class SchedualLoadDetailsViewController: BaseViewController {
     // ----------------------------------------------------
     // MARK: - --------- WebService Call ---------
     // ----------------------------------------------------
+    func CallAPIForStartTrip() {
+        self.schedualDetailViewModel.schedualLoadDetailsViewController = self
+        
+        let reqModel = StartTripReqModel()
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.booking_id = "\(self.LoadDetails?.id ?? 0)"
+        reqModel.shipper_id = "\(self.LoadDetails?.shipperDetails?.id ?? 0)"
+        reqModel.location_id = "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.id ?? 0)"
+        self.schedualDetailViewModel.WebServiceStartTrip(ReqModel: reqModel)
+    }
     
     func CallAPIForArriveAtLocation() {
         

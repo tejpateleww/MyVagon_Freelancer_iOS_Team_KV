@@ -104,8 +104,18 @@ extension SearchDataCell : UITableViewDelegate, UITableViewDataSource {
         cell.viewHorizontalLine.isHidden = true
         
         cell.lblCompanyName.text = self.arrLocations[indexPath.row].companyName
-        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
+//        cell.lblDateTime.text = self.arrLocations[indexPath.row].createdAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd HH:mm:ss", ToFormat: DateFormatForDisplay)
         cell.lblAddress.text = self.arrLocations[indexPath.row].dropLocation
+        var StringForDateTime = ""
+        StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveredAt?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
+        StringForDateTime.append(" ")
+        
+        if (self.arrLocations[indexPath.row].deliveryTimeTo ?? "") == (self.arrLocations[indexPath.row].deliveryTimeFrom ?? "") {
+            StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveryTimeTo ?? "")")
+        } else {
+            StringForDateTime.append("\(self.arrLocations[indexPath.row].deliveryTimeTo ?? "")-\(self.arrLocations[indexPath.row].deliveryTimeFrom ?? "")")
+        }
+        cell.lblDateTime.text = StringForDateTime
         
         if(indexPath.row == (self.arrLocations.count - 1)){
             cell.viewLine.isHidden = true

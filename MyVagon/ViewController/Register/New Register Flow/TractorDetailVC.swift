@@ -64,6 +64,8 @@ class TractorDetailVC: BaseViewController {
             }else{
                 setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Tractor Detail", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editProfile.value], isTranslucent: true, ShowShadow: true)
             }
+        }else{
+            setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Tractor Detail", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
         }
     }
     
@@ -161,7 +163,7 @@ class TractorDetailVC: BaseViewController {
             break
         }
         
-        self.txtTractorBrand.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.brand ?? ""
+        self.txtTractorBrand.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? ""
         self.txtLicencePlateNumber.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.registrationNo
         self.arrImages = SingletonClass.sharedInstance.UserProfileData?.vehicle?.images ?? []
         self.collectionImages.reloadData()

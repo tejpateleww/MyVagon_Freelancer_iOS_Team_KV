@@ -27,7 +27,6 @@ class PaymentsVC: BaseViewController {
     var paymentViewModel = PaymentViewModel()
     var paymentDetailData : PaymentDetailData?
     var isFromEdit = false
-    var Iseditable = false
     
     // MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -40,24 +39,25 @@ class PaymentsVC: BaseViewController {
     
     // MARK: - Custome methods
     func prepareView(){
-        if Iseditable {
-            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
-        } else {
+        if isFromEdit {
             self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editPaymentDetails.value], isTranslucent: true)
-        }
-        if Iseditable{
-            isProfileEdit(allow: true)
-            btnSave.isHidden = false
-        }else{
             isProfileEdit(allow: false)
             btnSave.isHidden = true
+        }else{
+            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+            isProfileEdit(allow: true)
+            btnSave.isHidden = false
         }
         self.setupUI()
     }
+    
+    
     @objc func ProfileEdit(){
-        Iseditable = true
-        prepareView()
-       }
+        self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Payments", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
+        isProfileEdit(allow: true)
+        btnSave.isHidden = false
+    }
+    
     func isProfileEdit(allow:Bool) {
         let arrayOfDisableElement = (redioBtnCash,redioBtnBank,redioBtnBoth,txtIBAN,txtAccountNumber,txtBankName)
         arrayOfDisableElement.0?.isUserInteractionEnabled = allow
@@ -76,10 +76,38 @@ class PaymentsVC: BaseViewController {
         self.detailStackView.isHidden = true
         txtCountry.text = "Greece"
         txtCountry.isUserInteractionEnabled = false
+        
     }
     
     func setupData(){
-        self.callPaymentDeatilAPI()
+        if isFromEdit{
+            self.callPaymentDeatilAPI() //001703
+        }else{
+            self.setRegData()
+        }
+    }
+    
+    func setRegData(){
+        self.selectedPaymentMode = SingletonClass.sharedInstance.RegisterData.Reg_payment_type
+        if selectedPaymentMode != "0"{
+            self.txtIBAN.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_iban
+            self.txtAccountNumber.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_account_number
+            self.txtBankName.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_bank_name
+            self.txtCountry.text = SingletonClass.sharedInstance.RegisterData.Reg_payment_country
+        }
+        switch selectedPaymentMode{
+            case "0":
+                self.selecCash()
+                break
+            case "1":
+                self.selecBank()
+                break
+            case "2":
+                self.selecBoth()
+                break
+            default:
+                self.selecCash()
+        }
     }
     
     func setupDataAfterAPI(){

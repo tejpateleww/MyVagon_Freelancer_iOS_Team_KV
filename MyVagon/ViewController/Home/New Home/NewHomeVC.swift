@@ -235,6 +235,7 @@ class NewHomeVC: BaseViewController {
     }
     
     func goToDeatilScreen(index : IndexPath){
+        
         if !self.isLoading {
             if(self.isFilter ? arrFilterHomeData.count > 0 : arrHomeData?.count ?? 0 > 0){
                 let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LoadDetailsVC.storyboardID) as! LoadDetailsVC

@@ -46,6 +46,22 @@ class AddTruckViewModel{
             }
         })
     }
+    
+    func webServiceForAddTruck(reqModel: AddTruckReqModel){
+        Utilities.showHud()
+        WebServiceSubClass.addTruck(reqModel: reqModel) { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status{
+                AppDelegate.shared.Logout()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                }
+            }else{
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        }
+    }
+    
 }
 
 class TractorDetailViewModel{

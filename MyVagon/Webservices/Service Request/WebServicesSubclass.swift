@@ -108,6 +108,7 @@ class WebServiceSubClass{
     //MARK: -TruckType
     class func TruckType(completion: @escaping (Bool,String,TruckTypeListingResModel?,Any) -> ()){
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckTypeListing.rawValue, responseModel: TruckTypeListingResModel.self) { (status, message, response, error) in
+            print("in truck type list data:- ")
             if status{
                 SingletonClass.sharedInstance.TruckTypeList = response?.data
             }
@@ -365,6 +366,7 @@ class WebServiceSubClass{
     
     //MARK: -Payment Deatil API
     class func getPaymentDeatilAPI(completion: @escaping (Bool,String,PaymentDetailResModel?,Any) -> ()) {
+        print("api calll for payment")
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getPaymentDetails.rawValue + "/\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)", responseModel: PaymentDetailResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
@@ -409,5 +411,25 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    //MARK: - Add Truck
+    class func addTruck(reqModel: AddTruckReqModel, completion: @escaping (Bool,String,RegisterResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.addTruck.rawValue, requestModel: reqModel, responseModel: RegisterResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    //MARK:- Related Match
+    class func GetRelatedMatchList(reqModel: RelatedMatchReqModel, completion: @escaping (Bool,String,SearchResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.relatedMatch.rawValue, requestModel: reqModel, responseModel: SearchResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- Start Trip
+    class func StartTrip(reqModel: StartTripReqModel, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.startTrip.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
 }
+
 

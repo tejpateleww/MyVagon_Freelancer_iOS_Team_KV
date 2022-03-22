@@ -31,11 +31,7 @@ class EditPersonalInfoModel {
     func WebServiceForPersonalInfoUpdate(ReqModel:EditPersonalInfoReqModel){
         WebServiceSubClass.editPersonalInfo(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             if status{
-                
-                SingletonClass.sharedInstance.UserProfileData = response?.data
-                UserDefault.setUserData()
-                
-                self.VC?.popBack()
+                appDel.Logout()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 }
