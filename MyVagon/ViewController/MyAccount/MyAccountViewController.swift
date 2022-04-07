@@ -116,7 +116,7 @@ class MyAccountViewController: BaseViewController, CloseSettingTabbarDelgate {
     func setDataInArray(){
         self.MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Language.StringName, isLanguageButton: true))
         self.MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Myprofile.StringName, isLanguageButton: false))
-        self.MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Payment.StringName, isLanguageButton: false))
+//        self.MyAccountDetails.append(MyAccountSection(Name: MyAccountSectionTitle.Payment.StringName, isLanguageButton: false))
         self.MyAccountDetails.append( MyAccountSection(Name: MyAccountSectionTitle.settings.StringName, isLanguageButton: false))
         if SingletonClass.sharedInstance.UserProfileData?.permissions?.statistics ?? 0 == 1{
             self.MyAccountDetails.append( MyAccountSection(Name: MyAccountSectionTitle.Statistics.StringName, isLanguageButton: false))

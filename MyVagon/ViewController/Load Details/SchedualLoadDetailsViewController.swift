@@ -251,7 +251,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
         lblTotalMiles.text = "\(data?.distance ?? "")"
         
         lblDeadHead.text = "\(Double(data?.trucks?.locations?.first?.deadhead ?? "") ?? 0.0) Km Deadhead"
-        
+        lblDeadHead.isHidden = true
         lblShipperName.text = data?.shipperDetails?.companyName ?? ""
         
         viewRatting.rating = data?.shipperDetails?.shipperRating ?? 0.0
@@ -280,7 +280,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
             self.viewStatus.backgroundColor = #colorLiteral(red: 0.8431372549, green: 0.4078431373, blue: 0.4039215686, alpha: 1)
             
         case MyLoadesStatus.scheduled.Name:
-            self.btnCancelBidRequest.superview?.isHidden = false
+            self.btnCancelBidRequest.superview?.isHidden = (Int(strHour) ?? 0 <= 8) ? true : false
             self.btnCancelBidRequest.setTitle(ReqCancelTitle.deleteBid.Name, for: .normal)
             self.lblDaysToGo.superview?.backgroundColor = UIColor(hexString: "#F9F1DF")
             self.lblDaysToGo.fontColor = UIColor(hexString: "#000000")
@@ -309,7 +309,7 @@ class SchedualLoadDetailsViewController: BaseViewController {
 //                }
                 
                 self.lblDaysToGo.text = "Enroute to \(SingletonClass.sharedInstance.CurrentTripSecondLocation?.companyName ?? "")"
-                self.btnStartTrip.superview?.isHidden = false
+                self.btnStartTrip.superview?.isHidden = true
                 
                 
             } else if (SingletonClass.sharedInstance.CurrentTripSecondLocation?.StartLoading ?? "") == "" {

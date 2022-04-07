@@ -65,11 +65,11 @@ class SearchDataCell: UITableViewCell {
                 self.tblSearchLocationHeight.constant = newsize.height
                
                 
-                if let getHeight  = tblHeight.self {
-                    self.tblSearchLocation.layoutSubviews()
-                    self.tblSearchLocation.layoutIfNeeded()
-                    getHeight(self.tblSearchLocation.contentSize.height)
-                }
+//                if let getHeight  = tblHeight.self {
+//                    self.tblSearchLocation.layoutSubviews()
+//                    self.tblSearchLocation.layoutIfNeeded()
+//                    getHeight(self.tblSearchLocation.contentSize.height)
+//                }
             }
         }
     }

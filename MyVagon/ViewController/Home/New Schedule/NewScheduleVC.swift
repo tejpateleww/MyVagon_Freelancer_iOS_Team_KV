@@ -7,6 +7,7 @@
 
 import UIKit
 import DropDown
+import FittedSheets
 
 enum NewScheduleStatus {
 
@@ -44,6 +45,7 @@ class NewScheduleVC: BaseViewController {
     var selectedIndex = 0
     var PageNumber = 0
     var myScheduleViewModel = MyScheduleViewModel()
+    var trashPostedTruckViewModel = TrashPostedTruckViewModel()
     var CurrentFilterStatus : NewScheduleStatus = .all
     
     // Pull to refresh
@@ -146,7 +148,6 @@ class NewScheduleVC: BaseViewController {
         self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "My Loads", leftImage: NavItemsLeft.none.value, rightImages:  [NavItemsRight.option.value], isTranslucent: true, ShowShadow: true,subTitleString: subTitle)
     }
     
-    
     @objc func refresh(_ sender: AnyObject) {
         self.reloadSearchData()
     }
@@ -180,6 +181,13 @@ extension NewScheduleVC{
         ReqModelForMyLoades.status = status.Name
         ReqModelForMyLoades.type = self.optionMenuDropDown.selectedItem?.lowercased().replacingOccurrences(of: " ", with: "_")
         self.myScheduleViewModel.getMyloads(ReqModel: ReqModelForMyLoades)
+    }
+    
+    func callWebServiceToDeletePostedTruck(truckId : String){
+        let reqestmodel = TrashPostedTruck()
+        reqestmodel.postedTruckId = truckId
+        trashPostedTruckViewModel.newScheduleVC = self
+        trashPostedTruckViewModel.webServiceToDelatePostedTruck(req: reqestmodel)
     }
     
 }
@@ -241,6 +249,8 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
             if arrMyScheduleData?.count ?? 0 > 0{
             let cell = self.tblScheduleData.dequeueReusableCell(withIdentifier: "ScheduleDataCell", for: indexPath) as! ScheduleDataCell
             cell.selectionStyle = .none
+            cell.btnDelete.isUserInteractionEnabled = false
+            cell.btnDelete.isHidden = true
             cell.lblScheduleType.text = arrMyScheduleData?[indexPath.section][indexPath.row].type?.capitalized
                 cell.tblData = arrMyScheduleData?[indexPath.section][indexPath.row]
                 switch arrMyScheduleData?[indexPath.section][indexPath.row].type{
@@ -251,15 +261,26 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
                 case MyLoadType.PostedTruck.Name:
                     cell.lblScheduleType.text = "Posted Truck"
                     cell.setPostedTruck(lodeData: arrMyScheduleData?[indexPath.section][indexPath.row].postedTruck)
+                    cell.btnDelete.isUserInteractionEnabled = true
+                    cell.btnDelete.isHidden = false
                 default :
                     break
                 }
-
                 cell.tblSearchLocation.reloadData()
                 cell.tblSearchLocation.layoutIfNeeded()
                 cell.tblSearchLocation.layoutSubviews()
                 cell.btnMatchTapCousure = {
                     self.handalMatchAction(myloadDetails: self.arrMyScheduleData?[indexPath.section][indexPath.row])
+                }
+                cell.btnDeleteTap = {
+                    let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ConfirmationPopUPVC.storyboardID) as! ConfirmationPopUPVC
+                    controller.hidesBottomBarWhenPushed = true
+                    controller.titleText = "Are you sure you want to delete?"
+                    let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(150) + appDel.GetSafeAreaHeightFromBottom())])
+                    self.present(sheetController, animated: true, completion: nil)
+                    controller.btnPositiveAction = {
+                        self.callWebServiceToDeletePostedTruck(truckId: "\(self.arrMyScheduleData?[indexPath.section][indexPath.row].postedTruck?.id ?? 0)")
+                    }
                 }
             return cell
         }else{
@@ -306,7 +327,6 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
                     spinner.tintColor = RefreshControlColor
                     spinner.startAnimating()
                     spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tblScheduleData.bounds.width, height: CGFloat(44))
-                    
                     self.tblScheduleData.tableFooterView = spinner
                     self.tblScheduleData.tableFooterView?.isHidden = false
                     CallWebSerive(status: CurrentFilterStatus)
@@ -328,6 +348,10 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.goToDeatilScreen(indexPath: indexPath)
+    }
+    
+    func goToDeatilScreen(indexPath : IndexPath){
         if(arrMyScheduleData?.count ?? 0 > 0){
             if (arrMyScheduleData?[indexPath.section][indexPath.row].type == MyLoadType.PostedTruck.Name) == true {
                 let myloadDetails = arrMyScheduleData?[indexPath.section][indexPath.row]
@@ -340,6 +364,8 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
                             UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
                         }
                     }
+                }else if myloadDetails?.postedTruck?.bookingRequestCount != 0 && myloadDetails?.postedTruck?.isBid != 1{
+                    self.openBidReqDetail(myloadDetails: myloadDetails)
                 }
             } else {
                 if !isLoading {
@@ -359,14 +385,26 @@ extension NewScheduleVC : UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func openBidReqDetail(myloadDetails :MyLoadsNewDatum?){
+        let postTruckBidsViewModel = BidRequestViewModel()
+        postTruckBidsViewModel.scheduleVC = self
+        let reqModel = PostTruckBidReqModel()
+        reqModel.availability_id = "\(myloadDetails?.postedTruck?.id ?? 0)"
+        reqModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        postTruckBidsViewModel.BidRequest(ReqModel: reqModel)
+    }
     
     func handalMatchAction(myloadDetails :MyLoadsNewDatum?){
         if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
+            if myloadDetails?.postedTruck?.isBid == 1{
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestViewController.storyboardID) as! BidRequestViewController
             controller.BidsData = myloadDetails
             controller.hidesBottomBarWhenPushed = true
             controller.PostTruckID = "\(myloadDetails?.postedTruck?.id ?? 0)"
             self.navigationController?.pushViewController(controller, animated: true)
+            }else{
+                self.openBidReqDetail(myloadDetails: myloadDetails)
+            }
         }else{
             if (myloadDetails?.postedTruck?.matchesCount ?? 0) != 0 {
                 let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController

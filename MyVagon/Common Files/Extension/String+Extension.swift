@@ -287,7 +287,7 @@ extension String {
         }
         
         //
-        return  dateFormatter.string(from: date!)
+        return  dateFormatter.string(from: date ?? Date())
         
     }
     

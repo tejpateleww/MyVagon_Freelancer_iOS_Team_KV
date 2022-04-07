@@ -41,6 +41,7 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         WebServiceForTruckBrand()
         WebServiceForTruckFeatures()
         observeAnimationAndVersionChange()
+        WebServiceForCanclletionReasone()
      
         
         // Do any additional setup after loading the view.
@@ -65,6 +66,9 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
     }
     func WebServiceForTruckFeatures(){
         WebServiceSubClass.TruckFeatures {_, _, _, _ in}
+    }
+    func WebServiceForCanclletionReasone(){
+        WebServiceSubClass.cancellationReasoneList {_, _, _, _ in}
     }
     func openForceUpdateAlert(msg: String){
         Utilities.showAlertWithTitleFromWindow(title: AppName, andMessage: msg, buttons: [UrlConstant.Ok]) { (ind) in

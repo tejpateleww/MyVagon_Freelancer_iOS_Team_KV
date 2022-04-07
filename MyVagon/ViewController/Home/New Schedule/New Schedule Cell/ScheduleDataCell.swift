@@ -24,12 +24,14 @@ class ScheduleDataCell: UITableViewCell {
     @IBOutlet weak var viewScheduleType: UIView!
     @IBOutlet weak var lblSubStatus: UILabel!
     @IBOutlet weak var btnMatches: UIButton!
+    @IBOutlet weak var btnDelete: UIButton!
     
     
     var arrLocations : [MyLoadsNewLocation] = []
     var tblData :MyLoadsNewDatum?
     var tblHeight:((CGFloat)->())?
     var btnMatchTapCousure :(() -> ())?
+    var btnDeleteTap :(() -> ())?
     //MARK: - ====== Observer methods ========
     
     override func awakeFromNib() {
@@ -84,6 +86,13 @@ class ScheduleDataCell: UITableViewCell {
             obj()
         }
     }
+    
+    @IBAction func btnDeleteAction(_ sender: Any) {
+        if let obj = btnDeleteTap{
+            obj()
+        }
+    }
+    
 
 //MARK: - Coustom function
     
@@ -114,6 +123,7 @@ class ScheduleDataCell: UITableViewCell {
             vWStatus.backgroundColor = #colorLiteral(red: 0.6039215686, green: 0.6039215686, blue: 0.662745098, alpha: 1)
             return
         }
+        self.btnDelete.tintColor = vWStatus.backgroundColor
     }
     func getMsg(status: String,bid:Int) -> String{
         if bid == 1{
@@ -239,13 +249,32 @@ extension ScheduleDataCell : UITableViewDelegate, UITableViewDataSource {
         if tblData?.type == MyLoadType.PostedTruck.Name{
             if !((tblData?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0){
                 if indexPath.row == 0{
-                    cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
+                    //cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
+                    var StringForDateTime = ""
+                    StringForDateTime.append("\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
+                    StringForDateTime.append(" ")
+                    
+                    if (tblData?.postedTruck?.time ?? "") != "" {
+                        StringForDateTime.append("\(tblData?.postedTruck?.time ?? "")")
+                    }
+                    cell.lblDateTime.text = StringForDateTime
+                    
                     cell.lblCompanyName.text = tblData?.postedTruck?.fromAddress ?? ""
                     cell.imgLocation.image = UIImage(named: "ic_PickUp")
                     cell.viewLine.isHidden = false
                 }else{
                     cell.lblDateTime.isHidden = false
-                    cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
+                    //cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
+                    var StringForDateTime = ""
+                    StringForDateTime.append("\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
+                    StringForDateTime.append(" ")
+                    
+                    if (tblData?.postedTruck?.time ?? "") != "" {
+                        StringForDateTime.append("\(tblData?.postedTruck?.time ?? "")")
+                    }
+                    
+                    cell.lblDateTime.text = (tblData?.postedTruck?.toAddress != nil || tblData?.postedTruck?.toAddress ?? "" != "") ? StringForDateTime : "N/A"
+                    
                     cell.lblCompanyName.text = (tblData?.postedTruck?.toAddress != nil || tblData?.postedTruck?.toAddress ?? "" != "") ? tblData?.postedTruck?.toAddress ?? "" : "N/A"
                     cell.imgLocation.image = UIImage(named: "ic_DropOff")
                     cell.viewLine.isHidden = true

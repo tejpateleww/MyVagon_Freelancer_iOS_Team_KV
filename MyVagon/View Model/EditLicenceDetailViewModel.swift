@@ -38,7 +38,9 @@ class EditLicenceDetailViewModel {
     
     
     func WebServiceForLicenceDeatilUpdate(ReqModel:EditLicenceDetailsReqModel){
+        Utilities.ShowLoaderButtonInButton(Button: editLicenceDetailsVC?.SaveButton ?? themeButton(), vc: editLicenceDetailsVC ?? UIViewController())
         WebServiceSubClass.updateLicenceDetail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.HideLoaderButtonInButton(Button: self.editLicenceDetailsVC?.SaveButton ?? themeButton(), vc: self.editLicenceDetailsVC ?? UIViewController())
             if status{
                 //self.VC?.popBack()
                 AppDelegate.shared.Logout()

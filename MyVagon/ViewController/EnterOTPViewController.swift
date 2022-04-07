@@ -134,7 +134,7 @@ class EnterOTPViewController: BaseViewController,UITextFieldDelegate {
                 click()
             }
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
        
     }

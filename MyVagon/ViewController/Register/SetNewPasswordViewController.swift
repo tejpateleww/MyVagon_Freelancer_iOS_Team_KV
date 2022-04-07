@@ -43,8 +43,6 @@ class SetNewPasswordViewController: BaseViewController {
            
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Change Password", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
         }
-        
-        
         if isFromForgot {
             ViewCurrentPassword.isHidden = true
             BtnSetPassword.setTitle("Set New Password", for: .normal)
@@ -73,7 +71,7 @@ class SetNewPasswordViewController: BaseViewController {
         if CheckValidation.0 {
             CallWebservice()
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
     }
     

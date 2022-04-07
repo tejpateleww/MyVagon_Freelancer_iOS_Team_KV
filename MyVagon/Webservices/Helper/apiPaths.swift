@@ -47,6 +47,15 @@ enum APIEnvironment  {
        
     }
     
+    static var TempMapURL : String {
+        if environment.rawValue == Environment.Development.rawValue {
+            return BaseURLS.TempMapURL.rawValue
+        } else {
+            return BaseURLS.TempMapURL.rawValue
+        }
+       
+    }
+    
     static var ShipperImageURL : String {
         if environment.rawValue == Environment.Development.rawValue {
             return BaseURLS.ShipperImageURL.rawValue
@@ -130,6 +139,7 @@ enum ApiKey: String {
     case TruckBrandListing                      = "truck/brands"
     case TruckFeatureListing                    = "truck/features"
     case TruckUnitListing                       = "truck/unit"
+    case CancellationReason                     = "cancellation-reasons"
     
     case PackageListing                         = "package/listing"
     case ShipmentList                           = "shipment/search"
@@ -181,6 +191,10 @@ enum ApiKey: String {
     case addTruck                               = "add-truck-details"
     case relatedMatch                           = "related-matches"
     case startTrip                              = "start-trip"
+    case cancelBookRequest                      = "cancel-book-request"
+    case removeTruckDetails                     = "remove-truck-details"
+    case trashPostedTruck                       = "trash-posted-truck"
+    case makeAsDefaultTruck                     = "make-as-default-truck"
     
 }
 
@@ -203,6 +217,7 @@ enum BaseURLS:String {
 
  
     case TempProfileURL = "http://3.66.160.72/public/temp/"
+    case TempMapURL = "http://3.66.160.72/public/shipper/images/bookings/"
     case ShipperImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/shipper/"
     case DriverImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/driver/"
     case PODImageURL = "https://myvagon.s3.eu-west-3.amazonaws.com/POD/"

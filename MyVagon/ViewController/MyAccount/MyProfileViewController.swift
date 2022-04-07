@@ -147,12 +147,12 @@ class MyProfileViewController: BaseViewController {
         
         TextFeildTruckBrand.text = " \(SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? "")"
         
-        var palletText : [String] = []
-        SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?.forEach({ element in
-            palletText.append("\(element.value ?? "") \(element.packageTypeId?.name ?? "")")
-        })
+//        var palletText : [String] = []
+//        SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?.forEach({ element in
+//            palletText.append("\(element.value ?? "") \(element.packageTypeId?.name ?? "")")
+//        })
         
-        TextFeildCapacity_pallets.text = (palletText.count == 1) ?  palletText[0] :  (palletText.map{String($0)}).joined(separator: ", ")
+//        TextFeildCapacity_pallets.text = (palletText.count == 1) ?  palletText[0] :  (palletText.map{String($0)}).joined(separator: ", ")
         
         LabelVehicalRunsOn.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.fuelType ?? ""
         

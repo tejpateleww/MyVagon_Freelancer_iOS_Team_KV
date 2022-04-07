@@ -100,7 +100,7 @@ struct LoginVehicle: Codable {
     var createdAt: String?
     var truckDetails: [TruckDetails]?
     var brands: Brands?
-    var vehicleCapacity: [VehicleCapacity]?
+    
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -126,7 +126,6 @@ struct LoginVehicle: Codable {
         case createdAt = "created_at"
         case truckDetails = "truck_details"
         case brands = "brands"
-        case vehicleCapacity = "vehicle_capacity"
     }
 
     init(from decoder: Decoder) throws {
@@ -154,7 +153,7 @@ struct LoginVehicle: Codable {
         createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
         truckDetails = try values.decodeIfPresent([TruckDetails].self, forKey: .truckDetails)
         brands = try values.decodeIfPresent(Brands.self, forKey: .brands)
-        vehicleCapacity = try values.decodeIfPresent([VehicleCapacity].self, forKey: .vehicleCapacity)
+        
     }
 
 }
@@ -265,6 +264,7 @@ struct TruckDetails: Codable {
     var defaultTruck: Int?
     var createdAt: String?
     var updatedAt: String?
+    var vehicleCapacity: [VehicleCapacity]?
     var trash: Int?
 
     private enum CodingKeys: String, CodingKey {
@@ -283,6 +283,7 @@ struct TruckDetails: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case trash = "trash"
+        case vehicleCapacity = "vehicle_capacity"
     }
 
     init(from decoder: Decoder) throws {
@@ -302,6 +303,7 @@ struct TruckDetails: Codable {
         createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
         updatedAt = try values.decodeIfPresent(String.self, forKey: .updatedAt)
         trash = try values.decodeIfPresent(Int.self, forKey: .trash)
+        vehicleCapacity = try values.decodeIfPresent([VehicleCapacity].self, forKey: .vehicleCapacity)
     }
 
 }
@@ -333,7 +335,11 @@ struct VehicleCapacity: Codable {
     var value: String?
     var createdAt: String?
     var updatedAt: String?
-
+    
+    init(id: Int, value: String){
+        self.packageTypeId = PackageTypeId()
+        self.value = value
+    }
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case driverVehicleId = "driver_vehicle_id"
@@ -366,7 +372,8 @@ struct PackageTypeId: Codable {
         case id = "id"
         case name = "name"
     }
-
+    init(){
+    }
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)

@@ -48,9 +48,9 @@ class AddTruckViewModel{
     }
     
     func webServiceForAddTruck(reqModel: AddTruckReqModel){
-        Utilities.showHud()
+        Utilities.ShowLoaderButtonInButton(Button: TruckDetail?.btnSave ?? themeButton(), vc: TruckDetail ?? UIViewController())
         WebServiceSubClass.addTruck(reqModel: reqModel) { (status, apiMessage, response, error) in
-            Utilities.hideHud()
+            Utilities.HideLoaderButtonInButton(Button: self.TruckDetail?.btnSave ?? themeButton(), vc: self.TruckDetail ?? UIViewController())
             if status{
                 AppDelegate.shared.Logout()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

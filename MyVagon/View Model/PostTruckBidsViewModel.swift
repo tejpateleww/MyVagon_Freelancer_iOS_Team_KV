@@ -37,3 +37,26 @@ class PostTruckBidsViewModel {
 
     
 }
+
+class BidRequestViewModel {
+    weak var scheduleVC : NewScheduleVC? = nil
+ 
+    func BidRequest(ReqModel:PostTruckBidReqModel){
+        Utilities.showHud()
+        WebServiceSubClass.BidRequest(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status {
+                let tempArrHomeData = response?.data?.booking_request ?? []
+                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
+                controller.hidesBottomBarWhenPushed = true
+                controller.LoadDetails = tempArrHomeData.first
+                self.scheduleVC?.navigationController?.pushViewController(controller, animated: true)
+                
+            } else {
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        })
+    }
+
+    
+}

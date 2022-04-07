@@ -7,7 +7,7 @@
 
 import Foundation
 
-import Foundation
+import UIKit
 
 class StatisticsViewModel {
     
@@ -35,8 +35,9 @@ class PaymentViewModel {
     weak var VC : PaymentsVC? = nil
     
     func WebServiceForPaymentDeatilList(){
+        Utilities.showHud()
         WebServiceSubClass.getPaymentDeatilAPI(completion: { (status, apiMessage, response, error) in
-           
+            Utilities.hideHud()
             if status{
                 //Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 self.VC?.paymentDetailData = response?.data
@@ -49,9 +50,11 @@ class PaymentViewModel {
     }
     
     func WebServiceForPaymentDeatilUpdate(ReqModel:PaymentDetailUpdateReqModel){
+        Utilities.ShowLoaderButtonInButton(Button: VC?.btnSave ?? themeButton(), vc: VC ?? UIViewController())
         WebServiceSubClass.updatePaymentDetail(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.HideLoaderButtonInButton(Button: self.VC?.btnSave ?? themeButton(), vc: self.VC ?? UIViewController())
             if status{
-                self.VC?.popBack()
+                appDel.Logout()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 }

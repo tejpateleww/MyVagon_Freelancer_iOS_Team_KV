@@ -58,7 +58,7 @@ class TermsConditionVC: BaseViewController {
         if btnAccept.isSelected {
             Register()
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: "Please accept terms & conditions")
+            Utilities.ShowAlertOfInfo(OfMessage: "Please accept Terms & Conditions")
         }
     }
     

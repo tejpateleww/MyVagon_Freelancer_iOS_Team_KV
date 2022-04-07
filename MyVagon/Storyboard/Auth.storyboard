@@ -1388,6 +1388,7 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_truck_details" translatesAutoresizingMaskIntoConstraints="NO" id="DiX-ft-P81">
                                                                         <rect key="frame" x="155.66666666666666" y="0.0" width="63" height="42"/>
+                                                                        <color key="tintColor" name="ThemeBlackColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="DiX-ft-P81" secondAttribute="height" multiplier="9:6" id="9h7-FT-T0d"/>
                                                                             <constraint firstAttribute="height" constant="42" id="qCL-Rb-ZGF"/>
@@ -1661,6 +1662,7 @@
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_truck_details" translatesAutoresizingMaskIntoConstraints="NO" id="P1i-rl-zJw">
                                                                         <rect key="frame" x="155.66666666666666" y="0.0" width="63" height="42"/>
+                                                                        <color key="tintColor" name="ThemeBlackColor"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" secondItem="P1i-rl-zJw" secondAttribute="height" multiplier="9:6" id="h3E-xN-tSE"/>
                                                                             <constraint firstAttribute="height" constant="42" id="vTn-tB-n4x"/>
@@ -2860,6 +2862,7 @@
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_truck_details" translatesAutoresizingMaskIntoConstraints="NO" id="2P7-gk-7rU">
                                                 <rect key="frame" x="178" y="30" width="63" height="42"/>
+                                                <color key="tintColor" name="ThemeBlackColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="42" id="Fp5-eN-udr"/>
                                                     <constraint firstAttribute="width" secondItem="2P7-gk-7rU" secondAttribute="height" multiplier="9:6" id="J1v-JQ-zfk"/>
@@ -3926,7 +3929,7 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77j-bz-Smp">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="77j-bz-Smp" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="558" width="374" height="50"/>
                                                 <color key="backgroundColor" name="ThemeSubmitColor"/>
                                                 <constraints>
@@ -3981,6 +3984,7 @@
                         <outlet property="btnSave" destination="77j-bz-Smp" id="Tcx-gR-djt"/>
                         <outlet property="collectionImages" destination="iSC-dJ-xPu" id="BM4-3s-QgU"/>
                         <outlet property="heightConstrentImagcollection" destination="j8K-Pz-6rZ" id="9gm-6t-Si7"/>
+                        <outlet property="lblTitle" destination="x4C-fK-Ure" id="nyi-Nz-geA"/>
                         <outlet property="txtLicencePlateNumber" destination="Xx3-wp-ajt" id="R7P-Lv-KjN"/>
                         <outlet property="txtTractorBrand" destination="38y-Wd-UMP" id="7Yf-bc-xjq"/>
                         <outlet property="viewTabView" destination="mKa-Bo-oYm" id="APj-1P-ofH"/>
@@ -4045,7 +4049,7 @@
                                                     <action selector="btnAddTruckAction:" destination="iNa-Us-YR0" eventType="touchUpInside" id="cns-vv-F3F"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-bX-E4a">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCd-bX-E4a" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
                                                 <rect key="frame" x="192" y="0.0" width="182" height="50"/>
                                                 <color key="backgroundColor" name="ThemeSubmitColor"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4699,7 +4703,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erG-Kb-jsS">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="877.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="918.33333333333337"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2T-oN-ggY">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
@@ -4910,7 +4914,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="KFl-gJ-Dkt">
-                                                <rect key="frame" x="20" y="384" width="374" height="263.33333333333326"/>
+                                                <rect key="frame" x="20" y="384" width="374" height="319.33333333333326"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGk-v5-pfN">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -5156,10 +5160,47 @@
                                                             <constraint firstAttribute="bottom" secondItem="mya-za-xu5" secondAttribute="bottom" id="x7F-tz-ecO"/>
                                                         </constraints>
                                                     </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5A2-U4-aU4">
+                                                        <rect key="frame" x="0.0" y="284.33333333333337" width="374" height="35"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_checkbox_unselected" translatesAutoresizingMaskIntoConstraints="NO" id="5uo-bw-ZCI">
+                                                                <rect key="frame" x="15" y="5" width="30" height="30"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="30" id="Cnc-3l-6hP"/>
+                                                                    <constraint firstAttribute="height" constant="30" id="WAq-op-yeC"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make as Default Truck" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FF9-kM-cGR">
+                                                                <rect key="frame" x="55" y="9.9999999999999982" width="169" height="20.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xt9-eE-f0p">
+                                                                <rect key="frame" x="15" y="5" width="209" height="30"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <connections>
+                                                                    <action selector="btnMAkeDefaultClick:" destination="lCw-a8-LIY" eventType="touchUpInside" id="FDl-Y3-1G9"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="5uo-bw-ZCI" firstAttribute="top" secondItem="5A2-U4-aU4" secondAttribute="top" constant="5" id="3cX-wW-UIM"/>
+                                                            <constraint firstItem="Xt9-eE-f0p" firstAttribute="top" secondItem="5uo-bw-ZCI" secondAttribute="top" id="4J5-8a-Jds"/>
+                                                            <constraint firstItem="5uo-bw-ZCI" firstAttribute="leading" secondItem="5A2-U4-aU4" secondAttribute="leading" constant="15" id="8Q1-eT-gDJ"/>
+                                                            <constraint firstItem="FF9-kM-cGR" firstAttribute="leading" secondItem="5uo-bw-ZCI" secondAttribute="trailing" constant="10" id="CcW-XY-vn2"/>
+                                                            <constraint firstAttribute="bottom" secondItem="5uo-bw-ZCI" secondAttribute="bottom" id="HQx-MJ-Ltj"/>
+                                                            <constraint firstItem="Xt9-eE-f0p" firstAttribute="trailing" secondItem="FF9-kM-cGR" secondAttribute="trailing" id="dl5-6K-GTL"/>
+                                                            <constraint firstItem="Xt9-eE-f0p" firstAttribute="leading" secondItem="5uo-bw-ZCI" secondAttribute="leading" id="hLe-Ci-7ij"/>
+                                                            <constraint firstItem="Xt9-eE-f0p" firstAttribute="bottom" secondItem="5uo-bw-ZCI" secondAttribute="bottom" id="jxK-sM-e4q"/>
+                                                            <constraint firstItem="FF9-kM-cGR" firstAttribute="centerY" secondItem="5uo-bw-ZCI" secondAttribute="centerY" id="lrY-Ka-nBM"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKs-Yd-sEZ">
-                                                <rect key="frame" x="20" y="815.33333333333337" width="374" height="52"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKs-Yd-sEZ" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="856.33333333333337" width="374" height="52"/>
                                                 <color key="backgroundColor" name="ThemeSubmitColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="zkf-4W-RK0"/>
@@ -5174,7 +5215,7 @@
                                                 </connections>
                                             </button>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0aY-kT-rid">
-                                                <rect key="frame" x="20" y="667.33333333333337" width="374" height="128"/>
+                                                <rect key="frame" x="20" y="708.33333333333337" width="374" height="128"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="128" id="HAI-iP-KPN"/>
@@ -5201,7 +5242,7 @@
                                             <constraint firstItem="0aY-kT-rid" firstAttribute="leading" secondItem="KFl-gJ-Dkt" secondAttribute="leading" id="auJ-KH-8dH"/>
                                             <constraint firstAttribute="trailing" secondItem="KFl-gJ-Dkt" secondAttribute="trailing" constant="20" id="hL0-Ua-Y1V"/>
                                             <constraint firstAttribute="trailing" secondItem="CKs-Yd-sEZ" secondAttribute="trailing" constant="20" id="jfM-Fe-GHM"/>
-                                            <constraint firstItem="0aY-kT-rid" firstAttribute="top" secondItem="KFl-gJ-Dkt" secondAttribute="bottom" constant="20" id="nhw-Gf-mpV"/>
+                                            <constraint firstItem="0aY-kT-rid" firstAttribute="top" secondItem="KFl-gJ-Dkt" secondAttribute="bottom" constant="5" id="nhw-Gf-mpV"/>
                                             <constraint firstItem="KFl-gJ-Dkt" firstAttribute="top" secondItem="Yhd-zG-ga3" secondAttribute="bottom" constant="20" id="qx2-bu-WDK"/>
                                         </constraints>
                                     </view>
@@ -5234,6 +5275,8 @@
                         <outlet property="collectionImages" destination="mya-za-xu5" id="Ah6-Qd-GFf"/>
                         <outlet property="collectionTruckCapacity" destination="68o-yq-2J7" id="ByE-NF-aKz"/>
                         <outlet property="heightConstrentImagcollection" destination="2PH-qn-lgI" id="9Dh-Cr-eyE"/>
+                        <outlet property="imgDefaultTruck" destination="5uo-bw-ZCI" id="MKf-wg-jJF"/>
+                        <outlet property="lblTitle" destination="EpE-ks-9ue" id="KJB-QV-ylc"/>
                         <outlet property="tblTruckFeature" destination="0aY-kT-rid" id="aep-Iw-4Ff"/>
                         <outlet property="tblTruckFeatureHeight" destination="HAI-iP-KPN" id="Bsx-UA-xaJ"/>
                         <outlet property="truckWeightTF" destination="gJd-cZ-w9j" id="qCg-fy-ITT"/>
@@ -5244,12 +5287,13 @@
                         <outlet property="txtTruckType" destination="JeI-Wj-y3w" id="KXe-1u-NoS"/>
                         <outlet property="txtTruckWeight" destination="wkp-s1-rR9" id="uHC-VH-ut2"/>
                         <outlet property="viewAddCapacity" destination="ZGk-v5-pfN" id="pek-ZW-BXm"/>
+                        <outlet property="viewDefaultTruck" destination="5A2-U4-aU4" id="gh5-Wk-eML"/>
                         <outlet property="viewSubType" destination="Rvc-06-JoD" id="gTM-kP-YVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MWn-f5-8iW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7477" y="1895"/>
+            <point key="canvasLocation" x="7476.811594202899" y="1894.5652173913045"/>
         </scene>
     </scenes>
     <resources>

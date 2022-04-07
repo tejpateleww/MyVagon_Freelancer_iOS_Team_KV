@@ -38,6 +38,8 @@ class SearchOptionViewController: BaseViewController, GeneralPickerViewDelegate 
         self.textFieldMaxPrice?.delegate = self
         self.textFieldMinUnit?.delegate = self
         self.textFieldMaxUnit?.delegate = self
+        self.textFieldMinWeight?.delegate = self
+        self.textFieldMaxWeight?.delegate = self
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
@@ -265,6 +267,9 @@ extension SearchOptionViewController : UITextFieldDelegate {
             let finalString = text.replacingCharacters(in: range, with: string)
             self.textFieldMinPrice?.text = finalString.currency
         }
+        if textField == textFieldMinWeight || textField == textFieldMaxWeight{
+         return true
+        }
         return false
     }
 }
@@ -305,6 +310,26 @@ extension SearchOptionViewController : UIPickerViewDelegate, UIPickerViewDataSou
         return SingletonClass.sharedInstance.TruckunitList?[row].name
     }
     
+}
+
+//MARK: - textfield delegate
+extension SearchOptionViewController {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+         if textField == textFieldMinWeight || textField == textFieldMaxWeight{
+             if let weight:Int = Int(textField.text ?? ""){
+                 if weight <= 0{
+                     textField.text = ""
+                 }
+                 if textField.text?.count ?? 0 > 5{
+                     var text = textField.text ?? ""
+                     text.removeLast()
+                     textField.text = text
+                 }
+             }else{
+                 textField.text = ""
+             }
+         }
+    }
 }
 
 class SearchLoadModel : Codable {

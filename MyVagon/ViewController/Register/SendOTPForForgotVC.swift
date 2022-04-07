@@ -54,7 +54,7 @@ class SendOTPForForgotVC: BaseViewController {
         if CheckValidation.0 {
             CallWebservice()
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
         
     }

@@ -27,7 +27,7 @@ class AddTruckVC: BaseViewController {
     @IBOutlet weak var viewSubType: ThemeViewRounded!
     @IBOutlet weak var collectionImages: UICollectionView!
     @IBOutlet weak var btnHydraulicDoor: UIButton!
-    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnSave: themeButton!
     @IBOutlet weak var viewAddCapacity: UIView!
     @IBOutlet weak var CollectionViewImageHeightConst: NSLayoutConstraint!
     
@@ -35,6 +35,9 @@ class AddTruckVC: BaseViewController {
     @IBOutlet weak var tblTruckFeatureHeight: NSLayoutConstraint!
     
     @IBOutlet weak var heightConstrentImagcollection: NSLayoutConstraint!
+    @IBOutlet weak var lblTitle: themeLabel!
+    @IBOutlet weak var imgDefaultTruck: UIImageView!
+    @IBOutlet weak var viewDefaultTruck: UIView!
     
     var arrTruckFeature : [TruckFeaturesDatum] = []
     var SelectedTextField : UITextField?
@@ -47,10 +50,9 @@ class AddTruckVC: BaseViewController {
     var SelectedIndexOfType = NSNotFound
     var arrImages : [String] = []
     var arrFeatureID : [String] = []
-    
     var selectedWeightUnitID = 0
     var selectedCategoryUnitID = 0
-    
+    var isDefault = false
     var addTruckViewModel = AddTruckViewModel()
     var TruckCapacityAdded : [TruckCapacityType] = [] {
         didSet {
@@ -61,15 +63,12 @@ class AddTruckVC: BaseViewController {
             }
         }
     }
-    
     var tructData = RegTruckDetailModel()
-    
     var isFromEdit = false
     var isEditEnable = true
     var isToAdd = false
-    var truckEditDeta : TruckDetails?
     var truckIndex = 0
-    var editeData : ((TruckDetails) -> Void)?
+    var editeData : ((RegTruckDetailModel) -> Void)?
     
     //MARK: - LifeCycle methods
     override func viewDidLoad() {
@@ -109,6 +108,7 @@ class AddTruckVC: BaseViewController {
         self.tblTruckFeature.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
         self.CollectionViewImageHeightConst.constant = collectionImages.bounds.width/3 - 10
         self.registerNib()
+        viewDefaultTruck.isHidden = !isToAdd
     }
     
     func setUpNevigetionBar(){
@@ -116,7 +116,7 @@ class AddTruckVC: BaseViewController {
             if isEditEnable {
                 self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Edit Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true)
             }else{
-                setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editProfile.value], isTranslucent: true, ShowShadow: true)
+                setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Truck Detail", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editProfile.value], isTranslucent: true, ShowShadow: true)
             }
         }else{
             setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Add Truck", leftImage: NavItemsLeft.back.value, rightImages: [], isTranslucent: true, ShowShadow: true)
@@ -138,9 +138,15 @@ class AddTruckVC: BaseViewController {
         self.txtTruckWeight.isUserInteractionEnabled = isEditEnable
         self.txtCargoLoadCapacity.isUserInteractionEnabled = isEditEnable
         self.txtTruckLicencePlate.isUserInteractionEnabled = isEditEnable
+        self.txtTruckType.rightImage = isEditEnable ? UIImage(named: "ic_dropdown") : UIImage()
+        self.txtTruckSubType.rightImage = isEditEnable ? UIImage(named: "ic_dropdown") : UIImage()
+        self.truckWeightTF.rightImage = isEditEnable ? UIImage(named: "ic_dropdown") : UIImage()
+        self.cargoLoadCapTF.rightImage = isEditEnable ? UIImage(named: "ic_dropdown") : UIImage()
+        
         self.btnAdd.isUserInteractionEnabled = isEditEnable
         self.viewAddCapacity.isHidden = !isEditEnable
         self.btnSave.isHidden = !isEditEnable
+        self.lblTitle.text = isEditEnable ? "Enter Truck Details" : "Truck Details"
     }
     
     func setupData(){
@@ -183,31 +189,37 @@ class AddTruckVC: BaseViewController {
     }
     
     func setEditDeta(){
-        self.txtTruckType.text = truckEditDeta?.truckType?.name
-        self.txtTruckSubType.text = truckEditDeta?.truckSubCategory?.name
-        self.viewSubType.isHidden = false
-        self.truckWeightTF.text = truckEditDeta?.weightUnit?.name
-        self.cargoLoadCapTF.text = truckEditDeta?.loadCapacityUnit?.name
-        self.txtTruckWeight.text = truckEditDeta?.weight
-        self.txtCargoLoadCapacity.text = truckEditDeta?.loadCapacity
-        self.txtTruckLicencePlate.text = truckEditDeta?.plateNumber
-        self.arrImages = truckEditDeta?.images ?? []
-        self.arrFeatureID = truckEditDeta?.truckFeatures?.components(separatedBy: ",") ?? []
-        self.SelectedCategory = truckEditDeta?.truckType?.id ?? 0
-        self.SelectedSubCategory  = truckEditDeta?.truckSubCategory?.id ?? 0
-        self.selectedWeightUnitID = truckEditDeta?.weightUnit?.id ?? 0
-        self.selectedCategoryUnitID = truckEditDeta?.loadCapacityUnit?.id ?? 0
-
-        // pallets
-        
-       let vehicleCapacity = SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity ?? []
-        for i in vehicleCapacity{
-            if i.driverTruckDetailsId == truckEditDeta?.id{
-                let item = TruckCapacityType(Capacity: i.value ?? "", Type: i.packageTypeId?.id ?? 0)
-                TruckCapacityAdded.removeAll()
-                TruckCapacityAdded.append(item)
+        for truck in SingletonClass.sharedInstance.TruckTypeList ?? []{
+            if(truck.id ?? 0 == Int(self.tructData.truck_type)){
+                self.txtTruckType.text = truck.name
+                for subCatagry in truck.category ?? []{
+                    if subCatagry.id == Int(self.tructData.truck_sub_category){
+                        self.txtTruckSubType.text = subCatagry.name
+                    }
+                }
             }
         }
+        self.viewSubType.isHidden = false
+        for unit in SingletonClass.sharedInstance.TruckunitList ?? [] {
+            if Int(tructData.weight_unit) ?? 0 == unit.id{
+                self.truckWeightTF.text = unit.name
+            }
+            if Int(tructData.capacity_unit) ?? 0 == unit.id{
+                self.cargoLoadCapTF.text = unit.name
+            }
+        }
+        self.txtTruckWeight.text = tructData.weight
+        self.txtCargoLoadCapacity.text = tructData.capacity
+        self.txtTruckLicencePlate.text = tructData.plate_number
+        self.arrImages = tructData.images.components(separatedBy: ",")
+        self.arrFeatureID = tructData.truck_features.components(separatedBy: ",")
+        self.SelectedCategory = Int(tructData.truck_type) ?? 0
+        self.SelectedSubCategory  = Int(tructData.truck_sub_category) ?? 0
+        self.selectedWeightUnitID = Int(tructData.weight_unit) ?? 0
+        self.selectedCategoryUnitID = Int(tructData.capacity_unit) ?? 0
+        self.TruckCapacityAdded = tructData.pallets
+
+        // pallets
         collectionTruckCapacity.reloadData()
         if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.name == txtTruckType.text ?? ""}) {
             SelectedCategoryIndex = IndexForTruckType
@@ -223,11 +235,12 @@ class AddTruckVC: BaseViewController {
     func validetion() -> (Bool,String){
         let truckType = txtTruckType.validatedText(validationType: .requiredField(field: "truck type"))
         let truckSubType = txtTruckSubType.validatedText(validationType: .requiredField(field: "truck sub type"))
-        let overallWeight = txtTruckWeight.validatedText(validationType: .requiredField(field: "truck weight"))
+        let overallWeight = txtTruckWeight.validatedText(validationType: .requiredField(field: "weight"))
         let weightUnit = truckWeightTF.validatedText(validationType: .requiredField(field: "truck weight unit"))
         let loadCapacity = txtCargoLoadCapacity.validatedText(validationType: .requiredField(field: "cargo load capacity"))
         let loadUnit = cargoLoadCapTF.validatedText(validationType: .requiredField(field: "cargo load capacity unit"))
         let licenceNumber = txtTruckLicencePlate.validatedText(validationType: .requiredField(field: "truck licence plate number"))
+        let licenceNumberValid = txtTruckLicencePlate.validatedText(validationType: .plateNumber(field: "truck licence plate number"))
         
 
         if !truckType.0{
@@ -237,13 +250,15 @@ class AddTruckVC: BaseViewController {
         }else if !overallWeight.0{
             return overallWeight
         }else if !weightUnit.0{
-            return weightUnit
+            return (weightUnit.0,"Please select unit of the weight")
         }else if !loadCapacity.0{
             return loadCapacity
         }else if !loadUnit.0{
-            return loadUnit
+            return (loadUnit.0,"Please select unit of the load capacity")
         }else if !licenceNumber.0{
             return licenceNumber
+        }else if (!licenceNumberValid.0){
+            return licenceNumberValid
         }else if arrImages.count == 0{
             return (false,"Plaese add truck images")
         }
@@ -253,7 +268,6 @@ class AddTruckVC: BaseViewController {
     }
     
     @objc func ProfileEdit(){
-        print("in edit notification")
         self.isEditEnable = true
         self.enableEdit()
         self.collectionImages.reloadData()
@@ -261,6 +275,12 @@ class AddTruckVC: BaseViewController {
         self.collectionTruckCapacity.reloadData()
         self.setUpNevigetionBar()
         }
+    
+    
+    @IBAction func btnMAkeDefaultClick(_ sender: Any) {
+        self.isDefault = !isDefault
+        self.imgDefaultTruck.image = isDefault ? UIImage(named: "ic_checkbox_selected") : UIImage(named: "ic_checkbox_unselected")
+    }
     
     @IBAction func btnActionHydraulicDoor(_ sender: UIButton) {
         self.btnHydraulicDoor.isSelected = !self.btnHydraulicDoor.isSelected
@@ -318,42 +338,27 @@ class AddTruckVC: BaseViewController {
     @IBAction func btnSaveClicked(_ sender: Any) {
         let velidetion = validetion()
         if velidetion.0{
+            self.tructData.truck_type = "\(self.SelectedCategory)"
+            self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
+            self.tructData.weight = self.txtTruckWeight.text ?? ""
+            self.tructData.weight_unit = "\(self.selectedWeightUnitID)"
+            self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
+            self.tructData.capacity_unit = "\(self.selectedCategoryUnitID)"
+            self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
+            self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
+            self.tructData.pallets = TruckCapacityAdded
+            self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
             if isFromEdit{
-                truckEditDeta?.images = self.arrImages
-                truckEditDeta?.weight = self.txtTruckWeight.text
-                truckEditDeta?.loadCapacity = self.txtCargoLoadCapacity.text
-                truckEditDeta?.plateNumber = self.txtTruckLicencePlate.text
-                truckEditDeta?.truckFeatures = self.arrFeatureID.map({$0}).joined(separator: ",")
-                truckEditDeta?.loadCapacityUnit?.name = self.cargoLoadCapTF.text
-                truckEditDeta?.loadCapacityUnit?.id = self.selectedCategoryUnitID
-                truckEditDeta?.weightUnit?.name = self.truckWeightTF.text
-                truckEditDeta?.weightUnit?.id = self.selectedWeightUnitID
-                truckEditDeta?.truckType?.name = self.txtTruckType.text
-                truckEditDeta?.truckType?.id = self.SelectedCategory
-                truckEditDeta?.truckSubCategory?.name = self.txtTruckSubType.text
-                truckEditDeta?.truckSubCategory?.id = self.SelectedSubCategory
-                self.editeData?(truckEditDeta!)
+                self.editeData?(tructData)
                 self.navigationController?.popViewController(animated: true)
             }else{
-                self.tructData.truck_type = "\(self.SelectedCategory)"
-                self.tructData.truck_sub_category = "\(self.SelectedSubCategory)"
-                self.tructData.weight = self.txtTruckWeight.text ?? ""
-                self.tructData.weight_unit = "\(self.selectedWeightUnitID)"
-                self.tructData.capacity = self.txtCargoLoadCapacity.text ?? ""
-                self.tructData.capacity_unit = "\(self.selectedCategoryUnitID)"
-                self.tructData.plate_number = self.txtTruckLicencePlate.text ?? ""
-                self.tructData.images = self.arrImages.map({$0}).joined(separator: ",")
-                self.tructData.pallets = TruckCapacityAdded
-                self.tructData.truck_features = self.arrFeatureID.map({$0}).joined(separator: ",")
-                
                 if isToAdd{
+                    self.tructData.default_truck = isDefault ? "1" : "0"
                     self.callWebService()
                 }else{
                     SingletonClass.sharedInstance.RegisterData.Reg_truck_data.append(self.tructData)
-                    
                     UserDefault.SetRegiterData()
                     UserDefault.synchronize()
-                    
                     self.navigationController?.popViewController(animated: true)
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         NotificationCenter.default.post(name: .reloadRegTruckListScreen, object: nil)
@@ -386,18 +391,14 @@ extension AddTruckVC : UITextFieldDelegate{
                     SelectedTextField = txtTruckSubType
                     txtTruckSubType.inputView = GeneralPicker
                     txtTruckSubType.inputAccessoryView = GeneralPicker.toolbar
-                    
                     if let IndexForTruckType = SingletonClass.sharedInstance.TruckTypeList?.firstIndex(where: {$0.name == txtTruckType.text ?? ""}) {
-                        
                         if let IndexForSubTruckType = SingletonClass.sharedInstance.TruckTypeList?[IndexForTruckType].category?.firstIndex(where: {$0.name == txtTruckSubType.text}) {
                             GeneralPicker.selectRow(IndexForSubTruckType, inComponent: 0, animated: false)
                         }
                     }
                     self.GeneralPicker.reloadAllComponents()
                 }
-            } else {
-                
-            }
+            } else {}
         }else if textField == truckWeightTF {
             truckWeightTF.inputView = GeneralPicker
             truckWeightTF.inputAccessoryView = GeneralPicker.toolbar
@@ -425,10 +426,15 @@ extension AddTruckVC : UITextFieldDelegate{
         }
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField == txtTruckWeight || textField == txtCargoLoadCapacity{
-            if let abc = Int(textField.text ?? "0"){
-                if abc <= 0{
+         if textField == txtTruckWeight || textField == txtCargoLoadCapacity{
+            if let weight:Int = Int(textField.text ?? ""){
+                if weight <= 0{
                     textField.text = ""
+                }
+                if textField.text?.count ?? 0 > 5{
+                    var text = textField.text ?? ""
+                    text.removeLast()
+                    textField.text = text
                 }
             }else{
                 textField.text = ""
@@ -483,7 +489,6 @@ extension AddTruckVC: UIPickerViewDelegate, UIPickerViewDataSource {
 extension AddTruckVC: GeneralPickerViewDelegate{
     func didTapDone() {
         if SelectedTextField == txtTruckType {
-            
             SelectedCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
             let item = SingletonClass.sharedInstance.TruckTypeList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.txtTruckType.text = item?.name
@@ -501,29 +506,24 @@ extension AddTruckVC: GeneralPickerViewDelegate{
             } else {
                 txtTruckSubType.rightView?.isHidden = false
             }
-            
         } else if SelectedTextField == txtTruckSubType {
-            
             if SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?.count != 0 {
                 SelectedSubCategoryIndex = GeneralPicker.selectedRow(inComponent: 0)
                 let item = SingletonClass.sharedInstance.TruckTypeList?[SelectedCategoryIndex].category?[GeneralPicker.selectedRow(inComponent: 0)]
                 self.txtTruckSubType.text = item?.name
                 self.SelectedSubCategory  = item?.id ?? 0
             }
-        }else  if SelectedTextField == truckWeightTF {
-            
+        }else if SelectedTextField == truckWeightTF {
             let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.truckWeightTF.text = item?.name
             self.selectedWeightUnitID = item?.id ?? 0
             self.truckWeightTF.resignFirstResponder()
-        } else if SelectedTextField == cargoLoadCapTF {
-            
+        }else if SelectedTextField == cargoLoadCapTF {
             let item = SingletonClass.sharedInstance.TruckunitList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.cargoLoadCapTF.text = item?.name
             self.selectedCategoryUnitID = item?.id ?? 0
             self.cargoLoadCapTF.resignFirstResponder()
         }else if SelectedTextField == txtCapacityType {
-            
             let item = SingletonClass.sharedInstance.PackageList?[GeneralPicker.selectedRow(inComponent: 0)]
             self.txtCapacityType.text = item?.name
             self.txtCapacityType.resignFirstResponder()
@@ -531,7 +531,6 @@ extension AddTruckVC: GeneralPickerViewDelegate{
         self.txtTruckType.resignFirstResponder()
         self.txtTruckSubType.resignFirstResponder()
     }
-    
     func didTapCancel() {
     }
     
@@ -554,15 +553,12 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == collectionTruckCapacity {
             let cell = collectionTruckCapacity.dequeueReusableCell(withReuseIdentifier: "TruckCapacityCell", for: indexPath) as! TruckCapacityCell
-            
             if let index = SingletonClass.sharedInstance.PackageList?.firstIndex(where: {$0.id == TruckCapacityAdded[indexPath.row].type}) {
                 let StringForSize = "\(TruckCapacityAdded[indexPath.row].capacity ?? "") \(SingletonClass.sharedInstance.PackageList?[index].name ?? "" )"
                 cell.lblCapacity.text = StringForSize
-                
             }
             cell.BGView.layer.cornerRadius = 17
             cell.BGView.layer.borderWidth = 1
-            
             cell.BGView.backgroundColor = .clear
             cell.BGView.layer.borderColor = UIColor.appColor(.themeButtonBlue).cgColor
             cell.btnRemove.isHidden = !isEditEnable
@@ -571,13 +567,10 @@ extension AddTruckVC : UICollectionViewDelegate,UICollectionViewDataSource,UICol
                 if self.isEditEnable{
                 self.btnAdd.setImage(#imageLiteral(resourceName: "ic_add"), for: .normal)
                 self.ButtonTypeForAddingCapacity = .Add
-                
                 self.TextFieldCapacity.text = ""
                 self.txtCapacityType.text = ""
-                
                 self.TextFieldCapacity.resignFirstResponder()
                 self.txtCapacityType.resignFirstResponder()
-                
                 self.TruckCapacityAdded.remove(at: indexPath.row)
                 self.collectionTruckCapacity.reloadData()
                 }
@@ -662,17 +655,14 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tblTruckFeature.dequeueReusableCell(withIdentifier: "TruckFeatureCell") as! TruckFeatureCell
         cell.selectionStyle = .none
         cell.lblFeature.text = self.arrTruckFeature[indexPath.row].name ?? ""
-        
         if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
             cell.imgCell.image = UIImage(named: "ic_checkbox_selected")
         }else{
             cell.imgCell.image = UIImage(named: "ic_checkbox_unselected")
         }
-        
         return cell
     }
     
@@ -681,19 +671,15 @@ extension AddTruckVC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if isEditEnable{
             if(self.arrFeatureID.contains("\(self.arrTruckFeature[indexPath.row].id ?? 0)")){
                 let index = self.arrFeatureID.firstIndex(where: { $0 == "\(self.arrTruckFeature[indexPath.row].id ?? 0)" })
                 self.arrFeatureID.remove(at: index!)
-
             }else{
                 self.arrFeatureID.append("\(self.arrTruckFeature[indexPath.row].id ?? 0)")
             }
-            
             self.tblTruckFeature.reloadData()
         }
-        print(self.arrFeatureID)
     }
 }
 

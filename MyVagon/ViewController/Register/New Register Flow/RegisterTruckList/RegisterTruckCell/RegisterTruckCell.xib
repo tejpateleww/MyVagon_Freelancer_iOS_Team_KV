@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -98,6 +98,36 @@
                             <constraint firstItem="e2J-0y-mqN" firstAttribute="top" secondItem="1HE-Id-0FP" secondAttribute="top" constant="10" id="wQO-fV-Cp8"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f7a-Ae-4L4">
+                        <rect key="frame" x="415" y="61" width="30" height="30"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cIg-I7-maG">
+                                <rect key="frame" x="0.0" y="0.5" width="30" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="cIg-I7-maG" secondAttribute="height" multiplier="1:1" constant="1" id="PNH-r0-71Z"/>
+                                    <constraint firstAttribute="width" constant="30" id="zsz-2R-rn1"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O4-fP-utT">
+                                <rect key="frame" x="0.0" y="0.5" width="30" height="29"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="btnDefaultClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Qvm-US-vKm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7O4-fP-utT" firstAttribute="trailing" secondItem="cIg-I7-maG" secondAttribute="trailing" id="98V-iF-IpF"/>
+                            <constraint firstAttribute="width" constant="30" id="9Ly-3k-PVw"/>
+                            <constraint firstItem="7O4-fP-utT" firstAttribute="leading" secondItem="cIg-I7-maG" secondAttribute="leading" id="CbA-lJ-P9G"/>
+                            <constraint firstItem="7O4-fP-utT" firstAttribute="top" secondItem="cIg-I7-maG" secondAttribute="top" id="CjC-SH-LbQ"/>
+                            <constraint firstAttribute="height" constant="30" id="RxG-cm-byM"/>
+                            <constraint firstItem="cIg-I7-maG" firstAttribute="centerX" secondItem="f7a-Ae-4L4" secondAttribute="centerX" id="VTE-I5-ft1"/>
+                            <constraint firstItem="7O4-fP-utT" firstAttribute="bottom" secondItem="cIg-I7-maG" secondAttribute="bottom" id="jea-1u-zPe"/>
+                            <constraint firstItem="cIg-I7-maG" firstAttribute="centerY" secondItem="f7a-Ae-4L4" secondAttribute="centerY" id="o65-mk-emx"/>
+                        </constraints>
+                    </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Delete" translatesAutoresizingMaskIntoConstraints="NO" id="iA6-jo-ZTs">
                         <rect key="frame" x="465" y="61" width="30" height="30"/>
                         <constraints>
@@ -120,17 +150,20 @@
                     <constraint firstItem="1HE-Id-0FP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6s6-A6-1AL"/>
                     <constraint firstItem="iA6-jo-ZTs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8oy-8S-1zy"/>
                     <constraint firstItem="1HE-Id-0FP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="PsX-Q1-xqs"/>
+                    <constraint firstItem="iA6-jo-ZTs" firstAttribute="leading" secondItem="f7a-Ae-4L4" secondAttribute="trailing" constant="20" id="SkB-aV-7kQ"/>
                     <constraint firstItem="Hk2-pp-bUz" firstAttribute="leading" secondItem="iA6-jo-ZTs" secondAttribute="leading" id="VL6-RA-7eU"/>
                     <constraint firstItem="Hk2-pp-bUz" firstAttribute="top" secondItem="iA6-jo-ZTs" secondAttribute="top" id="Xgf-fK-AbV"/>
                     <constraint firstAttribute="bottom" secondItem="1HE-Id-0FP" secondAttribute="bottom" constant="5" id="b39-bd-wMT"/>
                     <constraint firstAttribute="trailing" secondItem="iA6-jo-ZTs" secondAttribute="trailing" constant="8" id="oWj-zK-vW3"/>
                     <constraint firstItem="Hk2-pp-bUz" firstAttribute="trailing" secondItem="iA6-jo-ZTs" secondAttribute="trailing" id="sKl-MK-N6V"/>
+                    <constraint firstItem="f7a-Ae-4L4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="szU-vJ-G63"/>
                     <constraint firstItem="iA6-jo-ZTs" firstAttribute="leading" secondItem="1HE-Id-0FP" secondAttribute="trailing" constant="8" id="zTx-iI-xaW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btnDelete" destination="Hk2-pp-bUz" id="UUr-9v-fXM"/>
+                <outlet property="imgDefault" destination="cIg-I7-maG" id="nZ7-Zd-05R"/>
                 <outlet property="imgDelete" destination="iA6-jo-ZTs" id="kl3-GA-svs"/>
                 <outlet property="lblTitleTruckNumberPlate" destination="5d6-4v-yUp" id="gHm-fJ-Xs2"/>
                 <outlet property="lblTitleTruckType" destination="e2J-0y-mqN" id="Nqf-la-SaU"/>

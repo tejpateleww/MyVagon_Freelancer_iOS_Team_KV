@@ -103,9 +103,9 @@ class FreelancerDriverSignupVC3: BaseViewController {
         }else if(!checkPassword.0){
             return (checkPassword.0,checkPassword.1)
         }else if(!checkConfirmPassword.0){
-            return (checkConfirmPassword.0,checkConfirmPassword.1)
+            return (checkConfirmPassword.0,"Please confirm the password")
         }else if TextFieldPassword.text != TextFieldConfirmPassword.text{
-            return (false,"Password and confirm password does not match")
+            return (false,"Password and confirm password must be same")
         } else if !BtnVerifyPhoneNumber.isSelected {
             return (false,"Please verify phone number")
         } else if !BtnVerifyEmail.isSelected {
@@ -119,7 +119,7 @@ class FreelancerDriverSignupVC3: BaseViewController {
         if sender.isSelected == false {
             let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.email)
             if (!checkEmail.0){
-                Utilities.ShowAlertOfValidation(OfMessage: checkEmail.1)
+                Utilities.ShowAlertOfInfo(OfMessage: checkEmail.1)
             } else {
                 EmailVerify()
             }
@@ -130,7 +130,7 @@ class FreelancerDriverSignupVC3: BaseViewController {
         if sender.isSelected == false {
             let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 10))
             if (!checkMobileNumber.0){
-                Utilities.ShowAlertOfValidation(OfMessage: checkMobileNumber.1)
+                Utilities.ShowAlertOfInfo(OfMessage: checkMobileNumber.1)
             } else {
                 PhoneVerify()
             }

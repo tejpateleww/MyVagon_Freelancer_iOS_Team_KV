@@ -82,7 +82,7 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
         if CheckValidation.0 {
             CallLogin()
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
     }
     @IBAction func BtnJoinForFreeAction(_ sender: themeButton) {
@@ -99,20 +99,30 @@ class SignInDriverVC: UIViewController,UITextFieldDelegate {
     // ----------------------------------------------------
     
     func Validate() -> (Bool,String) {
-        
-        let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.email)
+        let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.requiredField(field: "email or phone"))
         let checkPassword = TextFieldPassword.validatedText(validationType: ValidatorType.password(field: "password"))
-        
+        let checkUser = validateEmail()
         if (!checkEmail.0){
-           
             return (checkEmail.0,checkEmail.1)
-        }else if(!checkPassword.0)
-        {
+        }else if(!checkPassword.0){
             return (checkPassword.0,checkPassword.1)
+        }else if (!checkUser.0){
+            return checkUser
         }
         return (true,"")
     }
-    
+    func validateEmail() -> (Bool,String){
+        let checkEmail = TextFieldEmail.validatedText(validationType: ValidatorType.email)
+        let checkPhone = TextFieldEmail.validatedText(validationType: .phoneNo(MinDigit: 10, MaxDigit: 10))
+        if (!checkEmail.0){
+            if !checkPhone.0{
+                return (false,"Please enter a valid email or phone")
+            }else{
+                return (true,"")
+            }
+        }
+        return (true,"")
+    }
     
     // ----------------------------------------------------
     // MARK: - --------- Webservice Methods ---------

@@ -10,7 +10,9 @@ class ShipperDetailViewModel{
     var shipperDetailVC: shipperDetailsVC? = nil
     
     func callWebServiceForShipperDetail(){
+        Utilities.showHud()
         WebServiceSubClass.ShipperDetail(shipperID: shipperDetailVC?.shipperId ?? "") { Status, apiMessage, response, error in
+            Utilities.hideHud()
             self.shipperDetailVC?.isTblReload = true
             if Status{
                 self.shipperDetailVC?.shipperData = response

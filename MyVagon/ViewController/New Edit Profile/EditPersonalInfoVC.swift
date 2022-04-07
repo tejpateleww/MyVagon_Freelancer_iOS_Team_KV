@@ -18,9 +18,10 @@ class EditPersonalInfoVC: BaseViewController {
     @IBOutlet weak var TextFieldMobileNumber: themeTextfield!
     @IBOutlet weak var TextFieldCountryCode: themeTextfield!
     @IBOutlet weak var btnProfieImage: UIButton!
-    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnSave: themeButton!
     @IBOutlet weak var imgAddIcon: UIImageView!
     @IBOutlet weak var txtEmail: themeTextfield!
+    @IBOutlet weak var lblTitle: themeLabel!
     
     var CountryCodeArray: [String] = ["+30"]
     let GeneralPicker = GeneralPickerView()
@@ -34,8 +35,6 @@ class EditPersonalInfoVC: BaseViewController {
         self.TextFieldCountryCode.delegate = self
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "EditPersonalInfo"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileEdit), name: NSNotification.Name(rawValue: "EditPersonalInfo"), object: nil)
-        
-        //setUpUI()
         SetValue()
         setupDelegateForPickerView()
     }
@@ -58,7 +57,7 @@ class EditPersonalInfoVC: BaseViewController {
         if Iseditable {
             self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Edit Personal Info", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.none.value], isTranslucent: true)
         } else {
-            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Edit Personal Info", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editPersonalInfo.value], isTranslucent: true)
+            self.setNavigationBarInViewController(controller: self, naviColor: .clear, naviTitle: "Personal Info", leftImage: NavItemsLeft.back.value, rightImages: [NavItemsRight.editPersonalInfo.value], isTranslucent: true)
         }
         if Iseditable{
             isProfileEdit(allow: true)
@@ -69,10 +68,17 @@ class EditPersonalInfoVC: BaseViewController {
             btnSave.isHidden = true
             imgAddIcon.isHidden = true
         }
-        let StringURLForProfile = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
-        
-        ImageViewProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        ImageViewProfile.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
+        self.lblTitle.text = Iseditable ? "Upload Profile Picture" : "Profile Picture"
+        if (SingletonClass.sharedInstance.UserProfileData?.profile ?? "") == ""{
+            let char = SingletonClass.sharedInstance.UserProfileData?.name?.first?.description
+            if char != ""{
+                ImageViewProfile.addInitials(first: char ?? "")
+            }
+        }else{
+            let StringURLForProfile = "\(APIEnvironment.TempProfileURL)\(SingletonClass.sharedInstance.UserProfileData?.profile ?? "")"
+            ImageViewProfile.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            ImageViewProfile.sd_setImage(with: URL(string: StringURLForProfile), placeholderImage: UIImage(named: "ic_userIcon"))
+        }
         TextFieldFullName.text = SingletonClass.sharedInstance.UserProfileData?.name ?? ""
         
         TextFieldMobileNumber.text = SingletonClass.sharedInstance.UserProfileData?.mobileNumber ?? ""
@@ -92,21 +98,21 @@ class EditPersonalInfoVC: BaseViewController {
         arrayOfDisableElement.3?.isUserInteractionEnabled = allow
         arrayOfDisableElement.4?.isUserInteractionEnabled = allow
         arrayOfDisableElement.5?.isUserInteractionEnabled = allow
-
     }
     
-    
-    @IBAction func btnProfileClick(_ sender: UIButton)
-    {
+    @IBAction func btnProfileClick(_ sender: UIButton){
         AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
         AttachmentHandler.shared.imagePickedBlock = { (image) in
+            for i in self.ImageViewProfile.subviews{
+                i.removeFromSuperview()
+            }
             self.ImageViewProfile.image = image
+            self.ImageViewProfile.contentMode = .scaleAspectFill
             print(image)
             self.ImageUploadAPI(arrImages: [image], documentType: .Profile)
         }
     }
-    @IBAction func btnUpdateClick(_ sender: UIButton)
-    {
+    @IBAction func btnUpdateClick(_ sender: UIButton){
         let CheckValidation = Validate()
         if CheckValidation.0 {
             callEditPersonalInfoUpdateAPI()
@@ -118,7 +124,6 @@ class EditPersonalInfoVC: BaseViewController {
     func Validate() -> (Bool,String) {
         let checkFullName = TextFieldFullName.validatedText(validationType: ValidatorType.username(field: "full name",MaxChar: 70))
         let checkMobileNumber = TextFieldMobileNumber.validatedText(validationType: ValidatorType.phoneNo(MinDigit: 10, MaxDigit: 15))
-        
         if (!checkFullName.0){
             return (checkFullName.0,checkFullName.1)
         }else if (!checkMobileNumber.0){
@@ -126,7 +131,6 @@ class EditPersonalInfoVC: BaseViewController {
         }else if ImageViewProfile.image == nil {
             return (false,"Please attach profile image")
         }
-        
         return (true,"")
     }
     
@@ -140,7 +144,6 @@ class EditPersonalInfoVC: BaseViewController {
         self.editPersonalInfoModel.WebServiceImageUpload(images: arrImages, uploadFor: documentType)
       
     }
-    
 }
 
 extension EditPersonalInfoVC: UITextFieldDelegate {
@@ -206,7 +209,21 @@ extension EditPersonalInfoVC{
         reqModel.country_code = TextFieldCountryCode.text
         reqModel.mobile_number = TextFieldMobileNumber.text
         reqModel.profile_image = profileImage.first
-        
         self.editPersonalInfoModel.WebServiceForPersonalInfoUpdate(ReqModel: reqModel)
+    }
+}
+
+public extension UIImageView {
+
+    func addInitials(first: String) {
+        let initials = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+        initials.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        initials.textAlignment = .center
+        initials.text = first
+        initials.textColor = .white
+        initials.font = UIFont(name: initials.font.fontName, size: 32)
+        initials.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        initials.tag = 199
+        self.addSubview(initials)
     }
 }

@@ -10,8 +10,9 @@ class LocationDetailViewModel{
     var locationDetailVC : LocationDetailVC? = nil
     
     func callWebServiceForLocationDetail(){
-     
+        Utilities.showHud()
         WebServiceSubClass.LocationDetail(locationID: locationDetailVC?.locationId ?? "") { Status, apiMessage, response, error in
+            Utilities.hideHud()
             if Status{
                 self.locationDetailVC?.responceData = response
                 self.locationDetailVC?.refressData()

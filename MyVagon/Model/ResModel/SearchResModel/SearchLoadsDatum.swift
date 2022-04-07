@@ -35,6 +35,7 @@ struct SearchLoadsDatum : Codable {
     let trucks : SearchTruck?
     let txnId : String?
     let updatedAt : String?
+    let mapImage : String?
     let userId : Int?
     let availabilityId : Int?
     
@@ -66,6 +67,7 @@ struct SearchLoadsDatum : Codable {
         case trucks = "trucks"
         case txnId = "txn_id"
         case updatedAt = "updated_at"
+        case mapImage = "map_image"
         case userId = "user_id"
         case availabilityId = "availability_id"
     }
@@ -99,6 +101,7 @@ struct SearchLoadsDatum : Codable {
         trucks = try? values.decodeIfPresent(SearchTruck.self, forKey: .trucks)
         txnId = try? values.decodeIfPresent(String.self, forKey: .txnId)
         updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
+        mapImage = try? values.decodeIfPresent(String.self, forKey: .mapImage)
         userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
         availabilityId = try? values.decodeIfPresent(Int.self, forKey: .availabilityId)
     }

@@ -23,7 +23,7 @@ class SortPopupViewController: BaseViewController {
     
     var delegate : HomeSorfDelgate?
     var customTabBarController: CustomTabBarVC?
-    var arrSordData : [String] = ["Deadheading","Price (Lowest First)","Price (Highest First)","Total Distance","Rating"]
+    var arrSordData : [String] = ["Price (Lowest First)","Price (Highest First)","Total Distance","Rating"]
     var selectedIndex:Int = -1
 
     //MARK: - Life-cycle Methods
@@ -71,7 +71,7 @@ class SortPopupViewController: BaseViewController {
             delegate?.onSorfClick(strSort: self.arrSordData[selectedIndex])
             self.dismiss(animated: true, completion: nil)
         }else{
-            Utilities.ShowAlertOfInfo(OfMessage: "Please select option.")
+            Utilities.ShowAlertOfInfo(OfMessage: "Please select any one option")
         }
     }
     

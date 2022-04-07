@@ -85,8 +85,7 @@ class TruckCapacityType : Codable   {
         case capacity = "value", type = "id"
     }
     
-    func toDictionary() -> [String:Any]
-    {
+    func toDictionary() -> [String:Any] {
         var dictionary = [String:Any]()
         if capacity != nil{
             dictionary["value"] = capacity
@@ -94,7 +93,6 @@ class TruckCapacityType : Codable   {
         if type != nil{
             dictionary["id"] = type
         }
-        
         return dictionary
     }
     

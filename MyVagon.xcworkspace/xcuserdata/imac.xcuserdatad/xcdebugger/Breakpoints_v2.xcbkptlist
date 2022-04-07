@@ -23,33 +23,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E35B966B-B293-4499-8A79-E31883F3DCEE"
+            uuid = "F3790626-C765-49D5-9FDA-5203BE537308"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MyVagon/ViewController/Schedule/MyLoadesCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "437"
-            endingLineNumber = "437"
-            landmarkName = "tableView(_:viewForHeaderInSection:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FB6562B6-F0D3-440F-9718-09ABA5F01D46"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MyVagon/ViewController/BaseViewController/BaseViewController.swift"
+            filePath = "MyVagon/ViewController/Common Web View/CommonAcceptRejectPopupVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "setNavigationBarInViewController(controller:naviColor:naviTitle:leftImage:rightImages:isTranslucent:ShowShadow:IsChatScreenLabel:IsChatScreen:NumberOfChatCount:subTitleString:)"
+            landmarkName = "btnCancle(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F3790626-C765-49D5-9FDA-5203BE537308 - 71b6e6ffcba449e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyVagon.CommonAcceptRejectPopupVC.btnCancle(MyVagon.themeButton) -&gt; ()"
+                  moduleName = "MyVagon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imac/Documents/Dhananjay/MyVagon/MyVagon/ViewController/Common%20Web%20View/CommonAcceptRejectPopupVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "81">
+               </Location>
+               <Location
+                  uuid = "F3790626-C765-49D5-9FDA-5203BE537308 - 71b6e6ffcba449e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MyVagon.CommonAcceptRejectPopupVC.btnCancle(MyVagon.themeButton) -&gt; ()"
+                  moduleName = "MyVagon"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/imac/Documents/Dhananjay/MyVagon/MyVagon/ViewController/Common%20Web%20View/CommonAcceptRejectPopupVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

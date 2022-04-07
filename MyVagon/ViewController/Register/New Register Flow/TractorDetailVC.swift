@@ -13,13 +13,15 @@ class TractorDetailVC: BaseViewController {
     //MARK: - Properties
     @IBOutlet var btnSelection: [UIButton]!
     @IBOutlet weak var collectionImages: UICollectionView!
-    @IBOutlet weak var btnSave: UIButton!
+    @IBOutlet weak var btnSave: themeButton!
     @IBOutlet weak var txtTractorBrand: themeTextfield!
     @IBOutlet weak var txtLicencePlateNumber: themeTextfield!
     @IBOutlet weak var viewTabView: UIView!
     
     @IBOutlet weak var heightConstrentImagcollection: NSLayoutConstraint!
     @IBOutlet weak var btnLeadingConstaintOfAnimationView: NSLayoutConstraint!
+    @IBOutlet weak var lblTitle: themeLabel!
+    
     var tabTypeSelection = Tabselect.Diesel.rawValue
     let GeneralPicker = GeneralPickerView()
     var SelectedTextField : UITextField?
@@ -164,6 +166,7 @@ class TractorDetailVC: BaseViewController {
         }
         
         self.txtTractorBrand.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? ""
+        self.selectedBrandID = SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.id ?? 0
         self.txtLicencePlateNumber.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.registrationNo
         self.arrImages = SingletonClass.sharedInstance.UserProfileData?.vehicle?.images ?? []
         self.collectionImages.reloadData()
@@ -177,7 +180,9 @@ class TractorDetailVC: BaseViewController {
             i.isUserInteractionEnabled = isEditEnable
         }
         btnSave.isHidden = !isEditEnable
+        self.txtTractorBrand.rightImage = isEditEnable ? UIImage(named: "ic_dropdown") : UIImage()
         btnSave.setTitle(self.isFromEdit ? "Save" : "Continue", for: .normal)
+        self.lblTitle.text = isEditEnable ? "Enter Tractor Details" : "Tractor Details"
     }
     
     func selectedBtnUIChanges(Selected : Bool , Btn : UIButton) {
@@ -194,19 +199,21 @@ class TractorDetailVC: BaseViewController {
     func validetion() -> (Bool,String){
         let tractorBrand = txtTractorBrand.validatedText(validationType: .requiredField(field: "tractor"))
         let tractorPlateNumber = txtLicencePlateNumber.validatedText(validationType: .requiredField(field: "tractor licence plate number"))
+        let truckValidPlate = txtLicencePlateNumber.validatedText(validationType: .plateNumber(field: "tractor licence plate number"))
         if !tractorBrand.0{
             return (false,"Select tractor brand")
         }else if !tractorPlateNumber.0{
             return tractorPlateNumber
         }else if arrImages.count == 0{
             return (false,"add tractor images")
+        }else if (!truckValidPlate.0) {
+            return truckValidPlate
         }else{
             return (true,"Succesfull")
         }
     }
     
     @objc func ProfileEdit(){
-        print("in edit notification")
         self.isEditEnable = true
         self.enableEdit()
         self.collectionImages.reloadData()
@@ -240,7 +247,7 @@ class TractorDetailVC: BaseViewController {
         if velidetion.0{
             if isFromEdit{
                 let reqModel = EditTractorDetailReqModel()
-                reqModel.brand = txtTractorBrand.text
+                reqModel.brand = "\(self.selectedBrandID)"
                 reqModel.fuel_type = tabTypeSelection
                 reqModel.images = arrImages.map({$0}).joined(separator: ",")
                 reqModel.plate_number = txtLicencePlateNumber.text
@@ -367,9 +374,13 @@ extension TractorDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(indexPath.row != 0){
+        if(indexPath.row != 0 || !isEditEnable){
+            var count = 0
+            if isEditEnable{
+                count = 1
+            }
             let vc : GalaryVC = GalaryVC.instantiate(fromAppStoryboard: .Auth)
-            vc.firstTimeSelectedIndex = indexPath.row - 1
+            vc.firstTimeSelectedIndex = indexPath.row - count
             vc.arrImage = self.arrImages
             self.navigationController?.present(vc, animated: true)
         }
@@ -394,7 +405,8 @@ extension TractorDetailVC : UICollectionViewDelegate,UICollectionViewDataSource,
 extension TractorDetailVC{
     
     func callWebServiceForEditTractorDetail(reqModel: EditTractorDetailReqModel){
-        editTractorDetailViewModel.callwebservice(reqModel: reqModel)
+        self.editTractorDetailViewModel.tractorVc = self
+        self.editTractorDetailViewModel.callwebservice(reqModel: reqModel)
     }
     
 }

@@ -28,6 +28,7 @@ enum ValidatorType {
     case age
     case phoneNo(MinDigit: Int,MaxDigit:Int)
     case Select(field: String)
+    case plateNumber(field: String)
 }
 
 enum VaildatorFactory {
@@ -41,6 +42,7 @@ enum VaildatorFactory {
         case .phoneNo(let MinimumDigit,let MaximumDigit): return PhoneNoValidator(MinimumDigit, MaximumDigit)
         case .Select(let fieldName): return ValueSelection(fieldName)
         case .Upload(let fieldName): return UploadDocument(fieldName)
+        case .plateNumber(let fieldName): return checkPlateNumber(fieldName)
         }
     }
 }
@@ -79,6 +81,22 @@ class UploadDocument: ValidatorConvertible {
     {
         guard value != "" else {return (false,ValidationError("Please upload \(fieldName)").message)}
         return (true , "")
+    }
+}
+
+struct checkPlateNumber: ValidatorConvertible {
+    private let fieldName: String
+    
+    init(_ field: String) {
+        fieldName = field
+    }
+    
+    func validated(_ value: String) -> (Bool, String) {
+        
+        if value.range(of: "^(?=.*[a-zA-Z])(?=.*[0-9])", options: .regularExpression) != nil {
+            return (true , "")
+        }
+        return (false,ValidationError("Invalid \(fieldName), \(fieldName) should contain characters and digits").message)
     }
 }
 
@@ -177,7 +195,7 @@ struct PasswordValidator: ValidatorConvertible {
     func validated(_ value: String)  -> (Bool,String) {
         
         guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
-        guard value.count >= 8 else { return (false,ValidationError("Password must have at least 8 characters").message) }
+        guard value.count >= 8 else { return (false,ValidationError("Password must contain at lease 8 characters").message) }
         guard value.count <= 20 else { return (false,ValidationError("Maximum 20 characters are allowed in password").message) }
         return (CheckWhiteSpaceOnBeginToEnd(value: value))
         

@@ -126,6 +126,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
         
         let checkLicenseNumber = TextFieldLicenseNumber.validatedText(validationType: ValidatorType.requiredField(field: "license number"))
         let checkLicenseExpiryDate = TextFieldLicenseExpiryDate.validatedText(validationType: ValidatorType.requiredField(field: "license expiry date"))
+        let checkLicenseNumberValid = TextFieldLicenseNumber.validatedText(validationType: ValidatorType.plateNumber(field: "license number"))
         
         if SingletonClass.sharedInstance.RegisterData.Reg_id_proof.count == 0 {
             return (false,"Please attach id proof document")
@@ -133,8 +134,9 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
             return (false,"Please attach license")
         } else if (!checkLicenseNumber.0){
             return (checkLicenseNumber.0,checkLicenseNumber.1)
-        }
-        else if (!checkLicenseExpiryDate.0){
+        }else if (!checkLicenseNumberValid.0){
+            return checkLicenseNumberValid
+        }else if (!checkLicenseExpiryDate.0){
             return (checkLicenseExpiryDate.0,checkLicenseExpiryDate.1)
         }
 
@@ -160,7 +162,7 @@ class IdentifyYourselfVC: BaseViewController, UITextFieldDelegate,UIDocumentPick
             RegisterMainVC.viewDidLayoutSubviews()
            
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
         
     }

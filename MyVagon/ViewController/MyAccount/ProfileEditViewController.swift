@@ -242,9 +242,9 @@ class ProfileEditViewController: BaseViewController , UITextFieldDelegate{
         
         
         TextFieldTruckBrand.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.brands?.name ?? ""
-        SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?.forEach({ element in
-            TruckCapacityAdded.append(TruckCapacityType(Capacity: element.value ?? "", Type: element.packageTypeId?.id ?? 0))
-        })
+//        SingletonClass.sharedInstance.UserProfileData?.vehicle?.vehicleCapacity?.forEach({ element in
+//            TruckCapacityAdded.append(TruckCapacityType(Capacity: element.value ?? "", Type: element.packageTypeId?.id ?? 0))
+//        })
         
       
 //        TextFieldRegistrationNumber.text = SingletonClass.sharedInstance.UserProfileData?.vehicle?.registrationNo

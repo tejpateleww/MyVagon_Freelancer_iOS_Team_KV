@@ -68,6 +68,8 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
         SetValue()
         TextFieldStartLocation.delegate = self
         TextFieldEndLocation.delegate = self
+        TextFieldEnterBidPrice.delegate = self
+        TextFieldQuote.delegate = self
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
@@ -214,7 +216,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
             ReqModelForPostTruck.is_bid = "0"
         }
         
-        ReqModelForPostTruck.bid_amount = (SwitchAllowBidding.isOn == true) ? "\((TextFieldEnterBidPrice.text ?? "").removeFormatAmount().0)" : "\((TextFieldQuote.text ?? "").removeFormatAmount().0)"
+        ReqModelForPostTruck.bid_amount = (SwitchAllowBidding.isOn == true) ? "\(TextFieldEnterBidPrice.text ?? "")" : "\(TextFieldQuote.text ?? "")"
 
         self.postTruckViewModel.PostAvailability(ReqModel: ReqModelForPostTruck)
     }
@@ -386,4 +388,17 @@ extension PostTruckViewController : UICollectionViewDelegate,UICollectionViewDat
     }
   
     
+}
+
+extension PostTruckViewController{
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+         if textField == TextFieldEnterBidPrice || textField == TextFieldQuote{
+                 if textField.text?.count ?? 0 > 9{
+                     var text = textField.text ?? ""
+                     text.removeLast()
+                     textField.text = text
+                 }
+         }
+    }
+        
 }

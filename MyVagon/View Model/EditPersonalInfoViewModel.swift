@@ -29,7 +29,9 @@ class EditPersonalInfoModel {
         })
     }
     func WebServiceForPersonalInfoUpdate(ReqModel:EditPersonalInfoReqModel){
+        Utilities.ShowLoaderButtonInButton(Button: VC?.btnSave ?? themeButton(), vc: VC ?? UIViewController())
         WebServiceSubClass.editPersonalInfo(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            Utilities.HideLoaderButtonInButton(Button: self.VC?.btnSave ?? themeButton(), vc: self.VC ?? UIViewController())
             if status{
                 appDel.Logout()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {

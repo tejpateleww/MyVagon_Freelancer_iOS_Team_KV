@@ -28,7 +28,6 @@ class BidNowViewModel {
                     controller.IsHideImage = true
                     controller.LeftbtnTitle = "Book more loads"
                     controller.RightBtnTitle = ""
-                  
                     controller.modalPresentationStyle = .overCurrentContext
                     controller.modalTransitionStyle = .coverVertical
                     controller.LeftbtnClosour = {
@@ -41,6 +40,9 @@ class BidNowViewModel {
                     }
                  
                     let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(250) + appDel.GetSafeAreaHeightFromBottom())])
+                    sheetController.dismissOnPull = false
+                    sheetController.dismissOnOverlayTap = false
+                    sheetController.allowPullingPastMaxHeight = false
                     UIApplication.topViewController()?.present(sheetController, animated: true, completion: nil)
                 })
                 

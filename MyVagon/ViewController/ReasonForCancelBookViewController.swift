@@ -14,9 +14,13 @@ class ReasonForCancelBookViewController:  BaseViewController {
     // ----------------------------------------------------
    
     var remainingsMinute : Int?
-    var arrSordData : [String] = ["Deadheading","Price (Lowest First)","Price (Highest First)","Total Distance","Rating"]
+    var arrSordData = SingletonClass.sharedInstance.cancellationReasons ?? []
     var selectedIndex:Int = -1
     var customTabBarController: CustomTabBarVC?
+    var cancelBook = CancelBookRequestViewModel()
+    var booking_id = ""
+    var shipper_id = ""
+    var booking_request_id = ""
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
@@ -39,7 +43,7 @@ class ReasonForCancelBookViewController:  BaseViewController {
         if self.tabBarController != nil {
             self.customTabBarController = (self.tabBarController as! CustomTabBarVC)
         }
-        self.lblRemainingMinutes.text = "17 minutes remaining"// "\(remainingsMinute ?? 0) minutes remaining"
+        self.lblRemainingMinutes.text = "\(remainingsMinute ?? 0) minutes remaining"// "\(remainingsMinute ?? 0) minutes remaining"
         
         self.btnDecline.setTitle("Decline", for: .normal)
         self.tblSort.reloadData()
@@ -67,7 +71,13 @@ class ReasonForCancelBookViewController:  BaseViewController {
     // MARK: - --------- IBAction Methods ---------
     // ----------------------------------------------------
     @IBAction func btnDecline(_ sender: themeButton) {
-        self.dismiss(animated: true, completion: nil)
+        // call api for dicline
+        if selectedIndex >= 0{
+            self.callWebService()
+        }else{
+            Utilities.ShowAlertOfInfo(OfMessage: "Please select reason")
+        }
+//        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func btnCancel(_ sender: themeButton) {
         self.dismiss(animated: true, completion: nil)
@@ -90,7 +100,7 @@ extension ReasonForCancelBookViewController : UITableViewDelegate,UITableViewDat
         let cell = tblSort.dequeueReusableCell(withIdentifier: "SortPopupCell", for: indexPath) as! SortPopupCell
         
         cell.btnSelected.setImage((selectedIndex == indexPath.row) ? UIImage(named: "ic_radio_selected") : UIImage(named: "ic_radio_unselected"), for: .normal)
-        cell.lblName.text = arrSordData[indexPath.row]
+        cell.lblName.text = arrSordData[indexPath.row].reason
         return cell
     }
     
@@ -98,5 +108,19 @@ extension ReasonForCancelBookViewController : UITableViewDelegate,UITableViewDat
         
         self.selectedIndex = indexPath.row
         self.tblSort.reloadData()
+    }
+}
+//MARK: -  web service
+extension ReasonForCancelBookViewController{
+    
+    func callWebService(){
+       let requestModel = CancelBookRequestReqModel()
+        requestModel.booking_id = self.booking_id
+        requestModel.shipper_id = self.shipper_id
+        requestModel.booking_request_id = self.booking_request_id
+        requestModel.reason = "\(arrSordData[selectedIndex].id ?? 0)"
+        requestModel.driver_id = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        cancelBook.reasoneVC = self
+        cancelBook.callwebServiceForDeclineBook(req: requestModel)
     }
 }

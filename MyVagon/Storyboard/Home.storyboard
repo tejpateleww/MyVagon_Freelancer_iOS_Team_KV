@@ -1462,7 +1462,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="305" height="54"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJN-nd-Zz9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="24"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="305" height="16.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -1477,7 +1477,7 @@
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(Upload vehicle paperwork &amp; EU Registration Document)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ki3-TJ-dm5" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="0.0" y="29" width="305" height="25"/>
+                                                                                <rect key="frame" x="0.0" y="21.5" width="305" height="32.5"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -4699,9 +4699,20 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qXw-N8-LfW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-BH-Nhz" customClass="GMSMapView">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfA-BH-Nhz">
                                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7U9-Y6-lPu">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
+                                                                            </imageView>
+                                                                        </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="7U9-Y6-lPu" secondAttribute="bottom" id="Eyq-bH-PRB"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="7U9-Y6-lPu" secondAttribute="trailing" id="VPk-zu-fOH"/>
+                                                                            <constraint firstItem="7U9-Y6-lPu" firstAttribute="top" secondItem="mfA-BH-Nhz" secondAttribute="top" id="cuf-DA-3fI"/>
+                                                                            <constraint firstItem="7U9-Y6-lPu" firstAttribute="leading" secondItem="mfA-BH-Nhz" secondAttribute="leading" id="ypf-F0-EKO"/>
+                                                                        </constraints>
                                                                     </view>
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -5301,9 +5312,9 @@
                     </view>
                     <connections>
                         <outlet property="ColTypes" destination="elp-b7-rJR" id="W2W-Z7-1cI"/>
-                        <outlet property="MapViewForLocation" destination="mfA-BH-Nhz" id="MKA-8M-sGs"/>
                         <outlet property="btnBidNow" destination="8bd-FR-toP" id="MSa-NL-dfQ"/>
                         <outlet property="btnViewNotes" destination="HgO-2W-W6m" id="kFL-dL-iBL"/>
+                        <outlet property="imgMap" destination="7U9-Y6-lPu" id="73y-Kc-jGk"/>
                         <outlet property="imgShipperProfile" destination="6tj-Vy-qbY" id="gOR-4t-aEy"/>
                         <outlet property="lblBookingID" destination="mv2-OL-PoZ" id="ZeM-zQ-7VF"/>
                         <outlet property="lblBookingStatus" destination="65x-SH-D2g" id="idV-KR-aga"/>
@@ -7044,58 +7055,70 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-dl-kyM" customClass="imageRadius" customModule="MyVagon" customModuleProvider="target">
-                                                                                <rect key="frame" x="152.5" y="44" width="40" height="40"/>
-                                                                                <constraints>
-                                                                                    <constraint firstAttribute="width" secondItem="KsU-dl-kyM" secondAttribute="height" multiplier="1:1" id="mh6-Nk-hz6"/>
-                                                                                    <constraint firstAttribute="height" constant="40" id="rky-M0-sUU"/>
-                                                                                </constraints>
-                                                                            </imageView>
-                                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AET-HY-EM6">
-                                                                                <rect key="frame" x="212.5" y="10" width="161.5" height="108"/>
+                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fgn-Vc-NDB">
+                                                                                <rect key="frame" x="125" y="0.0" width="249" height="128"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bert Roger" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-HN-ycy" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="161.5" height="51.5"/>
-                                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
-                                                                                        <nil key="textColor"/>
-                                                                                        <nil key="highlightedColor"/>
-                                                                                    </label>
-                                                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-hz-7QZ">
-                                                                                        <rect key="frame" x="0.0" y="56.5" width="161.5" height="51.5"/>
+                                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Profile" translatesAutoresizingMaskIntoConstraints="NO" id="KsU-dl-kyM" customClass="imageRadius" customModule="MyVagon" customModuleProvider="target">
+                                                                                        <rect key="frame" x="10" y="44" width="40" height="40"/>
+                                                                                        <constraints>
+                                                                                            <constraint firstAttribute="width" secondItem="KsU-dl-kyM" secondAttribute="height" multiplier="1:1" id="mh6-Nk-hz6"/>
+                                                                                            <constraint firstAttribute="height" constant="40" id="rky-M0-sUU"/>
+                                                                                        </constraints>
+                                                                                    </imageView>
+                                                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="AET-HY-EM6">
+                                                                                        <rect key="frame" x="70" y="20" width="159" height="88"/>
                                                                                         <subviews>
-                                                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Com-VW-sEt" customClass="CosmosView" customModule="Cosmos">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="51.5"/>
-                                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                                                <userDefinedRuntimeAttributes>
-                                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="ic_Selected"/>
-                                                                                                    <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="ic_deselected"/>
-                                                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
-                                                                                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                                                                        <real key="value" value="3"/>
-                                                                                                    </userDefinedRuntimeAttribute>
-                                                                                                </userDefinedRuntimeAttributes>
-                                                                                            </view>
-                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="400" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PA-vy-Nq6" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                <rect key="frame" x="130" y="0.0" width="31.5" height="51.5"/>
+                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bert Roger" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PN2-HN-ycy" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="159" height="41.5"/>
                                                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
+                                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ssz-hz-7QZ">
+                                                                                                <rect key="frame" x="0.0" y="46.5" width="159" height="41.5"/>
+                                                                                                <subviews>
+                                                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Com-VW-sEt" customClass="CosmosView" customModule="Cosmos">
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="117.5" height="41.5"/>
+                                                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                                        <userDefinedRuntimeAttributes>
+                                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="filledImage" value="ic_Selected"/>
+                                                                                                            <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="ic_deselected"/>
+                                                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="NO"/>
+                                                                                                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                                                                <real key="value" value="3"/>
+                                                                                                            </userDefinedRuntimeAttribute>
+                                                                                                        </userDefinedRuntimeAttributes>
+                                                                                                    </view>
+                                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="400" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7PA-vy-Nq6" customClass="LoadDetaiilsLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                        <rect key="frame" x="127.5" y="0.0" width="31.5" height="41.5"/>
+                                                                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                                                                        <nil key="textColor"/>
+                                                                                                        <nil key="highlightedColor"/>
+                                                                                                    </label>
+                                                                                                </subviews>
+                                                                                            </stackView>
                                                                                         </subviews>
                                                                                     </stackView>
                                                                                 </subviews>
-                                                                            </stackView>
+                                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="AET-HY-EM6" firstAttribute="leading" secondItem="KsU-dl-kyM" secondAttribute="trailing" constant="20" id="751-DK-hFL"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="AET-HY-EM6" secondAttribute="trailing" constant="20" id="PCD-k0-4vj"/>
+                                                                                    <constraint firstItem="KsU-dl-kyM" firstAttribute="leading" secondItem="Fgn-Vc-NDB" secondAttribute="leading" constant="10" id="TBZ-tv-c30"/>
+                                                                                    <constraint firstItem="KsU-dl-kyM" firstAttribute="centerY" secondItem="AET-HY-EM6" secondAttribute="centerY" id="egO-jq-FgY"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="AET-HY-EM6" secondAttribute="bottom" constant="20" id="kdT-wG-eoj"/>
+                                                                                    <constraint firstItem="AET-HY-EM6" firstAttribute="top" secondItem="Fgn-Vc-NDB" secondAttribute="top" constant="20" id="vTg-vL-9wO"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="KsU-dl-kyM" firstAttribute="centerY" secondItem="AET-HY-EM6" secondAttribute="centerY" id="D6b-7O-4yU"/>
-                                                                            <constraint firstItem="dXO-1i-BJ3" firstAttribute="centerY" secondItem="AET-HY-EM6" secondAttribute="centerY" id="EDy-q8-vRS"/>
-                                                                            <constraint firstItem="AET-HY-EM6" firstAttribute="leading" secondItem="KsU-dl-kyM" secondAttribute="trailing" constant="20" id="Fee-of-ZxN"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="AET-HY-EM6" secondAttribute="trailing" id="Pa7-4l-K2h"/>
-                                                                            <constraint firstAttribute="bottom" secondItem="AET-HY-EM6" secondAttribute="bottom" constant="10" id="cDS-KL-uhV"/>
+                                                                            <constraint firstItem="dXO-1i-BJ3" firstAttribute="centerY" secondItem="Fgn-Vc-NDB" secondAttribute="centerY" id="1Pe-3r-rfc"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Fgn-Vc-NDB" secondAttribute="trailing" id="Rhk-M9-O5c"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="Fgn-Vc-NDB" secondAttribute="bottom" id="Rkc-x5-0cK"/>
+                                                                            <constraint firstItem="Fgn-Vc-NDB" firstAttribute="leading" secondItem="dXO-1i-BJ3" secondAttribute="trailing" constant="5" id="iyN-pd-idm"/>
                                                                             <constraint firstItem="dXO-1i-BJ3" firstAttribute="leading" secondItem="mu5-1f-J2E" secondAttribute="leading" id="kFK-Nd-qeH"/>
-                                                                            <constraint firstItem="KsU-dl-kyM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dXO-1i-BJ3" secondAttribute="trailing" constant="10" id="kep-P0-kgz"/>
-                                                                            <constraint firstItem="AET-HY-EM6" firstAttribute="top" secondItem="mu5-1f-J2E" secondAttribute="top" constant="10" id="zRB-3Z-hnH"/>
+                                                                            <constraint firstItem="Fgn-Vc-NDB" firstAttribute="top" secondItem="mu5-1f-J2E" secondAttribute="top" id="zUw-AE-Zph"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -7217,6 +7240,7 @@
                         <outlet property="scrollViewHide" destination="3l4-cE-IsI" id="9Af-Kn-LCk"/>
                         <outlet property="tblMainData" destination="uAW-dX-7Og" id="ao7-mt-IM7"/>
                         <outlet property="tblMainDataHeight" destination="wzj-Bz-X2w" id="OWz-Cg-TVQ"/>
+                        <outlet property="viewShipperDetail" destination="Fgn-Vc-NDB" id="ESd-gC-wUS"/>
                         <outlet property="viewStatus" destination="pZD-Eg-hKS" id="YdT-pK-FLM"/>
                         <outlet property="vwShimmer" destination="m58-uh-OIm" id="50d-i3-wne"/>
                     </connections>
@@ -9567,6 +9591,7 @@
                         <outlet property="btnProfieImage" destination="efi-Iq-xXa" id="Pgo-BR-QiH"/>
                         <outlet property="btnSave" destination="bh6-3n-cdd" id="2B9-g8-v96"/>
                         <outlet property="imgAddIcon" destination="eOA-91-ss1" id="Hc3-MK-IEe"/>
+                        <outlet property="lblTitle" destination="yXs-F0-6p3" id="ocm-aj-0mq"/>
                         <outlet property="txtEmail" destination="3zo-qV-3hF" id="b5Y-SW-g8Z"/>
                     </connections>
                 </viewController>
@@ -9949,6 +9974,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="74U-9b-YmG">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="BXF-jj-EO4">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
@@ -9957,6 +9985,12 @@
         </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="ZnP-vh-q9A">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="dqj-gP-pH2">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>

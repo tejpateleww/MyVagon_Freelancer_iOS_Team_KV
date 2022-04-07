@@ -18,6 +18,7 @@ class ViewReloadVC: BaseViewController {
     var customTabBarController: CustomTabBarVC?
     var driverId = ""
     var bookingId = ""
+    var isFromRelode = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareView()
@@ -30,7 +31,14 @@ class ViewReloadVC: BaseViewController {
     }
     
     func setupUI(){
-        self.lblReloadsFound.text = strTitle
+        if isFromRelode{
+            self.lblReloadsFound.isHidden = true
+            self.lblTitleBookingConfirmed.text = "Reload Booking Confirmed"
+            self.btnViewReloads.isHidden = true
+            self.btnDismiss.setTitle("Book more loads", for: .normal)
+        }else{
+            self.lblReloadsFound.text = strTitle
+        }
     }
     
     func setupData(){
@@ -49,7 +57,11 @@ class ViewReloadVC: BaseViewController {
     @IBAction func btnDismissAction(_ sender: Any) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dismiss(animated: true, completion: {
-                NotificationCenter.default.post(name: .backToLoadDeatil, object: nil)
+                if self.isFromRelode{
+                    appDel.NavigateToHome()
+                }else{
+                    NotificationCenter.default.post(name: .backToLoadDeatil, object: nil)
+                }
             })
         }
         

@@ -243,7 +243,7 @@ class PaymentsVC: BaseViewController {
                 RegisterMainVC.viewDidLayoutSubviews()
             }
         } else {
-            Utilities.ShowAlertOfValidation(OfMessage: CheckValidation.1)
+            Utilities.ShowAlertOfInfo(OfMessage: CheckValidation.1)
         }
     }
 }
@@ -259,9 +259,15 @@ extension PaymentsVC{
         self.paymentViewModel.VC =  self
         let reqModel = PaymentDetailUpdateReqModel()
         reqModel.payment_type = selectedPaymentMode
-        reqModel.iban = txtIBAN.text
-        reqModel.account_number = txtAccountNumber.text
-        reqModel.bank_name = txtBankName.text
+        if selectedPaymentMode != "0"{
+            reqModel.iban = txtIBAN.text
+            reqModel.account_number = txtAccountNumber.text
+            reqModel.bank_name = txtBankName.text
+        }else{
+            reqModel.iban = ""
+            reqModel.account_number = ""
+            reqModel.bank_name = ""
+        }
         reqModel.country = txtCountry.text
         self.paymentViewModel.WebServiceForPaymentDeatilUpdate(ReqModel: reqModel)
     }

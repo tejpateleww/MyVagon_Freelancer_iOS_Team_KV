@@ -18,7 +18,9 @@ class WebServiceSubClass{
     }
     //MARK:- Init
        class func SystemDateTime(completion: @escaping (Bool,String,SystemDateResModel?,Any) -> ()) {
+           Utilities.showHud()
            URLSessionRequestManager.makeGetRequest(urlString: ApiKey.SystemDateTime.rawValue , responseModel: SystemDateResModel.self) { (status, message, response, error) in
+               Utilities.hideHud()
             if status{
                 SingletonClass.sharedInstance.SystemDate = response?.data ?? ""
             }
@@ -108,7 +110,6 @@ class WebServiceSubClass{
     //MARK: -TruckType
     class func TruckType(completion: @escaping (Bool,String,TruckTypeListingResModel?,Any) -> ()){
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckTypeListing.rawValue, responseModel: TruckTypeListingResModel.self) { (status, message, response, error) in
-            print("in truck type list data:- ")
             if status{
                 SingletonClass.sharedInstance.TruckTypeList = response?.data
             }
@@ -156,6 +157,15 @@ class WebServiceSubClass{
         }
     }
     
+    //MARK: - Cancellation Reasons
+    class func cancellationReasoneList(completion: @escaping (Bool,String,CancellationReasoneResModel?,Any) -> ()){
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.CancellationReason.rawValue, responseModel: CancellationReasoneResModel.self) { (status, message, response, error) in
+            if status{
+                SingletonClass.sharedInstance.cancellationReasons = response?.data
+            }
+            completion(status, message, response, error)
+        }
+    }
     //MARK: -ImageUpload
     class func ImageUpload(imgArr:[UIImage], completion: @escaping (Bool,String,ImageUploadResModel?,Any) -> ()){
         
@@ -366,7 +376,6 @@ class WebServiceSubClass{
     
     //MARK: -Payment Deatil API
     class func getPaymentDeatilAPI(completion: @escaping (Bool,String,PaymentDetailResModel?,Any) -> ()) {
-        print("api calll for payment")
         URLSessionRequestManager.makeGetRequest(urlString: ApiKey.getPaymentDetails.rawValue + "/\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)", responseModel: PaymentDetailResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
@@ -430,6 +439,35 @@ class WebServiceSubClass{
             completion(status, message, response, error)
         }
     }
+    
+    //MARK:- Decline Load
+    class func declineLoad(reqModel: CancelBookRequestReqModel, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.cancelBookRequest.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- Remove Truck Detail
+    class func removeTruckDetail(reqModel: RemoveTruckDetailReqModel, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.removeTruckDetails.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- trash-posted-truck
+    class func trashPostedTruck(reqModel: TrashPostedTruck, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.trashPostedTruck.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    //MARK:- Make as default truck
+    class func makeAsDefaultTruck(reqModel: MakeAsDefaultTruckReqModel, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.makeAsDefaultTruck.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
 }
 
 

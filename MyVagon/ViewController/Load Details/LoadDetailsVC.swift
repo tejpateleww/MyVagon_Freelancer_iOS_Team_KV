@@ -38,13 +38,15 @@ class LoadDetailsVC: BaseViewController {
         }
     }
     var customTabBarController: CustomTabBarVC?
+    var isFromRelated = false
 
     // ----------------------------------------------------
     // MARK: - --------- IBOutlets ---------
     // ----------------------------------------------------
     @IBOutlet weak var MapViewForLocation: GMSMapView!
     @IBOutlet weak var MapViewWithTwoLocation: MKMapView!
-
+    @IBOutlet weak var imgMap: UIImageView!
+    
     @IBOutlet weak var vwShimmer: UIView!
     @IBOutlet weak var scrollViewHide: UIScrollView!
     @IBOutlet weak var btnViewNotes: themeButton!
@@ -100,7 +102,7 @@ class LoadDetailsVC: BaseViewController {
         
         addNotificationObs()
         
-        MapViewForLocation.isUserInteractionEnabled = false
+//        MapViewForLocation.isUserInteractionEnabled = false
         
         
     }
@@ -149,6 +151,8 @@ class LoadDetailsVC: BaseViewController {
         lblTotalMiles.text = "\(LoadDetails?.distance ?? "")"
         
         lblDeadHead.text = "\(Double(LoadDetails?.trucks?.locations?.first?.deadhead ?? "") ?? 0.0) Km Deadhead"
+        lblDeadHead.isHidden = true
+        
         
         lblShipperName.text = LoadDetails?.shipperDetails?.companyName ?? ""
         
@@ -179,7 +183,10 @@ class LoadDetailsVC: BaseViewController {
         }
         let gesture = UITapGestureRecognizer(target: self, action: #selector(reviewGesture(_:)))
         self.viewShipperDetail.addGestureRecognizer(gesture)
-        
+        let imgUrl = "\(APIEnvironment.TempMapURL)\(LoadDetails?.mapImage ?? "")"
+        self.imgMap.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        self.imgMap.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage())
+        self.imgMap.contentMode = .scaleAspectFit
 //        switch LoadDetails?.bid?.status {
 //        case MyLoadesStatus.pending.Name:
 //            self.ViewStatusBidText.text =  MyLoadesStatus.pending.Name.capitalized
@@ -253,11 +260,12 @@ class LoadDetailsVC: BaseViewController {
     
     }
     
-    func openReloadView(strTitle : String,bookingId: String,driverId: String){
+    func openReloadView(strTitle : String,isFromRelode: Bool = false){
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ViewReloadVC.storyboardID) as! ViewReloadVC
         controller.strTitle = strTitle
-        controller.bookingId = bookingId
-        controller.driverId = driverId
+        controller.isFromRelode = isFromRelode
+        controller.bookingId = "\(LoadDetails?.id ?? 0)"
+        controller.driverId = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
         controller.modalPresentationStyle = .overCurrentContext
         controller.modalTransitionStyle = .coverVertical
         let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(280) + appDel.GetSafeAreaHeightFromBottom())])
@@ -473,7 +481,6 @@ extension LoadDetailsVC:UITableViewDelegate,UITableViewDataSource{
         controller.locationId = "\(self.LoadDetails?.trucks?.locations?[indexPath.row].id ?? 0)"
         UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
-    
 }
 // ----------------------------------------------------
 // MARK: - --------- Collectionview Methods ---------
@@ -564,15 +571,15 @@ extension LoadDetailsVC {
           }
       }
 }
-extension LoadDetailsVC : MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let rendere = MKPolylineRenderer(overlay: overlay)
-        rendere.lineWidth = 5
-        rendere.strokeColor = .systemBlue
-        
-        return rendere
-    }
-}
+//extension LoadDetailsVC : MKMapViewDelegate {
+//    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+//        let rendere = MKPolylineRenderer(overlay: overlay)
+//        rendere.lineWidth = 5
+//        rendere.strokeColor = .systemBlue
+//
+//        return rendere
+//    }
+//}
 enum bidStatus {
     case BookNow
     case BidNow

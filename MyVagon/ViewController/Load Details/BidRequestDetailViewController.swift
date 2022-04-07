@@ -62,6 +62,7 @@ class BidRequestDetailViewController: BaseViewController {
     @IBOutlet weak var lblShipperName: themeLabel!
     @IBOutlet weak var lblShipperRatting: themeLabel!
     @IBOutlet weak var imgShipperProfile: UIImageView!
+    @IBOutlet weak var viewShipperDetail: UIView!
     
     @IBOutlet weak var btnReject: themeButton!
     @IBOutlet weak var btnAccept: themeButton!
@@ -128,7 +129,8 @@ class BidRequestDetailViewController: BaseViewController {
 //
 //        self.lblDaysToGo.text = daysLeft
        
-        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(reviewGesture(_:)))
+        self.viewShipperDetail.addGestureRecognizer(gesture)
         viewStatus.backgroundColor = (data?.isBid == 0) ? #colorLiteral(red: 0.8640190959, green: 0.6508947015, blue: 0.1648262739, alpha: 1) : #colorLiteral(red: 0.02068837173, green: 0.6137695909, blue: 0.09668994695, alpha: 1)
         
         btnViewNotes.isHidden = ((data?.trucks?.note ?? "") == "") ? true : false
@@ -176,7 +178,7 @@ class BidRequestDetailViewController: BaseViewController {
         case MyLoadesStatus.canceled.Name.capitalized:
             lblBookingStatus.text =  MyLoadesStatus.canceled.Name.capitalized
             viewStatus.backgroundColor = #colorLiteral(red: 0.6978102326, green: 0.6971696019, blue: 0.7468633652, alpha: 1)
-            
+
         case .none:
             break
         case .some(_):
@@ -185,10 +187,19 @@ class BidRequestDetailViewController: BaseViewController {
         btnAccept.isHidden = ((data?.isBid ?? 0) == 1) ? false : true
         let TimeToCancel = (30*60)-(LoadDetails?.time_difference ?? 0)
         btnReject.setTitle(((data?.isBid ?? 0) == 1) ? "Decline" : "\( TimeToCancel / 60) minutes remaining to cancel", for: .normal)
+        self.btnReject.layer.cornerRadius = ((data?.isBid ?? 0) == 1) ? 0 : 5
         
-       
-        
-        
+        if data?.isBid == 1{
+            self.btnReject.setTitle("Decline", for: .normal)
+        }else{
+            let attrStri = NSMutableAttributedString.init(string:"Decline (\( TimeToCancel / 60) minutes remaining)")
+            let nsRange = NSString(string: "Decline (\( TimeToCancel / 60) minutes remaining)").range(of: "Decline", options: String.CompareOptions.caseInsensitive)
+            let scRange = NSString(string: "Decline (\( TimeToCancel / 60) minutes remaining)").range(of: "(\( TimeToCancel / 60) minutes remaining)", options: String.CompareOptions.caseInsensitive)
+            attrStri.addAttributes([NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14) as Any], range: nsRange)
+            attrStri.addAttributes([NSAttributedString.Key.font : UIFont.systemFont(ofSize: 13), NSAttributedString.Key.foregroundColor : UIColor.white.withAlphaComponent(0.6) as Any], range: scRange)
+            self.btnReject.setAttributedTitle(attrStri, for: .normal)
+        }
+
 //        let sessionManager = SessionManager()
 //        print()
 //
@@ -238,7 +249,11 @@ class BidRequestDetailViewController: BaseViewController {
             }
         }
     }
-    
+    @objc func reviewGesture(_ sender: UITapGestureRecognizer){
+        let controller = AppStoryboard.Settings.instance.instantiateViewController(withIdentifier: shipperDetailsVC.storyboardID) as! shipperDetailsVC
+        controller.shipperId = "\(LoadDetails?.shipperId ?? 0)"
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
+        }
     
     // ----------------------------------------------------
     // MARK: - --------- IBAction Methods ---------
@@ -281,26 +296,33 @@ class BidRequestDetailViewController: BaseViewController {
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: BidAcceptRejectViewController.storyboardID) as! BidAcceptRejectViewController
         controller.bidRequestDetailViewController = self
         controller.LoadDetails = loadDetails
-            controller.isAccept = Accepted
+        controller.isAccept = Accepted
         controller.isForBook = isForBook
         controller.isFromDetails = true
         let TitleAttribute = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), NSAttributedString.Key.font: CustomFont.PoppinsMedium.returnFont(22)] as [NSAttributedString.Key : Any]
         
         if isForBook {
            
-            let AttributedStringFinal = "Are you sure you want to ".Medium(color: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), FontSize: 16)
-          
-                AttributedStringFinal.append("decline".Medium(color: #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), FontSize: 16))
-           
-            AttributedStringFinal.append(" the book request?".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 16))
-            
-            controller.TitleAttributedText = AttributedStringFinal
-            
-            controller.TitleAttributedText = NSAttributedString(string: "Book Request", attributes: TitleAttribute)
-            controller.DescriptionAttributedText = AttributedStringFinal
-            
-            
-            
+            let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ReasonForCancelBookViewController.storyboardID) as! ReasonForCancelBookViewController
+            controller.hidesBottomBarWhenPushed = true
+            let TimeToCancel = (30*60)-(loadDetails?.time_difference ?? 0)
+            let remainingsMinute = TimeToCancel / 60
+            controller.remainingsMinute = remainingsMinute
+            controller.booking_id = "\(loadDetails?.bookingInfo?.id ?? 0)"
+            controller.booking_request_id = "\(loadDetails?.id ?? 0)"
+            controller.shipper_id = "\(LoadDetails?.shipperId ?? 0)"
+            let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat(((SingletonClass.sharedInstance.cancellationReasons?.count ?? 0) * 50) + 120) + appDel.GetSafeAreaHeightFromBottom())])
+            self.present(sheetController, animated: true, completion: nil)
+//            let AttributedStringFinal = "Are you sure you want to ".Medium(color: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), FontSize: 16)
+//
+//                AttributedStringFinal.append("decline".Medium(color: #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), FontSize: 16))
+//
+//            AttributedStringFinal.append(" the book request?".Medium(color: #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1), FontSize: 16))
+//
+//            controller.TitleAttributedText = AttributedStringFinal
+//
+//            controller.TitleAttributedText = NSAttributedString(string: "Book Request", attributes: TitleAttribute)
+//            controller.DescriptionAttributedText = AttributedStringFinal
         } else {
          
             let AttributedStringFinal = "Are you sure you want to ".Medium(color: #colorLiteral(red: 0.1215686275, green: 0.1215686275, blue: 0.2549019608, alpha: 1), FontSize: 16)
@@ -421,6 +443,11 @@ extension BidRequestDetailViewController:UITableViewDelegate,UITableViewDataSour
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            self.isLoading = false
 //        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: LocationDetailVC.storyboardID) as! LocationDetailVC
+        controller.locationId = "\(self.LoadDetails?.bookingInfo?.trucks?.locations?[indexPath.row].id ?? 0)"
+        UIApplication.topViewController()?.navigationController?.pushViewController(controller, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension

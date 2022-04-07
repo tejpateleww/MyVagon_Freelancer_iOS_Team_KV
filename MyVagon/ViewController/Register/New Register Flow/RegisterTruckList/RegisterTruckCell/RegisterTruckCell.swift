@@ -16,8 +16,10 @@ class RegisterTruckCell: UITableViewCell {
     @IBOutlet weak var lblTitleTruckNumberPlate: themeLabel!
     @IBOutlet weak var lbltruckType: themeLabel!
     @IBOutlet weak var lblTruckNumber: themeLabel!
+    @IBOutlet weak var imgDefault: UIImageView!
     
     var btnDeleteClick : (() -> ())?
+    var btnDefaultAction : (() -> ())?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,6 +41,11 @@ class RegisterTruckCell: UITableViewCell {
         self.vWContainer.layer.shadowOpacity = 0.1
     }
     
+    @IBAction func btnDefaultClick(_ sender: Any) {
+        if let click = self.btnDefaultAction{
+            click()
+        }
+    }
     @IBAction func btnDeleteAction(_ sender: Any) {
         if let click = self.btnDeleteClick{
             click()

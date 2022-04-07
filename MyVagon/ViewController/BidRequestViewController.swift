@@ -91,6 +91,7 @@ class BidRequestViewController: BaseViewController {
             let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: ReasonForCancelBookViewController.storyboardID) as! ReasonForCancelBookViewController
             controller.hidesBottomBarWhenPushed = true
             controller.remainingsMinute = RemainingsMinute
+            
             let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((6 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
             self.present(sheetController, animated: true, completion: nil)
             
@@ -194,7 +195,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
                 cell.isLoading = self.isLoading
                 cell.myloadDetails = BidsData
                 cell.isShowFooter =  true
-                
+                cell.isFromBidReq = true
                 cell.tblHeight = { (heightTBl) in
                     self.tblAvailableData.layoutIfNeeded()
                     self.tblAvailableData.layoutSubviews()
@@ -290,7 +291,7 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidsViewController.storyboardID) as! PostedTruckBidsViewController
-            controller.NumberOfCount = BidsData?.postedTruck?.count ?? 0
+            controller.NumberOfCount = BidsData?.postedTruck?.matchesCount ?? 0
             controller.hidesBottomBarWhenPushed = true
             controller.PostTruckID = "\(BidsData?.postedTruck?.id ?? 0)"
             self.navigationController?.pushViewController(controller, animated: true)
@@ -301,8 +302,6 @@ extension BidRequestViewController : UITableViewDataSource , UITableViewDelegate
             controller.LoadDetails = self.arrBidsData?[indexPath.row]
             self.navigationController?.pushViewController(controller, animated: true)
         }
-      
-        
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -416,7 +415,7 @@ class PostAvailabilityRequestCell : UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        tblMultipleLocation.isUserInteractionEnabled = false
         
         // tblMultipleLocation.backgroundColor = .clear
         

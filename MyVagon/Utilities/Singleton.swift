@@ -47,6 +47,7 @@ class SingletonClass: NSObject
     var TruckBrandList : [TruckBrandsDatum]?
     var TruckFeatureList : [TruckFeaturesDatum]?
     var TruckunitList : [TruckUnitDatum]?
+    var cancellationReasons : [Reasone]?
     
     
     func ClearSigletonClassForLogin() {
@@ -276,6 +277,7 @@ class SearchSaveReqModel : Codable {
 
 struct RegTruckDetailModel : Codable {
     
+    var id = ""
     var truck_type = ""
     var truck_sub_category = ""
     var weight = ""

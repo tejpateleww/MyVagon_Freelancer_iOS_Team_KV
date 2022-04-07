@@ -251,7 +251,7 @@ class NewHomeVC: BaseViewController {
         let controller = AppStoryboard.Popup.instance.instantiateViewController(withIdentifier: SortPopupViewController.storyboardID) as! SortPopupViewController
         controller.hidesBottomBarWhenPushed = true
         controller.delegate = self
-        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((5 * 50) + 110) + appDel.GetSafeAreaHeightFromBottom())])
+        let sheetController = SheetViewController(controller: controller,sizes: [.fixed(CGFloat((4 * 50) + 120) + appDel.GetSafeAreaHeightFromBottom())])
         self.present(sheetController, animated: true, completion: nil)
     }
     
@@ -407,10 +407,6 @@ extension NewHomeVC : UITableViewDelegate, UITableViewDataSource {
                     }
                     
                     cell.arrLocations = arrHomeData?[indexPath.section][indexPath.row].trucks?.locations ?? []
-                    cell.tblHeight = { (heightTBl) in
-                        self.tblSearchData.layoutIfNeeded()
-                        self.tblSearchData.layoutSubviews()
-                    }
                     
                     cell.btnMainTapCousure = {
                         self.goToDeatilScreen(index: indexPath)

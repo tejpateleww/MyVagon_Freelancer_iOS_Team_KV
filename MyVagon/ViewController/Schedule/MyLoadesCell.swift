@@ -18,6 +18,7 @@ class MyLoadesCell: UITableViewCell {
     //MARK: - ====== Variables ========
     var isShowFooter : Bool = false
     var isLoading : Bool = false
+    var isFromBidReq = false
     var myloadDetails : MyLoadsNewDatum?
     
     var btnViewMatchFoundClick:((IndexPath)->())?
@@ -333,12 +334,13 @@ extension MyLoadesCell : UITableViewDataSource , UITableViewDelegate {
                     
              //       if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
                    
-                        if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 {
+                        if (myloadDetails?.postedTruck?.bookingRequestCount ?? 0) != 0 && !isFromBidReq{
                             let totalCount = (myloadDetails?.postedTruck?.bookingRequestCount ?? 0)
                             if (myloadDetails?.postedTruck?.isBid ?? 0) == 1 {
                                 btnViewMatchFound.setTitleColor(#colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1), for: .normal)
                                 btnViewMatchFound.layer.borderColor = #colorLiteral(red: 0.8429378271, green: 0.4088787436, blue: 0.4030963182, alpha: 1).cgColor
                                 btnViewMatchFound.backgroundColor = .clear
+                                // dhananjay
                                 btnViewMatchFound.setTitle("View \(totalCount) Bid Request", for: .normal)
                             } else {
                                 let TimeToCancel = (30*60)-(myloadDetails?.postedTruck?.time_difference ?? 0)
