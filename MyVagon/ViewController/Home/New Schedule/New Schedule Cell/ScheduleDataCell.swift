@@ -235,7 +235,7 @@ extension ScheduleDataCell : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tblData?.type == MyLoadType.PostedTruck.Name{
-            if !((tblData?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0) {
+            if ((tblData?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) == 0) {
                 return 2
             }
         }
@@ -247,7 +247,7 @@ extension ScheduleDataCell : UITableViewDelegate, UITableViewDataSource {
         let cell = tblSearchLocation.dequeueReusableCell(withIdentifier: SearchLocationCell.className) as! SearchLocationCell
         cell.selectionStyle = .none
         if tblData?.type == MyLoadType.PostedTruck.Name{
-            if !((tblData?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) != 0){
+            if ((tblData?.postedTruck?.bookingInfo?.trucks?.locations?.count ?? 0) == 0){
                 if indexPath.row == 0{
                     //cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
                     var StringForDateTime = ""
@@ -265,15 +265,15 @@ extension ScheduleDataCell : UITableViewDelegate, UITableViewDataSource {
                 }else{
                     cell.lblDateTime.isHidden = false
                     //cell.lblDateTime.text = "\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")"
-                    var StringForDateTime = ""
-                    StringForDateTime.append("\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
-                    StringForDateTime.append(" ")
+//                    var StringForDateTime = ""
+//                    StringForDateTime.append("\(tblData?.postedTruck?.date?.ConvertDateFormat(FromFormat: "yyyy-MM-dd", ToFormat: DateFormatForDisplay) ?? "")")
+//                    StringForDateTime.append(" ")
+//
+//                    if (tblData?.postedTruck?.time ?? "") != "" {
+//                        StringForDateTime.append("\(tblData?.postedTruck?.time ?? "")")
+//                    }
                     
-                    if (tblData?.postedTruck?.time ?? "") != "" {
-                        StringForDateTime.append("\(tblData?.postedTruck?.time ?? "")")
-                    }
-                    
-                    cell.lblDateTime.text = (tblData?.postedTruck?.toAddress != nil || tblData?.postedTruck?.toAddress ?? "" != "") ? StringForDateTime : "N/A"
+                    cell.lblDateTime.text = "N/A"//(tblData?.postedTruck?.toAddress != nil || tblData?.postedTruck?.toAddress ?? "" != "") ? StringForDateTime : "N/A"
                     
                     cell.lblCompanyName.text = (tblData?.postedTruck?.toAddress != nil || tblData?.postedTruck?.toAddress ?? "" != "") ? tblData?.postedTruck?.toAddress ?? "" : "N/A"
                     cell.imgLocation.image = UIImage(named: "ic_DropOff")

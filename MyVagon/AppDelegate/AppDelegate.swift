@@ -266,7 +266,6 @@ class CustomTabBarVC: UITabBarController {
     
     private func addcoustmeTabBarView() {
         if #available(iOS 13.0, *) {
-            
             let appearance = tabBar.standardAppearance
             appearance.shadowImage = nil
             appearance.shadowColor = nil

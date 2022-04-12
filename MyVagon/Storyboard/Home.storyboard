@@ -9974,6 +9974,18 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="1F0-CZ-tTn">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="1ik-zr-pIX">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="41b-G4-9LY">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="4Yk-CD-PZ6">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="74U-9b-YmG">
             <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
@@ -9983,8 +9995,17 @@
         <designable name="Com-VW-sEt">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
+        <designable name="EM0-cS-mSz">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="Exb-wM-eW9">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="P4e-b1-Po8">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="XV4-UW-Qe0">
+            <size key="intrinsicContentSize" width="-1" height="30"/>
         </designable>
         <designable name="ZnP-vh-q9A">
             <size key="intrinsicContentSize" width="374" height="39.220703125"/>
@@ -9992,11 +10013,29 @@
         <designable name="dqj-gP-pH2">
             <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
+        <designable name="f4a-G4-rAK">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="hye-uA-8rd">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="jX1-JX-WA3">
             <size key="intrinsicContentSize" width="205.69999999999999" height="37.140000000000001"/>
         </designable>
+        <designable name="m28-MZ-YP9">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="ovs-fh-rYv">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
         <designable name="pxc-Co-qbc">
             <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="qQM-aq-rxT">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
+        </designable>
+        <designable name="up4-Kv-YNl">
+            <size key="intrinsicContentSize" width="374" height="39.220703125"/>
         </designable>
     </designables>
     <resources>

@@ -165,7 +165,7 @@ class PostTruckViewController: BaseViewController,UITextFieldDelegate {
     }
     @objc func btnDoneDatePickerClicked() {
         if let datePicker = self.TextFieldSelectTime.inputView as? UIDatePicker {
-            
+            datePicker.minimumDate = Date()
             let formatter = DateFormatter()
             formatter.dateFormat = DateFormatterString.onlyTime.rawValue
             formatter.amSymbol = "AM"

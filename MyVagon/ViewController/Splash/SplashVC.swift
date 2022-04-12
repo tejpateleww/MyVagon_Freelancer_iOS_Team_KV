@@ -129,8 +129,6 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         }else if CheckLoginType == LoginType.driver.rawValue {
             appDel.NavigateToHome()
         }
-        
-       
     } else {
         let CheckIntro = UserDefault.bool(forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
         if CheckIntro {
@@ -139,7 +137,6 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
         } else {
             UserDefault.setValue(true, forKey: UserDefaultsKey.IntroScreenStatus.rawValue)
             appDel.NavigateToIntroScreen()
-            
         }
     }
     }
@@ -170,12 +167,10 @@ class SplashVC: UIViewController, CLLocationManagerDelegate {
                     let arrLocation = response?.data?.bookingData?.trucks?.locations
                     for i in 0...((arrLocation?.count ?? 0) - 1) {
                         if ((arrLocation?[i].arrivedAt ?? "") == "") || ((arrLocation?[i].StartLoading ?? "") == "") || ((arrLocation?[i].startJourney ?? "") == "") {
-                           
                             SingletonClass.sharedInstance.CurrentTripSecondLocation = arrLocation?[i]
                             break
                         }
                     }
-                   
                     SingletonClass.sharedInstance.CurrentTripShipperID = "\(response?.data?.bookingData?.shipperDetails?.id ?? 0)"
                 }
                 
