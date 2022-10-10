@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrackingCell" customModule="MyVagon" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="95"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="453" height="95"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYg-2D-x3n">
+                        <rect key="frame" x="0.0" y="0.0" width="453" height="95"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68Y-Vx-Sw6">
+                                <rect key="frame" x="0.0" y="46.5" width="453" height="2"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="2" id="hoC-qL-Td7"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_GrayRadio" translatesAutoresizingMaskIntoConstraints="NO" id="9qb-gE-QHr">
+                                <rect key="frame" x="219" y="40" width="15" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="9qb-gE-QHr" secondAttribute="height" id="3tN-AY-kJG"/>
+                                    <constraint firstAttribute="width" constant="15" id="d7A-dE-Yha"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_TrackTruck" translatesAutoresizingMaskIntoConstraints="NO" id="Omc-vQ-q7z">
+                                <rect key="frame" x="0.0" y="35" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="92b-TC-EFC"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="68Y-Vx-Sw6" firstAttribute="leading" secondItem="WYg-2D-x3n" secondAttribute="leading" id="1GE-1S-J6G"/>
+                            <constraint firstItem="68Y-Vx-Sw6" firstAttribute="centerY" secondItem="WYg-2D-x3n" secondAttribute="centerY" id="1qR-4L-GQ4"/>
+                            <constraint firstItem="Omc-vQ-q7z" firstAttribute="centerY" secondItem="68Y-Vx-Sw6" secondAttribute="centerY" id="7cf-bu-mUD"/>
+                            <constraint firstItem="Omc-vQ-q7z" firstAttribute="leading" secondItem="WYg-2D-x3n" secondAttribute="leading" id="DzS-vk-afM"/>
+                            <constraint firstItem="9qb-gE-QHr" firstAttribute="centerX" secondItem="WYg-2D-x3n" secondAttribute="centerX" id="Hj6-M4-v26"/>
+                            <constraint firstItem="Omc-vQ-q7z" firstAttribute="width" secondItem="Omc-vQ-q7z" secondAttribute="height" id="aoX-NB-w5a"/>
+                            <constraint firstAttribute="trailing" secondItem="68Y-Vx-Sw6" secondAttribute="trailing" id="idh-Bs-l7X"/>
+                            <constraint firstItem="9qb-gE-QHr" firstAttribute="centerY" secondItem="WYg-2D-x3n" secondAttribute="centerY" id="mRw-kb-bX4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="WYg-2D-x3n" secondAttribute="bottom" id="bjc-kl-VuZ"/>
+                <constraint firstItem="WYg-2D-x3n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="gqP-3h-zeV"/>
+                <constraint firstAttribute="trailing" secondItem="WYg-2D-x3n" secondAttribute="trailing" id="iiQ-ri-hbb"/>
+                <constraint firstItem="WYg-2D-x3n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qU9-yK-XCY"/>
+            </constraints>
+            <size key="customSize" width="453" height="95"/>
+            <connections>
+                <outlet property="imgRadio" destination="9qb-gE-QHr" id="IMb-ys-5am"/>
+                <outlet property="imgRadioWidth" destination="d7A-dE-Yha" id="T5T-HK-pzi"/>
+                <outlet property="imgTruck" destination="Omc-vQ-q7z" id="8yI-Vn-079"/>
+            </connections>
+            <point key="canvasLocation" x="423.91304347826087" y="132.92410714285714"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_GrayRadio" width="11" height="11"/>
+        <image name="ic_TrackTruck" width="20" height="20"/>
+    </resources>
+</document>

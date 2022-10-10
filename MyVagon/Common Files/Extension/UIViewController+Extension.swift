@@ -107,9 +107,9 @@ extension UIViewController {
     
     class func alertForLocation(currentVC : UIViewController){
         
-        let alertController = UIAlertController(title: "Location Services Disabled", message: "Please enable location services for this app", preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+        let alertController = UIAlertController(title: "Location Services Disabled".localized, message: "enable_location_msg".localized, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings".localized, style: .default) { (_) -> Void in
             
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
@@ -191,3 +191,4 @@ extension UIView {
     layer.rasterizationScale = scale ? UIScreen.main.scale : 1
   }
 }
+

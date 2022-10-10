@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Filter Pickup Date Popup View Controller-->
+        <!--Pickup Date PopupVC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="FilterPickupDatePopupViewController" id="Y6W-OH-hqX" customClass="FilterPickupDatePopupViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickupDatePopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="PickupDatePopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,6 +105,8 @@
                     </view>
                     <connections>
                         <outlet property="MainView" destination="fCE-D0-SVp" id="JFy-nO-4IJ"/>
+                        <outlet property="btnCancel" destination="lgB-Rl-5St" id="SVl-xm-ePm"/>
+                        <outlet property="btnSubmit" destination="4Nw-Sr-UsN" id="gWs-a5-CF9"/>
                         <outlet property="calender" destination="PcS-VL-QGm" id="f9i-Hd-PJ6"/>
                         <outlet property="conHeightOfCalender" destination="9dR-Ru-gQh" id="zd5-4f-Em5"/>
                     </connections>
@@ -113,10 +115,10 @@
             </objects>
             <point key="canvasLocation" x="29" y="48"/>
         </scene>
-        <!--Filter Drop Off View Controller-->
+        <!--Pickup Location PopupVC-->
         <scene sceneID="dHq-WE-ORk">
             <objects>
-                <viewController storyboardIdentifier="FilterDropOffViewController" id="UaN-2f-6ll" customClass="FilterDropOffViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PickupLocationPopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UaN-2f-6ll" customClass="PickupLocationPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fPY-H2-iTi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -390,6 +392,10 @@
                         <outlet property="MainView" destination="i0Q-0t-ppw" id="niy-Gn-tBl"/>
                         <outlet property="TblLocation" destination="KqG-p8-j5W" id="qKt-wx-Ik0"/>
                         <outlet property="TblLocationHeight" destination="3by-ZA-5iA" id="sh5-Ky-l3f"/>
+                        <outlet property="btnCancel" destination="H0P-Fp-pV9" id="gly-aZ-QJH"/>
+                        <outlet property="btnSubmit" destination="RWF-Cb-SP6" id="6WI-13-v8W"/>
+                        <outlet property="lblFilterlocation" destination="iNI-7u-sGl" id="vc9-10-1hp"/>
+                        <outlet property="lblSubTitle" destination="tPu-T9-aBl" id="gPJ-sc-agq"/>
                         <outlet property="textFieldSearchLocation" destination="fuc-sn-qOj" id="Omu-Zq-gR9"/>
                     </connections>
                 </viewController>
@@ -397,10 +403,10 @@
             </objects>
             <point key="canvasLocation" x="720" y="48"/>
         </scene>
-        <!--Search Option View Controller-->
+        <!--Search OptionVC-->
         <scene sceneID="XFm-O0-hhq">
             <objects>
-                <viewController storyboardIdentifier="SearchOptionViewController" id="43F-Dx-ZpF" customClass="SearchOptionViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchOptionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="43F-Dx-ZpF" customClass="SearchOptionVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aQW-oP-ke3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -747,7 +753,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnS-3C-RWi" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="167" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -762,18 +768,18 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b59-Xa-2OI">
-                                                                                        <rect key="frame" x="167" y="0.0" width="207" height="50"/>
+                                                                                        <rect key="frame" x="157" y="0.0" width="217" height="50"/>
                                                                                         <subviews>
-                                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="NJh-u4-04z">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NJh-u4-04z">
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="217" height="50"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHx-6Q-qWJ" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="95" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hK-iL-tvD" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="70" height="50"/>
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Min" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6hK-iL-tvD" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                <rect key="frame" x="15" y="0.0" width="80" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="70" id="j1c-kD-h9z"/>
+                                                                                                                    <constraint firstAttribute="width" constant="80" id="j1c-kD-h9z"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>
@@ -789,18 +795,30 @@
                                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </textField>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXa-Ca-MxH">
+                                                                                                                <rect key="frame" x="5" y="0.0" width="10" height="50"/>
+                                                                                                                <constraints>
+                                                                                                                    <constraint firstAttribute="width" constant="10" id="exH-xh-RdZ"/>
+                                                                                                                </constraints>
+                                                                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                                                <nil key="textColor"/>
+                                                                                                                <nil key="highlightedColor"/>
+                                                                                                            </label>
                                                                                                         </subviews>
                                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                                         <constraints>
+                                                                                                            <constraint firstItem="wXa-Ca-MxH" firstAttribute="top" secondItem="bHx-6Q-qWJ" secondAttribute="top" id="7ug-L6-PVv"/>
                                                                                                             <constraint firstItem="6hK-iL-tvD" firstAttribute="top" secondItem="bHx-6Q-qWJ" secondAttribute="top" id="Eh8-Iq-rL3"/>
                                                                                                             <constraint firstAttribute="bottom" secondItem="6hK-iL-tvD" secondAttribute="bottom" id="HfG-0i-spA"/>
                                                                                                             <constraint firstAttribute="height" constant="50" id="TkY-w9-Ev6"/>
-                                                                                                            <constraint firstItem="6hK-iL-tvD" firstAttribute="leading" secondItem="bHx-6Q-qWJ" secondAttribute="leading" constant="5" id="bUl-ix-tKf"/>
-                                                                                                            <constraint firstAttribute="trailing" secondItem="6hK-iL-tvD" secondAttribute="trailing" constant="5" id="uF2-Rb-beo"/>
+                                                                                                            <constraint firstItem="wXa-Ca-MxH" firstAttribute="leading" secondItem="bHx-6Q-qWJ" secondAttribute="leading" constant="5" id="dbE-PU-jFA"/>
+                                                                                                            <constraint firstAttribute="bottom" secondItem="wXa-Ca-MxH" secondAttribute="bottom" id="e8V-Sd-nJm"/>
+                                                                                                            <constraint firstItem="6hK-iL-tvD" firstAttribute="leading" secondItem="wXa-Ca-MxH" secondAttribute="trailing" id="sM6-ny-F5w"/>
+                                                                                                            <constraint firstAttribute="trailing" secondItem="6hK-iL-tvD" secondAttribute="trailing" id="uF2-Rb-beo"/>
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PGh-6H-gDk">
-                                                                                                        <rect key="frame" x="100" y="0.0" width="7" height="50"/>
+                                                                                                        <rect key="frame" x="105" y="0.0" width="7" height="50"/>
                                                                                                         <subviews>
                                                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eST-Hy-umx" customClass="SeperatorView" customModule="MyVagon" customModuleProvider="target">
                                                                                                                 <rect key="frame" x="-1.5" y="24" width="10" height="2"/>
@@ -819,12 +837,12 @@
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4B-LT-mPc" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="127" y="0.0" width="80" height="50"/>
+                                                                                                        <rect key="frame" x="122" y="0.0" width="95" height="50"/>
                                                                                                         <subviews>
-                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omy-ON-e6X" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="70" height="50"/>
+                                                                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Max" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omy-ON-e6X" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                <rect key="frame" x="15" y="0.0" width="80" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="70" id="mrX-qH-Qoh"/>
+                                                                                                                    <constraint firstAttribute="width" constant="80" id="mrX-qH-Qoh"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>
@@ -840,12 +858,24 @@
                                                                                                                     </userDefinedRuntimeAttribute>
                                                                                                                 </userDefinedRuntimeAttributes>
                                                                                                             </textField>
+                                                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDV-dx-ZWu">
+                                                                                                                <rect key="frame" x="5" y="0.0" width="10" height="50"/>
+                                                                                                                <constraints>
+                                                                                                                    <constraint firstAttribute="width" constant="10" id="mtW-aV-KWr"/>
+                                                                                                                </constraints>
+                                                                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                                                <nil key="textColor"/>
+                                                                                                                <nil key="highlightedColor"/>
+                                                                                                            </label>
                                                                                                         </subviews>
                                                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                                                         <constraints>
-                                                                                                            <constraint firstAttribute="trailing" secondItem="omy-ON-e6X" secondAttribute="trailing" constant="5" id="LjW-hv-Ovh"/>
+                                                                                                            <constraint firstAttribute="bottom" secondItem="zDV-dx-ZWu" secondAttribute="bottom" id="5Fr-Md-gOh"/>
+                                                                                                            <constraint firstAttribute="trailing" secondItem="omy-ON-e6X" secondAttribute="trailing" id="LjW-hv-Ovh"/>
                                                                                                             <constraint firstAttribute="bottom" secondItem="omy-ON-e6X" secondAttribute="bottom" id="QHs-F2-0pg"/>
-                                                                                                            <constraint firstItem="omy-ON-e6X" firstAttribute="leading" secondItem="f4B-LT-mPc" secondAttribute="leading" constant="5" id="fGJ-TN-9ch"/>
+                                                                                                            <constraint firstItem="zDV-dx-ZWu" firstAttribute="leading" secondItem="f4B-LT-mPc" secondAttribute="leading" constant="5" id="Xoe-bo-NRd"/>
+                                                                                                            <constraint firstItem="zDV-dx-ZWu" firstAttribute="top" secondItem="f4B-LT-mPc" secondAttribute="top" id="a3x-FD-Y3b"/>
+                                                                                                            <constraint firstItem="omy-ON-e6X" firstAttribute="leading" secondItem="zDV-dx-ZWu" secondAttribute="trailing" id="aMa-c6-S8h"/>
                                                                                                             <constraint firstItem="omy-ON-e6X" firstAttribute="top" secondItem="f4B-LT-mPc" secondAttribute="top" id="h1B-9P-nvt"/>
                                                                                                         </constraints>
                                                                                                     </view>
@@ -890,7 +920,7 @@
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mF5-g4-rZ9" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -905,18 +935,18 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-ND-63N">
-                                                                                        <rect key="frame" x="164" y="0.0" width="210" height="50"/>
+                                                                                        <rect key="frame" x="157" y="0.0" width="217" height="50"/>
                                                                                         <subviews>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="TC0-FJ-c4I">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="217" height="50"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ8-jm-xj8" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Min" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xa3-WK-LR4" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="80" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="83" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="80" id="4xX-q8-3wn"/>
+                                                                                                                    <constraint firstAttribute="width" constant="83" id="4xX-q8-3wn"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
@@ -943,12 +973,12 @@
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dl-rW-dNC" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="100" y="0.0" width="110" height="50"/>
+                                                                                                        <rect key="frame" x="103" y="0.0" width="114" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6bf-bR-Fuv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="100" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="104" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="100" id="eUt-Az-FTX"/>
+                                                                                                                    <constraint firstAttribute="width" constant="104" id="eUt-Az-FTX"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>
@@ -991,7 +1021,7 @@
                                                                                 <rect key="frame" x="0.0" y="70" width="374" height="50"/>
                                                                                 <subviews>
                                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K9Q-jv-naE" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="164" height="50"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="157" height="50"/>
                                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                         <nil key="textColor"/>
                                                                                         <nil key="highlightedColor"/>
@@ -1006,18 +1036,18 @@
                                                                                         </userDefinedRuntimeAttributes>
                                                                                     </label>
                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ya0-dD-LAd">
-                                                                                        <rect key="frame" x="164" y="0.0" width="210" height="50"/>
+                                                                                        <rect key="frame" x="157" y="0.0" width="217" height="50"/>
                                                                                         <subviews>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2w8-aV-ivS">
-                                                                                                <rect key="frame" x="0.0" y="0.0" width="210" height="50"/>
+                                                                                                <rect key="frame" x="0.0" y="0.0" width="217" height="50"/>
                                                                                                 <subviews>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qN-SC-NkO" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="50"/>
+                                                                                                        <rect key="frame" x="0.0" y="0.0" width="93" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Max" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="69E-Vm-Cnv" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="80" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="83" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="80" id="eiB-uY-bOY"/>
+                                                                                                                    <constraint firstAttribute="width" constant="83" id="eiB-uY-bOY"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad"/>
@@ -1044,12 +1074,12 @@
                                                                                                         </constraints>
                                                                                                     </view>
                                                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjV-nI-nnR" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                                                        <rect key="frame" x="100" y="0.0" width="110" height="50"/>
+                                                                                                        <rect key="frame" x="103" y="0.0" width="114" height="50"/>
                                                                                                         <subviews>
                                                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BVe-bB-Lc2" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                <rect key="frame" x="5" y="0.0" width="100" height="50"/>
+                                                                                                                <rect key="frame" x="5" y="0.0" width="104" height="50"/>
                                                                                                                 <constraints>
-                                                                                                                    <constraint firstAttribute="width" constant="100" id="hpg-He-Fzj"/>
+                                                                                                                    <constraint firstAttribute="width" constant="104" id="hpg-He-Fzj"/>
                                                                                                                 </constraints>
                                                                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                                                                 <textInputTraits key="textInputTraits"/>
@@ -1198,8 +1228,14 @@
                     <connections>
                         <outlet property="LblDropOffLocation" destination="Zfk-91-ewZ" id="yDd-Gg-p35"/>
                         <outlet property="LblPickupLocation" destination="zXl-QD-j1f" id="jCE-hN-GVZ"/>
+                        <outlet property="btnCancel" destination="bLF-8Y-H1a" id="AcW-xx-kLg"/>
                         <outlet property="btnSearchLoad" destination="8Dw-WB-AMy" id="Yko-1Q-Bb7"/>
+                        <outlet property="lblDeliveryLocation" destination="OsR-vS-FCE" id="vr8-Zo-W1u"/>
+                        <outlet property="lblPickUpDate" destination="y7m-oh-EQS" id="ZGB-qt-1jl"/>
+                        <outlet property="lblPickUpLocation" destination="8pa-W4-gtG" id="5Yk-2z-2vp"/>
+                        <outlet property="lblPrice" destination="vnS-3C-RWi" id="clp-0S-DHN"/>
                         <outlet property="lblSelectedDate" destination="6Qy-26-Jkj" id="mCq-OC-URw"/>
+                        <outlet property="lblWeight" destination="mF5-g4-rZ9" id="H4Q-To-nh1"/>
                         <outlet property="textFieldMaxPrice" destination="omy-ON-e6X" id="ocG-Li-maY"/>
                         <outlet property="textFieldMaxUnit" destination="BVe-bB-Lc2" id="moj-lt-Yg9"/>
                         <outlet property="textFieldMaxWeight" destination="69E-Vm-Cnv" id="IlZ-mS-1sx"/>
@@ -1272,7 +1308,7 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_Close" translatesAutoresizingMaskIntoConstraints="NO" id="3xP-rw-2dD">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cross" translatesAutoresizingMaskIntoConstraints="NO" id="3xP-rw-2dD">
                                                 <rect key="frame" x="374" y="15" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="3xP-rw-2dD" secondAttribute="height" id="El9-IQ-sjD"/>
@@ -1333,6 +1369,7 @@
                         <outlet property="btnCall" destination="Xy9-Vf-ymG" id="PVh-b2-PU2"/>
                         <outlet property="btnChat" destination="8Rh-Th-nNV" id="S0D-t2-siQ"/>
                         <outlet property="imgClose" destination="3xP-rw-2dD" id="ufK-Od-Zvg"/>
+                        <outlet property="lblMsg" destination="Gco-Ik-FBr" id="1EG-AF-WLq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQD-vh-hNY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1341,6 +1378,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cross" width="25.5" height="25.5"/>
         <image name="ic_Search" width="16.5" height="16.5"/>
         <image name="ic_calender" width="24" height="26"/>
         <image name="ic_dropdown" width="13.5" height="8"/>
@@ -1348,7 +1386,6 @@
         <image name="ic_next" width="20.5" height="20.5"/>
         <image name="ic_selectedCheckbox" width="20" height="20"/>
         <image name="ic_unselectedCheckbox" width="20" height="20"/>
-        <image name="icon_Close" width="170.5" height="170.5"/>
         <namedColor name="ThemeBlackColor">
             <color red="0.062745098039215685" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

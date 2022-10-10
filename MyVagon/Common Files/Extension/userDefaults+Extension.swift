@@ -35,7 +35,6 @@ func get<T: Codable>(objectType: T.Type, forKey: String) throws -> T? {
         return objResponse ?? nil
     }
     
-    
     func SetRegiterData() {
         try? UserDefaults.standard.set(object:  SingletonClass.sharedInstance.RegisterData, forKey: UserDefaultsKey.RegisterData.rawValue)
     }
@@ -43,7 +42,6 @@ func get<T: Codable>(objectType: T.Type, forKey: String) throws -> T? {
     func getRegisterData() {
         let objResponse = try? UserDefaults.standard.get(objectType: RegisterSaveDataModel.self, forKey:  UserDefaultsKey.RegisterData.rawValue)
         SingletonClass.sharedInstance.RegisterData = objResponse ?? RegisterSaveDataModel()
-       
     }
     
 }

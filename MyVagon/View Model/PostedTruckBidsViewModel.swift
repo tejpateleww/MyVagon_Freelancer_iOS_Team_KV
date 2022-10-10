@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 class PostedTruckBidsViewModel {
-    weak var postedTruckBidsViewController : PostedTruckBidsViewController? = nil
+    weak var postedTruckBidsViewController : PostedTruckMatchesVC? = nil
 
     
     func PostedTruckBid(ReqModel:PostTruckBidReqModel){

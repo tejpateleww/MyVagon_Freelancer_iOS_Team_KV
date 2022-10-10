@@ -59,12 +59,8 @@ class themeTextfield : UITextField{
     override func awakeFromNib() {
         super.awakeFromNib()
         self.layer.cornerRadius = CornerRadius
-        
-            self.borderStyle = .none
-        
+        self.borderStyle = .none
         self.font = CustomFont.PoppinsRegular.returnFont(Font_Size)
-    
-        
         self.attributedPlaceholder = NSAttributedString(string: self.placeholder ?? "",
                                                         attributes: [NSAttributedString.Key.foregroundColor: PlaceholderColor] )
         self.textColor = FontColor
@@ -123,7 +119,6 @@ class CurrencyTextField: themeTextfield, UITextFieldDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
     }
     

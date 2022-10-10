@@ -15,6 +15,7 @@ struct MyLoadsNewPostedTruck : Codable {
     let driverId : String?
     let endLat : String?
     let endLng : String?
+    let displayStatusMessage : String?
     let fromAddress : String?
     let id : Int?
     let isBid : Int?
@@ -57,6 +58,7 @@ struct MyLoadsNewPostedTruck : Codable {
         case shipperId = "shipper_id"
         case time_difference = "time_difference"
         case offerPrice = "offer_price"
+        case displayStatusMessage = "display_status_message"
         
     }
     
@@ -79,6 +81,7 @@ struct MyLoadsNewPostedTruck : Codable {
         time = try? values.decodeIfPresent(String.self, forKey: .time)
         toAddress = try? values.decodeIfPresent(String.self, forKey: .toAddress)
         truckTypeId = try? values.decodeIfPresent(Int.self, forKey: .truckTypeId)
+        displayStatusMessage = try? values.decodeIfPresent(String.self, forKey: .displayStatusMessage)
         updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
         matchesCount = try? values.decodeIfPresent(Int.self, forKey: .matchesCount)
         bookingRequestCount = try? values.decodeIfPresent(Int.self, forKey: .bookingRequestCount)

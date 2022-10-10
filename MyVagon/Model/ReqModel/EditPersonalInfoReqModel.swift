@@ -14,7 +14,6 @@ class EditPersonalInfoReqModel : Encodable {
     var mobile_number: String?
     var profile_image: String?
     
-
     enum CodingKeys: String, CodingKey {
         case full_name = "full_name"
         case country_code = "country_code"

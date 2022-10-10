@@ -25,17 +25,18 @@ class ShipmentListReqModel : Encodable {
     var price_sort : String?
     var total_distance_sort : String?
     var rating_sort : String?
+    var jurnyType : String?
 
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
         case page = "page_num"
-        case pickup_date = "date"
-        case min_price = "price_min"
-        case max_price = "price_max"
+        case pickup_date = "pickup_date"
+        case min_price = "min_price"
+        case max_price = "max_price"
         case pickup_lat = "pickup_lat"
         case pickup_lng = "pickup_lng"
-        case dropoff_lat = "delivery_lat"
-        case dropoff_lng = "delivery_lng"
+        case dropoff_lat = "dropoff_lat"
+        case dropoff_lng = "dropoff_lng"
         
         case min_weight = "weight_min"
         case max_weight = "weight_max"
@@ -45,6 +46,7 @@ class ShipmentListReqModel : Encodable {
         case price_sort = "price_sort"
         case total_distance_sort = "total_distance_sort"
         case rating_sort = "rating_sort"
+        case jurnyType = "journey_type"
         
         
     }
@@ -81,12 +83,12 @@ class BookNowReqModel : Encodable {
 }
 
 class PostTruckBidReqModel : Encodable {
-    var driver_id,availability_id : String?
+    var driver_id,availability_id,sort : String?
 
     enum CodingKeys: String, CodingKey {
         case driver_id = "driver_id"
         case availability_id = "availability_id"
-        
+        case sort = "sort"   
     }
 }
 class BidAcceptRejectReqModel : Encodable {
@@ -126,7 +128,7 @@ class StartJourneyReqModel : Encodable {
         case driver_id = "driver_id"
         case booking_id = "booking_id"
         case location_id = "location_id"
-        
+    
     }
 }
 class LoadDetailsReqModel : Encodable {
@@ -136,7 +138,6 @@ class LoadDetailsReqModel : Encodable {
         case driver_id = "driver_id"
         case booking_id = "booking_id"
        
-        
     }
 }
 class CompleteTripReqModel : Encodable {

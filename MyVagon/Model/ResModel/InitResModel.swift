@@ -11,18 +11,27 @@ struct InitResModel : Codable {
     
     let message : String?
     let status : Bool?
+    let update :Bool?
+    let forceUpdate :Bool?
+    let maintenance :Bool?
     let data : InitDatum?
     
     private enum CodingKeys: String, CodingKey {
         case message = "message"
         case status = "status"
+        case update = "update"
+        case maintenance = "maintenance"
         case data = "data"
+        case forceUpdate = "force_update"
     }
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         message = try? values.decodeIfPresent(String.self, forKey: .message)
         status = try? values.decodeIfPresent(Bool.self, forKey: .status)
+        update = try? values.decodeIfPresent(Bool.self, forKey: .update)
+        maintenance = try? values.decodeIfPresent(Bool.self, forKey: .maintenance)
+        forceUpdate = try? values.decodeIfPresent(Bool.self, forKey: .forceUpdate)
         data = try? values.decodeIfPresent(InitDatum.self, forKey: .data)
     }
     

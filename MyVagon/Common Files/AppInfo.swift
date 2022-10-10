@@ -41,7 +41,7 @@ struct AppInfo {
     
     static var appUrl:String{
 
-        return "itms-apps://itunes.apple.com/app/id1547969270"
+        return "itms-apps://itunes.apple.com/app/apple-store/id1541296701?mt=8"
     }
     
     

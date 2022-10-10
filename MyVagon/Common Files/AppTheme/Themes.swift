@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import CountryPickerView
 import SkyFloatingLabelTextField
 import FSCalendar
 import GrowingTextView
@@ -50,7 +49,7 @@ class GeneralPickerView: UIPickerView {
         //toolBar.tintColor = .black
         toolBar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneTapped))
+        let doneButton = UIBarButtonItem(title: "Done".localized, style: .plain, target: self, action: #selector(self.doneTapped))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
 
 
@@ -96,35 +95,25 @@ class ThemeCalender : FSCalendar, FSCalendarDelegate {
         self.appearance.headerTitleFont = CustomFont.PoppinsRegular.returnFont(14.0)
         self.appearance.titleFont = CustomFont.PoppinsRegular.returnFont(12.0)
         self.appearance.weekdayFont = CustomFont.PoppinsMedium.returnFont(12.0)
-        self.appearance.selectionColor = UIColor.appColor(.themeColorForButton);      self.appearance.titleSelectionColor = colors.white.value
+        self.appearance.selectionColor = UIColor.appColor(.themeColorForButton)
+        self.appearance.titleSelectionColor = colors.white.value
         self.appearance.weekdayTextColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
         self.appearance.headerDateFormat = "MMMM, yyyy"
         self.appearance.headerMinimumDissolvedAlpha = 0.0
         self.today = nil
-        
         if CalenderScopeMonth {
             self.scope = .month
         } else {
             self.scope = .week
-            
         }
-       
         self.firstWeekday = 1
        // self.weekdayHeight = 40
         self.weekdayHeight = 40
         self.headerHeight = 30
         self.rowHeight = 40
-       
         self.clipsToBounds = true
         self.layer.cornerRadius = 0
-        
-        
-        
     }
-    
-        
-   
-    
 }
 
 class ThemeSwitch : UISwitch {

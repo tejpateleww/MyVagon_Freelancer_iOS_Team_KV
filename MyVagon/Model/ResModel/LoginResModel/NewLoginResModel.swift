@@ -98,6 +98,7 @@ struct LoginVehicle: Codable {
     var license: String?
     var isAssing: Int?
     var createdAt: String?
+    var licenseBack: String?
     var truckDetails: [TruckDetails]?
     var brands: Brands?
     
@@ -126,6 +127,7 @@ struct LoginVehicle: Codable {
         case createdAt = "created_at"
         case truckDetails = "truck_details"
         case brands = "brands"
+        case licenseBack = "license_back"
     }
 
     init(from decoder: Decoder) throws {
@@ -148,6 +150,7 @@ struct LoginVehicle: Codable {
         trailerRegistrationNo = try values.decodeIfPresent(String.self, forKey: .trailerRegistrationNo)
         images = try values.decodeIfPresent([String].self, forKey: .images)
         idProof = try values.decodeIfPresent(String.self, forKey: .idProof)
+        licenseBack = try values.decodeIfPresent(String.self, forKey: .licenseBack)
         license = try values.decodeIfPresent(String.self, forKey: .license)
         isAssing = try values.decodeIfPresent(Int.self, forKey: .isAssing)
         createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
@@ -162,36 +165,54 @@ struct TruckType: Codable {
 
     var id: Int?
     var name: String?
-
+    var greekName: String?
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
+        case greekName = "name_greece"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
+        greekName = try values.decodeIfPresent(String.self, forKey: .greekName)
     }
-
+    
+    func getName() -> String{
+        if (UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el" == "el"){
+            return greekName ?? ""
+        }else{
+            return name ?? ""
+        }
+    }
 }
 
 struct TruckSubCategory: Codable {
 
     var id: Int?
     var name: String?
+    var greekName: String?
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
+        case greekName = "name_greek"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
+        greekName = try values.decodeIfPresent(String.self, forKey: .greekName)
     }
-
+    func getName() -> String{
+        if (UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el" == "el"){
+            return greekName ?? ""
+        }else{
+            return name ?? ""
+        }
+    }
 }
 
 struct WeightUnit: Codable {
@@ -312,16 +333,26 @@ struct Brands: Codable {
 
     var id: Int?
     var name: String?
+    var greekName: String?
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
+        case greekName = "name_greek"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
         name = try values.decodeIfPresent(String.self, forKey: .name)
+        greekName = try values.decodeIfPresent(String.self, forKey: .greekName)
+    }
+    func getName() -> String{
+        if (UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el" == "el"){
+            return greekName ?? ""
+        }else{
+            return name ?? ""
+        }
     }
 
 }

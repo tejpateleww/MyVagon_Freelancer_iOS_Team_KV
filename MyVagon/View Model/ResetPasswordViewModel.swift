@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 class ResetPasswordViewModel {
-    weak var setNewPasswordViewController : SetNewPasswordViewController? = nil
+    weak var setNewPasswordViewController : ChangePasswordVC? = nil
     
     func ResetNewPassword(ReqModel:ResetNewPasswordReqModel){
        
-        Utilities.ShowLoaderButtonInButton(Button: self.setNewPasswordViewController?.BtnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
+        Utilities.ShowLoaderButtonInButton(Button: self.setNewPasswordViewController?.btnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
         WebServiceSubClass.ResetNewPassword(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.HideLoaderButtonInButton(Button: self.setNewPasswordViewController?.BtnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
+            Utilities.HideLoaderButtonInButton(Button: self.setNewPasswordViewController?.btnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
          
             if status {
                 appDel.NavigateToLogin()
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
@@ -25,13 +26,13 @@ class ResetPasswordViewModel {
     }
     
     func Changepassword(ReqModel:ChangePasswordReqModel){
-       
         
-        Utilities.ShowLoaderButtonInButton(Button: self.setNewPasswordViewController?.BtnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
+        Utilities.ShowLoaderButtonInButton(Button: self.setNewPasswordViewController?.btnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
         WebServiceSubClass.ChangePassword(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.HideLoaderButtonInButton(Button: self.setNewPasswordViewController?.BtnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
+            Utilities.HideLoaderButtonInButton(Button: self.setNewPasswordViewController?.btnSetPassword ?? themeButton(), vc: self.setNewPasswordViewController ?? UIViewController())
            
             if status {
+                self.setNewPasswordViewController?.navigationController?.popViewController(animated: true)
                 Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)

@@ -68,33 +68,16 @@ private extension FloatingPoint {
      *     - bearing: The *bearing* is camera's position on an arc between directly over the map's center position and the surface of the Earth. Default value is 0.
      */
     public func arCarMovement(marker: GMSMarker, oldCoordinate: CLLocationCoordinate2D, newCoordinate:CLLocationCoordinate2D, mapView: GMSMapView, bearing: Float = 0) {
-        
-        //calculate the bearing value from old and new coordinates
-        //
         let calBearing: Float = getHeadingForDirection(fromCoordinate: oldCoordinate, toCoordinate: newCoordinate)
         marker.groundAnchor = CGPoint(x: CGFloat(0.5), y: CGFloat(0.5))
         marker.rotation = CLLocationDegrees(calBearing); //found bearing value by calculation when marker add
-        marker.position = oldCoordinate; //this can be old position to make car movement to new position
-        
-        //marker movement animation
-        CATransaction.begin()
-        CATransaction.setValue(duration, forKey: kCATransactionAnimationDuration)
+        marker.position = newCoordinate
         CATransaction.setCompletionBlock({() -> Void in
             marker.rotation = (Int(bearing) != 0) ? CLLocationDegrees(bearing) : CLLocationDegrees(calBearing)
         })
-        
-        // delegate method pass value
-        //
-        delegate?.arCarMovementMoved(marker)
-        
-        marker.position = newCoordinate; //this can be new position after car moved from old position to new position with animation
-        marker.map = mapView;
-        marker.rotation = CLLocationDegrees(calBearing);
-        CATransaction.commit()
     }
     
     private func getHeadingForDirection(fromCoordinate fromLoc: CLLocationCoordinate2D, toCoordinate toLoc: CLLocationCoordinate2D) -> Float {
-        
         let fLat: Float = Float((fromLoc.latitude).degreesToRadians)
         let fLng: Float = Float((fromLoc.longitude).degreesToRadians)
         let tLat: Float = Float((toLoc.latitude).degreesToRadians)

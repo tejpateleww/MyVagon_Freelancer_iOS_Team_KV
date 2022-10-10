@@ -15,8 +15,7 @@ class CodableService {
                 
                 //MARK:- Api Request Error
                 if let ERR = error{
-                    completion(false, ERR.localizedDescription, nil, [UrlConstant.ResponseMessage,ERR.localizedDescription])
-                    
+                    completion(false, ERR.localizedDescription, nil, [UrlConstant.ResponseMessage.localized,ERR.localizedDescription])
                 }else{
                     
                     //MARK:- HTTP Response
@@ -50,24 +49,23 @@ class CodableService {
                                 
                                 //MARK:- Client Side Error
                             }else if httpResponse.statusCode == 400{
-                                completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
-                                
-                                //MARK:- Session Expoire -> Do Force Logout
+                                completion(statusCode, alertMessage, nil, responseDic ?? SessionExpiredResponseDic)
+                                appDel.Logout()
                             }else if httpResponse.statusCode == 401{
-                                completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                                    Utilities.ShowAlertOfValidation(OfMessage: "Session Expire")
+                                }
                                 appDel.Logout()
-                                
-                                //MARK:- Session Expoire -> Do Force Logout
                             }else if httpResponse.statusCode == 403{
-                                completion(statusCode, alertMessage, nil, responseDic ?? SomethingWentWrongResponseDic)
+                                completion(statusCode, alertMessage, nil, responseDic ?? SessionExpiredResponseDic)
                                 appDel.Logout()
-                                
-                                //MARK:- Server Error
                             }else if httpResponse.statusCode == 500{
-                                completion(statusCode, UrlConstant.SomethingWentWrong, nil, responseDic ?? SomethingWentWrongResponseDic)
+                                completion(statusCode, UrlConstant.SomethingWentWrong.localized, nil, responseDic ?? SomethingWentWrongResponseDic)
+                            }else{
+                                completion(statusCode, "SomethingWentWrong".localized, nil, responseDic ?? SomethingWentWrongResponseDic)
                             }
                         }else{
-                            completion(statusCode, UrlConstant.SomethingWentWrong, nil, responseDic ?? SomethingWentWrongResponseDic)
+                            completion(statusCode, UrlConstant.SomethingWentWrong.localized, nil, responseDic ?? SomethingWentWrongResponseDic)
                         }
                     }
                 }
@@ -76,7 +74,6 @@ class CodableService {
     }
     
     class func getCodableObjectFromData<C:Codable>(jsonData: Data, codableObj: C.Type) -> C?{
-        #warning("Please make try block optional")
         let obj = try? JSONDecoder().decode(codableObj, from: jsonData)
         return obj
     }

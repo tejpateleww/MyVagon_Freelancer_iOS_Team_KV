@@ -1,3 +1,0 @@
-/Users/imac/Documents/Dhananjay/MyVagon/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle
-/Users/imac/Documents/Dhananjay/MyVagon/Pods/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle
-/Users/imac/Documents/Dhananjay/MyVagon/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle

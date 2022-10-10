@@ -109,7 +109,7 @@ class WebServiceSubClass{
     
     //MARK: -TruckType
     class func TruckType(completion: @escaping (Bool,String,TruckTypeListingResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckTypeListing.rawValue, responseModel: TruckTypeListingResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckTypeListing.rawValue, responseModel: TruckTypeListingResModel.self, language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.TruckTypeList = response?.data
             }
@@ -119,7 +119,7 @@ class WebServiceSubClass{
     
     //MARK: -PackageListing
     class func PackageListing(completion: @escaping (Bool,String,PackageListingResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.PackageListing.rawValue, responseModel: PackageListingResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.PackageListing.rawValue, responseModel: PackageListingResModel.self,language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.PackageList = response?.data
             }
@@ -129,7 +129,7 @@ class WebServiceSubClass{
     
     //MARK: -TruckUnit
     class func TruckUnit(completion: @escaping (Bool,String,TruckUnitResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckUnitListing.rawValue, responseModel: TruckUnitResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckUnitListing.rawValue, responseModel: TruckUnitResModel.self, language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.TruckunitList = response?.data
             }
@@ -139,7 +139,7 @@ class WebServiceSubClass{
     
     //MARK: -TruckFeatures
     class func TruckFeatures(completion: @escaping (Bool,String,TruckFeaturesResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckFeatureListing.rawValue, responseModel: TruckFeaturesResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckFeatureListing.rawValue, responseModel: TruckFeaturesResModel.self, language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.TruckFeatureList = response?.data
             }
@@ -149,7 +149,7 @@ class WebServiceSubClass{
     
     //MARK: -TruckBrand
     class func TruckBrand(completion: @escaping (Bool,String,TruckBrandsResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckBrandListing.rawValue, responseModel: TruckBrandsResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.TruckBrandListing.rawValue, responseModel: TruckBrandsResModel.self, language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.TruckBrandList = response?.data
             }
@@ -159,7 +159,7 @@ class WebServiceSubClass{
     
     //MARK: - Cancellation Reasons
     class func cancellationReasoneList(completion: @escaping (Bool,String,CancellationReasoneResModel?,Any) -> ()){
-        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.CancellationReason.rawValue, responseModel: CancellationReasoneResModel.self) { (status, message, response, error) in
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.CancellationReason.rawValue, responseModel: CancellationReasoneResModel.self,language: true) { (status, message, response, error) in
             if status{
                 SingletonClass.sharedInstance.cancellationReasons = response?.data
             }
@@ -464,6 +464,40 @@ class WebServiceSubClass{
     //MARK:- Make as default truck
     class func makeAsDefaultTruck(reqModel: MakeAsDefaultTruckReqModel, completion: @escaping (Bool,String,StartTripResModel?,Any) -> ()){
         URLSessionRequestManager.makePostRequest(urlString: ApiKey.makeAsDefaultTruck.rawValue, requestModel: reqModel, responseModel: StartTripResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    // Logout Driver
+    class func logOutDriver(completion: @escaping (Bool,String,InitResModel?,Any) -> ()) {
+        URLSessionRequestManager.makeGetRequest(urlString: ApiKey.logOut.rawValue, responseModel: InitResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    // getSetting
+    class func getSetting(reqModel: GetSettingReqModel, completion: @escaping (Bool,String,GetSettingResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.driverGetSetting.rawValue, requestModel: reqModel, responseModel: GetSettingResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    // UpdateSetting
+    class func updateSetting(reqModel: EditSettingsReqModel, completion: @escaping (Bool,String,GetSettingResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.driverEditSettings.rawValue, requestModel: reqModel, responseModel: GetSettingResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    // UpdateSetting
+    class func changeLanguage(reqModel: LanguageChangeReqModel, completion: @escaping (Bool,String,ChangeLanguageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.changeLanguage.rawValue, requestModel: reqModel, responseModel: ChangeLanguageResModel.self) { (status, message, response, error) in
+            completion(status, message, response, error)
+        }
+    }
+    
+    // DeleteUser
+    class func deleteUser(reqModel: DeleteUserReqModel, completion: @escaping (Bool,String,ChangeLanguageResModel?,Any) -> ()){
+        URLSessionRequestManager.makePostRequest(urlString: ApiKey.deleteUser.rawValue, requestModel: reqModel, responseModel: ChangeLanguageResModel.self) { (status, message, response, error) in
             completion(status, message, response, error)
         }
     }

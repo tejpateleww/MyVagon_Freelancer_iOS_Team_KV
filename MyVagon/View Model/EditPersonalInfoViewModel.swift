@@ -19,12 +19,12 @@ class EditPersonalInfoModel {
         WebServiceSubClass.ImageUpload(imgArr: images, completion: { (status, apiMessage, response, error) in
             Utilities.hideHud()
             if status{
-               
                 response?.data?.images?.forEach({ element in
-                    self.VC?.profileImage = response?.data?.images ?? []
+                    self.VC?.ImageViewProfile.image = images.first
+                    self.VC?.profileImage = response?.data?.images?.first ?? ""
                 })
-            } else {
-               
+            }else{
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         })
     }

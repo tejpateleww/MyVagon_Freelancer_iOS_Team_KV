@@ -11,7 +11,7 @@ import UIKit
 
 class StatisticsViewModel {
     
-    weak var VC : StatisticsOneVC? = nil
+    weak var VC : StatisticsVC? = nil
     
     func WebServiceForStatiscticList(ReqModel:StatisticListReqModel){
         WebServiceSubClass.StatisticListAPI(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in

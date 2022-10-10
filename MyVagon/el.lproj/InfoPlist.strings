@@ -1,0 +1,12 @@
+/* 
+  InfoPlist.strings
+  MyVagon
+
+  Created by Dhananjay  on 23/08/22.
+  
+*/
+NSCameraUsageDescription = "Χρειάζεται πρόσβαση στην κάμερα για να βγάλετε φωτογραφίες";
+NSLocationAlwaysAndWhenInUseUsageDescription = "application requires location services to work";
+NSLocationAlwaysUsageDescription = "application requires location services to work";
+NSLocationWhenInUseUsageDescription = "application requires location services to work";
+NSPhotoLibraryUsageDescription = "MYVAGON would like to use your photo library usage description";

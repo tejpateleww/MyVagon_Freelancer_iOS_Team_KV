@@ -12,19 +12,11 @@ import MobileCoreServices
 import AVFoundation
 import Photos
 import CoreLocation
-/*
- AttachmentHandler.shared.showAttachmentActionSheet(vc: self)
- AttachmentHandler.shared.imagePickedBlock = { (image) in
- /* get your image here */
- }
- */
-
-
 
 class AttachmentHandler: NSObject{
     static let shared = AttachmentHandler()
     fileprivate var currentVC: UIViewController?
-//    private weak var presentationController: UIViewController?
+    //    private weak var presentationController: UIViewController?
     //MARK: - Internal Properties
     
     var imagePickedBlock: ((UIImage) -> Void)?
@@ -33,12 +25,12 @@ class AttachmentHandler: NSObject{
     var locationPickedBlock:  ((CLLocation) -> Void)?
     var isRemoveNeeded : Bool = false
     
-//    var isVideo : Bool = false
+    //    var isVideo : Bool = false
     
     enum AttachmentType: String{
         case camera, video, photoLibrary, location
     }
-
+    
     
     //MARK: - Constants
     struct Constants {
@@ -49,18 +41,11 @@ class AttachmentHandler: NSObject{
         static let video = "Video"
         static let file = "File"
         static let location = "Location"
-        
-        
         static let alertForPhotoLibraryMessage = "App does not have access to your photos. To enable access, tap settings and turn on Photo Library Access."
-        
         static let alertForCameraAccessMessage = "App does not have access to your camera. To enable access, tap settings and turn on Camera."
-        
         static let alertForVideoLibraryMessage = "App does not have access to your video. To enable access, tap settings and turn on Video Library Access."
-        
-        
         static let settingsBtnTitle = "Settings"
         static let cancelBtnTitle = "Cancel"
-        
     }
     
     
@@ -73,111 +58,57 @@ class AttachmentHandler: NSObject{
         
         actionSheet.addAction(UIAlertAction(title: Constants.camera, style: .default, handler: { (action) -> Void in
             DispatchQueue.main.async {
-//                self.isVideo = false
+                //                self.isVideo = false
                 self.authorisationStatus(attachmentTypeEnum: .camera, vc: self.currentVC!)
             }
         }))
         if isVideo{
             actionSheet.addAction(UIAlertAction(title: Constants.video, style: .default, handler: { (action) -> Void in
                 DispatchQueue.main.async {
-//                    self.isVideo = true
-                     self.authorisationStatus(attachmentTypeEnum: .video, vc: self.currentVC!)
+                    //                    self.isVideo = true
+                    self.authorisationStatus(attachmentTypeEnum: .video, vc: self.currentVC!)
                 }
             }))
         }else{
-        actionSheet.addAction(UIAlertAction(title: Constants.phoneLibrary, style: .default, handler: { (action) -> Void in
-            DispatchQueue.main.async {
-                
-                self.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self.currentVC!)}
-        }))
+            actionSheet.addAction(UIAlertAction(title: Constants.phoneLibrary, style: .default, handler: { (action) -> Void in
+                DispatchQueue.main.async {
+                    
+                    self.authorisationStatus(attachmentTypeEnum: .photoLibrary, vc: self.currentVC!)}
+            }))
         }
         
-       
         
-//        actionSheet.addAction(UIAlertAction(title: Constants.file, style: .default, handler: { (action) -> Void in
-//            self.documentPicker()
-//        }))
-//
-//        actionSheet.addAction(UIAlertAction(title: Constants.location, style: .default, handler: { (action) -> Void in
-//            self.locationPickedBlock?(SingletonClass.sharedInstance.userCurrentLocation)
-//        }))
-//
+        
+        //        actionSheet.addAction(UIAlertAction(title: Constants.file, style: .default, handler: { (action) -> Void in
+        //            self.documentPicker()
+        //        }))
+        //
+        //        actionSheet.addAction(UIAlertAction(title: Constants.location, style: .default, handler: { (action) -> Void in
+        //            self.locationPickedBlock?(SingletonClass.sharedInstance.userCurrentLocation)
+        //        }))
+        //
         actionSheet.addAction(UIAlertAction(title: Constants.cancelBtnTitle, style: .cancel, handler: nil))
-
         vc.present(actionSheet, animated: true, completion: nil)
     }
     
     //MARK: - Authorisation Status
-    // This is used to check the authorisation status whether user gives access to import the image, photo library, video.
-    // if the user gives access, then we can import the data safely
-    // if not show them alert to access from settings.
     func authorisationStatus(attachmentTypeEnum: AttachmentType, vc: UIViewController){
         currentVC = vc
         DispatchQueue.main.async {
-            let status = PHPhotoLibrary.authorizationStatus()
-            switch status {
-            case .authorized:
-                if attachmentTypeEnum == AttachmentType.camera{
-                    self.openCamera()
-                }
-                if attachmentTypeEnum == AttachmentType.photoLibrary{
-                    self.photoLibrary()
-                }
-                if attachmentTypeEnum == AttachmentType.video{
-                    self.videoLibrary()
-                }
-            case .denied:
-                print("permission denied")
-                self.addAlertForSettings(attachmentTypeEnum)
-            case .notDetermined:
-                print("Permission Not Determined")
-//                PHPhotoLibrary.
-                if attachmentTypeEnum == .camera{
-                    if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
-                        self.openCamera()
-                    } else {
-                        AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
-                            guard let self = self else { return }
-                            if granted {
-                                self.openCamera()
-                            } else {
-                                self.showAlert(message: "\(AppName) would like to access camera for capture your photo and set as a your profile picture")
-                            }
-                        }
-                    }
-                }else{
-                   
-                    PHPhotoLibrary.requestAuthorization({ (status) in
-                        if status == PHAuthorizationStatus.authorized{
-                            // photo library access given
-                            print("access given")
-                            if attachmentTypeEnum == AttachmentType.camera{
-                                self.openCamera()
-                            }
-                            if attachmentTypeEnum == AttachmentType.photoLibrary{
-                                self.photoLibrary()
-                            }
-                            if attachmentTypeEnum == AttachmentType.video{
-                                self.videoLibrary()
-                            }
-                        }else{
-                            print("restriced manually")
-                            self.addAlertForSettings(attachmentTypeEnum)
-                        }
-                    })
-                }
-                
-            case .restricted:
-                print("permission restricted")
-                self.addAlertForSettings(attachmentTypeEnum)
-            default:
-                break
+            if attachmentTypeEnum == AttachmentType.camera{
+                self.openCamera()
+            }
+            if attachmentTypeEnum == AttachmentType.photoLibrary{
+                self.photoLibrary()
+            }
+            if attachmentTypeEnum == AttachmentType.video{
+                self.videoLibrary()
             }
         }
         
     }
     private func showAlert(message: String) {
-        Utilities.showAlertWithTitleFromVC(vc: currentVC ?? UIViewController(), title: AppName, message: message, buttons:  ["Later", "Setting"]) {  (intIndex) in
+        Utilities.showAlertWithTitleFromVC(vc: currentVC ?? UIViewController(), title: AppName, message: message, buttons:  ["Later".localized, "Settings".localized]) {  (intIndex) in
             if intIndex == 1 {
                 if let settingsAppURL = URL(string: UIApplication.openSettingsURLString){
                     UIApplication.shared.open(settingsAppURL, options: [:], completionHandler: nil)
@@ -186,23 +117,23 @@ class AttachmentHandler: NSObject{
         }
     }
     private func photoGalleryAsscessRequest(attachmentTypeEnum : AttachmentType) {
-         PHPhotoLibrary.requestAuthorization { [weak self] result in
-             guard let self = self else { return }
-             if result == .authorized {
-                 DispatchQueue.main.async { [weak self] in
-                     guard let self = self else { return }
+        PHPhotoLibrary.requestAuthorization { [weak self] result in
+            guard let self = self else { return }
+            if result == .authorized {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else { return }
                     if attachmentTypeEnum == AttachmentType.photoLibrary{
                         self.photoLibrary()
                     }
                     if attachmentTypeEnum == AttachmentType.video{
                         self.videoLibrary()
                     }
-                 }
-             } else {
-                 self.showAlert(message: "\(AppName) would like to access gallery for select your picture and set as a your profile picture")
-             }
-         }
-     }
+                }
+            } else {
+                self.showAlert(message: "\(AppName) would like to access gallery for select your picture and set as a your profile picture")
+            }
+        }
+    }
     
     
     //MARK: - CAMERA PICKER
@@ -210,49 +141,78 @@ class AttachmentHandler: NSObject{
     func openCamera(){
         
         DispatchQueue.main.async {
-        if UIImagePickerController.isSourceTypeAvailable(.camera){
-            let myPickerController = UIImagePickerController()
-            myPickerController.navigationController?.isNavigationBarHidden = false
-            myPickerController.delegate = self
-            myPickerController.sourceType = .camera
-          
-           
-//            else{
-//                myPickerController.mediaTypes = ["public.image"]
-//            }
-            self.currentVC?.present(myPickerController, animated: true, completion: nil)
-        }
+            
+            if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+                self.camera()
+            } else {
+                AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+                    if granted {
+                        self.camera()
+                    } else {
+                        self.showAlert(message: "camera_access".localized)
+                    }
+                })
+            }
         }
     }
     
-
+    func camera(){
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                let myPickerController = UIImagePickerController()
+                myPickerController.navigationController?.isNavigationBarHidden = false
+                myPickerController.delegate = self
+                myPickerController.sourceType = .camera
+                self.currentVC?.present(myPickerController, animated: true, completion: nil)
+            }
+        }
+    }
+    
     //MARK: - PHOTO PICKER
     func photoLibrary(){
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            DispatchQueue.main.async {
-                let myPickerController = UIImagePickerController()
-                myPickerController.delegate = self
-                myPickerController.sourceType = .photoLibrary
-                self.currentVC?.present(myPickerController, animated: true, completion: nil)
-                
+        
+        if PHPhotoLibrary.authorizationStatus() == .authorized{
+            self.library()
+        }else{
+            PHPhotoLibrary.requestAuthorization({ (status) in
+                if status == PHAuthorizationStatus.authorized{
+                    self.library()
+                }else{
+                    self.addAlertForSettings(.photoLibrary)
+                }
+            })
+        }
+    }
+    
+    func library(){
+        DispatchQueue.main.async{
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                DispatchQueue.main.async {
+                    let myPickerController = UIImagePickerController()
+                    myPickerController.delegate = self
+                    myPickerController.sourceType = .photoLibrary
+                    self.currentVC?.present(myPickerController, animated: true, completion: nil)
+                }
             }
         }
     }
     
     //MARK: - VIDEO PICKER
     func videoLibrary(){
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
-            DispatchQueue.main.async {
-                let myPickerController = UIImagePickerController()
-                myPickerController.delegate = self
-                myPickerController.sourceType = .photoLibrary
-                myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
-                self.currentVC?.present(myPickerController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                DispatchQueue.main.async {
+                    let myPickerController = UIImagePickerController()
+                    myPickerController.delegate = self
+                    myPickerController.sourceType = .photoLibrary
+                    myPickerController.mediaTypes = [kUTTypeMovie as String, kUTTypeVideo as String]
+                    self.currentVC?.present(myPickerController, animated: true, completion: nil)
+                }
             }
         }
     }
     
-   
+    
     
     //MARK: - FILE PICKER
     func documentPicker(){
@@ -265,29 +225,29 @@ class AttachmentHandler: NSObject{
     //MARK: - SETTINGS ALERT
     func addAlertForSettings(_ attachmentTypeEnum: AttachmentType){
         DispatchQueue.main.async { [self] in
-        var alertTitle: String = ""
-        if attachmentTypeEnum == AttachmentType.camera{
-            alertTitle = Constants.alertForCameraAccessMessage
-        }
-        if attachmentTypeEnum == AttachmentType.photoLibrary{
-            alertTitle = Constants.alertForPhotoLibraryMessage
-        }
-        if attachmentTypeEnum == AttachmentType.video{
-            alertTitle = Constants.alertForVideoLibraryMessage
-        }
-        
-        let cameraUnavailableAlertController = UIAlertController (title: alertTitle , message: nil, preferredStyle: .alert)
-        
-        let settingsAction = UIAlertAction(title: Constants.settingsBtnTitle, style: .destructive) { (_) -> Void in
-            let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)
-            if let url = settingsUrl {
-                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            var alertTitle: String = ""
+            if attachmentTypeEnum == AttachmentType.camera{
+                alertTitle = Constants.alertForCameraAccessMessage
             }
-        }
-        let cancelAction = UIAlertAction(title: Constants.cancelBtnTitle, style: .default, handler: nil)
-        cameraUnavailableAlertController .addAction(cancelAction)
-        cameraUnavailableAlertController .addAction(settingsAction)
-        currentVC?.present(cameraUnavailableAlertController , animated: true, completion: nil)
+            if attachmentTypeEnum == AttachmentType.photoLibrary{
+                alertTitle = Constants.alertForPhotoLibraryMessage
+            }
+            if attachmentTypeEnum == AttachmentType.video{
+                alertTitle = Constants.alertForVideoLibraryMessage
+            }
+            
+            let cameraUnavailableAlertController = UIAlertController (title: alertTitle , message: nil, preferredStyle: .alert)
+            
+            let settingsAction = UIAlertAction(title: Constants.settingsBtnTitle, style: .destructive) { (_) -> Void in
+                let settingsUrl = NSURL(string:UIApplication.openSettingsURLString)
+                if let url = settingsUrl {
+                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                }
+            }
+            let cancelAction = UIAlertAction(title: Constants.cancelBtnTitle, style: .default, handler: nil)
+            cameraUnavailableAlertController .addAction(cancelAction)
+            cameraUnavailableAlertController .addAction(settingsAction)
+            currentVC?.present(cameraUnavailableAlertController , animated: true, completion: nil)
         }
     }
 }
@@ -300,28 +260,28 @@ extension AttachmentHandler: UIImagePickerControllerDelegate, UINavigationContro
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        if let image = info[.originalImage] as? UIImage//info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage)] as? UIImage
-//            {
-//            self.imagePickedBlock?(image)
-//        } else{
-//            print("Something went wrong in image")
-//        }
-//
-//
-//
-//        if let videoUrl = info[.mediaURL] as? NSURL{
-//            print("videourl: ", videoUrl)
-//            //trying compression of video
-//            let data = NSData(contentsOf: videoUrl as URL)!
-//            print("File size before compression: \(Double(data.length / 1048576)) mb")
-//            compressWithSessionStatusFunc(videoUrl)
-//        }
-//        else{
-//            print("Image is uploading")
-//        }
+        //        if let image = info[.originalImage] as? UIImage//info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage)] as? UIImage
+        //            {
+        //            self.imagePickedBlock?(image)
+        //        } else{
+        //            print("Something went wrong in image")
+        //        }
+        //
+        //
+        //
+        //        if let videoUrl = info[.mediaURL] as? NSURL{
+        //            print("videourl: ", videoUrl)
+        //            //trying compression of video
+        //            let data = NSData(contentsOf: videoUrl as URL)!
+        //            print("File size before compression: \(Double(data.length / 1048576)) mb")
+        //            compressWithSessionStatusFunc(videoUrl)
+        //        }
+        //        else{
+        //            print("Image is uploading")
+        //        }
         currentVC?.dismiss(animated: true, completion: {
             if let image = info[.originalImage] as? UIImage//info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.originalImage)] as? UIImage
-                {
+            {
                 self.imagePickedBlock?(image)
             } else{
                 print("Something went wrong in image")
@@ -340,13 +300,13 @@ extension AttachmentHandler: UIImagePickerControllerDelegate, UINavigationContro
                 print("Image is uploading")
             }
         })
-//        currentVC?.dismiss(animated: true, completion: nil)
+        //        currentVC?.dismiss(animated: true, completion: nil)
     }
     
-//    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//            // process the selected single image, we don't want to process multiple images
-//
-//    }
+    //    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    //            // process the selected single image, we don't want to process multiple images
+    //
+    //    }
     
     //MARK: Video Compressing technique
     fileprivate func compressWithSessionStatusFunc(_ videoUrl: NSURL) {

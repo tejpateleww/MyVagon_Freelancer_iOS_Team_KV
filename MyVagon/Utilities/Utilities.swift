@@ -8,13 +8,9 @@
 
 import Foundation
 import UIKit
- 
-import NVActivityIndicatorView
 import SwiftMessages
 import Lottie
-// ----------------------------------------------------
-//MARK:- --------- Get Class Name Method ---------
-// ----------------------------------------------------
+import CoreLocation
 
 extension NSObject {
     static var className : String {
@@ -45,20 +41,15 @@ func hexStringToUIColor (hex:String) -> UIColor {
 }
 
 class Utilities:NSObject{
-    //MARK: -  ================================
     //MARK: Device UDID
-    //MARK: ==================================
     static let deviceId: String = (UIDevice.current.identifierForVendor?.uuidString)!
     
-    //MARK: -  ================================
     //MARK: Print Output
-    //MARK: ==================================
     static func printOutput(_ items: Any){
         print(items)
     }
-    //MARK: -  ================================
+    
     //MARK: ALERT MESSAGE
-    //MARK: ==================================
     class func getMessageFromApiResponse(param: Any) -> String {
         
         if let res = param as? String {
@@ -100,7 +91,7 @@ class Utilities:NSObject{
     
     static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void{
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title?.localized, message: message, preferredStyle: .alert)
         for index in 0..<buttons.count {
             
             let action = UIAlertAction(title: buttons[index], style: .default, handler: { (alert: UIAlertAction!) in
@@ -116,7 +107,7 @@ class Utilities:NSObject{
     }
     static func showAlertWithTitleFromVC(vc:UIViewController, title:String?, message:String?, buttons:[String], isOkRed : Bool, completion:((_ index:Int) -> Void)!) -> Void{
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title?.localized, message: message, preferredStyle: .alert)
         var style : UIAlertAction.Style
         for index in 0..<buttons.count {
             if isOkRed{
@@ -145,7 +136,7 @@ class Utilities:NSObject{
         if message.trimmedString == "" {
             return
         }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: title.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         if otherTitles.count > 0 {
             var i = 0
             for title in otherTitles {
@@ -169,13 +160,62 @@ class Utilities:NSObject{
         //        }
         
         DispatchQueue.main.async {
-            
             AppDelegate.shared.window?.rootViewController!.present(alert, animated: true, completion: nil)
         }
     }
+    static func getDateFromString(strDate:String) -> Date {
+        let dateString = strDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        dateFormatter.amSymbol = "πμ"
+//        dateFormatter.pmSymbol = "μμ"
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+        if let dateFromString = dateFormatter.date(from: dateString) {
+            return dateFromString
+        }else{
+            return Date()
+        }
+    }
+    
+    static func getDateFromString2(strDate:String) -> Date {
+        let dateString = strDate
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+//        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: "en")
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+//        dateFormatter.amSymbol = "πμ"
+//        dateFormatter.pmSymbol = "μμ"
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm a"
+        if let dateFromString = dateFormatter.date(from: dateString) {
+            return dateFromString
+        }else{
+            return Date()
+        }
+    }
+    
+    static func getDateDiff(start: Date, end: Date) -> String  {
+        let calendar = Calendar(identifier: .iso8601)
+        let dateComponents = calendar.dateComponents([Calendar.Component.hour], from: start, to: end)
+        let hour = dateComponents.hour
+        return String(hour!)
+    }
+    
+    static func GetCurrentTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = DateFormatterString.onlyTime.rawValue
+        formatter.locale = Locale(identifier: UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el")
+        let dateString = formatter.string(from: Date())
+        print("ATDebug :: \(dateString)")
+        return dateString
+    }
+    
     static func showAlertWithTitleFromWindow(title:String?, andMessage message:String, buttons:[String], completion:((_ index:Int) -> Void)!) -> Void {
         
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title?.localized, message: message, preferredStyle: .alert)
         
         for index in 0..<buttons.count
         {
@@ -198,7 +238,7 @@ class Utilities:NSObject{
         if message.trimmedString == "" {
             return
         }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: title.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         if otherTitles.count > 0 {
             var i = 0
             for title in otherTitles {
@@ -226,7 +266,7 @@ class Utilities:NSObject{
         if message.trimmedString == "" {
             return
         }
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: title.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         var i = 0
         if otherTitles.count > 0 {
             for title in otherTitles {
@@ -299,7 +339,30 @@ class Utilities:NSObject{
         return String(format: "%02d:%02d", minutes, seconds)
     }
     
-    
+    static func getJurnyType(type:String) -> String{
+        switch type{
+        case "0":
+            return "Short Haul".localized
+        case "1":
+            return "Medium Haul".localized
+        case "2":
+            return "Long Haul".localized
+        default:
+            return ""
+        }
+    }
+    static func setJurnyType(type:String) -> String{
+        switch type{
+        case "Short Haul".localized:
+            return "0"
+        case "Medium Haul".localized:
+            return "1"
+        case "Long Haul".localized:
+            return "2"
+        default:
+            return ""
+        }
+    }
     
     func isModal(vc: UIViewController) -> Bool {
         
@@ -330,7 +393,7 @@ class Utilities:NSObject{
     }
     
     class func ShowAlert(OfMessage : String) {
-        let alert = UIAlertController(title: AppInfo.appName, message: OfMessage, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: AppInfo.appName.localized, message: OfMessage, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
        // present(alert, animated: true, completion: nil)
         appDel.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -338,7 +401,6 @@ class Utilities:NSObject{
     
     class func ShowAlertOfValidation(OfMessage : String) {
         let messageBar = MessageBarController()
-
         messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .error, TopBottom: true)
     }
     
@@ -349,28 +411,23 @@ class Utilities:NSObject{
     
     class func ShowAlertOfSuccess(OfMessage : String) {
         let messageBar = MessageBarController()
-
         messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .success, TopBottom: true)
     }
     
     class func ShowToastMessage(OfMessage : String) {
         let messageBar = MessageBarController()
-
         messageBar.MessageShow(title: OfMessage as NSString, alertType: MessageView.Layout.cardView, alertTheme: .success, TopBottom: true)
     }
     
-    
     class func showAlert(_ title: String, message: String, vc: UIViewController) -> Void
     {
-        let alert = UIAlertController(title:title,
+        let alert = UIAlertController(title:title.localized,
                                       message: message,
                                       preferredStyle: UIAlertController.Style.alert)
         
-        let cancelAction = UIAlertAction(title: "OK",
-                                         style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
-        if(vc.presentedViewController != nil)
-        {
+        if(vc.presentedViewController != nil){
             vc.dismiss(animated: true, completion: nil)
         }
         //vc will be the view controller on which you will present your alert as you cannot use self because this method is static.
@@ -416,30 +473,34 @@ class Utilities:NSObject{
         
         static var ViewBG = UIView()
         static var loadingView = AnimationView(name: "LoaderLottie")
-       
-        
+        static let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+        static let blurEffectView = UIVisualEffectView(effect: blurEffect)
         class func showActivityIndicatory() {
             
             let size:CGSize = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.frame.size ?? CGSize()
             ViewBG.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
             ViewBG.center = CGPoint(x: size.width / 2, y: size.height / 2)
             ViewBG.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-           
-            
             loadingView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
             loadingView.contentMode = .scaleAspectFit
             loadingView.center = CGPoint(x: size.width / 2, y: size.height / 2)
-            loadingView.backgroundColor = .white
+            loadingView.backgroundColor = .clear
             loadingView.clipsToBounds = true
             loadingView.animationSpeed = 1.0
             loadingView.loopMode = .loop
-    //        loadingView.layer.cornerRadius = 10
+//          loadingView.layer.cornerRadius = 10
             loadingView.layer.cornerRadius = 10
            
             loadingView.contentMode = .scaleAspectFit
-            
+            blurEffectView.alpha = 0.4
+            blurEffectView.frame = ViewBG.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            if !ViewBG.subviews.contains(blurEffectView){
+                ViewBG.addSubview(blurEffectView)
+            }
             if !ViewBG.subviews.contains(loadingView){
                 ViewBG.addSubview(loadingView)
+                ViewBG.bringSubviewToFront(loadingView)
             }
             loadingView.play()
       
@@ -471,27 +532,21 @@ class Utilities:NSObject{
     
     class func CheckLocation(currentVC:UIViewController){
         
-        let alertController = UIAlertController(title: "Location Services Disabled".Localized(), message: "Please enable location services for this app.".Localized(), preferredStyle: .alert)
-        let OKAction = UIAlertAction(title: "OK".Localized(), style: .default, handler: nil)
-        let settingsAction = UIAlertAction(title: "Settings".Localized(), style: .default) { (_) -> Void in
-            
+        let alertController = UIAlertController(title: "Location Services Disabled".localized, message: "enable_location_msg".localized, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK".localized, style: .default, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings".localized, style: .default) { (_) -> Void in
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
             }
-            
             if UIApplication.shared.canOpenURL(settingsUrl) {
                 UIApplication.shared.open(settingsUrl, completionHandler: { (success)
-                    
                     in
                     print("Settings opened: \(success)") // Prints true
                 })
             }
         }
-        
         alertController.addAction(OKAction)
         alertController.addAction(settingsAction)
-        
-        
         OperationQueue.main.addOperation {
             currentVC.present(alertController, animated: true,
                               completion:nil)
@@ -501,9 +556,9 @@ class Utilities:NSObject{
     
     class func AlwaysAllowPermission(currentVC:UIViewController){
         
-        let alertController = UIAlertController(title: "My Vagoon does not have access to your location while in the background. To enable access, tap Settings > Location and select Always".Localized(), message: "", preferredStyle: .alert)
-        let NotNowAction = UIAlertAction(title: "Not Now".Localized(), style: .cancel, handler: nil)
-        let settingsAction = UIAlertAction(title: "Settings".Localized(), style: .default) { (_) -> Void in
+        let alertController = UIAlertController(title: "location_access_msg".localized, message: "", preferredStyle: .alert)
+        let NotNowAction = UIAlertAction(title: "Not Now".localized, style: .cancel, handler: nil)
+        let settingsAction = UIAlertAction(title: "Settings".localized, style: .default) { (_) -> Void in
             
             guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                 return
@@ -526,7 +581,6 @@ class Utilities:NSObject{
             currentVC.present(alertController, animated: true,
                               completion:nil)
         }
-        
     }
     
 //    class func showHud()
@@ -642,11 +696,7 @@ class Utilities:NSObject{
     
     class func showAlertWithTwoAction(_ title: String, message: String, _ completion: (() -> ())? = nil) -> Void
     {
-       
-        
-        
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: title.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         
         //        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (sct) in
         //
@@ -667,7 +717,7 @@ class Utilities:NSObject{
     }
     class func showAlertWithAction(_ title: String, message: String, _ completion: (() -> ())? = nil) -> Void
     {
-        let alert = UIAlertController(title: AppInfo.appName, message: message, preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: AppInfo.appName.localized, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (sct) in
             completion?()
         }))
@@ -734,6 +784,15 @@ class Utilities:NSObject{
         }
         
         return topController
+    }
+    
+    class func setRootViewController(){
+        let UserLogin = UserDefault.bool(forKey: UserDefaultsKey.isUserLogin.rawValue)
+        if UserLogin {
+            appDel.NavigateToHome()
+        } else {
+            appDel.NavigateToLogin()
+        }
     }
     
     

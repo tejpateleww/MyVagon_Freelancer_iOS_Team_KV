@@ -167,19 +167,13 @@ extension Date {
 extension Date {
 
     func ConvertDataToHeaderDate() -> String {
-        
-        
         let onlyDate = DateFormatter()
         onlyDate.dateFormat = "dd'\(self.daySuffix())' MMM"
-        
         let datewithMonth = onlyDate.string(from: self)
-        
         onlyDate.dateFormat = "yy"
         let datewithyear = onlyDate.string(from: self)
-       
         return "\(datewithMonth)'\(datewithyear)"
     }
-
 
     func daySuffix() -> String {
         let calendar = Calendar.current
@@ -197,6 +191,7 @@ extension Date {
         }
     }
 }
+
 enum OffSetType : String {
     case Year,Month,Day,Weeks,Hours,Minute,Second
 }

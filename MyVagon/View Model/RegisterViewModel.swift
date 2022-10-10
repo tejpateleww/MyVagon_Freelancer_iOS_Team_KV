@@ -8,15 +8,14 @@
 import Foundation
 import UIKit
 class RegisterViewModel {
-    weak var termsConditionVC : TermsConditionVC? = nil
+    weak var paymentsVC : PaymentsVC? = nil
     
     func WebServiceForRegister(ReqModel:RegisterReqModel){
-        Utilities.ShowLoaderButtonInButton(Button: termsConditionVC?.btnRegister ?? themeButton(), vc: termsConditionVC ?? UIViewController())
+        Utilities.ShowLoaderButtonInButton(Button: paymentsVC?.btnSave ?? themeButton(), vc: paymentsVC ?? UIViewController())
         WebServiceSubClass.Register(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            Utilities.HideLoaderButtonInButton(Button: self.termsConditionVC?.btnRegister ?? themeButton(), vc: self.termsConditionVC ?? UIViewController())
+            Utilities.HideLoaderButtonInButton(Button: self.paymentsVC?.btnSave ?? themeButton(), vc: self.paymentsVC ?? UIViewController())
             if status{
                 UserDefault.removeObject(forKey: UserDefaultsKey.RegisterData.rawValue)
-    
                 Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
                 SingletonClass.sharedInstance.clearSingletonClassForRegister()
                 appDel.NavigateToLogin()
@@ -25,6 +24,4 @@ class RegisterViewModel {
             }
         })
     }
-
-    
 }

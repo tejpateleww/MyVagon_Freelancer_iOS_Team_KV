@@ -9,16 +9,16 @@ import Foundation
 
 class chatViewModel {
     
-    weak var chatVC : chatVC? = nil
+    weak var VC : ChatVC? = nil
     
     func WebServiceChatHistory(ReqModel:chatMessageReqModel){
         WebServiceSubClass.chatHistory(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            self.chatVC?.isTblReload = true
-            self.chatVC?.isLoading = false
+            self.VC?.isTblReload = true
+            self.VC?.isLoading = false
             if status{
-                self.chatVC?.arrData = response?.data ?? []
-                self.chatVC?.tblChat.reloadData()
-                self.chatVC?.scrollToBottom()
+                self.VC?.arrData = response?.data ?? []
+                self.VC?.tblChat.reloadData()
+                self.VC?.scrollToBottom()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
@@ -29,7 +29,7 @@ class chatViewModel {
 class chatListViewModel {
     
     weak var chatListVC : ChatListVC? = nil
-    weak var myAccountViewController : MyAccountViewController? = nil
+    weak var myAccountViewController : MyAccountVC? = nil
     
     func WebServiceChatList(ReqModel:chatListReqModel){
         WebServiceSubClass.chatUserList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in

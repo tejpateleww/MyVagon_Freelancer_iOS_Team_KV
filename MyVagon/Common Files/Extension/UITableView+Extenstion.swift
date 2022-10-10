@@ -84,3 +84,24 @@ extension UITableViewController {
     }
     
 }
+
+extension UITableView {
+    func updateHeaderViewHeight() {
+        if let header = self.tableHeaderView {
+            let newSize = header.systemLayoutSizeFitting(CGSize(width: self.bounds.width, height: 0))
+            header.frame.size.height = newSize.height
+        }
+    }
+    func addCorner(){
+        self.layer.cornerRadius = 15
+        self.clipsToBounds = true
+    }
+
+    func addShadow(){
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.5
+        self.layer.shadowOffset = .zero
+        self.layer.masksToBounds = false
+    }
+}

@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 class LoadDetailViewModel {
-    weak var loadDetailsVC : LoadDetailsVC? = nil
-    weak var commonAcceptRejectPopupVC : CommonAcceptRejectPopupVC? = nil
+    weak var loadDetailsVC : SearchDetailVC? = nil
+    weak var commonAcceptRejectPopupVC : ConfirmPopupVC? = nil
     
     func BookNow(ReqModel:BookNowReqModel){
         Utilities.ShowLoaderButtonInButton(Button: commonAcceptRejectPopupVC?.BtnRight ?? themeButton(), vc: commonAcceptRejectPopupVC ?? UIViewController())

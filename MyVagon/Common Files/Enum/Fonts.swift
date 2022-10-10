@@ -45,9 +45,6 @@ enum CustomFont
         case .PoppinsLightItalic:
                 return UIFont(name: "Poppins-LightItalic", size: font)!
         
-        
-        
-      
         }
         
       /*

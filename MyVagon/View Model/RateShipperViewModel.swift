@@ -15,7 +15,9 @@ class RateShipperViewModel {
         WebServiceSubClass.RateShipper(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
             Utilities.HideLoaderButtonInButton(Button: self.reviewShipperVC?.btnRate ?? themeButton(), vc: self.reviewShipperVC ?? UIViewController())
             if status{
-                self.reviewShipperVC?.navigationController?.popToRootViewController(animated: true)
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
+                appDel.NavigateToSchedual()
+//                self.reviewShipperVC?.navigationController?.popToRootViewController(animated: true)
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }

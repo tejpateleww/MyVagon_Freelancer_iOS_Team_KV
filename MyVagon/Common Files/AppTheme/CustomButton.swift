@@ -45,7 +45,7 @@ class themeButton: UIButton {
             self.titleLabel?.font = CustomFont.PoppinsBold.returnFont(16)
         }
         if IsUnderline {
-            self.setunderline(title: self.titleLabel?.text ?? "", color: UIColor.appColor(ThemeColor.themeButtonBlue), font: CustomFont.PoppinsMedium.returnFont(16))
+            self.setunderline(title: self.titleLabel?.text?.localized ?? "", color: UIColor.appColor(ThemeColor.themeButtonBlue), font: CustomFont.PoppinsMedium.returnFont(16))
         }
         self.layer.cornerRadius = CornerRadiusForButton
         

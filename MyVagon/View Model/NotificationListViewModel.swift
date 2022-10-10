@@ -9,7 +9,7 @@ import Foundation
 
 import UIKit
 class NotificationListViewModel {
-    weak var notificationViewController : NotificationViewController? = nil
+    weak var notificationViewController : NotificationVC? = nil
     
     func WebServiceForNotificationList(){
        

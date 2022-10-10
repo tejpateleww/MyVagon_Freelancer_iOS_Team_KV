@@ -25,6 +25,7 @@ class ShipperDetailViewModel{
                 self.shipperDetailVC?.arrRating.append(response?.data?.fiveStarRatingCount ?? 0)
                 self.shipperDetailVC?.isLoading = false
                 self.shipperDetailVC?.setChartData()
+                self.shipperDetailVC?.setUpUI()
                 self.shipperDetailVC?.tblShipperDetails.reloadData()
                 self.shipperDetailVC?.calculateRating()
             }else {

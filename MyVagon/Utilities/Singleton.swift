@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 import CoreLocation
-class SingletonClass: NSObject
-{
+class SingletonClass: NSObject{
+    
     static let sharedInstance = SingletonClass()
     var SystemDate = ""
     
@@ -18,14 +18,16 @@ class SingletonClass: NSObject
     var ProfileData = ProfileEditSaveModel()
     
     func clearSingletonClassForRegister() {
-        
         RegisterData = RegisterSaveDataModel()
         UserDefault.removeObject(forKey: UserDefaultsKey.RegisterData.rawValue)
         UserDefault.setValue(-1, forKey: UserDefaultsKey.UserDefaultKeyForRegister.rawValue)
-        
     }
     
+    var latitude : Double!
+    var longitude : Double!
+    
     var initResModel : InitDatum?
+    var splashComplete = false
     
     //Login Data
     var UserProfileData : LoginData?
@@ -48,144 +50,26 @@ class SingletonClass: NSObject
     var TruckFeatureList : [TruckFeaturesDatum]?
     var TruckunitList : [TruckUnitDatum]?
     var cancellationReasons : [Reasone]?
-    
+    var searchReqModel = SearchSaveReqModel()
     
     func ClearSigletonClassForLogin() {
         UserProfileData = nil
         Token = ""
     }
-    var searchReqModel = SearchSaveReqModel()
     
-    var TimerForUpdateLocation = Timer()
-    
-    var isArriveAtPickUpLocation : Bool = false
-    var isArriveAtDropOffLocation : Bool = false
-    
-    var CurrentTripStart: Bool = false {
-        didSet {
-            if CurrentTripStart {
-                
-                UpdateLocationClass.sharedLocationInstance.UpdateLocationStart()
-                UpdateLocationClass.sharedLocationInstance.UpdatedLocation = { (LocationUpdated) in
-                    SingletonClass.sharedInstance.userCurrentLocation = LocationUpdated
-                    
-                    
-                    let locationDrop = CLLocationCoordinate2DMake(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLat?.toDouble() ?? 0.0, SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLng?.toDouble() ?? 0.0)
- 
-                    let distanceBetweenPickupAndDriver = locationDrop.distance(from: LocationUpdated.coordinate)
-                        //near by distance
-                    if distanceBetweenPickupAndDriver < 300 {
-                        print("ATDebug :: location is near")
-                        if let topvc = UIApplication.topViewController() {
-                            if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
-                                let vc = topvc as! SchedualLoadDetailsViewController
-                                if vc.LoadDetails?.trucks?.locations?.contains(where: {($0.id ?? 0) == (self.CurrentTripSecondLocation?.id ?? 0)}) == true {
-                                    var pickupArray = self.CurrentTripSecondLocation?.products?.compactMap({$0.isPickup})
-                                    pickupArray = pickupArray?.uniqued()
-                                    if pickupArray?.count != 0   {
-                                        if pickupArray?.count == 1 {
-                                            if (self.CurrentTripSecondLocation?.isPickup ?? 0) == 1 {
-                                                //Tej's new changes
-                                                if(!self.isArriveAtPickUpLocation){
-                                                    NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
-                                                    vc.btnStartTrip?.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
-                                                }
-                                                self.isArriveAtPickUpLocation = true
-                                                //Tej's new changes Comp
-                                                
-                                            } else {
-                                                if(!self.isArriveAtDropOffLocation){
-                                                    NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
-                                                    vc.btnStartTrip?.setTitle(TripStatus.DropOffComplete.Name, for: .normal)
-                                                }
-                                                self.isArriveAtDropOffLocation = true
-                                                
-                                            }
-                                        }  else {
-                                            //Tej's new changes
-                                            if(!self.isArriveAtPickUpLocation){
-                                                NotificationCenter.default.post(name: .arriveAtPickUpLocation, object: nil)
-                                            }
-                                            self.isArriveAtPickUpLocation = true
-                                            //Tej's new changes Comp
-                                            vc.btnStartTrip?.setTitle(TripStatus.PickUpComplete.Name, for: .normal)
-                                        }
-                                    }
-                                    if vc.TruckMarker != nil {
-                                        vc.UpdatePath()
-                                    }
-                                    vc.btnStartTrip?.superview?.isHidden = false
-                                }
-                               
-                               
-                            }
-                        }
-                        SingletonClass.sharedInstance.isNearByPickupLocation = true
-                    } else {
-                        SingletonClass.sharedInstance.isNearByPickupLocation = false
-                        if let topvc = UIApplication.topViewController() {
-                            if topvc.isKind(of: SchedualLoadDetailsViewController.self) {
-                                let vc = topvc as! SchedualLoadDetailsViewController
-                                
-                                if vc.LoadDetails?.trucks?.locations?.contains(where: {($0.id ?? 0) == (self.CurrentTripSecondLocation?.id ?? 0)}) == true {
-                              
-                                    vc.btnStartTrip?.superview?.isHidden = true
-                                    if vc.TruckMarker != nil {
-                                        vc.UpdatePath()
-                                    }
-                                }
-                                
-                        
-                            }
-                        }
-                    }
-                  
-                }
-                
-                StartTimerForUpdateLocation()
-            } else {
-                UpdateLocationClass.sharedLocationInstance.locationManager.stopUpdatingLocation()
-                StopTimerForUpdateLocation()
+    func callApiForLogout() {
+        Utilities.showHud()
+        WebServiceSubClass.logOutDriver { (status, apiMessage, response, error) in
+            Utilities.hideHud()
+            if status{
+                appDel.Logout()
+            }else{
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         }
     }
-    
-    var isNearByPickupLocation : Bool = false
- //   var CurrentTripSecondLocation = CLLocationCoordinate2D()
-    var CurrentTripSecondLocation : MyLoadsNewLocation?
-    var userCurrentLocation = CLLocation()
-    var CurrentTripShipperID : String = ""
-    func StartTimerForUpdateLocation() {
-        TimerForUpdateLocation.invalidate()
-        
-        
-        if SocketIOManager.shared.socket.status == .connected {
-            emitForCurrentLocation()
-            TimerForUpdateLocation = Timer.scheduledTimer(withTimeInterval: TimeInterval(SingletonClass.sharedInstance.initResModel?.updateLocationInterval ?? 5), repeats: true) { (timer) in
-                
-                self.emitForCurrentLocation()
-            }
-        }
-    }
-    func emitForCurrentLocation() {
-        
-        let params = [  "pickup_lat" : "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLat?.toDouble() ?? 0.0)",
-                        "pickup_lng" : "\(SingletonClass.sharedInstance.CurrentTripSecondLocation?.dropLng?.toDouble() ?? 0.0)",
-                        "lat" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.latitude )",
-                        "lng" : "\(SingletonClass.sharedInstance.userCurrentLocation.coordinate.longitude )",
-                        "driver_id" : "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)",
-                        "shipper_id" : SingletonClass.sharedInstance.CurrentTripShipperID ]
-        
-        
-        SocketIOManager.shared.socketEmit(for: socketApiKeys.updateLocation.rawValue , with: params)
-        
-    }
-    func StopTimerForUpdateLocation() {
-        self.emitForCurrentLocation()
-        TimerForUpdateLocation.invalidate()
-    }
-    
 }
+
 class RegisterSaveDataModel : Codable {
     
     var Reg_fullname = ""
@@ -213,6 +97,7 @@ class RegisterSaveDataModel : Codable {
 
     var Reg_id_proof : [String] = []
     var Reg_license : [String] = []
+    var Reg_licenseBack : [String] = []
     var Reg_license_number = ""
     var Reg_license_expiry_date = ""
     
@@ -227,7 +112,7 @@ class RegisterSaveDataModel : Codable {
     var Reg_brand = ""
     var Reg_truck_features : [String] = []
     var Reg_fuel_type = ""
-    var Reg_vehicle_images : [String] = []    
+    var Reg_vehicle_images : [String] = []
 }
 
 class ProfileEditSaveModel : Codable {
@@ -272,7 +157,7 @@ class SearchSaveReqModel : Codable {
     var max_weight_unit : String = ""
     var pickup_address_string : String = ""
     var dropoff_address_string : String = ""
-    
+    var pickUpType = ""
 }
 
 struct RegTruckDetailModel : Codable {
@@ -287,6 +172,56 @@ struct RegTruckDetailModel : Codable {
     var pallets : [TruckCapacityType] = []
     var plate_number = ""
     var images = ""
+    var imageWithUrl = ""
     var truck_features = ""
     var default_truck = "0"
+    
+    static func == (lhs:RegTruckDetailModel,rhs:RegTruckDetailModel ) -> Bool{
+        
+        if lhs.pallets.count != rhs.pallets.count{
+            return false
+        }
+        for capacity in lhs.pallets{
+            if rhs.pallets.first(where: {($0.capacity == capacity.capacity && $0.type == capacity.type)}) == nil{
+                return false
+            }
+        }
+        
+        let lhsFeature = lhs.truck_features.components(separatedBy: ",")
+        let rhsFeature = rhs.truck_features.components(separatedBy: ",")
+        
+        if lhsFeature.count != rhsFeature.count{
+            return false
+        }
+        for fearure in lhsFeature{
+            if !rhsFeature.contains(fearure){
+                return false
+            }
+        }
+        
+        if lhs.id != rhs.id{
+            return false
+        }else if lhs.truck_type != rhs.truck_type{
+            return false
+        }else if lhs.truck_sub_category != rhs.truck_sub_category{
+            return false
+        }else if lhs.weight != rhs.weight{
+            return false
+        }else if lhs.weight_unit != rhs.weight_unit{
+            return false
+        }else if lhs.capacity != rhs.capacity{
+            return false
+        }else if lhs.capacity_unit != rhs.capacity_unit{
+            return false
+        }else if lhs.plate_number != rhs.plate_number{
+            return false
+        }else if lhs.images != rhs.images{
+            return false
+        }else if lhs.default_truck != rhs.default_truck{
+            return false
+        }else{
+            return true
+        }
+    }
+    
 }

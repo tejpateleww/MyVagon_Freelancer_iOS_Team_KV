@@ -29,12 +29,12 @@ struct ChatMessagesResModel: Codable {
 
 struct chatData: Codable {
 
-    var receiverId: Int
-    var receiverName: String
-    var senderId: Int
-    var senderName: String
-    var createdAt: String
-    var message: String
+    var receiverId: Int?
+    var receiverName: String?
+    var senderId: Int?
+    var senderName: String?
+    var createdAt: String?
+    var message: String?
 
     private enum CodingKeys: String, CodingKey {
         case receiverId = "receiver_id"
@@ -44,15 +44,15 @@ struct chatData: Codable {
         case createdAt = "created_at"
         case message = "message"
     }
-
+    init() {}
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        receiverId = try values.decode(Int.self, forKey: .receiverId)
-        receiverName = try values.decode(String.self, forKey: .receiverName)
-        senderId = try values.decode(Int.self, forKey: .senderId)
-        senderName = try values.decode(String.self, forKey: .senderName)
-        createdAt = try values.decode(String.self, forKey: .createdAt)
-        message = try values.decode(String.self, forKey: .message)
+        receiverId = try values.decodeIfPresent(Int.self, forKey: .receiverId)
+        receiverName = try values.decodeIfPresent(String.self, forKey: .receiverName)
+        senderId = try values.decodeIfPresent(Int.self, forKey: .senderId)
+        senderName = try values.decodeIfPresent(String.self, forKey: .senderName)
+        createdAt = try values.decodeIfPresent(String.self, forKey: .createdAt)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
     }
 
 }
@@ -87,9 +87,9 @@ struct chatSocketResponseData: Codable {
 
 struct ChatUserListResModel: Codable {
 
-    let status: Bool
-    let message: String
-    let data: [ChatUserList]
+    var status: Bool?
+    var message: String?
+    var data: [ChatUserList]?
 
     private enum CodingKeys: String, CodingKey {
         case status = "status"
@@ -99,48 +99,49 @@ struct ChatUserListResModel: Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        status = try values.decode(Bool.self, forKey: .status)
-        message = try values.decode(String.self, forKey: .message)
-        data = try values.decode([ChatUserList].self, forKey: .data)
+        status = try values.decodeIfPresent(Bool.self, forKey: .status)
+        message = try values.decodeIfPresent(String.self, forKey: .message)
+        data = try values.decodeIfPresent([ChatUserList].self, forKey: .data)
     }
 
 }
 
 struct ChatUserList: Codable {
 
-    let id: Int
-    let name: String
-    let firstName: String
-    let lastName: String
-    let email: String
-    let profile: String
-    let phone: String
-    let countryCode: String
-    let selfDes: String
-    let type: String
-    let companyRefId: String
-    let companyName: String
-    let postcode: String
-    let city: Int
-    let state: Int
-    let country: Int
-    let ssn: String
-    let companyPhone: String
-    let emailVerify: String
-    let phoneVerify: String
-    let emailVerifiedAt: String
-    let password: String
-    let rememberToken: String
-    let status: Int
-    let blockStatus: String
-    let stage: String
-    let licenceNumber: String
-    let licenceExpiryDate: String
-    let busy: String
-    let createdAt: String
-    let updatedAt: String
-    let message: String
-    let messageTime: String
+    var id: Int?
+    var name: String?
+    var firstName: String?
+    var lastName: String?
+    var email: String?
+    var profile: String?
+    var phone: String?
+    var countryCode: String?
+    var selfDes: String?
+    var type: String?
+    var companyRefId: String?
+    var companyName: String?
+    var postcode: String?
+    var city: Int?
+    var state: Int?
+    var country: Int?
+    var ssn: String?
+    var companyPhone: String?
+    var emailVerify: String?
+    var phoneVerify: String?
+    var emailVerifiedAt: String?
+    var password: String?
+    var rememberToken: String?
+    var status: Int?
+    var blockStatus: String?
+    var stage: String?
+    var licenceNumber: String?
+    var licenceExpiryDate: String?
+    var busy: String?
+    var createdAt: String?
+    var updatedAt: String?
+    var message: String?
+    var messageTime: String?
+    var chatDisable: Int?
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -176,44 +177,46 @@ struct ChatUserList: Codable {
         case updatedAt = "updated_at"
         case message = "message"
         case messageTime = "message_time"
+        case chatDisable = "chat_disable"
         
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decode(Int.self, forKey: .id)
-        name = try values.decode(String.self, forKey: .name)
-        firstName = try values.decode(String.self, forKey: .firstName)
-        lastName = try values.decode(String.self, forKey: .lastName)
-        email = try values.decode(String.self, forKey: .email)
-        profile = try values.decode(String.self, forKey: .profile)
-        phone = try values.decode(String.self, forKey: .phone)
-        countryCode = try values.decode(String.self, forKey: .countryCode)
-        selfDes = try values.decode(String.self, forKey: .selfDes)
-        type = try values.decode(String.self, forKey: .type)
-        companyRefId = try values.decode(String.self, forKey: .companyRefId)
-        companyName = try values.decode(String.self, forKey: .companyName)
-        postcode = try values.decode(String.self, forKey: .postcode)
-        city = try values.decode(Int.self, forKey: .city)
-        state = try values.decode(Int.self, forKey: .state)
-        country = try values.decode(Int.self, forKey: .country)
-        ssn = try values.decode(String.self, forKey: .ssn)
-        companyPhone = try values.decode(String.self, forKey: .companyPhone)
-        emailVerify = try values.decode(String.self, forKey: .emailVerify)
-        phoneVerify = try values.decode(String.self, forKey: .phoneVerify)
-        emailVerifiedAt = try values.decode(String.self, forKey: .emailVerifiedAt)
-        password = try values.decode(String.self, forKey: .password)
-        rememberToken = try values.decode(String.self, forKey: .rememberToken)
-        status = try values.decode(Int.self, forKey: .status)
-        blockStatus = try values.decode(String.self, forKey: .blockStatus)
-        stage = try values.decode(String.self, forKey: .stage)
-        licenceNumber = try values.decode(String.self, forKey: .licenceNumber)
-        licenceExpiryDate = try values.decode(String.self, forKey: .licenceExpiryDate)
-        busy = try values.decode(String.self, forKey: .busy)
-        createdAt = try values.decode(String.self, forKey: .createdAt)
-        updatedAt = try values.decode(String.self, forKey: .updatedAt)
-        message = try values.decode(String.self, forKey: .message)
-        messageTime = try values.decode(String.self, forKey: .messageTime)
+        id = try? values.decode(Int.self, forKey: .id)
+        name = try? values.decode(String.self, forKey: .name)
+        firstName = try? values.decode(String.self, forKey: .firstName)
+        lastName = try? values.decode(String.self, forKey: .lastName)
+        email = try? values.decode(String.self, forKey: .email)
+        profile = try? values.decode(String.self, forKey: .profile)
+        phone = try? values.decode(String.self, forKey: .phone)
+        countryCode = try? values.decode(String.self, forKey: .countryCode)
+        selfDes = try? values.decode(String.self, forKey: .selfDes)
+        type = try? values.decode(String.self, forKey: .type)
+        companyRefId = try? values.decode(String.self, forKey: .companyRefId)
+        companyName = try? values.decode(String.self, forKey: .companyName)
+        postcode = try? values.decode(String.self, forKey: .postcode)
+        city = try? values.decode(Int.self, forKey: .city)
+        state = try? values.decode(Int.self, forKey: .state)
+        country = try? values.decode(Int.self, forKey: .country)
+        ssn = try? values.decode(String.self, forKey: .ssn)
+        companyPhone = try? values.decode(String.self, forKey: .companyPhone)
+        emailVerify = try? values.decode(String.self, forKey: .emailVerify)
+        phoneVerify = try? values.decode(String.self, forKey: .phoneVerify)
+        emailVerifiedAt = try? values.decode(String.self, forKey: .emailVerifiedAt)
+        password = try? values.decode(String.self, forKey: .password)
+        rememberToken = try? values.decode(String.self, forKey: .rememberToken)
+        status = try? values.decode(Int.self, forKey: .status)
+        blockStatus = try? values.decode(String.self, forKey: .blockStatus)
+        stage = try? values.decode(String.self, forKey: .stage)
+        licenceNumber = try? values.decode(String.self, forKey: .licenceNumber)
+        licenceExpiryDate = try? values.decode(String.self, forKey: .licenceExpiryDate)
+        busy = try? values.decode(String.self, forKey: .busy)
+        createdAt = try? values.decode(String.self, forKey: .createdAt)
+        updatedAt = try? values.decode(String.self, forKey: .updatedAt)
+        message = try? values.decode(String.self, forKey: .message)
+        messageTime = try? values.decode(String.self, forKey: .messageTime)
+        chatDisable = try? values.decode(Int.self, forKey: .chatDisable)
     }
 
 }

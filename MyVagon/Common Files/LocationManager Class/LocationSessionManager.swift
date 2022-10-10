@@ -69,7 +69,7 @@ class SessionManager {
 
                 // Check if the the Google Direction API returned a status OK response.
                 guard let status: String = json["status"] as? String, status == "OK" else {
-                    print(json["error_message"])
+                    print(json["error_message"] as Any)
                     DispatchQueue.main.async {
                         let error = NSError(domain: "GoogleDirectionsRequest", code: 3, userInfo: [NSLocalizedDescriptionKey: "Google Direction API did not return status OK"])
                         print("Error: \(error).")

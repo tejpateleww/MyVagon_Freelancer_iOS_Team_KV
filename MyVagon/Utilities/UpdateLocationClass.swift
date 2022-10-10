@@ -10,50 +10,46 @@ import CoreLocation
 import UIKit
 
 class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
-
+    
     class var sharedLocationInstance: UpdateLocationClass {
-            struct Static {
-                static var instance = UpdateLocationClass()
-            }
-            return Static.instance
+        struct Static {
+            static var instance = UpdateLocationClass()
         }
+        return Static.instance
+    }
     
-    
-
-
     var locationManager = CLLocationManager()
     var CurrentLocation: CLLocation?
-
+    
     var UpdatedLocation:((CLLocation) -> ())?
-//    var UpdatedLocationLogin:((CLLocation) -> ())?
-//    var UpdatedLocationHome:((CLLocation) -> ())?
-//
+    //    var UpdatedLocationLogin:((CLLocation) -> ())?
+    //    var UpdatedLocationHome:((CLLocation) -> ())?
+    //
     override init() {
         super.init()
         
         self.locationManager = CLLocationManager()
-       
         
-        let status = CLLocationManager.authorizationStatus()
-        if status == .notDetermined {
-            self.locationManager.requestAlwaysAuthorization()
-           
-        }
+        
+                let status = CLLocationManager.authorizationStatus()
+                if status == .notDetermined {
+                    self.locationManager.requestAlwaysAuthorization()
+                }
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.delegate = self
+                locationManager.delegate = self
         
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-      
-         self.CurrentLocation  = locations.first!
-      
-       
+        
+        self.CurrentLocation  = locations.first!
+        
+        
         if let UpdateLocation = self.UpdatedLocation {
             UpdateLocation(locations.first!)
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         // print (error)
         if (error as? CLError)?.code == .denied {
@@ -61,27 +57,27 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
             locationManager.stopMonitoringSignificantLocationChanges()
         }
     }
-
+    
     func UpdateLocationStart(){
-
+        
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
             case .restricted, .denied:
-//                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstTime) {
-                Utilities.CheckLocation(currentVC: UIApplication.topViewController()!)
-//                }
+                //                if UserDefaults.standard.bool(forKey: UserDefaultsKeys.isFirstTime) {
+                Utilities.CheckLocation(currentVC: UIApplication.topViewController() ?? UIViewController())
+                //                }
             case .authorizedAlways, .authorizedWhenInUse:
                 self.locationManager.startUpdatingLocation()
-
-            @unknown default:
+                
+            default:
                 break
             }
         } else {
             Utilities.CheckLocation(currentVC: UIApplication.topViewController()!)
-                print("Location services are not enabled")
-
+            print("Location services are not enabled")
+            
         }
-
+        
     }
     //checkPermisson
     func isAlwaysPermissionGranted() -> Bool{
@@ -89,9 +85,9 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
         if aStatus == .authorizedAlways {
             return true
         }
-         return false
-      }
-
+        return false
+    }
+    
     // Handle authorization for the location manager.
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -100,16 +96,16 @@ class UpdateLocationClass : NSObject, CLLocationManagerDelegate {
             if let topVC = UIApplication.topViewController() {
                 Utilities.CheckLocation(currentVC: topVC)
             }
-             
+            
         case .authorizedAlways, .authorizedWhenInUse:
-             self.locationManager.startUpdatingLocation()
-
-             print("Location status is OK.")
+            self.locationManager.startUpdatingLocation()
+            
+            print("Location status is OK.")
         @unknown default:
             print("")
         }
     }
-
+    
 }
 
 

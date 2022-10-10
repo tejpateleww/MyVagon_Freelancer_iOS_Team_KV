@@ -10,7 +10,7 @@ import Foundation
 import SocketIO
 import SwiftyJSON
 
-typealias CompletionBlock = ((Any) -> ())?
+typealias CompletionBlock = ((JSON) -> ())?
 
 class SocketIOManager: NSObject {
     

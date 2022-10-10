@@ -15,6 +15,7 @@ class TrashPostedTruckViewModel{
             Utilities.hideHud()
             if status{
                 self.newScheduleVC?.reloadSearchData()
+                Utilities.ShowAlertOfSuccess(OfMessage: apiMessage)
             }else{
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }

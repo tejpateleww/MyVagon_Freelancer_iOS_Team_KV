@@ -1,48 +1,462 @@
-/* 
+/*
   Localizable.strings
   MyVagon
 
   Created by Apple on 28/07/21.
   
 */
-//SignInDriverVC
+// SignIn
 "Sign In" = "Sign In";
 "Join For Free!" = "Join For Free!";
 "Forgot?" = "Forgot?";
 "Email or Phone number" = "Email or Phone number";
 "Password" = "Password";
+"Freelancer" = "Freelancer";
+"Company" = "Company";
+"Sign in with Email" = "SignIn with Email";
+"Sign in with Phone" = "SignIn with Phone";
+"Phone number" = "Phone number";
+"SignIn with" = "SignIn with";
+"Phone" = "Phone";
 
+//SignUp
+"FullName" = "Full Name";
+"MobileNumber" = "Mobile Number";
+"Email" = "Email";
+"Password" = "Password";
+"ConfirmPassword" = "Confirm Password";
+"JoinForFree!" = "Join For Free!";
+"Verify" = "Verify";
+"Verified" = "Verified";
 
+//ForgotPassword
+"ForgotPassword" = "Forgot Password?";
+"ForgotPasswordDesc" = "OTP will be sent to email or phone number";
+"SendOTP" = "Send OTP";
 
-//Messages
-"UrlConstant_Required" = "Required";
-"UrlConstant_Success" = "Success";
-"UrlConstant_Failed" = "Failed";
-"UrlConstant_SessionExpired" = "Your session is expired! Please login again.";
-"UrlConstant_SomethingWentWrong" = "There is some server side error, Please try again after some time!";
-"UrlConstant_NoInternetConnection" = "The Internet connection appears to be offline, Please connect to the internet.";
-"UrlConstant_RequestTimeOut" = "Poor internet connection, Check your internet connection or try again.";
-"UrlConstant_Ok" = "Ok";
-"UrlConstant_Yes" = "Yes";
-"UrlConstant_Cancel" = "Cancel";
-"UrlConstant_Settings" = "Settings";
-"UrlConstant_Logout" = "Logout";
-"UrlConstant_No" = "No";
-"UrlConstant_Retry" = "Retry";
-"UrlConstant_SelectCard" = "Select Card";
-"UrlConstant_Continue" = "Continue";
-"UrlConstant_Help" = "Help";
-"UrlConstant_Invalid" = "Invalid";
-"UrlConstant_Expiry" = "Expires";
-"UrlConstant_ValidPhoneNo" = "Please enter valid mobile number.";
-"UrlConstant_InvalidEmailMessage" = "Invalid e-mail Address.";
-"UrlConstant_AgeIsRequired" = "Age is required";
-"UrlConstant_AgeMustNumber" = "Age must be a number!";
-"UrlConstant_InvalidAgeNumber" = "Invalid age number!";
-"UrlConstant_Age18YearsOld" = "You have to be over 18 years old to user our app :)";
-"UrlConstant_RequiredVerificationCode" = "Please enter verification code";
-"UrlConstant_InvalidVerificationCode" = "Please enter valid verification code";
-"UrlConstant_LocationRequiredMessage" = "Location service is disabled. To re-enable, please go to Settings and turn on Location Service for this application.";
-"UrlConstant_LogoutMessage" = "Are you sure you want to logout?";
-"UrlConstant_EnterEmailMessage" = "Please enter email";
-"UrlConstant_InvalidCardNumber" = "Your card number is invalid";
+//Tractor Detail
+"Fuel Type" = "Fuel Type";
+"Diesel" = "Diesel";
+"Electrical" = "Electrical";
+"Hydrogen" = "Hydrogen";
+"Brand" = "Brand";
+"Tractor licence plat number" = "Tractor license plate number";
+"Tractor Photos" = "Tractor Photos";
+"Continue" = "Continue";
+"Enter Tractor Details" = "Enter Tractor Details";
+"Tractor_details_title" = "Tractor Details";
+"Edit Tractor Detail" = "Edit Tractor Detail";
+
+//truck list
+"Truck List" = "Truck List";
+"Add Truck" = "Add Truck";
+"No Trucks Found" ="No Trucks Found";
+"Add" = "Add";
+
+//Add Truck
+"Enter Truck Details" = "Enter Truck Details";
+"Truck Details" = "Truck Details";
+"Truck Type" = "Truck Type";
+"Overall Truck Weight" = "Overall Truck Weight";
+"Cargo Load Capacity" = "Cargo Load Capacity";
+"Unit" = "Unit";
+"Capacity" = "Capacity";
+"Select Type" = "Select Type";
+"Enter truck licence plate number" = "Enter truck license plate";
+"Make as Default Truck" = "Make default truck";
+"Save" = "Save";
+"Truck_Photos" = "Truck Photos";
+"Edit Truck" = "Edit Truck";
+"truck sub type" = "Truck sub-type";
+"weight" = "weight";
+"truck weight unit" = "Truck weight unit";
+"load capacity" = "Load capacity";
+"truck licence plate number" = "Truck license plate";
+"plate number" = "Plate number";
+"Please enter capacity" = "Enter capacity";
+"Please select capacity type" = "Please select capacity type";
+"You can add only one time" = "You can add only one time";
+
+//Identify Yourself
+"Identify Yourself" = "Identify Yourself";
+"Identity Proof Document" = "Identity Proof Document";
+"License" = "License";
+"Enter license number" = "Enter license number";
+"Enter license expiry date" = "Enter license expiration date";
+"Next" = "Next";
+"license number" = "License number";
+"Please_select_license_expiry_date" = "Select license expiration date";
+"Please attach id proof document" = "Attach ID document";
+"Please attach license" = "Attach driver's license";
+"Licence Details" = "License Details";
+"Edit License Detail" = "Edit License Detail";
+"Please_attach_license_front_image" = "Attach driver's license (Front)";
+"Please_upload_drivers_license_back" = "Attach driver's license (Rear)";
+"License Front" = "License Front";
+"License Back" = "License Back";
+
+//Payment VC
+"Cash" = "Cash";
+"Bank" = "Bank transfer";
+"Both" = "Both";
+"IBAN" = "IBAN";
+"Account Number" = "Account Number";
+"Bank Name" = "Bank Name";
+"Country" = "Country";
+"Payments" = "Payments";
+"acccount number" = "Account Number";
+"bank name" = "bank name";
+"country" = "country";
+"Payment Method" = "Payment Method";
+
+//terms & condition
+"I accept Terms and Conditions" = "I accept the Terms and Conditions";
+"Register" = "Register";
+"Please accept Terms & Conditions" = "Terms & Conditions";
+"Terms & Conditions" = "Terms & Conditions";
+
+//personal info
+"Personal Details" = "Personal Details";
+"Upload Profile picture" = "Upload Profile picture";
+"Profile Picture" = "Profile Picture";
+"Edit Personal Info" = "Edit Personal Info";
+"Personal Info" = "Personal Info";
+"Please attach profile image" = "Attach profile picture";
+
+//my account
+"Language" = "Language";
+"My profile" = "My profile";
+"Notifications" = "Notifications";
+"Statistics" = "Statistics";
+"Change password" = "Change password";
+"About MYVAGON" = "About MYVAGON";
+"Contact us" = "Contact us";
+"Log out" = "Logout";
+"Are you sure want to Logout?" = "Are you sure you want to logout?";
+"Cancel" = "Cancel";
+"Logout" = "Logout";
+
+//EditProfile
+"Payment Detail" = "Payment Details";
+"Licence Detail" = "License Details";
+"Truck Detail" = "Truck Details";
+"Tractor Detail" = "Tractor Details";
+"Tractor_detail_Edit" = "Tractor Details";
+"Truck_detail_edit" = "Truck Details";
+"Personal information" = "Personal Information";
+"My Profile" = "My Profile";
+
+//About us
+"Privacy Policy" = "Privacy Policy";
+"Terms and Conditions" = "Terms and Conditions";
+"About us" = "About us";
+
+//change Password
+"Current Password" = "Current Password";
+"New Password" = "New Password";
+"Confirm Password" = "Confirm Password";
+"Set New Password" = "Set new password";
+"Set new password" = "Set new password";
+"Change Password" = "Change Password";
+"current password" = "current password";
+"new password" = "new password";
+"Reset New Password" = "Reset new password";
+"confirm password" = "confirm password";
+"Password and confirm password does not match" = "Password and confirmation doesn't match";
+"Current password and new password must be different" = "Current password and new password must be different";
+
+// popUp
+"To better assist you, contact us from one of below options" = "To better assist you, contact us from one of below options";
+"Chat" = "Chat";
+"Call" = "Call";
+"Reason to decline the load" = "Reason to decline the load";
+"Booking Confirmation"="Booking Confirmation";
+"Do you want to confirm the booking?" = "Do you want to confirm the booking?";
+"Bidding starting price" = "Bidding starting price";
+"Enter your bid" = "Enter your bid";
+"Booking Confirmed" = "Booking Confirmed";
+"Bid Request" = "Bid Request";
+"Are_you_sure_you_want_to" = "Are you sure you want to ";
+"the bid request?" = "the bid request?";
+"You have" = "You have";
+"posted your availability" = "posted your availability";
+"Bid placed of amount" = "Bid placed of amount";
+"You will get confirmation if shipper has decided to go with you. Till then keep booking loads" = "You will get confirmation when shipper accepts your bid. Keep booking!";
+"Shipment completed Successfully" = "Shipment was completed successfully. Please upload POD.";
+"Not Now" = "Not Now";
+"Upload POD" = "Upload POD";
+"Enter an otp send to" = "Enter an otp send to";
+"Resend after" = "Resend after";
+"seconds" = "seconds";
+"Resend OTP" = "Resend OTP";
+"Please enter OTP" = "Enter OTP";
+"Please enter valid OTP" = "Enter valid OTP";
+"Enter an otp send to" = "Enter an otp send to";
+"Enter6digitOTP" = "Enter 6 digit OTP";
+
+//Schedule
+"all" = "all";
+"pending" = "pending";
+"scheduled" = "scheduled";
+"scheduled2" = "scheduled";
+"in-progress" = "in-progress";
+"past" = "past";
+"completed" = "completed";
+"canceled" = "canceled";
+"All" = "All";
+"Bid" = "Bid";
+"Book" = "Book";
+"Posted truck" = "Posted Availability";
+"No Loads Found" = "No loads found";
+"Post Availability" = "Post Availability";
+
+// search
+"Search Options" = "Search Options";
+"Weight" = "Weight";
+"Price" = "Price";
+"Pickup Location" = "Pickup Location";
+"Delivery Location" = "Delivery Location";
+"Pickup Date" = "Pickup Date";
+"Min" = "Min";
+"Max" = "Max";
+"Search Loads" = "Search Loads";
+"Select pickup Date" = "Select pickup date";
+"Select pickup location" = "Select pickup location";
+"Select Haul" = "Select Haul";
+"Select dropoff location" = "Select dropoff location";
+"Reset" = "Reset";
+"What distance around the selected cities are you willing to pick up a load?" = "What distance around the selected cities are you willing to pick up a load?";
+"Search" = "Search";
+
+//Post avalibility
+"Start Date" = "Start Date";
+"Start Time" = "Start Time";
+"Start Location" = "Start Location";
+"Nearest Location" = "";
+"End Location" = "End Location";
+"Allow Bidding :" = "Allow Bidding :";
+"Bid Starting Price" = "Bid Starting Price";
+"Quote" = "Quote";
+"Enter Bid Starting Price" = "Enter Bid Starting Price";
+"Enter Quote" = "Enter Quote";
+"Post a Truck" = "Post a Truck";
+
+//Review
+"How do you like the services of the" = "How did you like the ";
+"Shipper?" = "Shipper?";
+"Rate & Review Shipper" = "Rate & Review Shipper";
+"Review Shipper" = "Review Shipper";
+
+//DETAIL SCREEN
+"Book Now"= "Book Now";
+"Bid Now" = "Bid Now";
+"Bidded" = "Bidded";
+"Total Km : " = "Total Km : ";
+"Journey : " = "Journey : ";
+"Shipper Details" = "Shipper Details";
+"Load Details" = "Load Details";
+"minutes remaining to cancel" = "minutes remaining to cancel";
+"minutes remaining" = "minutes remaining";
+"Cancel Bid Request" = "Cancel bid request";
+"Request To Cancel" = "Request to cancel";
+"Declined the load" = "Declined the load";
+
+//SortPoup
+"Price (Lowest First)" = "Price (Lowest First)";
+"Price (Highest First)" = "Price (Highest First)";
+"Total Distance" = "Total Distance";
+"Rating" = "Rating";
+"Sort by" = "Sort by";
+"Sort" = "Sort";
+
+//location detail
+"Amenities" = "Amenities";
+"Contact" = "Contact";
+"Shipper Notes" = "Shipper Notes";
+"Location Details" = "Location Details";
+
+//shiper detail
+"Chat" = "Chat";
+"Reviews" = "Reviews";
+
+//Error Messages
+"full name" = "full name";
+"Error_EnterValid" = "Please enter a valid";
+"Error_Contains" = "shoudn't contain more than";
+"characters" = "characters";
+"confirm password" = "confirm password";
+"password" = "password";
+"email or phone" = "email or phone";
+"Error_PleaseEnter" = "Please enter ";
+"Error_PassMinCh" = "Password must contain at least 8 characters";
+"Error_PassMaxCh" = "Maximum 20 characters are allowed in password";
+"Error_PassBlankSpace" = "Your password can’t start or end with a blank space";
+"Error_ValidEmailOrPhone" = "Enter a valid email or phone number";
+"Error_BlankEmail" = "Please enter email address";
+"Error_ValidEmail" = "Enter a valid email address";
+"Error_BlankMobile" = "Enter a valid phone number";
+"Error_Minimum" = "Minimum";
+"Error_DigitsReq" = "digits are required";
+"Error_ValidMobile" = "Enter a valid phone number";
+"Error_EnterConfirmPass" = "Confirm password";
+"Error_PassMatch" = "Password and confirmation doesn't match";
+"Error_VerifyMobile" = "Please verify mobile number";
+"Error_VerifyEmail" = "Verify email";
+"Select tractor brand" = "Select tractor brand";
+"add tractor images" = "Add tractor images";
+"Succesfull" = "Succesfull";
+"tractor licence plate number" = "tractor license plate number";
+"Are you sure you want to delete it?" = "Are you sure you want to delete it?";
+"Default truck can’t be deleted" = "Default truck can’t be deleted";
+"Please select unit of the weight" = "Select unit of the weight";
+"Please select unit of the load capacity" = "Select unit of the load capacity";
+"Please upload truck photo" = "Upload truck photo";
+"Minimum price cannot be greater than maximum price" = "Minimum price cannot be greater than maximum price";
+"Minimum price and maximum price cannot be same" = "Minimum price and maximum price cannot be the same";
+"No Notes Available" = "No notes found";
+"Please enter bid" = "Enter your bid";
+"Are you sure you want to cancel this bid request?" = "Are you sure you want to cancel this bid request?";
+"Are you sure you want to cancel?" = "Are you sure you want to cancel?";
+"NoInternetConnection" = "No Internet Connection";
+"SessionExpired" = "A new device is signed in to your account. Please login again.";
+"status" = "status";
+"Pleaseentermessage." = "Write your message.";
+"profileUpdateSucces" = "Profile updated successfully";
+
+//common string
+"Request Edit" = "Request Edit";
+"NO" = "NO";
+"YES" = "YES";
+"Skip" = "Skip";
+"Support" = "Support";
+"Submit" = "Submit";
+"Notes" = "Notes";
+"Decline" = "Decline";
+"Done" = "Done";
+"PICKUP" = "PICKUP";
+"DROP" = "DROP";
+"Dismiss" = "Dismiss";
+"View Reloads" = "View Reloads";
+"decline" = "decline";
+"bidDecline" = "decline";
+"accept" = "accept";
+"bidaccept" = "accept";
+"No Matches Found" = "No Matches Found";
+"successfully" = "successfully";
+"Okay" = "Okay";
+"Yes" = "Yes";
+"Matches Found" = "Matches Found";
+"Matches_Found" = "Matches Found";
+"Book more loads" = "Book more loads";
+"Click to Start Trip" = "Click to Start Trip";
+"Start Loading" = "Start Loading";
+"Start Journey" = "Start Trip";
+"Arrived at pickup location" = "Arrived at pickup location";
+"Arrived at drop off location" = "Arrived at dropoff location";
+"Complete Shipment" = "Complete Shipment";
+"Start Off Loading" = "Start Unloading";
+"Rate Shipper" = "Rate Shipper";
+"Start Loading/Offloading" = "Start Loading/Unloading";
+"Arrived at pickup/dropoff location" = "Arrived at pickup/dropoff location";
+"Pick up complete" = "Pick up complete";
+"Drop off complete" = "Dropoff complete";
+"Your Location" = "Your Location";
+"Accept" = "Accept";
+"to go" = "left";
+"hoursLeft" = "";
+"Enroute to" = "Enroute to";
+"Arrived at" = "Arrived at";
+"Loading at" = "Loading at";
+"Off Loading at" = "Unloading at";
+"Loading at/Off Loading" = "Loading at/Unloading";
+"You already requested to cancel" = "You already requested to cancel";
+"No" = "No";
+"Yes" = "Yes";
+"Reload" = "Reload";
+"Reload_title" = "Reload";
+"matches found" = "matches found";
+"Matches Load Found" = "Matched loads found";
+"load_found" = "";
+"View" = "View";
+"Bid Request" = "Bid Request";
+"Bid_Request" = "Bid Request";
+"Bid_Request_post" = "Request";
+"bidRequestTitle" = "Bid Request";
+"Paid" = "Paid";
+"Posted Truck" = "Post Availability";
+"SomethingWentWrong" = "Something went wrong";
+"Calling not supported" = "Calling not supported";
+"Notifications not found" = "Nothing new here!";
+"No data found" = "You have no messages yet";
+"Start Trip" = "Start Trip";
+"Enroute to" = "Enroute to";
+"Arrived at" = "Arrived at";
+"Loading / Unloading at" = "Loading / Unloading at";
+"Complete Loading / Unloading" = "Complete Loading / Unloading";
+"Complete Loading" = "Complete Loading";
+"Complete Trip" = "Complete Shipment";
+"Related_Matches" = "Related Matches";
+"Retry" = "Retry";
+"Your Location" = "Your Location";
+"You're not at the" = "You're not at the";
+"My Loads" = "My Loads";
+"Account" = "Account";
+"My Fleet" = "Fleet";
+"Schedule" = "Schedule";
+"Search" = "Search";
+"Identity" = "Identity";
+"message" = "message";
+"CompleteTripAlert" = "Are you sure you want to complete this shipment?";
+"Message" = "Message";
+"Select Language" = "Select Language";
+"Fragile" = "Fragile";
+"Sensetive to odour" = "Sensitive to odour";
+"No Reviews Found" = "No Reviews Found";
+"View_POD" = "View POD";
+"Mark_as_Paid" = "Mark as Paid";
+"Mark_as_Paid_title" = "Mark as Paid";
+"Mark_as_PaidAlert" = "Are you sure you want to mark as paid?";
+"Version" = "Version";
+"Statistics not found." = "Statistics not found.";
+"Email Notification" = "Email Notifications";
+"Push Notification" = "Push Notifications";
+"Short Haul" = "Short Haul";
+"(up to 50 KM)" = "(up to 50 KM)";
+"Medium Haul" = "Medium Haul";
+"(up to 200 KM)" = "(up to 200 KM)";
+"Long Haul" = "Long Haul";
+"(over 200 KM)" = "(over 200 KM)";
+"delete_msg_first" = "Account information, Profile photo, Shipments, Chat messages, Payment history ";
+"delete_msg_last" = "will be permanently deleted";
+"Delete" = "Delete";
+"Delete_Title" = "Deleting your account is permanent :";
+"btn_Delete_Account" = "Delete  My Account";
+"Update" = "Update";
+"Please_select_date" = "Please select date";
+"Please_select_time" = "Please select time";
+"Please_select_start_location" = "Please select start location";
+"Please_select_end_location" = "Please select end location";
+"quote" = "quote";
+"Live Tracking" = "Live Tracking";
+"Greece" = "Greece";
+"MyVagon" = "MYVAGON";
+"Post_1" = "posted your ";
+"Post_2" = "availability";
+"matchGreek" = "";
+"Offer price" = "Offer price";
+"Open_in_Google_Maps" = "Open in Google Maps";
+"Please select pickup location" = "Please select pickup location";
+"Please select dropoff location" = "Please select dropoff location";
+"Complete Unloading" = "Complete Unloading";
+"Unloading at" = "Unloading at";
+"Loading/Unloading at" = "Loading/Unloading at";
+"Complete Loading/Unloading" = "Complete Loading/Unloading";
+"Invalid" = "Invalid";
+"should contain characters and digits" = "should contain characters and digits";
+"locationerrormsg" = "Try again when you are 300m away from your next destination.";
+"Settings" = "Settings";
+"location_access_msg" = "MYVAGON does not have access to your location while in the background. To enable access, tap Settings > Location and select Always";
+"Location Services Disabled" = "Location Services Disabled";
+"enable_location_msg" = "Please enable location services for this app.";
+"camera_access" = "My Vagon would like to use your camera for images";
+"POD" = "POD";

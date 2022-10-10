@@ -1,13 +1,465 @@
-/* 
+/*
   Localizable.strings
   MyVagon
-
   Created by Apple on 28/07/21.
-  
 */
-//SignInDriverVC
-"Sign In" = "Sign In";
-"Join For Free!" = "Join For Free!";
-"Forgot?" = "Forgot?";
-"Email or Phone#" = "Email or Phone#";
-"Password" = "Password";
+
+// SignIn
+"Sign In" = "Σύνδεση";
+"Join For Free!" = "Δωρεάν εγγραφή!";
+"Forgot?" = "Ξεχάσατε;";
+"Email or Phone number" = "Email ή αριθμός τηλεφώνου";
+"email or phone number" = "email ή αριθμός τηλεφώνου";
+"Password" = "Κωδικός πρόσβασης";
+"Freelancer" = "Ανεξάρτητος οδηγός";
+"Company" = "Εταιρία";
+"Sign in with Email" = "Είσοδος με email";
+"Sign in with Phone" = "Είσοδος με τηλέφωνο";
+"Phone number" = "Τηλεφωνικό νούμερο";
+"SignIn with" = "Συνδεθείτε με";
+"Phone" = "Τηλέφωνο";
+
+//SignUp
+"FullName" = "Ονοματεπώνυμο";
+"MobileNumber" = "Αριθμός τηλεφώνου";
+"Phone" = "Τηλέφωνο";
+"Email" = "Ηλεκτρονική διεύθυνση";
+"ConfirmPassword" = "Επιβεβαίωση κωδικού πρόσβασης";
+"JoinForFree!" = "Δωρεάν εγγραφή!";
+"Verify" = "Επιβεβαίωση";
+"Verified" = "Επιβεβαιώθηκε";
+
+//ForgotPassword
+"ForgotPassword" = "Ξεχάσατε τον κωδικό;";
+"ForgotPasswordDesc" = "Θα σας σταλεί σύνδεσμος επαναφοράς κωδικού";
+"SendOTP" = "Αποστολή κωδικού μιας χρήσης";
+
+//Tractor Detail
+"Fuel Type" = "Τύπος καυσίμου";
+"Diesel" = "Πετρέλαιο";
+"Electrical" = "Ηλεκτρικό";
+"Hydrogen" = "Υδρογόνο";
+"Brand" = "Μάρκα";
+"Tractor licence plat number" = "Πινακίδες τράκτορα";
+"Tractor Photos" = "Φωτογραφίες τράκτορα";
+"Continue" = "Συνέχεια";
+"Enter Tractor Details" = "Λεπτομέρειες τράκτορα";
+"Tractor Detail" = "Λεπτομέρειες τράκτορα";
+"Tractor_detail_Edit" = "Τράκτορας";
+"Truck_detail_edit" = "Φορτηγά/Καρότσες";
+"Tractor Details" = "Λεπτομέρειες τράκτορα";
+"Tractor_details_title" = "Το προφίλ μου";
+"Edit Tractor Detail" = "Επεξεργασία";
+
+//truck list
+"Add Truck" = "Προσθήκη φορτηγού/καρότσας";
+"No Trucks Found" = "Δε βρέθηκαν φορτηγά";
+"Truck Type" = "Τύπος φορτηγού";
+"Truck Register Plate Number" = "Αριθμός πινακίδας μητρώου φορτηγού";
+"Truck List" = "Το προφίλ μου";
+"Add" = "Προσθήκη";
+
+//Add Truck
+"Enter Truck Details" = "Λεπτομέρειες φορτηγού";
+"Truck Details" = "Στοιχεία φορτηγού";
+"Truck type" = "Τύπος φορτηγού";
+"Overall Truck Weight" = "Μικτό βάρος";
+"Cargo Load Capacity" = "Ωφέλιμο φορτίο";
+"Unit" = "Μονάδα";
+"Capacity" = "Χωρητικότητα";
+"Select Type" = "Τύπος";
+"Enter truck licence plate number" = "Πινακίδες φορτηγού ('Ρ')";
+"Make as Default Truck" = "Προεπιλεγμένο φορτηγό";
+"Save" = "Αποθήκευση";
+"Edit Truck" = "Επεξεργασία";
+"Truck Detail" = "Στοιχεία φορτηγού";
+"Truck sub type" = "Υποκατηγορία φορτηγού";
+"weight" = "Βάρος";
+"Truck_Photos" = "Φωτογραφίες φορτηγού";
+"truck weight unit" = "Μονάδα βάρους φορτηγού";
+"load capacity" = "Χωρητικότητα";
+"truck licence plate number" = "Πινακίδες φορτηγού ('Ρ')";
+"plate number" = "Πινακίδες";
+"Please enter capacity" = "Χωρητικότητα";
+"Please select capacity type" = "Επιλέξτε τύπο χωρητικότητας";
+"You can add only one time" = "Μπορείς να προσθέσεις μόνο μία φορά";
+
+//Identify Yourself
+"Identify Yourself" = "Ταυτοποίηση";
+"Identity Proof Document" = "Άδεια κυκλοφορίας";
+"License" = "Άδεια οδήγησης";
+"Enter license number" = "Αριθμός διπλώματος οδήγησης";
+"Enter license expiry date" = "Ημ/νία λήξης διπλώματος οδήγησης";
+"Next" = "Επόμενο";
+"license number" = "Αριθμός διπλώματος οδήγησης";
+"Please_select_license_expiry_date" = "Επιλέξτε ημερομηνία λήξης άδειας";
+"Please attach id proof document" = "Επισυνάψτε αποδεικτικό έγγραφο ταυτότητας";
+"Please attach license" = "Φωτογραφία διπλώματος οδήγησης";
+"Licence Details" = "Λεπτομέρειες διπλώματος οδήγησης";
+"Edit License Detail" = "Επεξεργασία";
+"Please_attach_license_front_image" = "Φωτογραφία διπλώματος (μπροστινή όψη)";
+"Please_upload_drivers_license_back" = "Φωτογραφία διπλώματος (πίσω όψη)";
+"License Front" = "Άδεια οδήγησης (μπροστά όψη)";
+"License Back" = "Άδεια οδήγησης (πίσω όψη)";
+
+//Payment VC
+"Cash" = "Μόνο μετρητά";
+"Bank" = "Μόνο μέσω τραπέζης";
+"Both" = "Μετρητά ή μέσω τραπέζης";
+"IBAN" = "IBAN";
+"Account Number" = "Αριθμός λογαριασμού";
+"Bank Name" = "Όνομα τράπεζας";
+"Country" = "Χώρα";
+"Payments" = "Πληρωμές";
+"acccount number" = "Αριθμός λογαριασμού";
+"bank name" = "Όνομα τράπεζας";
+"country" = "Χώρα";
+"Payment Method" = "Μέθοδος πληρωμής";
+
+//terms & condition
+"I accept Terms and Conditions" = "Αποδέχομαι τους 'Ορους & Προϋποθέσεις";
+"Register" = "Εγγραφή";
+"Please accept Terms & Conditions" = "Όροι & Προϋποθέσεις";
+"Terms & Conditions" = "όροι και Προϋποθέσεις";
+
+//personal info
+"Personal Details" = "Προσωπικά στοιχεία";
+"Upload Profile Picture" = "Ανέβασε φωτογραφία προφίλ";
+"Profile Picture" = "Φωτογραφία προφίλ";
+"Edit Personal Info" = "Επεξεργασία";
+"Personal Info" = "Προσωπικά στοιχεία";
+"Please attach profile image" = "Ανέβασε φωτογραφία προφίλ";
+
+//my account
+"Language" = "Γλώσσα";
+"My profile" = "Το προφίλ μου";
+"Payments" = "Πληρωμές";
+"Notifications" = "Ειδοποιήσεις";
+"Statistics" = "Στατιστικά";
+"Change password" = "Aλλαγή κωδικού";
+"About MYVAGON" = "Σχετικά με τη MYVAGON";
+"Contact us" = "Επικοινωνήστε μαζί μας";
+"Log out" = "Αποσύνδεση";
+"Are you sure want to Logout?" = "Είσαι σίγουρος πως θέλεις να αποσυνδεθείς;";
+"Cancel" = "Ακύρωση";
+"Logout" = "Αποσύνδεση";
+
+//EditProfile
+"Payment Detail" = "Πληρωμές";
+"Licence Detail" = "Άδεια οδήγησης";
+"Truck Detail" = "Φορτηγά/Καρότσες";
+"Tractor Detail" = "Λεπτομέρεια τρακτέρ";
+"Personal information" = "Προσωπικά στοιχεία";
+"My Profile" = "Το προφίλ μου";
+
+//ABOUT US
+"Privacy Policy" = "Πολιτική Απορρήτου";
+"Terms and Conditions" = "Οροι και Προϋποθέσεις";
+"About us" = "Σχετικά με εμάς";
+
+//change Password
+"Current Password" = "Τρέχων κωδικός πρόσβασης";
+"New Password" = "Nέος κωδικός πρόσβασης";
+"Confirm Password" = "Επιβεβαίωση νέου κωδικού πρόσβασης";
+"Set New Password" = "Δημιουργία νέου κωδικού πρόσβασης";
+"Set new password" = "Ορίστε νέο κωδικό πρόσβασης";
+"Change Password" = "Aλλαγή κωδικού";
+"current password" = "τρέχον κωδικό πρόσβασης";
+"new password" = "Nέος κωδικός πρόσβασης";
+"confirm password" = "Επιβεβαίωση νέου κωδικού πρόσβασης";
+"Reset New Password" = "Επαναφορά κωδικού πρόσβασης";
+"Password and confirm password does not match" = "Ο κωδικός και η επιβεβαίωση δεν ταιριάζουν";
+"Current password and new password must be different" = "Ο τρέχων και ο νέος κωδικός πρέπει να είναι διαφορετικοί";
+
+// popUp
+"To better assist you, contact us from one of below options" = "Για καλύτερη εξυπηρέτηση επικοινώνησε μαζί μας";
+"Chat" = "Μηνύματα";
+"Call" = "Τηλεφωνική κλήση";
+"Reason to decline the load" = "Λόγος απόρριψης φορτίου";
+"Booking Confirmation"="Επιβεβαίωση κράτησης";
+"Do you want to confirm the booking?" = "Θες να επιβεβαιώσεις την κράτηση;";
+"Bidding starting price" = "Τιμή εκκίνησης προσφοράς";
+"Enter your bid" = "Δώσε την προσφορά σου";
+"Booking Confirmed" = "Η κράτηση επιβεβαιώθηκε";
+"Bid Request" = "Προσφορά";
+"Are_you_sure_you_want_to" = "Είσαι σίγουρος πως θέλεις να ";
+"the bid request?" = "την προσφορά;";
+"You have" = "Έχεις";
+"posted your availability" = "δηλώσει τη διαθεσιμότητά σου επιτυχώς";
+"Post_1" = "δηλώσει τη διαθεσιμότητά σου ";
+"Post_2" = "επιτυχώς";
+"Bid_Request" = "";
+"Bid placed of amount" = "Προσφορά που κατατέθηκε του ποσού";
+"You will get confirmation if shipper has decided to go with you. Till then keep booking loads" = "Θα λάβεις επιβεβαίωση όταν η προσφορά σου γίνει δεκτή.";
+"Shipment completed Successfully" = "Η αποστολή ολοκληρώθηκε επιτυχώς. Θέλεις να ανεβάσεις το παραστατικό παράδοσης;";
+"Not Now" = "Οχι τώρα";
+"Upload POD" = "Ανέβασε";
+"Enter an otp send to" = "Εισαγωγή κωδικού μιας χρήσης";
+"Resend after" = "Επανάληψη αποστολής μετά από";
+"seconds" = "δευτερόλεπτα";
+"Resend OTP" = "Επαναποστολή κωδικού μιας χρήσης";
+"Please enter OTP" = "Κωδικός μιας χρήσης";
+"Please enter valid OTP" = "Γράψε έναν έγκυρο κωδικό μιας χρήσης";
+"Enter an otp send to" = "Εισαγωγή κωδικού μιας χρήσης";
+"Enter6digitOTP" = "Εισαγωγή εξαψήφιου κωδικού μιας χρήσης";
+
+//Schedule
+"all" = "Ολα";
+"pending" = "Σε εκκρεμότητα";
+"scheduled" = "Προγραμματισμένο";
+"scheduled2" = "Προγραμματισμένα";
+"in-progress" = "Σε εξέλιξη";
+"past" = "Παλιά";
+"completed" = "Ολοκληρωμένο";
+"canceled" = "Ακυρωμένο";
+"All" = "Ολα";
+"Bid" = "Προσφορά";
+"Book" = "Άμεση κράτηση";
+"Posted truck" = "Δημοσιευμένη Διαθεσιμότητα";
+"No Loads Found" = "Δε βρέθηκαν φορτία";
+"Post Availability" = "Πόσταρε διαθεσιμότητα";
+
+// search
+"Search Options" = "Επιλογές αναζήτησης";
+"Weight" = "Βάρος";
+"Price" = "Κόμιστρο";
+"Pickup Location" = "Τοποθεσία παραλαβής";
+"Delivery Location" = "Τοποθεσία Παράδοσης";
+"Pickup Date" = "Ημερομηνία φόρτωσης";
+"Min" = "Ελάχιστο";
+"Max" = "Μέγιστο";
+"Search Loads" = "Αναζήτηση φορτίων";
+"Select pickup Date" = "Επιλογή ημ/νίας φόρτωσης";
+"Select pickup location" = "Τοποθεσία φόρτωσης";
+"Select Haul" = "Επιλογή ημερομηνίας φόρτωσης";
+"Select dropoff location" = "Επιλογή ημ/νίας παράδοσης";
+"What distance around the selected cities are you willing to pick up a load?" = "Ποια ακτίνα γύρω από την επιλεγμένη τοποθεσία είσαι διατεθιμένος να παραλάβεις φορτίο;";
+"Search" = "Αναζήτηση";
+
+//Post avalibility
+"Start Date" = "Ημερομηνία έναρξης";
+"Start Time" = "Ωρα έναρξης";
+"Start Location" = "Τοποθεσία έναρξης";
+"Nearest Location" = "";
+"End Location" = "Τελική τοποθεσία";
+"Allow Bidding :" = "Να επιτρέπεται η υποβολή προσφορών:";
+"Bid Starting Price" = "Τιμή Εκκίνησης Προσφοράς";
+"Quote" = "Κόμιστρο";
+"Enter Bid Starting Price" = "Τιμή εκκίνησης προσφοράς";
+"Enter Quote" = "Εισαγωγή κομίστρου";
+"Post a Truck" = "Δημοσίευσε τη διαθεσιμότητά σου";
+
+//Review
+"How do you like the services of the" = "Πώς αξιολογείς τον ";
+"Shipper?" = "αποστολέα;";
+"Rate & Review Shipper" = "Βαθμολογία και αξιολόγηση αποστολέα";
+"Review Shipper" = "Αξιολόγησε τον αποστολέα";
+
+//DETAIL SCREEN
+"Book Now"= "Κάνε κράτηση τώρα";
+"Bid Now" = "Δώσε προσφορά";
+"Bidded" = "Προσφέρθηκε";
+"Total Km" = "Σύνολο χλμ";
+"Journey" = "Διαδρομή";
+"Shipper Details" = "Στοιχεία αποστολέα";
+"Load Details" = "Λεπτομέρειες φορτίου";
+"minutes remaining to cancel" = "λεπτά απέμειναν για να ακυρώσεις";
+"minutes remaining" = "λεπτά απομένουν";
+"Cancel Bid Request" = "Ακύρωση προσφοράς";
+"Request To Cancel" = "Αίτημα ακύρωσης";
+"Declined the load" = "Declined the load";
+
+//SortPoup
+"Price (Lowest First)" = "Κόμιστρο (Πρώτο το χαμηλότερο)";
+"Price (Highest First)" = "Κόμιστρο (πρώτα το υψηλότερο)";
+"Total Distance" = "Συνολική απόσταση";
+"Rating" = "Αξιολόγηση";
+"Sort by" = "Ταξινόμηση κατά";
+"Sort" = "Ταξινόμηση";
+
+//location detail
+"Amenities" = "Ανέσεις";
+"Contact" = "Επικοινωνία";
+"Shipper Notes" = "Σημειώσεις αποστολέα";
+"Location Details" = "Λεπτομέρειες τοποθεσίας";
+
+//shiper detail
+"Chat" = "Μηνύματα";
+"Reviews" = "Αξιολογήσεις";
+
+//Error Messages
+"full name" = "πλήρες όνομα";
+"Error_EnterValid" = "Εισαγωγή ενός έγκυρου";
+"Error_Contains" = "δε μπορεί να περιέχει περισσότερους από";
+"characters" = "χαρακτήρες";
+"confirm password" = "Επιβεβαίωση Κωδικού";
+"password" = "κωδικός";
+"email or phone" = "Ηλεκτρονικό ταχυδρομείο ή αριθμός τηλεφώνου";
+"Error_PleaseEnter" = "Γράψε ";
+"Error_PassMinCh" = "Ο κωδικός πρόσβασης πρέπει να περιέχει τουλάχιστον 8 χαρακτήρες";
+"Error_PassMaxCh" = "Επιτρέπονται το πολύ 20 χαρακτήρες στον κωδικό πρόσβασης";
+"Error_PassBlankSpace" = "Ο κωδικός πρόσβασης δε μπορεί να ξεκινά ή να τελειώνει με κενό διάστημα";
+"Error_ValidEmailOrPhone" = "Γράψε ένα έγκυρο email ή αριθμό τηλεφώνου";
+"Error_BlankEmail" = "Διεύθυνση email";
+"Error_ValidEmail" = "Γράψε ένα έγκυρο email";
+"Error_BlankMobile" = "Γράψε έναν έγκυρο αριθμό τηλεφώνου";
+"Error_Minimum" = "Απαιτούνται τουλάχιστον";
+"Error_DigitsReq" = "ψηφία";
+"Error_ValidMobile" = "Γράψε έναν έγκυρο αριθμό τηλεφώνου";
+"Error_EnterConfirmPass" = "Επιβεβαίωσε τον κωδικό σου";
+"Error_PassMatch" = "Ο κωδικός πρόσβασης και η επιβεβαίωση δεν ταιριάζουν";
+"Error_VerifyMobile" = "Επαληθεύστε τον αριθμό κινητού τηλεφώνου";
+"Error_VerifyEmail" = "Επιβεβαίωση email";
+"Select tractor brand" = "Επιλέξτε μάρκα τρακτέρ";
+"add tractor images" = "Πρόσθεσε φωτογραφίες τράκτορα";
+"Succesfull" = "Επιτυχής";
+"tractor licence plate number" = "αριθμός πινακίδας τρακτέρ";
+"Are you sure you want to delete it?" = "Είσαι σίγουρος πως θες να το διαγράψεις;";
+"Default truck can’t be deleted" = "Το προεπιλεγμένο φορτηγό δε μπορεί να διαγραφεί";
+"Please select unit of the weight" = "Επέλεξε μονάδα βάρους";
+"Please select unit of the load capacity" = "Επέλεξε μονάδα χωρητικότητας";
+"Please upload truck photo" = "Ανέβασε φωτογραφία";
+"Minimum price cannot be greater than maximum price" = "Η ελάχιστη τιμή δε μπορεί να είναι μεγαλύτερη της μέγιστης";
+"Minimum price and maximum price cannot be same" = "Η ελάχιστη και η μέγιστη τιμή δε μπορούν να είναι ίδιες";
+"No Notes Available" = "Δεν υπάρχουν σημειώσεις";
+"Please enter bid" = "Εισαγωγή προσφοράς";
+"Are you sure you want to cancel this bid request?" = "Είσαι σίγουρος πως θες να ακυρώσεις την προσφορά;";
+"Are you sure you want to cancel?" = "Είσαι σίγουρος πως θες να το ακυρώσεις;";
+"NoInternetConnection" = "Δεν υπάρχει σύνδεση στο διαδίκτυο";
+"Pleaseentermessage." = "Γράψε το μήνυμά σου";
+"profileUpdateSucces" = "Η φωτογραφία προφίλ ενημερώθηκε επιτυχώς";
+"SessionExpired" = "Μια νέα συσκευή έχει συνδεθεί στον λογαριασμό σας. Συνδεθείτε ξανά.";
+//common string
+"Request Edit" = "Επεξεργασία";
+"NO" = "ΟΧΙ";
+"YES" = "ΝΑΙ";
+"Reset" = "Επαναφορά";
+"Skip" = "Παραλείπω";
+"Support" = "Υποστήριξη";
+"Submit" = "Υποβολή";
+"Notes" = "Σημειώσεις";
+"Decline" = "Απόρριψη";
+"Done" = "Έγινε";
+"PICKUP" = "ΦΟΡΤΩΣΗ";
+"DROP" = "ΠΑΡΑΔΟΣΗ";
+"Dismiss" = "Παράλειψη";
+"View Reloads" = "Προβολή επαναφορτώσεων";
+"decline" = "Απόρριψη";
+"bidaccept" = "αποδεχτείς";
+"bidDecline" = "απορρίψεις";
+"accept" = "Αποδοχή";
+"No Matches Found" = "Δε βρέθηκαν αντιστοιχίες";
+"successfully" = "επιτυχώς";
+"Okay" = "Εντάξει";
+"Yes" = "Ναι";
+"Matches Found" = "Βρέθηκαν φορτία";
+"Matches_Found" = "";
+"matchGreek" = "Βρέθηκαν φορτία: ";
+"Book more loads" = "Κλείσε περισσότερα φορτία";
+"Click to Start Trip" = "Κάνε κλικ για να ξεκινήσεις τη μεταφορά";
+"Start Loading" = "Ξεκίνα τη φόρτωση";
+"Start Journey" = "Ξεκίνα τη μεταφορά";
+"Arrived at pickup location" = "Άφιξη στο σημείο φόρτωσης";
+"Arrived at drop off location" = "Άφιξη στο σημείο παράδοσης";
+"Complete Shipment" = "Ολοκλήρωση μεταφοράς";
+"Start Off Loading" = "Έναρξη Off Loading";
+"Rate Shipper" = "Βαθμολόγηση αποστολέα";
+"Start Loading/Offloading" = "Ξεκίνα τη φόρτωση/ξεφόρτωση";
+"Arrived at pickup/dropoff location" = "Άφιξη στο σημείο φόρτωσης / ξεφόρτωσης";
+"Pick up complete" = "Η φόρτωση ολοκληρώθηκε";
+"Drop off complete" = "Η ξεφόρτωση ολοκληρώθηκε";
+"Your Location" = "Η τοποθεσία σου";
+"Accept" = "Αποδοχή";
+"to go" = "";
+"hoursLeft" = "Απομένουν";
+"Enroute to" = "Στο δρόμο προς";
+"Arrived at" = "Άφιξη στο";
+"Loading at" = "Φόρτωση στο";
+"Off Loading at" = "Ξεφόρτωση στο";
+"Loading at/Off Loading" = "Φόρτωση / Ξεφόρτωση στο";
+"Loading at" = "Φόρτωση στο";
+"Off Loading" = "Ξεφόρτωση στο";
+"Reload" = "Επαναφόρτωση";
+"You already requested to cancel" = "Έχεις κάνει ήδη αίτημα ακύρωσης";
+"No" = "Οχι";
+"Reload" = "Φορτώνω πάλι";
+"Reload_title" = "Διαθέσιμα φορτία";
+"matches found" = "Βρέθηκαν φορτία";
+"Matches Load Found" = "";
+"load_found" = "Βρέθηκαν φορτία: ";
+"View" = "Προσφορές: ";
+"Bid Request" = "Προσφορά";
+"bidRequestTitle" = "Προσφορές";
+"Bid_Request_post" = "προσφοράς";
+"Paid" = "Πληρώθηκε";
+"Posted Truck" = "Πόσταρε διαθεσιμότητα";
+"SomethingWentWrong" = "Κάτι πήγε στραβά";
+"Calling not supported" = "Η κλήση δεν υποστηρίζεται";
+"Notifications not found" = "Δε βρέθηκαν νέες ειδοποιήσεις";
+"No data found" = "Δεν έχεις μηνύματα ακόμη";
+"Start Trip" = "Ξεκίνα τη μεταφορά";
+"Arrived at" = "Άφιξη στο";
+"Loading / Unloading at" = "Φόρτωση / Ξεφόρτωση στο";
+"Complete Loading / Unloading" = "Ολοκλήρωση φόρτωσης / ξεφόρτωσης";
+"Complete Loading" = "Ολοκλήρωση φόρτωσης";
+"Complete Trip" = "Ολοκληρωμένες αποστολές";
+"Related_Matches" = "Άφιξη στο";
+"Retry" = "Άφιξη στο";
+"You're not at the" = "Ξαναδοκιμάστε";
+"My Loads" = "Τα φορτία μου";
+"Account" = "Λογαριασμός";
+"My Fleet" = "Στόλος";
+"Schedule" = "Πρόγραμμα";
+"Identity" = "Ταυτότητα";
+"message" = "Μηνύματα";
+"CompleteTripAlert" = "Είσαι σίγουρος πως θέλεις να ολοκληρώσεις τη μεταφορά;";
+"Message" = "Μήνυμα";
+"Select Language" = "Επιλογή γλώσσας";
+"Fragile" = "Εύθραυστο";
+"Sensetive to odour" = "Ευαίσθητο στην οσμή";
+"No Reviews Found" = "Δε βρέθηκαν αξιολογήσεις";
+"View_POD" = "Προβολή παραστατικού παράδοσης";
+"Mark_as_Paid" = "Χαρακτηρισμός ως πληρωμένο";
+"Mark_as_Paid_title" = "Πληρωμή";
+"Mark_as_PaidAlert" = "Είστε βέβαιοι ότι θέλετε να επισημάνετε ως πληρωμένο;";
+"Version" = "Έκδοση";
+"Statistics not found." = "Δε βρέθηκαν στατιστικά.";
+"Email Notification" = "Ειδοποιήσεις email";
+"Push Notification" = "Ειδοποιήσεις Push";
+"Short Haul" = "Μικρές αποστάσεις ";
+"(up to 50 KM)" = "(έως 50 χλμ.)";
+"Medium Haul" = "Μεσαίες αποστάσεις";
+"(up to 200 KM)" = "(50 km έως 200 χλμ.)";
+"Long Haul" = "Μεγάλες αποστάσεις";
+"(over 200 KM)" = "(πάνω από 200 χλμ.)";
+"delete_msg_first" = "Πληροφορίες λογαριασμού, Φωτογραφία προφίλ, Αποστολές, Μηνύματα συνομιλίας, Ιστορικό πληρωμών ";
+"delete_msg_last" = "θα διαγραφεί οριστικά";
+"Delete" = "Διαγραφή";
+"Delete_Title" = "Η διαγραφή του λογαριασμού σας είναι οριστική :";
+"btn_Delete_Account" = "Διαγραφή λογαριασμού";
+"Update" = "Ενημέρωση";
+"Please_select_date" = "Επιλέξτε ημερομηνία παράδοσης";
+"Please_select_time" = "Επιλέξτε ώρα παράδοσης";
+"Please_select_start_location" = "Επιλέξτε τοποθεσία φόρτωσης";
+"Please_select_end_location" = "Επιλέξτε τοποθεσία παράδοσης";
+"quote" = "Κόμιστρο";
+"Live Tracking" = "Πρόοδος μεταφοράς";
+"Greece" = "Ελλάδα";
+"MyVagon" = "MYVAGON";
+"Offer price" = "Τιμή εκκίνησης";
+"Open_in_Google_Maps" = "Άνοιγμα σε Google Maps";
+"Please select pickup location" = "Τοποθεσία φόρτωσης";
+"Please select dropoff location" = "Τοποθεσία παράδοσης";
+"Complete Unloading" = "Ολοκλήρωση ξεφόρτωσης";
+"Unloading at" = "Ξεφόρτωση στο";
+"Loading/Unloading at" = "Loading/Unloading at";
+"Complete Loading/Unloading" = "Complete Loading/Unloading";
+"Invalid" = "Άκυρο";
+"should contain characters and digits" = "πρέπει να περιλαμβάνει χαρακτήρες και ψηφία";
+"locationerrormsg" = "Προσπαθήστε πάλι όταν βρίσκεστε 300 μέτρα από τον επόμενο προορισμό σας";
+"Settings" = "Ρυθμίσεις";
+"location_access_msg" = "Για να ξεκινήσετε τη μεταφορά αλλάξτε την άδεια τοποθεσίας σας σε ‘Πάντα’, ακολουθώντας τα εξής βήματα: Ρυθμίσεις -> Υπηρεσίες τοποθεσίας -> Πάντα";
+"Location Services Disabled" = "Location Services Disabled";
+"enable_location_msg" = "Please enable location services for this app.";
+"camera_access" = "Χρειάζεται πρόσβαση στην κάμερα για να βγάλετε φωτογραφίες";
+"POD" = "Παραστατικό παράδοσης";

@@ -90,7 +90,8 @@ extension AppDelegate{
             
             if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
                 AppDelegate.shared.Logout()
-                completionHandler([.alert, .sound])
+                Utilities.ShowAlertOfValidation(OfMessage: "SessionExpired".localized)
+                completionHandler([])
                 return
             }
             
@@ -112,10 +113,9 @@ extension AppDelegate{
                         pushObj.senderId = DictData["sender_id"] as? String ?? ""
                         pushObj.senderName = DictData["sender_name"] as? String ?? ""
                         pushObj.senderImage = DictData["sender_image"] as? String ?? ""
-                        
-                        if (UIApplication.appTopViewController()?.isKind(of: chatVC.self) ?? false){
+                        if (UIApplication.appTopViewController()?.isKind(of: ChatVC.self) ?? false){
                             if(AppDelegate.shared.shipperIdForChat == pushObj.senderId){
-                                NotificationCenter.default.post(name: .reloadChatScreen, object: nil)
+//                                NotificationCenter.default.post(name: .reloadChatScreen, object: nil)
                             }else{
                                 completionHandler([.alert, .sound])
                             }
@@ -129,8 +129,38 @@ extension AppDelegate{
                 return
             }
             
+            if pushObj.type == NotificationTypes.general.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
+            
+            if pushObj.type == NotificationTypes.cancellation.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
+            
+            if pushObj.type == NotificationTypes.shipmentProgress.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
+            
+            if pushObj.type == NotificationTypes.newLoadsAvailable.rawValue {
+                completionHandler([.alert, .sound])
+                return
+            }
             completionHandler([.alert, .sound])
         }
+    }
+    
+    func goToChatScreen() {
+        print("navigate to chat screen")
+        let controller = AppStoryboard.Chat.instance.instantiateViewController(withIdentifier: ChatVC.storyboardID) as! ChatVC
+        controller.shipperID = AppDelegate.shared.shipperIdForChat
+        controller.shipperName = AppDelegate.shared.shipperNameForChat
+        controller.hidesBottomBarWhenPushed = true
+        UIApplication.appTopViewController()?.navigationController?.pushViewController(controller, animated: true)
+        AppDelegate.pushNotificationObj = nil
+        AppDelegate.pushNotificationType = nil
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -156,7 +186,7 @@ extension AppDelegate{
             
             AppDelegate.pushNotificationObj = pushObj
             AppDelegate.pushNotificationType = pushObj.type
-            
+          
             if pushObj.type == NotificationTypes.notifLoggedOut.rawValue {
                 AppDelegate.shared.Logout()
                 completionHandler()
@@ -184,20 +214,63 @@ extension AppDelegate{
                     AppDelegate.shared.shipperIdForChat = DictData["sender_id"] as? String ?? ""
                     AppDelegate.shared.shipperNameForChat = DictData["sender_name"] as? String ?? ""
                     AppDelegate.shared.shipperProfileForChat = DictData["sender_image"] as? String ?? ""
-                    
-                    if(UIApplication.appTopViewController()?.isKind(of: chatVC.self) ?? false){
+                    if(UIApplication.appTopViewController()?.isKind(of: ChatVC.self) ?? false){
                         if(AppDelegate.shared.shipperIdForChat == pushObj.senderId){
                             AppDelegate.pushNotificationObj = nil
                             AppDelegate.pushNotificationType = nil
                         }else{
-                            NotificationCenter.default.post(name: .reloadNewUserChatScreen, object: nil)
+//                            NotificationCenter.default.post(name: .reloadNewUserChatScreen, object: nil)
                         }
                     }else{
-                        NotificationCenter.default.post(name: .goToChatScreen, object: nil)
+                        if UIApplication.shared.applicationState == .active || UIApplication.shared.applicationState == .background{
+                            self.goToChatScreen()
+                        }else{
+                            if !(UIApplication.appTopViewController()?.isKind(of: SplashVC.self) ?? false){
+                                self.goToChatScreen()
+//                                NotificationCenter.default.post(name: .goToChatScreen, object: nil)
+                            }
+                        }
                     }
-                    
                 }catch{
                     print("Error : detected")
+                }
+            }
+            if pushObj.type == NotificationTypes.general.rawValue {
+                if(UIApplication.appTopViewController()?.isKind(of: NotificationVC.self) ?? false){
+                    AppDelegate.pushNotificationObj = nil
+                    AppDelegate.pushNotificationType = nil
+                    NotificationCenter.default.post(name: .reloadNotificationScreen, object: nil)
+                }else{
+                    NotificationCenter.default.post(name: .goToNotificationScreen, object: nil)
+                }
+            }
+            
+            if pushObj.type == NotificationTypes.cancellation.rawValue {
+                if(UIApplication.appTopViewController()?.isKind(of: NewScheduleVC.self) ?? false){
+                    AppDelegate.pushNotificationObj = nil
+                    AppDelegate.pushNotificationType = nil
+                    NotificationCenter.default.post(name: .PostCompleteTrip, object: nil)
+                }else{
+                    NotificationCenter.default.post(name: .goToNewScheduleScreen, object: nil)
+                }
+            }
+            
+            if pushObj.type == NotificationTypes.shipmentProgress.rawValue {
+                if(UIApplication.appTopViewController()?.isKind(of: ScheduleDetailVC.self) ?? false){
+                    AppDelegate.pushNotificationObj = nil
+                    AppDelegate.pushNotificationType = nil
+                }else{
+                    NotificationCenter.default.post(name: .goToScheduleDetailsScreen, object: nil)
+                }
+            }
+            
+            if pushObj.type == NotificationTypes.newLoadsAvailable.rawValue {
+                if(UIApplication.appTopViewController()?.isKind(of: SearchVC.self) ?? false){
+                    AppDelegate.pushNotificationObj = nil
+                    AppDelegate.pushNotificationType = nil
+                    NotificationCenter.default.post(name: .reloadDataForSearch, object: nil)
+                }else{
+                    NotificationCenter.default.post(name: .goToHomeScreen, object: nil)
                 }
             }
         }
@@ -207,21 +280,43 @@ extension AppDelegate{
 extension Notification.Name {
     static let sessionExpire = NSNotification.Name("sessionExpire")
     static let arriveAtPickUpLocation = NSNotification.Name("arriveAtPickUpLocation")
+    
     static let goToChatScreen = NSNotification.Name("goToChatScreen")
     static let reloadChatScreen = NSNotification.Name("reloadChatScreen")
+    
+    static let goToNotificationScreen = NSNotification.Name("goToNotificationScreen")
+    static let reloadNotificationScreen = NSNotification.Name("reloadNotificationScreen")
+    
+    static let goToNewScheduleScreen = NSNotification.Name("goToNewScheduleScreen")
+    static let PostCompleteTrip = NSNotification.Name("PostCompleteTrip")
+    
+    static let goToScheduleDetailsScreen = NSNotification.Name("goToScheduleDetailsScreen")
+    
+    static let goToHomeScreen = NSNotification.Name("goToHomeScreen")
+    static let reloadDataForNewBid = NSNotification.Name("reloadDataForNewBid")
+    
+    
     static let reloadNewUserChatScreen = NSNotification.Name("reloadNewUserChatScreen")
     static let reloadRegTruckListScreen = NSNotification.Name("reloadRegTruckListScreen")
     
     static let reloadDataForSearch = NSNotification.Name("reloadDataForSearch")
     static let openSupportPopUp = NSNotification.Name("openSupportPopUp")
     static let backToLoadDeatil = NSNotification.Name("backToLoadDeatil")
+    
+    static let reloadSignInFields = NSNotification.Name("reloadSignInFields")
 }
 
 enum NotificationTypes : String {
-    case notifLoggedOut = "sessionTimeout" //Forced logout
-    case newMeassage = "new_message" //Chat new message arrive
-    case cancelShipment = "cancel_shipment" //Shipper cancel his shipment
-    case cancelDriver = "cancel_driver" //Shipper cancel driver for his shipment
+    case notifLoggedOut = "sessionTimeout"
+    case general = "general"
+    case newMeassage = "messages"
+    case bookingBidding = "booking_bidding"
+    case cancellation = "cancellation"
+    case shipmentProgress = "shipment_progress"
+    case newLoadsAvailable = "new_loads_available"
+    
+    case cancelShipment = "cancel_shipment"
+    case cancelDriver = "cancel_driver"
 }
 
 class NotificationObjectModel: Codable {

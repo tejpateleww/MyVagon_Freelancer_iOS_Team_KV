@@ -36,10 +36,10 @@ enum VaildatorFactory {
         switch type {
         case .email: return EmailValidator()
         case .password(let fieldName): return PasswordValidator(fieldName)
-        case .username(let fieldName,let maxchar): return UserNameValidator(fieldName,maxchar)
+        case .username(let fieldName,let maxchar): return UserNameValidator(field: fieldName,maxChar: maxchar)
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
-        case .phoneNo(let MinimumDigit,let MaximumDigit): return PhoneNoValidator(MinimumDigit, MaximumDigit)
+        case .phoneNo(let MinimumDigit,let MaximumDigit): return PhoneNoValidator(MinDigit: MinimumDigit, MaxDigit: MaximumDigit)
         case .Select(let fieldName): return ValueSelection(fieldName)
         case .Upload(let fieldName): return UploadDocument(fieldName)
         case .plateNumber(let fieldName): return checkPlateNumber(fieldName)
@@ -50,8 +50,6 @@ class AgeValidator: ValidatorConvertible {
     
     func validated(_ value: String) -> (Bool, String)
     {
-        
-        
         guard value.count > 0 else{return (false,ValidationError("Age is required").message)}
         guard let age = Int(value) else {return (false,ValidationError("Age must be a number!").message)}
         guard value.count < 3 else {return (false,ValidationError("Invalid age number!").message)}
@@ -92,11 +90,21 @@ struct checkPlateNumber: ValidatorConvertible {
     }
     
     func validated(_ value: String) -> (Bool, String) {
-        
-        if value.range(of: "^(?=.*[a-zA-Z])(?=.*[0-9])", options: .regularExpression) != nil {
-            return (true , "")
+        var letter = false
+        var number = false
+        for i in value{
+            if i.isLetter{
+                letter = true
+            }
+            if i.isNumber{
+                number = true
+            }
         }
-        return (false,ValidationError("Invalid \(fieldName), \(fieldName) should contain characters and digits").message)
+        if letter && number{
+            return (true , "")
+        }else{
+            return (false,ValidationError("\("Invalid".localized) \(fieldName), \(fieldName) \("should contain characters and digits".localized)").message)
+        }
     }
 }
 
@@ -104,32 +112,38 @@ struct RequiredFieldValidator: ValidatorConvertible {
     private let fieldName: String
     
     init(_ field: String) {
-        fieldName = field
+        fieldName = field.localized
     }
     
     func validated(_ value: String) -> (Bool, String) {
         guard !value.isEmpty else {
-            return (false,ValidationError("Please enter " + fieldName).message)
+            return (false,ValidationError("Error_PleaseEnter".localized + fieldName).message)
         }
-        return (true,"Your password can’t start or end with a blank space")
+        return (true,"Error_PassBlankSpace".localized)
     }
 }
 struct UserNameValidator: ValidatorConvertible {
     private let fieldName: String
     private let MaximumChar: Int
-    init(_ field: String,_ maxChar:Int) {
-        fieldName = field
+    init( field: String, maxChar:Int) {
+        fieldName = field.localized
         MaximumChar = maxChar
     }
     func validated(_ value: String) -> (Bool, String) {
-        guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
+        
+        let pleaseEnter = "Error_PleaseEnter".localized
+        let Error_EnterValid = "Error_EnterValid".localized
+        let Error_Contains = "Error_Contains".localized
+        let characters = "characters".localized
+        
+        guard value != "" else {return (false,ValidationError("\(pleaseEnter)\(fieldName)").message)}
         
         guard value.count >= 2 else {
-            return (false,ValidationError("Please enter a valid \(fieldName)").message)
+            return (false,ValidationError("\(Error_EnterValid) \(fieldName)").message)
             // ValidationError("Username must contain more than three characters" )
         }
         guard value.count <= MaximumChar else {
-            return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") shoudn't contain more than \(MaximumChar) characters").message)
+            return (false , ValidationError("\(fieldName.firstCharacterUpperCase() ?? "") \(Error_Contains) \(MaximumChar) \(characters)").message)
             // throw ValidationError("Username shoudn't conain more than 18 characters" )
         }
         
@@ -190,13 +204,15 @@ struct PasswordValidator: ValidatorConvertible {
     private let fieldName: String
     
     init(_ field: String) {
-        fieldName = field
+        fieldName = field.localized
     }
     func validated(_ value: String)  -> (Bool,String) {
         
-        guard value != "" else {return (false,ValidationError("Please enter \(fieldName)").message)}
-        guard value.count >= 8 else { return (false,ValidationError("Password must contain at lease 8 characters").message) }
-        guard value.count <= 20 else { return (false,ValidationError("Maximum 20 characters are allowed in password").message) }
+        let errorEmpty = "Error_PleaseEnter".localized
+        
+        guard value != "" else {return (false,ValidationError("\(errorEmpty)\(fieldName)").message)}
+        guard value.count >= 8 else { return (false,ValidationError("Error_PassMinCh".localized).message) }
+        guard value.count <= 20 else { return (false,ValidationError("Error_PassMaxCh".localized).message) }
         return (CheckWhiteSpaceOnBeginToEnd(value: value))
         
     }
@@ -227,15 +243,16 @@ struct PasswordValidator: ValidatorConvertible {
 }
 struct EmailValidator: ValidatorConvertible {
     func validated(_ value: String)  -> (Bool,String) {
+        
         if value.trimmingCharacters(in: .whitespacesAndNewlines).count == 0 {
-            return (false, "Please enter email address")
+            return (false, "Error_BlankEmail".localized)
         } else {
             do {
                 if try NSRegularExpression(pattern: "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$", options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
-                    return (false,ValidationError("Please enter a valid email address").message)
+                    return (false,ValidationError("Error_ValidEmail".localized).message)
                 }
             } catch {
-                return (false,ValidationError("Please enter a valid email address").message)
+                return (false,ValidationError("Error_ValidEmail".localized).message)
             }
             return (true, "")
         }
@@ -257,15 +274,19 @@ struct EmailValidator: ValidatorConvertible {
 struct PhoneNoValidator: ValidatorConvertible {
     private let minimumDigit: Int
     private let maximumDigit: Int
-    init(_ MinDigit: Int,_ MaxDigit:Int) {
+    init( MinDigit: Int, MaxDigit:Int) {
         minimumDigit = MinDigit
         maximumDigit = MaxDigit
     }
+    
+    let minimum = "Error_Minimum".localized
+    let minimumdigits = "Error_DigitsReq".localized
+    
     func validated(_ value: String) -> (Bool,String) {
-        guard value != "" else {return (false,ValidationError("Please enter phone number").message)}
-        guard value.count >= minimumDigit else { return (false,ValidationError("Minimum \(minimumDigit) digits are required").message)}
-        guard value.count <= maximumDigit else { return (false,ValidationError("Please enter valid phone number").message)}
-        guard !value.hasAllZero() else { return (false,ValidationError("Please enter valid phone number").message)}
+        guard value != "" else {return (false,ValidationError("Error_BlankMobile".localized).message)}
+        guard value.count >= minimumDigit else { return (false,ValidationError("\(minimum) \(minimumDigit) \(minimumdigits)").message)}
+        guard value.count <= maximumDigit else { return (false,ValidationError("Error_ValidMobile".localized).message)}
+        guard !value.hasAllZero() else { return (false,ValidationError("Error_ValidMobile".localized).message)}
        
         
 //        guard (value.isValidPhoneNumber)() else

@@ -279,6 +279,7 @@ extension String {
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = FromFormat
+        dateFormatter.locale = Locale(identifier: UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el")
         let date = dateFormatter.date(from: self)
         dateFormatter.dateFormat = ToFormat
         if ToFormat == "" {
@@ -339,16 +340,44 @@ extension String {
         return formatter.string(from: number)!
     }
   
-    
-    public func removeFormatAmount() -> (String,Double) {
+    func toDecimalWithAutoLocale() -> Decimal? {
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = .currency
-        formatter.currencySymbol = Currency
-        formatter.decimalSeparator = Locale.current.groupingSeparator
-        let formattedvalue = formatter.number(from: self)?.doubleValue ?? 0.00
-        return ("\(formattedvalue)",formattedvalue)
+        formatter.numberStyle = .decimal
+
+        //** US,CAD,GBP formatted
+        formatter.locale = Locale(identifier: "en_US")
+
+        if let number = formatter.number(from: self) {
+            return number.decimalValue
+        }
+        
+        //** EUR formatted
+        formatter.locale = Locale(identifier: "de_DE")
+
+        if let number = formatter.number(from: self) {
+           return number.decimalValue
+        }
+        
+        return nil
     }
+    
+    func toDoubleWithAutoLocale() -> Double {
+        guard let decimal = self.toDecimalWithAutoLocale() else {
+            return 0.0
+        }
+
+        return NSDecimalNumber(decimal:decimal).doubleValue
+    }
+//    public func removeFormatAmount() -> (String,Double) {
+//        let formatter = NumberFormatter()
+//        formatter.locale = Locale(identifier: "en_DE")
+//        formatter.numberStyle = .currency
+//        formatter.currencySymbol = ""
+////        formatter.decimalSeparator = Locale.current.groupingSeparator
+//        let formattedvalue = formatter.number(from: self)
+//        print("number = ",formattedvalue)
+//        return ("\(formattedvalue)",0.0)
+//    }
     func underLine() -> NSAttributedString {
         let text = self
         
@@ -421,5 +450,28 @@ extension String {
         }
 
         return self
+    }
+}
+
+//MARK: - Html to string
+
+extension Data {
+    var html2AttributedString: NSAttributedString? {
+        do {
+            return try NSAttributedString(data: self, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding: String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            print("error:", error)
+            return  nil
+        }
+    }
+    var html2String: String { html2AttributedString?.string ?? "" }
+}
+
+extension String {
+    var html2AttributedString: NSAttributedString? {
+        Data(utf8).html2AttributedString
+    }
+    var html2String: String {
+        html2AttributedString?.string ?? ""
     }
 }

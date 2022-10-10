@@ -7,95 +7,6 @@
 
 import Foundation
 import UIKit
-class MyLoadsViewModel {
-    weak var scheduleViewController : ScheduleViewController? = nil
-    
-    func getMyloads(ReqModel:MyLoadsReqModel){
-        self.scheduleViewController?.isNeedToReload = false
-        
-        WebServiceSubClass.GetMyLoadesList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            
-            self.scheduleViewController?.refreshControl.endRefreshing()
-            if status{
-                
-                let numberOfCount = response?.data?.count ?? 0
-                
-                if ReqModel.page_num == "1" {
-                    let tempArrHomeData = response?.data ?? []
-                     var datesArray = tempArrHomeData.compactMap({$0.date})
-                  
-                    datesArray = datesArray.uniqued()
-                    // let datesArray = self.MainSessionListArray.compactMap { $0.bookingDate} // return array of date
-                    var dic = [[MyLoadsNewDatum]]() // Your required result
-                    
-                    datesArray.forEach { (element) in
-                        
-                        let NewDictonary =  tempArrHomeData.filter({$0.date == element})
-                        
-                        
-                        dic.append(NewDictonary)
-                    }
-                    self.scheduleViewController?.arrMyLoadesData = dic
-                    
-                } else {
-                    var tempArrHomeData = [MyLoadsNewDatum]()
-                    self.scheduleViewController?.arrMyLoadesData?.forEach({ element in
-                        tempArrHomeData.append(contentsOf: element)
-                    })
-                     
-                    tempArrHomeData.append(contentsOf: response?.data ?? [])
-                   
-                    var datesArray = tempArrHomeData.compactMap({$0.date})
-                  
-                    datesArray = datesArray.uniqued()
-                    
-                    var dic = [[MyLoadsNewDatum]]() // Your required result
-                    
-                    datesArray.forEach { (element) in
-                        
-                        let NewDictonary =  tempArrHomeData.filter({$0.date == element})
-                        
-                        
-                        dic.append(NewDictonary)
-                    }
-                    self.scheduleViewController?.arrMyLoadesData = dic
-                    
-                   
-                }
-                self.scheduleViewController?.isLoading = false
-                self.scheduleViewController?.tblLocations.tableFooterView?.isHidden = true
-                
-                
-                
-                self.scheduleViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
-                
-                if numberOfCount == PageLimit {
-                    self.scheduleViewController?.isNeedToReload = true
-                }
-                else {
-                    self.scheduleViewController?.isNeedToReload = false
-                }
-                
-            } else {
-                self.scheduleViewController?.isLoading = false
-                self.scheduleViewController?.tblLocations.tableFooterView?.isHidden = true
-                
-                
-                
-                self.scheduleViewController?.tblLocations.reloadDataWithAutoSizingCellWorkAround()
-                
-                    Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
-                
-            }
-        })
-    }
-    func GetSystemDate(){
-        WebServiceSubClass.SystemDateTime{_, _, _, _ in}
-    }
-  
-    
-}
-
 
 class MyScheduleViewModel {
     weak var scheduleViewController : NewScheduleVC? = nil
@@ -103,7 +14,9 @@ class MyScheduleViewModel {
     func getMyloads(ReqModel:MyLoadsReqModel){
         
         WebServiceSubClass.GetMyLoadesList(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-            if self.scheduleViewController?.CurrentFilterStatus.Name == ReqModel.status{
+            let index = self.scheduleViewController?.displayOptionArray.firstIndex(of: self.scheduleViewController?.optionMenuDropDown.selectedItem ?? "")
+            let type = self.scheduleViewController?.optionArray[index ?? 0].lowercased().replacingOccurrences(of: " ", with: "_")
+            if self.scheduleViewController?.CurrentFilterStatus.Name == ReqModel.status && ReqModel.type == type{
                 DispatchQueue.main.async {
                     self.scheduleViewController?.refreshControl.endRefreshing()
                 }
@@ -111,8 +24,6 @@ class MyScheduleViewModel {
                 self.scheduleViewController?.isNeedToReload = false
                 self.scheduleViewController?.tblScheduleData.tableFooterView?.isHidden = true
                 if status{
-    //                let numberOfCount = response?.data?.count ?? 0
-                    let numberOfCount = response?.data?.count ?? 0
                     if ReqModel.page_num == "1"{
                         self.scheduleViewController?.arrMyScheduleData = []
                     }
@@ -130,22 +41,23 @@ class MyScheduleViewModel {
                         let NewDictonary =  tempArrHomeData.filter({$0.date == element})
                         dic.append(NewDictonary)
                     }
-                    
-                        self.scheduleViewController?.arrMyScheduleData = dic
-                        self.scheduleViewController?.isLoading = false
-                        self.scheduleViewController?.tblScheduleData.beginUpdates()
+                    self.scheduleViewController?.arrMyScheduleData = dic
+                    self.scheduleViewController?.isLoading = false
+                    self.scheduleViewController?.tblScheduleData.beginUpdates()
+                    if response?.data?.count != 0 || ReqModel.page_num == "1"{
                         self.scheduleViewController?.tblScheduleData.reloadData()
-                        self.scheduleViewController?.tblScheduleData.layoutIfNeeded()
-                        self.scheduleViewController?.tblScheduleData.endUpdates()
-                    if numberOfCount == PageLimit {
-                        self.scheduleViewController?.isNeedToReload = true
                     }
-                    else {
+                    self.scheduleViewController?.tblScheduleData.layoutIfNeeded()
+                    self.scheduleViewController?.tblScheduleData.endUpdates()
+                    if response?.data?.count != 0 {
+                        self.scheduleViewController?.isNeedToReload = true
+                    }else {
                         self.scheduleViewController?.isNeedToReload = false
                     }
                 } else {
+                    self.scheduleViewController?.isLoading = false
                     self.scheduleViewController?.tblScheduleData.reloadData()
-                        Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+                    Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
                 }
             }
         })

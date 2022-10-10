@@ -7,7 +7,7 @@
 
 import Foundation
 class LocationDetailViewModel{
-    var locationDetailVC : LocationDetailVC? = nil
+    var locationDetailVC : SearchLocationVC? = nil
     
     func callWebServiceForLocationDetail(){
         Utilities.showHud()

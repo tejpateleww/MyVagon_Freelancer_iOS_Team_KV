@@ -12,7 +12,7 @@ class RegisterReqModel : Encodable {
     var fullname,country_code,mobile_number,email,password : String?
     var tractor_brand,tractor_plate_number,tractor_fual_type,tractor_images : String?
     var payment_type,iban,account_number,bank_name,country : String?
-    var id_proof,license,license_number,license_expiry_date : String?
+    var id_proof,license,license_number,license_expiry_date,licenseBack : String?
     var truck_details : String?
     
 //    var truck_type,truck_sub_category,truck_weight,weight_unit,truck_capacity,capacity_unit,plate_number_truck,plate_number_trailer : String?
@@ -37,6 +37,7 @@ class RegisterReqModel : Encodable {
         
         case id_proof = "eu_registration_document"
         case license = "license"
+        case licenseBack = "license_back"
         case license_number = "license_number"
         case license_expiry_date = "license_expiry_date"
         

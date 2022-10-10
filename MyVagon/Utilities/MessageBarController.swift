@@ -46,12 +46,5 @@ class MessageBarController: NSObject {
         
         SwiftMessages.show(config: successConfig, view: alert)
     }
-
-
-   
-
-
-    
-
 }
 

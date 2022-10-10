@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var locationManager =  UpdateLocationClass()
     static var pushNotificationObj : NotificationObjectModel?
     static var pushNotificationType : String?
-    
+    var timerLocUpdate : Timer?
     var shipperIdForChat:String = ""
     var shipperNameForChat:String = ""
     var shipperProfileForChat:String = ""
@@ -30,23 +30,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
 
         FirebaseApp.configure()
-        registerForPushNotifications()
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         checkAndSetDefaultLanguage()
+        registerForPushNotifications()
         GMSServices.provideAPIKey(AppInfo.Google_API_Key)
         GMSPlacesClient.provideAPIKey(AppInfo.Google_API_Key)
         SingletonClass.sharedInstance.AppVersion = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "0.0.0"
-      
+        locationManager.UpdateLocationStart()
         return true
+    }
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print("become active")
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        if SingletonClass.sharedInstance.splashComplete{
+            SingletonClass.sharedInstance.splashComplete = false
+            Utilities.setRootViewController()
+        }
     }
     
     func NavigateToLogin(){
-        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: SignInContainerVC.storyboardID) as! SignInContainerVC
+        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: LoginVC.storyboardID) as! LoginVC
         let nav = UINavigationController(rootViewController: controller)
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav
@@ -58,115 +69,69 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         nav.navigationBar.isHidden = false
         self.window?.rootViewController = nav
     }
-    
-    func NavigateToDispatcher(){
-        let controller = AppStoryboard.Dispatcher.instance.instantiateViewController(withIdentifier: DriversViewController.storyboardID) as! DriversViewController
-        let nav = UINavigationController(rootViewController: controller)
-        nav.navigationBar.isHidden = false
-        self.window?.rootViewController = nav
-    }
-    
-    func NavigateToIntroScreen(){
-        let controller = AppStoryboard.Auth.instance.instantiateViewController(withIdentifier: BoardingVC.storyboardID) as! BoardingVC
-        let nav = UINavigationController(rootViewController: controller)
-        nav.navigationBar.isHidden = false
-        self.window?.rootViewController = nav
-    }
-    
+  
     func NavigateToHome(){
+        self.sendLangToServer()
         let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
-        
-        if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 && SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
-            let indexToRemove = 0
-            if indexToRemove < controller.viewControllers?.count ?? 3 {
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 {
+            removeViewController(restorationId: "search", controller: controller)
+        }
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
+            removeViewController(restorationId: "schedule", controller: controller)
+        }
+        // Remove MyFleet Tab
+        removeViewController(restorationId: "MyFleet", controller: controller)
+        let nav = UINavigationController(rootViewController: controller)
+        nav.navigationBar.isHidden = true
+        self.window?.rootViewController = nav
+    }
+    
+    func sendLangToServer() {
+        let lang = Localize.currentLanguage()
+        AppDelegate.shared.changeLanguage(LangCode: lang) { }
+    }
+    
+    func removeViewController(restorationId : String,controller: CustomTabBarVC){
+        if let indexToRemove = controller.viewControllers?.firstIndex(where: {$0.restorationIdentifier == restorationId}){
+            if indexToRemove < controller.viewControllers?.count ?? 0 {
                 var viewControllers = controller.viewControllers
                 viewControllers?.remove(at: indexToRemove)
                 controller.viewControllers = viewControllers
             }
-            
-            let FirstIndex = 1
-            if FirstIndex < controller.viewControllers?.count ?? 3 {
-                var viewControllers = controller.viewControllers
-                viewControllers?.remove(at: FirstIndex - 1)
-                controller.viewControllers = viewControllers
-            }
-        } else {
-            if SingletonClass.sharedInstance.UserProfileData?.permissions?.searchLoads ?? 0 == 0 {
-                let indexToRemove = 0
-                if indexToRemove < controller.viewControllers?.count ?? 3 {
-                    var viewControllers = controller.viewControllers
-                    viewControllers?.remove(at: indexToRemove)
-                    controller.viewControllers = viewControllers
-                }
-            } else if SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
-                let indexToRemove = 1
-                if indexToRemove < controller.viewControllers?.count ?? 3 {
-                    var viewControllers = controller.viewControllers
-                    viewControllers?.remove(at: indexToRemove)
-                    controller.viewControllers = viewControllers
-                }
-            }
         }
-
-        // Remove MyFleet Tab
-        let indexToRemove = 2
-        if indexToRemove < controller.viewControllers?.count ?? 3 {
-            var viewControllers = controller.viewControllers
-            viewControllers?.remove(at: indexToRemove)
-            controller.viewControllers = viewControllers
-        }
-        
-        let nav = UINavigationController(rootViewController: controller)
-        nav.navigationBar.isHidden = true
-        self.window?.rootViewController = nav
     }
     
     func NavigateToSchedual(){
-        let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
-        controller.selectedIndex = 1
-        
-        
-        let nav = UINavigationController(rootViewController: controller)
-        nav.navigationBar.isHidden = true
-        self.window?.rootViewController = nav
+        if SingletonClass.sharedInstance.UserProfileData?.permissions?.myLoads ?? 0 == 0 {
+            NavigateToHome()
+        }else{
+            let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: CustomTabBarVC.storyboardID) as! CustomTabBarVC
+            controller.selectedIndex = 1
+            let nav = UINavigationController(rootViewController: controller)
+            removeViewController(restorationId: "MyFleet", controller: controller)
+            nav.navigationBar.isHidden = true
+            self.window?.rootViewController = nav
+        }
     }
     
     func Logout() {
         UserDefault.set(false, forKey: UserDefaultsKey.isUserLogin.rawValue)
         SingletonClass.sharedInstance.ClearSigletonClassForLogin()
         for (key, _) in UserDefaults.standard.dictionaryRepresentation() {
-            if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue {
+            if key == UserDefaultsKey.DeviceToken.rawValue || key == UserDefaultsKey.IntroScreenStatus.rawValue || key == "LCLCurrentLanguageKey" {
                 
             }else{
                 UserDefaults.standard.removeObject(forKey: key)
             }
         }
-        self.NavigateToLogin()
+        appDel.NavigateToLogin()
     }
     
     func checkAndSetDefaultLanguage() {
-        if UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) == nil {
-            setLanguageEnglish()
-        } else {
-            if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "en" {
-                SingletonClass.sharedInstance.SelectedLanguage = "0"
-            } else if "\(UserDefault.value(forKey: UserDefaultsKey.SelectedLanguage.rawValue) ?? "")" == "el" {
-                SingletonClass.sharedInstance.SelectedLanguage = "1"
-            } else {
-                SingletonClass.sharedInstance.SelectedLanguage = "0"
-            }
-        }
+        let currentLang = Localize.currentLanguage()
+        Localize.setCurrentLanguage(currentLang)
     }
-    
-    func setLanguageEnglish() {
-        UserDefault.setValue("en", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
-        SingletonClass.sharedInstance.SelectedLanguage = "0"
-    }
-    
-    func SetLanguageGreek() {
-        UserDefault.setValue("el", forKey: UserDefaultsKey.SelectedLanguage.rawValue)
-        SingletonClass.sharedInstance.SelectedLanguage = "1"
-    }
+
     
     func GetSafeAreaHeightFromBottom() -> CGFloat {
         var bottomSafeAreaHeight: CGFloat = 0
@@ -181,22 +146,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
 }
 
+//Change language API
+extension AppDelegate {
+    func changeLanguage(LangCode: String, complition:@escaping (()->())) {
+        let reqModel = LanguageChangeReqModel ()
+        reqModel.driverId = "\(SingletonClass.sharedInstance.UserProfileData?.id ?? 0)"
+        reqModel.language = LangCode
+        self.changelanguageAPI(ReqModel: reqModel) {
+            complition()
+        }
+    }
+    
+    func changelanguageAPI(ReqModel:LanguageChangeReqModel,complition: @escaping (()->())){
+        Utilities.showHud()
+       WebServiceSubClass.changeLanguage(reqModel: ReqModel) { (status, apiMessage, response, error) in
+           Utilities.hideHud()
+            if status{
+                complition()
+            }else{
+                Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
+            }
+        }
+    }
+    
+}
+
 class CustomTabBar: UITabBar {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 10
+        layer.cornerRadius  = 10
+        layer.borderColor = (UIColor.lightGray.withAlphaComponent(0.3)).cgColor
+        layer.borderWidth = 0.3
         layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.isTranslucent = true
+        self.isTranslucent      = true
         var tabFrame            = self.frame
         tabFrame.size.height    = 55 + (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero)
         tabFrame.origin.y       = self.frame.origin.y +   ( self.frame.height - 55 - (UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? CGFloat.zero))
         self.layer.cornerRadius = 0
-        self.frame            = tabFrame
+        self.frame              = tabFrame
         self.items?.forEach({ $0.titlePositionAdjustment = UIOffset(horizontal: 0.0, vertical: -5.0) })
     }
     
@@ -223,8 +215,6 @@ extension CustomTabBarVC: UITabBarControllerDelegate {
             self.tabBar.items![tabBarController.selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
             print(self.tabBar.items![tabBarController.selectedIndex].imageInsets)
         }
-        
-        
     }
     
 }
@@ -247,21 +237,26 @@ class CustomTabBarVC: UITabBarController {
         let topEdge = self.tabBar.items![0].imageInsets.top - 10
         let leftEdge = self.tabBar.items![0].imageInsets.left
         let rightEdge = self.tabBar.items![0].imageInsets.right
-        
-        
         self.tabBar.items![selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeLanguage), name: Notification.Name(rawValue: LocalizeTabbarItems), object: nil)
+        self.setLocalization()
         // tabBarFirstTimeHeight = tabBar.frame.height
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        
+        setBottom()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+    }
+    
+    func setBottom(){
+        let topEdge = CGFloat(-10)
+        let leftEdge = self.tabBar.items![0].imageInsets.left
+        let rightEdge = self.tabBar.items![0].imageInsets.right
+        self.tabBar.items![selectedIndex].imageInsets = UIEdgeInsets(top: topEdge, left: leftEdge, bottom: 10, right: rightEdge)
     }
     
     private func addcoustmeTabBarView() {
@@ -277,12 +272,20 @@ class CustomTabBarVC: UITabBarController {
         
     }
     
+    @objc func changeLanguage(){
+        self.setLocalization()
+    }
+    
+    func setLocalization() {
+        for (count,controller) in (self.viewControllers ?? []).enumerated(){
+            self.tabBar.items![count].title = (controller.restorationIdentifier?.capitalized ?? "").localized
+        }
+     }
+    
     func hideTabBarBorder()  {
         let tabBar = self.tabBar
         tabBar.backgroundImage = UIImage.from(color: .clear)
         //        tabBar.layer.shadowColor = UIColor.black.cgColor
-        
-        
     }
     
     func hideTabBar() {

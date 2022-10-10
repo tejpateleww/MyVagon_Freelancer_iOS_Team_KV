@@ -26,10 +26,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaR-UH-rbX" customClass="ThemeView" customModule="MyVagon" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="302.5" width="374" height="291.5"/>
+                                        <rect key="frame" x="20" y="292.5" width="374" height="311.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5DG-CW-um1">
-                                                <rect key="frame" x="0.0" y="10" width="374" height="271.5"/>
+                                                <rect key="frame" x="0.0" y="10" width="374" height="291.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29m-PD-4l5">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
@@ -102,22 +102,32 @@
                                                             <constraint firstItem="jiv-hP-7hh" firstAttribute="top" secondItem="Rco-u4-sYy" secondAttribute="top" constant="10" id="vIH-r7-swj"/>
                                                         </constraints>
                                                     </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94H-BR-Scw" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="157.5" width="374" height="30"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1B-8W-Eu4">
+                                                        <rect key="frame" x="0.0" y="157.5" width="374" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="94H-BR-Scw" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                <rect key="frame" x="20" y="0.0" width="334" height="50"/>
+                                                                <inset key="titleEdgeInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                                                <state key="normal" title="Resend OTP"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsUnderline" value="YES"/>
+                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
+                                                                </userDefinedRuntimeAttributes>
+                                                                <connections>
+                                                                    <action selector="BtnResendOTP:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cDz-sb-M0O"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="fOH-Np-yD8"/>
+                                                            <constraint firstAttribute="trailing" secondItem="94H-BR-Scw" secondAttribute="trailing" constant="20" id="7ff-io-qLB"/>
+                                                            <constraint firstAttribute="bottom" secondItem="94H-BR-Scw" secondAttribute="bottom" id="ZQt-UI-vbU"/>
+                                                            <constraint firstItem="94H-BR-Scw" firstAttribute="leading" secondItem="L1B-8W-Eu4" secondAttribute="leading" constant="20" id="fll-DK-veG"/>
+                                                            <constraint firstItem="94H-BR-Scw" firstAttribute="top" secondItem="L1B-8W-Eu4" secondAttribute="top" id="t3N-ZB-ubo"/>
                                                         </constraints>
-                                                        <state key="normal" title="Resend OTP"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsUnderline" value="YES"/>
-                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsBlack" value="YES"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="BtnResendOTP:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cDz-sb-M0O"/>
-                                                        </connections>
-                                                    </button>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atp-V3-Okh">
-                                                        <rect key="frame" x="0.0" y="197.5" width="374" height="74"/>
+                                                        <rect key="frame" x="0.0" y="217.5" width="374" height="74"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtt-Eb-hoM" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
                                                                 <rect key="frame" x="20" y="10" width="334" height="54"/>
@@ -191,10 +201,10 @@
             </objects>
             <point key="canvasLocation" x="-543" y="75"/>
         </scene>
-        <!--Common Accept Reject PopupVC-->
+        <!--Confirm PopupVC-->
         <scene sceneID="ooz-yi-0OZ">
             <objects>
-                <viewController storyboardIdentifier="CommonAcceptRejectPopupVC" id="NGv-7j-QUJ" customClass="CommonAcceptRejectPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmPopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NGv-7j-QUJ" customClass="ConfirmPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uU0-iK-82u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -349,10 +359,10 @@ like to view them?</string>
             </objects>
             <point key="canvasLocation" x="349" y="75"/>
         </scene>
-        <!--Bid Accept Reject View Controller-->
+        <!--Posted Truck Bid Req ActionVC-->
         <scene sceneID="QGj-zb-1Rg">
             <objects>
-                <viewController storyboardIdentifier="BidAcceptRejectViewController" id="aKu-2Y-Hhc" customClass="BidAcceptRejectViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostedTruckBidReqActionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aKu-2Y-Hhc" customClass="PostedTruckBidReqActionVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EaS-sr-EQ4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,10 +517,10 @@ like to view them?</string>
             </objects>
             <point key="canvasLocation" x="1833" y="75"/>
         </scene>
-        <!--Bid Now Popup View Controller-->
+        <!--Confirm Bid PopupVC-->
         <scene sceneID="1kl-2a-1Yu">
             <objects>
-                <viewController storyboardIdentifier="BidNowPopupViewController" id="WwE-SK-QxD" customClass="BidNowPopupViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfirmBidPopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WwE-SK-QxD" customClass="ConfirmBidPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7gq-0z-tul">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -561,16 +571,24 @@ like to view them?</string>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-Iy-1IW" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-Iy-1IW">
                                                                 <rect key="frame" x="0.0" y="81" width="374" height="52"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your bid" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-Jr-ECe" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your bid" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8kh-Jr-ECe" customClass="CurrencyTextField" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
+                                                                        <color key="backgroundColor" red="0.60784313725490191" green="0.31764705882352939" blue="0.8784313725490196" alpha="0.11856006440662202" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <color key="textColor" red="0.60784313729999995" green="0.31764705879999999" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="one-time-code"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
                                                                                 <real key="value" value="15"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="FontColor">
+                                                                                <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="PlaceholderColor">
+                                                                                <color key="value" red="0.60784313729999995" green="0.31764705879999999" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
@@ -790,16 +808,17 @@ like to view them?</string>
                     <connections>
                         <outlet property="btnDone" destination="Wlv-SU-eG9" id="HcE-Ko-bDk"/>
                         <outlet property="lblNotes" destination="fAz-Qc-CLY" id="YfY-af-7Ly"/>
+                        <outlet property="lblTitle" destination="CNr-0f-kt5" id="G0w-E3-OsK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7n-pp-AFu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1064" y="733"/>
         </scene>
-        <!--Sort Popup View Controller-->
+        <!--Sort PopupVC-->
         <scene sceneID="Q3r-ft-aiX">
             <objects>
-                <viewController storyboardIdentifier="SortPopupViewController" id="FFo-qf-vho" customClass="SortPopupViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SortPopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FFo-qf-vho" customClass="SortPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="drx-oK-Stf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1000,18 +1019,21 @@ like to view them?</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnReset" destination="HoL-Zx-5Cz" id="zxh-7g-rnP"/>
+                        <outlet property="btnSort" destination="H6Y-HD-3EW" id="VNK-qM-8d6"/>
+                        <outlet property="lblShortBy" destination="R7o-5t-pd3" id="ivR-a1-DYk"/>
                         <outlet property="tblSort" destination="XDn-dP-iRA" id="FGe-tG-M75"/>
                         <outlet property="tblSortHeight" destination="Cuc-5t-76I" id="cO5-ei-UJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmb-pu-nbj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="733"/>
+            <point key="canvasLocation" x="1832" y="733"/>
         </scene>
-        <!--Reason For Cancel Book View Controller-->
+        <!--Posted Truck Cancel ReqVC-->
         <scene sceneID="jyM-12-pYi">
             <objects>
-                <viewController storyboardIdentifier="ReasonForCancelBookViewController" id="98W-om-azX" customClass="ReasonForCancelBookViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostedTruckCancelReqVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="98W-om-azX" customClass="PostedTruckCancelReqVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="924-8A-Ilt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1090,7 +1112,7 @@ like to view them?</string>
                                                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OlC-fP-Hsy">
                                                                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
                                                                                                     <subviews>
-                                                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rI-YP-EfY">
+                                                                                                        <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rI-YP-EfY">
                                                                                                             <rect key="frame" x="0.0" y="2.5" width="25" height="25"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="height" constant="25" id="D9K-J5-Etb"/>
@@ -1247,7 +1269,9 @@ like to view them?</string>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnCancel" destination="3t0-5X-OAX" id="Xpw-7m-cAa"/>
                         <outlet property="btnDecline" destination="MDX-P3-aRO" id="9Y1-vt-s1N"/>
+                        <outlet property="lblReasonToDecline" destination="96T-7v-o2i" id="QJr-fE-CBV"/>
                         <outlet property="lblRemainingMinutes" destination="NXT-oB-6K7" id="Jyw-Ee-UW7"/>
                         <outlet property="tblSort" destination="z5D-Ia-0R7" id="4rO-kH-SXc"/>
                         <outlet property="tblSortHeight" destination="LZ2-j6-cib" id="uR1-k4-Ip2"/>
@@ -1256,173 +1280,6 @@ like to view them?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OBJ-Kh-WtR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2588" y="733"/>
-        </scene>
-        <!--License View Controller-->
-        <scene sceneID="FkF-N9-VTZ">
-            <objects>
-                <viewController storyboardIdentifier="LicenseViewController" id="GUL-b9-bhc" customClass="LicenseViewController" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RoR-eP-yvH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view hidden="YES" alpha="0.29999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gqK-He-RCM" customClass="BlurView" customModule="MyVagon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0T-yd-tUq" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHG-44-GB6">
-                                        <rect key="frame" x="0.0" y="563.5" width="414" height="432.5"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DnI-2O-zBL">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="432.5"/>
-                                                <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o1l-md-s9b">
-                                                        <rect key="frame" x="20" y="20" width="374" height="258.5"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter License number &amp; expiry date" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mEo-7u-5BD" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <nil key="textColor"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                        <real key="value" value="22"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
-                                                                        <color key="value" name="ThemeBlackColor"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwR-wE-gju" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="40.5" width="374" height="52"/>
-                                                                <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter license number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9ky-X8-c1O" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="one-time-code"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="15"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="9ky-X8-c1O" secondAttribute="bottom" id="1VH-Mr-GXg"/>
-                                                                    <constraint firstItem="9ky-X8-c1O" firstAttribute="leading" secondItem="jwR-wE-gju" secondAttribute="leading" id="Lvy-4D-OoZ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="9ky-X8-c1O" secondAttribute="trailing" id="lV6-ZS-qXb"/>
-                                                                    <constraint firstAttribute="height" constant="52" id="w17-xR-9kd"/>
-                                                                    <constraint firstItem="9ky-X8-c1O" firstAttribute="top" secondItem="jwR-wE-gju" secondAttribute="top" id="zUX-nx-jZE"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gra-t7-Ol3" customClass="ThemeViewRounded" customModule="MyVagon" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="112.5" width="374" height="52"/>
-                                                                <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter license expiry date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="92o-k8-aAT" customClass="themeTextfield" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" keyboardType="ASCIICapableNumberPad" textContentType="one-time-code"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
-                                                                                <real key="value" value="15"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </textField>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="92o-k8-aAT" secondAttribute="trailing" id="91w-2C-r1o"/>
-                                                                    <constraint firstItem="92o-k8-aAT" firstAttribute="leading" secondItem="Gra-t7-Ol3" secondAttribute="leading" id="DcZ-gR-2KS"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="92o-k8-aAT" secondAttribute="bottom" id="ciP-eZ-bTB"/>
-                                                                    <constraint firstAttribute="height" constant="52" id="kAn-S6-7nv"/>
-                                                                    <constraint firstItem="92o-k8-aAT" firstAttribute="top" secondItem="Gra-t7-Ol3" secondAttribute="top" id="zH7-I5-h7F"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z4j-i8-UbR">
-                                                                <rect key="frame" x="0.0" y="184.5" width="374" height="74"/>
-                                                                <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wcl-ka-Szy" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="20" y="10" width="334" height="54"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="54" id="zt3-oe-hNd"/>
-                                                                        </constraints>
-                                                                        <state key="normal" title="Save"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="IsSubmit" value="YES"/>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                        <connections>
-                                                                            <action selector="BtnVerifyAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="5wY-mt-Xcn"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="wcl-ka-Szy" secondAttribute="trailing" constant="20" id="Pt9-zD-f6y"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="wcl-ka-Szy" secondAttribute="bottom" constant="10" id="imL-dh-TIQ"/>
-                                                                    <constraint firstItem="wcl-ka-Szy" firstAttribute="leading" secondItem="Z4j-i8-UbR" secondAttribute="leading" constant="20" id="rFI-wq-2LU"/>
-                                                                    <constraint firstItem="wcl-ka-Szy" firstAttribute="top" secondItem="Z4j-i8-UbR" secondAttribute="top" constant="10" id="uUe-5f-esU"/>
-                                                                </constraints>
-                                                            </view>
-                                                        </subviews>
-                                                    </stackView>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <constraints>
-                                                    <constraint firstItem="o1l-md-s9b" firstAttribute="top" secondItem="DnI-2O-zBL" secondAttribute="top" constant="20" id="4ee-6G-3e1"/>
-                                                    <constraint firstItem="o1l-md-s9b" firstAttribute="leading" secondItem="DnI-2O-zBL" secondAttribute="leading" constant="20" id="K9c-fC-feE"/>
-                                                    <constraint firstAttribute="trailing" secondItem="o1l-md-s9b" secondAttribute="trailing" constant="20" id="sAZ-J1-sqQ"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="DnI-2O-zBL" secondAttribute="bottom" id="JEH-8b-hJy"/>
-                                            <constraint firstAttribute="trailing" secondItem="DnI-2O-zBL" secondAttribute="trailing" id="Jw5-di-7rm"/>
-                                            <constraint firstItem="DnI-2O-zBL" firstAttribute="top" secondItem="SHG-44-GB6" secondAttribute="top" id="TPj-qE-6MV"/>
-                                            <constraint firstItem="DnI-2O-zBL" firstAttribute="leading" secondItem="SHG-44-GB6" secondAttribute="leading" id="jUk-EN-56p"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="SHG-44-GB6" secondAttribute="trailing" id="6Pd-3M-x8Y"/>
-                                    <constraint firstAttribute="bottom" secondItem="SHG-44-GB6" secondAttribute="bottom" constant="-100" id="WbB-DA-Rko"/>
-                                    <constraint firstItem="SHG-44-GB6" firstAttribute="leading" secondItem="s0T-yd-tUq" secondAttribute="leading" id="cbb-8b-4pq"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="30"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="wKh-33-cut"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="s0T-yd-tUq" secondAttribute="bottom" id="3mq-YM-JV6"/>
-                            <constraint firstItem="wKh-33-cut" firstAttribute="trailing" secondItem="gqK-He-RCM" secondAttribute="trailing" id="Df4-j8-sJl"/>
-                            <constraint firstItem="gqK-He-RCM" firstAttribute="leading" secondItem="RoR-eP-yvH" secondAttribute="leading" id="YM3-ob-ZfM"/>
-                            <constraint firstItem="gqK-He-RCM" firstAttribute="top" secondItem="RoR-eP-yvH" secondAttribute="top" id="YxS-lf-e1U"/>
-                            <constraint firstItem="s0T-yd-tUq" firstAttribute="leading" secondItem="wKh-33-cut" secondAttribute="leading" id="cyZ-qU-fTV"/>
-                            <constraint firstAttribute="bottom" secondItem="gqK-He-RCM" secondAttribute="bottom" id="dPB-2c-hDX"/>
-                            <constraint firstItem="s0T-yd-tUq" firstAttribute="top" secondItem="RoR-eP-yvH" secondAttribute="top" id="iG9-6W-u29"/>
-                            <constraint firstItem="s0T-yd-tUq" firstAttribute="trailing" secondItem="wKh-33-cut" secondAttribute="trailing" id="ivC-Tk-xO4"/>
-                            <constraint firstItem="o1l-md-s9b" firstAttribute="bottom" secondItem="wKh-33-cut" secondAttribute="bottom" constant="-20" id="llb-Gr-LoG"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="MainView" destination="SHG-44-GB6" id="m5p-Rj-707"/>
-                        <outlet property="TextFieldLicenseExpiryDate" destination="92o-k8-aAT" id="srA-U9-3Es"/>
-                        <outlet property="TextFieldLicenseNumber" destination="9ky-X8-c1O" id="Ss1-2m-vR2"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="reD-aQ-Rau" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1063.768115942029" y="75"/>
         </scene>
         <!--View ReloadVC-->
         <scene sceneID="D9m-hU-t4l">
@@ -1587,10 +1444,10 @@ like to view them?</string>
             </objects>
             <point key="canvasLocation" x="2587" y="75"/>
         </scene>
-        <!--Confirmation PopUPVC-->
+        <!--Delete Confirm PopupVC-->
         <scene sceneID="0c6-MY-IEI">
             <objects>
-                <viewController storyboardIdentifier="ConfirmationPopUPVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vTS-qj-1HC" customClass="ConfirmationPopUPVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DeleteConfirmPopupVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vTS-qj-1HC" customClass="DeleteConfirmPopupVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c57-ud-GHK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1603,22 +1460,19 @@ like to view them?</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tBN-mI-4gx" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="712" width="414" height="284"/>
+                                        <rect key="frame" x="0.0" y="731.5" width="414" height="264.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ewv-nF-jZk">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="110.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ke4-5G-S7n">
-                                                        <rect key="frame" x="20" y="20" width="374" height="100"/>
+                                                        <rect key="frame" x="20" y="20" width="374" height="80.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="adg-bS-jnL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason to decline the load" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIq-j5-s3B" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="40"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="height" constant="40" id="nbC-31-Q41"/>
-                                                                        </constraints>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -1635,7 +1489,7 @@ like to view them?</string>
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="K2M-71-T6I">
-                                                                <rect key="frame" x="0.0" y="50" width="374" height="50"/>
+                                                                <rect key="frame" x="0.0" y="30.5" width="374" height="50"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOW-ns-JqU" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
@@ -1729,6 +1583,162 @@ like to view them?</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zql-J4-HUg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3294" y="733"/>
+        </scene>
+        <!--Delete Account Pop UpVC-->
+        <scene sceneID="Uuo-K1-ROj">
+            <objects>
+                <viewController storyboardIdentifier="DeleteAccountPopUpVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QHx-eS-Krx" customClass="DeleteAccountPopUpVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vHC-Im-Y3B">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCw-qD-hVZ" customClass="BlurView" customModule="MyVagon" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tE-4z-5T4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6C-sm-vL6" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="726" width="414" height="170"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHo-Rd-QVv">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="136"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KBy-87-N8b">
+                                                        <rect key="frame" x="20" y="20" width="374" height="106"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wfi-UG-AOM">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Deleting your account is permanent :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2M-aP-6eK" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="17"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                <color key="value" name="ThemeBlackColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isBold" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Account information will bw permanently ." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyY-aJ-QMm" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="25.5" width="374" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="Font_Size">
+                                                                                <real key="value" value="16"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="fontColor">
+                                                                                <color key="value" name="ThemeBlackColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isMedium" value="YES"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fvH-0X-O3T">
+                                                                <rect key="frame" x="0.0" y="56" width="374" height="50"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcn-y8-nhj" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="177" height="50"/>
+                                                                        <color key="backgroundColor" name="ThemeTamotoColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="zCO-Hb-tvZ"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" red="0.98430448770000001" green="0.98430746790000001" blue="0.98431414370000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                        <state key="normal" title="Delete"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
+                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnDeleteClick:" destination="QHx-eS-Krx" eventType="touchUpInside" id="NbU-92-GC4"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wOY-u0-p4y" customClass="themeButton" customModule="MyVagon" customModuleProvider="target">
+                                                                        <rect key="frame" x="197" y="0.0" width="177" height="50"/>
+                                                                        <color key="backgroundColor" name="ThemeGreenColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="SJx-K1-8gy"/>
+                                                                        </constraints>
+                                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <state key="normal" title="Cancel"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="TextColor">
+                                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                        <connections>
+                                                                            <action selector="btnCancelClick:" destination="QHx-eS-Krx" eventType="touchUpInside" id="eTk-Im-Qtj"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="KBy-87-N8b" firstAttribute="leading" secondItem="eHo-Rd-QVv" secondAttribute="leading" constant="20" id="LeJ-mN-wcK"/>
+                                                    <constraint firstAttribute="trailing" secondItem="KBy-87-N8b" secondAttribute="trailing" constant="20" id="Zyf-53-EhC"/>
+                                                    <constraint firstItem="KBy-87-N8b" firstAttribute="top" secondItem="eHo-Rd-QVv" secondAttribute="top" constant="20" id="rZg-bK-atj"/>
+                                                    <constraint firstAttribute="bottom" secondItem="KBy-87-N8b" secondAttribute="bottom" constant="10" id="wM4-4F-BGc"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="eHo-Rd-QVv" firstAttribute="leading" secondItem="z6C-sm-vL6" secondAttribute="leading" id="Nww-6f-dAr"/>
+                                            <constraint firstAttribute="trailing" secondItem="eHo-Rd-QVv" secondAttribute="trailing" id="iDk-Ad-whP"/>
+                                            <constraint firstItem="eHo-Rd-QVv" firstAttribute="top" secondItem="z6C-sm-vL6" secondAttribute="top" id="zkn-ud-XJy"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="30"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="z6C-sm-vL6" firstAttribute="leading" secondItem="9tE-4z-5T4" secondAttribute="leading" id="2ck-ap-1Y7"/>
+                                    <constraint firstAttribute="bottom" secondItem="z6C-sm-vL6" secondAttribute="bottom" id="dhv-T4-Osb"/>
+                                    <constraint firstAttribute="trailing" secondItem="z6C-sm-vL6" secondAttribute="trailing" id="mjd-x3-cmS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bu3-18-vKC"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9tE-4z-5T4" firstAttribute="top" secondItem="vHC-Im-Y3B" secondAttribute="top" id="9tX-S2-vCb"/>
+                            <constraint firstItem="9tE-4z-5T4" firstAttribute="trailing" secondItem="bu3-18-vKC" secondAttribute="trailing" id="BSf-Rc-imG"/>
+                            <constraint firstAttribute="bottom" secondItem="uCw-qD-hVZ" secondAttribute="bottom" id="F2J-Kq-zBl"/>
+                            <constraint firstItem="uCw-qD-hVZ" firstAttribute="top" secondItem="vHC-Im-Y3B" secondAttribute="top" id="Fpz-WB-hnB"/>
+                            <constraint firstItem="uCw-qD-hVZ" firstAttribute="leading" secondItem="vHC-Im-Y3B" secondAttribute="leading" id="Z2s-jq-dfb"/>
+                            <constraint firstItem="9tE-4z-5T4" firstAttribute="leading" secondItem="bu3-18-vKC" secondAttribute="leading" id="ZV0-RT-7u2"/>
+                            <constraint firstAttribute="bottom" secondItem="9tE-4z-5T4" secondAttribute="bottom" id="gQr-Lf-eJb"/>
+                            <constraint firstItem="bu3-18-vKC" firstAttribute="bottom" secondItem="eHo-Rd-QVv" secondAttribute="bottom" id="o4W-Jh-ptC"/>
+                            <constraint firstItem="bu3-18-vKC" firstAttribute="trailing" secondItem="uCw-qD-hVZ" secondAttribute="trailing" id="pTi-wC-gNK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnCancel" destination="wOY-u0-p4y" id="DcZ-BA-uIm"/>
+                        <outlet property="btnDelete" destination="dcn-y8-nhj" id="cGf-tE-POq"/>
+                        <outlet property="lblDeleteInfo" destination="fyY-aJ-QMm" id="CVl-xp-l8W"/>
+                        <outlet property="lblTitle" destination="b2M-aP-6eK" id="ezh-Vv-NeU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zmA-5e-cl3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3968.115942028986" y="732.58928571428567"/>
         </scene>
     </scenes>
     <resources>

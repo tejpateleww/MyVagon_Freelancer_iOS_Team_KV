@@ -153,4 +153,8 @@ extension UIView{
               mask.path = path.cgPath
               layer.mask = mask
           }
+    func roundCornerssingleSide(corners: CACornerMask) {
+            self.isCircle()
+              layer.maskedCorners = corners
+          }
 }

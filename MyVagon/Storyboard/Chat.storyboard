@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -18,7 +18,7 @@
         <!--ChatVC-->
         <scene sceneID="U7A-Tc-wvn">
             <objects>
-                <viewController storyboardIdentifier="chatVC" id="GBs-8h-yt7" customClass="chatVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GBs-8h-yt7" customClass="ChatVC" customModule="MyVagon" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="giB-1p-33U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,6 +259,12 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KaZ-ao-Fx5">
                                         <rect key="frame" x="0.0" y="758" width="414" height="60"/>
                                         <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat is not allowed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxg-lk-nEH">
+                                                <rect key="frame" x="5" y="5" width="404" height="50"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vf2-gs-PKS" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="5" width="374" height="50"/>
                                                 <subviews>
@@ -319,9 +325,13 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Vf2-gs-PKS" secondAttribute="trailing" constant="20" id="2ZG-Ul-hc9"/>
                                             <constraint firstItem="Vf2-gs-PKS" firstAttribute="top" secondItem="KaZ-ao-Fx5" secondAttribute="top" constant="5" id="98C-wp-y4R"/>
+                                            <constraint firstAttribute="trailing" secondItem="Bxg-lk-nEH" secondAttribute="trailing" constant="5" id="BBi-ii-9qq"/>
                                             <constraint firstAttribute="height" constant="60" id="CcG-Dr-xgU"/>
+                                            <constraint firstItem="Bxg-lk-nEH" firstAttribute="top" secondItem="KaZ-ao-Fx5" secondAttribute="top" constant="5" id="GI5-L4-fwB"/>
                                             <constraint firstAttribute="bottom" secondItem="Vf2-gs-PKS" secondAttribute="bottom" constant="5" id="Xug-fd-W15"/>
                                             <constraint firstItem="Vf2-gs-PKS" firstAttribute="leading" secondItem="KaZ-ao-Fx5" secondAttribute="leading" constant="20" id="aWv-Md-I6a"/>
+                                            <constraint firstItem="Bxg-lk-nEH" firstAttribute="leading" secondItem="KaZ-ao-Fx5" secondAttribute="leading" constant="5" id="drK-KW-rOY"/>
+                                            <constraint firstAttribute="bottom" secondItem="Bxg-lk-nEH" secondAttribute="bottom" constant="5" id="ffN-87-9YP"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -351,6 +361,7 @@
                         <outlet property="constraintBottomOfChatBG" destination="WYg-j8-cAC" id="Z3f-PL-xj5"/>
                         <outlet property="tblChat" destination="0ua-8G-SF6" id="UQ9-DM-2eU"/>
                         <outlet property="tvWriteMessage" destination="ILd-mq-GZW" id="Eek-o6-GMw"/>
+                        <outlet property="viewChat" destination="Vf2-gs-PKS" id="rBT-UX-U1E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aor-R3-XoU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -423,7 +434,7 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waQ-hz-zdE">
                                                                             <rect key="frame" x="20" y="17" width="374" height="40.5"/>
                                                                             <subviews>
-                                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="18.800000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-zH-N8n">
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cFa-zH-N8n">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="40.5"/>
                                                                                     <subviews>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c6U-Gg-EVc">
@@ -450,15 +461,15 @@
                                                                                             </constraints>
                                                                                         </view>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hov-VT-gx5">
-                                                                                            <rect key="frame" x="69" y="0.0" width="305" height="40.5"/>
+                                                                                            <rect key="frame" x="60" y="0.0" width="314" height="40.5"/>
                                                                                             <subviews>
-                                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uM1-mL-yqF">
-                                                                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="40.5"/>
+                                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="uM1-mL-yqF">
+                                                                                                    <rect key="frame" x="0.0" y="0.0" width="314" height="40.5"/>
                                                                                                     <subviews>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ot-bh-7ON">
-                                                                                                            <rect key="frame" x="0.0" y="0.0" width="305" height="20.5"/>
+                                                                                                            <rect key="frame" x="0.0" y="0.0" width="314" height="20.5"/>
                                                                                                             <subviews>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mike Ross" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6m-wi-X74" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mike Ross" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x6m-wi-X74" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
                                                                                                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="20.5"/>
                                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                     <nil key="textColor"/>
@@ -473,8 +484,8 @@
                                                                                                                         </userDefinedRuntimeAttribute>
                                                                                                                     </userDefinedRuntimeAttributes>
                                                                                                                 </label>
-                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="March 17,2021 8:00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5X-av-a0j" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                    <rect key="frame" x="133" y="0.0" width="172" height="20.5"/>
+                                                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="March 17,2021 8:00am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5X-av-a0j" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                    <rect key="frame" x="142" y="0.0" width="172" height="20.5"/>
                                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                     <nil key="textColor"/>
                                                                                                                     <nil key="highlightedColor"/>
@@ -500,13 +511,13 @@
                                                                                                             </constraints>
                                                                                                         </view>
                                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8CF-Ml-g2U">
-                                                                                                            <rect key="frame" x="0.0" y="20.5" width="305" height="20"/>
+                                                                                                            <rect key="frame" x="0.0" y="20.5" width="314" height="20"/>
                                                                                                             <subviews>
-                                                                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y7j-cZ-Zn8">
-                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="305" height="20"/>
+                                                                                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="y7j-cZ-Zn8">
+                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="314" height="20"/>
                                                                                                                     <subviews>
-                                                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you left Athens?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hab-cf-LLY" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="280" height="20"/>
+                                                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have you left Athens?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hab-cf-LLY" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
+                                                                                                                            <rect key="frame" x="0.0" y="0.0" width="170.5" height="20"/>
                                                                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                                                                             <nil key="textColor"/>
                                                                                                                             <nil key="highlightedColor"/>
@@ -520,10 +531,10 @@
                                                                                                                             </userDefinedRuntimeAttributes>
                                                                                                                         </label>
                                                                                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBo-bN-Lv1" customClass="ViewCustomClass" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                            <rect key="frame" x="285" y="0.0" width="20" height="20"/>
+                                                                                                                            <rect key="frame" x="175.5" y="0.0" width="138.5" height="20"/>
                                                                                                                             <subviews>
                                                                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fh-ev-h3d" customClass="themeLabel" customModule="MyVagon" customModuleProvider="target">
-                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                                                                                    <rect key="frame" x="0.0" y="0.0" width="138.5" height="20"/>
                                                                                                                                     <color key="backgroundColor" name="ThemePurpleColor"/>
                                                                                                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

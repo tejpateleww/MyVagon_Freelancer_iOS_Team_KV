@@ -91,3 +91,46 @@ extension UIView {
         return view
     }
 }
+
+extension Sequence where Element: Hashable {
+    func uniqued() -> [Element] {
+        var set = Set<Element>()
+        return filter { set.insert($0).inserted }
+    }
+}
+
+extension UIApplication{
+    class func getPresentedViewController() -> UIViewController? {
+        var presentViewController = UIApplication.shared.keyWindow?.rootViewController
+        while let pVC = presentViewController?.presentedViewController
+        {
+            presentViewController = pVC
+        }
+        return presentViewController
+    }
+    class func topViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return topViewController(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            if let selected = tab.selectedViewController {
+                return topViewController(base: selected)
+            }
+        }
+        if let presented = base?.presentedViewController {
+            return topViewController(base: presented)
+        }
+        return base
+    }
+}
+
+public extension UIView {
+    static func loadFromXib<T>(withOwner: Any? = nil, options: [UINib.OptionsKey : Any]? = nil) -> T where T: UIView {
+        let bundle = Bundle(for: self)
+        let nib = UINib(nibName: "\(self)", bundle: bundle)
+        guard let view = nib.instantiate(withOwner: withOwner, options: options).first as? T else {
+            fatalError("Could not load view from nib file.")
+        }
+        return view
+    }
+}

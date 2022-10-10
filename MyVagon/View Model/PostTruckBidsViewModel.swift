@@ -7,35 +7,28 @@
 
 import Foundation
 import UIKit
-class PostTruckBidsViewModel {
-    weak var bidRequestViewController : BidRequestViewController? = nil
-    weak var bidRequestDetailViewController : BidRequestDetailViewController? = nil
- 
-    func BidRequest(ReqModel:PostTruckBidReqModel){
-     
-        WebServiceSubClass.BidRequest(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
-          
-    
-            if status {
-                
-                let tempArrHomeData = response?.data?.booking_request ?? []
-                
-                self.bidRequestViewController?.arrBidsData = tempArrHomeData
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.bidRequestViewController?.isLoading = false
-                }
-                self.bidRequestViewController?.tblAvailableData.tableFooterView?.isHidden = true
-                
-                self.bidRequestViewController?.tblAvailableData.reloadDataWithAutoSizingCellWorkAround()
 
+class NewPostTruckBidsViewModel {
+    weak var bidRequestViewController : PostedTruckBidRequestVC? = nil
+    weak var bidRequestDetailViewController : PostedTruckBidReqDetailVC? = nil
+    func BidRequest(ReqModel:PostTruckBidReqModel){
+        WebServiceSubClass.BidRequest(reqModel: ReqModel, completion: { (status, apiMessage, response, error) in
+            if status {
+                let tempArrHomeData = response?.data?.booking_request ?? []
+                self.bidRequestViewController?.arrBidsData = tempArrHomeData
+                self.bidRequestViewController?.lblMatchFount.text = "\("matchGreek".localized)\(tempArrHomeData.count) \("Matches_Found".localized)"
+                self.bidRequestViewController?.isLoading = false
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//
+//                }
+                self.bidRequestViewController?.tblBidRequest.tableFooterView?.isHidden = true
                 
+                self.bidRequestViewController?.tblBidRequest.reloadDataWithAutoSizingCellWorkAround()
             } else {
                 Utilities.ShowAlertOfValidation(OfMessage: apiMessage)
             }
         })
     }
-
-    
 }
 
 class BidRequestViewModel {
@@ -47,7 +40,7 @@ class BidRequestViewModel {
             Utilities.hideHud()
             if status {
                 let tempArrHomeData = response?.data?.booking_request ?? []
-                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: BidRequestDetailViewController.storyboardID) as! BidRequestDetailViewController
+                let controller = AppStoryboard.Home.instance.instantiateViewController(withIdentifier: PostedTruckBidReqDetailVC.storyboardID) as! PostedTruckBidReqDetailVC
                 controller.hidesBottomBarWhenPushed = true
                 controller.LoadDetails = tempArrHomeData.first
                 self.scheduleVC?.navigationController?.pushViewController(controller, animated: true)

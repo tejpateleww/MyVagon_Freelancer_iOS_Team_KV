@@ -149,3 +149,18 @@ extension UIImageView{
         }
     }
 }
+
+public extension UIImageView {
+
+    func addInitials(first: String) {
+        let initials = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
+        initials.center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        initials.textAlignment = .center
+        initials.text = first
+        initials.textColor = .white
+        initials.font = UIFont(name: initials.font.fontName, size: 32)
+        initials.backgroundColor = #colorLiteral(red: 0.611544311, green: 0.2912456691, blue: 0.8909440637, alpha: 1)
+        initials.tag = 199
+        self.addSubview(initials)
+    }
+}

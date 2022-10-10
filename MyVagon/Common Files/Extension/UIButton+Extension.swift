@@ -107,7 +107,8 @@ extension UIButton{
     }
     func setWithOutunderline(title:String ,color: UIColor, font: UIFont){
         self.setAttributedTitle(NSMutableAttributedString(string: title, attributes:  [.font: font,
-                                                                                       .foregroundColor: color]), for: .normal)
+                                                                                       .foregroundColor: color,
+                                                                                       .underlineStyle: NSUnderlineStyle.single.rawValue]), for: .normal)
     }
 }
 

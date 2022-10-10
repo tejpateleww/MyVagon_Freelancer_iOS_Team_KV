@@ -66,7 +66,7 @@ struct ReviewData: Codable {
     var threeStarRatingCount: Int?
     var fourStarRatingCount: Int?
     var fiveStarRatingCount: Int?
-    var shipperRating: Int?
+    var shipperRating: String?
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -150,7 +150,7 @@ struct ReviewData: Codable {
         threeStarRatingCount = try? values.decode(Int.self, forKey: .threeStarRatingCount)
         fourStarRatingCount = try? values.decode(Int.self, forKey: .fourStarRatingCount)
         fiveStarRatingCount = try? values.decode(Int.self, forKey: .fiveStarRatingCount)
-        shipperRating = try? values.decode(Int.self, forKey: .shipperRating)
+        shipperRating = try? values.decode(String.self, forKey: .shipperRating)
     }
 
 }

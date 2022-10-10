@@ -10,6 +10,7 @@ struct MyLoadsNewBid : Codable {
         let amount : String?
         let bookingBidAmount : String?
         let bookingType : String?
+        let cancelRequest : String?
         let cancellationCharge : String?
         let cancellationTerm : String?
         let createdAt : String?
@@ -36,15 +37,17 @@ struct MyLoadsNewBid : Codable {
         let txnId : String?
         let updatedAt : String?
         let userId : Int?
-        let podURL : String?
-        let shipperRate : String?
-    let paymentStatus : String?
+        var podURL : String?
+        var shipperRate : Int?
+        let paymentStatus : String?
+        let displayStatusMessage : String?
     
 
         enum CodingKeys: String, CodingKey {
                 case amount = "amount"
-            case bookingBidAmount = "booking_bid_amount"
+                case bookingBidAmount = "booking_bid_amount"
                 case bookingType = "booking_type"
+                case cancelRequest = "cancel_request"
                 case cancellationCharge = "cancellation_charge"
                 case cancellationTerm = "cancellation_term"
                 case createdAt = "created_at"
@@ -71,16 +74,18 @@ struct MyLoadsNewBid : Codable {
                 case txnId = "txn_id"
                 case updatedAt = "updated_at"
                 case userId = "user_id"
-            case podURL = "pod_image"
-            case shipperRate = "rate_shipper"
-            case paymentStatus = "payment_status"
+                case podURL = "pod_image"
+                case shipperRate = "rate_shipper"
+                case paymentStatus = "payment_status"
+                case displayStatusMessage = "display_status_message"
         }
     
         init(from decoder: Decoder) throws {
                 let values = try decoder.container(keyedBy: CodingKeys.self)
                 amount = try? values.decodeIfPresent(String.self, forKey: .amount)
-            bookingBidAmount = try? values.decodeIfPresent(String.self, forKey: .bookingBidAmount)
+                bookingBidAmount = try? values.decodeIfPresent(String.self, forKey: .bookingBidAmount)
                 bookingType = try? values.decodeIfPresent(String.self, forKey: .bookingType)
+                cancelRequest = try? values.decodeIfPresent(String.self, forKey: .cancelRequest)
                 cancellationCharge = try? values.decodeIfPresent(String.self, forKey: .cancellationCharge)
                 cancellationTerm = try? values.decodeIfPresent(String.self, forKey: .cancellationTerm)
                 createdAt = try? values.decodeIfPresent(String.self, forKey: .createdAt)
@@ -100,6 +105,7 @@ struct MyLoadsNewBid : Codable {
                 pickupNote = try? values.decodeIfPresent(String.self, forKey: .pickupNote)
                 pickupTimeFrom = try? values.decodeIfPresent(String.self, forKey: .pickupTimeFrom)
                 pickupTimeTo = try? values.decodeIfPresent(String.self, forKey: .pickupTimeTo)
+                displayStatusMessage = try? values.decodeIfPresent(String.self, forKey: .displayStatusMessage)
                 shipperDetails = try? values.decodeIfPresent(MyLoadsNewShipperDetail.self, forKey: .shipperDetails)
                 status = try? values.decodeIfPresent(String.self, forKey: .status)
                 totalWeight = try? values.decodeIfPresent(String.self, forKey: .totalWeight)
@@ -107,9 +113,9 @@ struct MyLoadsNewBid : Codable {
                 txnId = try? values.decodeIfPresent(String.self, forKey: .txnId)
                 updatedAt = try? values.decodeIfPresent(String.self, forKey: .updatedAt)
                 userId = try? values.decodeIfPresent(Int.self, forKey: .userId)
-            podURL = try? values.decodeIfPresent(String.self, forKey: .podURL)
-            shipperRate = try? values.decodeIfPresent(String.self, forKey: .shipperRate)
-            paymentStatus = try? values.decodeIfPresent(String.self, forKey: .paymentStatus)
+                podURL = try? values.decodeIfPresent(String.self, forKey: .podURL)
+                shipperRate = try? values.decodeIfPresent(Int.self, forKey: .shipperRate)
+                paymentStatus = try? values.decodeIfPresent(String.self, forKey: .paymentStatus)
         }
 
 }

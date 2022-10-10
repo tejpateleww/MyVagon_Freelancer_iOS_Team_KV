@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 let DateFormatForDisplay = "EEEE, dd/MM/yyyy"
-
-let Currency = "€ "
+let timeFormatForDisplay = "EEEE, dd/MM/yyyy h:mm a"
+let Currency = "€"
 var PageLimit = 10
 let keywindow = UIApplication.shared.keyWindow
-
+var UserDefault = UserDefaults.standard
 let appDel = UIApplication.shared.delegate as! AppDelegate
 let kAPPVesion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
 let AppName = AppInfo.appName

@@ -75,9 +75,9 @@ enum NavTitles
         case .none:
             return ""
         case .TruckType:
-            return "Truck Type"
+            return "Truck Type".Localized()
         case .TermsCondition:
-        return "Terms & Conditions"
+            return "Terms & Conditions".localized
         
         }
     }

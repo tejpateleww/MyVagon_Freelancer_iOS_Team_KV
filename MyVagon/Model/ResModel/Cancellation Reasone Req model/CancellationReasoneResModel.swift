@@ -30,16 +30,26 @@ class Reasone: Codable {
 
     let id: Int?
     let reason: String?
+    let reasonGreek :String?
 
     private enum CodingKeys: String, CodingKey {
         case id = "id"
         case reason = "reason"
+        case reasonGreek = "reason_greek"
     }
 
     required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try? values.decode(Int.self, forKey: .id)
         reason = try? values.decode(String.self, forKey: .reason)
+        reasonGreek = try? values.decode(String.self, forKey: .reasonGreek)
     }
-
+    
+    func getName() -> String{
+        if (UserDefaults.standard.string(forKey: LCLCurrentLanguageKey) ?? "el" == "el"){
+            return reasonGreek ?? ""
+        }else{
+            return reason ?? ""
+        }
+    }
 }
